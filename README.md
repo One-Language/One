@@ -39,4 +39,4 @@ The word is actually abbreviated. (Electronics-Technology)
 `.et`
 
 
-Send your message for sponsorship and support us.
+Send your message for sponsorship and support us. (MaxBaseCode@Gmail.Com)
