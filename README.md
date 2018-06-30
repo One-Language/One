@@ -14,8 +14,8 @@ ET is an open source system programming language that easy to build , reliable, 
 - Network programming
 - Performance and high speed
 - Supports inline assembly code
-- No require specific library and tools on user system  In normal mode
-- No require glibc as runtime library
+- No require specific library and tools on user system In normal mode
+- No require external runtime library In normal mode
 - No require external compiler for compile steps
 
 
