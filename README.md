@@ -19,8 +19,6 @@ ET is an open source system programming language that easy to build , reliable, 
 - No require external compiler for compile steps
 
 
-
-
 #### #Name :
 
 What is the meaning of this name?
@@ -35,8 +33,6 @@ The word is actually abbreviated. (Electronics-Technology)
 - [x] Windows (Not complete)
 
 
-#### #Filename extensions :
-`.et`
-
+#### #Filename extensions : `.et`
 
 Send your message for sponsorship and support us. (MaxBaseCode@Gmail.Com)
