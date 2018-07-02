@@ -1,0 +1,6 @@
+void main()
+{
+  file.create("sample.et");
+  file.create("sample.et","Hello World!");
+  int result=file.create("sample.et","Hello World!");
+}
