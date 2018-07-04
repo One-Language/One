@@ -1,0 +1,5 @@
+void main()
+{
+  file.set("example.txt","First Data\n");
+  int result=file.set("example.txt","First Data\n");
+}
