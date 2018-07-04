@@ -1,0 +1,5 @@
+void main()
+{
+  file.rename("example.txt","new.txt");
+  int result=file.rename("example.txt","new.txt");
+}
