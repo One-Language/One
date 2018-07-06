@@ -19,6 +19,12 @@ ET is an open source system programming language that easy to build , reliable, 
 - No require external compiler for compile steps
 
 
+# Learning
+
+Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) for starting and learning this language.
+
+# Introduction
+
 #### #Name :
 
 What is the meaning of this name?
