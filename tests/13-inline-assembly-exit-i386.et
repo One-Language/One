@@ -1,0 +1,5 @@
+void main()
+{
+//32bit
+assembly("int $0x80"::"a"(1),"b"(0));
+}
