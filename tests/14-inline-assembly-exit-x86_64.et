@@ -1,0 +1,6 @@
+//x86_64
+void main()
+{
+//64bit
+assembly("syscall"::"a"(60),"D"(0));
+}
