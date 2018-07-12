@@ -1,0 +1,8 @@
+void main()
+{
+  print 5+5;
+  print 10-5;
+  print 5 . "hello!";
+  print "1" . 2;
+  return 8;
+}
