@@ -1,0 +1,32 @@
+int main(int count)
+{
+	print 12345678900;
+	print false;
+	print true;
+	print null;
+	print 94;
+	print 155555551;
+	print 9999999992;
+	print -94;
+	print -15555555;
+	print -9999999992;
+	print +5;
+	print (5);
+	print (-5);
+	print -(-5);
+	print 5;
+	print 5+5;
+	print 10-5;
+	print 5 . "hello!";
+	print "1" . 2;
+	print 5 . 3;
+	print 1 . 2 . 3;
+	print -1;
+	print +1;
+	print -1+2;
+	print 1+2;
+	print -(1+2)*6 / 3;
+	print 5 == 2;
+	print -2 == 2;
+	return 1;
+}
