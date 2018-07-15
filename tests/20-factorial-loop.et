@@ -1,5 +1,5 @@
 //Algorithm : https://en.wikipedia.org/wiki/Factorial
-int8 fact(int8 number)
+uint8 fact(uint8 number)
 {
   if(number == 1 || number == 0)
   {
