@@ -1,0 +1,13 @@
+//Algorithm : https://en.wikipedia.org/wiki/Factorial
+int8 fact(int8 number)
+{
+  if(number == 1)
+  {
+    return 1;
+  }
+  return number*fact(number-1);
+}
+void main()
+{
+  print fact(5);
+}
