@@ -1,0 +1,17 @@
+//Algorithm : https://en.wikipedia.org/wiki/Factorial
+int8 fact(int8 number)
+{
+  if(number == 1)
+  {
+    return 1;
+  }
+  return number*fact(number-1);
+}
+void main()
+{
+  int8 total=10;
+  for(int8 current=1;current<=total;current++)
+  {
+    print fact(current);
+  }
+}
