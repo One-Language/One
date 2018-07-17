@@ -1,0 +1,12 @@
+void main()
+{
+	int16 number=1;
+	if(number % 2 == 0)
+	{
+		print "is even.";
+	}
+	else
+	{
+		print "is odd.";
+	}
+}
