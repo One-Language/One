@@ -1,0 +1,35 @@
+void main()
+{
+	int32 temp;
+	int32 count;
+	int32 array[50];
+	int32 x;
+	int32 y;
+	print "Enter the size of array: ";
+	scan count;
+	print "Enter the array elements: \n";
+	for(x=0;x<count;++x)
+	{
+		print "> ";
+		scan array[x];
+	}
+	for(x=1;x<count;++x)
+	{
+		for(y=0;y<(count-x);++y)
+		{
+			if(array[y]>array[y+1])
+			{
+				temp=array[y];
+				array[y]=array[y+1];
+				array[y+1]=temp;
+			}
+		}
+	}
+	print "\nFinal Result: \n";
+	for(x=0;x<count;++x)
+	{
+		print "-->";
+		print array[x];
+		print "\n";
+	}
+}
