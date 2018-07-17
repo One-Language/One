@@ -1,0 +1,12 @@
+void main()
+{
+	int32 number=4173;
+	int8 count = 0;
+	while(number != 0)
+	{
+		number /= 10;
+		++count;
+	}
+	print "Number of digits: ";
+	print count;
+}
