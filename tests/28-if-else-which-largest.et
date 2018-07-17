@@ -1,0 +1,21 @@
+void main()
+{
+	int32 n1=941;
+	int32 n2=960;
+	int32 n3=15312;
+	if(n1>=n2 && n1>=n3)
+	{
+		print n1;
+		print " is the largest number.";
+	}
+	else if(n2>=n1 && n2>=n3)
+	{
+		print n2;
+		print " is the largest number.";
+	}
+	else
+	{
+		print n3;
+		print " is the largest number.";
+	}
+}
