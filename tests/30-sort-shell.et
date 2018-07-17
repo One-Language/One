@@ -1,0 +1,36 @@
+void main()
+{
+	int32 array[20];
+	int32 current;
+	int32 count;
+	print "Enter the size of array: ";
+	scan count;
+	print "Enter the array elements: \n";
+	for(current=0;current<count;++current)
+	{
+		scan array[i];
+	}
+	int32 number;
+	int32 x;
+	int32 y;
+	int32 temp;
+	for(number=count/2;number>0;number/=2)
+	{
+		for(x=number;x<count;x+=1)
+		{
+			temp=array[x];
+			for(y=x;y>=number && array[y-number]>temp;y-=number)
+			{
+				array[y]=array[y-number];
+			}
+			array[y]=temp;
+		}
+	}
+	print "\nFinal Result: \n";
+	for(x=0;x<count;++x)
+	{
+		print "-->";
+		print array[x];
+		print "\n";
+	}
+}
