@@ -6,16 +6,16 @@ void main()
 	if(n1>=n2 && n1>=n3)
 	{
 		print n1;
-		print "is the largest number.";
+		print " is the largest number.";
 	}
 	if(n2>=n1 && n2>=n3)
 	{
 		print n2;
-		print "is the largest number.";
+		print " is the largest number.";
 	}
 	if(n3>=n1 && n3>=n2)
 	{
 		print n3;
-		print "is the largest number.";
+		print " is the largest number.";
 	}
 }
