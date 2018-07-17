@@ -1,0 +1,9 @@
+void main()
+{
+	int16 total=500;
+	int16 current;
+	for(current=1;current<=total;++current)
+	{
+		print current;
+	}
+}
