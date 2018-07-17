@@ -31,8 +31,8 @@ What is the meaning of this name?
 The word is actually abbreviated. (Electronics-Technology)
 
 #### #Start activity :
-Initial start: 2010; about 8 years ago
-Beginning : 2012; about 6 years ago
+  - Initial start: 2010; about 8 years ago
+  - Beginning : 2012; about 6 years ago
 
 
 #### #OS :
