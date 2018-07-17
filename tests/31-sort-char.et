@@ -1,0 +1,28 @@
+void main()
+{
+	char array[]="hello,hereiset-lang!howareyou?!";
+	char output[string.length(array)];
+	int32 count[256];
+	int32 current;
+	memory.set(count,0,memory.size(count));
+	for(current=0;array[current];++current)
+	{
+		++count[array[current]];
+	}
+	for(current=1;current<=255;++current)
+	{
+		count[current]+=count[current-1];
+	}
+	for(current=0;array[current];++current)
+	{
+		output[count[array[current]]-1]=array[current];
+		--count[array[current]];
+	}
+	for(current=0;array[current];++current)
+	{
+		array[current]=output[current];
+	}
+	print "Final Result: \n";
+	print array;
+	print "\n";
+}
