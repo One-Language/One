@@ -17,9 +17,9 @@ void error()
 }
 void main()
 {
-	web.routes.add("/",index());
-	web.routes.add("/login",login());
-	web.routes.add("/register",register());
-	web.routes.add("/*",error());
+	web.routes.add("",index());
+	web.routes.add("login",login());
+	web.routes.add("register",register());
+	web.routes.add("*",error());
 	web.execute();
 }
