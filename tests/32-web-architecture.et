@@ -1,0 +1,25 @@
+//Sample Code For `Web Architecture` : First Version
+void index()
+{
+	print "Main Page";
+}
+void login()
+{
+	print "Login Page";
+}
+void register()
+{
+	print "Register Page";
+}
+void error()
+{
+	print "404";
+}
+void main()
+{
+	web.routes.add("/",index());
+	web.routes.add("/login",login());
+	web.routes.add("/register",register());
+	web.routes.add("/*",error());
+	web.execute();
+}
