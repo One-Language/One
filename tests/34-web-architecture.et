@@ -1,0 +1,22 @@
+/*
+ * Sample Code For `Architecture` : Second Version
+ * Target :
+	 * Web
+	 * Software
+	 * Mobile-Application (in the future)
+*/
+//load and import the activity pages!
+void main()
+{
+	//the empty rule mean the first and main activity page!
+	layout.set("",index());
+	
+	//`login` is the name and rule path!
+	layout.set("login",login());
+	
+	//`*` mean the any other activity! such as : 404 error page.
+	layout.set("*",error());
+	
+	//begin template engine
+	layout.execute();
+}
