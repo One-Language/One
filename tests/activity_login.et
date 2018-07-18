@@ -1,0 +1,5 @@
+void activity_login()
+{
+  //document=layout.render("here-is-custom-file-name");
+  document=layout.render();
+}
