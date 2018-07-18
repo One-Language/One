@@ -6,16 +6,19 @@
 	 * Mobile-Application (in the future)
 */
 //load and import the activity pages!
+import "activity_index.et";
+import "activity_login.et";
+import "activity_error.et";
 void main()
 {
 	//the empty rule mean the first and main activity page!
-	layout.set("",index());
+	layout.set("",activity_index());
 	
 	//`login` is the name and rule path!
-	layout.set("login",login());
+	layout.set("login",activity_login());
 	
 	//`*` mean the any other activity! such as : 404 error page.
-	layout.set("*",error());
+	layout.set("*",activity_error());
 	
 	//begin template engine
 	layout.execute();
