@@ -1,0 +1,8 @@
+void main()
+{
+  _ math.cos(0);
+  _ "\n";
+  __ math.cos(45);
+  print math.cos(90);
+  _ "\n";
+}
