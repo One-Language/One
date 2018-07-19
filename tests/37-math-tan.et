@@ -1,0 +1,4 @@
+void main()
+{
+  _ math.tan(0);
+}
