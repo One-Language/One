@@ -37,7 +37,7 @@ The word is actually abbreviated. (Electronics-Technology)
 
 #### #OS :
 - [x] Gnu/Linux
-- [ ] MacOS
+- [ ] MacOS (Not complete)
 - [x] Windows (Not complete)
 
 
