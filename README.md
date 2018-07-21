@@ -3,7 +3,7 @@
 _ET_ is an open source self-host,bootstrapping **system programming language** that easy to build , reliable, and efficient, performance software.
 
 
-## Objectives and Features:
+# Objectives and Features:
 
 - Easy
 - Compiler
@@ -17,6 +17,54 @@ _ET_ is an open source self-host,bootstrapping **system programming language** t
 - No require specific library and tools on user system In normal mode
 - No require external runtime library In normal mode
 - No require external compiler for compile steps
+
+
+
+
+# Web Development
+
+```
+title "Name - Main Page";
+description "Desc,...";
+keywords "key,...,...,...";
+style {
+  * {
+    margin 0;
+    padding 0;
+  }
+  header {
+    width "100%";
+    height "auto";
+  }
+  list {
+    color "red";
+  }
+  list item {
+    display "inline";
+    padding "10px";
+    background "yellow";
+  }
+}
+header {
+  list {
+    item {
+      _ "Home";
+    }
+    item {
+      _ "About";
+    }
+    item {
+      _ "Contact Us";
+    }
+  }
+}
+```
+
+<a href="https://github.com/ET-Lang/ET/blob/master/tests/42-architecture-sample.et" target="_blank">
+  <p align="center">
+    <img alt="Screen Of Render" src="https://github.com/ET-Lang/ET/raw/master/tests/42-architecture-sample.png" width="80%">
+  </p>
+</a>
 
 
 # Learning
