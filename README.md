@@ -23,7 +23,7 @@ The compiler will be open source for next few months.
 
 
 
-# Web,Software Development
+# GUI Development (Web,Software)
 
 This architecture is only designed for website and software (native).
 
