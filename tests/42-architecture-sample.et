@@ -1,0 +1,34 @@
+title "SiteName - Main Page";
+description "Desc,...";
+keywords "key,...,...,...";
+style {
+  * {
+    margin 0;
+    padding 0;
+  }
+  header {
+    width "100%";
+    height "auto";
+  }
+  list {
+    color "red";
+  }
+  list item {
+    display "inline";
+    padding "10px";
+    background "yellow";
+  }
+}
+header {
+  list {
+    item {
+      _ "Home";
+    }
+    item {
+      _ "About";
+    }
+    item {
+      _ "Contact Us";
+    }
+  }
+}
