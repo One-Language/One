@@ -1,0 +1,19 @@
+style {
+  list {
+    color "red";
+  }
+  list item {
+    display "inline";
+  }
+}
+list {
+  item {
+    _ "Home";
+  }
+  item {
+    _ "About";
+  }
+  item {
+    _ "Contact Us";
+  }
+}
