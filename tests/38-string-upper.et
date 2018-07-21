@@ -1,0 +1,6 @@
+main()
+{
+  //__ mean print with new line
+  //_ mean print without new line
+  __ string.upper("Hello!");//HELLO!
+}
