@@ -60,11 +60,9 @@ header {
 }
 ```
 
-<a href="https://github.com/ET-Lang/ET/blob/master/tests/42-architecture-sample.et" target="_blank">
-  <p align="center">
-    <img alt="Screen Of Render" src="https://github.com/ET-Lang/ET/raw/master/tests/42-architecture-sample.png" width="80%">
-  </p>
-</a>
+<p align="center">
+ <img alt="Screen Of Render" src="https://github.com/ET-Lang/ET/raw/master/tests/42-architecture-sample.png" width="80%">
+</p>
 
 
 # Learning
