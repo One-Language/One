@@ -29,6 +29,7 @@ This architecture is only designed for website and software (native).
 
 In the future, it will also be available for mobile apps (native).
 
+Mobile structures are not yet complete And need more thought and attention.
 
 ```
 title "Name - Main Page";
