@@ -2,6 +2,8 @@
 
 _ET_ is an open source self-host,bootstrapping **system programming language** that easy to build , reliable, and efficient, performance software.
 
+The compiler will be open source for next few months.
+
 
 # Objectives and Features:
 
@@ -21,7 +23,12 @@ _ET_ is an open source self-host,bootstrapping **system programming language** t
 
 
 
-# Web Development
+# Web,Software Development
+
+This architecture is only designed for website and software (native).
+
+In the future, it will also be available for mobile apps (native).
+
 
 ```
 title "Name - Main Page";
