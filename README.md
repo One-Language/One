@@ -34,7 +34,7 @@ Mobile structures are not yet complete And need more thought and attention.
 ```
 title "Name - Main Page";
 description "Desc,...";
-keywords "key,...,...,...";//The not used on the software, it use on the web.
+keywords "key,...,...,...";//This not used on the software, it use on the web.
 style {
   * {
     margin 0;
