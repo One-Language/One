@@ -1,6 +1,6 @@
 title "Name - Main Page";
 description "Desc,...";
-keywords "key,...,...,...";
+keyword "key,...,...,...";
 style {
   * {
     margin 0;
