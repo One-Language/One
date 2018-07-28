@@ -32,7 +32,7 @@ In the future, it will also be available for mobile apps (native).
 Mobile structures are not yet complete And need more thought and attention.
 
 ```
-title "Name - Main Page";
+title "Name - Main";
 description "Desc,...";
 keyword "key,...,...,...";//This not used on the software, it use on the web.
 style {
