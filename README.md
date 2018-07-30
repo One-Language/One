@@ -13,7 +13,7 @@ The compiler will be open source for next few months.
 - System programming
 - Intermediate level
 - Web Programming
-- Network programming
+- Network,API programming
 - Performance and high speed
 - Supports inline assembly code
 - No require specific library and tools on user system In normal mode
