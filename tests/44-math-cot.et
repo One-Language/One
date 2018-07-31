@@ -1,0 +1,5 @@
+void main()
+{
+  _ math.cot(90);
+  print math.cot(180);
+}
