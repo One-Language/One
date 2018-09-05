@@ -16,9 +16,9 @@ The compiler will be open source for next few months.
 - Network,API programming
 - Performance and high speed
 - Supports inline assembly code
-- No require specific library and tools on user system In normal mode
-- No require external runtime library In normal mode
-- No require external compiler for compile steps
+- No require specific librarys and tools on user system In normal mode
+- No require external runtime librarys In normal mode
+- No require external compilers for compile steps
 
 
 
