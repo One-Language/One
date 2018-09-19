@@ -1,0 +1,6 @@
+test(value) {
+	return value * 10;
+}
+main {
+	_ test();
+}
