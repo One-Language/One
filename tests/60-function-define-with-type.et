@@ -1,0 +1,6 @@
+int8 test() {
+	return 16;
+}
+void main() {
+	_ test();//print
+}
