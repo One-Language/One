@@ -1,0 +1,5 @@
+test() {
+	return 1;
+}
+test();//only call without any print!
+_ test();//print value
