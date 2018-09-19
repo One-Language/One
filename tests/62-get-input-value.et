@@ -1,0 +1,5 @@
+void main() {
+  //(int) this convert string to int!
+	int age = (int) io.input();
+	__ age;
+}
