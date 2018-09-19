@@ -1,0 +1,6 @@
+void main() {
+	string[] list={"ali","erfan","reza","ziba","stephin","max"};
+	each item in list {
+		_ "==> ",item;
+	}
+}
