@@ -1,0 +1,7 @@
+void main() {
+  //(int) this convert string to int!
+	int input = (int) io.input();
+	if input % 2 == 0 {
+		_ "You enter the ",input,"!";
+	}
+}
