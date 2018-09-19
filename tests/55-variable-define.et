@@ -1,0 +1,5 @@
+main {
+  //auto detect type!
+	//$age=59;
+  auto age=59;
+}
