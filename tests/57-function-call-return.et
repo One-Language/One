@@ -1,0 +1,15 @@
+//auto detect return type!
+test(input) {
+	if(input>0)
+	{
+		return 46.12;
+	}
+	return 6;
+}
+main {
+  //auto detect type!
+	//$age=test(1);
+	auto age=test(1);
+	//$age=test(-5);
+	auto age=test(-5);
+}
