@@ -1,0 +1,9 @@
+//auto detect return type!
+test {
+	return 6;
+}
+main {
+  //auto detect type!
+	//$age=test();
+  auto age=test();
+}
