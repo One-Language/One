@@ -1,5 +1,5 @@
 void main() {
-	string[] list={"ali","erfan","reza","ziba","stephin","max"};
+	string[] list={"Stephin","Max","Old","New"};
 	each item in list {
 		_ "==> ",item;
 	}
