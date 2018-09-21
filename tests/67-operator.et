@@ -1,0 +1,8 @@
+float test() {
+  //we can pass bool data as int or float data type!
+	return false;//false mean 0
+}
+int main() {
+	_ test() + 5;//will print 0+5 or 5
+	return 1;
+}
