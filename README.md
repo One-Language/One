@@ -100,4 +100,4 @@ The word is actually abbreviated. (Electronics-Technology)
 
 -------
 
-Send your message for sponsorship and support us. (MaxBaseCode [@] Gmail [dot] Com)
+Send your message for sponsorship and support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
