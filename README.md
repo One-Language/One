@@ -20,9 +20,6 @@ The compiler will be release in next few months.
 - No require external runtime librarys In normal mode
 - No require external compilers for compile steps
 
-
-
-
 # GUI Development (Web,Software)
 
 This architecture is only designed for website and software (native).
@@ -31,10 +28,13 @@ In the future, it will also be available for mobile apps (native).
 
 Mobile structures are not yet complete And need more thought and attention.
 
-```
+```css
 title "Name - Main";
-description "Desc,...";
-keyword "key,...,...,...";//This not used on the software, it use on the web.
+description "Desc";
+/*
+Keyword tag not used on the software, it use on the web.
+*/
+keyword "key,...,...,...";
 style {
   * {
     margin 0;
