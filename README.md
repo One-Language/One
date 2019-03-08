@@ -90,7 +90,7 @@ The word is actually abbreviated. (Electronics-Technology)
 
 
 #### #OS :
-- [x] Gnu/Linux
+- [x] Gnu / Linux
 - [ ] MacOS (Not complete)
 - [x] Windows (Soon)
 
