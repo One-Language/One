@@ -30,11 +30,11 @@ Mobile structures are not yet complete And need more thought and attention.
 
 ```css
 title "Name - Main";
-description "Desc";
+description "Descriptions";
 /*
 Keyword tag not used on the software, it use on the web.
 */
-keyword "key,...,...,...";
+keyword "keywords";
 style {
   * {
     margin 0;
