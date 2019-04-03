@@ -91,12 +91,12 @@ The word is actually abbreviated. (Electronics-Technology)
 
 #### #OS :
 - [x] Gnu / Linux
+- [x] Windows
 - [ ] MacOS (Not complete)
-- [x] Windows (Soon)
+- [ ] BSD
 
 
 #### #Filename extensions : `.et`
-
 
 -------
 
