@@ -1,8 +1,8 @@
 # The ET Programming Language
 
-_ET_ is an open source self-host,bootstrapping **system programming language** that easy to build, reliable, and efficient, performance software.
+_ET_ is an open source, self-hosted, bootstrapping **system programming language**. It is easy to build, reliable, and efficient performance software.
 
-The compiler will be release in next few months.
+The compiler will be released in next few months.
 
 
 # Objectives and Features:
@@ -13,26 +13,27 @@ The compiler will be release in next few months.
 - System programming
 - Intermediate level
 - Web Programming
-- Network,API programming
+- Network, API programming
 - Performance and high speed
 - Supports inline assembly code
-- No require specific librarys and tools on user system In normal mode
-- No require external runtime librarys In normal mode
+- No require specific libraries and tools on user system in normal mode
+- No require external runtime libraries in normal mode
 - No require external compilers for compile steps
 
-# GUI Development (Web,Software)
+# GUI Development (Web, Software)
 
-This architecture is only designed for website and software (native).
+This architecture is only designed for website and software (native). In the 
+future, it will also be available for mobile apps (native).
 
-In the future, it will also be available for mobile apps (native).
+Mobile structures are not yet complete and need more thought and attention.
 
-Mobile structures are not yet complete And need more thought and attention.
+An example of the language at work:
 
 ```css
 title "Name - Main";
 description "Descriptions";
 /*
-Keyword tag not used on the software, it use on the web.
+Keyword tag not used in the software, only on the web.
 */
 keyword "keywords";
 style {
@@ -68,6 +69,8 @@ header {
 }
 ```
 
+The end result:
+
 <p align="center">
  <img alt="Screen Of Render" src="https://github.com/ET-Lang/ET/raw/master/tests/42-architecture-sample.png" width="80%">
 </p>
@@ -75,7 +78,7 @@ header {
 
 # Learning
 
-Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) for starting and learning this language.
+Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this language.
 
 # Introduction
 
@@ -100,4 +103,4 @@ The word is actually abbreviated. (Electronics-Technology)
 
 -------
 
-Send your message for sponsorship and support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
+Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
