@@ -105,4 +105,4 @@ The word is actually abbreviated. (Electronics-Technology)
 
 Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
 
-[![Gitter](https://badges.gitter.im/ET_lang/General.svg)](https://gitter.im/ET_lang/General?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
