@@ -1,5 +1,13 @@
 void main()
 {
-  $ = file! 
-  file.copy("test.txt","../new.txt") -> $.result = file.copy("test.txt","../new.txt");
+  url("test.txt","../new.txt") -> ("test.txt","../new.txt"); // move folder or file to folder/file
+  int url
 }
+
+// declare url 
+// url is file.copy("test.txt","../new.txt") -> file.copy("test.txt","../new.txt");
+// int url is 'int file'
+// '->' is reference 
+//  '<-' is reference
+// reference is 'url new' 
+// url new is 'new file, new folder or new link'
