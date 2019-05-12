@@ -1,5 +1,5 @@
 void main()
 {
-  file.copy("test.txt","../new.txt");
-  int result=file.copy("test.txt","../new.txt");
+  $ = file! 
+  file.copy("test.txt","../new.txt") -> $.result = file.copy("test.txt","../new.txt");
 }
