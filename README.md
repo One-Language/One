@@ -1,6 +1,6 @@
 # The ET Programming Language
 
-_ET_ is an open source, self-hosted, bootstrapping **system programming language**. It is easy to build, reliable, and efficient performance software.
+_ET_ (ET: Earth Tongue) is an open source, self-hosted, bootstrapping **system programming language**. It is easy to build, reliable, and efficient performance software.
 
 The compiler will be released in next few months.
 
