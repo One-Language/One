@@ -70,9 +70,6 @@
             <sub><b>GoProfessional</b></sub>
          </a><br />
       </td>
-
-
-
       <td align="center">
          <a href="https://github.com/hebrew878">
             <img src="https://avatars1.githubusercontent.com/u/45189885?v=4" width="100px;" alt="hebrew878"/><br />
