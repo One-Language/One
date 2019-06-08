@@ -131,25 +131,19 @@
          </a><br />
       </td>
       <td align="center">
-         <a href="https://github.com/BaseMax">
-            <img src="https://avatars1.githubusercontent.com/u/2658040?v=4" width="100px;" alt="Max"/><br />
-            <sub><b>Max</b></sub>
-         </a><br />
-      </td>
-      <td align="center">
          <a href="https://github.com/ProgramCodes">
             <img src="https://avatars1.githubusercontent.com/u/40146766?v=4" width="100px;" alt="ProgramCodes"/><br />
             <sub><b>ProgramCodes</b></sub>
          </a><br />
       </td>
-    </tr>
-    <tr>
       <td align="center">
          <a href="https://github.com/QuestionPython">
             <img src="https://avatars1.githubusercontent.com/u/25328620?v=4" width="100px;" alt="QuestionPython"/><br />
             <sub><b>QuestionPython</b></sub>
          </a><br />
       </td>
+   </tr>
+    <tr>
       <td align="center">
          <a href="https://github.com/raphaelcode9">
             <img src="https://avatars1.githubusercontent.com/u/26503611?v=4" width="100px;" alt="raphaelcode9"/><br />
