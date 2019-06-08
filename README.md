@@ -24,11 +24,11 @@ The compiler will be released in next few months.
 
 ```
 main:
-	// __ "Hello, World!"
-	_ "Hello,"
-	io.write(' ')
-	io.write("World")
-	__ '!'	
+   // __ "Hello, World!"
+   _ "Hello,"
+   io.write(' ')
+   io.write("World")
+   __ '!'   
 ```
 
 # GUI Development (Web, Software)
@@ -41,40 +41,40 @@ Mobile structures are not yet complete and need more thought and attention.
 An example of the language at work:
 
 ```css
-title "Name - Main";
-description "Descriptions";
+title "Name - Main"
+description "Descriptions"
 /*
 Keyword tag not used in the software, only on the web.
 */
-keyword "keywords";
+keyword "keywords"
 style {
   * {
-    margin 0;
-    padding 0;
+    margin 0
+    padding 0
   }
   header {
-    width "100%";
-    height "auto";
+    width "100%"
+    height "auto"
   }
   list {
-    color "red";
+    color "red"
   }
   list item {
-    display "inline";
-    padding "10px";
-    background "yellow";
+    display "inline"
+    padding "10px"
+    background "yellow"
   }
 }
 header {
   list {
     item {
-      _ "Home";
+      _ "Home"
     }
     item {
-      _ "About";
+      _ "About"
     }
     item {
-      _ "Contact Us";
+      _ "Contact Us"
     }
   }
 }
@@ -99,8 +99,8 @@ What is the meaning of this name?
 The word is actually abbreviated. (Electronics-Technology)
 
 #### #Start activity :
-  - Initial start: 2010; about 9 years ago
-  - Beginning : 2012; about 7 years ago
+  - Initial start: 2010 about 9 years ago
+  - Beginning : 2012 about 7 years ago
 
 
 #### #OS :
