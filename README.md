@@ -24,6 +24,7 @@ The compiler will be released in next few months.
 
 ```
 main:
+	// __ "Hello, World!"
 	_ "Hello,"
 	io.write(' ')
 	io.write("World")
