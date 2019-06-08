@@ -20,6 +20,16 @@ The compiler will be released in next few months.
 - No require external runtime libraries in normal mode
 - No require external compilers for compile steps
 
+# Cli Development
+
+```
+main:
+	_ "Hello,"
+	io.write(' ')
+	io.write("World")
+	__ '!'	
+```
+
 # GUI Development (Web, Software)
 
 This architecture is only designed for website and software (native). In the 
