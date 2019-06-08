@@ -31,6 +31,25 @@ main:
    __ '!'   
 ```
 
+```
+@start
+customName:
+   _ "Hello, World!\n"
+```
+
+```
+@start
+void app:
+   __ "Hello, World!"
+```
+
+```
+@start
+int customName:
+   _ "Hello, World!\n"
+   return 0
+```
+
 # GUI Development (Web, Software)
 
 This architecture is only designed for website and software (native). In the 
