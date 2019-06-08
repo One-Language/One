@@ -12,12 +12,14 @@
             <sub><b>Max Base</b></sub>
          </a><br />
       </td>
+      <!--
       <td align="center">
          <a href="https://github.com/Mohammadiye">
             <img src="https://avatars1.githubusercontent.com/u/51291744?v=4" width="100px;" alt="Seyyed Ali Mohammadiye"/><br />
             <sub><b>Ali Mohammadiye</b></sub>
          </a><br />
       </td>
+      -->
    </tr>
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
@@ -96,12 +98,14 @@
             <sub><b>MiraxWebMaster</b></sub>
          </a><br />
       </td>
+      <!--
       <td align="center">
          <a href="https://github.com/Mohammadiye">
             <img src="https://avatars1.githubusercontent.com/u/51291744?v=4" width="100px;" alt="Ali Mohammadiye"/><br />
             <sub><b>Ali Mohammadiye</b></sub>
          </a><br />
       </td>
+      -->
       <td align="center">
          <a href="https://github.com/Nardans">
             <img src="https://avatars1.githubusercontent.com/u/49128692?v=4" width="100px;" alt="Nardans"/><br />
