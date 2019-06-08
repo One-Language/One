@@ -130,6 +130,67 @@
             <sub><b>Max Base</b></sub>
          </a><br />
       </td>
+
+
+
+
+
+      <td align="center">
+         <a href="https://github.com/BaseMax">
+            <img src="https://avatars1.githubusercontent.com/u/2658040?v=4" width="100px;" alt="Max"/><br />
+            <sub><b>Max</b></sub>
+         </a><br />
+      </td>
+      <td align="center">
+         <a href="https://github.com/ProgramCodes">
+            <img src="https://avatars1.githubusercontent.com/u/40146766?v=4" width="100px;" alt="ProgramCodes"/><br />
+            <sub><b>ProgramCodes</b></sub>
+         </a><br />
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+         <a href="https://github.com/QuestionPython">
+            <img src="https://avatars1.githubusercontent.com/u/25328620?v=4" width="100px;" alt="QuestionPython"/><br />
+            <sub><b>QuestionPython</b></sub>
+         </a><br />
+      </td>
+      <td align="center">
+         <a href="https://github.com/raphaelcode9">
+            <img src="https://avatars1.githubusercontent.com/u/26503611?v=4" width="100px;" alt="raphaelcode9"/><br />
+            <sub><b>raphaelcode9</b></sub>
+         </a><br />
+      </td>
+      <td align="center">
+         <a href="https://github.com/RuddFo">
+            <img src="https://avatars1.githubusercontent.com/u/48390339?v=4" width="100px;" alt="RuddFo"/><br />
+            <sub><b>RuddFo</b></sub>
+         </a><br />
+      </td>
+      <td align="center">
+         <a href="https://github.com/Rumbas">
+            <img src="https://avatars1.githubusercontent.com/u/49128417?v=4" width="100px;" alt="Rumbas"/><br />
+            <sub><b>Rumbas</b></sub>
+         </a><br />
+      </td>
+      <td align="center">
+         <a href="https://github.com/Stephin">
+            <img src="https://avatars1.githubusercontent.com/u/20446133?v=4" width="100px;" alt="Stephin"/><br />
+            <sub><b>Stephin</b></sub>
+         </a><br />
+      </td>
+      <td align="center">
+         <a href="https://github.com/SysCore4">
+            <img src="https://avatars1.githubusercontent.com/u/26503693?v=4" width="100px;" alt="SysCore4"/><br />
+            <sub><b>SysCore4</b></sub>
+         </a><br />
+      </td>
+      <td align="center">
+         <a href="https://github.com/UnitCore">
+            <img src="https://avatars1.githubusercontent.com/u/26503670?v=4" width="100px;" alt="UnitCore"/><br />
+            <sub><b>UnitCore</b></sub>
+         </a><br />
+      </td>      
    </tr>
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
