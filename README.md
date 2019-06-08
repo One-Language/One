@@ -28,19 +28,22 @@ main:
    _ "Hello,"
    io.write(' ')
    io.write("World")
-   __ '!'   
+   __ '!'
+end
 ```
 
 ```
 @start
 customName:
    _ "Hello, World!\n"
+end
 ```
 
 ```
 @start
 void app:
    __ "Hello, World!"
+end
 ```
 
 ```
@@ -48,6 +51,7 @@ void app:
 int customName:
    _ "Hello, World!\n"
    return 0
+end
 ```
 
 # GUI Development (Web, Software)
