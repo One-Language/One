@@ -84,14 +84,14 @@
             <sub><b>Jas</b></sub>
          </a><br />
       </td>
+   </tr>
+   <tr>
       <td align="center">
          <a href="https://github.com/LoveMoreCode">
             <img src="https://avatars1.githubusercontent.com/u/25818881?v=4" width="100px;" alt="LoveMoreCode"/><br />
             <sub><b>LoveMoreCode</b></sub>
          </a><br />
       </td>
-   </tr>
-   <tr>
       <td align="center">
          <a href="https://github.com/MiraxWebMaster">
             <img src="https://avatars1.githubusercontent.com/u/48389774?v=4" width="100px;" alt="MiraxWebMaster"/><br />
@@ -130,6 +130,8 @@
             <sub><b>Max Base</b></sub>
          </a><br />
       </td>
+   </tr>
+    <tr>
       <td align="center">
          <a href="https://github.com/ProgramCodes">
             <img src="https://avatars1.githubusercontent.com/u/40146766?v=4" width="100px;" alt="ProgramCodes"/><br />
@@ -142,8 +144,6 @@
             <sub><b>QuestionPython</b></sub>
          </a><br />
       </td>
-   </tr>
-    <tr>
       <td align="center">
          <a href="https://github.com/raphaelcode9">
             <img src="https://avatars1.githubusercontent.com/u/26503611?v=4" width="100px;" alt="raphaelcode9"/><br />
@@ -168,6 +168,8 @@
             <sub><b>Stephin</b></sub>
          </a><br />
       </td>
+   </tr>
+   <tr>
       <td align="center">
          <a href="https://github.com/SysCore4">
             <img src="https://avatars1.githubusercontent.com/u/26503693?v=4" width="100px;" alt="SysCore4"/><br />
