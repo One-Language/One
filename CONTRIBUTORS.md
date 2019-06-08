@@ -88,6 +88,8 @@
             <sub><b>LoveMoreCode</b></sub>
          </a><br />
       </td>
+   </tr>
+   <tr>
       <td align="center">
          <a href="https://github.com/MiraxWebMaster">
             <img src="https://avatars1.githubusercontent.com/u/48389774?v=4" width="100px;" alt="MiraxWebMaster"/><br />
