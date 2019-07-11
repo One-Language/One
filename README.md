@@ -141,5 +141,7 @@ Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[
 
 Created By Max Base, Develop by Asrez Team @ 2019
 
+<!--
 [![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
+-->
+[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)
