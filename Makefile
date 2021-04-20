@@ -1,4 +1,7 @@
-build: one
+build: out one
+
+out:
+	mkdir -p out
 
 out/one.o: src/one.c
 	gcc -c src/one.c -o out/one.o -Wall -Wextra
