@@ -20,7 +20,7 @@ void main_help(void) {
 void main_badcommand(int argc, char *argv[]) {
 	if(argc > 1) {
 		printf("one %s: unknown command\n", argv[1]);
-		printf("Run 'one help' for usage.");
+		printf("Run 'one help' for usage.\n");
 	}
 }
 void main_badparam(void) {
