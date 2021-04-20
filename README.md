@@ -1,9 +1,8 @@
-# The ET Programming Language
+# The One Programming Language
 
-_ET_ (ET: Earth Tongue) is an open source, self-hosted, bootstrapping **system programming language**. It is easy to build, reliable, and efficient performance software.
+One is an open source, self-hosted, bootstrapping **system programming language**. It is easy to build, reliable, and efficient performance software.
 
 The compiler will be released in next few months.
-
 
 # Objectives and Features:
 
@@ -116,24 +115,18 @@ Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this l
 
 # Introduction
 
-#### #Name :
-
-What is the meaning of this name?
-The word is actually abbreviated. (Electronics-Technology)
-
-#### #Start activity :
+#### Start activity :
   - Initial start: 2010 about 9 years ago
   - Beginning : 2012 about 7 years ago
 
-
-#### #OS :
+#### OS :
 - [x] Gnu / Linux
 - [x] Windows
 - [ ] MacOS (Not complete)
 - [ ] BSD
 
 
-#### #Filename extensions : `.et`
+#### #Filename extensions : `.one`
 
 -------
 
