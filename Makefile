@@ -4,7 +4,11 @@ out:
 	mkdir -p out
 	mkdir -p out/lexer
 	mkdir -p out/parser
+	mkdir -p out/buffer
 	mkdir -p out/compiler
+
+out/buffer/sds.o: src/buffer/sds.c src/buffer/sds.h src/buffer/sdsalloc.h src/buffer/testhelp.h
+	gcc -c src/lexer/token.c -o out/lexer/token.o -Wall -Wextra
 
 out/lexer/token.o: src/lexer/token.c src/lexer/token.h
 	gcc -c src/lexer/token.c -o out/lexer/token.o -Wall -Wextra
