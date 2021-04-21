@@ -28,6 +28,7 @@
 		// DATA
 		unsigned int tok;
 		char* name;
+		char* value;
 	} Token;
 
 	#include "../one.h"
