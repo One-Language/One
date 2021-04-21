@@ -20,8 +20,6 @@
 #ifndef _TOKEN_H_
 	#define _TOKEN_H_
 
-	#include "../one.h"
-
 	typedef struct {
 		// LOG
 		int line;
@@ -32,11 +30,15 @@
 		char* name;
 	} Token;
 
+	#include "../one.h"
+
 	enum one_token {
 		TOK_START = 255
 		#define DEF(id, str) ,id
 		#include "tokens.h"
 		#undef DEF
 	};
+
+	Token token_new(void);
 
 #endif

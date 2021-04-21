@@ -31,9 +31,9 @@
 
 	// own inside library
 	#include "io.h"
-	#include "lexer/lexer.h"
 	#include "lexer/token.h"
 	#include "lexer/source.h"
+	#include "lexer/lexer.h"
 
 	// primary data
 	#define VERSION "0.3.0"
