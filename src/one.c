@@ -18,6 +18,12 @@
  */
 
 #include "one.h"
+#include "io.h"
+#include "lexer/lexer.h"
+
+void error(char *message) {
+	fprintf(stderr, message);
+}
 
 void main_help(void) {
 	print(
@@ -57,6 +63,25 @@ void main_version(int argc) {
 	print("One version one" VERSION " " ARCH "\n");
 }
 
+void main_build(int argc, char *argv[]) {
+	if(argc <= 2) {
+		main_badflag();
+		print("Please enter your one filename program!\n");
+		return;
+	}
+	char *data = read_file(argv[2]);
+	if(data == NULL) {
+		error("We cannot read your input file, probably it's not available or it's OS-permission problem!\n");
+		return;
+	}
+	printf("%s\n------------------\n", data);
+	lexer_scan(data);
+}
+
+void main_run(int argc, char *argv[]) {
+	main_build(argc, argv);
+}
+
 void main_parse(int argc, char *argv[]) {
 	// printf("-->%d\n", argc);
 	// for(int i=0; i<argc; i++) {
@@ -75,9 +100,11 @@ void main_parse(int argc, char *argv[]) {
 	}
 	// $ one build
 	else if(strcmp(argv[1], "build") == 0) {
+		main_build(argc, argv);
 	}
 	// $ one run
 	else if(strcmp(argv[1], "run") == 0) {
+		main_run(argc, argv);
 	}
 	// $ one help
 	else if(strcmp(argv[1], "help") == 0) {

@@ -17,14 +17,11 @@
  *
  */
 
-#ifndef _TOKEN_H_
-	#define _TOKEN_H_
+#ifndef _LEXER_H_
+	#define _LEXER_H_
 
-	enum one_token {
-		TOK_START = 255
-		#define DEF(id, str) ,id
-		#include "tokens.h"
-		#undef DEF
-	};
+	#include "../one.h"
+
+	void lexer_scan(char *data);
 
 #endif

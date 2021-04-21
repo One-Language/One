@@ -17,14 +17,12 @@
  *
  */
 
-#ifndef _TOKEN_H_
-	#define _TOKEN_H_
+#ifndef _IO_H_
+	#define _IO_H_
 
-	enum one_token {
-		TOK_START = 255
-		#define DEF(id, str) ,id
-		#include "tokens.h"
-		#undef DEF
-	};
+	#include <stdio.h>
+	#include <stdlib.h>
+
+	char *read_file(char *filename);
 
 #endif
