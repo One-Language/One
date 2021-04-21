@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 - Max Base, <maxbasecode@gmail.com>
+ * Copyright 2021 - Max Base, <maxbasecode [@] gmail {dot} com>
  * This file is part of One Programming Language.
  *
  * one-language is free software: you can redistribute it and/or modify
