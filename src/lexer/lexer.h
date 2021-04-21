@@ -24,4 +24,14 @@
 
 	void lexer_scan(char *data);
 
+	typedef struct {
+		// LOG
+		int line;
+		int offset;
+
+		// DATA
+		unsigned int tok;
+		char* name;
+	} Token;
+
 #endif
