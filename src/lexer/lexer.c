@@ -19,39 +19,36 @@
 
 #include "lexer.h"
 
-Token lexer_next(char **data) {
-	Token t;
-	t.line = 0;
-	t.offset = 0;
-	t.tok = 0;
-	t.name = "None";
+Token lexer_next(Source *src) {
+	Token t = token_new();
 
-	while(**data != '\0') {
+	while(*src->data != '\0') {
 		t.offset++;
-		if(**data == '\n') {
+		if(*src->data == '\n') {
 			printf("-->NEW LINE\n");
-			t.line++;
+			src->line++;
 		}
 		else {
-			// printf("-->%c\n", **data);
-			if(**data >= 'a' && **data <= 'z') {
-				**data++;
+			printf("-->%c\n", *src->data);
+			if(*src->data >= 'a' && *src->data <= 'z') {
+				*src->data++;
 
 				t.tok = 1;
 				t.name = "Char";
 				return t;
 			}
 		}
-		**data++;
+		*src->data++;
 	}
+
 	return t;
 }
 
-void lexer_scan(char *data) {
+void lexer_scan(Source *src) {
 	// printf("%s\n", data);
 	Token t;
 	while(1) {
-		t = lexer_next(&data);
+		t = lexer_next(src);
 		if(t.tok == 0) {
 			break;
 		}

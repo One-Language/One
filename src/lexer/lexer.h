@@ -22,16 +22,7 @@
 
 	#include "../one.h"
 
-	void lexer_scan(char *data);
-
-	typedef struct {
-		// LOG
-		int line;
-		int offset;
-
-		// DATA
-		unsigned int tok;
-		char* name;
-	} Token;
+	Token lexer_next(Source *src);
+	void lexer_scan(Source *src);
 
 #endif

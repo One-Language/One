@@ -32,6 +32,7 @@
 	// own inside library
 	#include "io.h"
 	#include "lexer/lexer.h"
+	#include "lexer/token.h"
 	#include "lexer/source.h"
 
 	// primary data

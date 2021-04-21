@@ -73,13 +73,9 @@ void main_build(int argc, char *argv[]) {
 		return;
 	}
 
-	Source s;
-	s.data = data;
-	s.line = 1;
-	s.column = 0;
-
-	printf("%s\n------------------\n", data);
-	lexer_scan(data);
+	Source s = source_new_data(data);
+	printf("%s\n------------------\n", s.data);
+	lexer_scan(&s);
 }
 
 void main_run(int argc, char *argv[]) {
