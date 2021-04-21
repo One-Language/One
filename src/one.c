@@ -72,6 +72,12 @@ void main_build(int argc, char *argv[]) {
 		error("We cannot read your input file, probably it's not available or it's OS-permission problem!\n");
 		return;
 	}
+
+	Source s;
+	s.data = data;
+	s.line = 1;
+	s.column = 0;
+
 	printf("%s\n------------------\n", data);
 	lexer_scan(data);
 }

@@ -21,9 +21,10 @@
 	#define _ONE_H_
 	
 	// glibc, runtime library
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <string.h>
+	#include <stdio.h>		// printf, fopen, fclose
+	#include <stdlib.h>		// malloc, free
+	#include <string.h>		// strcmp
+	#include <stddef.h>		// NULL
 
 	#define printf printf
 	#define print printf

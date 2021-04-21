@@ -17,6 +17,8 @@
  *
  */
 
+#include "../one.h"
+
 #ifndef _SOURCE_H_
 	#define _SOURCE_H_
 
@@ -27,11 +29,17 @@
 		// probably like to `input.one`
 		char *filename;
 
+		// content string
+		char *data;
+
 		// line number of current token
 		int line;
 
 		// column number of current token
-		int ident; // TODO: start_column, end_column
-	} source;
+		int column; // TODO: start_column, and end_column
+	} Source;
+
+	Source source_new(void);
+	Source source_new_data(char *data);
 
 #endif
