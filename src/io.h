@@ -20,8 +20,7 @@
 #ifndef _IO_H_
 	#define _IO_H_
 
-	#include <stdio.h>
-	#include <stdlib.h>
+	#include "one.h"
 
 	char *read_file(char *filename);
 

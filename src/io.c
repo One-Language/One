@@ -17,7 +17,6 @@
  *
  */
 
-#include "one.h"
 #include "io.h"
 
 char *read_file(char *filename) {
