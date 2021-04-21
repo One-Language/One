@@ -18,8 +18,6 @@
  */
 
 #include "one.h"
-#include "io.h"
-#include "lexer/lexer.h"
 
 void error(char *message) {
 	fprintf(stderr, message);

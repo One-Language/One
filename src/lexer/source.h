@@ -17,34 +17,21 @@
  *
  */
 
-#ifndef _ONE_H_
-	#define _ONE_H_
-	
-	// glibc, runtime library
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <string.h>
+#ifndef _SOURCE_H_
+	#define _SOURCE_H_
 
-	#define printf printf
-	#define print printf
+	typedef struct {
+		// if path equal to NULL, so current location
+		char *path;
 
-	// own inside library
-	#include "io.h"
-	#include "lexer/lexer.h"
-	#include "lexer/source.h"
+		// probably like to `input.one`
+		char *filename;
 
-	// primary data
-	#define VERSION "0.3.0"
-	#define ARCH "linux/amd64"
+		// line number of current token
+		int line;
 
-	// functions
-	void error(char *message);
-	void main_help(void);
-	void main_badcommand(int argc, char *argv[]);
-	void main_badparam(void);
-	void main_badflag(void);
-	void main_version(int argc);
-	void main_parse(int argc, char *argv[]);
-	int main(int argc, char *argv[]);
+		// column number of current token
+		int ident; // TODO: start_column, end_column
+	} source;
 
 #endif
