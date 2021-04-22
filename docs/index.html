@@ -134,7 +134,8 @@
 				</li>
 				<li><a id="toc-Example" href="#Example">Example</a>
 					<ul>
-						<li><a id="toc-Hello-World" href="#Hello-World">Hello World</a></li>
+						<li><a id="toc-Example-Hello-World" href="#Example-Hello-World">Hello World</a></li>
+						<li><a id="toc-Example-Line-Count" href="#Example-Line-Count">Line Count</a></li>
 					</ul>
 				</li>
 				<li><a id="toc-Runtime-Library" href="#Runtime-Library">Runtime Library</a>
@@ -204,7 +205,7 @@ Hello, world!
 			
 				<h1 id="Example"><a href="#toc-Example">Example</a> <a class="hdr" href="#Example">§</a></h1>
 
-				<h2 id="Hello-World"><a href="#toc-Hello-World">Hello World</a> <a class="hdr" href="#Hello-World">§</a></h2>
+				<h2 id="Example-Hello-World"><a href="#toc-Example-Hello-World">Hello World</a> <a class="hdr" href="#Example-Hello-World">§</a></h2>
 
 				<p class="file">hello.one</p>
 
@@ -223,6 +224,35 @@ end</code></pre>
     io.write("Hello, World!\n")
     io.error("Oops!\n")
 end</code></pre>
+
+				<h2 id="Example-Line-Count"><a href="#toc-Example-Line-Count">Line Count</a> <a class="hdr" href="#Example-Line-Count">§</a></h2>
+
+				<p class="file">line_count.one</p><pre>
+<code class="one">main:
+   if io.argument[1]:
+      string filePath=io.argument[1]
+      // io.write("Reading ", filePath, " file\n")
+      __ "Reading ", filePath, " file"
+      int size=file.size(filePath) # fseek SEEK_END and ftell in `C`
+
+      __ "File size is: ", size
+      string data=file.read(filePath, size)
+
+      // string[] lines=data.split("\n")
+      // int lineCount=lines.count()
+
+      // int lineCount=0
+      // each lines as line:
+      //    lineCount++
+      // end
+
+      int lineCount=data.count("\n")
+      __ "File Lines: ", lineCount
+   else:
+      io.error("Oops!\n")
+   end
+end</code></pre>
+
 
 
 				<h1 id="Runtime-Library"><a href="#toc-Runtime-Library">Runtime Library</a> <a class="hdr" href="#Runtime-Library">§</a></h1>
