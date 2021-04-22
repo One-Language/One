@@ -87,6 +87,59 @@ int main(int argc, char *argv[]) {
 }
 ```
 
+
+----------
+
+Another draft:
+
+```c
+import web
+home {
+    _ "Hi, Welcome"
+}
+error {
+    headers.add('HTTP-Type: 404')
+    headers.add('Content-Type: text/html;charset=utf-8')
+    _ "<h1>404></h1>"
+}
+main {
+    if system.args.length === 2 {
+        port = system.args[1]
+    } else  {
+
+        port=8080;
+    }
+    web.route.add("/", home)
+    web.route.add("*", error)
+    web.listen(port)
+    return 0
+}
+```
+
+Another draft:
+
+```c
+error {
+    headers.add('HTTP-Type: 404')
+    headers.add('Content-Type: text/html;charset=utf-8')
+    _ `<!doctype html><html><head>title>Error 404</title><meta charset="utf-8"></head><body><h1>404></h1></body></html>`
+}
+
+vs
+
+error {
+    headers.add('HTTP-Type: 404')
+    headers.add('Content-Type: text/html;charset=utf-8')
+    page {
+        title: 'Error 404'
+        label {
+            type: 'h1'
+            _ "Not found!"
+        }
+    }
+}
+```
+
 -------------
 
 ## Old Cli Development
