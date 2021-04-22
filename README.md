@@ -21,13 +21,14 @@ The compiler will be released in next few months.
 
 # Concept
 
-```
+```c
 main {
    ret 0
 }
-
+```
 Convert to C:
 
+```c
 #include <stdio.h>
 #include <stdlib.h>
 int main(int argc, char *argv[]) {
@@ -37,13 +38,18 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-```
+----
+
+
+```c
 i32 main {
    ret 10
 }
+```
 
 Convert to C:
 
+```c
 #include <stdio.h>
 #include <stdlib.h>
 int main(int argc, char *argv[]) {
@@ -53,15 +59,19 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-```
+----
+
+```c
 main {
    string in = "Hello, World!"
    __ in
    return in.length
 }
+```
 
 Convert to C:
 
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -157,6 +167,51 @@ header {
     }
   }
 }
+```
+
+Convert to HTML/CSS/JS base:
+
+```html
+<html>
+	<head>
+		<title>Name - Main</title>
+		<meta name="description" content="Descriptions">
+		<meta name="keyword" content="keywords">
+		<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			width 100%;
+			height: auto;
+		}
+		list {
+			color: red;
+		}
+		list item {
+			display: inline;
+			padding: 10px;
+			background: yellow;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			<ul>
+				<li>
+				Home
+				</li>
+				<li>
+				About
+				</li>
+				<li>
+				Contact Us
+				</li>
+			</ul>
+		</header>
+	</body>
+</html>
 ```
 
 The end result:
