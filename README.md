@@ -19,7 +19,64 @@ The compiler will be released in next few months.
 - No require external runtime libraries in normal mode
 - No require external compilers for compile steps
 
-# Old Cli Development
+# Concept
+
+```
+main {
+   ret 0
+}
+
+Convert to C:
+
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char *argv[]) {
+   global_argc = argc;
+   global_argv = argv;
+   return (int) 0;
+}
+```
+
+```
+i32 main {
+   ret 10
+}
+
+Convert to C:
+
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char *argv[]) {
+   global_argc = argc;
+   global_argv = argv;
+   return (int) 10;
+}
+```
+
+```
+main {
+   string in = "Hello, World!"
+   __ in
+   return in.length
+}
+
+Convert to C:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main(int argc, char *argv[]) {
+   global_argc = argc;
+   global_argv = argv;
+   char *in = "Hello, World!";
+   printf("%s\n", in);
+   return (int) strlen(in);
+}
+```
+
+-------------
+
+## Old Cli Development
 
 ```
 main:
@@ -53,7 +110,7 @@ int customName:
 end
 ```
 
-# Old GUI Development (Web, Software)
+## Old GUI Development (Web, Software)
 
 This architecture is only designed for website and software (native). In the 
 future, it will also be available for mobile apps (native).
