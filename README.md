@@ -8,16 +8,19 @@ The compiler will be released in next few months.
 
 - Easy
 - Compiler
-- Ability to create output file
+- Ability to create output file (x86_64, i386)
 - System programming
 - Intermediate level
 - Web Programming
+  - Automatic generate html, css code. so you not need to learn so many language to develop a website
+  - Use variables in CSS, so we can easily get colors or size from database or etc.
+  - Auto minify page result
 - Network, API programming
 - Performance and high speed
 - Supports inline assembly code
-- No require specific libraries and tools on user system in normal mode
-- No require external runtime libraries in normal mode
-- No require external compilers for compile steps
+- No require specific libraries and tools on user system in normal mode (in the future)
+- No require external runtime libraries in normal mode (in the future)
+- No require external compilers for compile steps (in the future)
 
 # Concept
 
