@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Documentation - The One Programming Language</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<style>
+		body{
+				font-family: system-ui, -apple-system, Roboto, "Segoe UI", sans-serif;
+				margin: 0;
+	  }
+			  a:not(:hover) {
+  				text-decoration: none;
+			  }
+			  table, th, td {
+				border-collapse: collapse;
+				border: 1px solid grey;
+			  }
+			  th, td {
+				padding: 0.1em;
+			  }
+			  .t0_1, .t37, .t37_1 {
+				font-weight: bold;
+			  }
+			  .t2_0 {
+				color: grey;
+			  }
+			  .t31_1 {
+				color: red;
+			  }
+			  .t32_1 {
+				color: green;
+			  }
+			  .t36_1 {
+				color: #0086b3;
+			  }
+			  .file {
+				text-decoration: underline;
+			  }
+			  pre,code {
+				font-size: 12pt;
+			  }
+			  pre > code {
+				display: block;
+				overflow: auto;
+				padding: 0.5em;
+				color: #333;
+				background: #f8f8f8;
+			  }
+			  .table-wrapper {
+				width: 100%;
+				overflow-y: auto;
+			  }		
+			  #main-wrapper {
+				display: flex;
+				flex-direction: column;
+				height: 100vh;
+			  }
+			  #contents-wrapper {
+				flex-grow: 1;
+				padding: 0 2em;
+			  }
+			  #contents {
+				max-width: 60em;
+				margin: auto;
+			  }
+			  #index {
+				padding: 0 1em;
+			  }
+			  @media screen and (min-width: 1025px) {
+				#main-wrapper {
+					flex-direction: row;
+				}
+				#contents-wrapper, #index {
+					overflow: auto;
+				}
+			  }
+			  h1 a, h2 a, h3 a, h4 a, h5 a {
+				text-decoration: none;
+				color: #333;
+			  }
+			  a.hdr {
+				visibility: hidden;
+			  }
+			  h1:hover > a.hdr, h2:hover > a.hdr, h3:hover > a.hdr, h4:hover > a.hdr, h5:hover > a.hdr {
+				visibility: visible;
+			  }
+			  @media (prefers-color-scheme: dark) {
+				body{
+					background-color:#111;
+					color: #bbb;
+				}
+				a {
+					color: #88f;
+				}
+				table, th, td {
+					border-color: grey;
+				}
+				.t2_0 {
+					color: grey;
+				}
+				.t31_1 {
+					color: red;
+				}
+				.t32_1 {
+					color: green;
+				}
+				.t36_1 {
+					color: #0086b3;
+				}
+				pre > code {
+					color: #ccc;
+					background: #222;
+				}
+				h1 a, h2 a, h3 a, h4 a, h5 a {
+					color: #aaa;
+				}
+			  }
+	</style>
+</head>
+
+<body>
+	<div id="main-wrapper">
+		<div id="index">
+			<a href="">master</a>
+			<h1>Index</h1>
+			<ul>
+				<li><a id="toc-Introduction" href="#Introduction">Introduction</a>
+				</li>
+				<li><a id="toc-CLI" href="#CLI">CLI</a>
+					<ul>
+						<li><a id="toc-Compiling" href="#Compiling">Compiling</a></li>
+					</ul>
+				</li>
+				<li><a id="toc-Example" href="#Example">Example</a>
+					<ul>
+						<li><a id="toc-Hello-World" href="#Hello-World">Hello World</a></li>
+					</ul>
+				</li>
+				<li><a id="toc-Runtime-Library" href="#Runtime-Library">Runtime Library</a>
+					<ul>
+						<li><a id="toc-Math-Class" href="#Math-Class">Math Class</a>
+						</li>
+						<li><a id="toc-IO-Class" href="#IO-Class">IO Class</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div id="contents-wrapper">
+			<div id="contents">
+				<h1 id="Introduction"><a href="#toc-Introduction">Introduction</a> <a class="hdr" href="#Introduction">§</a></h1>
+				<p>One is a general-purpose programming language and toolchain for maintaining <strong>robust</strong>, <strong>optimal</strong>, and <strong>reusable</strong> software.</p>
+				<ul>
+					<li><strong>Easy</strong> - Easy to build with clean syntax includes library.</li>
+					<li><strong>Robust</strong> - Behavior is correct even for edge cases such as out of memory.</li>
+					<li><strong>Optimal</strong> - Write programs the best way they can behave and perform.</li>
+					<li><strong>Reusable</strong> - The same code works in many environments which have different constraints.</li>
+					<li><strong>Small</strong> - You can compile and execute code everywhere, for example on rescue disks (about 200KB for compiler)</li>
+					<li><strong>Fast</strong> - No byte code overhead. Compile, assemble and link several times faster than GCC.</li>
+					<li><strong>Performance</strong> - Efficient performance software and Acceptable performance against other languages.</li>
+					<li><strong>Maintainable</strong> - Precisely communicate intent to the compiler and other programmers. The language imposes a low overhead to reading code and is resilient to changing requirements and environments.</li>
+					<li><strong>Safe</strong> - Includes an optional memory and bound checker. Bound checked code can be mixed freely with standard code.</li>
+					<li><strong>Practical Multi-threading</strong> - Safe concurrency.</li>
+					<li><strong>Self-hosted</strong> - Compiler and linker works without any third-party tools.</li>
+					<li><strong>Bootstrapping</strong> - All codes did written in this language. (In next version)</li>
+				</ul>
+				<p>Often the most efficient way to learn something new is to see examples, so this documentation shows how to use each of One's features. It is all on one page so you can search with your browser's search tool.</p>
+				<p>If you search for something specific in this documentation and do not find it, please <a href="https://github.com/one-language/one/issues/new?title=I%20searched%20for%20___%20in%20the%20docs%20and%20didn%27t%20find%20it">file an issue</a> or <a href="https://webchat.freenode.net/?channels=%23one">say something on IRC</a>.</p>
+				<p>The code samples in this document are compiled and tested as part of the main test suite of one. This HTML document depends on no external files, so you can use it offline.</p>
+
+				<h1 id="CLI"><a href="#toc-CLI">CLI</a> <a class="hdr" href="#CLI">§</a></h1>
+
+
+<pre><code class="shell">$ one help
+One is a tool for managing One source code.
+
+Usage:
+
+	one [command] [arguments]
+
+The commands are:
+
+	build       compile packages and dependencies
+	get         download and install packages and dependencies
+	install     compile and install packages and dependencies
+	list        list packages or modules
+	run         compile and run program
+	version     print One version
+
+Use "one help [command]" for more information about a command.
+
+</code></pre>
+
+
+				<h2 id="Compiling"><a href="#toc-Compiling">Compiling</a> <a class="hdr" href="#Compiling">§</a></h2>
+				
+
+<pre><code class="shell">$ one build hello.one
+$ ./hello
+Hello, world!
+</code></pre>
+
+			
+				<h1 id="Example"><a href="#toc-Example">Example</a> <a class="hdr" href="#Example">§</a></h1>
+
+				<h2 id="Hello-World"><a href="#toc-Hello-World">Hello World</a> <a class="hdr" href="#Hello-World">§</a></h2>
+
+				<p class="file">hello.one</p>
+
+<pre><code class="one">main:
+   __ "Hello, World!"
+end</code></pre>
+
+<pre><code class="one">main:
+   _ "Hello, World!\n"
+end</code></pre>
+
+				<p>Usually you don't want to write to stdout. You want to write to stderr. And you don't care if it fails. It's more like a <em>warning message</em> that you want to emit. For that you can use a simpler API:</p>
+
+				<p class="file">hello.one</p><pre>
+<code class="one">main:
+    io.write("Hello, World!\n")
+    io.error("Oops!\n")
+end</code></pre>
+
+
+				<h1 id="Runtime-Library"><a href="#toc-Runtime-Library">Runtime Library</a> <a class="hdr" href="#Runtime-Library">§</a></h1>
+
+				<h2 id="Math-Class"><a href="#toc-Math-Class">Math Class</a> <a class="hdr" href="#Math-Class">§</a></h2>
+
+				<ul>
+					<li><strong>math.sin(float radian)</strong></li>
+					<li><strong>math.cos(float radian)</strong></li>
+					<li><strong>math.cot(float radian)</strong></li>
+					<li><strong>math.tan(float radian)</strong></li>
+					<li><strong>math.abs(float value)</strong></li>
+					<li><strong>math.sqrt(float value)</strong></li>
+					<li><strong>math.log2(float value)</strong></li>
+					<li><strong>math.log(float value)</strong></li>
+					<li><strong>math.ceil(float value)</strong></li>
+					<li><strong>math.floor(float value)</strong></li>
+					<li><strong>math.round(float value)</strong></li>
+				</ul>
+
+				<h2 id="IO-Class"><a href="#toc-IO-Class">IO Class</a> <a class="hdr" href="#IO-Class">§</a></h2>
+
+				<ul>
+					<li><strong>io.write(string format, ...)</strong></li>
+					<li><strong>io.error(string format, ...)</strong></li>
+					<li><strong>io.read(string format, ...)</strong></li>
+				</ul>
+
+
+				<p>See also:</p>
+				<ul>
+					<li><a href="#Web Site">GitHub</a>
+					</li>
+					<li><a href="#Web-Site">Web Site</a>
+					</li>
+					<li><a href="#Source-Code">Source Code</a>
+					</li>
+					<li><a href="#Compiling">Compiling</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	var codes=document.querySelectorAll("code.one");
+	// console.log(codes);
+	function highlight(code) {
+		var parsed = code.innerHTML,
+		code.innerHTML = parsed;
+	}
+	codes.forEach(function(code) {
+		highlight(code);
+	});
+	</script>
+</body>
+
+</html>
