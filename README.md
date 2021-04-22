@@ -19,7 +19,7 @@ The compiler will be released in next few months.
 - No require external runtime libraries in normal mode
 - No require external compilers for compile steps
 
-# Cli Development
+# Old Cli Development
 
 ```
 main:
@@ -53,7 +53,7 @@ int customName:
 end
 ```
 
-# GUI Development (Web, Software)
+# Old GUI Development (Web, Software)
 
 This architecture is only designed for website and software (native). In the 
 future, it will also be available for mobile apps (native).
@@ -108,33 +108,38 @@ The end result:
  <img alt="Screen Of Render" src="https://github.com/ET-Lang/ET/raw/master/tests/42-architecture-sample.png" width="80%">
 </p>
 
-
 # Learning
 
 Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this language.
 
 # Introduction
 
-#### Start activity :
-  - Initial start: 2010 about 9 years ago
-  - Beginning : 2012 about 7 years ago
+#### Start activity
 
-#### OS :
+- Initial start: 2010 about 9 years ago
+- Beginning : 2012 about 7 years ago
+
+#### OS
+
 - [x] Gnu / Linux
 - [x] Windows
 - [ ] MacOS (Not complete)
 - [ ] BSD
 
 
-#### #Filename extensions : `.one`
+#### Filename extensions: `.one`
 
 -------
 
 Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
 
-Created By Max Base, Develop by Asrez Team @ 2019
+Created By Max Base @ 2019
 
 <!--
 [![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 -->
+<!--
 [Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)
+-->
+
+Discord server: https://discord.gg/sFCE2HcMCa
