@@ -189,10 +189,10 @@ Convert to HTML/CSS/JS base:
 			width 100%;
 			height: auto;
 		}
-		list {
+		ul {
 			color: red;
 		}
-		list item {
+		ul li {
 			display: inline;
 			padding: 10px;
 			background: yellow;
