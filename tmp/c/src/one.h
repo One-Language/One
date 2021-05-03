@@ -19,7 +19,7 @@
 
 #ifndef _ONE_H_
 	#define _ONE_H_
-	
+
 	// glibc, runtime library
 	#include <stdio.h>		// printf, fopen, fclose
 	#include <stdlib.h>		// malloc, free

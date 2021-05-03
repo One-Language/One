@@ -1,6 +1,6 @@
 /**
  File: parser.c
-  _        _ 
+  _        _
  / \ |\ | |_    Author: Max Base
  \_/ | \| |_    Copyright 2021
 
@@ -30,7 +30,7 @@ void parser(Lexer* lex)
     printf("[parser]\n");
   #endif
 
-  int count = vector_size(lex->tokens); 
+  int count = vector_size(lex->tokens);
   #ifdef DEBUG
     printf("[parser] token size: %d\n", count);
   #endif
@@ -44,7 +44,7 @@ void parser(Lexer* lex)
   while(true) {
     t = lexer_getcurrent(lex);
     if(t == NULL || t->type == tok_eof) break;
-  
+
     #ifdef DEBUG
       printf("[parser]");
       token_log(t);
