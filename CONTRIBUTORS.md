@@ -40,8 +40,6 @@
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-
-
 ### Syntax
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -186,7 +184,6 @@
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-
 ### Marketing and business
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -225,12 +222,12 @@
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
--------------
+---
 
 Your name can be here...
 
 Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
 
-------------
+---
 
 Created By Max Base, Develop by Asrez Team @ 2019

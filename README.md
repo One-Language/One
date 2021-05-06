@@ -29,6 +29,7 @@ main {
    ret 0
 }
 ```
+
 Convert to C:
 
 ```c
@@ -41,8 +42,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-----
-
+---
 
 ```c
 i32 main {
@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-----
+---
 
 ```c
 main {
@@ -87,8 +87,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-
-----------
+---
 
 Another draft:
 
@@ -140,7 +139,7 @@ error {
 }
 ```
 
--------------
+---
 
 ## Old Cli Development
 
@@ -178,7 +177,7 @@ end
 
 ## Old GUI Development (Web, Software)
 
-This architecture is only designed for website and software (native). In the 
+This architecture is only designed for website and software (native). In the
 future, it will also be available for mobile apps (native).
 
 Mobile structures are not yet complete and need more thought and attention.
@@ -229,44 +228,38 @@ Convert to HTML/CSS/JS base:
 
 ```html
 <html>
-	<head>
-		<title>Name - Main</title>
-		<meta name="description" content="Descriptions">
-		<meta name="keyword" content="keywords">
-		<style>
-		* {
-			margin: 0;
-			padding: 0;
-		}
-		header {
-			width 100%;
-			height: auto;
-		}
-		ul {
-			color: red;
-		}
-		ul li {
-			display: inline;
-			padding: 10px;
-			background: yellow;
-		}
-		</style>
-	</head>
-	<body>
-		<header>
-			<ul>
-				<li>
-				Home
-				</li>
-				<li>
-				About
-				</li>
-				<li>
-				Contact Us
-				</li>
-			</ul>
-		</header>
-	</body>
+  <head>
+    <title>Name - Main</title>
+    <meta name="description" content="Descriptions" />
+    <meta name="keyword" content="keywords" />
+    <style>
+      * {
+      	margin: 0;
+      	padding: 0;
+      }
+      header {
+      	width 100%;
+      	height: auto;
+      }
+      ul {
+      	color: red;
+      }
+      ul li {
+      	display: inline;
+      	padding: 10px;
+      	background: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact Us</li>
+      </ul>
+    </header>
+  </body>
 </html>
 ```
 
@@ -294,10 +287,9 @@ Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this l
 - [ ] MacOS (Not complete)
 - [ ] BSD
 
-
 #### Filename extensions: `.one`
 
--------
+---
 
 Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
 

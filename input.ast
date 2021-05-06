@@ -1,0 +1,18 @@
+{
+  "functions": [
+    {
+      "type": "function",
+      "return": "int32",
+      "return_default": true,
+      "name": "main",
+      "args": [],
+      "stmts": [
+        {
+          "type": "var_assignment",
+          "varname": "a",
+          "value": 4
+        }
+      ]
+    }
+  ]
+}

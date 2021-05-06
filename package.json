@@ -1,0 +1,30 @@
+{
+  "name": "onelang",
+  "version": "1.0.0",
+  "description": "The One System Programming Language.",
+  "main": "src/one.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen-parser": "nearleyc src/scanner/one.grammar -o src/scanner/grammar.js",
+    "lint:check": "prettier --check . && eslint .",
+    "lint:fix": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/One-Language/One.git"
+  },
+  "keywords": [],
+  "author": "Max Base",
+  "contributors": [],
+  "license": "GPL3",
+  "bugs": {
+    "url": "https://github.com/One-Language/One/issues"
+  },
+  "homepage": "https://github.com/One-Language/One#readme",
+  "dependencies": {
+    "mz": "^2.7.0",
+    "nearley": "^2.20.1",
+    "path": "^0.12.7",
+    "prettier": "^2.2.1"
+  }
+}
