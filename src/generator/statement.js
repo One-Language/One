@@ -2,6 +2,7 @@ const { genIf } = require("./commands/if");
 const { genWhile } = require("./commands/while");
 const { genFor } = require("./commands/for");
 const { genVariableDefine } = require("./commands/variable-define");
+const { genPrint } = require("./commands/print");
 
 const genStatement = (stmt) => {
 	console.log(stmt);
@@ -12,6 +13,8 @@ const genStatement = (stmt) => {
 		return genWhile(stmt);
 	case "for":
 		return genFor(stmt);
+	case "print":
+		return genPrint(stmt);
 	case "var_assignment":
 		return genVariableDefine(stmt);
 	default:

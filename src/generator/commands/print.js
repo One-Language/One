@@ -1,9 +1,9 @@
 const { emit } = require("../temp");
 
-const genWhile = () => {
-	console.log("while");
+const genPrint = () => {
+	console.log("print");
 };
 
 module.exports = {
-  genWhile,
+  genPrint,
 };
