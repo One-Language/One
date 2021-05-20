@@ -159,7 +159,15 @@ Token* token_prev(Lexer* lex)
 
 char token_nextchar(Lexer* lex)
 {
+  if(*lex->s == '\n') {
+    lex->l++;
+    lex->c = 1;
+  }
+  else {
+    lex->c++;
+  }
   *lex->s++;
+  return *lex->s;
 }
 
 char token_prevchar(Lexer* lex)
