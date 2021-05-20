@@ -10,7 +10,10 @@ char *file_read(char *filename);
 void file_parse(char *filename);
 int main(int argc, char **argv);
 
-
+typedef enum {
+	FALSE,
+	TRUE
+} bool;
 
 
 
