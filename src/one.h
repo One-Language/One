@@ -4,11 +4,11 @@
 #define DEBUG
 #define ONE_VERSION "0.4.0"
 
-void error(char *message);
+void error(char*);
 void help(void);
-char *file_read(char *filename);
-void file_parse(char *filename);
-int main(int argc, char **argv);
+char *file_read(char*);
+void file_parse(char*);
+int main(int, char**);
 
 typedef enum {
 	FALSE,

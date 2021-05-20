@@ -21,8 +21,8 @@ void lexer_parse(Lexer* lex)
     printf("-->%s\n", lex->s);
   #endif
   token_end(lex);
-  *lex->s++;
+  token_next(lex);
   token_end(lex);
-  *lex->s++;
+  token_next(lex);
   token_end(lex);
 }

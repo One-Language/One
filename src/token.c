@@ -7,10 +7,31 @@ void token_init()
 
 }
 
-bool token_end(Lexer* l)
+Token* token_next(Lexer* lex)
 {
-  // if (*l->s)
+  token_nextchar(lex);
+}
+
+Token* token_prev(Lexer* lex)
+{
+
+}
+
+char token_nextchar(Lexer* lex)
+{
+  *lex->s++;
+}
+
+char token_prevchar(Lexer* lex)
+{
+  *lex->s--;
+}
+
+bool token_end(Lexer* lex)
+{
   #ifdef DEBUG
-    printf("-->%c\n", *(l->s));
+    printf("[token_end] %c\n", *lex->s);
   #endif
+  if (*lex->s == '\0') return TRUE;
+  return FALSE;
 }
