@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "sds.h"
 
 #define DEBUG
 #define ONE_VERSION "0.4.0"

@@ -24,13 +24,14 @@ Lexer* lexer_init(char *filename, char *input)
 
 void lexer_parse(Lexer* lex)
 {
+  token_init(lex);
+
   #ifdef DEBUG
     printf("-->%s\n", lex->f);
-    printf("-->%s\n", lex->s);
+    // printf("-->%s\n", lex->s);
   #endif
-  token_end(lex);
-  token_next(lex);
-  token_end(lex);
-  token_next(lex);
-  token_end(lex);
+
+  Token *t;
+  while(token_is_end(lex) == FALSE)
+    t = token_next(lex);
 }
