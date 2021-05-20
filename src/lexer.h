@@ -1,3 +1,11 @@
+/**
+ File: lexer.h
+  _        _ 
+ / \ |\ | |_    Author: Max Base
+ \_/ | \| |_    Copyright 2021
+
+ **/
+
 #include <stdio.h>
 #include <stdlib.h>
 

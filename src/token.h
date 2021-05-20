@@ -1,3 +1,11 @@
+/**
+ File: token.h
+  _        _ 
+ / \ |\ | |_    Author: Max Base
+ \_/ | \| |_    Copyright 2021
+
+ **/
+
 typedef struct token {
   unsigned int type;
   size_t    l;    // line number: default is 1
