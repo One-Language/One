@@ -27,6 +27,7 @@ typedef struct lexer {
 } Lexer;
 
 Lexer* lexer_init(char*, char*);
+void lexer_get(Lexer*);
 void lexer_parse(Lexer*);
 void lexer_statement(Lexer*);
 void lexer_statements(Lexer*);
