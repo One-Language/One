@@ -51,3 +51,4 @@ Token* token_prev(Lexer*);
 
 void token_free(Token*);
 char* token_name(Token*);
+void tok_log(Token*);

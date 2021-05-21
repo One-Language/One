@@ -81,7 +81,7 @@ Token* token_next(Lexer* lex)
     t->vstring = sdscat(t->vstring, (char[]){'\0'} ); // put EOF for string!
 
     #ifdef DEBUG
-      printf("[string] %s\n", t->vstring);
+      // printf("[string] %s\n", t->vstring);
     #endif
 
     // sdsfree(t->vstring);
@@ -315,4 +315,16 @@ char* token_name(Token* t)
       return "UNKNOWN";
     break;
   }
+}
+
+void tok_log(Token* t)
+{
+    printf("[token] %s", token_name(t));
+
+    if(t->type == tok_string || t->type == tok_identifier)
+      printf(" = %s", t->vstring);
+    else if(t->type == tok_number)
+      printf(" = %d", t->vint);
+
+    printf("\n");
 }
