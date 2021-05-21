@@ -1,7 +1,9 @@
-			
+   /*
+   HELLO, World!
+*/			
 
 
 
-maix {
+main {
 	a = 4
 }

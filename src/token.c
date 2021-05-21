@@ -140,11 +140,11 @@ Token* token_next(Lexer* lex)
     return t;
   }
 
-  // Skip single-line comments
+  // Skip less than a single-line comments
   if(*lex->s == '#') {
     do {
-      token_nextchar(lex);
-    } while(*lex->s != EOF && *lex->s != '\n' && *lex->s == '\r');
+      token_nextchar(lex); // eat '#' at first and other chars at next...
+    } while(*lex->s != EOF && *lex->s != '\n' && *lex->s != '\r' && *lex->s != '#');
 
     if(*lex->s != EOF) {
       return token_next(lex);
@@ -153,19 +153,41 @@ Token* token_next(Lexer* lex)
 
   // '/' operator
   if(*lex->s == '/') {
-    token_nextchar(lex);
+    token_nextchar(lex); // eat '/'
 
     // Skip single-line comments
     if(*lex->s == '/') {
-      token_nextchar(lex);
-  
+
       do {
-        token_nextchar(lex);
+        token_nextchar(lex); // eat '/' at first and other chars at next...
       } while(*lex->s != EOF && *lex->s != '\n' && *lex->s == '\r');
 
       if(*lex->s != EOF) {
         return token_next(lex);
       }
+    }
+    // Skip multi-line comments
+    else if(*lex->s == '*') {
+      token_nextchar(lex); // eat '*'
+
+      while(TRUE) {
+        char c1 = *lex->s;
+        if(c1 == '\0') break;
+        token_nextchar(lex); // eat first-part
+
+        char c2 = *lex->s;
+        if(c2 == '\0') break;
+        token_nextchar(lex); // eat second-part
+
+        if(c1 == '*' && c2 == '/') {
+          break;
+        }
+        // else repeat
+      }
+
+      if(*lex->s != EOF) {
+        return token_next(lex);
+      }      
     }
     else {
       t->type = '/';
