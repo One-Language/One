@@ -6,22 +6,27 @@
 
  **/
 
-#include "one.h"
 #include "lexer.h"
-#include "token.h"
 
 extern Token* tk;
 
 Lexer* lexer_init(char *filename, char *input)
 {
+  #ifdef DEBUG
+    printf("[lexer_init]\n");
+  #endif
+
   Lexer* lex = malloc(sizeof(Lexer));
   lex->f = filename;
   lex->s = input;
   lex->tokens = vector_create();
-  // #ifdef DEBUG
-  //   printf("-->%s\n", lex->f);
-  //   printf("-->%s\n", lex->s);
-  // #endif
+
+  #ifdef DEBUG
+    printf("-->%s\n", lex->s);
+    printf("-->%s\n", lex->f);
+    printf("\n");
+  #endif
+
   return lex;
 }
 
@@ -30,17 +35,18 @@ void lexer_get(Lexer* lex)
   token_init(lex);
 
   #ifdef DEBUG
-    printf("Source = %s\n", lex->f);
-    // printf("-->%s\n", lex->s);
+    printf("[lexer_get]\n");
   #endif
 
   Token *t;
-  while(token_is_end(lex) == FALSE) {
+  while(token_is_end(lex) == true) {
     t = token_getnext(lex);
     vector_add(&lex->tokens, t);
 
-    printf("[lexer_get]");
-    tok_log(t);
+    #ifdef DEBUG
+      printf("[lexer_get]");
+      tok_log(t);
+    #endif
   }
 }
 
@@ -78,25 +84,12 @@ void lexer_statements(Lexer* lex)
   #endif
 }
 
-void lexer_parse(Lexer* lex)
+void lexer_start(Lexer* lex)
 {
-  Token *t;
-  while(token_is_end(lex) == FALSE) {
-    t = token_getnext(lex);
+  #ifdef DEBUG
+    printf("[lexer_start]\n");
+  #endif
 
-    printf("[lexer_parse]");
-    tok_log(t);
-
-    if(t->type == tok_identifier) {
-      Token* t2 = token_getnext(lex);
-      if(t2->type == '{') {
-        #ifdef DEBUG
-        printf("\nDefine function %s\n", t->vstring);
-        #endif
-        lexer_statements(lex);
-      }
-      else continue;
-    }
-  }
+  lexer_get(lex);
+  scanner_parse(lex);
 }
-

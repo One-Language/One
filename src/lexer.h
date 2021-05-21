@@ -9,9 +9,8 @@
 #ifndef _LEXER_H_
 #define _LEXER_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "vec.h"
+#include "one.h"
+#include "token.h"
 
 typedef struct token Token;
 
@@ -26,10 +25,13 @@ typedef struct lexer {
   size_t    c;    // column number: default is 0
 } Lexer;
 
+#include "scanner.h"
+
 Lexer* lexer_init(char*, char*);
 void lexer_get(Lexer*);
 void lexer_parse(Lexer*);
 void lexer_statement(Lexer*);
 void lexer_statements(Lexer*);
+void lexer_start(Lexer*);
 
 #endif

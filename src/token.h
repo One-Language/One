@@ -9,11 +9,10 @@
 #ifndef _TOKEN_H_
 #define _TOKEN_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "one.h"
 #include "lexer.h"
 
+typedef struct lexer Lexer;
 typedef enum tokenType {
   tok_eof = -1,
 

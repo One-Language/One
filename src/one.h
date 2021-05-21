@@ -11,6 +11,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
+#include "vec.h"
 #include "sds.h"
 
 #define DEBUG
@@ -22,9 +26,15 @@ char *file_read(char*);
 void file_parse(char*);
 int main(int, char**);
 
-typedef enum {
-	FALSE,
-	TRUE
-} bool;
+// typedef enum {
+// 	FALSE,
+// 	TRUE
+// } bool;
+
+// enum _bool {
+//    false = 0,
+//    true = 1
+// };
+// typedef enum _bool Bool;
 
 #endif

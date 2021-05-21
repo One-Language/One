@@ -53,7 +53,7 @@ void file_parse(char* filename)
 {
   char* input = file_read(filename);
   Lexer* l = lexer_init(filename, input);
-  lexer_parse(l);
+  lexer_start(l);
 }
 
 int main(int argc, char** argv)

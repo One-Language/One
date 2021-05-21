@@ -19,43 +19,43 @@ void token_init(Lexer* lex)
 
 bool token_is_space(char c)
 {
-  if (c == ' ') return TRUE;
-  else if (c == '\t') return TRUE;
-  else if (c == '\n') return TRUE;
-  else if (c == '\r') return TRUE;
-  return FALSE;
+  if (c == ' ') return true;
+  else if (c == '\t') return true;
+  else if (c == '\n') return true;
+  else if (c == '\r') return true;
+  return false;
 }
 
 bool token_is_alpha(char c)
 {
-  if (c >= 'a' && c <= 'z') return TRUE;
-  else if (c >= 'A' && c <= 'Z') return TRUE;
-  else if (c == '_') return TRUE;
-  return FALSE;
+  if (c >= 'a' && c <= 'z') return true;
+  else if (c >= 'A' && c <= 'Z') return true;
+  else if (c == '_') return true;
+  return false;
 }
 
 bool token_is_number(char c)
 {
-  if (c >= '0' && c <= '9') return TRUE;
-  return FALSE;
+  if (c >= '0' && c <= '9') return true;
+  return false;
 }
 
 bool token_is_digit(char c)
 {
-  if(token_is_number(c) == TRUE) return TRUE;
-  else if(c == '.') return TRUE;
-  return FALSE;
+  if(token_is_number(c) == true) return true;
+  else if(c == '.') return true;
+  return false;
 }
 
 bool token_is_ident(char c)
 {
-  if (token_is_alpha(c) == TRUE) {
-    return TRUE;
+  if (token_is_alpha(c) == true) {
+    return true;
   }
-  else if (token_is_number(c) == TRUE) {
-    return TRUE;
+  else if (token_is_number(c) == true) {
+    return true;
   }
-  return FALSE;
+  return false;
 }
 
 Token* tk = NULL;
@@ -80,16 +80,16 @@ Token* token_next(Lexer* lex)
 
   Token* t = malloc(sizeof(Token));
 
-  while(token_is_space(*lex->s) == TRUE) {
+  while(token_is_space(*lex->s) == true) {
     token_nextchar(lex);
   }
 
   // Get identifier
-  if(token_is_alpha(*lex->s) == TRUE) {
+  if(token_is_alpha(*lex->s) == true) {
     t->vstring = sdsnew( (char[]){*lex->s} );
     token_nextchar(lex); // eat first char
 
-    while(token_is_ident(*lex->s) == TRUE) {
+    while(token_is_ident(*lex->s) == true) {
       t->vstring = sdscat(t->vstring, (char[]){*lex->s} );
       token_nextchar(lex);
     }
@@ -117,11 +117,11 @@ Token* token_next(Lexer* lex)
   }
 
   // Get number
-  if(token_is_digit(*lex->s) == TRUE) {
+  if(token_is_digit(*lex->s) == true) {
     sds NumStr = sdsnew( (char[]){*lex->s} );
     token_nextchar(lex); // eat first digit
 
-    while(token_is_digit(*lex->s) == TRUE) {
+    while(token_is_digit(*lex->s) == true) {
       NumStr = sdscat(NumStr, (char[]){*lex->s} );
       token_nextchar(lex); // eat next digits...
     }
@@ -190,7 +190,7 @@ Token* token_next(Lexer* lex)
     else if(*lex->s == '*') {
       token_nextchar(lex); // eat '*'
 
-      while(TRUE) {
+      while(true) {
         char c1 = *lex->s;
         if(c1 == '\0') break;
         token_nextchar(lex); // eat first-part
@@ -247,12 +247,15 @@ char token_prevchar(Lexer* lex)
 bool token_is_end(Lexer* lex)
 {
   if (*lex->s == '\0') {
+  
     #ifdef DEBUG
       printf("[token_end] %c\n", *lex->s);
+      printf("\n");
     #endif
-    return TRUE;
+  
+    return true;
   }
-  return FALSE;
+  return false;
 }
 
 void token_free(Token* t)

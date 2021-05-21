@@ -5,6 +5,7 @@
 //
 
 #include "vec.h"
+#include <stdbool.h>
 #include <string.h>
 
 typedef struct vector_data vector_data;
