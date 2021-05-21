@@ -249,7 +249,7 @@ bool token_is_end(Lexer* lex)
   if (*lex->s == '\0') {
   
     #ifdef DEBUG
-      printf("[token_end] %c\n", *lex->s);
+      printf("[token_end]\n");
       printf("\n");
     #endif
   
