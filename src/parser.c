@@ -10,8 +10,6 @@
 #include "lexer.h"
 #include "parser.h"
 
-// extern Token* tk;
-
 void parser_except(Lexer* lex, char tt)
 {
   #ifdef DEBUG
@@ -42,7 +40,6 @@ void parser(Lexer* lex)
     // printf("[parser] last token: %d\n", lex->tokens[count-1]->type);
   #endif
 
-
   Token *t;
   while(true) {
     t = lexer_getcurrent(lex);
@@ -55,7 +52,7 @@ void parser(Lexer* lex)
 
     if(t->type == tok_identifier) {
       Token* t2 = lexer_getnext(lex);
-      if(t2->type == '{') {
+      if(t2->type == '{' || t2->type == '(') {
         #ifdef DEBUG
           printf("========= Define function %s\n", t->vstring);
         #endif
@@ -86,23 +83,46 @@ void parser_function(Lexer* lex)
   #endif
 
   t = lexer_getcurrent(lex);
-  #ifdef DEBUG
-    printf("[parser_function] current token: %s\n", token_name(t));
-  #endif
   parser_except(lex, tok_identifier);
   sds name = t->vstring;
   #ifdef DEBUG
     printf("[parser_function] name: %s\n", name);
   #endif
 
-
   t = lexer_getcurrent(lex);
-  #ifdef DEBUG
-    printf("[parser_function] current token: %s\n", token_name(lexer_getcurrent(lex)));
-  #endif
 
   if(t->type == '{')
     parser_statements(lex);
+  else if(t->type == '(') {
+    parser_function_arguments(lex);
+    parser_statements(lex);
+  }
+
+}
+
+void parser_function_arguments(Lexer* lex)
+{
+  #ifdef DEBUG
+    printf("[parser_function_arguments]\n");
+  #endif
+
+  #ifdef DEBUG
+    printf("[parser_function_arguments]");
+  #endif
+  parser_except(lex, '('); // eat '('
+
+  Token* t;
+  while((t = lexer_getcurrent(lex)) && t->type != ')') {
+    #ifdef DEBUG
+      printf("[parser_function_arguments] %s\n", token_name(t));
+    #endif
+    lexer_next(lex);
+  }
+
+  #ifdef DEBUG
+    printf("[parser_function_arguments]");
+  #endif
+  parser_except(lex, ')'); // eat ')'
 }
 
 void parser_statement(Lexer* lex)
@@ -119,14 +139,15 @@ void parser_statements(Lexer* lex)
     printf("[parser_statements]\n");
   #endif
 
-  parser_except(lex, '{');
+  parser_except(lex, '{'); // eat '{'
 
   Token* t;
-  while((t = lexer_getnext(lex)) && t->type != '}') {
+  while((t = lexer_getcurrent(lex)) && t->type != '}') {
     #ifdef DEBUG
       printf("[parser_statements] %s\n", token_name(t));
     #endif
+    lexer_next(lex);
   }
 
-  parser_except(lex, '}');
+  parser_except(lex, '}'); // eat '}'
 }
