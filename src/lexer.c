@@ -21,6 +21,10 @@ Lexer* lexer_init(char *filename, char *input)
   lex->f = filename;
   lex->s = input;
   lex->tokens = vector_create();
+  lex->location.t = 0;
+  lex->location.i = 0;
+  lex->location.l = 0;
+  lex->location.c = 0;
 
   #ifdef DEBUG
     printf("-->%s\n", lex->s);
@@ -86,7 +90,7 @@ Token* lexer_getnext(Lexer* lex)
 
 void lexer_prev(Lexer* lex)
 {
-  lex->location.t++;
+  lex->location.t--;
 }
 
 Token* lexer_getprev(Lexer* lex)

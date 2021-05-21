@@ -15,6 +15,7 @@ void parser(Lexer*);
 void parser_statement(Lexer*);
 void parser_statements(Lexer*);
 void parser_except(Lexer*, char);
+void parser_function(Lexer*);
 
 #endif
 

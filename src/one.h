@@ -20,6 +20,8 @@
 #define DEBUG
 #define ONE_VERSION "0.4.0"
 
+#define log(format, params...) printf(format, params...);
+
 void error(char* format, ...);
 void help(void);
 char *file_read(char*);

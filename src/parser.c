@@ -15,7 +15,7 @@
 void parser_except(Lexer* lex, char tt)
 {
   #ifdef DEBUG
-    printf("[parser_except] %c\n", tt);
+    printf("[parser_except] %c %d\n", tt, tt);
   #endif
 
   Token* t = lexer_getcurrent(lex);
@@ -45,7 +45,7 @@ void parser(Lexer* lex)
 
   Token *t;
   for(int i=0;i<count;i++) {
-    t = lexer_get(lex, i);
+    t = lexer_getcurrent(lex);
   
     #ifdef DEBUG
       printf("[parser]");
@@ -53,19 +53,53 @@ void parser(Lexer* lex)
     #endif
 
     if(t->type == tok_identifier) {
-      Token* t2 = lexer_get(lex, ++i);
+      Token* t2 = lexer_getnext(lex);
       if(t2->type == '{') {
-
         #ifdef DEBUG
-          printf("\nDefine function %s\n", t->vstring);
+          printf("========= Define function %s\n", t->vstring);
         #endif
 
-        parser_statements(lex);
+        lexer_prev(lex); // back to identifier
+        parser_function(lex);
+        exit(1);
       }
       else continue;
     }
 
   }
+}
+
+void parser_function(Lexer* lex)
+{
+  Token* t;
+
+  #ifdef DEBUG
+    printf("[parser_function]\n");
+  #endif
+
+  t = lexer_getcurrent(lex);
+  #ifdef DEBUG
+    printf("[parser_function] current token: %s\n", token_name(t));
+  #endif
+  parser_except(lex, tok_identifier);
+  sds name = t->vstring;
+  #ifdef DEBUG
+    printf("[parser_function] name: %s\n", name);
+  #endif
+
+
+  t = lexer_getcurrent(lex);
+  #ifdef DEBUG
+    printf("[parser_function] current token: %s\n", token_name(lexer_getcurrent(lex)));
+  #endif
+
+  if(t->type == '{')
+    parser_statements(lex);
+
+
+
+
+  // parser_statements(lex);
 }
 
 void parser_statement(Lexer* lex)
@@ -82,12 +116,19 @@ void parser_statements(Lexer* lex)
     printf("[parser_statements]\n");
   #endif
 
-  parser_except(lex, '{');
+  Token* t;
+  while((t = lexer_getnext(lex)) && t->type != '}') {
+    #ifdef DEBUG
+      printf("[parser_statements] %s\n", token_name(t));
+    #endif
+  }
+
+  // parser_except(lex, '{');
   // while(tk->type != '}') {
   //   parser_statement(lex);
   // }
 
-  #ifdef DEBUG
-    printf("\n");
-  #endif
+  // #ifdef DEBUG
+  //   printf("\n");
+  // #endif
 }
