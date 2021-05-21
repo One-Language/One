@@ -225,7 +225,9 @@ Token* token_next(Lexer* lex)
 
 Token* token_prev(Lexer* lex)
 {
-
+  // TODO
+  Token* t;
+  return t;
 }
 
 char token_nextchar(Lexer* lex)
