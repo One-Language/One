@@ -7,8 +7,10 @@
  **/
 
 #include "one.h"
-#include "lexer.h"
 #include "token.h"
+#include "lexer.h"
+
+typedef struct lexer Lexer;
 
 void token_init(Lexer* lex)
 {

@@ -6,9 +6,13 @@
 
  **/
 
+#ifndef _TOKEN_H_
+#define _TOKEN_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "lexer.h"
 
 typedef enum tokenType {
   tok_eof = -1,
@@ -54,3 +58,6 @@ Token* token_prev(Lexer*);
 void token_free(Token*);
 char* token_name(Token*);
 void tok_log(Token*);
+Token* token_get(Lexer*);
+
+#endif

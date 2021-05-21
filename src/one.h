@@ -6,6 +6,9 @@
 
  **/
 
+#ifndef _ONE_H_
+#define _ONE_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "sds.h"
@@ -24,5 +27,4 @@ typedef enum {
 	TRUE
 } bool;
 
-
-
+#endif

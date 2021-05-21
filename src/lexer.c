@@ -17,6 +17,7 @@ Lexer* lexer_init(char *filename, char *input)
   Lexer* lex = malloc(sizeof(Lexer));
   lex->f = filename;
   lex->s = input;
+  lex->tokens = vector_create();
   // #ifdef DEBUG
   //   printf("-->%s\n", lex->f);
   //   printf("-->%s\n", lex->s);
