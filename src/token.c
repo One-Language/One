@@ -47,13 +47,10 @@ bool token_is_digit(char c)
 
 bool token_is_ident(char c)
 {
-  printf("(((%c)))", c);
   if (token_is_alpha(c) == TRUE) {
-    printf(":1\n");
     return TRUE;
   }
   else if (token_is_number(c) == TRUE) {
-    printf(":2\n");
     return TRUE;
   }
   return FALSE;
@@ -73,14 +70,10 @@ Token* token_next(Lexer* lex)
 
   // Get identifier
   if(token_is_alpha(*lex->s) == TRUE) {
-    printf("==>%c\n", *lex->s);
     t->vstring = sdsnew( (char[]){*lex->s} );
     token_nextchar(lex); // eat first char
 
-    printf("::>%c\n", *lex->s);
-
     while(token_is_ident(*lex->s) == TRUE) {
-      printf("-->%c\n", *lex->s);
       t->vstring = sdscat(t->vstring, (char[]){*lex->s} );
       token_nextchar(lex);
     }
