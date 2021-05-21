@@ -79,5 +79,6 @@ void token_free(Token*);
 char* token_name(Token*);
 void token_log(Token*);
 Token* token_get(Lexer*);
+bool token_is_operator(Token*);
 
 #endif

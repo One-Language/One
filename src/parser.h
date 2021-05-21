@@ -17,6 +17,12 @@ void parser_statements(Lexer*);
 void parser_except(Lexer*, char);
 void parser_function(Lexer*);
 void parser_function_arguments(Lexer*);
+void parse_statement_return(Lexer*);
+void parse_expression(Lexer*);
+int parser_operator_precedence(int);
+int parser_bin_op_rhs(Lexer*, int, int);
+int parser_unary(Lexer*, int);
+int parser_expression(Lexer*);
 
 #endif
 

@@ -407,7 +407,7 @@ char* token_name(Token* t)
       return "EXTERN";
     break;
 
-    case tok_extern:
+    case tok_ret:
       return "RETURN";
     break;
 
@@ -470,4 +470,21 @@ void token_log(Token* t)
       printf(" = %d", t->vint);
 
     printf("\n");
+}
+
+bool token_is_operator(Token* t)
+{
+  switch(t->type) {
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+    case '>':
+    case '<':
+      return true;
+    break;
+
+    default:
+      return false;
+  }
 }

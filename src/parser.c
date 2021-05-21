@@ -133,6 +133,150 @@ void parser_statement(Lexer* lex)
   token_next(lex);
 }
 
+int parser_operator_precedence(int type)
+{
+    // 1 is lowest precedence.
+    switch(type) {
+      case '<':
+      case '>':
+        return 10;
+      break;
+
+      case '+':
+      case '-':
+        return 10;
+      break;
+
+      case '*':
+      case '/':
+        return 40;
+      break;
+    }
+    return -1;
+}
+
+/// GetTokPrecedence - Get the precedence of the pending binary operator token.
+static int GetTokPrecedence(Lexer* lex) {
+  Token* t = lexer_getcurrent(lex);
+
+  if(token_is_operator(t) == true) {
+    // Install standard binary operators.
+    return parser_operator_precedence(t->type);
+  }
+
+  return -1;
+}
+/// parent ::= '(' expression ')'
+int parser_expression_parent(Lexer* lex)
+{
+  parser_except(lex, '(');
+  int V = parser_expression(lex);
+
+  parser_except(lex, ')');
+  return V;
+}
+
+/// binoprhs
+///   ::= ('+' unary)*
+int parser_bin_op_rhs(Lexer* lex, int ExprPrec, int LHS)
+{
+  // If this is a binop, find its precedence.
+  while (true) {
+    int TokPrec = GetTokPrecedence(lex);
+
+    // If this is a binop that binds at least as tightly as the current binop,
+    // consume it, otherwise we are done.
+    if (TokPrec < ExprPrec)
+      return LHS;
+
+    // Okay, we know this is a binop.
+    Token* BinOp = lexer_getcurrent(lex);
+    lexer_next(lex);
+
+    // Parse the unary expression after the binary operator.
+    int RHS = parser_unary(lex, 20);
+    // if (!RHS)
+    //   return nullptr;
+
+    // If BinOp binds less tightly with RHS than the operator after RHS, let
+    // the pending operator take RHS as its LHS.
+    int NextPrec = GetTokPrecedence(lex);
+    if (TokPrec < NextPrec) {
+      RHS = parser_bin_op_rhs(lex, TokPrec + 1, RHS);
+      // if (!RHS)
+      //   return nullptr;
+    }
+
+    // Merge LHS/RHS.
+    LHS = LHS * RHS; // * is BinOp
+  }
+}
+
+int parser_expression_number(Lexer* lex)
+{
+  Token* t = lexer_getcurrent(lex);
+  parser_except(lex, tok_number);
+  return t->vint;
+}
+
+/// identifierexpr
+///   ::= identifier
+///   ::= identifier '(' expression* ')'
+int parser_expression_identifier(Lexer* lex)
+{
+  Token* t = lexer_getcurrent(lex);
+  parser_except(lex, tok_identifier);
+  return 10;
+}
+
+int parser_primary(Lexer* lex)
+{
+  Token* t = lexer_getcurrent(lex);
+  switch (t->type) {
+  default:
+    error("unknown token when expecting an expression");
+    return -1;
+  case tok_identifier:
+    return parser_expression_identifier(lex);
+  case tok_number:
+    return parser_expression_number(lex);
+  case '(':
+    return parser_expression_parent(lex);
+  }
+}
+
+/// unary
+///   ::= primary
+///   ::= '!' unary
+///   ::= '-' unary
+int parser_unary(Lexer* lex, int val)
+{
+  Token* t = lexer_getcurrent(lex);
+  if(t->type != '-')
+    return parser_primary(lex);
+
+  return -val;
+}
+
+int parser_expression(Lexer* lex)
+{
+  int LHS = parser_unary(lex, 10);
+  int res = parser_bin_op_rhs(lex, 0, LHS);
+  printf("Expression Result: %d\n", res);
+  return res;
+}
+
+void parser_statement_return(Lexer* lex)
+{
+  #ifdef DEBUG
+    printf("[parser_statement_return]\n");
+  #endif
+
+  parser_except(lex, tok_ret); // eat `ret`
+
+  parser_expression(lex);
+}
+
 void parser_statements(Lexer* lex)
 {
   #ifdef DEBUG
@@ -146,7 +290,14 @@ void parser_statements(Lexer* lex)
     #ifdef DEBUG
       printf("[parser_statements] %s\n", token_name(t));
     #endif
-    lexer_next(lex);
+
+    if(t->type == tok_ret)
+      parser_statement_return(lex);
+    else {
+      error("Error: This kind of statement still not supported!\n");
+      printf("Bad token is: %s\n", token_name(t));
+      lexer_next(lex);
+    }
   }
 
   parser_except(lex, '}'); // eat '}'
