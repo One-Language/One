@@ -32,6 +32,8 @@ void lexer_parse(Lexer* lex)
   #endif
 
   Token *t;
-  while(token_is_end(lex) == FALSE)
+  while(token_is_end(lex) == FALSE) {
     t = token_next(lex);
+    printf("[token] %s\n", token_name(t));
+  }
 }

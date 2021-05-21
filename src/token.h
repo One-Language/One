@@ -16,7 +16,12 @@ typedef enum tokenType {
   tok_extern = -3,
   tok_identifier = -4,
   tok_number = -5,
-  tok_string = -6
+  tok_string = -6,
+  // tok_equal = '=',
+  tok_define = -8, // '=='
+  // tok_div = '/',
+  tok_div_int = -9, // '//'
+
 } TokenType;
 
 typedef struct token {
@@ -44,3 +49,4 @@ Token* token_next(Lexer*);
 Token* token_prev(Lexer*);
 
 void token_free(Token*);
+char* token_name(Token*);

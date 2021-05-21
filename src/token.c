@@ -189,6 +189,10 @@ Token* token_next(Lexer* lex)
         return token_next(lex);
       }      
     }
+    else if(*lex->s == '/') {
+      t->type = 500;
+      return t;
+    }
     else {
       t->type = '/';
       return t;
@@ -234,4 +238,69 @@ bool token_is_end(Lexer* lex)
 void token_free(Token* t)
 {
   sdsfree(t->vstring);
+}
+
+char* token_name(Token* t)
+{
+  switch(t->type) {
+    case '/':
+      return "OPERATOR_DIV";
+    break;
+
+    case tok_div_int: // '//'
+      return "OPERATOR_DIV_int";
+    break;
+
+    case '+':
+      return "OPERATOR_ADD";
+    break;
+
+    case '-':
+      return "OPERATOR_MIN";
+    break;
+
+    case '*':
+      return "OPERATOR_MUL";
+    break;
+
+    case '=':
+      return "OPERATOR_DEFINE";
+    break;
+
+    case tok_define: // '=='
+      return "OPERATOR_EQUAL";
+    break;
+
+    case '{':
+      return "SECTION_OPEN";
+    break;
+
+    case '}':
+      return "SECTION_CLOSE";
+    break;
+
+    case '(':
+      return "BRACKET_OPEN";
+    break;
+
+    case ')':
+      return "BRACKET_CLOSE";
+    break;
+
+    case tok_identifier:
+      return "IDENTIFIER";
+    break;
+
+    case tok_string:
+      return "STRING";
+    break;
+
+    case tok_number:
+      return "NUMBER";
+    break;
+
+    default:
+      return "UNKNOWN";
+    break;
+  }
 }
