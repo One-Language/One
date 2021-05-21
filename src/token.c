@@ -52,8 +52,6 @@ bool token_is_ident(char c)
   return FALSE;
 }
 
-
-
 Token* token_next(Lexer* lex)
 {
   // #ifdef DEBUG
@@ -76,12 +74,15 @@ Token* token_next(Lexer* lex)
       token_nextchar(lex);
     }
 
+    IdentifierStr = sdscat(IdentifierStr, (char[]){'\0'} ); // put EOF for string!
+
     #ifdef DEBUG
       printf("[string] %s\n", IdentifierStr);
     #endif
 
-    // t->vstring = IdentifierStr;
-    sdsfree(IdentifierStr);
+    t->vstring = IdentifierStr;
+    // sdsfree(IdentifierStr);
+    // printf("==>%s\n", t->vstring);
 
     if(strcmp(IdentifierStr, "def") == 0) {
       t->type = tok_def;
@@ -150,6 +151,28 @@ Token* token_next(Lexer* lex)
     }
   }
 
+  // '/' operator
+  if(*lex->s == '/') {
+    token_nextchar(lex);
+
+    // Skip single-line comments
+    if(*lex->s == '/') {
+      token_nextchar(lex);
+  
+      do {
+        token_nextchar(lex);
+      } while(*lex->s != EOF && *lex->s != '\n' && *lex->s == '\r');
+
+      if(*lex->s != EOF) {
+        return token_next(lex);
+      }
+    }
+    else {
+      t->type = '/';
+      return t;
+    }
+  }
+
 }
 
 Token* token_prev(Lexer* lex)
@@ -184,4 +207,9 @@ bool token_is_end(Lexer* lex)
     return TRUE;
   }
   return FALSE;
+}
+
+void token_free(Token* t)
+{
+  sdsfree(t->vstring);
 }

@@ -42,3 +42,5 @@ char token_nextchar(Lexer*);
 char token_prevchar(Lexer*);
 Token* token_next(Lexer*);
 Token* token_prev(Lexer*);
+
+void token_free(Token*);
