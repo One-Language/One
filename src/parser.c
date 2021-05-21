@@ -46,6 +46,7 @@ void parser(Lexer* lex)
   Token *t;
   for(int i=0;i<count;i++) {
     t = lexer_getcurrent(lex);
+    if(t->type == tok_eof) break;
   
     #ifdef DEBUG
       printf("[parser]");
@@ -61,7 +62,6 @@ void parser(Lexer* lex)
 
         lexer_prev(lex); // back to identifier
         parser_function(lex);
-        exit(1);
       }
       else continue;
     }
@@ -95,11 +95,6 @@ void parser_function(Lexer* lex)
 
   if(t->type == '{')
     parser_statements(lex);
-
-
-
-
-  // parser_statements(lex);
 }
 
 void parser_statement(Lexer* lex)
@@ -116,6 +111,8 @@ void parser_statements(Lexer* lex)
     printf("[parser_statements]\n");
   #endif
 
+  parser_except(lex, '{');
+
   Token* t;
   while((t = lexer_getnext(lex)) && t->type != '}') {
     #ifdef DEBUG
@@ -123,12 +120,5 @@ void parser_statements(Lexer* lex)
     #endif
   }
 
-  // parser_except(lex, '{');
-  // while(tk->type != '}') {
-  //   parser_statement(lex);
-  // }
-
-  // #ifdef DEBUG
-  //   printf("\n");
-  // #endif
+  parser_except(lex, '}');
 }
