@@ -44,9 +44,9 @@ void parser(Lexer* lex)
 
 
   Token *t;
-  for(int i=0;i<count;i++) {
+  while(true) {
     t = lexer_getcurrent(lex);
-    if(t->type == tok_eof) break;
+    if(t == NULL || t->type == tok_eof) break;
   
     #ifdef DEBUG
       printf("[parser]");
@@ -63,8 +63,16 @@ void parser(Lexer* lex)
         lexer_prev(lex); // back to identifier
         parser_function(lex);
       }
-      else continue;
+      else {
+        lexer_next(lex);
+        continue;
+      }
     }
+    else {
+      lexer_next(lex);
+      continue;
+    }
+
 
   }
 }
