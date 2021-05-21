@@ -43,6 +43,8 @@ typedef enum tokenType {
   tok_type_char = -21,
   tok_type_string = -22,
 
+  tok_ret = -23,
+
 } TokenType;
 
 typedef struct token {

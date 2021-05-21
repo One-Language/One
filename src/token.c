@@ -118,6 +118,10 @@ Token* token_next(Lexer* lex)
       t->type = tok_extern;
       return t;
     }
+    else if(strcmp(t->vstring, "ret") == 0) {
+      t->type = tok_ret;
+      return t;
+    }
 
 
     else if(strcmp(t->vstring, "i8") == 0) {
@@ -237,9 +241,11 @@ Token* token_next(Lexer* lex)
     // Skip single-line comments
     if(*lex->s == '/') {
 
+      printf("==> it's a comment\n");
+
       do {
         token_nextchar(lex); // eat '/' at first and other chars at next...
-      } while(*lex->s != EOF && *lex->s != '\n' && *lex->s == '\r');
+      } while(*lex->s != EOF && *lex->s != '\n' && *lex->s != '\r');
 
       if(*lex->s != EOF) {
         return token_next(lex);
@@ -399,6 +405,10 @@ char* token_name(Token* t)
 
     case tok_extern:
       return "EXTERN";
+    break;
+
+    case tok_extern:
+      return "RETURN";
     break;
 
     case tok_type_i8:
