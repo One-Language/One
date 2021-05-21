@@ -230,12 +230,13 @@ Token* token_prev(Lexer* lex)
 
 char token_nextchar(Lexer* lex)
 {
+  lex->location.i++;
   if(*lex->s == '\n') {
-    lex->l++;
-    lex->c = 1;
+    lex->location.l++;
+    lex->location.c = 1;
   }
   else {
-    lex->c++;
+    lex->location.c++;
   }
   *lex->s++;
   return *lex->s;
@@ -243,6 +244,13 @@ char token_nextchar(Lexer* lex)
 
 char token_prevchar(Lexer* lex)
 {
+  lex->location.i--;
+  lex->location.c--;
+  if(lex->location.c <= 0) {
+    if(lex->location.c < 0)
+      lex->location.c = 0;
+    lex->location.l--;
+  }
   *lex->s--;
 }
 
