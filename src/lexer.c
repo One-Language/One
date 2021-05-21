@@ -7,8 +7,9 @@
  **/
 
 #include "lexer.h"
-
-extern Token* tk;
+#include "token.h"
+#include "parser.h"
+#include "scanner.h"
 
 Lexer* lexer_init(char *filename, char *input)
 {
@@ -32,15 +33,16 @@ Lexer* lexer_init(char *filename, char *input)
 
 void lexer_get(Lexer* lex)
 {
-  token_init(lex);
-
   #ifdef DEBUG
     printf("[lexer_get]\n");
   #endif
 
+  token_init(lex);
+
   Token *t;
-  while(token_is_end(lex) == true) {
-    t = token_getnext(lex);
+  while(token_is_end(lex) != true) {
+    // printf("===>\n");
+    t = token_next(lex);
     vector_add(&lex->tokens, t);
 
     #ifdef DEBUG
@@ -50,40 +52,6 @@ void lexer_get(Lexer* lex)
   }
 }
 
-void lexer_except(Lexer* lex, char tt)
-{
-  Token* t = token_get(lex);
-  if(t->type == tt) token_getnext(lex);
-  else
-    error("Except token %c but we get %c", tt, t->type);
-}
-
-// Lexer
-
-void lexer_statement(Lexer* lex)
-{
-  #ifdef DEBUG
-    printf("[lexer_statement]");
-    tok_log(tk);
-  #endif
-  token_getnext(lex);
-}
-
-void lexer_statements(Lexer* lex)
-{
-  #ifdef DEBUG
-    printf("[lexer_statements]\n");
-  #endif
-  lexer_except(lex, '{');
-  while(tk->type != '}') {
-    lexer_statement(lex);
-  }
-
-  #ifdef DEBUG
-    printf("\n");
-  #endif
-}
-
 void lexer_start(Lexer* lex)
 {
   #ifdef DEBUG
@@ -91,5 +59,5 @@ void lexer_start(Lexer* lex)
   #endif
 
   lexer_get(lex);
-  scanner_parse(lex);
+  parser(lex);
 }

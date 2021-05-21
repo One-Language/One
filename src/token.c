@@ -14,7 +14,9 @@ typedef struct lexer Lexer;
 
 void token_init(Lexer* lex)
 {
-
+  #ifdef DEBUG
+    printf("[token_init]\n");
+  #endif
 }
 
 bool token_is_space(char c)
@@ -58,19 +60,19 @@ bool token_is_ident(char c)
   return false;
 }
 
-Token* tk = NULL;
+// Token* tk = NULL;
 
-Token* token_get(Lexer* lex)
-{
-  if(tk == NULL) return NULL;
-  return tk;
-}
+// Token* token_get(Lexer* lex)
+// {
+//   if(tk == NULL) return NULL;
+//   return tk;
+// }
 
-Token* token_getnext(Lexer* lex)
-{
-  tk = token_next(lex);
-  return tk;
-}
+// Token* token_getnext(Lexer* lex)
+// {
+//   tk = token_next(lex);
+//   return tk;
+// }
 
 Token* token_next(Lexer* lex)
 {
@@ -167,7 +169,7 @@ Token* token_next(Lexer* lex)
     } while(*lex->s != EOF && *lex->s != '\n' && *lex->s != '\r' && *lex->s != '#');
 
     if(*lex->s != EOF) {
-      return token_getnext(lex);
+      return token_next(lex);
     }
   }
 
@@ -183,7 +185,7 @@ Token* token_next(Lexer* lex)
       } while(*lex->s != EOF && *lex->s != '\n' && *lex->s == '\r');
 
       if(*lex->s != EOF) {
-        return token_getnext(lex);
+        return token_next(lex);
       }
     }
     // Skip multi-line comments
@@ -206,7 +208,7 @@ Token* token_next(Lexer* lex)
       }
 
       if(*lex->s != EOF) {
-        return token_getnext(lex);
+        return token_next(lex);
       }      
     }
     else if(*lex->s == '/') {

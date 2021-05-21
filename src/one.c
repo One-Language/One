@@ -7,7 +7,10 @@
  **/
 
 #include "one.h"
+#include "token.h"
 #include "lexer.h"
+#include "parser.h"
+#include "scanner.h"
 
 void error(char* format, ...)
 {
@@ -52,8 +55,8 @@ char* file_read(char*filename)
 void file_parse(char* filename)
 {
   char* input = file_read(filename);
-  Lexer* l = lexer_init(filename, input);
-  lexer_start(l);
+  Lexer* lex = lexer_init(filename, input);
+  lexer_start(lex);
 }
 
 int main(int argc, char** argv)

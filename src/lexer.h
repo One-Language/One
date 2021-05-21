@@ -6,13 +6,12 @@
 
  **/
 
+typedef struct token Token;
+
 #ifndef _LEXER_H_
 #define _LEXER_H_
 
 #include "one.h"
-#include "token.h"
-
-typedef struct token Token;
 
 typedef struct lexer {
   // Assembly *assembly;
@@ -29,9 +28,6 @@ typedef struct lexer {
 
 Lexer* lexer_init(char*, char*);
 void lexer_get(Lexer*);
-void lexer_parse(Lexer*);
-void lexer_statement(Lexer*);
-void lexer_statements(Lexer*);
 void lexer_start(Lexer*);
 
 #endif

@@ -10,9 +10,6 @@
 #define _SCANNER_H_
 
 #include "one.h"
-#include "token.h"
-#include "lexer.h"
 
-void scanner_parse(Lexer* lex);
 
 #endif

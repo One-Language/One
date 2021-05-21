@@ -6,13 +6,13 @@
 
  **/
 
+typedef struct lexer Lexer;
+
 #ifndef _TOKEN_H_
 #define _TOKEN_H_
 
 #include "one.h"
-#include "lexer.h"
 
-typedef struct lexer Lexer;
 typedef enum tokenType {
   tok_eof = -1,
 
@@ -49,8 +49,8 @@ bool token_is_end(Lexer*);
 
 char token_nextchar(Lexer*);
 char token_prevchar(Lexer*);
-Token* token_get(Lexer*);
-Token* token_getnext(Lexer*);
+// Token* token_get(Lexer*);
+// Token* token_getnext(Lexer*);
 Token* token_next(Lexer*);
 Token* token_prev(Lexer*);
 
