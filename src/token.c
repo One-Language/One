@@ -401,6 +401,49 @@ char* token_name(Token* t)
       return "EXTERN";
     break;
 
+    case tok_type_i8:
+      return "TYPE_I8";
+    break;
+    case tok_type_i16:
+      return "TYPE_I16";
+    break;
+    case tok_type_i32:
+      return "TYPE_I32";
+    break;
+    case tok_type_i64:
+      return "TYPE_I64";
+    break;
+
+    case tok_type_u8:
+      return "TYPE_U8";
+    break;
+    case tok_type_u16:
+      return "TYPE_U16";
+    break;
+    case tok_type_u32:
+      return "TYPE_U32";
+    break;
+    case tok_type_u64:
+      return "TYPE_U64";
+    break;
+
+    case tok_type_f32:
+      return "TYPE_F64";
+    break;
+    case tok_type_f64:
+      return "TYPE_F64";
+    break;
+
+    case tok_type_bool:
+      return "TYPE_BOOL";
+    break;
+    case tok_type_char:
+      return "TYPE_CHAR";
+    break;
+    case tok_type_string:
+      return "TYPE_STRING";
+    break;
+
     default:
       return "UNKNOWN";
     break;
