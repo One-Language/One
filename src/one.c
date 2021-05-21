@@ -9,9 +9,13 @@
 #include "one.h"
 #include "lexer.h"
 
-void error(char*message)
+void error(char* format, ...)
 {
-  fprintf(stderr, message);
+  // fprintf(stderr, message);
+  va_list ap;
+  va_start(ap, format);
+  (void)vfprintf(stderr, format, ap);
+  va_end(ap);
 }
 
 void help(void)

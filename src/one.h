@@ -13,7 +13,7 @@
 #define DEBUG
 #define ONE_VERSION "0.4.0"
 
-void error(char*);
+void error(char* format, ...);
 void help(void);
 char *file_read(char*);
 void file_parse(char*);

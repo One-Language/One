@@ -46,6 +46,8 @@ bool token_is_end(Lexer*);
 
 char token_nextchar(Lexer*);
 char token_prevchar(Lexer*);
+Token* token_get(Lexer*);
+Token* token_getnext(Lexer*);
 Token* token_next(Lexer*);
 Token* token_prev(Lexer*);
 

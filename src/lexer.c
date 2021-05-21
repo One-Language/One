@@ -22,6 +22,25 @@ Lexer* lexer_init(char *filename, char *input)
   return lex;
 }
 
+void lexer_statement(Lexer* lex)
+{
+
+}
+
+void lexer_except(Lexer* lex, char tt)
+{
+  Token* tk = token_get(lex);
+  if(tk->type == tt) token_getnext(lex);
+  else
+    error("Except token %c but we get %c", tt, tk->type);
+}
+
+void lexer_statements(Lexer* lex)
+{
+  lexer_except(lex, '{');
+  token_getnext(lex);
+}
+
 void lexer_parse(Lexer* lex)
 {
   token_init(lex);
@@ -33,7 +52,14 @@ void lexer_parse(Lexer* lex)
 
   Token *t;
   while(token_is_end(lex) == FALSE) {
-    t = token_next(lex);
+    t = token_getnext(lex);
+    if(t->type == tok_identifier) {
+      Token* t2 = token_getnext(lex);
+      if(t2->type == '{') {
+        lexer_statements(lex);
+      }
+      else continue;
+    }
     tok_log(t);
   }
 }

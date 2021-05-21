@@ -56,6 +56,20 @@ bool token_is_ident(char c)
   return FALSE;
 }
 
+static Token* tk = NULL;
+
+Token* token_get(Lexer* lex)
+{
+  if(tk == NULL) return NULL;
+  return tk;
+}
+
+Token* token_getnext(Lexer* lex)
+{
+  tk = token_next(lex);
+  return tk;
+}
+
 Token* token_next(Lexer* lex)
 {
   // #ifdef DEBUG
@@ -151,7 +165,7 @@ Token* token_next(Lexer* lex)
     } while(*lex->s != EOF && *lex->s != '\n' && *lex->s != '\r' && *lex->s != '#');
 
     if(*lex->s != EOF) {
-      return token_next(lex);
+      return token_getnext(lex);
     }
   }
 
@@ -167,7 +181,7 @@ Token* token_next(Lexer* lex)
       } while(*lex->s != EOF && *lex->s != '\n' && *lex->s == '\r');
 
       if(*lex->s != EOF) {
-        return token_next(lex);
+        return token_getnext(lex);
       }
     }
     // Skip multi-line comments
@@ -190,7 +204,7 @@ Token* token_next(Lexer* lex)
       }
 
       if(*lex->s != EOF) {
-        return token_next(lex);
+        return token_getnext(lex);
       }      
     }
     else if(*lex->s == '/') {
