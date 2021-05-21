@@ -34,7 +34,7 @@ bool token_is_alpha(char c)
 
 bool token_is_number(char c)
 {
-  if (c >= '0' && c <= 'z') return TRUE;
+  if (c >= '0' && c <= '9') return TRUE;
   return FALSE;
 }
 
@@ -47,8 +47,15 @@ bool token_is_digit(char c)
 
 bool token_is_ident(char c)
 {
-  if (token_is_alpha(c) == TRUE) return TRUE;
-  else if (token_is_number(c) == TRUE) return TRUE;
+  printf("(((%c)))", c);
+  if (token_is_alpha(c) == TRUE) {
+    printf(":1\n");
+    return TRUE;
+  }
+  else if (token_is_number(c) == TRUE) {
+    printf(":2\n");
+    return TRUE;
+  }
   return FALSE;
 }
 
@@ -66,12 +73,14 @@ Token* token_next(Lexer* lex)
 
   // Get identifier
   if(token_is_alpha(*lex->s) == TRUE) {
-    printf("-->%c", *lex->s);
+    printf("==>%c\n", *lex->s);
     t->vstring = sdsnew( (char[]){*lex->s} );
     token_nextchar(lex); // eat first char
 
+    printf("::>%c\n", *lex->s);
+
     while(token_is_ident(*lex->s) == TRUE) {
-      printf("%c", *lex->s);
+      printf("-->%c\n", *lex->s);
       t->vstring = sdscat(t->vstring, (char[]){*lex->s} );
       token_nextchar(lex);
     }
