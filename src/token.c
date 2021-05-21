@@ -82,6 +82,11 @@ Token* token_next(Lexer* lex)
 
   Token* t = malloc(sizeof(Token));
 
+  if(*lex->s == '\0') {
+    t->type = tok_eof;
+    return t;
+  }
+
   while(token_is_space(*lex->s) == true) {
     token_nextchar(lex);
   }
@@ -258,16 +263,14 @@ char token_prevchar(Lexer* lex)
 
 bool token_is_end(Lexer* lex)
 {
-  if (*lex->s == '\0') {
-  
-    #ifdef DEBUG
-      printf("[token_end]\n");
-      printf("\n");
-    #endif
-  
+  #ifdef DEBUG
+    printf("[token_end] %s\n", (*lex->s == '\0') ? "True" : "False");
+  #endif
+
+  if (*lex->s == '\0')
     return true;
-  }
-  return false;
+  else
+    return false;
 }
 
 void token_free(Token* t)
@@ -278,6 +281,10 @@ void token_free(Token* t)
 char* token_name(Token* t)
 {
   switch(t->type) {
+    case tok_eof:
+      return "EOF";
+    break;
+
     case '/':
       return "OPERATOR_DIV";
     break;
@@ -348,7 +355,7 @@ char* token_name(Token* t)
   }
 }
 
-void tok_log(Token* t)
+void token_log(Token* t)
 {
     printf("[token] %s", token_name(t));
 

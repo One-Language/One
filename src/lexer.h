@@ -14,6 +14,7 @@ typedef struct token Token;
 #include "one.h"
 
 typedef struct _location {
+  size_t    t;    // index of current token
   size_t    i;    // file source index' character
   size_t    l;    // line number: default is 1
   size_t    c;    // column number: default is 0
@@ -31,7 +32,14 @@ typedef struct lexer {
 #include "scanner.h"
 
 Lexer* lexer_init(char*, char*);
-void lexer_get(Lexer*);
+void lexer_prepare(Lexer*);
 void lexer_start(Lexer*);
+
+void lexer_next(Lexer*);
+Token* lexer_getnext(Lexer*);
+void lexer_prev(Lexer*);
+Token* lexer_getprev(Lexer*);
+Token* lexer_getcurrent(Lexer*);
+Token* lexer_get(Lexer*, size_t);
 
 #endif

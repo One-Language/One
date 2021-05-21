@@ -15,13 +15,15 @@
 void parser_except(Lexer* lex, char tt)
 {
   #ifdef DEBUG
-    printf("[lexer_except] %c\n", tt);
+    printf("[parser_except] %c\n", tt);
   #endif
 
-  // Token* t = token_get(lex);
-  // if(t->type == tt) token_get(lex);
-  // else
-  //   error("Except token %c but we get %c", tt, t->type);
+  Token* t = lexer_getcurrent(lex);
+  if(t == NULL)
+    error("Sorry, cannot access to current token at %d!", lex->location.t);
+  else if(t->type == tt) lexer_next(lex);
+  else
+    error("Except token %c but we get %c", tt, t->type);
 }
 
 void parser(Lexer* lex)
@@ -35,17 +37,23 @@ void parser(Lexer* lex)
     printf("[parser] token size: %d\n", count);
   #endif
 
+  #ifdef DEBUG
+    printf("[parser] last token: %s\n", token_name(lex->tokens[count-1]));
+    // printf("[parser] last token: %d\n", lex->tokens[count-1]->type);
+  #endif
+
+
   Token *t;
   for(int i=0;i<count;i++) {
-    t = lex->tokens[i];
+    t = lexer_get(lex, i);
   
     #ifdef DEBUG
       printf("[parser]");
-      tok_log(t);
+      token_log(t);
     #endif
 
     if(t->type == tok_identifier) {
-      Token* t2 = lex->tokens[++i];
+      Token* t2 = lexer_get(lex, ++i);
       if(t2->type == '{') {
 
         #ifdef DEBUG
