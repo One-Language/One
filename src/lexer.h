@@ -22,4 +22,3 @@ Lexer* lexer_init(char*, char*);
 void lexer_parse(Lexer*);
 void lexer_statement(Lexer*);
 void lexer_statements(Lexer*);
-

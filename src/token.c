@@ -56,7 +56,7 @@ bool token_is_ident(char c)
   return FALSE;
 }
 
-static Token* tk = NULL;
+Token* tk = NULL;
 
 Token* token_get(Lexer* lex)
 {
