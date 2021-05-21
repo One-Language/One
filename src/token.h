@@ -26,6 +26,23 @@ typedef enum tokenType {
   tok_define = -8, // '=='
   tok_div_int = -9, // '//'
 
+  tok_type_i8 = -10,
+  tok_type_i16 = -11,
+  tok_type_i32 = -12,
+  tok_type_i64 = -13,
+
+  tok_type_u8 = -14,
+  tok_type_u16 = -15,
+  tok_type_u32 = -16,
+  tok_type_u64 = -17,
+
+  tok_type_f32 = -18,
+  tok_type_f64 = -19,
+
+  tok_type_bool = -20,
+  tok_type_char = -21,
+  tok_type_string = -22,
+
 } TokenType;
 
 typedef struct token {

@@ -119,6 +119,58 @@ Token* token_next(Lexer* lex)
       return t;
     }
 
+
+    else if(strcmp(t->vstring, "i8") == 0) {
+      t->type = tok_type_i32;
+      return t;
+    }
+    else if(strcmp(t->vstring, "i16") == 0) {
+      t->type = tok_type_i32;
+      return t;
+    }
+    else if(strcmp(t->vstring, "i32") == 0) {
+      t->type = tok_type_i32;
+      return t;
+    }
+
+
+    else if(strcmp(t->vstring, "u8") == 0) {
+      t->type = tok_type_i32;
+      return t;
+    }
+    else if(strcmp(t->vstring, "u16") == 0) {
+      t->type = tok_type_i32;
+      return t;
+    }
+    else if(strcmp(t->vstring, "u32") == 0) {
+      t->type = tok_type_i32;
+      return t;
+    }
+
+
+    else if(strcmp(t->vstring, "f32") == 0) {
+      t->type = tok_type_f32;
+      return t;
+    }
+    else if(strcmp(t->vstring, "f64") == 0) {
+      t->type = tok_type_f32;
+      return t;
+    }
+
+
+    else if(strcmp(t->vstring, "bool") == 0) {
+      t->type = tok_type_bool;
+      return t;
+    }
+    else if(strcmp(t->vstring, "char") == 0) {
+      t->type = tok_type_char;
+      return t;
+    }
+    else if(strcmp(t->vstring, "string") == 0) {
+      t->type = tok_type_string;
+      return t;
+    }
+
     t->type = tok_identifier;
     return t;
   }
