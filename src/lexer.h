@@ -8,9 +8,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "vec.h"
+#include "token.h"
 
 typedef struct lexer {
   // Assembly *assembly;
+  Token**   tokens;
+
   char *    f;    // filename (path)
   char *    s;    // source string
 
