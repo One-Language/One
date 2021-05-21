@@ -12,14 +12,15 @@
 
 typedef enum tokenType {
   tok_eof = -1,
+
   tok_def = -2,
   tok_extern = -3,
+
   tok_identifier = -4,
   tok_number = -5,
   tok_string = -6,
-  // tok_equal = '=',
+
   tok_define = -8, // '=='
-  // tok_div = '/',
   tok_div_int = -9, // '//'
 
 } TokenType;

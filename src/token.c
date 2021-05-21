@@ -40,15 +40,15 @@ bool token_is_number(char c)
 
 bool token_is_digit(char c)
 {
-  if(token_is_number(c)) return TRUE;
+  if(token_is_number(c) == TRUE) return TRUE;
   else if(c == '.') return TRUE;
   return FALSE;
 }
 
 bool token_is_ident(char c)
 {
-  if (token_is_alpha(c)) return TRUE;
-  else if (token_is_number(c)) return TRUE;
+  if (token_is_alpha(c) == TRUE) return TRUE;
+  else if (token_is_number(c) == TRUE) return TRUE;
   return FALSE;
 }
 
@@ -65,30 +65,31 @@ Token* token_next(Lexer* lex)
   }
 
   // Get identifier
-  if(token_is_alpha(*lex->s)) {
-    sds IdentifierStr = sdsnew( (char[]){*lex->s} );
-    token_nextchar(lex);
+  if(token_is_alpha(*lex->s) == TRUE) {
+    printf("-->%c", *lex->s);
+    t->vstring = sdsnew( (char[]){*lex->s} );
+    token_nextchar(lex); // eat first char
 
-    while(token_is_ident(*lex->s)) {
-      IdentifierStr = sdscat(IdentifierStr, (char[]){*lex->s} );
+    while(token_is_ident(*lex->s) == TRUE) {
+      printf("%c", *lex->s);
+      t->vstring = sdscat(t->vstring, (char[]){*lex->s} );
       token_nextchar(lex);
     }
 
-    IdentifierStr = sdscat(IdentifierStr, (char[]){'\0'} ); // put EOF for string!
+    t->vstring = sdscat(t->vstring, (char[]){'\0'} ); // put EOF for string!
 
     #ifdef DEBUG
-      printf("[string] %s\n", IdentifierStr);
+      printf("[string] %s\n", t->vstring);
     #endif
 
-    t->vstring = IdentifierStr;
-    // sdsfree(IdentifierStr);
+    // sdsfree(t->vstring);
     // printf("==>%s\n", t->vstring);
 
-    if(strcmp(IdentifierStr, "def") == 0) {
+    if(strcmp(t->vstring, "def") == 0) {
       t->type = tok_def;
       return t;
     }
-    else if(strcmp(IdentifierStr, "extern") == 0) {
+    else if(strcmp(t->vstring, "extern") == 0) {
       t->type = tok_extern;
       return t;
     }
@@ -97,19 +98,20 @@ Token* token_next(Lexer* lex)
     return t;
   }
 
-
   // Get number
-  if(token_is_digit(*lex->s)) {
+  if(token_is_digit(*lex->s) == TRUE) {
     sds NumStr = sdsnew( (char[]){*lex->s} );
-    token_nextchar(lex);
+    token_nextchar(lex); // eat first digit
 
-    do {
+    while(token_is_digit(*lex->s) == TRUE) {
       NumStr = sdscat(NumStr, (char[]){*lex->s} );
-      token_nextchar(lex);
-    } while(token_is_digit(*lex->s));
+      token_nextchar(lex); // eat next digits...
+    }
 
     t->type = tok_number;
     t->vint = strtod(NumStr, 0);
+
+    sdsfree(NumStr);
     return t;
   }
 
@@ -297,6 +299,14 @@ char* token_name(Token* t)
 
     case tok_number:
       return "NUMBER";
+    break;
+
+    case tok_def:
+      return "DEF";
+    break;
+
+    case tok_extern:
+      return "EXTERN";
     break;
 
     default:
