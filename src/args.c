@@ -1,3 +1,9 @@
+#include <string.h>
+#include <stdlib.h>
+
+#include "args.h"
+#include "arraylist.h"
+
 const Args default_args = {
   .help = false,
   .version = false,
@@ -46,17 +52,23 @@ void parseArgs(int argc, const char* const* argv, const char* const* env, Args* 
     } else {
       if(strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
         args->help = true;
-      } else if(strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0) {
+      }
+
+      else if(strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0) {
         args->version = true;
-      } else if(strcmp(argv[i], "-g") == 0 || strcmp(argv[i], "--debug") == 0) {
+      }
+
+      else if(strcmp(argv[i], "-g") == 0 || strcmp(argv[i], "--debug") == 0) {
         args->debug = true;
-      } else if(strcmp(argv[i], "--compiler-debug") == 0) {
+      }
+
+      else if(strcmp(argv[i], "--compiler-debug") == 0) {
         args->compiler_debug = true;
       }
 
       else if(strcmp(argv[i], "-O0") == 0) {
         args->speed_opt = 0;
-      } else if(strcmp(argv[i], "-O1") == 0) {
+      }else if(strcmp(argv[i], "-O1") == 0) {
         args->speed_opt = 1;
       } else if(strcmp(argv[i], "-O2") == 0) {
         args->speed_opt = 2;
@@ -68,7 +80,9 @@ void parseArgs(int argc, const char* const* argv, const char* const* env, Args* 
         args->size_opt = 1;
       } else if(strcmp(argv[i], "-Oz") == 0) {
         args->size_opt = 2;
-      } else if(strcmp(argv[i], "-e") == 0 || strcmp(argv[i], "--emit") == 0) {
+      }
+
+      else if(strcmp(argv[i], "-e") == 0 || strcmp(argv[i], "--emit") == 0) {
         i++;
         if(strcmp(argv[i], "llvm-bc") == 0) {
           args->emit_format = EMIT_LLVM_BC;
@@ -85,51 +99,67 @@ void parseArgs(int argc, const char* const* argv, const char* const* env, Args* 
         } else {
           addErrorf(error_context, NOPOS, WARNING, "The unknown emition type '%s' will be ignored", argv[i]);
         }
-      } else if(strcmp(argv[i], "-L") == 0) {
+      }
+
+      else if(strcmp(argv[i], "-L") == 0) {
         i++;
         if(i >= argc) {
           addError(error_context, "Option is missing the library path, ignoring the option", NOPOS, WARNING);
         } else {
           pushToArrayList(&library_directories, (void*)argv[i]);
         }
-      } else if(strcmp(argv[i], "-l") == 0) {
+      }
+
+      else if(strcmp(argv[i], "-l") == 0) {
         i++;
         if(i >= argc) {
           addError(error_context, "Option is missing the library name, ignoring the option", NOPOS, WARNING);
         } else {
           pushToArrayList(&libraries, (void*)argv[i]);
         }
-      } else if(strncmp(argv[i], "-L", 2) == 0) {
+      }
+
+      else if(strncmp(argv[i], "-L", 2) == 0) {
         if(strlen(argv[i]) <= 2) {
           addError(error_context, "Option is missing the library path, ignoring the option", NOPOS, WARNING);
         } else {
           pushToArrayList(&library_directories, (void*)argv[i] + 2);
         }
-      } else if(strncmp(argv[i], "-l", 2) == 0) {
+      }
+
+      else if(strncmp(argv[i], "-l", 2) == 0) {
         if(strlen(argv[i]) <= 2) {
           addError(error_context, "Option is missing the library name, ignoring the option", NOPOS, WARNING);
         } else {
           pushToArrayList(&libraries, (void*)argv[i] + 2);
         }
-      } else if(strcmp(argv[i], "-t") == 0 || strcmp(argv[i], "--target") == 0) {
+      }
+
+      else if(strcmp(argv[i], "-t") == 0 || strcmp(argv[i], "--target") == 0) {
         i++;
         if(i >= argc) {
           addError(error_context, "Option is missing the target value, ignoring the option", NOPOS, WARNING);
         } else {
           args->target = (char*)argv[i];
         }
-      } else if(strcmp(argv[i], "--force-target") == 0) {
+      }
+
+      else if(strcmp(argv[i], "--force-target") == 0) {
         args->force_target = true;
       } else if(strcmp(argv[i], "--force-interpreter") == 0) {
         args->force_interpreter = true;
-      } else if(strcmp(argv[i], "-o") == 0 || strcmp(argv[i], "--output") == 0) {
+      }
+
+      else if(strcmp(argv[i], "-o") == 0 || strcmp(argv[i], "--output") == 0) {
         i++;
         if(i >= argc) {
           addError(error_context, "Option is missing the output filepath, ignoring the option", NOPOS, WARNING);
         } else {
           args->output_file = (char*)argv[i];
         }
-      } else {
+      }
+
+      else {
         addErrorf(error_context, NOPOS, WARNING, "The unknown option '%s' will be ignored", argv[i]);
       }
 
