@@ -14,7 +14,7 @@ int main(int argc, const char* const* argv, const char* const* env)
   if(args.help) {
       printHelpText(stderr, argc, argv);
   } else if(args.version) {
-      fprintf(stderr, "Version: %s\n", COMPILER_NAME);
+      fprintf(stderr, "Version: %s\n", ONE_VERSION);
   } else if(args.input_file_count > 0) {
       ret = compile(&args, &errors, &fs);
   }
