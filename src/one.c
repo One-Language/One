@@ -1,69 +1,27 @@
-/**
- File: one.c
-  _        _ 
- / \ |\ | |_    Author: Max Base
- \_/ | \| |_    Copyright 2021
+#include <stdlib.h>
+#include <stdio.h>
 
- **/
-
-#include "one.h"
-#include "token.h"
-#include "lexer.h"
-#include "parser.h"
-#include "scanner.h"
-
-void error(char* format, ...)
+int main(int argc, const char* const* argv, const char* const* env)
 {
-  // fprintf(stderr, message);
-  va_list ap;
-  va_start(ap, format);
-  (void)vfprintf(stderr, format, ap);
-  va_end(ap);
-}
+  int ret = EXIT_SUCCESS;
 
-void help(void)
-{
-  puts("$ One filename.one");
-  puts("One version: " ONE_VERSION);
-}
-
-char* file_read(char*filename)
-{
-  FILE * onefile = fopen(filename, "rb");
-  if (onefile == NULL) {
-    return NULL;
+  ErrorContext errors;
+  initErrorContext(&errors);
+  Args args;
+  parseArgs(argc, argv, env, &args, &errors);
+  FileSet fs;
+  initFileSet(&fs);
+  if(args.help) {
+      printHelpText(stderr, argc, argv);
+  } else if(args.version) {
+      fprintf(stderr, "Version: %s\n", COMPILER_NAME);
+  } else if(args.input_file_count > 0) {
+      ret = compile(&args, &errors, &fs);
   }
-  fseek(onefile, 0L, SEEK_END);
-  size_t onefilesize = ftell(onefile);
-  rewind(onefile);
-  char* onebuffer = (char*)malloc(onefilesize + 1);
-  if (onebuffer == NULL) {
-    error("error malloc onebuffer\n");
-    return NULL;
-  }
-  size_t onebytesread = fread(onebuffer, 1, onefilesize, onefile);
-  if (onebytesread < onefilesize) {
-    free(onebuffer);
-    error("Could not read file.one\n");
-    return NULL;
-  }
-  onebuffer[onebytesread] = '\0';
-  fclose(onefile);
-  return onebuffer;
-}
+  printErrors(stderr, &errors, &fs);
+  freeFileSet(&fs);
+  freeArgs(&args);
+  freeErrorContext(&errors);
 
-void file_parse(char* filename)
-{
-  char* input = file_read(filename);
-  Lexer* lex = lexer_init(filename, input);
-  lexer_start(lex);
-}
-
-int main(int argc, char** argv)
-{
-  if (argc <= 1)
-    help();
-  else
-    file_parse(argv[1]);
-  return 0;
+  return ret;
 }
