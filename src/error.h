@@ -1,6 +1,8 @@
 #ifndef _ERROR_H_
 #define _ERROR_H_
 
+#define MAX_ERROR_FORMAT 1024
+
 typedef enum {
     ERROR,
     WARNING,
