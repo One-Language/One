@@ -6,7 +6,7 @@ The compiler will be released in next few months.
 
 Discord server: https://discord.gg/sFCE2HcMCa
 
-# Objectives and Features:
+# Objectives and Features
 
 - Easy
 - Compiler
@@ -24,7 +24,15 @@ Discord server: https://discord.gg/sFCE2HcMCa
 - Does not require external runtime libraries in normal mode (in the future)
 - Does not require external compilers for compile steps (in the future)
 
-# Concept
+## Stages
+
+- [x] Lexer/Parser (Mostly)
+- [ ] Code Generator (we can get help from LLVM-C)
+- [ ] Developing runtime library and adding features
+- [ ] Design web framework for this language (Develoeprs can design/create website without using HTML,CSS language)
+- [ ] Rewrite compiler in own language (Bootstrapping)
+
+## Concept
 
 ```c
 main {
