@@ -4,16 +4,28 @@
 
 <includes> ::= <includes> <include> | <empty>
 
-<include>   ::= USE <IDENTIFIER_DOTS>
+<include>   ::= USE <identifier_dots>
+              | USE STRING
 
-<IDENTIFIER_DOTS>  ::= <IDENTIFIER_DOTS> "." IDENTIFIER
+<identifier_dots>  ::= <identifier_dots> "." IDENTIFIER
                      | IDENTIFIER
 
 <parnet_items> ::= <parent_item> <parnet_items>
 
 <parent_item>  ::= <function>
-                 | <global_variable>
-                 
+                 | <global_define>
+
+<global_define>  ::= <global_struct>
+                   | <global_variable> ; maybe we allow global variable in some special condition
+
+<global_variable> ::= <datatype> IDENTIFIER 
+                    | <datatype> IDENTIFIER "=" <expression_const>
+
+<global_struct>   ::= STRUCT IDENTIFIER "{" <struct_vars> "}"
+
+<struct_vars>    ::= <datatype> IDENTIFIER
+                   | <datatype> IDENTIFIER "=" <expression_const>
+
 <function>     ::= <function_prototype> IDENTIFIER <function_arguments> <block>
 
 <function_prototype> ::= <datatype> | <empty> ; default return type is I32 (int, 32bit) e.g: `main {}` and default return is `return 0`
@@ -71,6 +83,8 @@
 <statement_while>::= WHILE <expression> <block>
 
 <statement_dowhile>::= DO  <block> while <expression>
+
+<expression_const> :== <expression>
 
 <expression>   ::= <term> "+" <expression>
                  | <term>
