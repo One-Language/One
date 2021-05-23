@@ -26,6 +26,8 @@ Discord server: https://discord.gg/sFCE2HcMCa
 
 ## Stages
 
+The grammar of "One" language available at [here](grammar.BNF).
+
 - [x] Lexer/Parser (Mostly)
 - [ ] Code Generator (we can get help from LLVM-C)
 - [ ] Developing runtime library and adding features
