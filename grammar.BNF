@@ -2,7 +2,7 @@
 
 <package>   ::= PACKAGE IDENTIFIER | <empty> ;; usually we not defaint for small program or run-able scripts
 
-<includes> ::= <includes> <include> | <empty> ; It's for third party library; our standard library will was ready automatically for developers. e.g: `math.sin, math.cos, math.tan, ...` 
+<includes> ::= <includes> <include> | <empty> ;; It's for third party library; our standard library will was ready automatically for developers. e.g: `math.sin, math.cos, math.tan, ...` 
 
 <include>   ::= USE <identifier_dots>
               | USE STRING
