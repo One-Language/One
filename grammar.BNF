@@ -1,0 +1,26 @@
+<start>        ::= <parnet_items>
+
+<parnet_items> ::= <parent_item> <parnet_items>
+
+<parent_item>  ::= <function>
+                 | <global_variable>
+                 
+<function>     ::= <function_prototype> <identifier> <function_arguments> <statements> 
+
+<function_prototype>
+
+<statements>   ::= <statements> <statement>
+
+<statement>    ::= <statement_return>
+                 | <statement_expression>
+
+<expression>   ::= <term> "+" <expression>
+                 | <term>
+
+<term>         ::= <factor> "*" <term>
+                 | <factor>
+
+<factor>       ::= "(" <expression> ")"
+                 | <const>
+
+<const>        ::= NUMBER | STRING | IDENTIFIER
