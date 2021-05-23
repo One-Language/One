@@ -39,6 +39,22 @@
                  | <statement_while>
                  | <statement_dowhile>
                  | <statement_switch>
+                 | <statement_print>
+                 | <statement_printnl>
+                 | <statement_printerr>
+                 | <statement_printerrnl>
+
+
+<statement_print>   ::=  "_" <expressions>
+
+<statement_printnl> ::=  "__" <expressions>
+
+<statement_printerr>::= "!_" <expressions>
+
+<statement_printerrnl>::= "!__" <expressions>
+
+<expressions>    ::= <expressions> "," <expression>
+                   | <expression>
 
 <statement_if>   ::= IF <expression> <block>
                    |  IF <expression> <block> ELSE <statement_if>
