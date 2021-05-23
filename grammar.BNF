@@ -1,6 +1,6 @@
 <start>        ::= <package> <includes> <parnet_items> | <empty>
 
-<package>   ::= PACKAGE IDENTIFIER | <empty> ; usually we not defaint for small program or run-able scripts
+<package>   ::= PACKAGE IDENTIFIER | <empty> ;; usually we not defaint for small program or run-able scripts
 
 <includes> ::= <includes> <include> | <empty> ; It's for third party library; our standard library will was ready automatically for developers. e.g: `math.sin, math.cos, math.tan, ...` 
 
@@ -16,7 +16,7 @@
                  | <global_define>
 
 <global_define>  ::= <global_struct>
-                   | <global_variable> ; maybe we allow global variable in some special condition
+                   | <global_variable> ;; maybe we allow global variable in some special condition
 
 <global_variable> ::= <datatype> IDENTIFIER 
                     | <datatype> IDENTIFIER "=" <expression_const>
@@ -28,7 +28,7 @@
 
 <function>     ::= <function_prototype> IDENTIFIER <function_arguments> <block>
 
-<function_prototype> ::= <datatype> | <empty> ; default return type is I32 (int, 32bit) e.g: `main {}` and default return is `return 0`
+<function_prototype> ::= <datatype> | <empty> ;; default return type is I32 (int, 32bit) e.g: `main {}` and default return is `return 0`
 
 <function_arguments> ::= <function_arguments> "," <function_argument>
 
@@ -47,7 +47,7 @@
 
 <datatype>           ::= <datatype_primary>
                        | <datatype_primary> "[" "]"
-                       | IDENTIFIER ; e.g: struct and user defined types
+                       | IDENTIFIER ;; e.g: struct and user defined types
 
 <function_argument>  ::= <datatype> IDENTIFIER
 
@@ -74,13 +74,13 @@
 <statement_repeat>  ::= REPEAT NUMBER <block> ;; for from 0 to j {...}
                       | REPEAT NUMBER TO NUMBER <block> ;; for from i to j {...}
 
-<statement_print>   ::=  "_" <expressions> ; in c: `printf("%1%2%3",...)`
+<statement_print>   ::=  "_" <expressions> ;; in c: `printf("%1%2%3",...)`
 
-<statement_printnl> ::=  "__" <expressions> ; in c: `printf("%1\n%2\n%3\n",...)`
+<statement_printnl> ::=  "__" <expressions> ;; in c: `printf("%1\n%2\n%3\n",...)`
 
-<statement_printerr>::= "!_" <expressions> ; in c: `fprintf(stderr, "%1%2%3",...)`
+<statement_printerr>::= "!_" <expressions> ;; in c: `fprintf(stderr, "%1%2%3",...)`
 
-<statement_printerrnl>::= "!__" <expressions> ; in c: `fprintf(stderr, "%1\n%2\n%3\n",...)`
+<statement_printerrnl>::= "!__" <expressions> ;; in c: `fprintf(stderr, "%1\n%2\n%3\n",...)`
 
 <expressions>    ::= <expressions> "," <expression>
                    | <expression>
@@ -102,7 +102,7 @@
 
 <statement_dowhile>::= DO  <block> while <expression>
 
-<statement_return> ::= RETURN <expressions> ; we allow returning multi variable in a functions
+<statement_return> ::= RETURN <expressions> ;; we allow returning multi variable in a functions
 
 <expression_const> :== <expression>
 
