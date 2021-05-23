@@ -32,13 +32,23 @@
 
 <statements>   ::= <statements> <statement>
                  
-
 <statement>    ::= <statement_return>
                  | <statement_expression>
                  | <statement_if>
                  | <statement_for>
                  | <statement_while>
                  | <statement_dowhile>
+                 | <statement_switch>
+
+<statement_if>   ::= IF <expression> <block>
+                   |  IF <expression> <block> ELSE <statement_if>
+                   |  IF <expression> <block> ELSE <block>
+
+<statement_switch> ::= SWITCH "{" <switch_cases> "}"
+
+<switch_cases>   ::= <switch_cases> <switch_case>
+
+<switch_case>    ::= CASE <expression_const> ":" <statements>
 
 <statement_for>  ::= FOR <expression> <block>
 
