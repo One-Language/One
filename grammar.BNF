@@ -32,7 +32,18 @@
 
 <function_arguments> ::= <function_arguments> "," <function_argument>
 
-<datatype_primary>   :: = I8 I16 I32 I64 F32 F64 U8 U16 U32 U64 STRING CHAR
+<datatype_primary>   :: = I8
+                        | I16
+                        | I32
+                        | I64
+                        | F32
+                        | F64
+                        | U8
+                        | U16
+                        | U32
+                        | U64
+                        | STRING
+                        | CHAR
 
 <datatype>           ::= <datatype_primary>
                        | <datatype_primary> "[" "]"
