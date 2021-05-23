@@ -43,7 +43,7 @@
                         | U32
                         | U64
                         | STRING
-                        | CHAR
+                        | CHAR ;; it's not c-like character, we can store UTF8 character at this too. (e.g: "ش")
 
 <datatype>           ::= <datatype_primary>
                        | <datatype_primary> "[" "]"
