@@ -49,9 +49,9 @@
 
 <statement_printnl> ::=  "__" <expressions> ; in c: `printf("%1\n%2\n%3\n",...)`
 
-<statement_printerr>::= "!_" <expressions> ; in c: `sprintf(stderr, "%1%2%3",...)`
+<statement_printerr>::= "!_" <expressions> ; in c: `fprintf(stderr, "%1%2%3",...)`
 
-<statement_printerrnl>::= "!__" <expressions> ; in c: `sprintf(stderr, "%1\n%2\n%3\n",...)`
+<statement_printerrnl>::= "!__" <expressions> ; in c: `fprintf(stderr, "%1\n%2\n%3\n",...)`
 
 <expressions>    ::= <expressions> "," <expression>
                    | <expression>
