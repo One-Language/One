@@ -13,6 +13,16 @@
 
 <statement>    ::= <statement_return>
                  | <statement_expression>
+                 | <statement_if>
+                 | <statement_for>
+                 | <statement_while>
+                 | <statement_dowhile>
+
+<statement_for>  ::= FOR <expression> <statements>
+
+<statement_while>::= WHILE <expression> <statements>
+
+<statement_dowhile>::= DO  <statements> while <expression>
 
 <expression>   ::= <term> "+" <expression>
                  | <term>
