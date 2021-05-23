@@ -19,7 +19,7 @@ out/lexer/source.o: src/lexer/source.c src/lexer/source.h
 out/lexer/lexer.o: src/lexer/lexer.c src/lexer/lexer.h
 	gcc -c src/lexer/lexer.c -o out/lexer/lexer.o -Wall -Wextra
 
-out/one.o: out/buffer/sds.o src/one.c out/io.o out/lexer/token.o out/lexer/source.o out/lexer/lexer.o 
+out/one.o: out/buffer/sds.o src/one.c out/io.o out/lexer/token.o out/lexer/source.o out/lexer/lexer.o
 	gcc \
 		src/one.c \
 		out/io.o \

@@ -13,13 +13,13 @@ void main()
 {
 	//the empty rule mean the first and main activity page!
 	layout.set("",activity_index());
-	
+
 	//`login` is the name and rule path!
 	layout.set("login",activity_login());
-	
+
 	//`*` mean the any other activity! such as : 404 error page.
 	layout.set("*",activity_error());
-	
+
 	//begin template engine
 	layout.execute();
 }

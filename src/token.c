@@ -1,6 +1,6 @@
 /**
  File: token.c
-  _        _ 
+  _        _
  / \ |\ | |_    Author: Max Base
  \_/ | \| |_    Copyright 2021
 
@@ -272,7 +272,7 @@ Token* token_next(Lexer* lex)
 
       if(*lex->s != EOF) {
         return token_next(lex);
-      }      
+      }
     }
     else if(*lex->s == '/') {
       t->type = 500;

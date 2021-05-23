@@ -1,8 +1,10 @@
 # The One Programming Language
 
-One is an open source, self-hosted, bootstrapping **system programming language**. It is easy to build, reliable, and efficient performance software.
+One is an open source, self-hosted, bootstrapping **system programming language**. It is easy to build, reliable, and efficient performant software.
 
 The compiler will be released in next few months.
+
+Discord server: https://discord.gg/sFCE2HcMCa
 
 # Objectives and Features:
 
@@ -12,15 +14,15 @@ The compiler will be released in next few months.
 - System programming
 - Intermediate level
 - Web Programming
-  - Automatic generate html, css code. so you not need to learn so many language to develop a website
+  - Automatic generation of HTML and CSS code. So you not need to learn so many language to develop a website
   - Use variables in CSS, so we can easily get colors or size from database or etc.
   - Auto minify page result
 - Network, API programming
 - Performance and high speed
-- Supports inline assembly code
-- No require specific libraries and tools on user system in normal mode (in the future)
-- No require external runtime libraries in normal mode (in the future)
-- No require external compilers for compile steps (in the future)
+- Supports inline Assembly code
+- Does not require specific libraries and tools on the user system in normal mode (in the future)
+- Does not require external runtime libraries in normal mode (in the future)
+- Does not require external compilers for compile steps (in the future)
 
 # Concept
 
@@ -42,8 +44,6 @@ int main(int argc, char *argv[]) {
 }
 ```
 
----
-
 ```c
 i32 main {
    ret 10
@@ -61,8 +61,6 @@ int main(int argc, char *argv[]) {
    return (int) 10;
 }
 ```
-
----
 
 ```c
 main {
@@ -86,8 +84,6 @@ int main(int argc, char *argv[]) {
    return (int) strlen(in);
 }
 ```
-
----
 
 Another draft:
 
@@ -141,7 +137,7 @@ error {
 
 ---
 
-## Old Cli Development
+## Old CLI Development
 
 ```
 main:
@@ -282,18 +278,21 @@ Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this l
 
 #### OS
 
-- [x] Gnu / Linux
+- [x] GNU / Linux
 - [x] Windows
-- [ ] MacOS (Not complete)
+- [ ] macOS (Not complete)
 - [ ] BSD
 
 #### Filename extensions: `.one`
 
----
-
 Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
 
 Created By Max Base @ 2019
+
+# Core Team
+
+- [Max](https://github.com/BaseMax)
+- [John Bampton](https://github.com/jbampton)
 
 <!--
 [![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
@@ -301,5 +300,3 @@ Created By Max Base @ 2019
 <!--
 [Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)
 -->
-
-Discord server: https://discord.gg/sFCE2HcMCa

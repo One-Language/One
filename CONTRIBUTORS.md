@@ -179,7 +179,7 @@
             <img src="https://avatars1.githubusercontent.com/u/26503670?v=4" width="100px;" alt="UnitCore"/><br />
             <sub><b>UnitCore</b></sub>
          </a><br />
-      </td>      
+      </td>
    </tr>
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->

@@ -1,6 +1,6 @@
 /**
  File: parser.h
-  _        _ 
+  _        _
  / \ |\ | |_    Author: Max Base
  \_/ | \| |_    Copyright 2021
 
@@ -25,4 +25,3 @@ int parser_unary(Lexer*, int);
 int parser_expression(Lexer*);
 
 #endif
-

@@ -27,4 +27,3 @@ Token token_new(void) {
 	t.name = "None";
 	return t;
 }
-
