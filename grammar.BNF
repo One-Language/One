@@ -7,7 +7,7 @@
                  
 <function>     ::= <function_prototype> <identifier> <function_arguments> <block>
 
-<function_prototype> ::= <datatype> | <empty>
+<function_prototype> ::= <datatype> | <empty> ; default return type is I32 (int, 32bit) e.g: `main {}`
 
 <function_arguments> ::= <function_arguments> "," <function_argument>
 
