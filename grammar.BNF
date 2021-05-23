@@ -84,6 +84,8 @@
 
 <statement_dowhile>::= DO  <block> while <expression>
 
+<statement_return> ::= RETURN <expressions> ; we allow returning multi variable in a functions
+
 <expression_const> :== <expression>
 
 <expression>   ::= <term> "+" <expression>
