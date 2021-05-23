@@ -58,15 +58,21 @@
 <statement>    ::= <statement_return>
                  | <statement_expression>
                  | <statement_if>
+
                  | <statement_for>
                  | <statement_while>
                  | <statement_dowhile>
+                 | <statement_repeat>
+
                  | <statement_switch>
+
                  | <statement_print>
                  | <statement_printnl>
                  | <statement_printerr>
                  | <statement_printerrnl>
 
+<statement_repeat>  ::= REPEAT NUMBER <block> ;; for from 0 to j {...}
+                      | REPEAT NUMBER TO NUMBER <block> ;; for from i to j {...}
 
 <statement_print>   ::=  "_" <expressions> ; in c: `printf("%1%2%3",...)`
 
@@ -90,6 +96,7 @@
 <switch_case>    ::= CASE <expression_const> ":" <statements>
 
 <statement_for>  ::= FOR <expression> <block>
+                   | FOR IDENTIFIER IN <expression_const> <block> ;; e.g in python: `for item in array:`
 
 <statement_while>::= WHILE <expression> <block>
 
