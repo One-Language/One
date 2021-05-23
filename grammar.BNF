@@ -1,4 +1,13 @@
-<start>        ::= <parnet_items> | <empty>
+<start>        ::= <package> <includes> <parnet_items> | <empty>
+
+<package>   ::= PACKAGE IDENTIFIER | <empty> ; usually we not defaint for small program or run-able scripts
+
+<includes> ::= <includes> <include> | <empty>
+
+<include>   ::= USE <IDENTIFIER_DOTS>
+
+<IDENTIFIER_DOTS>  ::= <IDENTIFIER_DOTS> "." IDENTIFIER
+                     | IDENTIFIER
 
 <parnet_items> ::= <parent_item> <parnet_items>
 
