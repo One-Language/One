@@ -1,13 +1,17 @@
-<start>        ::= <parnet_items>
+<start>        ::= <parnet_items> | <empty>
 
 <parnet_items> ::= <parent_item> <parnet_items>
 
 <parent_item>  ::= <function>
                  | <global_variable>
                  
-<function>     ::= <function_prototype> <identifier> <function_arguments> <statements> 
+<function>     ::= <function_prototype> <identifier> <function_arguments> <statements>
 
-<function_prototype>
+<function_prototype> ::= <datatype> | <empty>
+
+<function_arguments> ::= <function_arguments> "," <function_argument>
+
+<function_argument>  ::= <datatype> IDENTIFIER
 
 <statements>   ::= <statements> <statement>
 
