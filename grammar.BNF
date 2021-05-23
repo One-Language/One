@@ -14,9 +14,9 @@
 <parent_item>  ::= <function>
                  | <global_variable>
                  
-<function>     ::= <function_prototype> <identifier> <function_arguments> <block>
+<function>     ::= <function_prototype> IDENTIFIER <function_arguments> <block>
 
-<function_prototype> ::= <datatype> | <empty> ; default return type is I32 (int, 32bit) e.g: `main {}`
+<function_prototype> ::= <datatype> | <empty> ; default return type is I32 (int, 32bit) e.g: `main {}` and default return is `return 0`
 
 <function_arguments> ::= <function_arguments> "," <function_argument>
 
