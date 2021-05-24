@@ -227,27 +227,27 @@ Token* token_next(Lexer* lex)
   if(*lex->s == '#') {
     do {
       token_nextchar(lex); // eat '#' at first and other chars at next...
-    } while(*lex->s != EOF && *lex->s != '\n' && *lex->s != '\r' && *lex->s != '#');
+    } while(*lex->s != EOF && *lex->s != '\0' && *lex->s != '\n' && *lex->s != '\r' && *lex->s != '#');
 
-    if(*lex->s != EOF) {
+    if(*lex->s != EOF && *lex->s != '\0') {
       return token_next(lex);
     }
   }
 
   // '/' operator
   if(*lex->s == '/') {
+    printf("===>1\n");
     token_nextchar(lex); // eat '/'
+    printf("===>2\n");
 
     // Skip single-line comments
     if(*lex->s == '/') {
 
-      printf("==> it's a comment\n");
-
       do {
         token_nextchar(lex); // eat '/' at first and other chars at next...
-      } while(*lex->s != EOF && *lex->s != '\n' && *lex->s != '\r');
+      } while(*lex->s != EOF && *lex->s != '\0' && *lex->s != '\n' && *lex->s != '\r');
 
-      if(*lex->s != EOF) {
+      if(*lex->s != EOF && *lex->s != '\0') {
         return token_next(lex);
       }
     }
@@ -270,7 +270,7 @@ Token* token_next(Lexer* lex)
         // else repeat
       }
 
-      if(*lex->s != EOF) {
+      if(*lex->s != EOF && *lex->s != '\0') {
         return token_next(lex);
       }
     }
@@ -304,6 +304,8 @@ char token_nextchar(Lexer* lex)
     lex->location.c++;
   }
   *lex->s++;
+  // if (*lex->s == '\0') return '\0';//return 0;//exit(1);//return '\0';
+  // else
   return *lex->s;
 }
 
@@ -326,7 +328,7 @@ bool token_is_end(Lexer* lex)
       printf("[token_end] %s\n", (*lex->s == '\0') ? "True" : "False");
   #endif
 
-  if (*lex->s == '\0')
+  if (*lex->s == '\0' || *lex->s == EOF)
     return true;
   else
     return false;
@@ -339,6 +341,7 @@ void token_free(Token* t)
 
 char* token_name(Token* t)
 {
+  if(t == NULL) return "EOF";
   switch(t->type) {
     case tok_eof:
       return "EOF";
