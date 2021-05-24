@@ -34,6 +34,12 @@ The grammar of "One" language available at [here](grammar.BNF).
 - [ ] Design web framework for this language (Develoeprs can design/create website without using HTML,CSS language)
 - [ ] Rewrite compiler in own language (Bootstrapping)
 
+### Development help is wanted
+
+Please contact one of the authors by email. See email addresses elsewhere.
+
+> maxbasecode [ @ ] gmail { . DOT . } com
+
 ## Concept
 
 ```c
