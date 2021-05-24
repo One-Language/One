@@ -59,7 +59,7 @@ void file_parse(char* filename)
   lexer_start(lex);
 }
 
-int main(int argc, char** argv)
+int main(int argc, const char* const* argv, const char* const* env)
 {
   if (argc <= 1)
     help();

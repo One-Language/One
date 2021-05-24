@@ -26,7 +26,7 @@ void error(char* format, ...);
 void help(void);
 char *file_read(char*);
 void file_parse(char*);
-int main(int, char**);
+int main(int argc, const char* const* argv, const char* const* env);
 
 // typedef enum {
 // 	FALSE,
