@@ -20,7 +20,7 @@ const Args default_args = {
   .env = NULL,
 };
 
-void parseArgs(int argc, const char* const* argv, const char* const* env, Args* args)
+void parseArgs(int argc, char** argv, char** env, Args* args)
 {
   args->argc = argc;
   args->argv = argv;
@@ -40,7 +40,7 @@ void parseArgs(int argc, const char* const* argv, const char* const* env, Args* 
       }
     }
     else {
-      vector_add(args->input_files, argv[i]);
+      vector_add(&args->input_files, argv[i]);
     }
   }
 }

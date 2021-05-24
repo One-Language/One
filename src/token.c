@@ -322,7 +322,8 @@ char token_prevchar(Lexer* lex)
 bool token_is_end(Lexer* lex)
 {
   #ifdef DEBUG
-    printf("[token_end] %s\n", (*lex->s == '\0') ? "True" : "False");
+    if (*lex->s == '\0')
+      printf("[token_end] %s\n", (*lex->s == '\0') ? "True" : "False");
   #endif
 
   if (*lex->s == '\0')

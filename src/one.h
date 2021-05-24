@@ -16,6 +16,9 @@
 
 #include "vec.h"
 #include "sds.h"
+#include "arg.h"
+
+// typedef struct Args;
 
 #define DEBUG
 #define ONE_VERSION "0.4.0"
@@ -23,10 +26,12 @@
 #define log(format, params...) printf(format, params...);
 
 void error(char* format, ...);
-void help(void);
+void help(Args* args);
 char *file_read(char*);
 void file_parse(char*);
-int main(int argc, const char* const* argv, const char* const* env);
+
+// int main(int argc, const char* const* argv, const char* const* env);
+int main(int argc, char** argv, char** env);
 
 // typedef enum {
 // 	FALSE,

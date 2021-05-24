@@ -8,6 +8,9 @@
 
 #include "one.h"
 
+#ifndef _ARG_H_
+#define _ARG_H_
+
 typedef struct {
 	bool help;
 	bool version;
@@ -16,8 +19,10 @@ typedef struct {
 	char** input_files;
 
     int argc;
-    const char* const* argv;
-    const char* const* env;
+    char** argv;
+    char** env;
 } Args;
 
-void parseArgs(int argc, const char* const* argv, const char* const* env, Args* args);
+void parseArgs(int argc, char** argv, char** env, Args* args);
+
+#endif

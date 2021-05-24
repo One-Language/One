@@ -11,6 +11,7 @@
 #include "lexer.h"
 #include "parser.h"
 #include "scanner.h"
+#include "arg.h"
 
 void error(char* format, ...)
 {
@@ -21,9 +22,9 @@ void error(char* format, ...)
   va_end(ap);
 }
 
-void help(void)
+void help(Args* args)
 {
-  puts("$ One filename.one");
+  puts("./one filename.one");
   puts("One version: " ONE_VERSION);
 }
 
@@ -59,11 +60,20 @@ void file_parse(char* filename)
   lexer_start(lex);
 }
 
-int main(int argc, const char* const* argv, const char* const* env)
+int main(int argc, char** argv, char** env)
 {
-  if (argc <= 1)
-    help();
-  else
+  int ret = EXIT_SUCCESS;
+  Args args;
+  parseArgs(argc, argv, env, &args);
+
+  if(args.help) {
+    help(&args);
+  } else if(args.version) {
+    fprintf(stderr, "Version: %s\n", ONE_VERSION);
+  } else if(vector_size(args.input_files) > 0) {
     file_parse(argv[1]);
-  return 0;
+    ret = EXIT_SUCCESS; // TODO
+  }
+
+  return ret;
 }
