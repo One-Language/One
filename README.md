@@ -1,4 +1,24 @@
-# The One Programming Language
+<div align="center">
+<p>
+    <img width="80" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4">
+</p>
+<h1>The One Programming Language</h1>
+
+[onelang.org](https://onelang.org) |
+[Docs](https://github.com/One-Language/One/blob/master/docs) |
+[Help wanted](https://github.com/One-Language/One/issues/new)
+
+</div>
+<div align="center">
+
+<!--
+[![Build Status][WorkflowBadge]][WorkflowUrl]
+-->
+[![Patreon][PatreonBadge]][PatreonUrl]
+[![Discord][DiscordBadge]][DiscordUrl]
+[![Twitter][TwitterUrl]][TwitterBadge]
+
+</div>
 
 One is an open source, self-hosted, bootstrapping **system programming language**. It is easy to build, reliable, and efficient performant software.
 
@@ -316,3 +336,11 @@ Created By Max Base @ 2019
 <!--
 [Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)
 -->
+
+[DiscordBadge]: https://img.shields.io/discord/592103645835821068?label=Discord&logo=discord&logoColor=white
+[PatreonBadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Dvlang%26type%3Dpledges
+[SponsorBadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
+[TwitterBadge]: https://twitter.com/MaxProgram
+[DiscordUrl]: https://discord.gg/sFCE2HcMCa
+[PatreonUrl]: https://patreon.com/onelanguage
+[TwitterUrl]: https://img.shields.io/twitter/follow/v_language.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
