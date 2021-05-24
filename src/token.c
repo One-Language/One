@@ -480,6 +480,8 @@ void token_log(Token* t)
 {
     printf("[token] %s", token_name(t));
 
+    if(t == NULL) return; // Fix crash bug when we have a blank line at end of the file!
+
     if(t->type == tok_string || t->type == tok_identifier)
       printf(" = %s", t->vstring);
     else if(t->type == tok_number)
