@@ -243,12 +243,20 @@ Token* token_next(Lexer* lex)
     // Skip single-line comments
     if(*lex->s == '/') {
 
+      printf("===>3\n");
       do {
+        printf("===>4\n");
         token_nextchar(lex); // eat '/' at first and other chars at next...
+        printf("===>5\n");
       } while(*lex->s != EOF && *lex->s != '\0' && *lex->s != '\n' && *lex->s != '\r');
 
       if(*lex->s != EOF && *lex->s != '\0') {
+        // printf("===>7\n");
         return token_next(lex);
+      }
+      else {
+        t->type = tok_eof;
+        return t;
       }
     }
     // Skip multi-line comments
