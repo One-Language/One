@@ -1,15 +1,12 @@
 <div align="center">
 <p>
     <a href="https://onelang.org/" alt="The One Programming Language">
-        <img width="80" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4">
+        <img width="80" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
     </a>
 </p>
 <h1>The One Programming Language</h1>
 
 [Onelang.org](https://onelang.org) |
-<--
-[Docs](https://github.com/One-Language/One/blob/master/docs) |
--->
 [Help wanted](https://github.com/One-Language/One/issues/new)
 
 </div>
