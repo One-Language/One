@@ -354,6 +354,7 @@ void token_free(Token* t)
 char* token_name(Token* t)
 {
   if(t == NULL) return "EOF";
+
   switch(t->type) {
     case tok_eof:
       return "EOF";

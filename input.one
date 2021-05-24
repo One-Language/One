@@ -6,5 +6,7 @@
 
 
 main(i32 a){
-
+	# this have crash: ret -3
+	ret 110
+	ret 3
 }
