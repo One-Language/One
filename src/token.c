@@ -232,26 +232,24 @@ Token* token_next(Lexer* lex)
     if(*lex->s != EOF && *lex->s != '\0') {
       return token_next(lex);
     }
+    else {
+      t->type = tok_eof;
+      return t;
+    }
   }
 
   // '/' operator
   if(*lex->s == '/') {
-    printf("===>1\n");
     token_nextchar(lex); // eat '/'
-    printf("===>2\n");
 
     // Skip single-line comments
     if(*lex->s == '/') {
 
-      printf("===>3\n");
       do {
-        printf("===>4\n");
         token_nextchar(lex); // eat '/' at first and other chars at next...
-        printf("===>5\n");
       } while(*lex->s != EOF && *lex->s != '\0' && *lex->s != '\n' && *lex->s != '\r');
 
       if(*lex->s != EOF && *lex->s != '\0') {
-        // printf("===>7\n");
         return token_next(lex);
       }
       else {
@@ -259,6 +257,7 @@ Token* token_next(Lexer* lex)
         return t;
       }
     }
+
     // Skip multi-line comments
     else if(*lex->s == '*') {
       token_nextchar(lex); // eat '*'
@@ -281,6 +280,11 @@ Token* token_next(Lexer* lex)
       if(*lex->s != EOF && *lex->s != '\0') {
         return token_next(lex);
       }
+      else {
+        t->type = tok_eof;
+        return t;
+      }
+
     }
     else if(*lex->s == '/') {
       t->type = 500;
