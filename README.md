@@ -1,11 +1,15 @@
 <div align="center">
 <p>
-    <img width="80" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4">
+    <a href="https://onelang.org/" alt="The One Programming Language">
+        <img width="80" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4">
+    </a>
 </p>
 <h1>The One Programming Language</h1>
 
-[onelang.org](https://onelang.org) |
+[Onelang.org](https://onelang.org) |
+<--
 [Docs](https://github.com/One-Language/One/blob/master/docs) |
+-->
 [Help wanted](https://github.com/One-Language/One/issues/new)
 
 </div>
@@ -325,9 +329,9 @@ Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[
 
 Created By Max Base @ 2019
 
-# Core Team
+## Core Team
 
-- [Max](https://github.com/BaseMax)
+- [Max Base](https://github.com/BaseMax)
 - [John Bampton](https://github.com/jbampton)
 
 <!--
