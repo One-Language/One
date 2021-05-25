@@ -8,7 +8,9 @@
 
  **/
 
+#include "arg.h"
 #include "error.h"
+#include "compile.h"
 
 int main(int argc, char** argv, char** env)
 {
@@ -24,12 +26,14 @@ int main(int argc, char** argv, char** env)
   if(args.help) {
     ArgsHelp(stderr, &args);
   } else if(args.version) {
-
+    ArgsVersion(stderr, &args);
   } else if(args.input_file_count > 0) {
-    ret = compile(&args, &erors);
+    ret = compile(&args, &errors);
+  } else {
+    ArgsHelp(stderr, &args);
   }
 
-  ErrorsPrint(stderr, &erors);
+  ErrorsPrint(stderr, &errors);
 
   ArgsFree(&args);
   ErrorsFree(&errors);

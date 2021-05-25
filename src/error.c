@@ -8,17 +8,19 @@
 
  **/
 
+#include "error.h"
+
 void ErrorsInit(ErrorsContainer* container)
 {
 
 }
 
-void ErrorsPrint(stderr, &erors)
+void ErrorsPrint(FILE* f, ErrorsContainer* errors)
 {
 
 }
 
-void ErrorsFree(&errors)
+void ErrorsFree(ErrorsContainer* errors)
 {
 }
 

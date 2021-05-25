@@ -11,6 +11,11 @@
 #ifndef _ERROR_H_
 #define _ERROR_H_
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
 typedef int Position;
 
 typedef enum {
@@ -32,5 +37,7 @@ typedef struct {
 } ErrorsContainer;
 
 void ErrorsInit(ErrorsContainer*);
+void ErrorsPrint(FILE*, ErrorsContainer*);
+void ErrorsFree(ErrorsContainer*);
 
 #endif

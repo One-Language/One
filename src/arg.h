@@ -11,21 +11,28 @@
 #ifndef _ARG_H_
 #define _ARG_H_
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
 typedef struct {
-	bool help;
-	bool version;
-	bool debug;
+  bool help;
+  bool version;
+  bool debug;
 
-	char** input_files;
-	unsigned int input_file_count;
+  char** input_files;
+  unsigned int input_file_count;
 
-    int argc;
-    char** argv;
-    char** env;
+  int argc;
+  char** argv;
+  char** env;
 } Args;
 
 void ArgsInit(Args*);
 void ArgsParse(Args*);
 void ArgsFree(Args*);
+void ArgsHelp(FILE*, Args*);
+void ArgsVersion(FILE*, Args*);
 
 #endif

@@ -8,6 +8,8 @@
 
  **/
 
+#include "arg.h"
+
 void ArgsInit(Args* args)
 {
 
@@ -22,3 +24,14 @@ void ArgsFree(Args* args)
 {
 
 }
+
+void ArgsHelp(FILE* f, Args* args)
+{
+
+}
+
+void ArgsVersion(FILE* f, Args* args)
+{
+
+}
+
