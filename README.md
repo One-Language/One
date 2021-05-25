@@ -1,7 +1,7 @@
 <div align="center">
 <p>
     <a href="https://onelang.org/" alt="The One Programming Language">
-        <img width="80" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
+        <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
     </a>
 </p>
 <h1>The One Programming Language</h1>
@@ -20,16 +20,37 @@
 [![Twitter][TwitterUrl]][TwitterBadge]
 
 </div>
+Welcome to [One](https://onelang.org)!</br>
+It is an open source, self-hosted, bootstrapping **system programming language**
+developed by [Max](https://github.com/BaseMax) and other open-source  contributors.
+<h3>_The compiler will be released in next few months._</h3>
+![-----------------------------------------------------](
+https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-One is an open source, self-hosted, bootstrapping **system programming language**. It is easy to build, reliable, and efficient performant software.
+<!-- TABLE OF CONTENTS -->
+<h2 id="table-of-contents"> Table of Contents</h2>
 
-The compiler will be released in next few months.
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#Features-of-one">  Features of One</a></li>
+    <li><a href="#Stages">  Stages</a></li>
+    <li><a href="#Concept"> Concept</a></li>
+    <li><a href="#learning">  Learning</a></li>
+    <li><a href="#Introduction">Introduction</a></li>
+    <li><a href="#contributors">  Contributors</a></li>
+    <li><a href="#sponsors"> Sponsors</a></li>
+    <li><a href="#license">  License</a></li>
+  </ol>
+</details>
 
-Discord server: https://discord.gg/sFCE2HcMCa
 
-# Objectives and Features
+![-----------------------------------------------------](
+https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-- Easy
+<h2 id="Features-of-one"> ➤ Features of One</h2>
+
+- Simplicity
 - Compiler
 - Ability to create output file (x86_64, i386)
 - System programming
@@ -45,23 +66,25 @@ Discord server: https://discord.gg/sFCE2HcMCa
 - Does not require external runtime libraries in normal mode (in the future)
 - Does not require external compilers for compile steps (in the future)
 
-## Stages
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-The grammar of "One" language available at [here](grammar.BNF).
+
+<h2 id="Stages"> ➤ Stages</h2>
+
+ Grammar of "One" language available at [here](grammar.BNF).
 
 - [x] Lexer/Parser (Mostly)
 - [ ] Code Generator (we can get help from LLVM-C)
 - [ ] Developing runtime library and adding features
-- [ ] Design web framework for this language (Developers can design/create website without using HTML,CSS language)
-- [ ] Rewrite compiler in own language (Bootstrapping)
+- [ ] Design web framework for the language.
+- [ ] Rewrite compiler in the One language.
 
-### Development help is wanted
+<!-- Include to a section about steps of installation -->
 
-Please contact one of the authors by email. See email addresses elsewhere.
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-> maxbasecode [ @ ] gmail { . DOT . } com
 
-## Concept
+<h2 id="Concept"> ➤ Concept</h2>
 
 ```c
 main {
@@ -69,7 +92,7 @@ main {
 }
 ```
 
-Convert to C:
+__Convert to C:__
 
 ```c
 #include <stdio.h>
@@ -80,14 +103,14 @@ int main(int argc, char *argv[]) {
    return (int) 0;
 }
 ```
-
+<hr/>
 ```c
 i32 main {
    ret 10
 }
 ```
 
-Convert to C:
+__Convert to C:__
 
 ```c
 #include <stdio.h>
@@ -98,7 +121,7 @@ int main(int argc, char *argv[]) {
    return (int) 10;
 }
 ```
-
+<hr/>
 ```c
 main {
    string in = "Hello, World!"
@@ -107,7 +130,7 @@ main {
 }
 ```
 
-Convert to C:
+__Convert to C:__
 
 ```c
 #include <stdio.h>
@@ -121,8 +144,8 @@ int main(int argc, char *argv[]) {
    return (int) strlen(in);
 }
 ```
-
-Another draft:
+<hr/>
+__Another draft:__
 
 ```c
 import web
@@ -148,7 +171,7 @@ main {
 }
 ```
 
-Another draft:
+__Another draft:__
 
 ```c
 error {
@@ -174,7 +197,7 @@ error {
 
 ---
 
-## Old CLI Development
+<h3> Old CLI Development</h3>
 
 ```
 main:
@@ -207,15 +230,10 @@ int customName:
    return 0
 end
 ```
-
-## Old GUI Development (Web, Software)
-
-This architecture is only designed for website and software (native). In the
-future, it will also be available for mobile apps (native).
-
-Mobile structures are not yet complete and need more thought and attention.
-
-An example of the language at work:
+<hr/>
+<h3> Old GUI Development (Web, Software)</h3>
+This architecture is designed only from websites and native softwares. In the future, it will also be available for mobile apps (native). <br/>
+Mobile structures are not yet complete and need more thought and attention.<br/>An example to demonstrate the working of the language.
 
 ```css
 title "Name - Main"
@@ -257,7 +275,7 @@ header {
 }
 ```
 
-Convert to HTML/CSS/JS base:
+__Convert to HTML/CSS/JS base:__
 
 ```html
 <html>
@@ -296,17 +314,21 @@ Convert to HTML/CSS/JS base:
 </html>
 ```
 
-The end result:
 
-<p align="center">
- <img alt="Screen Of Render" src="https://github.com/ET-Lang/ET/raw/master/tests/42-architecture-sample.png" width="80%">
-</p>
 
-# Learning
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+
+<h2 id ="learning"> ➤ Learning</h2>
 
 Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this language.
 
-# Introduction
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+<h2 id="Introduction"> ➤ Introduction</h2>
 
 #### Start activity
 
@@ -320,11 +342,30 @@ Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this l
 - [ ] macOS (Not complete)
 - [ ] BSD
 
-#### Filename extensions: `.one`
 
-Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
+_Filename extensions: `.one`__
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<!--Contribute-->
+<h2 id="contributors"> ➤ Contributors</h2>
+One is an open source project and, we welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
+
+Thanks to all the [contributors](https://github.com/One-Language/One/graphs/contributors)!!
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<!-- Sponsors -->
+<h2 id="sponsors"> ➤ Sponsors</h2>
+
+Become a sponsor and help ensure the development of the programming language - "One". Your support can help sustain it.
+
+[:heart: Sponsor on Github ](https://github.com/sponsors/BaseMax)
+
+Reach us at : <maxbasecode@gmail.com>
 
 Created By Max Base @ 2019
+
+<h2 id="license"> ➤ License</h2>
+One is released under the GNU General Public License v3.0
 
 <!--
 [![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
