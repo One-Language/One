@@ -3,6 +3,31 @@
 - Explanation of requirements and situation of programmer with current interpreters and compilers
 - And explain the project objectives and purposes
 
+## A draft summary from whole of the project
+
+What does this means? A tool to write command-line softwares.
+> system-level, processing tool, doing calculate, for mathematics purpose, etc.
+E.g: C, Go, Rust, C++
+
+Similar to what we learned in university from Programming session.
+> read input / do calculation / show output
+
+And now, Why they should choose One and not C?
+Because we are prepared so many required functionality and features. Somethings usually needed in most projects.
+
+So developers can write/develop programs easily
+And some features of this language cause to decrease bugs when developing a program.
+
+This is first step of project.
+
+==================
+
+At the next step, we want to release a framework for web.
+And purpose of this is to design/create websites without learn another tool and language.
+
+In general, you need to learn at least 3-4 languages or more tools to create a website.
+But we want to everyone can create a website without learning anythings more. by using only One language in same syntax.
+
 ## Some draft and messages between my recent inbox
 
 This is just to get a basic idea of what you can say and how you think:
