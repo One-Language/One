@@ -6,6 +6,8 @@
 
 ## Some draft and messages between my recent inbox
 
+This is just to get a basic idea of what you can say and how you think:
+
 The ease of our language in the library will be determined at runtime, and this is not a matter of the first stage.
 
 It's why a person does not use C and comes here to use One. because it's really nice with many needed features.
@@ -36,16 +38,18 @@ But they are mostly lost in C.
 
 Developers need to be able to create secure executable files / output from the program source.
 
-For example: PHP is a good language, but it's not clear. WHy not clean?
+For example: PHP is a good language, but it's not clear. Why not clean?
 
+```php
 unlink(): remove a file
 fopen(): open a file to read/write/append
 file_put_contents(): open a file to write/append
 file_get_contents(): open a file to read
+```
 
 See function names, they are really bad. Why deleting a file is not related to other function names.
 
-What we want to design is: file.create() , file.delete(), file.create(), etc.
+What we want to design is: `file.create() , file.delete(), file.copy()` and etc.
 
 These examples do not end here and continue.
 I hope I was able to convey my meaning to you.
