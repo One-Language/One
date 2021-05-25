@@ -30,7 +30,7 @@ typedef struct {
 } Args;
 
 void ArgsInit(Args*);
-void ArgsParse(Args*);
+void ArgsParse(int, char**, char**, Args*, ErrorsContainer*);
 void ArgsFree(Args*);
 void ArgsHelp(FILE*, Args*);
 void ArgsVersion(FILE*, Args*);

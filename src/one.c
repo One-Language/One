@@ -8,8 +8,8 @@
 
  **/
 
-#include "arg.h"
 #include "error.h"
+#include "arg.h"
 #include "compile.h"
 
 int main(int argc, char** argv, char** env)
@@ -21,7 +21,7 @@ int main(int argc, char** argv, char** env)
 
   Args args;
   ArgsInit(&args);
-  ArgsParse(&args);
+  ArgsParse(argc, argv, env, &args, &errors);
 
   if(args.help) {
     ArgsHelp(stderr, &args);
