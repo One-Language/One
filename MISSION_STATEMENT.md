@@ -3,7 +3,6 @@
 - Explanation of requirements and situation of programmer with current interpreters and compilers
 - And explain the project objectives and purposes
 
-
 ## Some draft and messages between my recent inbox
 
 This is just to get a basic idea of what you can say and how you think:
@@ -57,9 +56,7 @@ I hope I was able to convey my meaning to you.
 This is what I wrote two years ago:
 https://github.com/One-Language/STD
 
-
 --------
-
 
 Maybe the reasons I mentioned are enough for a good language. But we do not want to produce a good product. We have to make something great.
 
