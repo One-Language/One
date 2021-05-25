@@ -12,3 +12,13 @@ void ErrorsInit(ErrorsContainer* container)
 {
 
 }
+
+void ErrorsPrint(stderr, &erors)
+{
+
+}
+
+void ErrorsFree(&errors)
+{
+}
+

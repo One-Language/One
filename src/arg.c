@@ -18,3 +18,7 @@ void ArgsParse(Args* args)
 
 }
 
+void ArgsFree(Args* args)
+{
+
+}

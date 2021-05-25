@@ -21,6 +21,18 @@ int main(int argc, char** argv, char** env)
   ArgsInit(&args);
   ArgsParse(&args);
 
+  if(args.help) {
+    ArgsHelp(stderr, &args);
+  } else if(args.version) {
+
+  } else if(args.input_file_count > 0) {
+    ret = compile(&args, &erors);
+  }
+
+  ErrorsPrint(stderr, &erors);
+
+  ArgsFree(&args);
+  ErrorsFree(&errors);
 
   return ret;
 }
