@@ -1,52 +1,47 @@
-/*
- * Copyright 2021 - Max Base, <maxbasecode [@] gmail {dot} com>
- * This file is part of One Programming Language.
- *
- * one-language is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * one-language is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with one-language.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
+/**
+ File: one.h
+  _        _
+ / \ |\ | |_    Author: Max Base
+ \_/ | \| |_    Copyright 2021
+
+ **/
 
 #ifndef _ONE_H_
-	#define _ONE_H_
+#define _ONE_H_
 
-	// glibc, runtime library
-	#include <stdio.h>		// printf, fopen, fclose
-	#include <stdlib.h>		// malloc, free
-	#include <string.h>		// strcmp
-	#include <stddef.h>		// NULL
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 
-	#define printf printf
-	#define print printf
+#include "vec.h"
+#include "sds.h"
+#include "arg.h"
 
-	// own inside library
-	#include "io.h"
-	#include "lexer/token.h"
-	#include "lexer/source.h"
-	#include "lexer/lexer.h"
+// typedef struct Args;
 
-	// primary data
-	#define VERSION "0.3.0"
-	#define ARCH "linux/amd64"
+#define DEBUG
+#define ONE_VERSION "0.4.0"
 
-	// functions
-	void error(char *message);
-	void main_help(void);
-	void main_badcommand(int argc, char *argv[]);
-	void main_badparam(void);
-	void main_badflag(void);
-	void main_version(int argc);
-	void main_parse(int argc, char *argv[]);
-	int main(int argc, char *argv[]);
+#define log(format, params...) printf(format, params...);
+
+void error(char* format, ...);
+void help(Args* args);
+char *file_read(char*);
+void file_parse(char*);
+
+// int main(int argc, const char* const* argv, const char* const* env);
+int main(int argc, char** argv, char** env);
+
+// typedef enum {
+// 	FALSE,
+// 	TRUE
+// } bool;
+
+// enum _bool {
+//    false = 0,
+//    true = 1
+// };
+// typedef enum _bool Bool;
 
 #endif
