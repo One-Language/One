@@ -2,7 +2,7 @@
  The One Programming Language
 
  File: error.c
-  _        _ 
+  _        _
  / \ |\ | |_    Author: Max Base
  \_/ | \| |_    Copyright 2021
 
@@ -23,4 +23,3 @@ void ErrorsPrint(FILE* f, ErrorsContainer* errors)
 void ErrorsFree(ErrorsContainer* errors)
 {
 }
-

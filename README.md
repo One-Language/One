@@ -52,7 +52,7 @@ The grammar of "One" language available at [here](grammar.BNF).
 - [x] Lexer/Parser (Mostly)
 - [ ] Code Generator (we can get help from LLVM-C)
 - [ ] Developing runtime library and adding features
-- [ ] Design web framework for this language (Develoeprs can design/create website without using HTML,CSS language)
+- [ ] Design web framework for this language (Developers can design/create website without using HTML,CSS language)
 - [ ] Rewrite compiler in own language (Bootstrapping)
 
 ### Development help is wanted
@@ -325,11 +325,6 @@ Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this l
 Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
 
 Created By Max Base @ 2019
-
-## Core Team
-
-- [Max Base](https://github.com/BaseMax)
-- [John Bampton](https://github.com/jbampton)
 
 <!--
 [![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)

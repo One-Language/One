@@ -2,7 +2,7 @@
  The One Programming Language
 
  File: arg.c
-  _        _ 
+  _        _
  / \ |\ | |_    Author: Max Base
  \_/ | \| |_    Copyright 2021
 
@@ -46,4 +46,3 @@ void ArgsVersion(FILE* file, Args* args)
   fprintf(file, ONE_VERSION);
 
 }
-

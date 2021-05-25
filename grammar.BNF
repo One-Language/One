@@ -17,7 +17,7 @@
 <global_define>  ::= <global_struct>
                    | <global_variable> ;; global variabes might be allowed in some special conditions
 
-<global_variable> ::= <datatype> IDENTIFIER 
+<global_variable> ::= <datatype> IDENTIFIER
                     | <datatype> IDENTIFIER "=" <expression_const>
 
 <global_struct>   ::= STRUCT IDENTIFIER "{" <struct_vars> "}"
@@ -53,7 +53,7 @@
 <block>        ::= "{" <statements> "}"
 
 <statements>   ::= <statements> <statement>
-                 
+
 <statement>    ::= <statement_return>
                  | <statement_expression>
                  | <statement_if>

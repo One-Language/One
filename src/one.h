@@ -2,7 +2,7 @@
  The One Programming Language
 
  File: one.h
-  _        _ 
+  _        _
  / \ |\ | |_    Author: Max Base
  \_/ | \| |_    Copyright 2021
 
