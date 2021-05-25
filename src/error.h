@@ -31,4 +31,6 @@ typedef struct {
   Error* errors;
 } ErrorsContainer;
 
+void ErrorsInit(ErrorsContainer*);
+
 #endif

@@ -8,3 +8,13 @@
 
  **/
 
+void ArgsInit(Args* args)
+{
+
+}
+
+void ArgsParse(Args* args)
+{
+
+}
+

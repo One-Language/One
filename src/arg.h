@@ -8,3 +8,5 @@
 
  **/
 
+void ArgsInit(Args*);
+void ArgsParse(Args*);
