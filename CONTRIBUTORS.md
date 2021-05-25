@@ -230,4 +230,4 @@ Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[
 
 ---
 
-Created By Max Base, Develop by Asrez Team @ 2019
+Created By Max Base, Develop by One Language Team @ 2021
