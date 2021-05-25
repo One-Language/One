@@ -21,11 +21,13 @@
 
 </div>
 Welcome to [One](https://onelang.org)!</br>
-It is an open source, self-hosted, bootstrapping **system programming language**
+It is an open source, self-hosted, bootstrapping __system programming language__
 developed by [Max](https://github.com/BaseMax) and other open-source  contributors.
-<h3>_The compiler will be released in next few months._</h3>
+<h3>he compiler will be released in next few months</h3>
+
 ![-----------------------------------------------------](
 https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 
 <!-- TABLE OF CONTENTS -->
 <h2 id="table-of-contents"> Table of Contents</h2>
