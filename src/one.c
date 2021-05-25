@@ -10,5 +10,15 @@
 
 int main(int argc, char** argv, char** env)
 {
+  int ret = EXIT_SUCCESS;
 
+  ErrorsContainer errors;
+  ErrorsInit(&errors);
+
+  Args args;
+  ArgsInit(&args);
+  ArgsParse(&args);
+
+
+  return ret;
 }
