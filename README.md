@@ -57,9 +57,9 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 - System Programming Language
 - Intermediate level
 - Supports Web Programming
-    - Automatic generation of correspoding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website.
-    - Uses variables in CSS, so that we can obtain the colors or sizes from the database.
-    - Auto minify the page results.
+  - Automatic generation of correspoding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website.
+  - Uses variables in CSS, so that we can obtain the colors or sizes from the database.
+  - Auto minify the page results.
 - Network and API programming
 - Performance and high speed
 - Supports inline Assembly code
@@ -369,7 +369,7 @@ One is released under the GNU General Public License v3.0. Please refer to the t
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
 
-[DiscordBadge]: https://img.shields.io/discord/592103645835821068?label=Discord&logo=discord&logoColor=white
+[DiscordBadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
 [PatreonBadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
 [SponsorBadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
 [TwitterBadge]: https://twitter.com/onelangteam
