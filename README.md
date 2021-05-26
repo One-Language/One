@@ -20,13 +20,14 @@
 [![Twitter][TwitterUrl]][TwitterBadge]
 
 </div>
-Welcome to [One](https://onelang.org) !</br>
-It is an open source, self-hosted, bootstrapping **system programming language**
+Welcome to <a href = "https://onelang.org">One</a>!</br>
+It is an open source, self-hosted, bootstrapping <b>system programming language</b>
 which is easy to build, reliable, and efficient.
-It is being developed by [Max](https://github.com/BaseMax) and other open-source  contributors. 
+It is being developed by <a href = "https://github.com/BaseMax">Max</a> and other open-source  contributors. 
 <!--The project is still in its early stages of development-->
 <h3>Compiler for One Language will be released in the next few months</h3>
 <!-- WRITE PROJECT MOTIVATION HERE -->
+
 ![-----------------------------------------------------](
 https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
@@ -38,9 +39,9 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
   <ol>
     <li><a href="#Features-of-one">  Features of One</a></li>
     <li><a href="#RoadMap">  RoadMap</a></li>
-    <li><a href="#Code-Example"> Code Example</a></li>
+    <li><a href="#Code-Examples"> Code Examples</a></li>
     <li><a href="#Getting-started">Getting Started</a></li>
-    <li><a href="#contributors">  Contributors</a></li>
+    <li><a href="#Get-Involved"> Get Involved</a></li>
     <li><a href="#sponsors"> Sponsors</a></li>
     <li><a href="#license">  License</a></li>
   </ol>
@@ -88,7 +89,7 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 
-<h2 id="Code-Example"> ➤ Code Examples</h2>
+<h2 id="Code-Examples"> ➤ Code Examples</h2>
 <!-- Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -241,6 +242,7 @@ end
 <h3> Old GUI Development (Web, Software)</h3>
 This architecture is designed only from websites and native softwares. In the future, it will also be available for mobile apps (native). <br/>
 Mobile structures are not yet complete and need more thought and attention.<br/><br/>Example to demonstrate  working of the language :
+
 ```css
 title "Name - Main"
 description "Descriptions"
@@ -353,8 +355,9 @@ Refer to the [Github Wiki](https://github.com/ET-Lang/ET/wiki) to start learning
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 
-<!--Contribute-->
-<h2 id="contributors"> ➤ Contributors</h2>
+<!--Get Involved-->
+
+<h2 id="Get-Involved"> ➤ Get Involved</h2>
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
 To ask a question or open a discussion, create an issue or join the [One Discord Server](https://discord.gg/sFCE2HcMCa).
 
@@ -365,16 +368,14 @@ If you are not familiar with how to make a pull request on Github then please re
 
 You can also help in the development of One by making some donations - [Patreon](https://www.patreon.com/onelanguage).
 
-Thanks to all the [contributors](https://github.com/One-Language/One/graphs/contributors)!!
+Thanks to all the <a href = "https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
 
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-
 <!-- Sponsors -->
 <h2 id="sponsors"> ➤ Sponsors</h2>
-
 Become a sponsor and help ensure the development of the programming language - "One". </br> Your support can help sustain it.
 
 [:heart: Sponsor on Github ](https://github.com/sponsors/BaseMax)
@@ -384,6 +385,7 @@ Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="license"> ➤ License</h2>
+
 One is released under the GNU General Public License v3.0. Please refer to the terms in the [license](LICENSE) file included in the repository.
 
 <!--
