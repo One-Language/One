@@ -8,62 +8,52 @@
 
 [Onelang.org](https://onelang.org) |
 [Help wanted](https://github.com/One-Language/One/issues/new)
-
 </div>
 <div align="center">
-
-<!--
-[![Build Status][WorkflowBadge]][WorkflowUrl]
--->
+<!--[![Build Status][WorkflowBadge]][WorkflowUrl]-->
 [![Patreon][PatreonBadge]][PatreonUrl]
 [![Discord][DiscordBadge]][DiscordUrl]
 [![Twitter][TwitterUrl]][TwitterBadge]
-
 </div>
-Welcome to <a href = "https://onelang.org">One</a>!</br>
-It is an open source, self-hosted, bootstrapping <b>system programming language</b>
-which is easy to build, reliable, and efficient.
-It is being developed by <a href = "https://github.com/BaseMax">Max</a> and other open-source  contributors. 
-<!--The project is still in its early stages of development-->
-<h3>Compiler for One Language will be released in the next few months</h3>
+
+Welcome to <a href ="https://onelang.org">One</a>!</br>
+It is an open source, self-hosted, bootstrapping <b>system programming language</b> which is easy to build, reliable, and efficient.
+It is being developed by <a href ="https://github.com/BaseMax">Max</a> and other open-source contributors.
+<h3>Compiler for One Language will be released in a few months</h3>
 <!-- WRITE PROJECT MOTIVATION HERE -->
 
 ![-----------------------------------------------------](
 https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-
 <!-- TABLE OF CONTENTS -->
-<h2 id="table-of-contents"> Table of Contents</h2>
-
+<h2 id="table-of-contents">Table of Contents</h2>
 <details open="open">
   <ol>
-    <li><a href="#Features-of-one">  Features of One</a></li>
-    <li><a href="#RoadMap">  RoadMap</a></li>
-    <li><a href="#Code-Examples"> Code Examples</a></li>
+    <li><a href="#Features-of-one">Features of One</a></li>
+    <li><a href="#RoadMap">RoadMap</a></li>
+    <li><a href="#Code-Examples">Code Examples</a></li>
     <li><a href="#Getting-started">Getting Started</a></li>
-    <li><a href="#Get-Involved"> Get Involved</a></li>
-    <li><a href="#license">  License</a></li>
+    <li><a href="#Get-Involved">Get Involved</a></li>
+    <li><a href="#license">License</a></li>
   </ol>
 </details>
-
 
 ![-----------------------------------------------------](
 https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Features-of-one"> ➤ Features of One</h2>
-
+<h2 id="Features-of-one">➤ Features of One</h2>
 - Simplicity
 - Compiler
 - Ability to create output file (x86_64, i386)
-- System programming Language
+- System Programming Language
 - Intermediate level
-- Supports Web Programming 
--<ul>
-  <li> Automatic generation of correspoding code for HTML and CSS Language. So, you won't have to learn so many languages so as to develop a website.
-  <li> Uses variables in CSS, so that we can obtain the colors or sizes from the database.
-  <li> Auto minify the page results
+- Supports Web Programming
+<ul>
+  <li>Automatic generation of correspoding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website.
+  <li>Uses variables in CSS, so that we can obtain the colors or sizes from the database.
+  <li>Auto minify the page results.
 </ul>
-- Network, API programming
+- Network and API programming
 - Performance and high speed
 - Supports inline Assembly code
 - Does not require specific libraries and tools on the user system in normal mode (in the future)
@@ -72,31 +62,28 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-
-<h2 id="RoadMap"> ➤ RoadMap</h2>
-
- Grammar of "One" language is available at [here](grammar.BNF).
+<h2 id="RoadMap">➤ RoadMap</h2>
+Grammar of "One" language is available [here](grammar.BNF).
 
 - [x] Lexer/Parser (Mostly)
-- [ ] Code Generator (we can get help from LLVM-C)
-- [ ] Developing runtime library and adding features
+- [ ] Code Generator (take help from LLVM-C)
+- [ ] Develope a runtime library and add features.
 - [ ] Design web framework for the language.
 - [ ] Rewrite compiler in the One language.
 
-<!-- Include to a section about steps of installation -->
+<!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-
-<h2 id="Code-Examples"> ➤ Code Examples</h2>
-<!-- Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
-
+<h2 id="Code-Examples">➤ Code Examples</h2>
+<!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
+<b>
 ```c
 main {
    ret 0
 }
 ```
-
+</b>
 __Convert to C:__
 
 ```c
@@ -108,14 +95,15 @@ int main(int argc, char *argv[]) {
    return (int) 0;
 }
 ```
-
+<b>
+---
 
 ```c
 i32 main {
    ret 10
 }
 ```
-
+</b>
 __Convert to C:__
 
 ```c
@@ -127,7 +115,8 @@ int main(int argc, char *argv[]) {
    return (int) 10;
 }
 ```
-
+<b>
+---
 ```c
 main {
    string in = "Hello, World!"
@@ -135,7 +124,7 @@ main {
    return in.length
 }
 ```
-
+</b>
 __Convert to C:__
 
 ```c
@@ -151,9 +140,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 <hr/>
-
-**Another draft:**
-
+<b>Another draft:
 ```c
 import web
 home {
@@ -177,9 +164,9 @@ main {
     return 0
 }
 ```
-
-__Another draft:__
-
+</b>
+---
+<b>Another draft:
 ```c
 error {
     headers.add('HTTP-Type: 404')
@@ -201,11 +188,10 @@ error {
     }
 }
 ```
-
+</b>
 ---
-
-<h3> Old CLI Development</h3>
-
+<h3>Old CLI Development</h3>
+<b>
 ```
 main:
    // __ "Hello, World!"
@@ -238,10 +224,11 @@ int customName:
 end
 ```
 <hr/>
-<h3> Old GUI Development (Web, Software)</h3>
-This architecture is designed only from websites and native softwares. In the future, it will also be available for mobile apps (native). <br/>
-Mobile structures are not yet complete and need more thought and attention.<br/><br/>Example to demonstrate  working of the language :
-
+</b>
+<h3>Old GUI Development : Web, Software</h3>
+This architecture is being designed only for websites and native softwares. In the future, it will also be available for mobile apps (native). <br/>
+Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate  working of the language:
+<b>
 ```css
 title "Name - Main"
 description "Descriptions"
@@ -281,9 +268,8 @@ header {
   }
 }
 ```
-
+</b>
 __Convert to HTML/CSS/JS base:__
-
 ```html
 <html>
   <head>
@@ -320,70 +306,48 @@ __Convert to HTML/CSS/JS base:__
   </body>
 </html>
 ```
-
-
-
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<h2 id="Getting-started">➤ Getting Started</h2>
+Refere [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
+<!--Installation Steps-->
 
-<h2 id="Getting-started"> ➤ Getting Started</h2>
-
-#### Start activity
-
-- Initial start: 2010 about 9 years ago
-- Beginning : 2012 about 7 years ago
-
-Refer to the [Github Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this language.
-<!-- Installation Steps -->
-
-<!-- #### Prerequisities -->
+<!--Prerequisities-->
 
 #### Supported Environments
 
-- [x] GNU / Linux  <!-- which linux?  -->
+- [x] GNU / Linux  <!--which linux?-->
 - [x] Windows
 - [ ] macOS (Not complete)
 - [ ] BSD
-<!-- Write more about the compiler -->
-
-<!--#### Steps -->
-<!-- BUilding One from Source -->
-<!-- Hello World in One -->
-<!-- Tips to understand the language better -->
-<!-- _Filename extensions: `.one`__ -->
+<!--Write more about the compiler-->
+<!--Steps-->
+<!--BUilding One from Source-->
+<!--Hello World in One-->
+<!--Tips to understand the language better-->
+<!--Filename extensions: `.one`-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
 
 <!--Get Involved-->
-
-<h2 id="Get-Involved"> ➤ Get Involved</h2>
+<h2 id="Get-Involved"> ➤Get Involved</h2>
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
-To ask a question or open a discussion, create an issue or join the <a href = "https://discord.gg/sFCE2HcMCa">One Discord Server</a>.
-
-If you would like to contribute in the development of this project, please reach us at : <maxbasecode@gmail.com>
-
-
+To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa">One Discord Server</a>.
 If you are not familiar with how to make a pull request on Github then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+If you have decided to contribute, please first read the guidelines [here](CONTRIBUTING.md).
+<br/>You can also help in the development of One by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
 
-You can also help in the development of One by making some donations - [:heart: Patreon](https://www.patreon.com/onelanguage).
+Thanks to all the <a href ="https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
 
-Thanks to all the <a href = "https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
+If you would like to contribute in the development of this project, you can mail us at : <maxbasecode@gmail.com>
 
-
-
-Created By Max Base @ 2019
+<br/>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license"> ➤ License</h2>
-
+<h2 id="license">➤ License</h2>
 One is released under the GNU General Public License v3.0. Please refer to the terms in the [license](LICENSE) file included in the repository.
 
-<!--
-[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
--->
-<!--
-[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)
--->
+<!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
+<!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
 
 [DiscordBadge]: https://img.shields.io/discord/592103645835821068?label=Discord&logo=discord&logoColor=white
 [PatreonBadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Dvlang%26type%3Dpledges
