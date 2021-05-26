@@ -49,20 +49,17 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 
 ![-----------------------------------------------------](
 https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
 <h2 id="Features-of-one">➤ Features of One</h2>
+
 - Simplicity
 - Compiler
 - Ability to create output file (x86_64, i386)
 - System Programming Language
 - Intermediate level
 - Supports Web Programming
-<ul>
-  <li>Automatic generation of correspoding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website.
-  <li>Uses variables in CSS, so that we can obtain the colors or sizes from the database.
-  <li>Auto minify the page results.
-</ul>
-
+   - Automatic generation of correspoding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website.
+   - Uses variables in CSS, so that we can obtain the colors or sizes from the database.
+   - Auto minify the page results.
 - Network and API programming
 - Performance and high speed
 - Supports inline Assembly code
@@ -152,7 +149,8 @@ int main(int argc, char *argv[]) {
 ```
 
 <hr/>
-Another draft:
+
+<b>Another draft:</b>
 
 ```c
 import web
@@ -179,7 +177,8 @@ main {
 ```
 
 ---
-Another draft:
+
+**Another draft:**
 
 ```c
 error {
@@ -338,7 +337,7 @@ Refere [this link](https://github.com/ET-Lang/ET/wiki) to start learning the lan
 - [x] Windows
 - [ ] macOS (Not complete)
 - [ ] BSD
-- [ ]
+
 <!--Write more about the compiler-->
 <!--Steps-->
 <!--BUilding One from Source-->
@@ -365,7 +364,7 @@ If you would like to contribute in the development of this project, you can mail
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="license">➤ License</h2>
-One is released under the GNU General Public License v3.0. Please refer to the terms in the [license](LICENSE) file included in the repository.
+One is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
