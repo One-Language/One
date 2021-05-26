@@ -20,6 +20,23 @@ void ArgsInit(Args* args)
 void ArgsParse(int argc, char** argv, char** env, Args* args, ErrorsContainer* errors)
 {
   args->argv = argv;
+
+  for(int i = 1; i < argc; i++) {
+    if(argv[i][0] == '-') {
+      if(strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "help")) {
+        args->help = true;
+      } else if(strcmp(argv[i], "-g") == 0 || strcmp(argv[i], "--debug") == 0) {
+        args->debug = true;
+      } else if(strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0) {
+        args->version = true;
+      }
+    } else {
+      pushToArrayList(&files, (void*)argv[i]);
+    }
+  }
+
+  args->input_file_count = files.count;
+  args->input_files = (char**)files.data;
 }
 
 void ArgsFree(Args* args)
