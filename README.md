@@ -42,7 +42,6 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
     <li><a href="#Code-Examples"> Code Examples</a></li>
     <li><a href="#Getting-started">Getting Started</a></li>
     <li><a href="#Get-Involved"> Get Involved</a></li>
-    <li><a href="#sponsors"> Sponsors</a></li>
     <li><a href="#license">  License</a></li>
   </ol>
 </details>
@@ -359,26 +358,17 @@ Refer to the [Github Wiki](https://github.com/ET-Lang/ET/wiki) to start learning
 
 <h2 id="Get-Involved"> ➤ Get Involved</h2>
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
-To ask a question or open a discussion, create an issue or join the [One Discord Server](https://discord.gg/sFCE2HcMCa).
+To ask a question or open a discussion, create an issue or join the <a href = "https://discord.gg/sFCE2HcMCa">One Discord Server</a>.
 
 If you would like to contribute in the development of this project, please reach us at : <maxbasecode@gmail.com>
 
 
 If you are not familiar with how to make a pull request on Github then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-You can also help in the development of One by making some donations - [Patreon](https://www.patreon.com/onelanguage).
+You can also help in the development of One by making some donations - [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Thanks to all the <a href = "https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
 
-
-
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
-<!-- Sponsors -->
-<h2 id="sponsors"> ➤ Sponsors</h2>
-Become a sponsor and help ensure the development of the programming language - "One". </br> Your support can help sustain it.
-
-[:heart: Sponsor on Github ](https://github.com/sponsors/BaseMax)
 
 
 Created By Max Base @ 2019
