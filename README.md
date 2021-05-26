@@ -20,11 +20,13 @@
 [![Twitter][TwitterUrl]][TwitterBadge]
 
 </div>
-Welcome to [One](https://onelang.org)!</br>
-It is an open source, self-hosted, bootstrapping __system programming language__
-developed by [Max](https://github.com/BaseMax) and other open-source  contributors.
-<h3>he compiler will be released in next few months</h3>
-
+Welcome to [One](https://onelang.org) !</br>
+It is an open source, self-hosted, bootstrapping **system programming language**
+which is easy to build, reliable, and efficient.
+It is being developed by [Max](https://github.com/BaseMax) and other open-source  contributors. 
+<!--The project is still in its early stages of development-->
+<h3>Compiler for One Language will be released in the next few months</h3>
+<!-- WRITE PROJECT MOTIVATION HERE -->
 ![-----------------------------------------------------](
 https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
@@ -33,13 +35,11 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 <h2 id="table-of-contents"> Table of Contents</h2>
 
 <details open="open">
-  <summary>Table of Contents</summary>
   <ol>
     <li><a href="#Features-of-one">  Features of One</a></li>
-    <li><a href="#Stages">  Stages</a></li>
-    <li><a href="#Concept"> Concept</a></li>
-    <li><a href="#learning">  Learning</a></li>
-    <li><a href="#Introduction">Introduction</a></li>
+    <li><a href="#RoadMap">  RoadMap</a></li>
+    <li><a href="#Code-Example"> Code Example</a></li>
+    <li><a href="#Getting-started">Getting Started</a></li>
     <li><a href="#contributors">  Contributors</a></li>
     <li><a href="#sponsors"> Sponsors</a></li>
     <li><a href="#license">  License</a></li>
@@ -55,25 +55,27 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 - Simplicity
 - Compiler
 - Ability to create output file (x86_64, i386)
-- System programming
+- System programming Language
 - Intermediate level
-- Web Programming
-  - Automatic generation of HTML and CSS code. So you not need to learn so many language to develop a website
-  - Use variables in CSS, so we can easily get colors or size from database or etc.
-  - Auto minify page result
+- Supports Web Programming 
+-<ul>
+  <li> Automatic generation of correspoding code for HTML and CSS Language. So, you won't have to learn so many languages so as to develop a website.
+  <li> Uses variables in CSS, so that we can obtain the colors or sizes from the database.
+  <li> Auto minify the page results
+</ul>
 - Network, API programming
 - Performance and high speed
 - Supports inline Assembly code
 - Does not require specific libraries and tools on the user system in normal mode (in the future)
 - Does not require external runtime libraries in normal mode (in the future)
-- Does not require external compilers for compile steps (in the future)
+- Does not require external compilers to do the compilation (in the future)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 
-<h2 id="Stages"> ➤ Stages</h2>
+<h2 id="RoadMap"> ➤ RoadMap</h2>
 
- Grammar of "One" language available at [here](grammar.BNF).
+ Grammar of "One" language is available at [here](grammar.BNF).
 
 - [x] Lexer/Parser (Mostly)
 - [ ] Code Generator (we can get help from LLVM-C)
@@ -86,7 +88,8 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 
-<h2 id="Concept"> ➤ Concept</h2>
+<h2 id="Code-Example"> ➤ Code Examples</h2>
+<!-- Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
 main {
@@ -105,7 +108,8 @@ int main(int argc, char *argv[]) {
    return (int) 0;
 }
 ```
-<hr/>
+
+
 ```c
 i32 main {
    ret 10
@@ -123,7 +127,7 @@ int main(int argc, char *argv[]) {
    return (int) 10;
 }
 ```
-<hr/>
+
 ```c
 main {
    string in = "Hello, World!"
@@ -147,7 +151,8 @@ int main(int argc, char *argv[]) {
 }
 ```
 <hr/>
-__Another draft:__
+
+**Another draft:**
 
 ```c
 import web
@@ -235,8 +240,7 @@ end
 <hr/>
 <h3> Old GUI Development (Web, Software)</h3>
 This architecture is designed only from websites and native softwares. In the future, it will also be available for mobile apps (native). <br/>
-Mobile structures are not yet complete and need more thought and attention.<br/>An example to demonstrate the working of the language.
-
+Mobile structures are not yet complete and need more thought and attention.<br/><br/>Example to demonstrate  working of the language :
 ```css
 title "Name - Main"
 description "Descriptions"
@@ -287,20 +291,20 @@ __Convert to HTML/CSS/JS base:__
     <meta name="keyword" content="keywords" />
     <style>
       * {
-      	margin: 0;
-      	padding: 0;
+        margin: 0;
+        padding: 0;
       }
       header {
-      	width 100%;
-      	height: auto;
+        width 100%;
+        height: auto;
       }
       ul {
-      	color: red;
+        color: red;
       }
       ul li {
-      	display: inline;
-      	padding: 10px;
-      	background: yellow;
+        display: inline;
+        padding: 10px;
+        background: yellow;
       }
     </style>
   </head>
@@ -318,56 +322,69 @@ __Convert to HTML/CSS/JS base:__
 
 
 
-
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-
-<h2 id ="learning"> ➤ Learning</h2>
-
-Refer to the [Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this language.
-
-
-
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
-<h2 id="Introduction"> ➤ Introduction</h2>
+<h2 id="Getting-started"> ➤ Getting Started</h2>
 
 #### Start activity
 
 - Initial start: 2010 about 9 years ago
 - Beginning : 2012 about 7 years ago
 
-#### OS
+Refer to the [Github Wiki](https://github.com/ET-Lang/ET/wiki) to start learning this language.
+<!-- Installation Steps -->
 
-- [x] GNU / Linux
+<!-- #### Prerequisities -->
+
+#### Supported Environments
+
+- [x] GNU / Linux  <!-- which linux?  -->
 - [x] Windows
 - [ ] macOS (Not complete)
 - [ ] BSD
+<!-- Write more about the compiler -->
 
-
-_Filename extensions: `.one`__
+<!--#### Steps -->
+<!-- BUilding One from Source -->
+<!-- Hello World in One -->
+<!-- Tips to understand the language better -->
+<!-- _Filename extensions: `.one`__ -->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+
 <!--Contribute-->
 <h2 id="contributors"> ➤ Contributors</h2>
-One is an open source project and, we welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
+We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
+To ask a question or open a discussion, create an issue or join the [One Discord Server](https://discord.gg/sFCE2HcMCa).
+
+If you would like to contribute in the development of this project, please reach us at : <maxbasecode@gmail.com>
+
+
+If you are not familiar with how to make a pull request on Github then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+
+You can also help in the development of One by making some donations - [Patreon](https://www.patreon.com/onelanguage).
 
 Thanks to all the [contributors](https://github.com/One-Language/One/graphs/contributors)!!
 
+
+
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+
 <!-- Sponsors -->
 <h2 id="sponsors"> ➤ Sponsors</h2>
 
-Become a sponsor and help ensure the development of the programming language - "One". Your support can help sustain it.
+Become a sponsor and help ensure the development of the programming language - "One". </br> Your support can help sustain it.
 
 [:heart: Sponsor on Github ](https://github.com/sponsors/BaseMax)
 
-Reach us at : <maxbasecode@gmail.com>
 
 Created By Max Base @ 2019
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="license"> ➤ License</h2>
-One is released under the GNU General Public License v3.0
+One is released under the GNU General Public License v3.0. Please refer to the terms in the [license](LICENSE) file included in the repository.
 
 <!--
 [![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
