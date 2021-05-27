@@ -2,13 +2,14 @@
  The One Programming Language
 
  File: arg.c
-  _        _
+  _        _ 
  / \ |\ | |_    Author: Max Base
  \_/ | \| |_    Copyright 2021
 
  **/
 
 #include "error.h"
+#include "array.h"
 #include "arg.h"
 #include "one.h"
 
@@ -20,6 +21,10 @@ void ArgsInit(Args* args)
 void ArgsParse(int argc, char** argv, char** env, Args* args, ErrorsContainer* errors)
 {
   args->argv = argv;
+  
+  Array files;
+  arrayInit(&files);
+
 
   for(int i = 1; i < argc; i++) {
     if(argv[i][0] == '-') {
@@ -31,7 +36,7 @@ void ArgsParse(int argc, char** argv, char** env, Args* args, ErrorsContainer* e
         args->version = true;
       }
     } else {
-      pushToArrayList(&files, (void*)argv[i]);
+      arrayPush(&files, (void*)argv[i]);
     }
   }
 
@@ -63,3 +68,4 @@ void ArgsVersion(FILE* file, Args* args)
   fprintf(file, ONE_VERSION);
 
 }
+

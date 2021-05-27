@@ -12,13 +12,14 @@
 #define _ARRAY_H_
 
 typedef struct {
-    int count;
-    int capacity;
-    void** data;
+  int count;
+  int size;
+  void** data;
 } Array;
 
-void arrayInit(Array* list);
-
-void arrayFree(Array* list);
+void arrayInit(Array*);
+void arrayPush(Array*, void*);
+void* arrayPop(Array*);
+void arrayFree(Array*);
 
 #endif
