@@ -56,13 +56,13 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 - Ability to create output file (x86_64, i386)
 - System Programming Language
 - Intermediate level
-- Supports Web Programming
+- Network and API programming
+- Supports Web Programming (in the future)
   - Automatic generation of correspoding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website.
   - Uses variables in CSS, so that we can obtain the colors or sizes from the database.
   - Auto minify the page results.
-- Network and API programming
 - Performance and high speed
-- Supports inline Assembly code
+- Supports inline Assembly code (in the future)
 - Does not require specific libraries and tools on the user system in normal mode (in the future)
 - Does not require external runtime libraries in normal mode (in the future)
 - Does not require external compilers to do the compilation (in the future)
