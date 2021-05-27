@@ -2,7 +2,7 @@
  The One Programming Language
 
  File: arg.c
-  _        _ 
+  _        _
  / \ |\ | |_    Author: Max Base
  \_/ | \| |_    Copyright 2021
 
@@ -21,7 +21,7 @@ void ArgsInit(Args* args)
 void ArgsParse(int argc, char** argv, char** env, Args* args, ErrorsContainer* errors)
 {
   args->argv = argv;
-  
+
   Array files;
   arrayInit(&files);
 
@@ -68,4 +68,3 @@ void ArgsVersion(FILE* file, Args* args)
   fprintf(file, ONE_VERSION);
 
 }
-
