@@ -1,8 +1,7 @@
-<start>        ::= <package> <includes> <parnet_items> | <empty>
+<start>        ::= <package> <includes> <parent_items> | <empty>
 
-<package>   ::= PACKAGE IDENTIFIER | <empty> ;; usually we not defaint for small program or run-able scripts
-
-<includes> ::= <includes> <include> | <empty> ;; It's for third party library; our standard library will was ready automatically for developers. e.g: `math.sin, math.cos, math.tan, ...` 
+<package>   ::= PACKAGE IDENTIFIER | <empty> ;; usually not required for small programs or runnable scripts; but maybe required when a library or package is defined
+<includes> ::= <includes> <include> | <empty> ;; to include third party libraries
 
 <include>   ::= USE <identifier_dots>
               | USE STRING
@@ -10,15 +9,15 @@
 <identifier_dots>  ::= <identifier_dots> "." IDENTIFIER
                      | IDENTIFIER
 
-<parnet_items> ::= <parent_item> <parnet_items>
+<parent_items> ::= <parent_item> <parent_items>
 
 <parent_item>  ::= <function>
                  | <global_define>
 
 <global_define>  ::= <global_struct>
-                   | <global_variable> ;; maybe we allow global variable in some special condition
+                   | <global_variable> ;; global variabes might be allowed in some special conditions
 
-<global_variable> ::= <datatype> IDENTIFIER 
+<global_variable> ::= <datatype> IDENTIFIER
                     | <datatype> IDENTIFIER "=" <expression_const>
 
 <global_struct>   ::= STRUCT IDENTIFIER "{" <struct_vars> "}"
@@ -28,7 +27,7 @@
 
 <function>     ::= <function_prototype> IDENTIFIER <function_arguments> <block>
 
-<function_prototype> ::= <datatype> | <empty> ;; default return type is I32 (int, 32bit) e.g: `main {}` and default return is `return 0`
+<function_prototype> ::= <datatype> | <empty> ;; default return type is I32 (int, 32bit) e.g: `main {}` and default return value is 0
 
 <function_arguments> ::= <function_arguments> "," <function_argument>
 
@@ -43,18 +42,18 @@
                         | U32
                         | U64
                         | STRING
-                        | CHAR ;; it's not c-like character, we can store UTF8 character at this too. (e.g: "ش")
+                        | CHAR ;; Unlike C language 'char' data type, it can store UTF8 characters. (e.g: "ش")
 
 <datatype>           ::= <datatype_primary>
                        | <datatype_primary> "[" "]"
-                       | IDENTIFIER ;; e.g: struct and user defined types
+                       | IDENTIFIER ;; to declare user defined data types like struct
 
 <function_argument>  ::= <datatype> IDENTIFIER
 
 <block>        ::= "{" <statements> "}"
 
 <statements>   ::= <statements> <statement>
-                 
+
 <statement>    ::= <statement_return>
                  | <statement_expression>
                  | <statement_if>
@@ -71,16 +70,16 @@
                  | <statement_printerr>
                  | <statement_printerrnl>
 
-<statement_repeat>  ::= REPEAT NUMBER <block> ;; for from 0 to j {...}
-                      | REPEAT NUMBER TO NUMBER <block> ;; for from i to j {...}
+<statement_repeat>  ::= REPEAT NUMBER <block> ;; for loop from 0 to j {...}
+                      | REPEAT NUMBER TO NUMBER <block> ;; for loop from i to j {...}
 
-<statement_print>   ::=  "_" <expressions> ;; in c: `printf("%1%2%3",...)`
+<statement_print>   ::=  "_" <expressions> ;; in C: `printf("%1%2%3",...)`
 
-<statement_printnl> ::=  "__" <expressions> ;; in c: `printf("%1\n%2\n%3\n",...)`
+<statement_printnl> ::=  "__" <expressions> ;; in C: `printf("%1\n%2\n%3\n",...)`
 
-<statement_printerr>::= "!_" <expressions> ;; in c: `fprintf(stderr, "%1%2%3",...)`
+<statement_printerr>::= "!_" <expressions> ;; in C: `fprintf(stderr, "%1%2%3",...)`
 
-<statement_printerrnl>::= "!__" <expressions> ;; in c: `fprintf(stderr, "%1\n%2\n%3\n",...)`
+<statement_printerrnl>::= "!__" <expressions> ;; in C: `fprintf(stderr, "%1\n%2\n%3\n",...)`
 
 <expressions>    ::= <expressions> "," <expression>
                    | <expression>
@@ -96,13 +95,13 @@
 <switch_case>    ::= CASE <expression_const> ":" <statements>
 
 <statement_for>  ::= FOR <expression> <block>
-                   | FOR IDENTIFIER IN <expression_const> <block> ;; e.g in python: `for item in array:`
+                   | FOR IDENTIFIER IN <expression_const> <block> ;; e.g: in python: `for item in array:`
 
 <statement_while>::= WHILE <expression> <block>
 
 <statement_dowhile>::= DO  <block> while <expression>
 
-<statement_return> ::= RETURN <expressions> ;; we allow returning multi variable in a functions
+<statement_return> ::= RETURN <expressions> ;; returning multiple values from a function is allowed
 
 <expression_const> :== <expression>
 

@@ -2,7 +2,7 @@
  The One Programming Language
 
  File: compile.h
-  _        _ 
+  _        _
  / \ |\ | |_    Author: Max Base
  \_/ | \| |_    Copyright 2021
 
