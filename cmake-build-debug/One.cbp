@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="One"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/max/Projects/One/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/max/Projects/One/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/max/Projects/One/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="One">
+				<Option output="/home/max/Projects/One/cmake-build-debug/One" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/max/Projects/One/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/max/Projects/One/src"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 One"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="One/fast">
+				<Option output="/home/max/Projects/One/cmake-build-debug/One" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/max/Projects/One/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/max/Projects/One/src"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 One/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/max/Projects/One/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/max/Projects/One/src/arg.c">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/arg.h">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/array.c">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/array.h">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/compile.c">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/compile.h">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/error.c">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/error.h">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/lexer.c">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/lexer.h">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/lexer.test.c">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/one.c">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/one.h">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/parser.c">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/parser.h">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/parser.test.c">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
