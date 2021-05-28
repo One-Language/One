@@ -1,3 +1,0 @@
-/home/max/Projects/One/build/CMakeFiles/rebuild_cache.dir
-/home/max/Projects/One/build/CMakeFiles/edit_cache.dir
-/home/max/Projects/One/build/CMakeFiles/One.dir
