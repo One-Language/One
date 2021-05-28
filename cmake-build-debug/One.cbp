@@ -102,6 +102,12 @@
 		<Unit filename="/home/max/Projects/One/src/error.h">
 			<Option target="One"/>
 		</Unit>
+		<Unit filename="/home/max/Projects/One/src/file.c">
+			<Option target="One"/>
+		</Unit>
+		<Unit filename="/home/max/Projects/One/src/file.h">
+			<Option target="One"/>
+		</Unit>
 		<Unit filename="/home/max/Projects/One/src/lexer.c">
 			<Option target="One"/>
 		</Unit>

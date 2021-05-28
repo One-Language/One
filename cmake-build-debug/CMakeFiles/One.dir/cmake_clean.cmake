@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/One.dir/src/array.c.o"
   "CMakeFiles/One.dir/src/compile.c.o"
   "CMakeFiles/One.dir/src/error.c.o"
+  "CMakeFiles/One.dir/src/file.c.o"
   "CMakeFiles/One.dir/src/lexer.c.o"
   "CMakeFiles/One.dir/src/lexer.test.c.o"
   "CMakeFiles/One.dir/src/one.c.o"

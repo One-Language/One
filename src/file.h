@@ -1,16 +1,16 @@
 /**
  The One Programming Language
 
- File: one.h
+ File: file.h
   _        _
  / \ |\ | |_    Max Base
  \_/ | \| |_    Copyright 2021
 
  **/
 
-#ifndef _ONE_H_
-#define _ONE_H_
+#ifndef _FILE_H_
+#define _FILE_H_
 
-#define ONE_VERSION "0.1.0"
+char* fileReads(const char*);
 
 #endif

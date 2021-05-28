@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/max/Projects/One/src/array.c" "/home/max/Projects/One/cmake-build-debug/CMakeFiles/One.dir/src/array.c.o"
   "/home/max/Projects/One/src/compile.c" "/home/max/Projects/One/cmake-build-debug/CMakeFiles/One.dir/src/compile.c.o"
   "/home/max/Projects/One/src/error.c" "/home/max/Projects/One/cmake-build-debug/CMakeFiles/One.dir/src/error.c.o"
+  "/home/max/Projects/One/src/file.c" "/home/max/Projects/One/cmake-build-debug/CMakeFiles/One.dir/src/file.c.o"
   "/home/max/Projects/One/src/lexer.c" "/home/max/Projects/One/cmake-build-debug/CMakeFiles/One.dir/src/lexer.c.o"
   "/home/max/Projects/One/src/lexer.test.c" "/home/max/Projects/One/cmake-build-debug/CMakeFiles/One.dir/src/lexer.test.c.o"
   "/home/max/Projects/One/src/one.c" "/home/max/Projects/One/cmake-build-debug/CMakeFiles/One.dir/src/one.c.o"

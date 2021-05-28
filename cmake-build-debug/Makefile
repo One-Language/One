@@ -250,6 +250,33 @@ src/error.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/One.dir/build.make CMakeFiles/One.dir/src/error.c.s
 .PHONY : src/error.c.s
 
+src/file.o: src/file.c.o
+
+.PHONY : src/file.o
+
+# target to build an object file
+src/file.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/One.dir/build.make CMakeFiles/One.dir/src/file.c.o
+.PHONY : src/file.c.o
+
+src/file.i: src/file.c.i
+
+.PHONY : src/file.i
+
+# target to preprocess a source file
+src/file.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/One.dir/build.make CMakeFiles/One.dir/src/file.c.i
+.PHONY : src/file.c.i
+
+src/file.s: src/file.c.s
+
+.PHONY : src/file.s
+
+# target to generate assembly for a file
+src/file.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/One.dir/build.make CMakeFiles/One.dir/src/file.c.s
+.PHONY : src/file.c.s
+
 src/lexer.o: src/lexer.c.o
 
 .PHONY : src/lexer.o
@@ -406,6 +433,9 @@ help:
 	@echo "... src/error.o"
 	@echo "... src/error.i"
 	@echo "... src/error.s"
+	@echo "... src/file.o"
+	@echo "... src/file.i"
+	@echo "... src/file.s"
 	@echo "... src/lexer.o"
 	@echo "... src/lexer.i"
 	@echo "... src/lexer.s"
