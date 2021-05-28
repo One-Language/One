@@ -50,6 +50,12 @@ Tell us about your experience at University or your fun projects about Compilers
 Do you know about Flex and Bison/Yacc:
 <!-- Please write here -->
 
+Do you know about JIT Compilers:
+<!-- Please write here -->
+
+Do you know about LLVM:
+<!-- Please write here -->
+
 Tell us your opinion about "One language" and create a new language:
 <!-- Please write here -->
 
