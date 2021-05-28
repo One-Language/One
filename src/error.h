@@ -11,10 +11,10 @@
 #ifndef _ERROR_H_
 #define _ERROR_H_
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 typedef int Position;
 
@@ -25,7 +25,7 @@ typedef enum {
 } ErrorLevel;
 
 typedef struct {
-  char* message;
+  char *message;
   Position position;
   ErrorLevel level;
 } Error;
@@ -33,11 +33,11 @@ typedef struct {
 typedef struct {
   int error_count;
   int error_capacity;
-  Error* errors;
+  Error *errors;
 } ErrorsContainer;
 
-void ErrorsInit(ErrorsContainer*);
-void ErrorsPrint(FILE*, ErrorsContainer*);
-void ErrorsFree(ErrorsContainer*);
+void ErrorsInit(ErrorsContainer *);
+void ErrorsPrint(FILE *, ErrorsContainer *);
+void ErrorsFree(ErrorsContainer *);
 
 #endif

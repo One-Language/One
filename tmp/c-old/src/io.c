@@ -22,7 +22,7 @@
 char *read_file(char *filename) {
   FILE *onefile = fopen(filename, "rb");
 
-  if(onefile == NULL) {
+  if (onefile == NULL) {
     return NULL;
   }
 
@@ -31,13 +31,13 @@ char *read_file(char *filename) {
   rewind(onefile);
   char *onebuffer = (char *)malloc(onefilesize + 1);
 
-  if(onebuffer == NULL) {
+  if (onebuffer == NULL) {
     error("error malloc onebuffer\n");
     return NULL;
   }
 
   size_t onebytesread = fread(onebuffer, 1, onefilesize, onefile);
-  if(onebytesread < onefilesize) {
+  if (onebytesread < onefilesize) {
     free(onebuffer);
     error("Could not read file.one\n");
     return NULL;

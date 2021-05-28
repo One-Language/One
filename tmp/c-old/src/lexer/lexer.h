@@ -18,11 +18,11 @@
  */
 
 #ifndef _LEXER_H_
-	#define _LEXER_H_
+#define _LEXER_H_
 
-	#include "../one.h"
+#include "../one.h"
 
-	Token lexer_next(Source *src);
-	void lexer_scan(Source *src);
+Token lexer_next(Source *src);
+void lexer_scan(Source *src);
 
 #endif

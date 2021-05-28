@@ -14,12 +14,12 @@
 typedef struct {
   int count;
   int size;
-  void** data;
+  void **data;
 } Array;
 
-void arrayInit(Array*);
-void arrayPush(Array*, void*);
-void* arrayPop(Array*);
-void arrayFree(Array*);
+void arrayInit(Array *);
+void arrayPush(Array *, void *);
+void *arrayPop(Array *);
+void arrayFree(Array *);
 
 #endif

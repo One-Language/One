@@ -20,10 +20,10 @@
 #include "token.h"
 
 Token token_new(void) {
-	Token t;
-	t.line = 1;
-	t.offset = 0;
-	t.tok = 0;
-	t.name = "None";
-	return t;
+  Token t;
+  t.line = 1;
+  t.offset = 0;
+  t.tok = 0;
+  t.name = "None";
+  return t;
 }
