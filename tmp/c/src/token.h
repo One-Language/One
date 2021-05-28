@@ -23,7 +23,7 @@ typedef enum tokenType {
   tok_number = -5,
   tok_string = -6,
 
-  tok_define = -8, // '=='
+  tok_define = -8,  // '=='
   tok_div_int = -9, // '//'
 
   tok_type_i8 = -10,
@@ -49,36 +49,35 @@ typedef enum tokenType {
 
 typedef struct token {
   TokenType type;
-  size_t    l;    // line number: default is 1
-  size_t    c;    // column number: default is 0
+  size_t l; // line number: default is 1
+  size_t c; // column number: default is 0
 
-  int       vint;
-  sds       vstring;
+  int vint;
+  sds vstring;
 } Token;
 
-
-void token_init(Lexer*);
+void token_init(Lexer *);
 
 bool token_is_space(char);
 bool token_is_alpha(char);
 bool token_is_number(char);
 bool token_is_digit(char);
 bool token_is_ident(char);
-bool token_is_end(Lexer*);
+bool token_is_end(Lexer *);
 
-char token_nextchar(Lexer*);
-char token_prevchar(Lexer*);
+char token_nextchar(Lexer *);
+char token_prevchar(Lexer *);
 
 // Token* token_get(Lexer*);
 // Token* token_getnext(Lexer*);
 
-Token* token_next(Lexer*);
-Token* token_prev(Lexer*);
+Token *token_next(Lexer *);
+Token *token_prev(Lexer *);
 
-void token_free(Token*);
-char* token_name(Token*);
-void token_log(Token*);
-Token* token_get(Lexer*);
-bool token_is_operator(Token*);
+void token_free(Token *);
+char *token_name(Token *);
+void token_log(Token *);
+Token *token_get(Lexer *);
+bool token_is_operator(Token *);
 
 #endif

@@ -56,13 +56,13 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 - Ability to create output file (x86_64, i386)
 - System Programming Language
 - Intermediate level
-- Supports Web Programming
-  - Automatic generation of correspoding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website.
+- Network and API programming
+- Supports Web Programming (in the future)
+  - Automatic generation of corresponding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website.
   - Uses variables in CSS, so that we can obtain the colors or sizes from the database.
   - Auto minify the page results.
-- Network and API programming
 - Performance and high speed
-- Supports inline Assembly code
+- Supports inline Assembly code (in the future)
 - Does not require specific libraries and tools on the user system in normal mode (in the future)
 - Does not require external runtime libraries in normal mode (in the future)
 - Does not require external compilers to do the compilation (in the future)
@@ -240,7 +240,7 @@ end
 <hr/>
 
 <h3>Old GUI Development : (Web, Software)</h3>
-This architecture is being designed only for websites and native softwares. In the future, it will also be available for mobile apps (native). <br/>
+This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native). <br/>
 Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate  working of the language:
 
 ```css
@@ -326,7 +326,7 @@ __Convert to HTML/CSS/JS base:__
 
 <h2 id="Getting-started">➤ Getting Started</h2>
 
-Refere [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
+Refer [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
 <!--Installation Steps-->
 
 <!--Prerequisites-->

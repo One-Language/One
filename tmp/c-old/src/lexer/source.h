@@ -20,26 +20,26 @@
 #include "../one.h"
 
 #ifndef _SOURCE_H_
-	#define _SOURCE_H_
+#define _SOURCE_H_
 
-	typedef struct {
-		// if path equal to NULL, so current location
-		char *path;
+typedef struct {
+  // if path equal to NULL, so current location
+  char *path;
 
-		// probably like to `input.one`
-		char *filename;
+  // probably like to `input.one`
+  char *filename;
 
-		// content string
-		char *data;
+  // content string
+  char *data;
 
-		// line number of current token
-		int line;
+  // line number of current token
+  int line;
 
-		// column number of current token
-		int column; // TODO: start_column, and end_column
-	} Source;
+  // column number of current token
+  int column; // TODO: start_column, and end_column
+} Source;
 
-	Source source_new(void);
-	Source source_new_data(char *data);
+Source source_new(void);
+Source source_new_data(char *data);
 
 #endif

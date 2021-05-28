@@ -8,12 +8,11 @@
 
  **/
 
-#include "error.h"
 #include "arg.h"
 #include "compile.h"
+#include "error.h"
 
-int main(int argc, char** argv, char** env)
-{
+int main(int argc, char **argv, char **env) {
   int ret = EXIT_SUCCESS;
 
   ErrorsContainer errors;
@@ -23,11 +22,11 @@ int main(int argc, char** argv, char** env)
   ArgsInit(&args);
   ArgsParse(argc, argv, env, &args, &errors);
 
-  if(args.help) {
+  if (args.help) {
     ArgsHelp(stderr, &args);
-  } else if(args.version) {
+  } else if (args.version) {
     ArgsVersion(stderr, &args);
-  } else if(args.input_file_count > 0) {
+  } else if (args.input_file_count > 0) {
     ret = compile(&args, &errors);
   } else {
     ArgsHelp(stderr, &args);

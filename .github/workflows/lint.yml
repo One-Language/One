@@ -3,13 +3,6 @@ name: Lint
 on: [pull_request]
 
 jobs:
-  merge-conflict:
-    name: Merge Conflict
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Check merge conflict
-        run: grep "^<<<<<<< HEAD" $(git ls-files | xargs) && exit 1 || true
   misspell:
     name: Check Spelling Misspell All Files In Commit
     runs-on: ubuntu-latest
@@ -34,16 +27,9 @@ jobs:
           pip install pre-commit
       - name: Set PY
         run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
-      - uses: actions/cache@v2.1.5
+      - uses: actions/cache@v2.1.6
         with:
           path: ~/.cache/pre-commit
           key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Run pre-commit
         run: pre-commit run --all-files
-  trailing-whitespace:
-    name: Trailing Whitespace
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Check for trailing whitespace
-        run: "! git grep -EIn $'[ \t]+$'"

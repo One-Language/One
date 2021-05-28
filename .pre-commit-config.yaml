@@ -25,6 +25,13 @@ repos:
   #  hooks:
   #    - id: forbid-tabs
   #    - id: remove-tabs
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.0.0
+    hooks:
+      - id: codespell
+        name: Run codespell
+        description: Check spelling with codespell
+        entry: codespell --ignore-words=codespell.txt
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.27.1
     hooks:

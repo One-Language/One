@@ -15,7 +15,7 @@
                  | <global_define>
 
 <global_define>  ::= <global_struct>
-                   | <global_variable> ;; global variabes might be allowed in some special conditions
+                   | <global_variable> ;; global variables might be allowed in some special conditions
 
 <global_variable> ::= <datatype> IDENTIFIER
                     | <datatype> IDENTIFIER "=" <expression_const>

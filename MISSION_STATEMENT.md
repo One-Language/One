@@ -5,7 +5,7 @@
 
 ## A draft summary from whole of the project
 
-What does this means? A tool to write command-line softwares.
+What does this means? A tool to write command-line software.
 > system-level, processing tool, doing calculate, for mathematics purpose, etc.
 E.g: C, Go, Rust, C++
 
