@@ -10,7 +10,7 @@
 
 char* fileReads(const char* filename)
 {
-	
+
 }
 
 #include "file.h"
