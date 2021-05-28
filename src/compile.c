@@ -8,26 +8,23 @@
 
  **/
 
-#include "error.h"
-#include "arg.h"
 #include "compile.h"
+#include "arg.h"
+#include "error.h"
 
-void link(Args* args, ErrorsContainer* errors)
-{
+void link(Args *args, ErrorsContainer *errors) {
     // TODO, link all object file(s) and create final executable file!
 }
 
-int compileString(char* filename)
-{
+int compileString(char *filename) {
     return EXIT_SUCCESS;
 }
 
-int compile(Args* args, ErrorsContainer* errors)
-{
-    if(args->input_file_count == 0) return EXIT_FAILURE;
+int compile(Args *args, ErrorsContainer *errors) {
+    if (args->input_file_count == 0) return EXIT_FAILURE;
 
     int res = EXIT_SUCCESS;
-    for(int i=0;i<args->input_file_count;i++) {
+    for (int i = 0; i < args->input_file_count; i++) {
         int res_now = compileString(args->input_files[i]);
 
         if (res_now != EXIT_SUCCESS) {
