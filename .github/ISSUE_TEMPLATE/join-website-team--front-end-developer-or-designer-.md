@@ -26,10 +26,11 @@ List of languages with experience level:
 <!-- Please remove and change the following languages name and description -->
 <!-- All the following information is just an example and it's not a MUST, you have to fill this with your situation. -->
 
-- **C**: 3 years experience (And tell us about libraries you have worked on. e.g: libcurl, OpenSSL, and every library you worked in at C.)
-- **C++**: 1 years experience
-- **Python**: Just for fun to write 3-5 scripts without professional experience
-- **Batch/Bash**: Just for personal needs
+- **HTML5**: 3 years experience
+- **CSS3**: 1 years experience
+- **Vanila JS**: Just for fun to write 3-5 scripts without professional experience (And tell us about libraries you have worked on. e.g: axios, and every library you worked in at JS.)
+- **ReactJS**: Just for personal needs (And tell us about libraries you have worked on)
+- **VueJS**: Just for personal needs (And tell us about libraries you have worked on)
 
 ## Front-end experience
 
