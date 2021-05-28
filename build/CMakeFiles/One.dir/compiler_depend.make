@@ -3,7 +3,9 @@
 
 CMakeFiles/One.dir/src/arg.c.o: ../src/arg.c \
   /usr/include/stdc-predef.h \
+  ../src/array.h \
   ../src/error.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
   /usr/include/stdio.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/features.h \
@@ -58,8 +60,6 @@ CMakeFiles/One.dir/src/arg.c.o: ../src/arg.c \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/__locale_t.h \
   /usr/include/strings.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
-  ../src/array.h \
   ../src/arg.h \
   ../src/one.h
 
@@ -111,6 +111,7 @@ CMakeFiles/One.dir/src/array.c.o: ../src/array.c \
 CMakeFiles/One.dir/src/compile.c.o: ../src/compile.c \
   /usr/include/stdc-predef.h \
   ../src/error.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
   /usr/include/stdio.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/features.h \
@@ -165,13 +166,14 @@ CMakeFiles/One.dir/src/compile.c.o: ../src/compile.c \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/__locale_t.h \
   /usr/include/strings.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
   ../src/arg.h \
+  ../src/array.h \
   ../src/compile.h
 
 CMakeFiles/One.dir/src/error.c.o: ../src/error.c \
   /usr/include/stdc-predef.h \
   ../src/error.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
   /usr/include/stdio.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/features.h \
@@ -225,8 +227,7 @@ CMakeFiles/One.dir/src/error.c.o: ../src/error.c \
   /usr/include/string.h \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/__locale_t.h \
-  /usr/include/strings.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h
+  /usr/include/strings.h
 
 CMakeFiles/One.dir/src/lexer.c.o: ../src/lexer.c \
   /usr/include/stdc-predef.h
@@ -236,7 +237,8 @@ CMakeFiles/One.dir/src/lexer.test.c.o: ../src/lexer.test.c \
 
 CMakeFiles/One.dir/src/one.c.o: ../src/one.c \
   /usr/include/stdc-predef.h \
-  ../src/error.h \
+  ../src/arg.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
   /usr/include/stdio.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/features.h \
@@ -291,8 +293,8 @@ CMakeFiles/One.dir/src/one.c.o: ../src/one.c \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/__locale_t.h \
   /usr/include/strings.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
-  ../src/arg.h \
+  ../src/error.h \
+  ../src/array.h \
   ../src/compile.h
 
 CMakeFiles/One.dir/src/parser.c.o: ../src/parser.c \
@@ -313,16 +315,6 @@ CMakeFiles/One.dir/src/parser.test.c.o: ../src/parser.test.c \
 ../src/compile.c:
 
 ../src/one.h:
-
-/usr/include/bits/waitstatus.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h:
-
-/usr/include/bits/waitflags.h:
-
-/usr/include/bits/types/__sigset_t.h:
-
-/usr/include/bits/floatn-common.h:
 
 /usr/include/bits/floatn.h:
 
@@ -352,6 +344,20 @@ CMakeFiles/One.dir/src/parser.test.c.o: ../src/parser.test.c \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdarg.h:
 
+/usr/include/bits/floatn-common.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/uintn-identity.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stddef.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/bits/time64.h:
+
+/usr/include/string.h:
+
 ../src/error.h:
 
 /usr/include/stdlib.h:
@@ -378,27 +384,23 @@ CMakeFiles/One.dir/src/parser.test.c.o: ../src/parser.test.c \
 
 /usr/include/features.h:
 
-/usr/include/bits/endian.h:
-
-/usr/include/bits/timesize.h:
-
-/usr/include/sys/cdefs.h:
-
 /usr/include/gnu/stubs-64.h:
 
 /usr/include/bits/struct_mutex.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stddef.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h:
 
-/usr/include/bits/uintn-identity.h:
-
-/usr/include/bits/typesizes.h:
-
-/usr/include/bits/time64.h:
-
-/usr/include/string.h:
+/usr/include/bits/waitstatus.h:
 
 /usr/include/gnu/stubs.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/timesize.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/bits/types/__sigset_t.h:
 
 /usr/include/sys/types.h:
 

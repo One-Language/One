@@ -8,9 +8,9 @@
 
  **/
 
-#include "arg.h"
 #include "array.h"
 #include "error.h"
+#include "arg.h"
 #include "one.h"
 
 void ArgsInit(Args *args) {}

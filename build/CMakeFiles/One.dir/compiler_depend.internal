@@ -4,7 +4,9 @@
 CMakeFiles/One.dir/src/arg.c.o
  /home/max/Projects/One/src/arg.c
  /usr/include/stdc-predef.h
+ /home/max/Projects/One/src/array.h
  /home/max/Projects/One/src/error.h
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h
  /usr/include/stdio.h
  /usr/include/bits/libc-header-start.h
  /usr/include/features.h
@@ -59,8 +61,6 @@ CMakeFiles/One.dir/src/arg.c.o
  /usr/include/bits/types/locale_t.h
  /usr/include/bits/types/__locale_t.h
  /usr/include/strings.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h
- /home/max/Projects/One/src/array.h
  /home/max/Projects/One/src/arg.h
  /home/max/Projects/One/src/one.h
 
@@ -114,6 +114,7 @@ CMakeFiles/One.dir/src/compile.c.o
  /home/max/Projects/One/src/compile.c
  /usr/include/stdc-predef.h
  /home/max/Projects/One/src/error.h
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h
  /usr/include/stdio.h
  /usr/include/bits/libc-header-start.h
  /usr/include/features.h
@@ -168,14 +169,15 @@ CMakeFiles/One.dir/src/compile.c.o
  /usr/include/bits/types/locale_t.h
  /usr/include/bits/types/__locale_t.h
  /usr/include/strings.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h
  /home/max/Projects/One/src/arg.h
+ /home/max/Projects/One/src/array.h
  /home/max/Projects/One/src/compile.h
 
 CMakeFiles/One.dir/src/error.c.o
  /home/max/Projects/One/src/error.c
  /usr/include/stdc-predef.h
  /home/max/Projects/One/src/error.h
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h
  /usr/include/stdio.h
  /usr/include/bits/libc-header-start.h
  /usr/include/features.h
@@ -230,7 +232,6 @@ CMakeFiles/One.dir/src/error.c.o
  /usr/include/bits/types/locale_t.h
  /usr/include/bits/types/__locale_t.h
  /usr/include/strings.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h
 
 CMakeFiles/One.dir/src/lexer.c.o
  /home/max/Projects/One/src/lexer.c
@@ -243,7 +244,8 @@ CMakeFiles/One.dir/src/lexer.test.c.o
 CMakeFiles/One.dir/src/one.c.o
  /home/max/Projects/One/src/one.c
  /usr/include/stdc-predef.h
- /home/max/Projects/One/src/error.h
+ /home/max/Projects/One/src/arg.h
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h
  /usr/include/stdio.h
  /usr/include/bits/libc-header-start.h
  /usr/include/features.h
@@ -298,8 +300,8 @@ CMakeFiles/One.dir/src/one.c.o
  /usr/include/bits/types/locale_t.h
  /usr/include/bits/types/__locale_t.h
  /usr/include/strings.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h
- /home/max/Projects/One/src/arg.h
+ /home/max/Projects/One/src/error.h
+ /home/max/Projects/One/src/array.h
  /home/max/Projects/One/src/compile.h
 
 CMakeFiles/One.dir/src/parser.c.o

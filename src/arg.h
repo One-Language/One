@@ -16,6 +16,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "error.h"
+#include "array.h"
+
 typedef struct {
   bool help;
   bool version;
