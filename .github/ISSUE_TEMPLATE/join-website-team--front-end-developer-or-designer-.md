@@ -2,7 +2,7 @@
 name: Join Website team (Front-end developer or Designer)
 about: I want to join Website Team.
 title: "[Join] Website team"
-labels: ''
+labels: Join
 assignees: ''
 
 ---
@@ -31,18 +31,9 @@ List of languages with experience level:
 - **Python**: Just for fun to write 3-5 scripts without professional experience
 - **Batch/Bash**: Just for personal needs
 
-## Operation Systems
-<!-- Why we ask about OS Because maybe we need a test on a special OS target and we can easily mention you for that. Thank you for your following. -->
+## Front-end experience
 
-List of Operating system with your experience level:
-<!-- Please remove and change the following OS name and description -->
-
-- **Windows**: Windows 7 or 10 (I have a PC or I have it in a virtual machine)
-- **Linux**: CentOS or Ubuntu or Arch, etc (Primary OS on laptop or desktop)
-
-## Compiler experience
-
-Tell us about your experience at University or your fun projects about Compilers and Interpreters:
+Tell us about your experience or your fun projects about website design or programming:
 <!-- Please write here -->
 <!-- Please share all of your projects and repositories in this field if you have something. -->
 
