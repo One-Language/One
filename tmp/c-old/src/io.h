@@ -18,10 +18,10 @@
  */
 
 #ifndef _IO_H_
-	#define _IO_H_
+#define _IO_H_
 
-	#include "one.h"
+#include "one.h"
 
-	char *read_file(char *filename);
+char *read_file(char *filename);
 
 #endif

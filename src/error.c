@@ -10,16 +10,8 @@
 
 #include "error.h"
 
-void ErrorsInit(ErrorsContainer* container)
-{
+void ErrorsInit(ErrorsContainer *container) {}
 
-}
+void ErrorsPrint(FILE *f, ErrorsContainer *errors) {}
 
-void ErrorsPrint(FILE* f, ErrorsContainer* errors)
-{
-
-}
-
-void ErrorsFree(ErrorsContainer* errors)
-{
-}
+void ErrorsFree(ErrorsContainer *errors) {}

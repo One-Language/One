@@ -18,35 +18,35 @@
  */
 
 #ifndef _ONE_H_
-	#define _ONE_H_
+#define _ONE_H_
 
-	// glibc, runtime library
-	#include <stdio.h>		// printf, fopen, fclose
-	#include <stdlib.h>		// malloc, free
-	#include <string.h>		// strcmp
-	#include <stddef.h>		// NULL
+// glibc, runtime library
+#include <stddef.h> // NULL
+#include <stdio.h>  // printf, fopen, fclose
+#include <stdlib.h> // malloc, free
+#include <string.h> // strcmp
 
-	#define printf printf
-	#define print printf
+#define printf printf
+#define print printf
 
-	// own inside library
-	#include "io.h"
-	#include "lexer/token.h"
-	#include "lexer/source.h"
-	#include "lexer/lexer.h"
+// own inside library
+#include "io.h"
+#include "lexer/lexer.h"
+#include "lexer/source.h"
+#include "lexer/token.h"
 
-	// primary data
-	#define VERSION "0.3.0"
-	#define ARCH "linux/amd64"
+// primary data
+#define VERSION "0.3.0"
+#define ARCH "linux/amd64"
 
-	// functions
-	void error(char *message);
-	void main_help(void);
-	void main_badcommand(int argc, char *argv[]);
-	void main_badparam(void);
-	void main_badflag(void);
-	void main_version(int argc);
-	void main_parse(int argc, char *argv[]);
-	int main(int argc, char *argv[]);
+// functions
+void error(char *message);
+void main_help(void);
+void main_badcommand(int argc, char *argv[]);
+void main_badparam(void);
+void main_badflag(void);
+void main_version(int argc);
+void main_parse(int argc, char *argv[]);
+int main(int argc, char *argv[]);
 
 #endif

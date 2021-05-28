@@ -11,6 +11,6 @@
 #ifndef _COMPILE_H_
 #define _COMPILE_H_
 
-int compile(Args*, ErrorsContainer*);
+int compile(Args *, ErrorsContainer *);
 
 #endif

@@ -12,17 +12,17 @@
 #define _ARG_H_
 
 typedef struct {
-	bool help;
-	bool version;
-	bool debug;
+  bool help;
+  bool version;
+  bool debug;
 
-	char** input_files;
+  char **input_files;
 
-    int argc;
-    char** argv;
-    char** env;
+  int argc;
+  char **argv;
+  char **env;
 } Args;
 
-void parseArgs(int argc, char** argv, char** env, Args* args);
+void parseArgs(int argc, char **argv, char **env, Args *args);
 
 #endif
