@@ -3,8 +3,7 @@
 
 CMakeFiles/One.dir/src/arg.c.o: ../src/arg.c \
   /usr/include/stdc-predef.h \
-  ../src/array.h \
-  ../src/error.h \
+  ../src/arg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
   /usr/include/stdio.h \
   /usr/include/bits/libc-header-start.h \
@@ -60,7 +59,8 @@ CMakeFiles/One.dir/src/arg.c.o: ../src/arg.c \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/__locale_t.h \
   /usr/include/strings.h \
-  ../src/arg.h \
+  ../src/error.h \
+  ../src/array.h \
   ../src/one.h
 
 CMakeFiles/One.dir/src/array.c.o: ../src/array.c \
@@ -110,7 +110,8 @@ CMakeFiles/One.dir/src/array.c.o: ../src/array.c \
 
 CMakeFiles/One.dir/src/compile.c.o: ../src/compile.c \
   /usr/include/stdc-predef.h \
-  ../src/error.h \
+  ../src/compile.h \
+  ../src/arg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
   /usr/include/stdio.h \
   /usr/include/bits/libc-header-start.h \
@@ -166,9 +167,8 @@ CMakeFiles/One.dir/src/compile.c.o: ../src/compile.c \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/__locale_t.h \
   /usr/include/strings.h \
-  ../src/arg.h \
-  ../src/array.h \
-  ../src/compile.h
+  ../src/error.h \
+  ../src/array.h
 
 CMakeFiles/One.dir/src/error.c.o: ../src/error.c \
   /usr/include/stdc-predef.h \
@@ -316,15 +316,23 @@ CMakeFiles/One.dir/src/parser.test.c.o: ../src/parser.test.c \
 
 ../src/one.h:
 
+../src/compile.h:
+
+../src/array.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/types/__sigset_t.h:
+
+/usr/include/bits/floatn-common.h:
+
+/usr/include/bits/types/FILE.h:
+
 /usr/include/bits/floatn.h:
 
 ../src/array.c:
 
 /usr/include/bits/types/__mbstate_t.h:
-
-../src/compile.h:
-
-../src/array.h:
 
 /usr/include/bits/types/__fpos_t.h:
 
@@ -336,35 +344,19 @@ CMakeFiles/One.dir/src/parser.test.c.o: ../src/parser.test.c \
 
 /usr/include/bits/types.h:
 
-/usr/include/bits/types/FILE.h:
-
 /usr/include/bits/types/__fpos64_t.h:
 
 /usr/include/bits/select.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdarg.h:
 
-/usr/include/bits/floatn-common.h:
+/usr/include/bits/endian.h:
+
+/usr/include/bits/timesize.h:
 
 /usr/include/sys/cdefs.h:
 
-/usr/include/bits/uintn-identity.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stddef.h:
-
-/usr/include/bits/typesizes.h:
-
-/usr/include/bits/time64.h:
-
-/usr/include/string.h:
-
-../src/error.h:
-
 /usr/include/stdlib.h:
-
-/usr/include/bits/struct_rwlock.h:
-
-/usr/include/bits/types/time_t.h:
 
 /usr/include/bits/long-double.h:
 
@@ -388,19 +380,21 @@ CMakeFiles/One.dir/src/parser.test.c.o: ../src/parser.test.c \
 
 /usr/include/bits/struct_mutex.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stddef.h:
+
+/usr/include/bits/uintn-identity.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/bits/time64.h:
+
+/usr/include/string.h:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h:
 
 /usr/include/bits/waitstatus.h:
 
 /usr/include/gnu/stubs.h:
-
-/usr/include/bits/waitflags.h:
-
-/usr/include/bits/timesize.h:
-
-/usr/include/bits/endian.h:
-
-/usr/include/bits/types/__sigset_t.h:
 
 /usr/include/sys/types.h:
 
@@ -439,6 +433,12 @@ CMakeFiles/One.dir/src/parser.test.c.o: ../src/parser.test.c \
 /usr/include/stdc-predef.h:
 
 /usr/include/bits/pthreadtypes-arch.h:
+
+/usr/include/bits/types/time_t.h:
+
+/usr/include/bits/struct_rwlock.h:
+
+../src/error.h:
 
 /usr/include/alloca.h:
 

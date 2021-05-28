@@ -29,6 +29,7 @@ int compile(Args *args, ErrorsContainer *errors) {
 
         if (res_now != EXIT_SUCCESS) {
             res = res_now;
+            break; // TODO: stop to parse other files or no?
         }
         printf("-->%s\n", args->input_files[i]);
     }

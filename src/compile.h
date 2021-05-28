@@ -14,8 +14,8 @@
 #include "arg.h"
 #include "compile.h"
 
-void link(Args*, ErrorsContainer*);
-int compileString(char*);
-int compile(Args*, ErrorsContainer*);
+void link(Args *, ErrorsContainer *);
+int compileString(char *);
+int compile(Args *, ErrorsContainer *);
 
 #endif

@@ -1,6 +1,5 @@
 CMakeFiles/One.dir/src/arg.c.o: /home/max/Projects/One/src/arg.c \
- /usr/include/stdc-predef.h /home/max/Projects/One/src/array.h \
- /home/max/Projects/One/src/error.h \
+ /usr/include/stdc-predef.h /home/max/Projects/One/src/arg.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
  /usr/include/stdio.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/sys/cdefs.h \
@@ -31,5 +30,5 @@ CMakeFiles/One.dir/src/arg.c.o: /home/max/Projects/One/src/arg.c \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/bits/stdlib-float.h /usr/include/string.h \
  /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
- /usr/include/strings.h /home/max/Projects/One/src/arg.h \
- /home/max/Projects/One/src/one.h
+ /usr/include/strings.h /home/max/Projects/One/src/error.h \
+ /home/max/Projects/One/src/array.h /home/max/Projects/One/src/one.h
