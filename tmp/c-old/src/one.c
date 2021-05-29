@@ -31,13 +31,13 @@ void main_help(void)
 		  "\n"
 		  "Usage:\n"
 		  "\n"
-		  "	one <command> [arguments]\n"
+		  "    one <command> [arguments]\n"
 		  "\n"
 		  "The commands are:\n"
 		  "\n"
-		  "	build       compile packages and dependencies\n"
-		  "	run         compile and run One program\n"
-		  "	version     print One version\n"
+		  "    build       compile packages and dependencies\n"
+		  "    run         compile and run One program\n"
+		  "    version     print One version\n"
 		  "\n");
 }
 
@@ -98,7 +98,7 @@ void main_parse(int argc, char *argv[])
 {
 	// printf("-->%d\n", argc);
 	// for(int i=0; i<argc; i++) {
-	// 	printf("   %s\n", argv[i]);
+	//     printf("   %s\n", argv[i]);
 	// }
 
 	// $ one

@@ -56,19 +56,19 @@ void ArgsParse(int argc, char **argv, char **env, Args *args, ErrorsContainer *e
 
 void ArgsFree(Args *args)
 {
-	//	 free argc
+	//     free argc
 	for (int i = 0; i < args->argc; i++)
 		free(args->argv[i]);
 
-	//	 free input_files
-	//	 TODO
-	//	for (int i = 0; i < args->input_file_count; i++) {
-	//	    printf("free %d\n", i);
+	//     free input_files
+	//     TODO
+	//    for (int i = 0; i < args->input_file_count; i++) {
+	//        printf("free %d\n", i);
 	//        free(args->input_files[i]);
-	//	}
+	//    }
 
-	//	 free env
-	//	 TODO
+	//     free env
+	//     TODO
 }
 
 void ArgsHelp(FILE *file, Args *args)

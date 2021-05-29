@@ -34,8 +34,8 @@ void file_parse(char *);
 int main(int argc, char **argv, char **env);
 
 // typedef enum {
-// 	FALSE,
-// 	TRUE
+//     FALSE,
+//     TRUE
 // } bool;
 
 // enum _bool {
