@@ -20,21 +20,23 @@
 #ifndef _TOKEN_H_
 #define _TOKEN_H_
 
-typedef struct {
-  // LOG
-  int line;
-  int offset;
+typedef struct
+{
+	// LOG
+	int line;
+	int offset;
 
-  // DATA
-  unsigned int tok;
-  char *name;
-  char *value;
+	// DATA
+	unsigned int tok;
+	char *name;
+	char *value;
 } Token;
 
 #include "../one.h"
 
-enum one_token {
-  TOK_START = 255
+enum one_token
+{
+	TOK_START = 255
 #define DEF(id, str) , id
 #include "tokens.h"
 #undef DEF

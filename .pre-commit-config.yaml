@@ -38,6 +38,7 @@ repos:
       - id: markdownlint
         name: Run markdownlint
         entry: markdownlint -c .github/linters/.markdown-lint.yml .
+        exclude: ^\.github/.*$
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.26.1
     hooks:
@@ -45,3 +46,8 @@ repos:
         name: Check YAML files with yamllint
         entry: yamllint --strict -c .github/linters/.yaml-lint.yml .
         types: [yaml]
+  - repo: https://github.com/pocc/pre-commit-hooks
+    rev: v1.1.1
+    hooks:
+      - id: clang-format
+        args: [-i, --style=file]

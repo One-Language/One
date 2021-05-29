@@ -11,10 +11,10 @@
 #ifndef _FILE_H_
 #define _FILE_H_
 
-#include <stdlib.h>
-#include <stdio.h>
 #include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-char* fileReads(const char*);
+char *fileReads(const char *);
 
 #endif

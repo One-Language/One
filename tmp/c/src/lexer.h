@@ -13,20 +13,22 @@ typedef struct token Token;
 
 #include "one.h"
 
-typedef struct _location {
-  size_t t; // index of current token
-  size_t i; // file source index' character
-  size_t l; // line number: default is 1
-  size_t c; // column number: default is 0
+typedef struct _location
+{
+	size_t t; // index of current token
+	size_t i; // file source index' character
+	size_t l; // line number: default is 1
+	size_t c; // column number: default is 0
 } Location;
 
-typedef struct lexer {
-  // Assembly *assembly;
-  Token **tokens;
+typedef struct lexer
+{
+	// Assembly *assembly;
+	Token **tokens;
 
-  char *f; // filename (path)
-  char *s; // source string
-  Location location;
+	char *f; // filename (path)
+	char *s; // source string
+	Location location;
 } Lexer;
 
 #include "scanner.h"

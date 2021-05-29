@@ -13,47 +13,49 @@ typedef struct lexer Lexer;
 
 #include "one.h"
 
-typedef enum tokenType {
-  tok_eof = -1,
+typedef enum tokenType
+{
+	tok_eof = -1,
 
-  tok_def = -2,
-  tok_extern = -3,
+	tok_def = -2,
+	tok_extern = -3,
 
-  tok_identifier = -4,
-  tok_number = -5,
-  tok_string = -6,
+	tok_identifier = -4,
+	tok_number = -5,
+	tok_string = -6,
 
-  tok_define = -8,  // '=='
-  tok_div_int = -9, // '//'
+	tok_define = -8, // '=='
+	tok_div_int = -9, // '//'
 
-  tok_type_i8 = -10,
-  tok_type_i16 = -11,
-  tok_type_i32 = -12,
-  tok_type_i64 = -13,
+	tok_type_i8 = -10,
+	tok_type_i16 = -11,
+	tok_type_i32 = -12,
+	tok_type_i64 = -13,
 
-  tok_type_u8 = -14,
-  tok_type_u16 = -15,
-  tok_type_u32 = -16,
-  tok_type_u64 = -17,
+	tok_type_u8 = -14,
+	tok_type_u16 = -15,
+	tok_type_u32 = -16,
+	tok_type_u64 = -17,
 
-  tok_type_f32 = -18,
-  tok_type_f64 = -19,
+	tok_type_f32 = -18,
+	tok_type_f64 = -19,
 
-  tok_type_bool = -20,
-  tok_type_char = -21,
-  tok_type_string = -22,
+	tok_type_bool = -20,
+	tok_type_char = -21,
+	tok_type_string = -22,
 
-  tok_ret = -23,
+	tok_ret = -23,
 
 } TokenType;
 
-typedef struct token {
-  TokenType type;
-  size_t l; // line number: default is 1
-  size_t c; // column number: default is 0
+typedef struct token
+{
+	TokenType type;
+	size_t l; // line number: default is 1
+	size_t c; // column number: default is 0
 
-  int vint;
-  sds vstring;
+	int vint;
+	sds vstring;
 } Token;
 
 void token_init(Lexer *);

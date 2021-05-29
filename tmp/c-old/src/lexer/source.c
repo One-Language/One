@@ -19,16 +19,18 @@
 
 #include "source.h"
 
-Source source_new(void) {
-  Source s;
-  s.data = NULL;
-  s.line = 1;
-  s.column = 0;
-  return s;
+Source source_new(void)
+{
+	Source s;
+	s.data = NULL;
+	s.line = 1;
+	s.column = 0;
+	return s;
 }
 
-Source source_new_data(char *data) {
-  Source s = source_new();
-  s.data = data;
-  return s;
+Source source_new_data(char *data)
+{
+	Source s = source_new();
+	s.data = data;
+	return s;
 }

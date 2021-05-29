@@ -10,14 +10,14 @@
 
 #include "lexer.h"
 
-void lexerInit(){
-
+void lexerInit()
+{
 }
 
-void lexerParse(){
-
+void lexerParse()
+{
 }
 
-void lexerFree(){
-
+void lexerFree()
+{
 }
