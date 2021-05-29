@@ -1,8 +1,8 @@
 int main(int count)
 {
-	print 5 > 2;
-	print 5 < 2;
-	print 5 >= 2;
-	print 5 <= 2;
-	return 1;
+    print 5 > 2;
+    print 5 < 2;
+    print 5 >= 2;
+    print 5 <= 2;
+    return 1;
 }

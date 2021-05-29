@@ -1,6 +1,6 @@
 int8 test() {
-	return 16;
+    return 16;
 }
 void main() {
-	_ test();//print
+    _ test();//print
 }

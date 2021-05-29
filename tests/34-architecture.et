@@ -1,9 +1,9 @@
 /*
  * Sample Code For `Architecture` : Second Version
  * Target :
-	 * Web
-	 * Software
-	 * Mobile-Application (in the future)
+     * Web
+     * Software
+     * Mobile-Application (in the future)
 */
 //load and import the activity pages!
 import "activity_index.et";
@@ -11,15 +11,15 @@ import "activity_login.et";
 import "activity_error.et";
 void main()
 {
-	//the empty rule mean the first and main activity page!
-	layout.set("",activity_index());
+    //the empty rule mean the first and main activity page!
+    layout.set("",activity_index());
 
-	//`login` is the name and rule path!
-	layout.set("login",activity_login());
+    //`login` is the name and rule path!
+    layout.set("login",activity_login());
 
-	//`*` mean the any other activity! such as : 404 error page.
-	layout.set("*",activity_error());
+    //`*` mean the any other activity! such as : 404 error page.
+    layout.set("*",activity_error());
 
-	//begin template engine
-	layout.execute();
+    //begin template engine
+    layout.execute();
 }

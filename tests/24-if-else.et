@@ -1,12 +1,12 @@
 void main()
 {
-	int16 number=1;
-	if(number >= 0)
-	{
-		print "number >= 0";
-	}
-	else
-	{
-		print "number < 0";
-	}
+    int16 number=1;
+    if(number >= 0)
+    {
+        print "number >= 0";
+    }
+    else
+    {
+        print "number < 0";
+    }
 }

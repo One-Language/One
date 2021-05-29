@@ -1,5 +1,5 @@
 const genExpression = (expr) => {
-	return expr;
+    return expr;
 };
 
 module.exports = {

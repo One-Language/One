@@ -5,22 +5,22 @@ const { genVariableDefine } = require("./commands/variable-define");
 const { genPrint } = require("./commands/print");
 
 const genStatement = (stmt) => {
-	console.log(stmt);
-	switch(stmt.type) {
-	case "if":
-		return genVariableDefine(stmt);
-	case "while":
-		return genWhile(stmt);
-	case "for":
-		return genFor(stmt);
-	case "print":
-		return genPrint(stmt);
-	case "var_assignment":
-		return genVariableDefine(stmt);
-	default:
-		console.warn("Error: bad statement!");
-		return null;
-	}
+    console.log(stmt);
+    switch(stmt.type) {
+    case "if":
+        return genVariableDefine(stmt);
+    case "while":
+        return genWhile(stmt);
+    case "for":
+        return genFor(stmt);
+    case "print":
+        return genPrint(stmt);
+    case "var_assignment":
+        return genVariableDefine(stmt);
+    default:
+        console.warn("Error: bad statement!");
+        return null;
+    }
 };
 
 module.exports = {

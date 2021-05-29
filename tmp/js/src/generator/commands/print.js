@@ -1,7 +1,7 @@
 const { emit } = require("../temp");
 
 const genPrint = () => {
-	console.log("print");
+    console.log("print");
 };
 
 module.exports = {

@@ -1,212 +1,212 @@
 program
-	-> functions {%
-		data => {
-			return {
-				"functions": data[0],
-			}
-		}
-	%}
+    -> functions {%
+        data => {
+            return {
+                "functions": data[0],
+            }
+        }
+    %}
 
 args
-	-> "(" expressions ")" {%
-		data=> {
-			return data[1]
-		}
-	%}
-	| "(" ")" {%
-		data=> {
-			return []
-		}
-	%}
+    -> "(" expressions ")" {%
+        data=> {
+            return data[1]
+        }
+    %}
+    | "(" ")" {%
+        data=> {
+            return []
+        }
+    %}
 
 data_type
-	->  "int8" {% id %}
-	|  "int16" {% id %}
-	|  "int32" {% id %}
-	| "int" {% id %}
-	|  "int64" {% id %}
+    ->  "int8" {% id %}
+    |  "int16" {% id %}
+    |  "int32" {% id %}
+    | "int" {% id %}
+    |  "int64" {% id %}
 
-	|  "uint8" {% id %}
-	|  "uint16" {% id %}
-	|  "uint32" {% id %}
-	|  "uint" {% id %}
-	|  "uint64" {% id %}
+    |  "uint8" {% id %}
+    |  "uint16" {% id %}
+    |  "uint32" {% id %}
+    |  "uint" {% id %}
+    |  "uint64" {% id %}
 
-	|  "bool" {% id %}
-	|  "string" {% id %}
-	|  "char" {% id %}
+    |  "bool" {% id %}
+    |  "string" {% id %}
+    |  "char" {% id %}
 
 
 expressions
-	-> ___ expression ___ {%
-		data => [data[1]]
-	%}
-	| ___ expression ___ "," expressions {%
-		data => [data[1], ...data[4]]
-	%}
+    -> ___ expression ___ {%
+        data => [data[1]]
+    %}
+    | ___ expression ___ "," expressions {%
+        data => [data[1], ...data[4]]
+    %}
 
 functions
-	-> ___ function ___ {%
-		data => [data[1]]
-	%}
-	| ___ function ___ "\n" functions {%
-		data => [data[1], ...data[4]]
-	%}
+    -> ___ function ___ {%
+        data => [data[1]]
+    %}
+    | ___ function ___ "\n" functions {%
+        data => [data[1], ...data[4]]
+    %}
 
 function
-	-> identifier ___ args ___ block_statements {%
-		data => {
-			return {
-				type: "function",
-				"return": "int32",
-				"return_default": true,
-				name: data[0],
-				args: data[2],
-				stmts: data[4],
-			}
-		}
-	%}
-	| data_type ___ identifier ___ args ___ block_statements {%
-		data => {
-			return {
-				type: "function",
-				"return": data[0],
-				name: data[2],
-				args: data[4],
-				stmts: data[6],
-			}
-		}
-	%}
-	| data_type ___ identifier ___ block_statements {%
-		data => {
-			return {
-				type: "function",
-				return: data[0],
-				name: data[2],
-				args: [],
-				stmts: data[4],
-			}
-		}
-	%}
-	| identifier ___ block_statements {%
-		data => {
-			return {
-				type: "function",
-				"return": "int32",
-				"return_default": true,
-				name: data[0],
-				args: [],
-				stmts: data[2],
-			}
-		}
-	%}
+    -> identifier ___ args ___ block_statements {%
+        data => {
+            return {
+                type: "function",
+                "return": "int32",
+                "return_default": true,
+                name: data[0],
+                args: data[2],
+                stmts: data[4],
+            }
+        }
+    %}
+    | data_type ___ identifier ___ args ___ block_statements {%
+        data => {
+            return {
+                type: "function",
+                "return": data[0],
+                name: data[2],
+                args: data[4],
+                stmts: data[6],
+            }
+        }
+    %}
+    | data_type ___ identifier ___ block_statements {%
+        data => {
+            return {
+                type: "function",
+                return: data[0],
+                name: data[2],
+                args: [],
+                stmts: data[4],
+            }
+        }
+    %}
+    | identifier ___ block_statements {%
+        data => {
+            return {
+                type: "function",
+                "return": "int32",
+                "return_default": true,
+                name: data[0],
+                args: [],
+                stmts: data[2],
+            }
+        }
+    %}
 
 block_statements
-	-> "{" statements "}" {%
-		data => {
-			return data[1]
-		}
-	%}
-	| "{" ___ "}" {%
-		data => {
-			return []
-		}
-	%}
+    -> "{" statements "}" {%
+        data => {
+            return data[1]
+        }
+    %}
+    | "{" ___ "}" {%
+        data => {
+            return []
+        }
+    %}
 
 statements
-	-> ___ statement ___ 	  {%
-		data => [data[1]]
-		%}
-	| ___ statement ___ "\n" statements {%
-		data => [data[1], ...data[4]]
-	%}
+    -> ___ statement ___       {%
+        data => [data[1]]
+        %}
+    | ___ statement ___ "\n" statements {%
+        data => [data[1], ...data[4]]
+    %}
 
 statement
-	-> var_assignment {% id %}
-	| print_statement {% id %}
-	| while_loop      {% id %}
+    -> var_assignment {% id %}
+    | print_statement {% id %}
+    | while_loop      {% id %}
 
 while_loop
-	-> "while" __ binary_expression __ "{" _ "\n" statements "\n" "}" {%
-		data => {
-			return {
-				type: "while_loop",
-				condition: data[2],
-				body: data[7]
-			}
-		}
-	%}
+    -> "while" __ binary_expression __ "{" _ "\n" statements "\n" "}" {%
+        data => {
+            return {
+                type: "while_loop",
+                condition: data[2],
+                body: data[7]
+            }
+        }
+    %}
 
 print_statement
-	-> "print" __ expression {%
-		data => {
-			return {
-				type: "print_statement",
-				expression: data[2]
-			}
-		}
-	%}
+    -> "print" __ expression {%
+        data => {
+            return {
+                type: "print_statement",
+                expression: data[2]
+            }
+        }
+    %}
 
 expression
-	-> unary_expression  {% id %}
-	|  binary_expression {% id %}
+    -> unary_expression  {% id %}
+    |  binary_expression {% id %}
 
 unary_expression
-	-> number 			 {% id %}
-	| identifier 		 {% id %}
+    -> number              {% id %}
+    | identifier          {% id %}
 
 operator
-	-> "+" {% id %}
-	|  "-" {% id %}
-	|  "*" {% id %}
-	|  "/" {% id %}
+    -> "+" {% id %}
+    |  "-" {% id %}
+    |  "*" {% id %}
+    |  "/" {% id %}
 
-	|  ">=" {% id %}
-	|  "<=" {% id %}
-	|  ">" {% id %}
-	|  "<" {% id %}
-	|  "=" {% id %}
+    |  ">=" {% id %}
+    |  "<=" {% id %}
+    |  ">" {% id %}
+    |  "<" {% id %}
+    |  "=" {% id %}
 
 binary_expression
-	-> unary_expression _ operator _ expression {%
-		data => {
-			return {
-				type: "binary_expression",
-				left: data[0],
-				operator: data[2],
-				right: data[4],
-			}
-		}
-	%}
+    -> unary_expression _ operator _ expression {%
+        data => {
+            return {
+                type: "binary_expression",
+                left: data[0],
+                operator: data[2],
+                right: data[4],
+            }
+        }
+    %}
 
 var_assignment
-	-> identifier _ ":=" _ expression {%
-		data => {
-			return {
-				type: "var_assignment",
-				varname: data[0],
-				value: data[4]
-			}
-		}
-	%}
+    -> identifier _ ":=" _ expression {%
+        data => {
+            return {
+                type: "var_assignment",
+                varname: data[0],
+                value: data[4]
+            }
+        }
+    %}
 
 identifier
-	-> [a-z]:+ {%
-		data => data[0].join("")
-	%}
+    -> [a-z]:+ {%
+        data => data[0].join("")
+    %}
 
 number
-	-> digits "." digits {%
-		data => Number(data[0] + "." + data[2])
-	%}
-	| digits {%
-		data => Number(data[0])
-	%}
+    -> digits "." digits {%
+        data => Number(data[0] + "." + data[2])
+    %}
+    | digits {%
+        data => Number(data[0])
+    %}
 
 digits ->[0-9]:+ {%
-		data => data[0].join("")
+        data => data[0].join("")
 
-	%}
+    %}
 
 _ -> [ \t]:*
 

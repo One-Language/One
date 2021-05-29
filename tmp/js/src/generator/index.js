@@ -50,7 +50,7 @@ const { genVariableDefine } = require("./commands/variable-define");
 //       const condition = generateJSExpression(statement.condition);
 //       const body = generateJS(statement.body, declaredVariables)
 //         .split("\n")
-//         .map((line) => "	" + line)
+//         .map((line) => "    " + line)
 //         .join("\n");
 //       lines.push(`while(${condition}) {\n${body}\n}`);
 //     } else if (statement.type === "print_statement") {
