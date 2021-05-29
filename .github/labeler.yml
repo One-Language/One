@@ -1,0 +1,17 @@
+docs:
+  - docs/**/*
+
+github:
+  - .github/**/*
+
+repo:
+  - ./*
+
+src:
+  - src/**/*
+
+tests:
+  - tests/**/*
+
+tmp:
+  - tmp/**/*
