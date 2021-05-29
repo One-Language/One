@@ -19,25 +19,31 @@
 typedef int Position;
 
 typedef enum {
-  ERROR,
-  WARNING,
-  NOTE,
+    ERROR,
+    WARNING,
+    NOTE,
 } ErrorLevel;
 
 typedef struct {
-  char *message;
-  Position position;
-  ErrorLevel level;
+    char *message;
+    Position position;
+    ErrorLevel level;
 } Error;
 
 typedef struct {
-  int error_count;
-  int error_capacity;
-  Error *errors;
+    int error_count;
+    int error_capacity;
+    Error *errors;
 } ErrorsContainer;
 
 void ErrorsInit(ErrorsContainer *);
+
 void ErrorsPrint(FILE *, ErrorsContainer *);
+
 void ErrorsFree(ErrorsContainer *);
+
+void ErrorsAdd(ErrorsContainer *, char *);
+
+void error(char *);
 
 #endif

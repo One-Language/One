@@ -15,6 +15,7 @@
 #include "compile.h"
 
 void link(Args *, ErrorsContainer *);
+int compileFile(char *);
 int compileString(char *);
 int compile(Args *, ErrorsContainer *);
 
