@@ -22,7 +22,7 @@
 
 // glibc, runtime library
 #include <stddef.h> // NULL
-#include <stdio.h>  // printf, fopen, fclose
+#include <stdio.h> // printf, fopen, fclose
 #include <stdlib.h> // malloc, free
 #include <string.h> // strcmp
 

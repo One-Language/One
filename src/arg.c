@@ -56,19 +56,19 @@ void ArgsParse(int argc, char **argv, char **env, Args *args, ErrorsContainer *e
 
 void ArgsFree(Args *args)
 {
-//	 free argc
+	//	 free argc
 	for (int i = 0; i < args->argc; i++)
 		free(args->argv[i]);
 
-//	 free input_files
-//	 TODO
-//	for (int i = 0; i < args->input_file_count; i++) {
-//	    printf("free %d\n", i);
-//        free(args->input_files[i]);
-//	}
+	//	 free input_files
+	//	 TODO
+	//	for (int i = 0; i < args->input_file_count; i++) {
+	//	    printf("free %d\n", i);
+	//        free(args->input_files[i]);
+	//	}
 
-//	 free env
-//	 TODO
+	//	 free env
+	//	 TODO
 }
 
 void ArgsHelp(FILE *file, Args *args)
@@ -76,9 +76,13 @@ void ArgsHelp(FILE *file, Args *args)
 	fprintf(file, "Usage: %s [options] file...\n", args->argv[0]);
 	fprintf(file, "Options:\n");
 	fprintf(file, "    -h, --help                Print out this help text.\n");
-	fprintf(file, "    -g, --debug               Include debug information in the build.\n");
-	fprintf(file, "    -o, --output FILE         Output the result to the given file.\n");
-	fprintf(file, "    -v, --version             Print out the compiler version\n");
+	fprintf(file, "    -g, --debug               Include debug information in "
+				  "the build.\n");
+	fprintf(
+		 file,
+		 "    -o, --output FILE         Output the result to the given file.\n");
+	fprintf(file,
+		 "    -v, --version             Print out the compiler version\n");
 	fprintf(file, "\n");
 }
 

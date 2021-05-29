@@ -1,1 +1,4 @@
-int32 main() { a = 4; }
+int32 main()
+{
+	a = 4;
+}

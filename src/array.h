@@ -11,10 +11,11 @@
 #ifndef _ARRAY_H_
 #define _ARRAY_H_
 
-typedef struct {
-  int count;
-  int size;
-  void **data;
+typedef struct
+{
+	int count;
+	int size;
+	void **data;
 } Array;
 
 void arrayInit(Array *);
