@@ -10,15 +10,24 @@
 
 #include "error.h"
 
-void ErrorsInit(ErrorsContainer *container) {}
+void ErrorsInit(ErrorsContainer *container)
+{
+}
 
-void ErrorsPrint(FILE *f, ErrorsContainer *errors) {}
+void ErrorsPrint(FILE *f, ErrorsContainer *errors)
+{
+}
 
-void ErrorsAdd(ErrorsContainer *errors, char *message) {}
+void ErrorsAdd(ErrorsContainer *errors, char *message)
+{
+}
 
-void ErrorsFree(ErrorsContainer *errors) {}
+void ErrorsFree(ErrorsContainer *errors)
+{
+}
 
-void error(char *message) {
-    // TODO: this function will remove and ErrorsAdd() will be use!
-    printf("[Error]: %s", message);
+void error(char *message)
+{
+	// TODO: this function will remove and ErrorsAdd() will be use!
+	printf("[Error]: %s", message);
 }

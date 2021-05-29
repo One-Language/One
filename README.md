@@ -166,7 +166,6 @@ main {
     if system.args.length === 2 {
         port = system.args[1]
     } else  {
-
         port=8080;
     }
     web.route.add("/", home)
@@ -240,8 +239,8 @@ end
 <hr/>
 
 <h3>Old GUI Development : (Web, Software)</h3>
-This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native). <br/>
-Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate  working of the language:
+This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
+Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
 
 ```css
 title "Name - Main"
@@ -333,14 +332,14 @@ Refer [this link](https://github.com/ET-Lang/ET/wiki) to start learning the lang
 
 #### Supported Environments
 
-- [x] GNU / Linux  <!--which linux?-->
+- [x] GNU / Linux  <!--which Linux?-->
 - [x] Windows
 - [ ] macOS (Not complete)
 - [ ] BSD
 
 <!--Write more about the compiler-->
 <!--Steps-->
-<!--BUilding One from Source-->
+<!--Building One from Source-->
 <!--Hello World in One-->
 <!--Tips to understand the language better-->
 <!--Filename extensions: `.one`-->
@@ -352,7 +351,7 @@ Refer [this link](https://github.com/ET-Lang/ET/wiki) to start learning the lang
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
 To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa">One Discord Server</a>.
 
-If you are not familiar with how to make a pull request on Github then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+If you are not familiar with how to make a pull request on GitHub then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 If you have decided to contribute, please first read the guidelines [here](CONTRIBUTING.md).
 <br/>You can also help in the development of One by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
 
