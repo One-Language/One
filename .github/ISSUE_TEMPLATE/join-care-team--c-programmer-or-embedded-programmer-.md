@@ -59,6 +59,10 @@ Do you know about LLVM:
 Tell us your opinion about "One language" and create a new language:
 <!-- Please write here -->
 
+Has it happened when you are programming and you are dissatisfied with a feature and you think you can inject such ideas into the project so that we can make a better product? What do you think:
+<!-- Please write here -->
+
+
 -----------
 
 <!--
