@@ -129,19 +129,22 @@ Token *tokenNext(Lexer *lex) {
             }
             return tokenNext(lex);
         } else if (*lex->source == '*') { // it's multi-line comment
-            while (token_is_eof(*lex->source) == false) {
-                char c1 = *lex->source;
-                tokenNextChar(lex);
-                if (token_is_eof(*lex->source) == true) {
+            // Going to next characters while looking for `*/`
+            while (token_is_eof(*lex->source) == false) { // Going next while it's still not END of the source!
+                char c1 = *lex->source; // get current char and store it at `c1`
+                tokenNextChar(lex); // go to next char
+                if (token_is_eof(*lex->source) == true) { // again check and make sure it's not END of the source!
                     // Error: EOF without complete close multi-line comment
                     // TODO: ErrorAppend(...)
-                    break;
+                    break; // break loop and stop looking for `*/`.
                 }
-                char c2 = *lex->source;
-                if (c1 == '*' && c2 == '/') {
-                    break; // END multi-line comment
+
+                char c2 = *lex->source; // get current token, it may be second part of `*/`
+                if (c1 == '*' && c2 == '/') { // if first char was * and second was /, so we have to close multi-line comment and stop this loop!
+                    break; // END multi-line comment and looking loop!
                 } else {
                     // Why we not need to go back to prevChar? Since we still not call the tokenNextChar function...
+                    // If you write: tokenPrevChar(lex);, this will stop at a unlimit LOOP, so we not need to call this function, since we still not called `tokenNextChar(lex)` yet!
                     // continue;
                 }
             }
@@ -154,19 +157,18 @@ Token *tokenNext(Lexer *lex) {
     }
 
     // identifier
-    if(token_is_alpha(*lex->source) == true) {
+    if (token_is_alpha(*lex->source) == true) {
         t->vstring = malloc(sizeof(char) * 200 + 1);
-        int i=0;
-        while(token_is_ident(*lex->source) == true) {
+        int i = 0;
+        while (token_is_ident(*lex->source) == true) {
             t->vstring[i++] = *lex->source;
             tokenNextChar(lex);
         }
         t->vstring[i] = '\0';
 
-        if(strcmp(t->vstring, "if") == 0) {
+        if (strcmp(t->vstring, "if") == 0) {
             t->type = tok_if;
-        }
-        else {
+        } else {
             t->type = tok_identifier;
         }
         return t;
