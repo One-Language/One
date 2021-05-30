@@ -12,6 +12,8 @@
 #define _TOKEN_H_
 
 #include <stdio.h>
+#include <stdlib.h>
+//#include <malloc.h>
 #include <stdbool.h>
 
 typedef struct _lexer Lexer;
@@ -23,36 +25,46 @@ typedef struct _location {
 
 typedef enum {
     tok_eof = -1,
+    tok_unknowm,
+    // ================= keywords
+    tok_def,
+    tok_extern,
+    tok_ret,
+    tok_if,
+    tok_else,
+    tok_do,
+    tok_while,
+    tok_for,
+    tok_switch,
+    // ================= values
+    tok_identifier,
+    tok_number,
+    tok_string,
 
-    tok_def = -2,
-    tok_extern = -3,
+    tok_define,
+    tok_div_int,
+    // ================= types
+    tok_type_i8,
+    tok_type_i16,
+    tok_type_i32,
+    tok_type_i64,
 
-    tok_identifier = -4,
-    tok_number = -5,
-    tok_string = -6,
+    tok_type_u8,
+    tok_type_u16,
+    tok_type_u32,
+    tok_type_u64,
 
-    tok_define = -8, // '=='
-    tok_div_int = -9, // '//'
+    tok_type_f32,
+    tok_type_f64,
 
-    tok_type_i8 = -10,
-    tok_type_i16 = -11,
-    tok_type_i32 = -12,
-    tok_type_i64 = -13,
-
-    tok_type_u8 = -14,
-    tok_type_u16 = -15,
-    tok_type_u32 = -16,
-    tok_type_u64 = -17,
-
-    tok_type_f32 = -18,
-    tok_type_f64 = -19,
-
-    tok_type_bool = -20,
-    tok_type_char = -21,
-    tok_type_string = -22,
-
-    tok_ret = -23,
-
+    tok_type_bool,
+    tok_type_char,
+    tok_type_string,
+    // ================= operators
+    tok_op_plus, // +
+    tok_op_minus, // -
+    tok_op_mul, // *
+    tok_op_div, // /
 } TokenType;
 
 typedef struct _token {
@@ -67,6 +79,16 @@ void token_init();
 
 bool token_is_space(char);
 
+bool token_is_line(char);
+
+bool token_is_freespace(char);
+
+bool token_is_freeline(char);
+
+bool token_is_free(char);
+
+bool token_is_alphaasci(char);
+
 bool token_is_alpha(char);
 
 bool token_is_number(char);
@@ -76,10 +98,16 @@ bool token_is_digit(char);
 bool token_is_ident(char);
 
 
-bool token_is_eof(char c);
+bool token_is_eof(char);
 
-bool tokenEOF(Lexer *lex);
+bool tokenEOF(Lexer *);
 
-void tokenNextChar(Lexer *lex);
+void tokenNextChar(Lexer *);
+
+void tokenPrevChar(Lexer *);
+
+Token *tokenNext(Lexer *);
+
+char *tokenName(TokenType );
 
 #endif

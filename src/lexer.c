@@ -26,9 +26,15 @@ int lexerParse(Lexer *lex, ErrorsContainer *errors) {
     printf("=============== Source ===============\n");
     printf("%s\n", lex->source);
     printf("=============== Tokenizer ===============\n");
-    while(tokenEOF(lex) == false) {
-        printf("%c\n", *lex->source);
-        tokenNextChar(lex);
+
+    Token *t;
+    while (tokenEOF(lex) == false) {
+//        printf("%c\n", *lex->source);
+//        tokenNextChar(lex);
+        t = tokenNext(lex);
+        if(t->type == tok_unknowm)
+            break;
+        printf("==>%s\n", tokenName(t->type));
     }
     return EXIT_SUCCESS;
 }
