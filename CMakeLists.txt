@@ -21,4 +21,6 @@ add_executable(One
         src/one.h
         src/parser.c
         src/parser.h
+        src/token.c
+        src/token.h
         src/parser.test.c src/compile.c src/compile.h src/file.c src/file.h)

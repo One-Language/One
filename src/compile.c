@@ -22,8 +22,8 @@ void link(Args *args, ErrorsContainer *errors) {
 
 int compileFileString(char *filename, char *input, ErrorsContainer *errors) {
     Lexer *lex = lexerInit(filename, input, errors);
-    int res = lexerParse(&lex, errors);
-    lexerFree(&lex);
+    int res = lexerParse(lex, errors);
+    lexerFree(lex);
     return res;
 }
 

@@ -11,6 +11,7 @@
 #ifndef _LEXER_H_
 #define _LEXER_H_
 
+#include "error.h"
 #include "token.h"
 
 typedef struct {

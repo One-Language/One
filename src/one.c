@@ -40,7 +40,7 @@ int main(int argc, char **argv, char **env)
 		ArgsHelp(stderr, &args);
 	}
 
-	ErrorsPrint(stderr, &errors);
+    ErrorsPrints(stderr, &errors);
 
 	ArgsFree(&args);
 	ErrorsFree(&errors);

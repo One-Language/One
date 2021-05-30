@@ -8,7 +8,6 @@
 
  **/
 
-#include "error.h"
 #include "lexer.h"
 
 Lexer *lexerInit(char *filename, char *input, ErrorsContainer *errors) {

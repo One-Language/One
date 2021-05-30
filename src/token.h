@@ -19,9 +19,7 @@ typedef struct {
     size_t column; // column number: default is 0
 } Location;
 
-#include "lexer.h"
-
-typedef enum tokenType {
+typedef enum {
     tok_eof = -1,
 
     tok_def = -2,
@@ -55,7 +53,7 @@ typedef enum tokenType {
 
 } TokenType;
 
-typedef struct token {
+typedef struct {
     TokenType type;
     Location location;
 

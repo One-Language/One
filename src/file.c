@@ -39,4 +39,3 @@ char *fileReads(const char *filename, ErrorsContainer *errors)
 	return onebuffer;
 }
 
-#include "file.h"
