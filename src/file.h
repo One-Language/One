@@ -15,6 +15,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *fileReads(const char *);
+char *fileReads(const char *, ErrorsContainer* );
 
 #endif

@@ -8,16 +8,22 @@
 
  **/
 
+#include "error.h"
 #include "lexer.h"
 
-void lexerInit()
-{
+Lexer *lexerInit(char *filename, char *input, ErrorsContainer *errors) {
+    Lexer *lex = malloc(sizeof(Lexer));
+    lex->filename = filename;
+    lex->source = input;
+    lex->location.line = 0;
+    lex->location.column = 0;
+    return lex;
 }
 
-void lexerParse()
-{
+int lexerParse(Lexer *lexer, ErrorsContainer *errors) {
+    return EXIT_SUCCESS;
 }
 
-void lexerFree()
-{
+void lexerFree(Lexer *lexer) {
+
 }

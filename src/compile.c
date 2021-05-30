@@ -16,46 +16,42 @@
 #include "parser.h"
 #include "token.h"
 
-void link(Args *args, ErrorsContainer *errors)
-{
-	// TODO, link all object file(s) and create final executable file!
+void link(Args *args, ErrorsContainer *errors) {
+    // TODO, link all object file(s) and create final executable file!
 }
 
-int compileString(char *filename)
-{
-	lexerInit();
-	lexerParse();
-	lexerFree();
-	return EXIT_SUCCESS;
+int compileFileString(char *filename, char *input, ErrorsContainer *errors) {
+    Lexer *lex = lexerInit(filename, input, errors);
+    int res = lexerParse(&lex, errors);
+    lexerFree(&lex);
+    return res;
 }
 
-int compileFile(char *filename)
-{
-	char *input = fileReads(filename);
-	compileString(input);
-	//     TODO: free
-	return EXIT_SUCCESS;
+int compileString(char *input, ErrorsContainer *errors) {
+    return compileFileString(NULL, input, errors);
 }
 
-int compile(Args *args, ErrorsContainer *errors)
-{
-	if (args->input_file_count == 0)
-		return EXIT_FAILURE;
+int compileFile(char *filename, ErrorsContainer *errors) {
+    char *input = fileReads(filename, errors);
+    return compileFileString(filename, input, errors);
+}
 
-	int res = EXIT_SUCCESS;
-	for (int i = 0; i < args->input_file_count; i++)
-	{
-		printf("-->%s\n", args->input_files[i]);
-		int res_now = compileFile(args->input_files[i]);
+int compile(Args *args, ErrorsContainer *errors) {
+    if (args->input_file_count == 0)
+        return EXIT_FAILURE;
 
-		if (res_now != EXIT_SUCCESS)
-		{
-			res = res_now;
-			break; // TODO: stop to parse other files or no?
-		}
-	}
+    int res = EXIT_SUCCESS;
+    for (int i = 0; i < args->input_file_count; i++) {
+        printf("-->%s\n", args->input_files[i]);
+        int res_now = compileFile(args->input_files[i], errors);
 
-	link(args, errors);
+        if (res_now != EXIT_SUCCESS) {
+            res = res_now;
+            break; // TODO: stop to parse other files or no?
+        }
+    }
 
-	return EXIT_SUCCESS;
+    link(args, errors);
+
+    return EXIT_SUCCESS;
 }

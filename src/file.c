@@ -8,10 +8,10 @@
 
  **/
 
-#include "file.h"
 #include "error.h"
+#include "file.h"
 
-char *fileReads(const char *filename)
+char *fileReads(const char *filename, ErrorsContainer *errors)
 {
 	FILE *onefile = fopen(filename, "rb");
 	if (onefile == NULL)

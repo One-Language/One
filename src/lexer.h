@@ -11,8 +11,20 @@
 #ifndef _LEXER_H_
 #define _LEXER_H_
 
-void lexerInit();
-void lexerParse();
-void lexerFree();
+#include "token.h"
+
+typedef struct {
+    Token **tokens;
+
+    char *filename; // filename (path)
+    char *source; // source string
+    Location location;
+} Lexer;
+
+Lexer* lexerInit(char *, char *, ErrorsContainer *);
+
+int lexerParse(Lexer *, ErrorsContainer *);
+
+void lexerFree(Lexer *);
 
 #endif
