@@ -118,7 +118,9 @@ Token *tokenNext(Lexer *lex) {
         return t;
     }
 
-    // single-line comment or DIIVIDE operator
+    // single-line comment
+    // multi-line comment
+    // DIIVIDE operator
     if (*lex->source == '/') { // it's single-line comment or divide operator!
         tokenNextChar(lex);
         if (*lex->source == '/') { // it's single-line comment
@@ -126,10 +128,48 @@ Token *tokenNext(Lexer *lex) {
                 tokenNextChar(lex);
             }
             return tokenNext(lex);
+        } else if (*lex->source == '*') { // it's multi-line comment
+            while (token_is_eof(*lex->source) == false) {
+                char c1 = *lex->source;
+                tokenNextChar(lex);
+                if (token_is_eof(*lex->source) == true) {
+                    // Error: EOF without complete close multi-line comment
+                    // TODO: ErrorAppend(...)
+                    break;
+                }
+                char c2 = *lex->source;
+                if (c1 == '*' && c2 == '/') {
+                    break; // END multi-line comment
+                } else {
+                    // Why we not need to go back to prevChar? Since we still not call the tokenNextChar function...
+                    // continue;
+                }
+            }
+
+            return tokenNext(lex);
         } else {
             t->type = tok_op_div;
             return t;
         }
+    }
+
+    // identifier
+    if(token_is_alpha(*lex->source) == true) {
+        t->vstring = malloc(sizeof(char) * 200 + 1);
+        int i=0;
+        while(token_is_ident(*lex->source) == true) {
+            t->vstring[i++] = *lex->source;
+            tokenNextChar(lex);
+        }
+        t->vstring[i] = '\0';
+
+        if(strcmp(t->vstring, "if") == 0) {
+            t->type = tok_if;
+        }
+        else {
+            t->type = tok_identifier;
+        }
+        return t;
     }
 
     // unknowm token
@@ -154,6 +194,9 @@ char *tokenName(TokenType type) {
             return "FOR";
         case tok_switch:
             return "SWITCH";
+
+        case tok_identifier:
+            return "IDENTIFIER";
 
         case tok_op_plus:
             return "OPERATOR_PLUS";
