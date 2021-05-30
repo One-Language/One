@@ -1,9 +1,9 @@
 ---
-name: Join Website team (Front-end developer or Designer)
+name: Join Website Team (Front-end developer or Designer)
 about: I want to join Website Team.
 title: "[Join] Website team"
 labels: Join
-assignees: ''
+assignees: BaseMax
 
 ---
 
@@ -28,9 +28,9 @@ List of languages with experience level:
 
 - **HTML5**: 3 years experience
 - **CSS3**: 1 years experience
-- **Vanila JS**: Just for fun to write 3-5 scripts without professional experience (And tell us about libraries you have worked on. e.g: axios, and every library you worked in at JS.)
-- **ReactJS**: Just for personal needs (And tell us about libraries you have worked on)
-- **VueJS**: Just for personal needs (And tell us about libraries you have worked on)
+- **Vanilla JS**: Just for fun to write 3-5 scripts without professional experience (And tell us about libraries you have worked on. e.g: Axios, and every library you worked in at JS.)
+- **ReactJS**: Just for personal needs (and tell us about libraries you have worked on)
+- **VueJS**: Just for personal needs (and tell us about libraries you have worked on)
 
 ## Front-end experience
 
