@@ -140,7 +140,8 @@ Token *tokenNext(Lexer *lex) {
                 }
 
                 char c2 = *lex->source; // get current token, it may be second part of `*/`
-                if (c1 == '*' && c2 == '/') { // if first char was * and second was /, so we have to close multi-line comment and stop this loop!
+                if (c1 == '*' && c2 ==
+                                 '/') { // if first char was * and second was /, so we have to close multi-line comment and stop this loop!
                     break; // END multi-line comment and looking loop!
                 } else {
                     // Why we not need to go back to prevChar? Since we still not call the tokenNextChar function...
@@ -157,18 +158,25 @@ Token *tokenNext(Lexer *lex) {
     }
 
     // identifier
-    if (token_is_alpha(*lex->source) == true) {
-        t->vstring = malloc(sizeof(char) * 200 + 1);
-        int i = 0;
-        while (token_is_ident(*lex->source) == true) {
-            t->vstring[i++] = *lex->source;
-            tokenNextChar(lex);
-        }
-        t->vstring[i] = '\0';
+    if (token_is_alpha(*lex->source) ==
+        true) { // check if current char is a-z or A-Z or `_`, if it's so it's a user defined identifier or a compiler registered IDENTIFIER
+        t->vstring = malloc(sizeof(char) * 200 + 1); // malloc and create a string, since we need to store and save identifier name at token struct.
 
+        int i = 0;
+        while (token_is_ident(*lex->source) == true) { // if current char is a-z OR A-Z or 0-9 or `_`
+            t->vstring[i++] = *lex->source; // append and store current char at `->vstring`
+            tokenNextChar(lex); // go to next char, and loop will repeat and going up!
+        }
+        t->vstring[i] = '\0'; // In C, we need to define end of the string, so it will be useful for future functionality with this string
+
+        // TODO: check identifier is equal to compiler registered Words by filtereing to it's LENGTH.
+        // if(i == 2) {}
+        // else if(i == 3) {}
+
+        // A test to make sure identifier is COMPILER word registered or a user defined identifier
         if (strcmp(t->vstring, "if") == 0) {
             t->type = tok_if;
-        } else {
+        } else { // it's a user-defined identifier
             t->type = tok_identifier;
         }
         return t;
