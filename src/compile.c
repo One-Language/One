@@ -8,13 +8,13 @@
 
  **/
 
-#include "compile.h"
 #include "arg.h"
-#include "error.h"
 #include "file.h"
+#include "token.h"
 #include "lexer.h"
 #include "parser.h"
-#include "token.h"
+#include "error.h"
+#include "compile.h"
 
 void link(Args *args, ErrorsContainer *errors) {
     // TODO, link all object file(s) and create final executable file!

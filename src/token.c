@@ -9,6 +9,11 @@
  **/
 
 #include "token.h"
+#include "lexer.h"
+
+void token_init() {
+
+}
 
 bool token_is_space(char c) {
     if (c == ' ')
@@ -54,3 +59,16 @@ bool token_is_ident(char c) {
     }
     return false;
 }
+
+bool token_is_eof(char c) {
+    return (c == EOF ||  c == '\0') ? true : false;
+}
+
+bool tokenEOF(Lexer* lex) {
+    return token_is_eof(*lex->source);
+}
+
+void tokenNextChar(Lexer* lex) {
+    lex->source++;
+}
+

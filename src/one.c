@@ -8,6 +8,7 @@
 
  **/
 
+#include "token.h"
 #include "arg.h"
 #include "compile.h"
 #include "error.h"

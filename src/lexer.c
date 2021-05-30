@@ -8,6 +8,8 @@
 
  **/
 
+#include "token.h"
+#include "error.h"
 #include "lexer.h"
 
 Lexer *lexerInit(char *filename, char *input, ErrorsContainer *errors) {
@@ -19,7 +21,15 @@ Lexer *lexerInit(char *filename, char *input, ErrorsContainer *errors) {
     return lex;
 }
 
-int lexerParse(Lexer *lexer, ErrorsContainer *errors) {
+int lexerParse(Lexer *lex, ErrorsContainer *errors) {
+    token_init(lex);
+    printf("=============== Source ===============\n");
+    printf("%s\n", lex->source);
+    printf("=============== Tokenizer ===============\n");
+    while(tokenEOF(lex) == false) {
+        printf("%c\n", *lex->source);
+        tokenNextChar(lex);
+    }
     return EXIT_SUCCESS;
 }
 

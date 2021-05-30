@@ -16,7 +16,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "token.h"
+typedef struct _location Location;
+typedef struct _token Token;
 
 typedef enum {
     ERROR,
@@ -24,14 +25,14 @@ typedef enum {
     NOTE,
 } ErrorLevel;
 
-typedef struct {
+typedef struct _error {
     char *filename;
     char *message;
     Location location;
     ErrorLevel level;
 } Error;
 
-typedef struct {
+typedef struct _errors {
     int error_count;
     int error_capacity;
     Error *errors;

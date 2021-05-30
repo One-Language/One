@@ -16,27 +16,29 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "array.h"
-#include "error.h"
+typedef struct _errors ErrorsContainer;
 
-typedef struct
-{
-	bool help;
-	bool version;
-	bool debug;
+typedef struct _args {
+    bool help;
+    bool version;
+    bool debug;
 
-	char **input_files;
-	unsigned int input_file_count;
+    char **input_files;
+    unsigned int input_file_count;
 
-	int argc;
-	char **argv;
-	char **env;
+    int argc;
+    char **argv;
+    char **env;
 } Args;
 
 void ArgsInit(Args *);
+
 void ArgsParse(int, char **, char **, Args *, ErrorsContainer *);
+
 void ArgsFree(Args *);
+
 void ArgsHelp(FILE *, Args *);
+
 void ArgsVersion(FILE *, Args *);
 
 #endif

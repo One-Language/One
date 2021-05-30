@@ -11,8 +11,7 @@
 #ifndef _COMPILE_H_
 #define _COMPILE_H_
 
-#include "arg.h"
-#include "compile.h"
+typedef struct _errors ErrorsContainer;
 
 void link(Args *, ErrorsContainer *);
 

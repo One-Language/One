@@ -11,10 +11,11 @@
 #ifndef _LEXER_H_
 #define _LEXER_H_
 
-#include "error.h"
-#include "token.h"
+typedef struct _token Token;
+typedef struct _location Location;
+typedef struct _errors ErrorsContainer;
 
-typedef struct {
+typedef struct _lexer {
     Token **tokens;
 
     char *filename; // filename (path)
@@ -22,7 +23,7 @@ typedef struct {
     Location location;
 } Lexer;
 
-Lexer* lexerInit(char *, char *, ErrorsContainer *);
+Lexer *lexerInit(char *, char *, ErrorsContainer *);
 
 int lexerParse(Lexer *, ErrorsContainer *);
 
