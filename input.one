@@ -16,6 +16,13 @@ i8 main {
 
 }
 
+i8 ret_num {
+    ret 54
+}
+
+i8 ret_my_num(i8 a) {
+    ret a + a
+}
 test() {
     u8 u_age = 32
     age = 5
@@ -29,4 +36,7 @@ test() {
     }
     _ "Hello, World!"
     _ 1, 2, 3, 4, 5
+    _ ret_num()
+    _ ret_my_num(40)
+    _ ret_my_num(10)
 }
