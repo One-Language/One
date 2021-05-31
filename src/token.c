@@ -195,15 +195,25 @@ Token *tokenNext(Lexer *lex) {
         return t;
     }
 
-    if (token_is_number(*lex->source) == true) {
+    // number value
+    if (token_is_number(*lex->source) == true || *lex->source == '.') { // a number token start with [0-9] or '.'
+        bool isFloat = false;
         size_t i = 0;
-        char digits[100];
-        digits[i++] = *lex->source;
+        char digits[100]; // maximum length of a number is 100, i think it's enought for our work!
+        if (*lex->source == '.') { // it's dot character
+            isFloat = true; // we set `isFloat` to true, so we will not accept any `.` character anymore.
+            digits[i++] = '0'; // put zero at first item of array (automaticly)
+
+            // put '.' character at second item of array
+            digits[i++] = '.';// '.' equal to *lex->source;
+        } else { // it's a number [0-9]
+            digits[i++] = *lex->source; // put first character at first item of array
+        }
+
         tokenNextChar(lex);
         if (*lex->source == 'x') {
             // TODO: lex hex numbers!
         } else {
-            bool isFloat = false;
             while (token_is_number(*lex->source) == true || (isFloat == false && *lex->source == '.')) {
                 if (*lex->source == '.') { // if current char is `.` so we change `isFloat` to true..
                     isFloat = true; // set `isFloat` to true, remember it was `float` before.
