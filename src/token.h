@@ -118,6 +118,15 @@ typedef enum
 	TOKEN_OPERATOR_SEMICOLON, // ;
 	TOKEN_OPERATOR_VIRGOOL, // ,
 
+	TOKEN_OPERATOR_SHIFT_RIGHT, // <<
+	TOKEN_OPERATOR_SHIFT_LEFT, // >>
+
+	TOKEN_OPERATOR_G, // >
+	TOKEN_OPERATOR_GE, // >=
+
+	TOKEN_OPERATOR_L, // <
+	TOKEN_OPERATOR_LE, // <=
+
 	// ================= other operators
 	TOKEN_SECTION_OPEN, // {
 	TOKEN_SECTION_CLOSE, // }
