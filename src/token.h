@@ -86,6 +86,8 @@ typedef enum
 	TOKEN_TYPE_CHAR,
 	TOKEN_TYPE_STRING,
 	// ================= operators
+	TOKEN_OPERATOR_DOLLAR, // $
+
 	TOKEN_OPERATOR_PLUS, // +
 	TOKEN_OPERATOR_PLUSPLUS, //++
 

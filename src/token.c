@@ -797,6 +797,9 @@ char *tokenName(TokenType type)
 		case TOKEN_OPERATOR_SHIFT_LEFT:
 			return "OPERATOR_SHIFT_LEFT";
 
+		case TOKEN_OPERATOR_DOLLAR:
+			return "OPERATOR_DOLLAR";
+
 		case TOKEN_OPERATOR_G:
 			return "OPERATOR_G";
 		case TOKEN_OPERATOR_GE:

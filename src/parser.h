@@ -27,4 +27,6 @@ int parserCheck(Parser *, ErrorsContainer *);
 
 void parserFree(Parser *);
 
+bool tokenIsPrimaryType(Token *);
+
 #endif
