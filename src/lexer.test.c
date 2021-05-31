@@ -61,6 +61,7 @@ void run_tests() {
     for (size_t i = 0; i < LEXER_TEST_COUNT; i++) {
         printf("[Test %d] ", i);
         res[i] = lexer_functions[i].function();
+        printf("%s: ", lexer_functions[i].name);
         if(res[i] == 1) {
             printf("Test Success.\n");
         } else {
