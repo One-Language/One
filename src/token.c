@@ -89,7 +89,8 @@ bool token_is_ident(char c) {
 }
 
 bool token_is_eof(char c) {
-    return (c == EOF || c == '\0' || c == 0) ? true : false;
+    // EOF is -1
+    return (c == EOF || c == '\0') ? true : false;
 }
 
 bool tokenEOF(Lexer *lex) {
