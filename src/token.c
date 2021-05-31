@@ -106,6 +106,7 @@ void tokenPrevChar(Lexer *lex) {
 
 Token *tokenNext(Lexer *lex) {
     Token *t = malloc(sizeof(Token));
+    t->vstring = NULL;
 
     // skip the free space
     while (token_is_free(*lex->source) == true) {
@@ -142,6 +143,7 @@ Token *tokenNext(Lexer *lex) {
                 char c2 = *lex->source; // get current token, it may be second part of `*/`
                 if (c1 == '*' && c2 ==
                                  '/') { // if first char was * and second was /, so we have to close multi-line comment and stop this loop!
+                    tokenNextChar(lex); // Skip the `/` character and go to next character
                     break; // END multi-line comment and looking loop!
                 } else {
                     // Why we not need to go back to prevChar? Since we still not call the tokenNextChar function...
@@ -187,6 +189,7 @@ Token *tokenNext(Lexer *lex) {
 
         if (t->type != TOKEN_VALUE_IDENTIFIER) {
             free(t->vstring);
+            t->vstring = NULL;
         }
 
         return t;
