@@ -8,6 +8,10 @@
 
  **/
 
+any global_var
+const global_int      = 110
+const i32 global_int2 = 110
+
 i8 main {
 
 }

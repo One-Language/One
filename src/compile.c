@@ -17,61 +17,70 @@
 #include "compile.h"
 #include "parser.h"
 
-void link(Args *args, ErrorsContainer *errors) {
-    // TODO, link all object file(s) and create final executable file!
+void link(Args *args, ErrorsContainer *errors)
+{
+	// TODO, link all object file(s) and create final executable file!
 }
 
-int compileFileString(char *filename, char *input, ErrorsContainer *errors) {
-    Lexer *lex = lexerInit(filename, input, errors);
-    int res = lexerCheck(lex, errors); // start to pars all of tokens
+int compileFileString(char *filename, char *input, ErrorsContainer *errors)
+{
+	Lexer *lex = lexerInit(filename, input, errors);
+	int res = lexerCheck(lex, errors); // start to pars all of tokens
 
-    if(res == EXIT_SUCCESS) {
-        lexerLog(lex); // Display log list of tokens
+	if (res == EXIT_SUCCESS)
+	{
+		lexerLog(lex); // Display log list of tokens
 
-        Parser* pars = parserInit(lex, errors);
-        res = parserCheck(pars, errors);
-        parserFree(pars);
+		Parser *pars = parserInit(lex, errors);
+		res = parserCheck(pars, errors);
+		parserFree(pars);
 
-        lexerFree(lex); // free and remove Lexer object
-        parserFree(pars); // free and remove Parser object
+		lexerFree(lex); // free and remove Lexer object
+		parserFree(pars); // free and remove Parser object
 
-        if(res == EXIT_SUCCESS) {
-            // TODO: Ast Tree
-            // TODO: Code generation
-//            Ast* ast = astInit(pars, errors);
-//            res = astCheck(ast, errors);
-//            astFree(ast);
-        }
-    }
+		if (res == EXIT_SUCCESS)
+		{
+			// TODO: Ast Tree
+			// TODO: Code generation
+			//            Ast* ast = astInit(pars, errors);
+			//            res = astCheck(ast, errors);
+			//            astFree(ast);
+		}
+	}
 
-    return res;
+	return res;
 }
 
-int compileString(char *input, ErrorsContainer *errors) {
-    return compileFileString(NULL, input, errors);
+int compileString(char *input, ErrorsContainer *errors)
+{
+	return compileFileString(NULL, input, errors);
 }
 
-int compileFile(char *filename, ErrorsContainer *errors) {
-    char *input = fileReads(filename, errors);
-    return compileFileString(filename, input, errors);
+int compileFile(char *filename, ErrorsContainer *errors)
+{
+	char *input = fileReads(filename, errors);
+	return compileFileString(filename, input, errors);
 }
 
-int compile(Args *args, ErrorsContainer *errors) {
-    if (args->input_file_count == 0)
-        return EXIT_FAILURE;
+int compile(Args *args, ErrorsContainer *errors)
+{
+	if (args->input_file_count == 0)
+		return EXIT_FAILURE;
 
-    int res = EXIT_SUCCESS;
-    for (int i = 0; i < args->input_file_count; i++) {
-        printf("-->%s\n", args->input_files[i]);
-        int res_now = compileFile(args->input_files[i], errors);
+	int res = EXIT_SUCCESS;
+	for (int i = 0; i < args->input_file_count; i++)
+	{
+		printf("-->%s\n", args->input_files[i]);
+		int res_now = compileFile(args->input_files[i], errors);
 
-        if (res_now != EXIT_SUCCESS) {
-            res = res_now;
-            break; // TODO: stop to parse other files or no?
-        }
-    }
+		if (res_now != EXIT_SUCCESS)
+		{
+			res = res_now;
+			break; // TODO: stop to parse other files or no?
+		}
+	}
 
-    link(args, errors);
+	link(args, errors);
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }

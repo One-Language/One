@@ -39,4 +39,3 @@ char *fileReads(const char *filename, ErrorsContainer *errors)
 	fclose(onefile);
 	return onebuffer;
 }
-

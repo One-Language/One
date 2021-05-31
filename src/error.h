@@ -19,23 +19,26 @@
 typedef struct _location Location;
 typedef struct _token Token;
 
-typedef enum {
-    ERROR,
-    WARNING,
-    NOTE,
+typedef enum
+{
+	ERROR,
+	WARNING,
+	NOTE,
 } ErrorLevel;
 
-typedef struct _error {
-    char *filename;
-    char *message;
-    Location location;
-    ErrorLevel level;
+typedef struct _error
+{
+	char *filename;
+	char *message;
+	Location location;
+	ErrorLevel level;
 } Error;
 
-typedef struct _errors {
-    int error_count;
-    int error_capacity;
-    Error *errors;
+typedef struct _errors
+{
+	int error_count;
+	int error_capacity;
+	Error *errors;
 } ErrorsContainer;
 
 void ErrorsInit(ErrorsContainer *);

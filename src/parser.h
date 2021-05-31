@@ -16,11 +16,12 @@ typedef struct _location Location;
 typedef struct _errors ErrorsContainer;
 typedef struct _lexer Lexer;
 
-typedef struct _parser {
-    Lexer *lex;
+typedef struct _parser
+{
+	Lexer *lex;
 } Parser;
 
-Parser *parserInit(Lexer* , ErrorsContainer *);
+Parser *parserInit(Lexer *, ErrorsContainer *);
 
 int parserCheck(Parser *, ErrorsContainer *);
 

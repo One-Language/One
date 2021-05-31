@@ -15,13 +15,14 @@ typedef struct _token Token;
 typedef struct _location Location;
 typedef struct _errors ErrorsContainer;
 
-typedef struct _lexer {
-    Token **tokens;
-    size_t token_count;
+typedef struct _lexer
+{
+	Token **tokens;
+	size_t token_count;
 
-    char *filename; // filename (path)
-    char *source; // source string
-    Location location;
+	char *filename; // filename (path)
+	char *source; // source string
+	Location location;
 } Lexer;
 
 Lexer *lexerInit(char *, char *, ErrorsContainer *);

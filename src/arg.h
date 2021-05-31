@@ -18,17 +18,18 @@
 
 typedef struct _errors ErrorsContainer;
 
-typedef struct _args {
-    bool help;
-    bool version;
-    bool debug;
+typedef struct _args
+{
+	bool help;
+	bool version;
+	bool debug;
 
-    char **input_files;
-    unsigned int input_file_count;
+	char **input_files;
+	unsigned int input_file_count;
 
-    int argc;
-    char **argv;
-    char **env;
+	int argc;
+	char **argv;
+	char **env;
 } Args;
 
 void ArgsInit(Args *);

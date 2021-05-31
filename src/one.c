@@ -41,7 +41,7 @@ int main(int argc, char **argv, char **env)
 		ArgsHelp(stderr, &args);
 	}
 
-    ErrorsPrints(stderr, &errors);
+	ErrorsPrints(stderr, &errors);
 
 	ArgsFree(&args);
 	ErrorsFree(&errors);
