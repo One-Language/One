@@ -17,6 +17,7 @@ typedef struct _errors ErrorsContainer;
 
 typedef struct _lexer {
     Token **tokens;
+    size_t token_count;
 
     char *filename; // filename (path)
     char *source; // source string
@@ -25,7 +26,7 @@ typedef struct _lexer {
 
 Lexer *lexerInit(char *, char *, ErrorsContainer *);
 
-int lexerParse(Lexer *, ErrorsContainer *);
+int lexerCheck(Lexer *, ErrorsContainer *);
 
 void lexerFree(Lexer *);
 

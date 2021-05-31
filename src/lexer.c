@@ -11,9 +11,12 @@
 #include "token.h"
 #include "error.h"
 #include "lexer.h"
+#include "array.h"
 
 Lexer *lexerInit(char *filename, char *input, ErrorsContainer *errors) {
     Lexer *lex = malloc(sizeof(Lexer));
+    lex->tokens = NULL;
+    lex->token_count = 0;
     lex->filename = filename;
     lex->source = input;
     lex->location.line = 0;
@@ -21,23 +24,34 @@ Lexer *lexerInit(char *filename, char *input, ErrorsContainer *errors) {
     return lex;
 }
 
-int lexerParse(Lexer *lex, ErrorsContainer *errors) {
+int lexerCheck(Lexer *lex, ErrorsContainer *errors) {
     token_init(lex);
     printf("=============== Source ===============\n");
     printf("%s\n", lex->source);
     printf("=============== Tokenizer ===============\n");
+
+    Array tokens;
+    arrayInit(&tokens);
 
     Token *t;
     while (tokenEOF(lex) == false) {
 //        printf("%c\n", *lex->source);
 //        tokenNextChar(lex);
         t = tokenNext(lex);
-        if(t->type == TOKEN_UNKNOWM)
+        if(t->type == TOKEN_UNKNOWM) {
+            // TODO: raise a error via ErrorAppend(...)
             break;
+        }
+
+        arrayPush(&tokens, t);
+        /*
         printf("==>%s\n", tokenName(t->type));
         if(t->type == TOKEN_VALUE_IDENTIFIER || t->type == TOKEN_VALUE_STRING || t->type == TOKEN_VALUE_NUMBER)
             printf("\t%s\n", t->vstring);
+        */
     }
+    lex->tokens = (Token**) tokens.data;
+    lex->token_count = tokens.count;
     return EXIT_SUCCESS;
 }
 

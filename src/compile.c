@@ -15,6 +15,7 @@
 #include "parser.h"
 #include "error.h"
 #include "compile.h"
+#include "parser.h"
 
 void link(Args *args, ErrorsContainer *errors) {
     // TODO, link all object file(s) and create final executable file!
@@ -22,8 +23,21 @@ void link(Args *args, ErrorsContainer *errors) {
 
 int compileFileString(char *filename, char *input, ErrorsContainer *errors) {
     Lexer *lex = lexerInit(filename, input, errors);
-    int res = lexerParse(lex, errors);
+    int res = lexerCheck(lex, errors);
     lexerFree(lex);
+
+    if(res == EXIT_SUCCESS) {
+        Parser* pars = parserInit(lex, errors);
+        res = parserCheck(pars, errors);
+        parserFree(pars);
+
+        if(res == EXIT_SUCCESS) {
+//            Ast* ast = astInit(pars, errors);
+//            res = astCheck(ast, errors);
+//            astFree(ast);
+        }
+    }
+
     return res;
 }
 
