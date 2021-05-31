@@ -42,9 +42,9 @@ int compileFileString(char *filename, char *input, ErrorsContainer *errors)
 		{
 			// TODO: Ast Tree
 			// TODO: Code generation
-			//            Ast* ast = astInit(pars, errors);
-			//            res = astCheck(ast, errors);
-			//            astFree(ast);
+			//			Ast *ast = astInit(pars, errors);
+			//			res = astCheck(ast, errors);
+			//			astFree(ast);
 		}
 	}
 

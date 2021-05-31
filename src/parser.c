@@ -56,27 +56,20 @@ bool tokenIsPrimaryType(Token *t)
 	return false;
 }
 
-void parseFunction(Token **tokens)
+bool tokenIsUserType(Token *t)
 {
+	if (t->type == TOKEN_VALUE_IDENTIFIER)
+	{
+		if (strcmp(t->vstring, "point") == 0)
+			return true;
+		// TODO: Need to check from a vector-like!
+		return false;
+	}
+	return false;
 }
 
-int parseDataType(Token **tokens)
+void parseFunction(Token **tokens)
 {
-	if (tokenIsPrimaryType(*tokens)) // if current token is a primitive data-type
-	{
-		Token *datatype = *tokens; // store data-type to a variable
-		tokens++; // go to next token
-		if ((*tokens)->type == TOKEN_VALUE_IDENTIFIER)
-		{ // check if current token is a user identifier
-			tokens++; // go to next token
-			if ((*tokens)->type == TOKEN_BRACKET_OPEN || (*tokens)->type == TOKEN_SECTION_OPEN)
-			{
-				tokens--; // go back to user-identifier name (function name)
-				tokens--; // go back to data-type
-				parseFunction(tokens);
-			}
-		}
-	}
 }
 
 int parserCheck(Parser *pars, ErrorsContainer *errors)
@@ -88,7 +81,24 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 	{
 		t = *pars->lex->tokens;
 		printf("-->%s\n", tokenName(t->type));
-		pars->lex->tokens++;
+
+		if (tokenIsPrimaryType(*pars->lex->tokens) == true || tokenIsUserType(*pars->lex->tokens)) // if current token is a primitive data-type
+		{
+			Token *datatype = *pars->lex->tokens; // store data-type to a variable
+			pars->lex->tokens++; // go to next token
+			if ((*pars->lex->tokens)->type == TOKEN_VALUE_IDENTIFIER)
+			{ // check if current token is a user identifier
+				pars->lex->tokens++; // go to next token
+				if ((*pars->lex->tokens)->type == TOKEN_BRACKET_OPEN || (*pars->lex->tokens)->type == TOKEN_SECTION_OPEN)
+				{
+					pars->lex->tokens--; // go back to user-identifier name (function name)
+					pars->lex->tokens--; // go back to data-type
+					parseFunction(pars->lex->tokens);
+				}
+			}
+		}
+
+		//	pars->lex->tokens++;
 	}
 	return EXIT_SUCCESS;
 }
