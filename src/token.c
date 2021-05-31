@@ -199,15 +199,18 @@ Token *tokenNext(Lexer *lex) {
     else if (token_is_number(*lex->source) == true || *lex->source == '.') { // a number token start with [0-9] or '.'
         bool isFloat = false;
         size_t i = 0;
-        char digits[100]; // maximum length of a number is 100, i think it's enought for our work!
+
+        // maximum length of a number is 100, i think it's enought for our work!
+        t->vstring = malloc(sizeof(char) * 100 + 1);
+
         if (*lex->source == '.') { // it's dot character
             isFloat = true; // we set `isFloat` to true, so we will not accept any `.` character anymore.
-            digits[i++] = '0'; // put zero at first item of array (automaticly)
+            t->vstring[i++] = '0'; // put zero at first item of array (automaticly)
 
             // put '.' character at second item of array
-            digits[i++] = '.';// '.' equal to *lex->source;
+            t->vstring[i++] = '.';// '.' equal to *lex->source;
         } else { // it's a number [0-9]
-            digits[i++] = *lex->source; // put first character at first item of array
+            t->vstring[i++] = *lex->source; // put first character at first item of array
         }
 
         tokenNextChar(lex); // go to next chat, remember we already have prev char at `digits` array.
@@ -232,15 +235,16 @@ Token *tokenNext(Lexer *lex) {
 
                 if (*lex->source == '.') { // if current char is `.` so we change `isFloat` to true..
                     isFloat = true; // set `isFloat` to true, remember it was `float` before.
-                    digits[i++] = '.'; // adding float point to queue char list!
+                    t->vstring[i++] = '.'; // adding float point to queue char list!
                 } else { // it's a digit, [0-9]
-                    digits[i++] = *lex->source; // add current number to queue char list!
+                    t->vstring[i++] = *lex->source; // add current number to queue char list!
                 }
                 tokenNextChar(lex); // go to next char, we need to iterate at this loop
             }
-            digits[i] = '\0'; // adding \0 to digits char array to set this DONE OF STRING!
-//            printf("---->%s\n", digits);
-            t->vstring = digits;
+            t->vstring[i] = '\0'; // adding \0 to digits char array to set this DONE OF STRING!
+
+            printf("---->%s\n", v->string);
+
             t->type = TOKEN_VALUE_NUMBER; // set type of current token
             return t;
         }
