@@ -62,6 +62,8 @@ typedef enum {
     TOKEN_VALUE_NUMBER,
     TOKEN_VALUE_BOOL,
     // ================= types
+    TOKEN_TYPE_ANY,
+
     TOKEN_TYPE_I8,
     TOKEN_TYPE_I16,
     TOKEN_TYPE_I32,

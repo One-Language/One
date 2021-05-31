@@ -552,6 +552,8 @@ char *tokenName(TokenType type) {
             return "BRACKET_CLOSE";
 
             // data types
+        case TOKEN_TYPE_ANY:
+            return "TYPE_ANY";
         case TOKEN_TYPE_I8:
             return "TYPE_I8";
         case TOKEN_TYPE_I16:
