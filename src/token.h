@@ -88,6 +88,16 @@ typedef enum {
     TOKEN_OPERATOR_DIV, // /
     TOKEN_OPERATOR_DIVINT, // //
 
+    TOKEN_OPERATOR_BIT_AND, // &
+    TOKEN_OPERATOR_AND, // &&
+
+    TOKEN_OPERATOR_BIT_OR, // |
+    TOKEN_OPERATOR_OR, // ||
+
+    TOKEN_DOT, // .
+    TOKEN_DOTDOT, // ..
+    TOKEN_DOTDOTDOT, // ...
+    // ================= other operators
     TOKEN_SECTION_OPEN, // {
     TOKEN_SECTION_CLOSE, // }
 

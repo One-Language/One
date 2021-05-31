@@ -89,7 +89,7 @@ bool token_is_ident(char c) {
 }
 
 bool token_is_eof(char c) {
-    return (c == EOF || c == '\0') ? true : false;
+    return (c == EOF || c == '\0' || c == 0) ? true : false;
 }
 
 bool tokenEOF(Lexer *lex) {
@@ -304,16 +304,53 @@ Token *tokenNext(Lexer *lex) {
         }
     }
 
+        // operator section {
     else if(*lex->source == '{') {
         t->type = TOKEN_SECTION_OPEN;
         tokenNextChar(lex); // go to next character
         return t;
     }
 
+        // operator section }
     else if(*lex->source == '}') {
         t->type = TOKEN_SECTION_CLOSE;
         tokenNextChar(lex); // go to next character
         return t;
+    }
+
+        // operator bracket (
+    else if(*lex->source == '(') {
+        t->type = TOKEN_BRACKET_OPEN;
+        tokenNextChar(lex); // go to next character
+        return t;
+    }
+
+        // operator bracket )
+    else if(*lex->source == ')') {
+        t->type = TOKEN_BRACKET_CLOSE;
+        tokenNextChar(lex); // go to next character
+        return t;
+    }
+
+        // operator  .
+        // operator ..
+        // operator ...
+    else if(*lex->source == '.') { // it's . or .. or ... token
+        tokenNextChar(lex); // go to next character
+        if(*lex->source == '.') { // maybe it's .. or ...
+            tokenNextChar(lex); // go to next character
+            if(*lex->source == '.') { // it's ...
+                t->type = TOKEN_DOTDOTDOT;
+                tokenNextChar(lex); // go to next character
+                return t;
+            } else { // it's ..
+                t->type = TOKEN_DOTDOT;
+                return t;
+            }
+        } else { // it's . token
+            t->type = TOKEN_DOT;
+            return t;
+        }
     }
 
     // Otherwise: unknowm token
