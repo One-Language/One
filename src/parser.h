@@ -29,4 +29,8 @@ void parserFree(Parser *);
 
 bool tokenIsPrimaryType(Token *);
 
+int exceptGo(Token **, TokenType, ErrorsContainer *);
+
+int except(Token **, TokenType, ErrorsContainer *);
+
 #endif

@@ -68,8 +68,73 @@ bool tokenIsUserType(Token *t)
 	return false;
 }
 
+int parseDatatype(Token **tokens)
+{
+	if (tokenIsPrimaryType(*tokens) == true || tokenIsUserType(*tokens) == true)
+	{ // if current token is a primitive data-type
+		// TOOD: check data-type array. e;g `i32 []`
+		return 1; // yes it's a data-type token series!
+	}
+	return -1; // is not!
+}
+
+int parseArguments(Token **tokens)
+{
+	if ((*tokens)->type == TOKEN_BRACKET_OPEN)
+	{
+		tokens++; // go to next token
+		while ((*tokens)->type != TOKEN_BRACKET_CLOSE)
+		{ // loop iterate before see a `)` token.
+			tokens++; // go to next token
+		}
+		return 1;
+	}
+	else
+	{
+		return 0; // it's optional
+	}
+}
+
+int except(Token **tokens, TokenType want, ErrorsContainer* errors)
+{
+	Token *t = *tokens;
+	if (t->type != TOKEN_SECTION_OPEN)
+	{
+		// TODO: ErrorAppend(...)
+		printf("Error: we except %s, but we see %s\n", tokenName(want), tokenName(t->type));
+		return 0; // not valid
+	}
+	return 1; // valid
+}
+
+int exceptGo(Token **tokens, TokenType want, ErrorsContainer* errors)
+{
+	int res = except(tokens, want, errors); // call except function
+	if (res == 1)
+		tokens++;
+	// Why we not have and need a `else`, because we already handled errors at parent function.
+	return res;
+}
+
+void parseBlock(Token **tokens)
+{
+	if ((*tokens)->type == TOKEN_SECTION_OPEN)
+	{
+	}
+}
+
 void parseFunction(Token **tokens)
 {
+	if (parseDatatype(tokens) == 1)
+	{
+		tokens++; // go to next token
+		if ((*tokens)->type == TOKEN_VALUE_IDENTIFIER)
+		{ // check if current token is a user identifier
+			tokens++; // go to next token
+			parseArguments(tokens);
+			parseBlock(tokens);
+		}
+	}
 }
 
 int parserCheck(Parser *pars, ErrorsContainer *errors)
@@ -82,7 +147,7 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 		t = *pars->lex->tokens;
 		printf("-->%s\n", tokenName(t->type));
 
-		if (tokenIsPrimaryType(*pars->lex->tokens) == true || tokenIsUserType(*pars->lex->tokens)) // if current token is a primitive data-type
+		if (tokenIsPrimaryType(*pars->lex->tokens) == true || tokenIsUserType(*pars->lex->tokens) == true) // if current token is a primitive data-type
 		{
 			Token *datatype = *pars->lex->tokens; // store data-type to a variable
 			pars->lex->tokens++; // go to next token
