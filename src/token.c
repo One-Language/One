@@ -216,10 +216,17 @@ Token *tokenNext(Lexer *lex) {
 
         // check it's a HEX Number or no
         // Hex number format: '0' 'x' *****
-        if (isFloat == true && digits[0] == '0' && *lex->source == 'x') { // We will accept a HEX Number, if we not has `.` character at before, and we has `0` at prev char and current char is `x`.
+        if (isFloat == true && digits[0] == '0' && *lex->source ==
+                                                   'x') { // We will accept a HEX Number, if we not has `.` character at before, and we has `0` at prev char and current char is `x`.
             // TODO: lex hex numbers!
-        } else {
-            while (token_is_number(*lex->source) == true || (isFloat == false && *lex->source == '.')) {
+        } else { // otherwise, it's not a HEX Number, so we except a number digits. maybe it's decimal or float.
+            // Remember: Maybe current sutiation was already a float number, it's why we need to check `isFloat` value again.
+            // Why? `.4` is equal to `0.4`
+
+            // iterate character and accept [0-9] digits or
+            while (token_is_number(*lex->source) == true ||
+                   (isFloat == false && *lex->source ==
+                                        '.')) { // or it's `.` character while we is not float number yet and we are in decimal state! (isFloat == false means we are in decimal state)
                 // TODO: check length of number and validate OS maximum number digits
                 // if(length > 100) { /*ErrorAppend(...)*/ }
 
