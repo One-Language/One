@@ -372,12 +372,23 @@ char *tokenName(TokenType type) {
 
         case TOKEN_OPERATOR_PLUS:
             return "OPERATOR_PLUS";
+        case TOKEN_OPERATOR_PLUSPLUS:
+            return "OPERATOR_PLUSPLUS";
+
         case TOKEN_OPERATOR_MINUS:
             return "OPERATOR_MINUS";
-        case TOKEN_OPERATOR_MULL:
+        case TOKEN_OPERATOR_MINUSMINUS:
+            return "OPERATOR_MINUSMINUS";
+
+        case TOKEN_OPERATOR_MUL:
             return "OPERATOR_MUL";
+        case TOKEN_OPERATOR_POW:
+            return "OPERATOR_POW";
+
         case TOKEN_OPERATOR_DIV:
             return "OPERATOR_DIV";
+        case TOKEN_OPERATOR_DIVINT:
+            return "OPERATOR_DIVINT";
 
         case TOKEN_UNKNOWM:
             return "UNKNOWM";
