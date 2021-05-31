@@ -304,6 +304,18 @@ Token *tokenNext(Lexer *lex) {
         }
     }
 
+    else if(*lex->source == '{') {
+        t->type = TOKEN_SECTION_OPEN;
+        tokenNextChar(lex); // go to next character
+        return t;
+    }
+
+    else if(*lex->source == '}') {
+        t->type = TOKEN_SECTION_CLOSE;
+        tokenNextChar(lex); // go to next character
+        return t;
+    }
+
     // Otherwise: unknowm token
     t->type = TOKEN_UNKNOWM;
     return t;
@@ -392,6 +404,16 @@ char *tokenName(TokenType type) {
             return "OPERATOR_DIV";
         case TOKEN_OPERATOR_DIVINT:
             return "OPERATOR_DIVINT";
+
+        case TOKEN_SECTION_OPEN:
+            return "SECTION_OPEN";
+        case TOKEN_SECTION_CLOSE:
+            return "SECTION_CLOSE";
+
+        case TOKEN_BRACKET_OPEN:
+            return "BRACKET_OPEN";
+        case TOKEN_BRACKET_CLOSE:
+            return "BRACKET_CLOSE";
 
         case TOKEN_UNKNOWM:
             return "UNKNOWM";

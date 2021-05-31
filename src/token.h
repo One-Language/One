@@ -87,6 +87,12 @@ typedef enum {
 
     TOKEN_OPERATOR_DIV, // /
     TOKEN_OPERATOR_DIVINT, // //
+
+    TOKEN_SECTION_OPEN, // {
+    TOKEN_SECTION_CLOSE, // }
+
+    TOKEN_BRACKET_OPEN, // (
+    TOKEN_BRACKET_CLOSE, // )
 } TokenType;
 
 typedef struct _token {
