@@ -415,6 +415,26 @@ char *tokenName(TokenType type) {
         case TOKEN_BRACKET_CLOSE:
             return "BRACKET_CLOSE";
 
+            // data types
+        case TOKEN_TYPE_I8:
+            return "TYPE_I8";
+        case TOKEN_TYPE_I16:
+            return "TYPE_I16";
+        case TOKEN_TYPE_I32:
+            return "TYPE_I32";
+        case TOKEN_TYPE_I64:
+            return "TYPE_I64";
+        case TOKEN_TYPE_F32:
+            return "TYPE_F32";
+        case TOKEN_TYPE_F64:
+            return "TYPE_F64";
+        case TOKEN_TYPE_BOOL:
+            return "TYPE_BOOL";
+        case TOKEN_TYPE_STRING:
+            return "TYPE_STRING";
+        case TOKEN_TYPE_CHAR:
+            return "TYPE_CHAR";
+
         case TOKEN_UNKNOWM:
             return "UNKNOWM";
         default:

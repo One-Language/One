@@ -107,36 +107,45 @@ typedef struct _keyword {
     const char *identifier;
     size_t length;
     TokenType type;
+    bool caseSensetice; // true = lowercase or uppervase not matter, flase means full equal `===`
 } Keyword;
 
 static Keyword keywords[] = {
-        {"switch",   6, TOKEN_SWTICH},
-        {"break",    5, TOKEN_BREAK},
-        {"continue", 8, TOKEN_CONTINUE},
+        {"switch",   6, TOKEN_SWTICH, false},
+        {"break",    5, TOKEN_BREAK, false},
+        {"continue", 8, TOKEN_CONTINUE, false},
 
-        {"package",  7, TOKEN_PACKAGE},
-        {"import",   6, TOKEN_IMPORT},
+        {"package",  7, TOKEN_PACKAGE, false},
+        {"import",   6, TOKEN_IMPORT, false},
 
-        {"if",       2, TOKEN_IF},
-        {"else",     4, TOKEN_ELSE},
+        {"if",       2, TOKEN_IF, false},
+        {"else",     4, TOKEN_ELSE, false},
 
-        {"while",    5, TOKEN_WHILE},
-        {"for",      3, TOKEN_FOR},
-        {"in",       2, TOKEN_IN},
-        {"as",       2, TOKEN_AS},
+        {"while",    5, TOKEN_WHILE, false},
+        {"for",      3, TOKEN_FOR, false},
+        {"in",       2, TOKEN_IN, false},
+        {"as",       2, TOKEN_AS, false},
 
-        {"is",       2, TOKEN_IS},
-        {"null",     4, TOKEN_NULL},
-        {"return",   6, TOKEN_RETURN},
-        {"static",   6, TOKEN_STATIC},
+        {"is",       2, TOKEN_IS, false},
+        {"null",     4, TOKEN_NULL, false},
+        {"return",   6, TOKEN_RETURN, false},
+        {"static",   6, TOKEN_STATIC, false},
 
-        {"this",     4, TOKEN_THIS},
-        {"super",    5, TOKEN_SUPER},
+        {"this",     4, TOKEN_THIS, false},
+        {"super",    5, TOKEN_SUPER, false},
 
-        {"false",    5, TOKEN_FALSE},
-        {"true",     4, TOKEN_TRUE},
+        {"false",    5, TOKEN_FALSE, false},
+        {"true",     4, TOKEN_TRUE, false},
 
-        {NULL,       0, TOKEN_EOF} // Sentinel to mark the end of the array.
+        // data types
+        {"i8",     2, TOKEN_TYPE_I8, true},
+        {"i16",     3, TOKEN_TYPE_I16, true},
+        {"i32",     3, TOKEN_TYPE_I32, true},
+        {"i64",     3, TOKEN_TYPE_I64, true},
+        {"f32",     3, TOKEN_TYPE_F32, true},
+        {"f64",     3, TOKEN_TYPE_F64, true},
+
+        {NULL,       0, TOKEN_EOF, false} // Sentinel to mark the end of the array.
 };
 
 
