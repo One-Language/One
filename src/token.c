@@ -333,6 +333,20 @@ Token *tokenNext(Lexer *lex) {
         return t;
     }
 
+        // operator square [
+    else if(*lex->source == '[') {
+        t->type = TOKEN_SQUARE_OPEN;
+        tokenNextChar(lex); // go to next character
+        return t;
+    }
+
+        // operator square ]
+    else if(*lex->source == ']') {
+        t->type = TOKEN_SQUARE_CLOSE;
+        tokenNextChar(lex); // go to next character
+        return t;
+    }
+
         // operator  .
         // operator ..
         // operator ...
@@ -555,6 +569,11 @@ char *tokenName(TokenType type) {
             return "DOTDOT";
         case TOKEN_DOTDOTDOT:
             return "DOTDOTDOT";
+
+        case TOKEN_SQUARE_OPEN:
+            return "SQUARE_OPEN";
+        case TOKEN_SQUARE_CLOSE:
+            return "SQUARE_CLOSE";
 
         case TOKEN_UNKNOWM:
             return "UNKNOWM";

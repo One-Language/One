@@ -105,8 +105,11 @@ typedef enum {
     TOKEN_SECTION_OPEN, // {
     TOKEN_SECTION_CLOSE, // }
 
-    TOKEN_BRACKET_OPEN, // (
-    TOKEN_BRACKET_CLOSE, // )
+    TOKEN_BRACKET_OPEN, // ( round
+    TOKEN_BRACKET_CLOSE, // ) round
+
+    TOKEN_SQUARE_OPEN, // [
+    TOKEN_SQUARE_CLOSE, // ]
 } TokenType;
 
 typedef struct _token {

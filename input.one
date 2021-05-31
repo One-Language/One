@@ -21,4 +21,6 @@ test() {
     age = 5
     name = "Max"
     string s_name = "Max"
+
+    names = ["Max", "Ali", "John"]
 }
