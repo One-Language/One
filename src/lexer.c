@@ -44,11 +44,9 @@ int lexerCheck(Lexer *lex, ErrorsContainer *errors) {
         }
 
         arrayPush(&tokens, t);
-        /*
-        printf("==>%s\n", tokenName(t->type));
-        if(t->type == TOKEN_VALUE_IDENTIFIER || t->type == TOKEN_VALUE_STRING || t->type == TOKEN_VALUE_NUMBER)
-            printf("\t%s\n", t->vstring);
-        */
+//        printf("==>%s\n", tokenName(t->type));
+//        if(t->type == TOKEN_VALUE_IDENTIFIER || t->type == TOKEN_VALUE_STRING || t->type == TOKEN_VALUE_NUMBER)
+//            printf("\t%s\n", t->vstring);
     }
     lex->tokens = (Token**) tokens.data;
     lex->token_count = tokens.count;
