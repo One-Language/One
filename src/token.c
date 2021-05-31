@@ -221,7 +221,7 @@ Token *tokenNext(Lexer *lex) {
         // check it's a HEX Number or no
         // Hex number format: '0' 'x' *****
         if (isFloat == true && t->vstring[0] == '0' && *lex->source ==
-                                                   'x') { // We will accept a HEX Number, if we not has `.` character at before, and we has `0` at prev char and current char is `x`.
+                                                       'x') { // We will accept a HEX Number, if we not has `.` character at before, and we has `0` at prev char and current char is `x`.
             // TODO: lex hex numbers!
         } else { // otherwise, it's not a HEX Number, so we except a number digits. maybe it's decimal or float.
             // Remember: Maybe current sutiation was already a float number, it's why we need to check `isFloat` value again.
@@ -306,49 +306,49 @@ Token *tokenNext(Lexer *lex) {
     }
 
         // operator section {
-    else if(*lex->source == '{') {
+    else if (*lex->source == '{') {
         t->type = TOKEN_SECTION_OPEN;
         tokenNextChar(lex); // go to next character
         return t;
     }
 
         // operator section }
-    else if(*lex->source == '}') {
+    else if (*lex->source == '}') {
         t->type = TOKEN_SECTION_CLOSE;
         tokenNextChar(lex); // go to next character
         return t;
     }
 
         // operator bracket (
-    else if(*lex->source == '(') {
+    else if (*lex->source == '(') {
         t->type = TOKEN_BRACKET_OPEN;
         tokenNextChar(lex); // go to next character
         return t;
     }
 
         // operator bracket )
-    else if(*lex->source == ')') {
+    else if (*lex->source == ')') {
         t->type = TOKEN_BRACKET_CLOSE;
         tokenNextChar(lex); // go to next character
         return t;
     }
 
         // operator square [
-    else if(*lex->source == '[') {
+    else if (*lex->source == '[') {
         t->type = TOKEN_SQUARE_OPEN;
         tokenNextChar(lex); // go to next character
         return t;
     }
 
         // operator square ]
-    else if(*lex->source == ']') {
+    else if (*lex->source == ']') {
         t->type = TOKEN_SQUARE_CLOSE;
         tokenNextChar(lex); // go to next character
         return t;
     }
 
         // operator ;
-    else if(*lex->source == ';') {
+    else if (*lex->source == ';') {
         t->type = TOKEN_OPERATOR_SEMICOLON;
         tokenNextChar(lex); // go to next character
         return t;
@@ -356,7 +356,7 @@ Token *tokenNext(Lexer *lex) {
 
 
         // operator ,
-    else if(*lex->source == ',') {
+    else if (*lex->source == ',') {
         t->type = TOKEN_OPERATOR_VIRGOOL;
         tokenNextChar(lex); // go to next character
         return t;
@@ -378,11 +378,11 @@ Token *tokenNext(Lexer *lex) {
         // operator  .
         // operator ..
         // operator ...
-    else if(*lex->source == '.') { // it's . or .. or ... token
+    else if (*lex->source == '.') { // it's . or .. or ... token
         tokenNextChar(lex); // go to next character
-        if(*lex->source == '.') { // maybe it's .. or ...
+        if (*lex->source == '.') { // maybe it's .. or ...
             tokenNextChar(lex); // go to next character
-            if(*lex->source == '.') { // it's ...
+            if (*lex->source == '.') { // it's ...
                 t->type = TOKEN_OPERATOR_DOTDOTDOT;
                 tokenNextChar(lex); // go to next character
                 return t;
@@ -406,11 +406,11 @@ Token *tokenNext(Lexer *lex) {
         // TODO: operator /=
         // TODO: operator **=
         // TODO: operator |=
-    else if(*lex->source == '=') { // it's = or == or === token
+    else if (*lex->source == '=') { // it's = or == or === token
         tokenNextChar(lex); // go to next character
-        if(*lex->source == '=') { // maybe it's == or ===
+        if (*lex->source == '=') { // maybe it's == or ===
             tokenNextChar(lex); // go to next character
-            if(*lex->source == '=') { // it's ===
+            if (*lex->source == '=') { // it's ===
                 t->type = TOKEN_OPERATOR_EQUALEQUALEQUAL;
                 tokenNextChar(lex); // go to next character
                 return t;
@@ -425,15 +425,17 @@ Token *tokenNext(Lexer *lex) {
     }
 
         // string
-    else if(*lex->source == '\"') { // it's first character of string block-value
+    else if (*lex->source == '\"') { // it's first character of string block-value
         tokenNextChar(lex); // go to next char of the source
-        size_t i=0;
-        t->vstring = malloc(sizeof(char) * 1024); // TODO: we set max 1024 size, but we have to realloc this size at next steps!
-        while (token_is_eof(*lex->source) == false && *lex->source != '\"') {
+        size_t i = 0;
+        t->vstring = malloc(
+                sizeof(char) * 1024); // TODO: we set max 1024 size, but we have to realloc this size at next steps!
+        while (token_is_eof(*lex->source) == false &&
+               *lex->source != '\"') { // go ahead until we see a finish string character!
             t->vstring[i++] = *lex->source;
             tokenNextChar(lex); // skip current character and go to next char of the source
         }
-        if(*lex->source == '\"') { // we except " character to know this string finished.
+        if (*lex->source == '\"') { // we except " character to know this string finished.
             tokenNextChar(lex); // skip current character and go to next char of the source
             t->vstring[i] = '\0';
             t->type = TOKEN_VALUE_STRING;
@@ -446,15 +448,17 @@ Token *tokenNext(Lexer *lex) {
     }
 
         // smart string
-    else if(*lex->source == '`') { // it's first character of string block-value
+    else if (*lex->source == '`') { // it's first character of string block-value
         tokenNextChar(lex); // go to next char of the source
-        size_t i=0;
-        t->vstring = malloc(sizeof(char) * 1024); // TODO: we set max 1024 size, but we have to realloc this size at next steps!
-        while (token_is_eof(*lex->source) == false && *lex->source != '`') {
+        size_t i = 0;
+        t->vstring = malloc(
+                sizeof(char) * 1024); // TODO: we set max 1024 size, but we have to realloc this size at next steps!
+        while (token_is_eof(*lex->source) == false &&
+               *lex->source != '`') { // go ahead until we see a finish string character!
             t->vstring[i++] = *lex->source;
             tokenNextChar(lex); // skip current character and go to next char of the source
         }
-        if(*lex->source == '`') { // we except " character to know this string finished.
+        if (*lex->source == '`') { // we except ` character to know this string finished.
             tokenNextChar(lex); // skip current character and go to next char of the source
             t->vstring[i] = '\0';
             t->type = TOKEN_VALUE_STRING;
