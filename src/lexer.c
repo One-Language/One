@@ -35,6 +35,8 @@ int lexerParse(Lexer *lex, ErrorsContainer *errors) {
         if(t->type == TOKEN_UNKNOWM)
             break;
         printf("==>%s\n", tokenName(t->type));
+        if(t->type == TOKEN_VALUE_IDENTIFIER || t->type == TOKEN_VALUE_STRING || t->type == TOKEN_VALUE_NUMBER)
+            printf("\t%s\n", t->vstring);
     }
     return EXIT_SUCCESS;
 }

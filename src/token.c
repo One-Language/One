@@ -239,7 +239,8 @@ Token *tokenNext(Lexer *lex) {
                 tokenNextChar(lex); // go to next char, we need to iterate at this loop
             }
             digits[i] = '\0'; // adding \0 to digits char array to set this DONE OF STRING!
-            printf("---->%s\n", digits);
+//            printf("---->%s\n", digits);
+            t->vstring = digits;
             t->type = TOKEN_VALUE_NUMBER; // set type of current token
             return t;
         }
