@@ -28,8 +28,9 @@ typedef enum {
     TOKEN_EOF = -1,
     TOKEN_UNKNOWM,
     // ================= keywords
-    TOKEN_DEF,
     TOKEN_EXTERN,
+    TOKEN_CONST,
+    TOKEN_FINAL,
     TOKEN_RETURN,
     TOKEN_IF,
     TOKEN_ELSE,

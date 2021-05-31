@@ -625,6 +625,13 @@ char *tokenName(TokenType type) {
         case TOKEN_PRINTNLDB:
             return "PRINTNLDB";
 
+        case TOKEN_EXTERN:
+            return "EXTERN";
+        case TOKEN_CONST:
+            return "CONST";
+        case TOKEN_FINAL:
+            return "FINAL";
+
         case TOKEN_UNKNOWM:
             return "UNKNOWM";
         default:
