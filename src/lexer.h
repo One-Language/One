@@ -30,4 +30,6 @@ int lexerCheck(Lexer *, ErrorsContainer *);
 
 void lexerFree(Lexer *);
 
+void lexerLog(Lexer *);
+
 #endif

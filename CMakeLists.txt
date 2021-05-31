@@ -16,7 +16,6 @@ add_executable(One
         src/error.h
         src/lexer.c
         src/lexer.h
-        src/lexer.test.c
         src/one.c
         src/one.h
         src/parser.c

@@ -23,15 +23,21 @@ void link(Args *args, ErrorsContainer *errors) {
 
 int compileFileString(char *filename, char *input, ErrorsContainer *errors) {
     Lexer *lex = lexerInit(filename, input, errors);
-    int res = lexerCheck(lex, errors);
-    lexerFree(lex);
+    int res = lexerCheck(lex, errors); // start to pars all of tokens
 
     if(res == EXIT_SUCCESS) {
+        lexerLog(lex); // Display log list of tokens
+
         Parser* pars = parserInit(lex, errors);
         res = parserCheck(pars, errors);
         parserFree(pars);
 
+        lexerFree(lex); // free and remove Lexer object
+        parserFree(pars); // free and remove Parser object
+
         if(res == EXIT_SUCCESS) {
+            // TODO: Ast Tree
+            // TODO: Code generation
 //            Ast* ast = astInit(pars, errors);
 //            res = astCheck(ast, errors);
 //            astFree(ast);

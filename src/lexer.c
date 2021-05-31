@@ -24,11 +24,24 @@ Lexer *lexerInit(char *filename, char *input, ErrorsContainer *errors) {
     return lex;
 }
 
+void lexerLog(Lexer* lex) {
+    printf("=============== Tokenizer ===============\n");
+
+    Token *t;
+    for (size_t i = 0; i < lex->token_count; i++) {
+        t = lex->tokens[i];
+
+        printf("==>%s\n", tokenName(t->type));
+        if(t->type == TOKEN_VALUE_IDENTIFIER || t->type == TOKEN_VALUE_STRING || t->type == TOKEN_VALUE_NUMBER)
+            printf("\t%s\n", t->vstring);
+    }
+}
+
+
 int lexerCheck(Lexer *lex, ErrorsContainer *errors) {
     token_init(lex);
     printf("=============== Source ===============\n");
     printf("%s\n", lex->source);
-    printf("=============== Tokenizer ===============\n");
 
     Array tokens;
     arrayInit(&tokens);
