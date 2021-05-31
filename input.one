@@ -27,4 +27,6 @@ test() {
     for name in names {
         _ name
     }
+    _ "Hello, World!"
+    _ 1, 2, 3, 4, 5
 }
