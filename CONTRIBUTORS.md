@@ -222,6 +222,21 @@
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
+### Documentation & Translation
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+   <tr>
+      <td align="center">
+         <a href="https://github.com/basalumutgazi">
+            <img src="https://avatars.githubusercontent.com/u/81925269?v=4" width="100px;" alt="basalumutgazi"/><br />
+            <sub><b>basalumutgazi</b></sub>
+         </a><br />
+      </td>
+   </tr>
+</table>
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 ---
 
 Your name can be here...
