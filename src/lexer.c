@@ -32,7 +32,7 @@ int lexerParse(Lexer *lex, ErrorsContainer *errors) {
 //        printf("%c\n", *lex->source);
 //        tokenNextChar(lex);
         t = tokenNext(lex);
-        if(t->type == tok_unknowm)
+        if(t->type == TOKEN_UNKNOWM)
             break;
         printf("==>%s\n", tokenName(t->type));
     }

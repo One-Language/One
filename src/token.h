@@ -25,47 +25,61 @@ typedef struct _location {
 } Location;
 
 typedef enum {
-    tok_eof = -1,
-    tok_unknowm,
+    TOKEN_EOF = -1,
+    TOKEN_UNKNOWM,
     // ================= keywords
-    tok_def,
-    tok_extern,
-    tok_ret,
-    tok_if,
-    tok_else,
-    tok_do,
-    tok_while,
-    tok_for,
-    tok_switch,
+    TOKEN_DEF,
+    TOKEN_EXTERN,
+    TOKEN_RETURN,
+    TOKEN_IF,
+    TOKEN_ELSE,
+    TOKEN_DO,
+    TOKEN_WHILE,
+    TOKEN_FOR,
+    TOKEN_SWTICH,
+    TOKEN_CONTINUE,
+    TOKEN_BREAK,
+    TOKEN_PACKAGE,
+    TOKEN_IMPORT,
+    TOKEN_IN,
+    TOKEN_IS,
+    TOKEN_AS,
+    TOKEN_NULL,
+    TOKEN_STATIC,
+    TOKEN_THIS,
+    TOKEN_SUPER,
+    TOKEN_TRUE,
+    TOKEN_FALSE,
     // ================= values
-    tok_identifier,
-    tok_number,
-    tok_string,
+    TOKEN_VALUE_IDENTIFIER,
+    TOKEN_VALUE_STRING,
+    TOKEN_VALUE_NUMBER,
+    TOKEN_VALUE_BOOL,
 
-    tok_define,
+    TOKEN_DEFINE,
     tok_div_int,
     // ================= types
-    tok_type_i8,
-    tok_type_i16,
-    tok_type_i32,
-    tok_type_i64,
+    TOKEN_TYPE_I8,
+    TOKEN_TYPE_I16,
+    TOKEN_TYPE_I32,
+    TOKEN_TYPE_I64,
 
-    tok_type_u8,
-    tok_type_u16,
-    tok_type_u32,
-    tok_type_u64,
+    TOKEN_TYPE_U8,
+    TOKEN_TYPE_U16,
+    TOKEN_TYPE_U32,
+    TOKEN_TYPE_U64,
 
-    tok_type_f32,
-    tok_type_f64,
+    TOKEN_TYPE_F32,
+    TOKEN_TYPE_F64,
 
-    tok_type_bool,
-    tok_type_char,
-    tok_type_string,
+    TOKEN_TYPE_BOOL,
+    TOKEN_TYPE_CHAR,
+    TOKEN_TYPE_STRING,
     // ================= operators
-    tok_op_plus, // +
-    tok_op_minus, // -
-    tok_op_mul, // *
-    tok_op_div, // /
+    TOKEN_OPERATOR_PLUS, // +
+    TOKEN_OPERATOR_MINUS, // -
+    TOKEN_OPERATOR_MULL, // *
+    TOKEN_OPERATOR_DIV, // /
 } TokenType;
 
 typedef struct _token {
@@ -75,6 +89,43 @@ typedef struct _token {
     int vint;
     char *vstring;
 } Token;
+
+typedef struct _keyword {
+    const char *identifier;
+    size_t length;
+    TokenType type;
+} Keyword;
+
+static Keyword keywords[] = {
+        {"switch",   6, TOKEN_SWTICH},
+        {"break",    5, TOKEN_BREAK},
+        {"continue", 8, TOKEN_CONTINUE},
+
+        {"package",  7, TOKEN_PACKAGE},
+        {"import",   6, TOKEN_IMPORT},
+
+        {"if",       2, TOKEN_IF},
+        {"else",     4, TOKEN_ELSE},
+
+        {"while",    5, TOKEN_WHILE},
+        {"for",      3, TOKEN_FOR},
+        {"in",       2, TOKEN_IN},
+        {"as",       2, TOKEN_AS},
+
+        {"is",       2, TOKEN_IS},
+        {"null",     4, TOKEN_NULL},
+        {"return",   6, TOKEN_RETURN},
+        {"static",   6, TOKEN_STATIC},
+
+        {"this",     4, TOKEN_THIS},
+        {"super",    5, TOKEN_SUPER},
+
+        {"false",    5, TOKEN_FALSE},
+        {"true",     4, TOKEN_TRUE},
+
+        {NULL,       0, TOKEN_EOF} // Sentinel to mark the end of the array.
+};
+
 
 void token_init();
 
@@ -109,6 +160,6 @@ void tokenPrevChar(Lexer *);
 
 Token *tokenNext(Lexer *);
 
-char *tokenName(TokenType );
+char *tokenName(TokenType);
 
 #endif
