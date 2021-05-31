@@ -77,9 +77,16 @@ typedef enum {
     TOKEN_TYPE_STRING,
     // ================= operators
     TOKEN_OPERATOR_PLUS, // +
+    TOKEN_OPERATOR_PLUSPLUS, //++
+
     TOKEN_OPERATOR_MINUS, // -
-    TOKEN_OPERATOR_MULL, // *
+    TOKEN_OPERATOR_MINUSMINUS, // --
+
+    TOKEN_OPERATOR_MUL, // *
+    TOKEN_OPERATOR_POW, // **
+
     TOKEN_OPERATOR_DIV, // /
+    TOKEN_OPERATOR_DIVINT, // //
 } TokenType;
 
 typedef struct _token {

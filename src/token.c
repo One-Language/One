@@ -119,10 +119,10 @@ Token *tokenNext(Lexer *lex) {
         return t;
     }
 
-    // single-line comment
-    // multi-line comment
-    // DIVIDE operator
-    if (*lex->source == '/') { // it's single-line comment or divide operator!
+        // single-line comment
+        // multi-line comment
+        // DIVIDE operator
+    else if (*lex->source == '/') { // it's single-line comment or divide operator!
         tokenNextChar(lex);
         if (*lex->source == '/') { // it's single-line comment
             while (token_is_eof(*lex->source) == false && token_is_line(*lex->source) == false) {
@@ -159,9 +159,9 @@ Token *tokenNext(Lexer *lex) {
         }
     }
 
-    // identifier
-    if (token_is_alpha(*lex->source) ==
-        true) { // check if current char is a-z or A-Z or `_`, if it's so it's a user defined identifier or a compiler registered IDENTIFIER
+        // identifier
+    else if (token_is_alpha(*lex->source) ==
+             true) { // check if current char is a-z or A-Z or `_`, if it's so it's a user defined identifier or a compiler registered IDENTIFIER
         t->vstring = malloc(sizeof(char) * 200 +
                             1); // malloc and create a string, since we need to store and save identifier name at token struct.
 
@@ -195,8 +195,8 @@ Token *tokenNext(Lexer *lex) {
         return t;
     }
 
-    // number value
-    if (token_is_number(*lex->source) == true || *lex->source == '.') { // a number token start with [0-9] or '.'
+        // number value
+    else if (token_is_number(*lex->source) == true || *lex->source == '.') { // a number token start with [0-9] or '.'
         bool isFloat = false;
         size_t i = 0;
         char digits[100]; // maximum length of a number is 100, i think it's enought for our work!
@@ -241,6 +241,62 @@ Token *tokenNext(Lexer *lex) {
             digits[i] = '\0'; // adding \0 to digits char array to set this DONE OF STRING!
             printf("---->%s\n", digits);
             t->type = TOKEN_VALUE_NUMBER; // set type of current token
+            return t;
+        }
+    }
+
+        // Operator +
+        // Operator ++
+    else if (*lex->source == '+') { // if current char is starts with `+`
+        tokenNextChar(lex);
+        if (*lex->source == '+') { // So It's `++` token
+            tokenNextChar(lex); // go to next char and skip second part of `++`
+            t->type = TOKEN_OPERATOR_PLUSPLUS;
+            return t;
+        } else {
+            t->type = TOKEN_OPERATOR_PLUS;
+            return t;
+        }
+    }
+
+        // Operator -
+        // Operator --
+    else if (*lex->source == '-') { // if current char is starts with `-`
+        tokenNextChar(lex);
+        if (*lex->source == '-') { // So It's `--` token
+            tokenNextChar(lex); // go to next char and skip second part of `--`
+            t->type = TOKEN_OPERATOR_MINUSMINUS;
+            return t;
+        } else {
+            t->type = TOKEN_OPERATOR_MINUS;
+            return t;
+        }
+    }
+
+        // Operator *
+        // Operator **
+    else if (*lex->source == '*') { // if current char is starts with `*`
+        tokenNextChar(lex);
+        if (*lex->source == '*') { // So It's `**` token
+            tokenNextChar(lex); // go to next char and skip second part of `**`
+            t->type = TOKEN_OPERATOR_POW;
+            return t;
+        } else {
+            t->type = TOKEN_OPERATOR_MUL;
+            return t;
+        }
+    }
+
+        // Operator /
+        // Operator //
+    else if (*lex->source == '/') { // if current char is starts with `/`
+        tokenNextChar(lex);
+        if (*lex->source == '/') { // So It's `//` token
+            tokenNextChar(lex); // go to next char and skip second part of `//`
+            t->type = TOKEN_OPERATOR_DIVINT;
+            return t;
+        } else {
+            t->type = TOKEN_OPERATOR_DIV;
             return t;
         }
     }
