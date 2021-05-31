@@ -14,6 +14,7 @@ I'm here to tell you I'm interested in the project and want to be a part of this
 <!-- Please introduce yourself and your professional experience in a maximum of 5 sentences. -->
 
 ## Your correct role
+
 I'm a Bachelor's student of computer science at the University of Cambridge.
 And Have a part-time job as a QA Engineer at X company in Thailand.
 
@@ -22,7 +23,8 @@ And Have a part-time job as a QA Engineer at X company in Thailand.
 Brisbane, Australia; UTC/GMT +10 hours
 
 ## Language Proficiency
-List of languages you know with thier proficiency level (Beginner, Intermediate, Expert):
+
+List of languages you know with their proficiency level (Beginner, Intermediate, Expert):
 <!-- Please remove and change the following languages name and description -->
 <!-- All the following information is just an example and it's not a MUST, you have to fill this with your situation. -->
 - **Spanish**: Expert (Native)
@@ -30,6 +32,7 @@ List of languages you know with thier proficiency level (Beginner, Intermediate,
 - **Tibetian**: Intermediate
 
 ## Programming/IT knowledge
+
 Tell us more about your Programming/IT knowledge:
 <!-- Please remove below text and write  -->
 E.g. - I have written basic programs in Java during my graduation. I have installed a linux, windows OS on my laptop, I have some knowledge of computer hardware etc..
