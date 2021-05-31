@@ -177,7 +177,7 @@ Token *tokenNext(Lexer *lex) {
 
         // A test to make sure identifier is COMPILER word registered or a user defined identifier
         // Check identifier is equal to compiler registered Words by filtereing to it's LENGTH.
-        for (int i = 0; keywords[i].identifier != NULL; i++) { // loop to check all registerd Keywords
+        for (int i = 0; keywords[i].identifier != NULL; i++) { // loop to check all registered Keywords
             if (length == keywords[i].length &&
                 // check if user-defined identifier length is equal to current registered Keyword
                 memcmp(t->vstring, keywords[i].identifier, length) ==
@@ -206,7 +206,7 @@ Token *tokenNext(Lexer *lex) {
 
         if (*lex->source == '.') { // it's dot character
             isFloat = true; // we set `isFloat` to true, so we will not accept any `.` character anymore.
-            t->vstring[i++] = '0'; // put zero at first item of array (automaticly)
+            t->vstring[i++] = '0'; // put zero at first item of array (automatically)
 
             // put '.' character at second item of array
             t->vstring[i++] = '.';// '.' equal to *lex->source;
