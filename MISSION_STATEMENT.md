@@ -1,93 +1,74 @@
-# Mission Statement of The One Programming Language
+# THE MISSION STATEMENT of *the One Language*
 
-- Explanation of requirements and situation of programmer with current interpreters and compilers
-- And explain the project objectives and purposes
+## One Language for all
 
-## A draft summary from whole of the project
+In today’s world, there are so many programming languages, and each of them is used for different purposes. If you need executable programs, scripts, and websites for your project, to be able to do all these operations, you need more than 3 different languages. 
 
-What does this means? A tool to write command-line software.
-> system-level, processing tool, doing calculate, for mathematics purpose, etc.
-E.g: C, Go, Rust, C++
+*The One language* will be a game-changer because it is not focused on any specific area, it’s a multi-purpose language. It will serve all your needs, and become your only need.
 
-Similar to what we learned in university from Programming session.
-> read input / do calculation / show output
+### OUR AIM
 
-And now, Why they should choose One and not C?
-Because we are prepared so many required functionality and features. Somethings usually needed in most projects.
+*The One language* project aims at reducing the time needed for writing, developing, or maintaining programs.
 
-So developers can write/develop programs easily
-And some features of this language cause to decrease bugs when developing a program.
+During the process of writing codes, every programmer faces some common problems but they do not think of solving these problems but they try to get used to them. We, **_the One language developing team_**, want to put an end to this. Our aim is **to solve all these problems and to present you a smooth developing experience**.
 
-This is first step of project.
+*The One Language* aims to provide you **a new tool to write programs in an easier and better way**.
 
-==================
+Developing **a brand-new solution to the design and creation processes of websites**, without the need of learning different languages is one of our intentions.
 
-At the next step, we want to release a framework for web.
-And purpose of this is to design/create websites without learn another tool and language.
+In short, the main purpose of One Language is **to provide programmers a single language for all of their needs and also making their lives easier.**
 
-In general, you need to learn at least 3-4 languages or more tools to create a website.
-But we want to everyone can create a website without learning anythings more. by using only One language in same syntax.
+### DESIGN AND DEVELOPMENT GOALS
 
-## Some draft and messages between my recent inbox
+*The One Language* development team is planning to reach the aims of the project by achieving these goals:
 
-This is just to get a basic idea of what you can say and how you think:
+* Clean and easy syntax
+* Multi-purpose language
+* Useful functionality and runtime-library
+* Bootstrapping and self-host compiler
+* Ability to create executable files
+* Cross-platform compatibility
+* Support for different architectures and OSs
+* An internal web-development framework
+* Easier debugging: Programmers mostly spend their time on reading and debugging their code and not on writing ([you can see a discussion about this subject here](https://www.quora.com/It-is-true-that-developers-spend-most-of-their-time-reading-code-than-writing-code))
+* Easier maintenance
+* Static-type language (but it can auto-detect the type of your variables and values)
+* Faster performance
+* A compiler that also has some of the features of interpreters
+* Modular system (a clean and nice structure of modules)
+* A friendly package manager (easily installing third-party libraries, with just one single command)
 
-The ease of our language in the library will be determined at runtime, and this is not a matter of the first stage.
+### FEATURES OF THE LANGUAGE
 
-It's why a person does not use C and comes here to use One. because it's really nice with many needed features.
+**The project is still in Alpha. TO BE UPDATED.**
 
-Some of the features we have can bring Python comfort to C.
+### DESIGN DECISIONS
 
--------
+* Modules referable to each other and dependable on other modules
+* Ability to split a program into different parts / into separate files
 
-##### We want to help developers to write less bugs and more useful programs.
+### RUN-TIME SYSTEM CHOICE
 
-Did you say C? It does not have a package manager at all. A very necessary tool is the package manager. So that others can manage libraries more easily.
-Of course, it should not be like npm chaotic.
-The package manager designed in Python and Go is nice and clean.
+At runtime, *One* doesn’t have NULL, and the language supports null safety. So you can make sure everything works at runtime, as you have already passed so many errors at compiling step.
 
-Next we need to keep runtime library functions to work in Windows, Linux, macOS as well.
+Currently, we use Glibc, and programmers are allowed to use and link it, because all of the libraries need Glibc. (pthread, libcurl, libopenssl, mysql/mariadb database, etc.) Yet, we are also planning to be able to generate executable files without the need for C library (Glibc). We tried this before, and we were able to do it.
+We generated C-intermediate code and used a C compiler to generate an executable file at the background of the compiler, but for the time being, at these first steps of the project, we use LLVM for the back-end of the compiler. So, we can generate object-file and executable files for every OS and architecture. In the future, we will have our own runtime library. Furthermore, programs compiled by *One* are mostly optimized with great performance.
 
-In the next step, it will be determined when you can design the site using the same language.
-This is what I will design in the next step.
+### LIBRARY
 
----------
+*The One language* will have a module/package marketplace to list all of the packages compatible with *One*, and users will be able to see the lists of packages such as the most popular, the most downloaded, or recently updated packages.
 
-Languages like Python and PHP are good.
-But they are not compilers and have other problems.
+Everyone will be allowed to create and publish packages. We will have a quality control team to review all packages, and we will flag the great and useful ones. If your package is flagged by our team, you will have our support to manage the bugs and probably the issues.
 
-We need to keep some features of script language in a compiler / system language.
-I am not talking about static variables, What I mean is more than that. Usually in script interpreter languages we have many good features and functions.
-But they are mostly lost in C.
+Support for third-party libraries is also among our future plans.
 
-Developers need to be able to create secure executable files / output from the program source.
+### INTEROPERABILITY
 
-For example: PHP is a good language, but it's not clear. Why not clean?
+* Direct C Interface
 
-```php
-unlink(): remove a file
-fopen(): open a file to read/write/append
-file_put_contents(): open a file to write/append
-file_get_contents(): open a file to read
-```
+### SUPPORTED PLATFORMS
 
-See function names, they are really bad. Why deleting a file is not related to other function names.
-
-What we want to design is: `file.create() , file.delete(), file.copy()` and etc.
-
-These examples do not end here and continue.
-I hope I was able to convey my meaning to you.
-
-This is what I wrote two years ago:
-https://github.com/One-Language/STD
-
---------
-
-Maybe the reasons I mentioned are enough for a good language. But we do not want to produce a good product. We have to make something great.
-
-I'm not going to make anything for myself. It's supposed to be something that helps others. So I should not be alone. Maybe you have ideas that we can take into and make a better product.
-So your ideas are highly appreciated. I can say you have good experiences.
-
-I end my message with a sentence from a businessman: Fall in love with your customers' problems. Do not love your product.
-
-read more: https://medium.com/productboard/fall-in-love-with-your-customers-problem-not-their-solution-90bd0cf2d842
+* Linux
+* Windows
+* macOS
+* BSD family
