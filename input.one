@@ -17,5 +17,5 @@ i8 main {
 }
 
 test() {
-
+    name = 5
 }

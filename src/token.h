@@ -94,6 +94,10 @@ typedef enum {
     TOKEN_OPERATOR_BIT_OR, // |
     TOKEN_OPERATOR_OR, // ||
 
+    TOKEN_OPERATOR_EQUAL, // =
+    TOKEN_OPERATOR_EQUALEQUAL, // =
+    TOKEN_OPERATOR_EQUALEQUALEQUAL, // ===
+
     TOKEN_DOT, // .
     TOKEN_DOTDOT, // ..
     TOKEN_DOTDOTDOT, // ...

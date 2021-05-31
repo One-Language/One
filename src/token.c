@@ -354,6 +354,34 @@ Token *tokenNext(Lexer *lex) {
         }
     }
 
+
+        // operator  ==
+        // operator ==
+        // operator ===
+        // TODO: operator +=
+        // TODO: operator -=
+        // TODO: operator *=
+        // TODO: operator /=
+        // TODO: operator **=
+        // TODO: operator |=
+    else if(*lex->source == '=') { // it's = or == or === token
+        tokenNextChar(lex); // go to next character
+        if(*lex->source == '=') { // maybe it's == or ===
+            tokenNextChar(lex); // go to next character
+            if(*lex->source == '=') { // it's ===
+                t->type = TOKEN_OPERATOR_EQUALEQUALEQUAL;
+                tokenNextChar(lex); // go to next character
+                return t;
+            } else { // it's ==
+                t->type = TOKEN_OPERATOR_EQUALEQUAL;
+                return t;
+            }
+        } else { // it's = token
+            t->type = TOKEN_OPERATOR_EQUAL;
+            return t;
+        }
+    }
+
     // Otherwise: unknowm token
     t->type = TOKEN_UNKNOWM;
     return t;
@@ -442,6 +470,13 @@ char *tokenName(TokenType type) {
             return "OPERATOR_DIV";
         case TOKEN_OPERATOR_DIVINT:
             return "OPERATOR_DIVINT";
+
+        case TOKEN_OPERATOR_EQUAL:
+            return "OPERATOR_EQUAL";
+        case TOKEN_OPERATOR_EQUALEQUAL:
+            return "OPERATOR_EQUAL";
+        case TOKEN_OPERATOR_EQUALEQUALEQUAL:
+            return "OPERATOR_EQUAL";
 
         case TOKEN_SECTION_OPEN:
             return "SECTION_OPEN";
