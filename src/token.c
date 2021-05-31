@@ -299,7 +299,7 @@ Token *tokenNext(Lexer *lex) {
             tokenNextChar(lex); // go to next char and skip second part of `//`
             t->type = TOKEN_OPERATOR_DIVINT;
             return t;
-        } else {
+        } else { // it's `/` token
             t->type = TOKEN_OPERATOR_DIV;
             return t;
         }
@@ -347,6 +347,34 @@ Token *tokenNext(Lexer *lex) {
         return t;
     }
 
+        // operator ;
+    else if(*lex->source == ';') {
+        t->type = TOKEN_OPERATOR_SEMICOLON;
+        tokenNextChar(lex); // go to next character
+        return t;
+    }
+
+
+        // operator ,
+    else if(*lex->source == ',') {
+        t->type = TOKEN_OPERATOR_VIRGOOL;
+        tokenNextChar(lex); // go to next character
+        return t;
+    }
+        // operator :
+        // operator ::
+    else if (*lex->source == ':') { // if current char is starts with `:`
+        tokenNextChar(lex);
+        if (*lex->source == ':') { // So It's `::` token
+            tokenNextChar(lex); // go to next char and skip second part of `::`
+            t->type = TOKEN_OPERATOR_COLONCOLON;
+            return t;
+        } else { // it's : token
+            t->type = TOKEN_OPERATOR_COLONCOLON;
+            return t;
+        }
+    }
+
         // operator  .
         // operator ..
         // operator ...
@@ -355,15 +383,15 @@ Token *tokenNext(Lexer *lex) {
         if(*lex->source == '.') { // maybe it's .. or ...
             tokenNextChar(lex); // go to next character
             if(*lex->source == '.') { // it's ...
-                t->type = TOKEN_DOTDOTDOT;
+                t->type = TOKEN_OPERATOR_DOTDOTDOT;
                 tokenNextChar(lex); // go to next character
                 return t;
             } else { // it's ..
-                t->type = TOKEN_DOTDOT;
+                t->type = TOKEN_OPERATOR_DOTDOT;
                 return t;
             }
         } else { // it's . token
-            t->type = TOKEN_DOT;
+            t->type = TOKEN_OPERATOR_DOT;
             return t;
         }
     }
@@ -563,12 +591,21 @@ char *tokenName(TokenType type) {
         case TOKEN_OPERATOR_OR:
             return "OPERATOR_OR";
 
-        case TOKEN_DOT:
+        case TOKEN_OPERATOR_DOT:
             return "DOT";
-        case TOKEN_DOTDOT:
+        case TOKEN_OPERATOR_DOTDOT:
             return "DOTDOT";
-        case TOKEN_DOTDOTDOT:
+        case TOKEN_OPERATOR_DOTDOTDOT:
             return "DOTDOTDOT";
+
+        case TOKEN_OPERATOR_COLON:
+            return "OPERATOR_COLON";
+        case TOKEN_OPERATOR_COLONCOLON:
+            return "OPERATOR_COLONCOLON";
+        case TOKEN_OPERATOR_SEMICOLON:
+            return "OPERATOR_SEMICOLON";
+        case TOKEN_OPERATOR_VIRGOOL:
+            return "OPERATOR_VIRGOOL";
 
         case TOKEN_SQUARE_OPEN:
             return "SQUARE_OPEN";

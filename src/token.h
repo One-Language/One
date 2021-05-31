@@ -98,9 +98,16 @@ typedef enum {
     TOKEN_OPERATOR_EQUALEQUAL, // =
     TOKEN_OPERATOR_EQUALEQUALEQUAL, // ===
 
-    TOKEN_DOT, // .
-    TOKEN_DOTDOT, // ..
-    TOKEN_DOTDOTDOT, // ...
+    TOKEN_OPERATOR_DOT, // .
+    TOKEN_OPERATOR_DOTDOT, // ..
+    TOKEN_OPERATOR_DOTDOTDOT, // ...
+
+    TOKEN_OPERATOR_COLON, // :
+    TOKEN_OPERATOR_COLONCOLON, // ::
+
+    TOKEN_OPERATOR_SEMICOLON, // ;
+    TOKEN_OPERATOR_VIRGOOL, // ,
+
     // ================= other operators
     TOKEN_SECTION_OPEN, // {
     TOKEN_SECTION_CLOSE, // }
