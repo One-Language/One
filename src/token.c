@@ -612,6 +612,15 @@ char *tokenName(TokenType type) {
         case TOKEN_SQUARE_CLOSE:
             return "SQUARE_CLOSE";
 
+        case TOKEN_PRINT:
+            return "PRINT";
+        case TOKEN_PRINTNL:
+            return "PRINTNL";
+        case TOKEN_PRINTDB:
+            return "PRINTDB";
+        case TOKEN_PRINTNLDB:
+            return "PRINTNLDB";
+
         case TOKEN_UNKNOWM:
             return "UNKNOWM";
         default:

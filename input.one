@@ -24,4 +24,7 @@ test() {
 
     names = ["Max", "Ali", "John"]
     string[] sa_names = ["Max", "Ali", "John"]
+    for name in names {
+        _ name
+    }
 }

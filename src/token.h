@@ -50,14 +50,16 @@ typedef enum {
     TOKEN_SUPER,
     TOKEN_TRUE,
     TOKEN_FALSE,
+    // ================= prints
+    TOKEN_PRINT,
+    TOKEN_PRINTNL,
+    TOKEN_PRINTDB,
+    TOKEN_PRINTNLDB,
     // ================= values
     TOKEN_VALUE_IDENTIFIER,
     TOKEN_VALUE_STRING,
     TOKEN_VALUE_NUMBER,
     TOKEN_VALUE_BOOL,
-
-    TOKEN_DEFINE,
-    tok_div_int,
     // ================= types
     TOKEN_TYPE_I8,
     TOKEN_TYPE_I16,
@@ -135,6 +137,11 @@ typedef struct _keyword {
 } Keyword;
 
 static Keyword keywords[] = {
+        {"_",   1, TOKEN_PRINT, false},
+        {"__",   2, TOKEN_PRINTNL, false},
+        {"!_",   2, TOKEN_PRINTDB, false},
+        {"!__",   3, TOKEN_PRINTNLDB, false},
+
         {"switch",   6, TOKEN_SWTICH, false},
         {"break",    5, TOKEN_BREAK, false},
         {"continue", 8, TOKEN_CONTINUE, false},
