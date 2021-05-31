@@ -72,7 +72,7 @@ int parseDatatype(Token **tokens)
 {
 	if (tokenIsPrimaryType(*tokens) == true || tokenIsUserType(*tokens) == true)
 	{ // if current token is a primitive data-type
-		// TOOD: check data-type array. e;g `i32 []`
+		// TODO: check data-type array. e;g `i32 []`
 		return 1; // yes it's a data-type token series!
 	}
 	return -1; // is not!
@@ -95,7 +95,7 @@ int parseArguments(Token **tokens)
 	}
 }
 
-int except(Token **tokens, TokenType want, ErrorsContainer* errors)
+int except(Token **tokens, TokenType want, ErrorsContainer *errors)
 {
 	Token *t = *tokens;
 	if (t->type != TOKEN_SECTION_OPEN)
@@ -107,7 +107,7 @@ int except(Token **tokens, TokenType want, ErrorsContainer* errors)
 	return 1; // valid
 }
 
-int exceptGo(Token **tokens, TokenType want, ErrorsContainer* errors)
+int exceptGo(Token **tokens, TokenType want, ErrorsContainer *errors)
 {
 	int res = except(tokens, want, errors); // call except function
 	if (res == 1)
