@@ -172,30 +172,55 @@ Token *tokenNext(Lexer *lex) {
         }
         t->vstring[length] = '\0'; // In C, we need to define end of the string, so it will be useful for future functionality with this string
 
-        // TODO: check identifier is equal to compiler registered Words by filtereing to it's LENGTH.
-        // if(i == 2) {}
-        // else if(i == 3) {}
-
-        t->type = TOKEN_VALUE_IDENTIFIER;
+        t->type = TOKEN_VALUE_IDENTIFIER; // defaultly a identifier is user-defined. We check at next line it's a registered compiler Keywords or no. so it's the default value.
 
         // A test to make sure identifier is COMPILER word registered or a user defined identifier
-        for (int i = 0; keywords[i].identifier != NULL; i++) {
+        // Check identifier is equal to compiler registered Words by filtereing to it's LENGTH.
+        for (int i = 0; keywords[i].identifier != NULL; i++) { // loop to check all registerd Keywords
             if (length == keywords[i].length &&
-                memcmp(t->vstring, keywords[i].identifier, length) == 0) {
-                t->type = keywords[i].type;
-                break;
+                // check if user-defined identifier length is equal to current registered Keyword
+                memcmp(t->vstring, keywords[i].identifier, length) ==
+                0) { // check if user-defined identifier equal to current registered Keyword
+                t->type = keywords[i].type; // set type of current token to
+                break; // break and stop loop
             }
         }
 
-        if (t->type != TOKEN_VALUE_IDENTIFIER) {
-            free(t->vstring);
+        if (t->type !=
+            TOKEN_VALUE_IDENTIFIER) { // if it's not a user-defined identifier, so we not need `vstring` value.
+            free(t->vstring); // free char*
             t->vstring = NULL;
         }
 
         return t;
     }
 
-    // unknowm token
+    if (token_is_number(*lex->source) == true) {
+        size_t i = 0;
+        char digits[100];
+        digits[i++] = *lex->source;
+        tokenNextChar(lex);
+        if (*lex->source == 'x') {
+            // TODO: lex hex numbers!
+        } else {
+            bool isFloat = false;
+            while (token_is_number(*lex->source) == true || (isFloat == false && *lex->source == '.')) {
+                if (*lex->source == '.') { // if current char is `.` so we change `isFloat` to true..
+                    isFloat = true; // set `isFloat` to true, remember it was `float` before.
+                    digits[i++] = '.'; // adding float point to queue char list!
+                } else {
+                    digits[i++] = *lex->source; // add current number to queue char list!
+                }
+                tokenNextChar(lex); // go to next char, we need to iterate at this loop
+            }
+            digits[i] = '\0'; // adding \0 to digits char array to set this DONE OF STRING!
+            printf("---->%s\n", digits);
+            t->type = TOKEN_VALUE_NUMBER; // set type of current token
+            return t;
+        }
+    }
+
+    // Otherwise: unknowm token
     t->type = TOKEN_UNKNOWM;
     return t;
 }
@@ -204,6 +229,13 @@ char *tokenName(TokenType type) {
     switch (type) {
         case TOKEN_EOF:
             return "EOF";
+
+        case TOKEN_VALUE_NUMBER:
+            return "VALUE_NUMBER";
+        case TOKEN_VALUE_STRING:
+            return "VALUE_STRING";
+        case TOKEN_VALUE_BOOL:
+            return "VALUE_BOOL";
 
         case TOKEN_IF:
             return "IF";
