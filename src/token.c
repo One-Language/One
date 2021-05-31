@@ -215,10 +215,13 @@ Token *tokenNext(Lexer *lex) {
             // TODO: lex hex numbers!
         } else {
             while (token_is_number(*lex->source) == true || (isFloat == false && *lex->source == '.')) {
+                // TODO: check length of number and validate OS maximum number digits
+                // if(length > 100) { /*ErrorAppend(...)*/ }
+
                 if (*lex->source == '.') { // if current char is `.` so we change `isFloat` to true..
                     isFloat = true; // set `isFloat` to true, remember it was `float` before.
                     digits[i++] = '.'; // adding float point to queue char list!
-                } else {
+                } else { // it's a digit, [0-9]
                     digits[i++] = *lex->source; // add current number to queue char list!
                 }
                 tokenNextChar(lex); // go to next char, we need to iterate at this loop
