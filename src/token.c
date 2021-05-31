@@ -210,8 +210,13 @@ Token *tokenNext(Lexer *lex) {
             digits[i++] = *lex->source; // put first character at first item of array
         }
 
-        tokenNextChar(lex);
-        if (*lex->source == 'x') {
+        tokenNextChar(lex); // go to next chat, remember we already have prev char at `digits` array.
+
+        // Length if `digits` array maybe is 1 or 2.
+
+        // check it's a HEX Number or no
+        // Hex number format: '0' 'x' *****
+        if (isFloat == true && digits[0] == '0' && *lex->source == 'x') { // We will accept a HEX Number, if we not has `.` character at before, and we has `0` at prev char and current char is `x`.
             // TODO: lex hex numbers!
         } else {
             while (token_is_number(*lex->source) == true || (isFloat == false && *lex->source == '.')) {
