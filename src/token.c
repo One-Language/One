@@ -471,6 +471,23 @@ char *tokenName(TokenType type) {
             return "TYPE_STRING";
         case TOKEN_TYPE_CHAR:
             return "TYPE_CHAR";
+            
+        case TOKEN_OPERATOR_BIT_AND:
+            return "OPERATOR_BIT_AND";
+        case TOKEN_OPERATOR_AND:
+            return "OPERATOR_AND";
+
+        case TOKEN_OPERATOR_BIT_OR:
+            return "OPERATOR_BIT_OR";
+        case TOKEN_OPERATOR_OR:
+            return "OPERATOR_OR";
+
+        case TOKEN_DOT:
+            return "DOT";
+        case TOKEN_DOTDOT:
+            return "DOTDOT";
+        case TOKEN_DOTDOTDOT:
+            return "DOTDOTDOT";
 
         case TOKEN_UNKNOWM:
             return "UNKNOWM";
