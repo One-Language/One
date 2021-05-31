@@ -382,6 +382,27 @@ Token *tokenNext(Lexer *lex) {
         }
     }
 
+    // string
+    else if(*lex->source == '\"') { // it's first character of string block-value
+        tokenNextChar(lex); // go to next char of the source
+        size_t i=0;
+        t->vstring = malloc(sizeof(char) * 1024); // TODO: we set max 1024 size, but we have to realloc this size at next steps!
+        while (token_is_eof(*lex->source) == false && *lex->source != '\"') {
+            t->vstring[i++] = *lex->source;
+            tokenNextChar(lex); // skip current character and go to next char of the source
+        }
+        if(*lex->source == '\"') { // we except " character to know this string finished.
+            tokenNextChar(lex); // skip current character and go to next char of the source
+            t->vstring[i] = '\0';
+            t->type = TOKEN_VALUE_STRING;
+            return t;
+        } else {
+            // TODO: raise a error, since maybe user forget to finish a string and we face to EOF of the source!
+            t->type = TOKEN_UNKNOWM;
+            return t;
+        }
+    }
+
     // Otherwise: unknowm token
     t->type = TOKEN_UNKNOWM;
     return t;

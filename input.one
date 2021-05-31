@@ -17,5 +17,8 @@ i8 main {
 }
 
 test() {
-    name = 5
+    u8 u_age = 32
+    age = 5
+    name = "Max"
+    string s_name = "Max"
 }
