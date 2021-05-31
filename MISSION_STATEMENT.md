@@ -2,7 +2,7 @@
 
 ## One Language for all
 
-In today’s world, there are so many programming languages, and each of them is used for different purposes. If you need executable programs, scripts, and websites for your project, to be able to do all these operations, you need more than 3 different languages. 
+In today’s world, there are so many programming languages, and each of them is used for different purposes. If you need executable programs, scripts, and websites for your project, to be able to do all these operations, you need more than 3 different languages.
 
 *The One language* will be a game-changer because it is not focused on any specific area, it’s a multi-purpose language. It will serve all your needs, and become your only need.
 
