@@ -8,10 +8,6 @@
 
  **/
 
-// 5
-// 5.64.4
-// if
-
 i8 main {
 
 }
@@ -28,6 +24,16 @@ test() {
     age = 5
     name = "Max"
     string s_name = "Max"
+
+    // 5
+    // 5.64.4
+    // if
+
+    if 5 > 4 {
+        _ "Yes\n"
+        // equal to
+        __ "Yes"
+    }
 
     names = ["Max", "Ali", "John"]
     string[] sa_names = ["Max", "Ali", "John"]

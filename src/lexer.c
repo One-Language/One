@@ -31,9 +31,10 @@ void lexerLog(Lexer *lex) {
     for (size_t i = 0; i < lex->token_count; i++) {
         t = lex->tokens[i];
 
-        printf("==>%s\n", tokenName(t->type));
+        printf("==>%s", tokenName(t->type));
         if (t->type == TOKEN_VALUE_IDENTIFIER || t->type == TOKEN_VALUE_STRING || t->type == TOKEN_VALUE_NUMBER)
-            printf("\t%s\n", t->vstring);
+            printf(" (%s)", t->vstring);
+        printf("\n");
     }
 }
 
@@ -84,6 +85,6 @@ int lexerCheck(Lexer *lex, ErrorsContainer *errors) {
     return EXIT_SUCCESS;
 }
 
-void lexerFree(Lexer *lexer) {
-
+void lexerFree(Lexer *lex) {
+//    arrayFree(lex->tokens);
 }

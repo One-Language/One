@@ -19,9 +19,12 @@ Parser *parserInit(Lexer *lex, ErrorsContainer *errors) {
 }
 
 int parserCheck(Parser *pars, ErrorsContainer *errors) {
+    printf("=============== Parser ===============\n");
+
     Token *t;
     for (size_t i = 0; i < pars->lex->token_count; i++) {
         t = pars->lex->tokens[i];
+        printf("-->%s\n", tokenName(t->type));
     }
     return EXIT_SUCCESS;
 }

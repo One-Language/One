@@ -560,6 +560,8 @@ char *tokenName(TokenType type) {
             return "TYPE_I32";
         case TOKEN_TYPE_I64:
             return "TYPE_I64";
+        case TOKEN_TYPE_I128:
+            return "TYPE_I128";
 
         case TOKEN_TYPE_U8:
             return "TYPE_U8";
@@ -569,6 +571,8 @@ char *tokenName(TokenType type) {
             return "TYPE_U32";
         case TOKEN_TYPE_U64:
             return "TYPE_U64";
+        case TOKEN_TYPE_U128:
+            return "TYPE_U128";
 
         case TOKEN_TYPE_F32:
             return "TYPE_F32";
