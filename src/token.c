@@ -219,7 +219,7 @@ Token *tokenNext(Lexer *lex) {
 
         // check it's a HEX Number or no
         // Hex number format: '0' 'x' *****
-        if (isFloat == true && digits[0] == '0' && *lex->source ==
+        if (isFloat == true && t->vstring[0] == '0' && *lex->source ==
                                                    'x') { // We will accept a HEX Number, if we not has `.` character at before, and we has `0` at prev char and current char is `x`.
             // TODO: lex hex numbers!
         } else { // otherwise, it's not a HEX Number, so we except a number digits. maybe it's decimal or float.
@@ -242,9 +242,7 @@ Token *tokenNext(Lexer *lex) {
                 tokenNextChar(lex); // go to next char, we need to iterate at this loop
             }
             t->vstring[i] = '\0'; // adding \0 to digits char array to set this DONE OF STRING!
-
-            printf("---->%s\n", v->string);
-
+            
             t->type = TOKEN_VALUE_NUMBER; // set type of current token
             return t;
         }
