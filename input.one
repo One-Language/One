@@ -23,4 +23,5 @@ test() {
     string s_name = "Max"
 
     names = ["Max", "Ali", "John"]
+    string[] sa_names = ["Max", "Ali", "John"]
 }
