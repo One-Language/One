@@ -19,7 +19,7 @@ Parser *parserInit(Lexer *lex, ErrorsContainer *errors)
 	return pars;
 }
 
-bool tokenIsPrimaryType(Token *t)
+bool tokenIsPrimaryType(Token *t, ErrorsContainer *errors)
 {
 	if (t->type == TOKEN_TYPE_I8)
 		return true;
@@ -56,7 +56,7 @@ bool tokenIsPrimaryType(Token *t)
 	return false;
 }
 
-bool tokenIsUserType(Token *t)
+bool tokenIsUserType(Token *t, ErrorsContainer *errors)
 {
 	if (t->type == TOKEN_VALUE_IDENTIFIER)
 	{
@@ -68,31 +68,38 @@ bool tokenIsUserType(Token *t)
 	return false;
 }
 
-int parseDatatype(Token **tokens)
+bool parseDatatype(Token **tokens, ErrorsContainer *errors)
 {
-	if (tokenIsPrimaryType(*tokens) == true || tokenIsUserType(*tokens) == true)
+	if (tokenIsPrimaryType(*tokens, errors) == true || tokenIsUserType(*tokens, errors) == true)
 	{ // if current token is a primitive data-type
 		// TODO: check data-type array. e;g `i32 []`
-		return 1; // yes it's a data-type token series!
+		return true; // yes it's a data-type token series!
 	}
-	return -1; // is not!
+	return false; // is not!
 }
 
-int parseArguments(Token **tokens)
+bool parseArguments(Token **tokens, ErrorsContainer *errors)
 {
 	if ((*tokens)->type == TOKEN_BRACKET_OPEN)
 	{
 		tokens++; // go to next token
 		while ((*tokens)->type != TOKEN_BRACKET_CLOSE)
 		{ // loop iterate before see a `)` token.
-			tokens++; // go to next token
+			if (parseDatatype(tokens, errors) == true)
+			{
+				tokens++;
+				except(tokens, TOKEN_VALUE_IDENTIFIER, errors);
+				tokens++; // go to next token
+				return true;
+			}
+			else
+			{
+				// TODO: ErrorAppend(...)
+				return false;
+			}
 		}
-		return 1;
 	}
-	else
-	{
-		return 0; // it's optional
-	}
+	return false; // it's optional
 }
 
 int except(Token **tokens, TokenType want, ErrorsContainer *errors)
@@ -116,23 +123,23 @@ int exceptGo(Token **tokens, TokenType want, ErrorsContainer *errors)
 	return res;
 }
 
-void parseBlock(Token **tokens)
+void parseBlock(Token **tokens, ErrorsContainer *errors)
 {
 	if ((*tokens)->type == TOKEN_SECTION_OPEN)
 	{
 	}
 }
 
-void parseFunction(Token **tokens)
+void parseFunction(Token **tokens, ErrorsContainer *errors)
 {
-	if (parseDatatype(tokens) == 1)
+	if (parseDatatype(tokens, errors) == true)
 	{
 		tokens++; // go to next token
 		if ((*tokens)->type == TOKEN_VALUE_IDENTIFIER)
 		{ // check if current token is a user identifier
 			tokens++; // go to next token
-			parseArguments(tokens);
-			parseBlock(tokens);
+			parseArguments(tokens, errors);
+			parseBlock(tokens, errors);
 		}
 	}
 }
@@ -147,7 +154,7 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 		t = *pars->lex->tokens;
 		printf("-->%s\n", tokenName(t->type));
 
-		if (tokenIsPrimaryType(*pars->lex->tokens) == true || tokenIsUserType(*pars->lex->tokens) == true) // if current token is a primitive data-type
+		if (parseDatatype(pars->lex->tokens, errors) == true) // if current token is a primitive data-type
 		{
 			Token *datatype = *pars->lex->tokens; // store data-type to a variable
 			pars->lex->tokens++; // go to next token
@@ -158,7 +165,7 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 				{
 					pars->lex->tokens--; // go back to user-identifier name (function name)
 					pars->lex->tokens--; // go back to data-type
-					parseFunction(pars->lex->tokens);
+					parseFunction(pars->lex->tokens, errors);
 				}
 			}
 		}
