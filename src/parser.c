@@ -155,20 +155,21 @@ void parseFunction(Parser *pars, ErrorsContainer *errors)
 	{
 		exceptGo(pars, TOKEN_VALUE_IDENTIFIER, errors); // check if current token is a user identifier
 
-//		printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
+		//		printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
 		parseArguments(pars, errors);
 		parseBlock(pars, errors);
 	}
-	else {
+	else
+	{
 		// TODO: ErrorAppend(...)
 	}
 }
 
 void check(Parser *pars)
 {
-//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
+	//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
 	pars->lex->tokens++;
-//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
+	//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
 }
 
 int parserCheck(Parser *pars, ErrorsContainer *errors)
@@ -180,7 +181,7 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 	{
 		t = *pars->lex->tokens;
 		printf("[TOKEN] %s\n", tokenName(t->type));
-		if(t->type == TOKEN_EOF || t->type == TOKEN_UNKNOWM) break;
+		if (t->type == TOKEN_EOF || t->type == TOKEN_UNKNOWM) break;
 
 		if (parseDatatype(pars, errors) == true) // if current token is a primitive data-type
 		{
@@ -195,7 +196,7 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 				}
 			}
 		}
-//		break;
+		//		break;
 
 		//	pars->lex->tokens++;
 	}
