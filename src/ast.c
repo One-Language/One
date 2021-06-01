@@ -10,3 +10,11 @@
 
 #include "ast.h"
 
+AstBlock* astBlock(AstStatement** stmts)
+{
+	AstBlock* ast = malloc(sizeof(AstBlock));
+}
+
+AstFunction* astFunction(char* name, AstBlock* block)
+{
+}
