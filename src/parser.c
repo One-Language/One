@@ -183,15 +183,15 @@ void parseStatement(Parser *pars, ErrorsContainer *errors)
 	{
 		parseStatementPrint(pars, errors);
 	}
-	else if ((*pars->lex->tokens)->type == TOKEN_PRINT)
+	else if ((*pars->lex->tokens)->type == TOKEN_PRINTNL)
 	{
 		parseStatementPrintNl(pars, errors);
 	}
-	else if ((*pars->lex->tokens)->type == TOKEN_PRINT)
+	else if ((*pars->lex->tokens)->type == TOKEN_PRINTDB)
 	{
 		parseStatementPrintErr(pars, errors);
 	}
-	else if ((*pars->lex->tokens)->type == TOKEN_PRINT)
+	else if ((*pars->lex->tokens)->type == TOKEN_PRINTNLDB)
 	{
 		parseStatementPrintErrNl(pars, errors);
 	}
