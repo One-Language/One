@@ -21,6 +21,8 @@ void vmFunction(AstFunction* func)
 
 void vmLog(AstRoot* root)
 {
+	printf("=============== AST ===============\n");
+
 	for(size_t i = 0; i <root->functions->count;i++) {
 		vmFunction(root->functions->data[i]);
 	}
