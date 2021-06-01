@@ -44,6 +44,10 @@ AstFunction* astFunction(char* name, AstArguments* args, AstBlock* block)
 
 AstRoot* astRoot(char* package, AstFunctions * funcs)
 {
+	if(package == NULL || strcmp(package, "") == 0) {
+		package = "main"; // TODO: I not sure it's memory safe or no!
+	}
+
 	AstRoot* ast = malloc(sizeof(AstRoot));
 	ast->package = package;
 	ast->functions = funcs;
