@@ -344,7 +344,12 @@ void check(Parser *pars)
 
 int parserCheck(Parser *pars, ErrorsContainer *errors)
 {
+	AstFunction *func;
 	AstRoot *root;
+	vmInit(root);
+	root->functions = malloc(sizeof(Array));
+	arrayInit(root->functions);
+
 	printf("=============== Parser ===============\n");
 
 	Token *t;
@@ -363,16 +368,16 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 				{
 					parserPrevToken(pars, errors); // go back to user-identifier name (function name)
 					parserPrevToken(pars, errors); // go back to data-type
-					AstFunction *func = parseFunction(pars, errors);
+					func = parseFunction(pars, errors);
 					printf("==== end func\n");
 					arrayPush(root->functions, func);
 				}
 			}
 		}
-		//		break;
-
-		//	pars->lex->tokens++;
 	}
+
+	vmLog(root);
+	vmFree(root);
 	return EXIT_SUCCESS;
 }
 
