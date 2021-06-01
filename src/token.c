@@ -252,7 +252,8 @@ Token *tokenNext(Lexer *lex)
 		}
 		else
 		{
-			lex->source--;
+			t->type = TOKEN_OPERATOR_NOT;
+			return t;
 		}
 	}
 
@@ -794,6 +795,9 @@ char *tokenName(TokenType type)
 			return "OPERATOR_BIT_AND";
 		case TOKEN_OPERATOR_AND:
 			return "OPERATOR_AND";
+
+		case TOKEN_OPERATOR_NOT:
+			return "OPERATOR_NOT";
 
 		case TOKEN_OPERATOR_BIT_OR:
 			return "OPERATOR_BIT_OR";

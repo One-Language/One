@@ -28,10 +28,13 @@ int parserCheck(Parser *, ErrorsContainer *);
 void parserFree(Parser *);
 
 bool tokenIsUserType(Parser *, ErrorsContainer *);
+
 bool tokenIsPrimaryType(Parser *, ErrorsContainer *);
 
-int exceptGo(Parser *, TokenType, ErrorsContainer *);
+bool parserExceptTokenGo(Parser *, TokenType, ErrorsContainer *);
 
-int except(Parser *, TokenType, ErrorsContainer *);
+bool parserExceptToken(Parser *, TokenType, ErrorsContainer *);
+
+bool parserHasToken(Parser *, TokenType, ErrorsContainer *);
 
 #endif

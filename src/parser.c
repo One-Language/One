@@ -106,7 +106,7 @@ bool parseArguments(Parser *pars, ErrorsContainer *errors)
 		{ // loop iterate before see a `)` token.
 			if (parseDatatype(pars, errors) == true)
 			{
-				except(pars, TOKEN_VALUE_IDENTIFIER, errors);
+				parserExceptToken(pars, TOKEN_VALUE_IDENTIFIER, errors);
 				parserNextToken(pars, errors); // go to next token
 				return true;
 			}
@@ -120,36 +120,53 @@ bool parseArguments(Parser *pars, ErrorsContainer *errors)
 	return false; // it's optional
 }
 
-int except(Parser *pars, TokenType want, ErrorsContainer *errors)
+bool parserHasToken(Parser *pars, TokenType want, ErrorsContainer *errors)
+{
+	Token *t = *pars->lex->tokens;
+	if (t->type != want)
+		return true;
+	return false;
+}
+
+bool parserExceptToken(Parser *pars, TokenType want, ErrorsContainer *errors)
 {
 	Token *t = *pars->lex->tokens;
 	if (t->type != want)
 	{
 		// TODO: ErrorAppend(...)
 		printf("Error: we except %s, but we see %s\n", tokenName(want), tokenName(t->type));
-		return 0; // not valid
+		return false; // not valid
 	}
-	return 1; // valid
+	return true; // valid
 }
 
-int exceptGo(Parser *pars, TokenType want, ErrorsContainer *errors)
+bool parserExceptTokenGo(Parser *pars, TokenType want, ErrorsContainer *errors)
 {
-	int res = except(pars, want, errors); // call except function
+	int res = parserExceptToken(pars, want, errors); // call except function
 	if (res == 1)
 		pars->lex->tokens++;
 	// Why we not have and need a `else`, because we already handled errors at parent function.
 	return res;
 }
 
+void parseExpression(Parser *pars, ErrorsContainer *errors)
+{
+}
+
 void parseExpressions(Parser *pars, ErrorsContainer *errors)
 {
+	parseExpression(pars, errors);
+	while (parserHasToken(pars, TOKEN_OPERATOR_VIRGOOL, errors) != true)
+	{
+		parseExpression(pars, errors);
+	}
 }
 
 void parseStatementPrint(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseStatementPrint\n");
 
-	exceptGo(pars, TOKEN_PRINT, errors);
+	parserExceptTokenGo(pars, TOKEN_PRINT, errors);
 	parseExpressions(pars, errors);
 }
 
@@ -157,7 +174,7 @@ void parseStatementPrintNl(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseStatementPrintNl\n");
 
-	exceptGo(pars, TOKEN_PRINTNL, errors);
+	parserExceptTokenGo(pars, TOKEN_PRINTNL, errors);
 	parseExpressions(pars, errors);
 }
 
@@ -165,7 +182,7 @@ void parseStatementPrintErr(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseStatementPrintErr\n");
 
-	exceptGo(pars, TOKEN_PRINTDB, errors);
+	parserExceptTokenGo(pars, TOKEN_PRINTDB, errors);
 	parseExpressions(pars, errors);
 }
 
@@ -173,7 +190,7 @@ void parseStatementPrintErrNl(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseStatementPrintErrNl\n");
 
-	exceptGo(pars, TOKEN_PRINTNLDB, errors);
+	parserExceptTokenGo(pars, TOKEN_PRINTNLDB, errors);
 	parseExpressions(pars, errors);
 }
 
@@ -206,7 +223,7 @@ void parseStatement(Parser *pars, ErrorsContainer *errors)
 
 void parseBlock(Parser *pars, ErrorsContainer *errors)
 {
-	exceptGo(pars, TOKEN_SECTION_OPEN, errors);
+	parserExceptTokenGo(pars, TOKEN_SECTION_OPEN, errors);
 	printf("==== start stmt loop\n");
 	while ((*pars->lex->tokens)->type != TOKEN_SECTION_CLOSE)
 	{
@@ -214,7 +231,7 @@ void parseBlock(Parser *pars, ErrorsContainer *errors)
 		printf("==== end current stmt\n");
 	}
 	printf("==== end stmt loop\n");
-	exceptGo(pars, TOKEN_SECTION_CLOSE, errors);
+	parserExceptTokenGo(pars, TOKEN_SECTION_CLOSE, errors);
 }
 
 void parseFunction(Parser *pars, ErrorsContainer *errors)
@@ -223,7 +240,7 @@ void parseFunction(Parser *pars, ErrorsContainer *errors)
 
 	if (parseDatatype(pars, errors) == true)
 	{
-		exceptGo(pars, TOKEN_VALUE_IDENTIFIER, errors); // check if current token is a user identifier
+		parserExceptTokenGo(pars, TOKEN_VALUE_IDENTIFIER, errors); // check if current token is a user identifier
 
 		//		printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
 		parseArguments(pars, errors);
