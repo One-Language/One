@@ -195,15 +195,24 @@ void parseStatement(Parser *pars, ErrorsContainer *errors)
 	{
 		parseStatementPrintErrNl(pars, errors);
 	}
+	else {
+		// TODO: ErrorAppend(...)
+		printf("Error: bad stmt!\n");
+//		exit(1);
+		parserNextToken(pars, errors);
+	}
 }
 
 void parseBlock(Parser *pars, ErrorsContainer *errors)
 {
 	exceptGo(pars, TOKEN_SECTION_OPEN, errors);
+	printf("==== start stmt loop\n");
 	while ((*pars->lex->tokens)->type != TOKEN_SECTION_CLOSE)
 	{
 		parseStatement(pars, errors);
+		printf("==== end current stmt\n");
 	}
+	printf("==== end stmt loop\n");
 	exceptGo(pars, TOKEN_SECTION_CLOSE, errors);
 }
 
@@ -217,7 +226,9 @@ void parseFunction(Parser *pars, ErrorsContainer *errors)
 
 		//		printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
 		parseArguments(pars, errors);
+		printf("==== end args\n");
 		parseBlock(pars, errors);
+		printf("==== end block\n");
 	}
 	else
 	{
@@ -253,6 +264,7 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 					parserPrevToken(pars, errors); // go back to user-identifier name (function name)
 					parserPrevToken(pars, errors); // go back to data-type
 					parseFunction(pars, errors);
+					printf("==== end func\n");
 				}
 			}
 		}
