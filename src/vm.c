@@ -9,3 +9,15 @@
  **/
 
 #include "vm.h"
+
+void vmInit(AstRoot* root)
+{
+}
+
+void vmLog(AstRoot* root)
+{
+}
+
+void vmFree(AstRoot* root)
+{
+}

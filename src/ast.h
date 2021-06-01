@@ -58,4 +58,10 @@ typedef struct _ast_function
 	AstBlock* block;
 } AstFunction;
 
+typedef struct _ast_root
+{
+	char* package;
+	AstFunction * functions;
+} AstRoot;
+
 #endif //_AST_H_
