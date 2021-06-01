@@ -191,11 +191,18 @@
 <table>
    <tr>
       <td align="center">
+         <a href="https://github.com/jbampton">
+            <img src="https://avatars.githubusercontent.com/u/418747?v=4" width="100px;" alt="John Bampton"/><br />
+            <sub><b>John Bampton</b></sub>
+         </a><br />
+      </td>
+      <td align="center">
          <a href="https://github.com/jassab">
             <img src="https://avatars1.githubusercontent.com/u/41446786?v=4" width="100px;" alt="Jas"/><br />
             <sub><b>Jas</b></sub>
          </a><br />
       </td>
+      
    </tr>
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
