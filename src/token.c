@@ -232,21 +232,25 @@ Token *tokenNext(Lexer *lex)
 		return t;
 	}
 
-	else if(*lex->source == '!') {
+	else if (*lex->source == '!')
+	{
 		lex->source++;
-		if(*lex->source == '_') {
+		if (*lex->source == '_')
+		{
 			lex->source++;
-			if(*lex->source == '_')
+			if (*lex->source == '_')
 			{
 				t->type = TOKEN_PRINTNLDB;
 				return t;
 			}
-			else {
+			else
+			{
 				t->type = TOKEN_PRINTDB;
 				return t;
 			}
 		}
-		else {
+		else
+		{
 			lex->source--;
 		}
 	}

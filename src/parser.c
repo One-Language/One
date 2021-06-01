@@ -195,10 +195,11 @@ void parseStatement(Parser *pars, ErrorsContainer *errors)
 	{
 		parseStatementPrintErrNl(pars, errors);
 	}
-	else {
+	else
+	{
 		// TODO: ErrorAppend(...)
 		printf("Error: bad stmt!\n");
-//		exit(1);
+		//		exit(1);
 		parserNextToken(pars, errors);
 	}
 }
