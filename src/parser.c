@@ -103,7 +103,7 @@ AstStatements *parseArguments(Parser *pars, ErrorsContainer *errors)
 {
 	AstType *type;
 	AstArgument *arg;
-	Array *args;
+	Array *args = malloc(sizeof(Array));
 
 	arrayInit(args);
 
@@ -290,7 +290,7 @@ AstStatement *parseStatement(Parser *pars, ErrorsContainer *errors)
 AstBlock *parseBlock(Parser *pars, ErrorsContainer *errors)
 {
 	AstBlock* block;
-	Array *stmts;
+	Array *stmts = malloc(sizeof(Array));
 	arrayInit(stmts);
 
 	parserExceptTokenGo(pars, TOKEN_SECTION_OPEN, errors);
