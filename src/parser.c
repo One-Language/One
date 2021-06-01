@@ -178,6 +178,7 @@ void parseExpressions(Parser *pars, ErrorsContainer *errors)
 	parseExpression(pars, errors);
 	while (parserHasToken(pars, TOKEN_OPERATOR_VIRGOOL, errors) == true)
 	{
+		parserExceptTokenGo(pars, TOKEN_OPERATOR_VIRGOOL, errors);
 		parseExpression(pars, errors);
 	}
 }
