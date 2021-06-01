@@ -245,6 +245,7 @@ Token *tokenNext(Lexer *lex)
 			}
 			else
 			{
+				lex->source--;
 				t->type = TOKEN_PRINTDB;
 				return t;
 			}
