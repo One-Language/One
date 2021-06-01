@@ -232,25 +232,29 @@ Token *tokenNext(Lexer *lex)
 		return t;
 	}
 
+	// Operator !
+	// Operator !_
+	// Operator !__
 	else if (*lex->source == '!')
 	{
-		lex->source++;
-		if (*lex->source == '_')
+		lex->source++; // go to next char
+		if (*lex->source == '_') // it has `!_` prefix
 		{
-			lex->source++;
-			if (*lex->source == '_')
+			lex->source++; // go to next char
+			if (*lex->source == '_') // it's  !__
 			{
+				lex->source++; // go to next char
 				t->type = TOKEN_PRINTNLDB;
 				return t;
 			}
-			else
+			else // it's !_
 			{
-				lex->source--;
+				//				printf(">>> %c\n", *lex->source);
 				t->type = TOKEN_PRINTDB;
 				return t;
 			}
 		}
-		else
+		else // it's !
 		{
 			t->type = TOKEN_OPERATOR_NOT;
 			return t;

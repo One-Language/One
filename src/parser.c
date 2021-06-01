@@ -123,7 +123,7 @@ bool parseArguments(Parser *pars, ErrorsContainer *errors)
 bool parserHasToken(Parser *pars, TokenType want, ErrorsContainer *errors)
 {
 	Token *t = *pars->lex->tokens;
-	if (t->type != want)
+	if (t->type == want)
 		return true;
 	return false;
 }
@@ -151,12 +151,32 @@ bool parserExceptTokenGo(Parser *pars, TokenType want, ErrorsContainer *errors)
 
 void parseExpression(Parser *pars, ErrorsContainer *errors)
 {
+	printf("---------- parseExpression\n");
+	//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
+
+	if (parserHasToken(pars, TOKEN_VALUE_IDENTIFIER, errors) == true)
+		parserNextToken(pars, errors);
+	else if (parserHasToken(pars, TOKEN_VALUE_STRING, errors) == true)
+		parserNextToken(pars, errors);
+	else if (parserHasToken(pars, TOKEN_VALUE_NUMBER, errors) == true)
+		parserNextToken(pars, errors);
+	else if (parserHasToken(pars, TOKEN_VALUE_BOOL, errors) == true)
+		parserNextToken(pars, errors);
+	else
+	{
+		// TODO: ErrorAppend(...)
+		printf("Error: bad value as expression!\n");
+		parserNextToken(pars, errors);
+		exit(1);
+	}
 }
 
 void parseExpressions(Parser *pars, ErrorsContainer *errors)
 {
+	printf("---------- parseExpressions\n");
+
 	parseExpression(pars, errors);
-	while (parserHasToken(pars, TOKEN_OPERATOR_VIRGOOL, errors) != true)
+	while (parserHasToken(pars, TOKEN_OPERATOR_VIRGOOL, errors) == true)
 	{
 		parseExpression(pars, errors);
 	}
