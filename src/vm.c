@@ -12,6 +12,10 @@
 
 void vmInit(AstRoot* root)
 {
+	root->functions = malloc(sizeof(Array));
+	root->package = malloc(sizeof(char) * 1024);
+//	strcpy(root->package,"max");
+//	printf("-->%s\n", root->package);
 }
 
 void vmFunction(AstFunction* func)
@@ -23,7 +27,10 @@ void vmLog(AstRoot* root)
 {
 	printf("=============== AST ===============\n");
 
-	for(size_t i = 0; i <root->functions->count;i++) {
+	printf("Package: %s\n", root->package);
+
+	for (size_t i = 0; i < root->functions->count; i++)
+	{
 		vmFunction(root->functions->data[i]);
 	}
 }

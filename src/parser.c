@@ -289,7 +289,7 @@ AstStatement *parseStatement(Parser *pars, ErrorsContainer *errors)
 
 AstBlock *parseBlock(Parser *pars, ErrorsContainer *errors)
 {
-	AstBlock* block;
+	AstBlock *block;
 	Array *stmts = malloc(sizeof(Array));
 	arrayInit(stmts);
 
@@ -342,12 +342,37 @@ void check(Parser *pars)
 	//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
 }
 
+void parsePackage(Parser *pars, char **package, ErrorsContainer *errors)
+{
+	printf("---------- parsePackage\n");
+
+	parserExceptTokenGo(pars, TOKEN_PACKAGE, errors);
+
+	if (parserHasToken(pars, TOKEN_VALUE_IDENTIFIER, errors) == true)
+	{
+		*package = (*pars->lex->tokens)->vstring;
+		printf("==>%s\n", *package);
+		parserNextToken(pars, errors);
+	}
+	else if (parserHasToken(pars, TOKEN_VALUE_STRING, errors) == true)
+	{
+		*package = (*pars->lex->tokens)->vstring;
+		printf("==>%s\n", *package);
+		parserNextToken(pars, errors);
+	}
+	else
+	{
+		printf("Error: bad value for package name!\n");
+		// TODO: AppendError(...)
+		exit(1);
+	}
+}
+
 int parserCheck(Parser *pars, ErrorsContainer *errors)
 {
 	AstFunction *func;
-	AstRoot *root;
+	AstRoot *root = malloc(sizeof(AstRoot));
 	vmInit(root);
-	root->functions = malloc(sizeof(Array));
 	arrayInit(root->functions);
 
 	printf("=============== Parser ===============\n");
@@ -357,9 +382,27 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 	{
 		t = *pars->lex->tokens;
 		printf("[TOKEN] %s\n", tokenName(t->type));
-		if (t->type == TOKEN_EOF || t->type == TOKEN_UNKNOWM) break;
+		if (t->type == TOKEN_EOF)
+			break;
+		else if (t->type == TOKEN_UNKNOWM)
+		{
+			printf("Break...............\n");
+			break;
+		}
 
-		if (parseDatatype(pars, errors) == true) // if current token is a primitive data-type
+		if (parserHasToken(pars, TOKEN_PACKAGE, errors) == true)
+		{
+			if (strcmp(root->package, "") == 0 || strlen(root->package) == 0)
+			{
+				parsePackage(pars, &root->package, errors);
+				printf("==>%s\n", root->package);
+			}
+			else
+			{
+				// TODO: AppendError(...), It's not allowerd to define package name twice at a source file!
+			}
+		}
+		else if (parseDatatype(pars, errors) == true) // if current token is a primitive data-type
 		{
 			if ((*pars->lex->tokens)->type == TOKEN_VALUE_IDENTIFIER)
 			{ // check if current token is a user identifier
@@ -373,6 +416,12 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 					arrayPush(root->functions, func);
 				}
 			}
+		}
+		else
+		{
+			printf("Error: bad token in the parser stage!\n");
+			// TODO: ErrorAPpend(...)
+			exit(1);
 		}
 	}
 
