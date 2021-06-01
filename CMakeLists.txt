@@ -8,20 +8,33 @@ include_directories(src)
 add_executable(One
         src/arg.c
         src/arg.h
+
         src/array.c
         src/array.h
+
         src/compile.c
         src/compile.h
+
         src/error.c
         src/error.h
+
         src/lexer.c
         src/lexer.h
+
         src/one.c
         src/one.h
+
         src/ast.c
         src/ast.h
+
         src/parser.c
         src/parser.h
+
         src/token.c
         src/token.h
-        src/parser.test.c src/compile.c src/compile.h src/file.c src/file.h)
+
+        src/compile.c
+        src/compile.h
+
+        src/file.c
+        src/file.h)
