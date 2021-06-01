@@ -231,7 +231,13 @@
       <td align="center">
          <a href="https://github.com/basalumutgazi">
             <img src="https://avatars.githubusercontent.com/u/81925269?v=4" width="100px;" alt="basalumutgazi"/><br />
-            <sub><b>basalumutgazi</b></sub>
+            <sub><b>Basal Umut Gazi</b></sub>
+         </a><br />
+      </td>
+      <td align="center">
+         <a href="https://github.com/Majalian">
+            <img src="https://avatars.githubusercontent.com/u/81928799?v=4" width="100px;" alt="Majalian"/><br />
+            <sub><b>Majalian</b></sub>
          </a><br />
       </td>
    </tr>
