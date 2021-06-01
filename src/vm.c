@@ -14,8 +14,16 @@ void vmInit(AstRoot* root)
 {
 }
 
+void vmFunction(AstFunction* func)
+{
+	printf("[FUNC] %s\n", func->name);
+}
+
 void vmLog(AstRoot* root)
 {
+	for(size_t i = 0; i <root->functions->count;i++) {
+		vmFunction(root->functions->data[i]);
+	}
 }
 
 void vmFree(AstRoot* root)
