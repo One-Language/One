@@ -10,11 +10,34 @@
 
 #include "ast.h"
 
-AstBlock* astBlock(AstStatement** stmts)
+AstType* astType(int type, bool hasArray)
 {
-	AstBlock* ast = malloc(sizeof(AstBlock));
+	AstType* ast = malloc(sizeof(AstType));
+	ast->type = type;
+	ast->hasArray = hasArray;
+	return ast;
 }
 
-AstFunction* astFunction(char* name, AstBlock* block)
+AstBlock* astBlock(AstStatements* stmts)
 {
+	AstBlock* ast = malloc(sizeof(AstBlock));
+	ast->statements = stmts;
+	return ast;
+}
+
+AstArgument* astArgument(char* name, AstType* type)
+{
+	AstArgument* ast = malloc(sizeof(AstArgument));
+	ast->name = name;
+	ast->type = type;
+	return ast;
+}
+
+AstFunction* astFunction(char* name, AstArguments* args, AstBlock* block)
+{
+	AstFunction* ast = malloc(sizeof(AstFunction));
+	ast->name = name;
+	ast->arguments = args;
+	ast->block = block;
+	return ast;
 }

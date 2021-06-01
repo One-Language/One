@@ -13,17 +13,39 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-typedef struct _ast_block {
+#include "array.h"
 
-} AstBlock;
+typedef Array AstArguments;
+typedef Array AstStatements;
 
-typedef struct _ast_statement {
-
+typedef struct _ast_statement
+{
 } AstStatement;
 
-typedef struct _ast_function {
+typedef struct _ast_block
+{
+	AstStatements* statements;
+} AstBlock;
 
+typedef struct _ast_type
+{
+	int type;
+	bool hasArray;
+} AstType;
+
+typedef struct _ast_argument
+{
+	char* name;
+	AstType* type;
+} AstArgument;
+
+typedef struct _ast_function
+{
+	char* name;
+	AstArguments* arguments;
+	AstBlock* block;
 } AstFunction;
 
 #endif //_AST_H_
