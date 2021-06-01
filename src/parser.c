@@ -149,26 +149,48 @@ bool parserExceptTokenGo(Parser *pars, TokenType want, ErrorsContainer *errors)
 	return res;
 }
 
+void parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
+{
+	printf("---------- parseExpressionPrimitive\n");
+	switch ((*pars->lex->tokens)->type)
+	{
+		case TOKEN_VALUE_IDENTIFIER:
+		case TOKEN_VALUE_STRING:
+		case TOKEN_VALUE_NUMBER:
+		case TOKEN_VALUE_BOOL:
+			parserNextToken(pars, errors);
+			break;
+		default:
+			// TODO: ErrorAppend(...)
+			printf("Error: bad value as expression!\n");
+			parserNextToken(pars, errors);
+			exit(1);
+			break;
+	}
+
+	//	if (parserHasToken(pars, TOKEN_VALUE_IDENTIFIER, errors) == true)
+	//		parserNextToken(pars, errors);
+	//	else if (parserHasToken(pars, TOKEN_VALUE_STRING, errors) == true)
+	//		parserNextToken(pars, errors);
+	//	else if (parserHasToken(pars, TOKEN_VALUE_NUMBER, errors) == true)
+	//		parserNextToken(pars, errors);
+	//	else if (parserHasToken(pars, TOKEN_VALUE_BOOL, errors) == true)
+	//		parserNextToken(pars, errors);
+	//	else
+	//	{
+	//		// TODO: ErrorAppend(...)
+	//		printf("Error: bad value as expression!\n");
+	//		parserNextToken(pars, errors);
+	//		exit(1);
+	//	}
+}
+
 void parseExpression(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression\n");
 	//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
 
-	if (parserHasToken(pars, TOKEN_VALUE_IDENTIFIER, errors) == true)
-		parserNextToken(pars, errors);
-	else if (parserHasToken(pars, TOKEN_VALUE_STRING, errors) == true)
-		parserNextToken(pars, errors);
-	else if (parserHasToken(pars, TOKEN_VALUE_NUMBER, errors) == true)
-		parserNextToken(pars, errors);
-	else if (parserHasToken(pars, TOKEN_VALUE_BOOL, errors) == true)
-		parserNextToken(pars, errors);
-	else
-	{
-		// TODO: ErrorAppend(...)
-		printf("Error: bad value as expression!\n");
-		parserNextToken(pars, errors);
-		exit(1);
-	}
+	parseExpressionPrimitive(pars, errors);
 }
 
 void parseExpressions(Parser *pars, ErrorsContainer *errors)
