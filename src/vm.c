@@ -25,6 +25,9 @@ void vmFunction(AstFunction* func)
 
 void vmLog(AstRoot* root)
 {
+	if(root->package == NULL || strlen(root->package) == 0 || strcmp(root->package, "") == 0) {
+		root->package = "main";
+	}
 	printf("=============== AST ===============\n");
 
 	printf("Package: %s\n", root->package);
