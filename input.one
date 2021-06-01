@@ -13,7 +13,10 @@
 // const i32 global_int2 = 110
 
 i8 main {
-
+    _
+    __
+    !_
+    !__
 }
 
 /*

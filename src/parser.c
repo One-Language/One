@@ -141,9 +141,69 @@ int exceptGo(Parser *pars, TokenType want, ErrorsContainer *errors)
 	return res;
 }
 
+void parseExpressions(Parser *pars, ErrorsContainer *errors)
+{
+}
+
+void parseStatementPrint(Parser *pars, ErrorsContainer *errors)
+{
+	printf("---------- parseStatementPrint\n");
+
+	exceptGo(pars, TOKEN_PRINT, errors);
+	parseExpressions(pars, errors);
+}
+
+void parseStatementPrintNl(Parser *pars, ErrorsContainer *errors)
+{
+	printf("---------- parseStatementPrintNl\n");
+
+	exceptGo(pars, TOKEN_PRINTNL, errors);
+	parseExpressions(pars, errors);
+}
+
+void parseStatementPrintErr(Parser *pars, ErrorsContainer *errors)
+{
+	printf("---------- parseStatementPrintErr\n");
+
+	exceptGo(pars, TOKEN_PRINTDB, errors);
+	parseExpressions(pars, errors);
+}
+
+void parseStatementPrintErrNl(Parser *pars, ErrorsContainer *errors)
+{
+	printf("---------- parseStatementPrintErrNl\n");
+
+	exceptGo(pars, TOKEN_PRINTNLDB, errors);
+	parseExpressions(pars, errors);
+}
+
+void parseStatement(Parser *pars, ErrorsContainer *errors)
+{
+	if ((*pars->lex->tokens)->type == TOKEN_PRINT)
+	{
+		parseStatementPrint(pars, errors);
+	}
+	else if ((*pars->lex->tokens)->type == TOKEN_PRINT)
+	{
+		parseStatementPrintNl(pars, errors);
+	}
+	else if ((*pars->lex->tokens)->type == TOKEN_PRINT)
+	{
+		parseStatementPrintErr(pars, errors);
+	}
+	else if ((*pars->lex->tokens)->type == TOKEN_PRINT)
+	{
+		parseStatementPrintErrNl(pars, errors);
+	}
+}
+
 void parseBlock(Parser *pars, ErrorsContainer *errors)
 {
 	exceptGo(pars, TOKEN_SECTION_OPEN, errors);
+	while ((*pars->lex->tokens)->type != TOKEN_SECTION_CLOSE)
+	{
+		parseStatement(pars, errors);
+	}
 	exceptGo(pars, TOKEN_SECTION_CLOSE, errors);
 }
 
