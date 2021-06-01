@@ -18,6 +18,8 @@ add_executable(One
         src/lexer.h
         src/one.c
         src/one.h
+        src/ast.c
+        src/ast.h
         src/parser.c
         src/parser.h
         src/token.c
