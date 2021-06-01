@@ -19,8 +19,20 @@ Parser *parserInit(Lexer *lex, ErrorsContainer *errors)
 	return pars;
 }
 
-bool tokenIsPrimaryType(Token *t, ErrorsContainer *errors)
+void parserNextToken(Parser *pars, ErrorsContainer *errors)
 {
+	pars->lex->tokens++; // go back to the prev token
+}
+
+void parserPrevToken(Parser *pars, ErrorsContainer *errors)
+{
+	pars->lex->tokens--; // go back to the prev token
+}
+
+bool tokenIsPrimaryType(Parser *pars, ErrorsContainer *errors)
+{
+	Token *t = *pars->lex->tokens;
+
 	if (t->type == TOKEN_TYPE_I8)
 		return true;
 	else if (t->type == TOKEN_TYPE_I16)
@@ -56,40 +68,46 @@ bool tokenIsPrimaryType(Token *t, ErrorsContainer *errors)
 	return false;
 }
 
-bool tokenIsUserType(Token *t, ErrorsContainer *errors)
+bool tokenIsUserType(Parser *pars, ErrorsContainer *errors)
 {
+	Token *t = *pars->lex->tokens;
+
 	if (t->type == TOKEN_VALUE_IDENTIFIER)
 	{
 		if (strcmp(t->vstring, "point") == 0)
 			return true;
+
 		// TODO: Need to check from a vector-like!
 		return false;
 	}
 	return false;
 }
 
-bool parseDatatype(Token **tokens, ErrorsContainer *errors)
+bool parseDatatype(Parser *pars, ErrorsContainer *errors)
 {
-	if (tokenIsPrimaryType(*tokens, errors) == true || tokenIsUserType(*tokens, errors) == true)
+	if (tokenIsPrimaryType(pars, errors) == true || tokenIsUserType(pars, errors) == true)
 	{ // if current token is a primitive data-type
 		// TODO: check data-type array. e;g `i32 []`
+
+		parserNextToken(pars, errors); // go to next token
+
+		printf("---------- parseDatatype\n");
 		return true; // yes it's a data-type token series!
 	}
 	return false; // is not!
 }
 
-bool parseArguments(Token **tokens, ErrorsContainer *errors)
+bool parseArguments(Parser *pars, ErrorsContainer *errors)
 {
-	if ((*tokens)->type == TOKEN_BRACKET_OPEN)
+	if ((*pars->lex->tokens)->type == TOKEN_BRACKET_OPEN)
 	{
-		tokens++; // go to next token
-		while ((*tokens)->type != TOKEN_BRACKET_CLOSE)
+		parserNextToken(pars, errors); // go to next token
+		while ((*pars->lex->tokens)->type != TOKEN_BRACKET_CLOSE)
 		{ // loop iterate before see a `)` token.
-			if (parseDatatype(tokens, errors) == true)
+			if (parseDatatype(pars, errors) == true)
 			{
-				tokens++;
-				except(tokens, TOKEN_VALUE_IDENTIFIER, errors);
-				tokens++; // go to next token
+				except(pars, TOKEN_VALUE_IDENTIFIER, errors);
+				parserNextToken(pars, errors); // go to next token
 				return true;
 			}
 			else
@@ -102,10 +120,10 @@ bool parseArguments(Token **tokens, ErrorsContainer *errors)
 	return false; // it's optional
 }
 
-int except(Token **tokens, TokenType want, ErrorsContainer *errors)
+int except(Parser *pars, TokenType want, ErrorsContainer *errors)
 {
-	Token *t = *tokens;
-	if (t->type != TOKEN_SECTION_OPEN)
+	Token *t = *pars->lex->tokens;
+	if (t->type != want)
 	{
 		// TODO: ErrorAppend(...)
 		printf("Error: we except %s, but we see %s\n", tokenName(want), tokenName(t->type));
@@ -114,34 +132,43 @@ int except(Token **tokens, TokenType want, ErrorsContainer *errors)
 	return 1; // valid
 }
 
-int exceptGo(Token **tokens, TokenType want, ErrorsContainer *errors)
+int exceptGo(Parser *pars, TokenType want, ErrorsContainer *errors)
 {
-	int res = except(tokens, want, errors); // call except function
+	int res = except(pars, want, errors); // call except function
 	if (res == 1)
-		tokens++;
+		pars->lex->tokens++;
 	// Why we not have and need a `else`, because we already handled errors at parent function.
 	return res;
 }
 
-void parseBlock(Token **tokens, ErrorsContainer *errors)
+void parseBlock(Parser *pars, ErrorsContainer *errors)
 {
-	if ((*tokens)->type == TOKEN_SECTION_OPEN)
+	exceptGo(pars, TOKEN_SECTION_OPEN, errors);
+	exceptGo(pars, TOKEN_SECTION_CLOSE, errors);
+}
+
+void parseFunction(Parser *pars, ErrorsContainer *errors)
+{
+	printf("---------- parseFunction\n");
+
+	if (parseDatatype(pars, errors) == true)
 	{
+		exceptGo(pars, TOKEN_VALUE_IDENTIFIER, errors); // check if current token is a user identifier
+
+//		printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
+		parseArguments(pars, errors);
+		parseBlock(pars, errors);
+	}
+	else {
+		// TODO: ErrorAppend(...)
 	}
 }
 
-void parseFunction(Token **tokens, ErrorsContainer *errors)
+void check(Parser *pars)
 {
-	if (parseDatatype(tokens, errors) == true)
-	{
-		tokens++; // go to next token
-		if ((*tokens)->type == TOKEN_VALUE_IDENTIFIER)
-		{ // check if current token is a user identifier
-			tokens++; // go to next token
-			parseArguments(tokens, errors);
-			parseBlock(tokens, errors);
-		}
-	}
+//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
+	pars->lex->tokens++;
+//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
 }
 
 int parserCheck(Parser *pars, ErrorsContainer *errors)
@@ -152,23 +179,23 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 	while (*pars->lex->tokens != NULL)
 	{
 		t = *pars->lex->tokens;
-		printf("-->%s\n", tokenName(t->type));
+		printf("[TOKEN] %s\n", tokenName(t->type));
+		if(t->type == TOKEN_EOF || t->type == TOKEN_UNKNOWM) break;
 
-		if (parseDatatype(pars->lex->tokens, errors) == true) // if current token is a primitive data-type
+		if (parseDatatype(pars, errors) == true) // if current token is a primitive data-type
 		{
-			Token *datatype = *pars->lex->tokens; // store data-type to a variable
-			pars->lex->tokens++; // go to next token
 			if ((*pars->lex->tokens)->type == TOKEN_VALUE_IDENTIFIER)
 			{ // check if current token is a user identifier
-				pars->lex->tokens++; // go to next token
+				parserNextToken(pars, errors); // go to next token
 				if ((*pars->lex->tokens)->type == TOKEN_BRACKET_OPEN || (*pars->lex->tokens)->type == TOKEN_SECTION_OPEN)
 				{
-					pars->lex->tokens--; // go back to user-identifier name (function name)
-					pars->lex->tokens--; // go back to data-type
-					parseFunction(pars->lex->tokens, errors);
+					parserPrevToken(pars, errors); // go back to user-identifier name (function name)
+					parserPrevToken(pars, errors); // go back to data-type
+					parseFunction(pars, errors);
 				}
 			}
 		}
+//		break;
 
 		//	pars->lex->tokens++;
 	}

@@ -8,14 +8,15 @@
 
  **/
 
-any global_var
-const global_int      = 110
-const i32 global_int2 = 110
+// any global_var
+// const global_int      = 110
+// const i32 global_int2 = 110
 
 i8 main {
 
 }
 
+/*
 i8 ret_num {
     ret 54
 }
@@ -63,3 +64,4 @@ test() {
     _ ret_my_num(40)
     _ ret_my_num(10)
 }
+*/
