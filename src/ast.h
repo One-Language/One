@@ -22,6 +22,20 @@ typedef Array AstArguments;
 typedef Array AstStatements;
 typedef Array AstFunctions;
 
+
+typedef enum
+{
+	AST_TYPE_I8,
+	AST_TYPE_I16,
+	AST_TYPE_I32,
+	AST_TYPE_I64,
+
+	AST_TYPE_U8,
+	AST_TYPE_U16,
+	AST_TYPE_U32,
+	AST_TYPE_U64,
+} AstValueType;
+
 typedef enum
 {
 	AST_STATEMENT_PRINT,
@@ -72,5 +86,6 @@ AstBlock* astBlock(AstStatements*);
 AstArgument* astArgument(char*, AstType*);
 AstFunction* astFunction(char*, AstArguments*, AstBlock*);
 AstRoot* astRoot(char*, AstFunctions*);
+AstStatement * astStatement(AstStatementType);
 
 #endif //_AST_H_

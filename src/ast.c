@@ -42,14 +42,22 @@ AstFunction* astFunction(char* name, AstArguments* args, AstBlock* block)
 	return ast;
 }
 
-AstRoot* astRoot(char* package, AstFunctions * funcs)
+AstRoot* astRoot(char* package, AstFunctions* funcs)
 {
+	/*
 	if(package == NULL || strcmp(package, "") == 0) {
 		package = "main"; // TODO: I not sure it's memory safe or no!
 	}
+	 */
 
 	AstRoot* ast = malloc(sizeof(AstRoot));
 	ast->package = package;
 	ast->functions = funcs;
+	return ast;
+}
+
+AstStatement * astStatement(AstStatementType type) {
+	AstStatement* ast = malloc(sizeof(AstStatement));
+	ast->type = type;
 	return ast;
 }

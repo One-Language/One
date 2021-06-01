@@ -11,6 +11,8 @@
 #include "token.h"
 #include "lexer.h"
 #include "parser.h"
+#include "ast.h"
+#include "vm.h"
 
 Parser *parserInit(Lexer *lex, ErrorsContainer *errors)
 {
@@ -97,8 +99,14 @@ bool parseDatatype(Parser *pars, ErrorsContainer *errors)
 	return false; // is not!
 }
 
-bool parseArguments(Parser *pars, ErrorsContainer *errors)
+AstStatements *parseArguments(Parser *pars, ErrorsContainer *errors)
 {
+	AstType *type;
+	AstArgument *arg;
+	Array *args;
+
+	arrayInit(args);
+
 	if ((*pars->lex->tokens)->type == TOKEN_BRACKET_OPEN)
 	{
 		parserNextToken(pars, errors); // go to next token
@@ -106,18 +114,24 @@ bool parseArguments(Parser *pars, ErrorsContainer *errors)
 		{ // loop iterate before see a `)` token.
 			if (parseDatatype(pars, errors) == true)
 			{
+				char *name = (*pars->lex->tokens)->vstring; // get value of current IDENTIFIER token.
 				parserExceptToken(pars, TOKEN_VALUE_IDENTIFIER, errors);
 				parserNextToken(pars, errors); // go to next token
-				return true;
+
+				bool hasArray = false;
+				type = astType(AST_TYPE_I8, hasArray);
+
+				arg = astArgument(name, type);
+				arrayPush(args, arg);
 			}
 			else
 			{
 				// TODO: ErrorAppend(...)
-				return false;
+				return NULL;
 			}
 		}
 	}
-	return false; // it's optional
+	return args; // it's optional, so we return a empty array list!
 }
 
 bool parserHasToken(Parser *pars, TokenType want, ErrorsContainer *errors)
@@ -205,95 +219,119 @@ void parseExpressions(Parser *pars, ErrorsContainer *errors)
 	}
 }
 
-void parseStatementPrint(Parser *pars, ErrorsContainer *errors)
+AstStatement *parseStatementPrint(Parser *pars, ErrorsContainer *errors)
 {
+	AstStatement *stmt = astStatement(AST_STATEMENT_PRINT);
 	printf("---------- parseStatementPrint\n");
 
 	parserExceptTokenGo(pars, TOKEN_PRINT, errors);
 	parseExpressions(pars, errors);
+	return stmt;
 }
 
-void parseStatementPrintNl(Parser *pars, ErrorsContainer *errors)
+AstStatement *parseStatementPrintNl(Parser *pars, ErrorsContainer *errors)
 {
+	AstStatement *stmt = astStatement(AST_STATEMENT_PRINTNL);
 	printf("---------- parseStatementPrintNl\n");
 
 	parserExceptTokenGo(pars, TOKEN_PRINTNL, errors);
 	parseExpressions(pars, errors);
+	return stmt;
 }
 
-void parseStatementPrintErr(Parser *pars, ErrorsContainer *errors)
+AstStatement *parseStatementPrintErr(Parser *pars, ErrorsContainer *errors)
 {
+	AstStatement *stmt = astStatement(AST_STATEMENT_PRINTDB);
 	printf("---------- parseStatementPrintErr\n");
 
 	parserExceptTokenGo(pars, TOKEN_PRINTDB, errors);
 	parseExpressions(pars, errors);
+	return stmt;
 }
 
-void parseStatementPrintErrNl(Parser *pars, ErrorsContainer *errors)
+AstStatement *parseStatementPrintErrNl(Parser *pars, ErrorsContainer *errors)
 {
+	AstStatement *stmt = astStatement(AST_STATEMENT_PRINTDBNL);
 	printf("---------- parseStatementPrintErrNl\n");
 
 	parserExceptTokenGo(pars, TOKEN_PRINTNLDB, errors);
 	parseExpressions(pars, errors);
+	return stmt;
 }
 
-void parseStatement(Parser *pars, ErrorsContainer *errors)
+AstStatement *parseStatement(Parser *pars, ErrorsContainer *errors)
 {
 	if ((*pars->lex->tokens)->type == TOKEN_PRINT)
 	{
-		parseStatementPrint(pars, errors);
+		return parseStatementPrint(pars, errors);
 	}
 	else if ((*pars->lex->tokens)->type == TOKEN_PRINTNL)
 	{
-		parseStatementPrintNl(pars, errors);
+		return parseStatementPrintNl(pars, errors);
 	}
 	else if ((*pars->lex->tokens)->type == TOKEN_PRINTDB)
 	{
-		parseStatementPrintErr(pars, errors);
+		return parseStatementPrintErr(pars, errors);
 	}
 	else if ((*pars->lex->tokens)->type == TOKEN_PRINTNLDB)
 	{
-		parseStatementPrintErrNl(pars, errors);
+		return parseStatementPrintErrNl(pars, errors);
 	}
 	else
 	{
 		// TODO: ErrorAppend(...)
 		printf("Error: bad stmt!\n");
 		//		exit(1);
+		return NULL;
 		parserNextToken(pars, errors);
 	}
 }
 
-void parseBlock(Parser *pars, ErrorsContainer *errors)
+AstBlock *parseBlock(Parser *pars, ErrorsContainer *errors)
 {
+	AstBlock* block;
+	Array *stmts;
+	arrayInit(stmts);
+
 	parserExceptTokenGo(pars, TOKEN_SECTION_OPEN, errors);
 	printf("==== start stmt loop\n");
+
+	AstStatement *stmt;
 	while ((*pars->lex->tokens)->type != TOKEN_SECTION_CLOSE)
 	{
-		parseStatement(pars, errors);
+		stmt = parseStatement(pars, errors);
 		printf("==== end current stmt\n");
+		arrayPush(stmts, stmt);
 	}
 	printf("==== end stmt loop\n");
 	parserExceptTokenGo(pars, TOKEN_SECTION_CLOSE, errors);
+
+	block = astBlock(stmts);
+	return block;
 }
 
-void parseFunction(Parser *pars, ErrorsContainer *errors)
+AstFunction *parseFunction(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseFunction\n");
 
 	if (parseDatatype(pars, errors) == true)
 	{
+		char *name = (*pars->lex->tokens)->vstring; // get value of current IDENTIFIER token
 		parserExceptTokenGo(pars, TOKEN_VALUE_IDENTIFIER, errors); // check if current token is a user identifier
 
 		//		printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
-		parseArguments(pars, errors);
+		AstArguments *args = parseArguments(pars, errors);
 		printf("==== end args\n");
-		parseBlock(pars, errors);
+		AstBlock *block = parseBlock(pars, errors);
 		printf("==== end block\n");
+
+		AstFunction *func = astFunction(name, args, block);
+		return func;
 	}
 	else
 	{
 		// TODO: ErrorAppend(...)
+		return NULL;
 	}
 }
 
@@ -306,6 +344,7 @@ void check(Parser *pars)
 
 int parserCheck(Parser *pars, ErrorsContainer *errors)
 {
+	AstRoot *root;
 	printf("=============== Parser ===============\n");
 
 	Token *t;
@@ -324,8 +363,9 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 				{
 					parserPrevToken(pars, errors); // go back to user-identifier name (function name)
 					parserPrevToken(pars, errors); // go back to data-type
-					parseFunction(pars, errors);
+					AstFunction *func = parseFunction(pars, errors);
 					printf("==== end func\n");
+					arrayPush(root->functions, func);
 				}
 			}
 		}
