@@ -36,5 +36,8 @@ add_executable(One
         src/compile.c
         src/compile.h
 
+        src/vm.c
+        src/vm.h
+
         src/file.c
         src/file.h)
