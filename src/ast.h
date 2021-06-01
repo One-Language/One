@@ -19,8 +19,10 @@
 
 typedef Array AstArguments;
 typedef Array AstStatements;
+typedef Array AstFunctions;
 
-typedef enum {
+typedef enum
+{
 	AST_STATEMENT_PRINT,
 	AST_STATEMENT_PRINTNL,
 	AST_STATEMENT_PRINTDB,
@@ -61,7 +63,13 @@ typedef struct _ast_function
 typedef struct _ast_root
 {
 	char* package;
-	AstFunction * functions;
+	AstFunctions* functions;
 } AstRoot;
+
+AstType* astType(int, bool);
+AstBlock* astBlock(AstStatements*);
+AstArgument* astArgument(char*, AstType*);
+AstFunction* astFunction(char*, AstArguments*, AstBlock*);
+AstRoot* astRoot(char*, AstFunctions*);
 
 #endif //_AST_H_

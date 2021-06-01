@@ -41,3 +41,11 @@ AstFunction* astFunction(char* name, AstArguments* args, AstBlock* block)
 	ast->block = block;
 	return ast;
 }
+
+AstRoot* astRoot(char* package, AstFunctions * funcs)
+{
+	AstRoot* ast = malloc(sizeof(AstRoot));
+	ast->package = package;
+	ast->functions = funcs;
+	return ast;
+}
