@@ -20,8 +20,18 @@
 typedef Array AstArguments;
 typedef Array AstStatements;
 
+typedef enum {
+	AST_STATEMENT_PRINT,
+	AST_STATEMENT_PRINTNL,
+	AST_STATEMENT_PRINTDB,
+	AST_STATEMENT_PRINTDBNL,
+
+	AST_STATEMENT_RETURN,
+} AstStatementType;
+
 typedef struct _ast_statement
 {
+	AstStatementType type;
 } AstStatement;
 
 typedef struct _ast_block
