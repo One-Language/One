@@ -27,15 +27,15 @@ i8 main {
     __ 8, 9, 10
 }
 
-/*
 i8 ret_num {
     ret 54
 }
 
-i8 ret_my_num(i8 a) {
-    ret a + a
+i8 ret_my_num {
+    ret 1, 10, 100, 1000
 }
 
+/*
 test() {
     u8 u_age = 32
 

@@ -701,7 +701,7 @@ char *tokenName(TokenType type)
 			return "NULL";
 
 		case TOKEN_RETURN:
-			return "RETURN";
+			return "RET";
 		case TOKEN_STATIC:
 			return "STATIC";
 

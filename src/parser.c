@@ -259,6 +259,16 @@ AstStatement *parseStatementPrintErrNl(Parser *pars, ErrorsContainer *errors)
 	return stmt;
 }
 
+AstStatement *parseStatementReturn(Parser *pars, ErrorsContainer *errors)
+{
+	AstStatement *stmt = astStatement(AST_STATEMENT_RETURN);
+	printf("---------- parseStatementReturn\n");
+
+	parserExceptTokenGo(pars, TOKEN_RETURN, errors);
+	parseExpressions(pars, errors);
+	return stmt;
+}
+
 AstStatement *parseStatement(Parser *pars, ErrorsContainer *errors)
 {
 	if ((*pars->lex->tokens)->type == TOKEN_PRINT)
@@ -277,10 +287,15 @@ AstStatement *parseStatement(Parser *pars, ErrorsContainer *errors)
 	{
 		return parseStatementPrintErrNl(pars, errors);
 	}
+	else if ((*pars->lex->tokens)->type == TOKEN_RETURN)
+	{
+		return parseStatementReturn(pars, errors);
+	}
 	else
 	{
 		// TODO: ErrorAppend(...)
 		printf("Error: bad stmt!\n");
+		printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
 		//		exit(1);
 		return NULL;
 		parserNextToken(pars, errors);

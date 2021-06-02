@@ -182,7 +182,7 @@ static Keyword keywords[] = {
 
 	 {"is", 2, TOKEN_IS, false},
 	 {"null", 4, TOKEN_NULL, false},
-	 {"return", 6, TOKEN_RETURN, false},
+	 {"ret", 3, TOKEN_RETURN, false},
 	 {"static", 6, TOKEN_STATIC, false},
 
 	 {"this", 4, TOKEN_THIS, false},
