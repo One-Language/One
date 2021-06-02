@@ -23,7 +23,7 @@ void print_tabs(size_t n)
 
 void treeExpression(AstExpression* expr)
 {
-	printf("[EXPR] %s")
+	printf("[EXPR] %s", astOperatorName(expr->operator));
 }
 
 void treeExpressions(AstExpressions* exprs)
@@ -38,11 +38,11 @@ void treeExpressions(AstExpressions* exprs)
 
 void treeStatement(AstStatement* stmt)
 {
-	printf("[STMT] %s\n", vmStatementName(stmt->type));
+	printf("[STMT] %s\n", astStatementName(stmt->type));
 	if (stmt->type == AST_STATEMENT_PRINT || stmt->type == AST_STATEMENT_PRINTNL || stmt->type == AST_STATEMENT_PRINTDB || stmt->type == AST_STATEMENT_PRINTDBNL)
-		treeExpressions(stmt);
+		treeExpressions(stmt->expressions);
 	else if (stmt->type == AST_STATEMENT_RETURN)
-		treeExpressions(stmt);
+		treeExpressions(stmt->expressions);
 }
 void treeStatements(AstStatements* stmts)
 {

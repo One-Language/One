@@ -23,6 +23,8 @@ typedef Array AstStatements;
 typedef Array AstFunctions;
 typedef Array AstExpressions;
 
+typedef struct _ast_expression AstExpression;
+
 typedef enum
 {
 	AST_TYPE_I8,
@@ -61,6 +63,8 @@ typedef enum
 typedef struct _ast_statement
 {
 	AstStatementType type;
+	AstExpressions* expressions;
+	AstExpression* expression;
 } AstStatement;
 
 typedef struct _ast_block
@@ -76,9 +80,13 @@ typedef struct _ast_type
 
 typedef struct _ast_expression
 {
-	AstType* type;
 	AstOperatorType operator;
+
 	int vint;
+	float vfloat;
+	char* vstring;
+	bool vbool;
+
 	AstExpression* left;
 	AstExpression* right;
 } AstExpression;
@@ -117,5 +125,7 @@ AstStatement* astStatement(AstStatementType);
 char* astOperatorName(AstOperatorType);
 
 char* astStatementName(AstStatementType);
+
+AstExpression* astExpression(AstOperatorType, int, float, char*, bool, AstExpression*, AstExpression*);
 
 #endif //_AST_H_

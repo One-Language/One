@@ -201,24 +201,34 @@ void parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 	//	}
 }
 
-void parseExpression(Parser *pars, ErrorsContainer *errors)
+AstExpression *parseExpression(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression\n");
 	//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
 
 	parseExpressionPrimitive(pars, errors);
+	AstExpression *expr = astExpression(AST_OPERATOR_DIRECT, 10, 0, "", false, NULL, NULL);
+	return expr;
 }
 
-void parseExpressions(Parser *pars, ErrorsContainer *errors)
+AstExpressions *parseExpressions(Parser *pars, ErrorsContainer *errors)
 {
+	AstExpression *expr;
+	Array *exprs = malloc(sizeof(Array));
+	arrayInit(exprs);
+
 	printf("---------- parseExpressions\n");
 
-	parseExpression(pars, errors);
+	expr = parseExpression(pars, errors);
+	arrayPush(exprs, expr);
+
 	while (parserHasToken(pars, TOKEN_OPERATOR_VIRGOOL, errors) == true)
 	{
-		parserExceptTokenGo(pars, TOKEN_OPERATOR_VIRGOOL, errors);
-		parseExpression(pars, errors);
+		parserExceptTokenGo(pars, TOKEN_OPERATOR_VIRGOOL, errors); // skip virgool and go to next token!
+		expr = parseExpression(pars, errors);
+		arrayPush(exprs, expr);
 	}
+	return exprs;
 }
 
 AstStatement *parseStatementPrint(Parser *pars, ErrorsContainer *errors)
@@ -227,7 +237,7 @@ AstStatement *parseStatementPrint(Parser *pars, ErrorsContainer *errors)
 	printf("---------- parseStatementPrint\n");
 
 	parserExceptTokenGo(pars, TOKEN_PRINT, errors);
-	parseExpressions(pars, errors);
+	stmt->expressions = parseExpressions(pars, errors);
 	return stmt;
 }
 
@@ -237,7 +247,7 @@ AstStatement *parseStatementPrintNl(Parser *pars, ErrorsContainer *errors)
 	printf("---------- parseStatementPrintNl\n");
 
 	parserExceptTokenGo(pars, TOKEN_PRINTNL, errors);
-	parseExpressions(pars, errors);
+	stmt->expressions = parseExpressions(pars, errors);
 	return stmt;
 }
 
@@ -247,7 +257,7 @@ AstStatement *parseStatementPrintErr(Parser *pars, ErrorsContainer *errors)
 	printf("---------- parseStatementPrintErr\n");
 
 	parserExceptTokenGo(pars, TOKEN_PRINTDB, errors);
-	parseExpressions(pars, errors);
+	stmt->expressions = parseExpressions(pars, errors);
 	return stmt;
 }
 
@@ -257,7 +267,7 @@ AstStatement *parseStatementPrintErrNl(Parser *pars, ErrorsContainer *errors)
 	printf("---------- parseStatementPrintErrNl\n");
 
 	parserExceptTokenGo(pars, TOKEN_PRINTNLDB, errors);
-	parseExpressions(pars, errors);
+	stmt->expressions = parseExpressions(pars, errors);
 	return stmt;
 }
 
@@ -267,7 +277,7 @@ AstStatement *parseStatementReturn(Parser *pars, ErrorsContainer *errors)
 	printf("---------- parseStatementReturn\n");
 
 	parserExceptTokenGo(pars, TOKEN_RETURN, errors);
-	parseExpressions(pars, errors);
+	stmt->expressions = parseExpressions(pars, errors);
 	return stmt;
 }
 

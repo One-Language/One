@@ -65,6 +65,22 @@ AstBlock* astBlock(AstStatements* stmts)
 	return ast;
 }
 
+AstExpression* astExpression(AstOperatorType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right)
+{
+	AstExpression* ast = malloc(sizeof(AstExpression));
+	ast->operator= op;
+
+	ast->vint = vi;
+	ast->vfloat = vf;
+	ast->vstring = vs;
+	ast->vbool = vb;
+
+	ast->left = left;
+	ast->right = right;
+
+	return ast;
+}
+
 AstArgument* astArgument(char* name, AstType* type)
 {
 	AstArgument* ast = malloc(sizeof(AstArgument));
