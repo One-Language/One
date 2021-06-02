@@ -73,6 +73,8 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 Grammar of "One" language is available [here](grammar.BNF).
 
 - [x] Lexer/Parser (Mostly)
+- [x] AST Tree
+- [x] VM
 - [ ] Code Generator (take help from LLVM-C)
 - [ ] Develop a runtime library and add features.
 - [ ] Design web framework for the language.
