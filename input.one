@@ -35,6 +35,11 @@ i8 ret_my_num (i8 a) {
     ret a, 1, 10, 100, 1000
 }
 
+
+
+
+
+
 /*
 test() {
     u8 u_age = 32

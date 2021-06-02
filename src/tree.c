@@ -63,6 +63,7 @@ void treeBlock(AstBlock* block)
 
 void treeFunction(AstFunction* func)
 {
+	printf("\n");
 	print_tabs(ident);
 	printf("[FUNC] %s\n", func->name);
 
