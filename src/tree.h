@@ -27,7 +27,7 @@ void treeFunction(AstFunction*);
 
 void treeLog(AstRoot*);
 
-void treeExpression(AstExpressions*);
+void treeExpression(AstExpression*);
 
 void treeExpressions(AstExpressions*);
 

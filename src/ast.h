@@ -103,10 +103,19 @@ typedef struct _ast_root
 } AstRoot;
 
 AstType* astType(int, bool);
+
 AstBlock* astBlock(AstStatements*);
+
 AstArgument* astArgument(char*, AstType*);
+
 AstFunction* astFunction(char*, AstArguments*, AstBlock*);
+
 AstRoot* astRoot(char*, AstFunctions*);
+
 AstStatement* astStatement(AstStatementType);
+
+char* astOperatorName(AstOperatorType);
+
+char* astStatementName(AstStatementType);
 
 #endif //_AST_H_

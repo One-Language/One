@@ -23,8 +23,6 @@ void vmLog(AstRoot*);
 
 void vmFree(AstRoot*);
 
-char* vmStatementName(AstStatementType);
-
 void vmFunction(AstFunction*);
 
 void vmStatement(AstStatement*);

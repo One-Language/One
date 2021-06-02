@@ -21,11 +21,19 @@ void print_tabs(size_t n)
 	}
 }
 
-void treeExpression(AstExpressions* exprs)
+void treeExpression(AstExpression* expr)
 {
+	printf("[EXPR] %s")
 }
+
 void treeExpressions(AstExpressions* exprs)
 {
+	ident++;
+	for (size_t i = 0; i < exprs->count; i++)
+	{
+		treeExpression(exprs->data[i]);
+	}
+	ident--;
 }
 
 void treeStatement(AstStatement* stmt)

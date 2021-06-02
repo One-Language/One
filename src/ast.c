@@ -10,6 +10,46 @@
 
 #include "ast.h"
 
+char* astStatementName(AstStatementType type)
+{
+	switch (type)
+	{
+		case AST_STATEMENT_RETURN:
+			return "RET";
+		case AST_STATEMENT_PRINT:
+			return "PRINT";
+		case AST_STATEMENT_PRINTNL:
+			return "PRINTNL";
+		case AST_STATEMENT_PRINTDB:
+			return "PRINTDB";
+		case AST_STATEMENT_PRINTDBNL:
+			return "PRINTDBNL";
+		default:
+			return "UNKNOWM";
+	}
+}
+
+char* astOperatorName(AstOperatorType type)
+{
+	switch (type)
+	{
+		case AST_OPERATOR_PLUS:
+			return "+";
+		case AST_OPERATOR_MINUS:
+			return "-";
+		case AST_OPERATOR_MUL:
+			return "*";
+		case AST_OPERATOR_DIV:
+			return "/";
+		case AST_OPERATOR_POW:
+			return "**";
+		case AST_OPERATOR_DIRECT:
+			return "VALUE";
+		default:
+			return "UNKNOWM";
+	}
+}
+
 AstType* astType(int type, bool hasArray)
 {
 	AstType* ast = malloc(sizeof(AstType));
