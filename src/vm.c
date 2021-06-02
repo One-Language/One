@@ -10,16 +10,6 @@
 
 #include "vm.h"
 
-size_t ident = 0;
-
-void print_tabs(size_t n)
-{
-	for (size_t i = 0; i < n; i++)
-	{
-		printf("   ");
-	}
-}
-
 void vmInit(AstRoot* root)
 {
 	root->functions = malloc(sizeof(Array));

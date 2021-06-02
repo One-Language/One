@@ -30,6 +30,9 @@ add_executable(One
         src/parser.c
         src/parser.h
 
+        src/tree.c
+        src/tree.h
+
         src/token.c
         src/token.h
 
