@@ -10,6 +10,16 @@
 
 #include "vm.h"
 
+size_t ident = 0;
+
+void print_tabs(size_t n)
+{
+	for (size_t i = 0; i < n; i++)
+	{
+		printf("   ");
+	}
+}
+
 void vmInit(AstRoot* root)
 {
 	root->functions = malloc(sizeof(Array));
@@ -43,10 +53,13 @@ void vmStatement(AstStatement* stmt)
 }
 void vmStatements(AstStatements* stmts)
 {
+	ident++;
 	for (size_t i = 0; i < stmts->count; i++)
 	{
+		print_tabs(ident);
 		vmStatement(stmts->data[i]);
 	}
+	ident--;
 }
 
 void vmBlock(AstBlock* block)
@@ -56,7 +69,9 @@ void vmBlock(AstBlock* block)
 
 void vmFunction(AstFunction* func)
 {
+	print_tabs(ident);
 	printf("[FUNC] %s\n", func->name);
+
 	vmBlock(func->block);
 }
 

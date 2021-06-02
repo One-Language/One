@@ -33,4 +33,6 @@ void vmStatements(AstStatements*);
 
 void vmBlock(AstBlock*);
 
+void print_tabs(size_t);
+
 #endif //_VM_H_
