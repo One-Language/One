@@ -18,7 +18,19 @@
 #include "ast.h"
 
 void vmInit(AstRoot*);
+
 void vmLog(AstRoot*);
+
 void vmFree(AstRoot*);
+
+char* vmStatementName(AstStatementType);
+
+void vmFunction(AstFunction*);
+
+void vmStatement(AstStatement*);
+
+void vmStatements(AstStatements*);
+
+void vmBlock(AstBlock*);
 
 #endif //_VM_H_
