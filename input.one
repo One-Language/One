@@ -32,7 +32,7 @@ i8 ret_num {
 }
 
 i8 ret_my_num (i8 a) {
-    ret 1, 10, 100, 1000
+    ret a, 1, 10, 100, 1000
 }
 
 /*

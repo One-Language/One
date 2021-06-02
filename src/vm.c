@@ -18,9 +18,46 @@ void vmInit(AstRoot* root)
 	//	printf("-->%s\n", root->package);
 }
 
+char* vmStatementName(AstStatementType type)
+{
+	switch (type)
+	{
+		case AST_STATEMENT_RETURN:
+			return "RET";
+		case AST_STATEMENT_PRINT:
+			return "PRINT";
+		case AST_STATEMENT_PRINTNL:
+			return "PRINTNL";
+		case AST_STATEMENT_PRINTDB:
+			return "PRINTDB";
+		case AST_STATEMENT_PRINTDBNL:
+			return "PRINTDBNL";
+		default:
+			return "UNKNOWM";
+	}
+}
+
+void vmStatement(AstStatement* stmt)
+{
+	printf("[STMT] %s\n", vmStatementName(stmt->type));
+}
+void vmStatements(AstStatements* stmts)
+{
+	for (size_t i = 0; i < stmts->count; i++)
+	{
+		vmStatement(stmts->data[i]);
+	}
+}
+
+void vmBlock(AstBlock* block)
+{
+	vmStatements(block->statements);
+}
+
 void vmFunction(AstFunction* func)
 {
 	printf("[FUNC] %s\n", func->name);
+	vmBlock(func->block);
 }
 
 void vmLog(AstRoot* root)
