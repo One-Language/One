@@ -43,13 +43,10 @@ void vmStatement(AstStatement* stmt)
 }
 void vmStatements(AstStatements* stmts)
 {
-	ident++;
 	for (size_t i = 0; i < stmts->count; i++)
 	{
-		print_tabs(ident);
 		vmStatement(stmts->data[i]);
 	}
-	ident--;
 }
 
 void vmBlock(AstBlock* block)
@@ -59,7 +56,6 @@ void vmBlock(AstBlock* block)
 
 void vmFunction(AstFunction* func)
 {
-	print_tabs(ident);
 	printf("[FUNC] %s\n", func->name);
 
 	vmBlock(func->block);
