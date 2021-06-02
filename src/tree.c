@@ -23,7 +23,8 @@ void print_tabs(size_t n)
 
 void treeExpression(AstExpression* expr)
 {
-	printf("[EXPR] %s", astOperatorName(expr->operator));
+	print_tabs(ident);
+	printf("[EXPR] %s\n", astOperatorName(expr->operator));
 }
 
 void treeExpressions(AstExpressions* exprs)
