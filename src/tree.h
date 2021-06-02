@@ -15,10 +15,16 @@
 
 void print_tabs(size_t);
 
-void treeInit();
-
 void treeLog(AstRoot*);
 
-void treeFree();
+void treeStatement(AstStatement*);
+
+void treeStatements(AstStatements*);
+
+void treeBlock(AstBlock*);
+
+void treeFunction(AstFunction*);
+
+void treeLog(AstRoot*);
 
 #endif //_TREE_H_

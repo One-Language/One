@@ -21,10 +21,6 @@ void print_tabs(size_t n)
 	}
 }
 
-void treeInit()
-{
-}
-
 
 void treeStatement(AstStatement* stmt)
 {
@@ -36,14 +32,14 @@ void treeStatements(AstStatements* stmts)
 	for (size_t i = 0; i < stmts->count; i++)
 	{
 		print_tabs(ident);
-		vmStatement(stmts->data[i]);
+		treeStatement(stmts->data[i]);
 	}
 	ident--;
 }
 
 void treeBlock(AstBlock* block)
 {
-	vmStatements(block->statements);
+	treeStatements(block->statements);
 }
 
 void treeFunction(AstFunction* func)
@@ -70,6 +66,3 @@ void treeLog(AstRoot* root)
 	}
 }
 
-void treeFree()
-{
-}

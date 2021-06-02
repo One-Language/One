@@ -33,7 +33,6 @@ int compileFileString(char *filename, char *input, ErrorsContainer *errors)
 
 		Parser *pars = parserInit(lex, errors);
 		res = parserCheck(pars, errors);
-		parserFree(pars);
 
 		lexerFree(lex); // free and remove Lexer object
 		parserFree(pars); // free and remove Parser object

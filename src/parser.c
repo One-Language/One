@@ -13,6 +13,7 @@
 #include "parser.h"
 #include "ast.h"
 #include "vm.h"
+#include "tree.h"
 
 Parser *parserInit(Lexer *lex, ErrorsContainer *errors)
 {
@@ -440,6 +441,8 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 			exit(1);
 		}
 	}
+
+	treeLog(root);
 
 	vmLog(root);
 	vmFree(root);
