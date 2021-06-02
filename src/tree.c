@@ -23,18 +23,17 @@ void print_tabs(size_t n)
 
 void treeExpression(AstExpressions* exprs)
 {
-
 }
-void treeExpressions(AstExpressions* exprs) {
-
+void treeExpressions(AstExpressions* exprs)
+{
 }
 
 void treeStatement(AstStatement* stmt)
 {
 	printf("[STMT] %s\n", vmStatementName(stmt->type));
-	if(stmt->type == AST_STATEMENT_PRINT || stmt->type == AST_STATEMENT_PRINTNL || stmt->type == AST_STATEMENT_PRINTDB || stmt->type == AST_STATEMENT_PRINTDBNL)
+	if (stmt->type == AST_STATEMENT_PRINT || stmt->type == AST_STATEMENT_PRINTNL || stmt->type == AST_STATEMENT_PRINTDB || stmt->type == AST_STATEMENT_PRINTDBNL)
 		treeExpressions(stmt);
-	else if(stmt->type == AST_STATEMENT_RETURN)
+	else if (stmt->type == AST_STATEMENT_RETURN)
 		treeExpressions(stmt);
 }
 void treeStatements(AstStatements* stmts)

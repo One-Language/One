@@ -46,7 +46,8 @@ typedef enum
 	AST_STATEMENT_RETURN,
 } AstStatementType;
 
-typedef enum {
+typedef enum
+{
 	AST_OPERATOR_DIRECT, // without an operator!
 
 	AST_OPERATOR_PLUS,
@@ -81,7 +82,6 @@ typedef struct _ast_expression
 	AstExpression* left;
 	AstExpression* right;
 } AstExpression;
-
 
 typedef struct _ast_argument
 {
