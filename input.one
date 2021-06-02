@@ -13,6 +13,11 @@ package test
 // const global_int      = 110
 // const i32 global_int2 = 110
 
+i8 test1{
+}
+i8 test2{
+}
+
 i8 main {
     // _
     _ 1

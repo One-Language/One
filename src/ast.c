@@ -56,7 +56,8 @@ AstRoot* astRoot(char* package, AstFunctions* funcs)
 	return ast;
 }
 
-AstStatement * astStatement(AstStatementType type) {
+AstStatement* astStatement(AstStatementType type)
+{
 	AstStatement* ast = malloc(sizeof(AstStatement));
 	ast->type = type;
 	return ast;

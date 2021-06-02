@@ -18,7 +18,7 @@
 #include "ast.h"
 
 void vmInit(AstRoot*);
-void vmLog(AstRoot* );
-void vmFree(AstRoot* );
+void vmLog(AstRoot*);
+void vmFree(AstRoot*);
 
 #endif //_VM_H_
