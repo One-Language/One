@@ -29,12 +29,15 @@ void treeExpression(AstExpression* expr)
 
 void treeExpressions(AstExpressions* exprs)
 {
+	ident++;
+	print_tabs(ident);
 	printf("[EXPRS] %d\n", exprs->count);
 	ident++;
 	for (size_t i = 0; i < exprs->count; i++)
 	{
 		treeExpression(exprs->data[i]);
 	}
+	ident--;
 	ident--;
 }
 
