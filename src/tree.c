@@ -21,7 +21,6 @@ void print_tabs(size_t n)
 	}
 }
 
-
 void treeStatement(AstStatement* stmt)
 {
 	printf("[STMT] %s\n", vmStatementName(stmt->type));
@@ -65,4 +64,3 @@ void treeLog(AstRoot* root)
 		treeFunction(root->functions->data[i]);
 	}
 }
-
