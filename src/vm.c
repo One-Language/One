@@ -67,7 +67,7 @@ void vmLog(AstRoot* root)
 	{
 		root->package = "main";
 	}
-	printf("=============== AST ===============\n");
+	printf("=============== VM ===============\n");
 
 	printf("Package: %s\n", root->package);
 

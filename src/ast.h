@@ -21,6 +21,7 @@
 typedef Array AstArguments;
 typedef Array AstStatements;
 typedef Array AstFunctions;
+typedef Array AstExpressions;
 
 typedef enum
 {
@@ -45,6 +46,17 @@ typedef enum
 	AST_STATEMENT_RETURN,
 } AstStatementType;
 
+typedef enum {
+	AST_OPERATOR_DIRECT, // without an operator!
+
+	AST_OPERATOR_PLUS,
+	AST_OPERATOR_MINUS,
+	AST_OPERATOR_MUL,
+	AST_OPERATOR_DIV,
+	AST_OPERATOR_POW,
+	// TODO: adding more operators!
+} AstOperatorType;
+
 typedef struct _ast_statement
 {
 	AstStatementType type;
@@ -60,6 +72,16 @@ typedef struct _ast_type
 	int type;
 	bool hasArray;
 } AstType;
+
+typedef struct _ast_expression
+{
+	AstType* type;
+	AstOperatorType operator;
+	int vint;
+	AstExpression* left;
+	AstExpression* right;
+} AstExpression;
+
 
 typedef struct _ast_argument
 {
