@@ -29,6 +29,7 @@ void treeExpression(AstExpression* expr)
 
 void treeExpressions(AstExpressions* exprs)
 {
+	printf("[EXPRS] %d\n", exprs->count);
 	ident++;
 	for (size_t i = 0; i < exprs->count; i++)
 	{
