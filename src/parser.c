@@ -130,6 +130,7 @@ AstStatements *parseArguments(Parser *pars, ErrorsContainer *errors)
 				return NULL;
 			}
 		}
+		parserExceptTokenGo(pars, TOKEN_BRACKET_CLOSE, errors);
 	}
 	return args; // it's optional, so we return a empty array list!
 }
