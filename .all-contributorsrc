@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "BaseMax",
+      "name": "Max Base",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2658040?v=4",
+      "profile": "https://maxbase.org/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "One",
+  "projectOwner": "One-Language",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
