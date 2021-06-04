@@ -1,0 +1,78 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "BaseMax",
+      "name": "Max Base",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2658040?v=4",
+      "profile": "https://maxbase.org/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jbampton",
+      "name": "John Bampton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/418747?v=4",
+      "profile": "https://github.com/jbampton",
+      "contributions": [
+        "projectManagement"
+      ]
+    },
+    {
+      "login": "basalumutgazi",
+      "name": "basalumutgazi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/81925269?v=4",
+      "profile": "https://github.com/basalumutgazi",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "n4i9kita",
+      "name": "Nikita Sharma",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60391776?v=4",
+      "profile": "https://github.com/n4i9kita",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "ajmeese7",
+      "name": "Aaron Meese",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17814535?v=4",
+      "profile": "http://aaronmeese.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "tHe-AK",
+      "name": "Akshay Kapoor",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19654243?v=4",
+      "profile": "https://github.com/tHe-AK",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "all-contributors",
+      "name": "All Contributors",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46410174?v=4",
+      "profile": "https://allcontributors.org",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "One",
+  "projectOwner": "One-Language",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
