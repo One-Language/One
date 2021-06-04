@@ -13,6 +13,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jbampton",
+      "name": "John Bampton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/418747?v=4",
+      "profile": "https://github.com/jbampton",
+      "contributions": [
+        "projectManagement"
+      ]
     }
   ],
   "contributorsPerLine": 7,
