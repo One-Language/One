@@ -27,15 +27,15 @@ void treeExpression(AstExpression* expr)
 	printf("[EXPR] %s\n", astOperatorName(expr->operator));
 }
 
-void treeExpressions(AstExpressions* exprs)
+void treeExpressions(AstExpressions* expressions)
 {
 	ident++;
 	print_tabs(ident);
-	printf("[EXPRS] %d\n", exprs->count);
+	printf("[EXPRESSIONS] %d expression(s)\n", expressions->count);
 	ident++;
-	for (size_t i = 0; i < exprs->count; i++)
+	for (size_t i = 0; i < expressions->count; i++)
 	{
-		treeExpression(exprs->data[i]);
+		treeExpression(expressions->data[i]);
 	}
 	ident--;
 	ident--;
@@ -44,11 +44,10 @@ void treeExpressions(AstExpressions* exprs)
 void treeStatement(AstStatement* stmt)
 {
 	printf("[STMT] %s\n", astStatementName(stmt->type));
-	if (stmt->type == AST_STATEMENT_PRINT || stmt->type == AST_STATEMENT_PRINTNL || stmt->type == AST_STATEMENT_PRINTDB || stmt->type == AST_STATEMENT_PRINTDBNL)
-		treeExpressions(stmt->expressions);
-	else if (stmt->type == AST_STATEMENT_RETURN)
+	if (stmt->type == AST_STATEMENT_PRINT || stmt->type == AST_STATEMENT_PRINTNL || stmt->type == AST_STATEMENT_PRINTDB || stmt->type == AST_STATEMENT_PRINTDBNL || stmt->type == AST_STATEMENT_RETURN)
 		treeExpressions(stmt->expressions);
 }
+
 void treeStatements(AstStatements* stmts)
 {
 	ident++;
