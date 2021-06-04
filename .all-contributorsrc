@@ -40,6 +40,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ajmeese7",
+      "name": "Aaron Meese",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17814535?v=4",
+      "profile": "http://aaronmeese.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
