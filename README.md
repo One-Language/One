@@ -81,7 +81,7 @@ Grammar of the `One` language is available [here](grammar.BNF).
 - [x] Lexer/Parser (Mostly)
 - [x] AST Tree
 - [x] VM
-- [ ] Code Generator (take help from LLVM-C)
+- [ ] Code Generator (get inspired from LLVM-C)
 - [ ] Develop a runtime library and add features
 - [ ] Design web framework for the language
 - [ ] Rewrite compiler in the `One` language
@@ -158,7 +158,7 @@ int main(int argc, char *argv[]) {
 
 <hr/>
 
-<b>Another draft:</b>
+__Another draft:__
 
 ```c
 import web
@@ -185,7 +185,7 @@ main {
 
 ---
 
-**Another draft:**
+__Another draft:__
 
 ```c
 error {
