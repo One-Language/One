@@ -16,7 +16,7 @@ package main
 
 i8 test1 {
     _ 4
-    //+1
+    _ 5+1
 }
 
 /*

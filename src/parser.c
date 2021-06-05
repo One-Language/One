@@ -178,8 +178,9 @@ AstExpression *parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 			printf("[TEST direct]==>%s\n", tokenName((*pars->lex->tokens)->type));
 			Token *t = (*pars->lex->tokens);
 			printf("---> value of current direct value is %d\n", t->vint);
+			printf("---> value of current direct value is %s\n", t->vstring);
 			parserNextToken(pars, errors);
-			expr = astExpression(AST_OPERATOR_DIRECT, t->vint, 0, "", false, NULL, NULL);
+			expr = astExpression(AST_OPERATOR_DIRECT, 0, 0, t->vstring, false, NULL, NULL);
 			return expr;
 			break;
 		}
