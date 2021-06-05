@@ -1,7 +1,7 @@
+build
+cmake-build-debug
+node_modules
 one
 out/*
 *.o
-node_modules
-build
 .idea
-cmake-build-debug
