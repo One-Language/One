@@ -33,7 +33,21 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/418747?v=4",
       "profile": "https://github.com/jbampton",
       "contributions": [
-        "projectManagement"
+        "projectManagement",
+        "business",
+        "code",
+        "doc",
+        "eventOrganizing",
+        "financial",
+        "fundingFinding",
+        "ideas",
+        "infra",
+        "maintenance",
+        "mentoring",
+        "review",
+        "test",
+        "tutorial",
+        "talk"
       ]
     },
     {
