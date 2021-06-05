@@ -1,27 +1,5 @@
-// Hello, World
-
 package main
 
-
 /*
-i8 test2{
-}
-
-i8 main {
-    // _
-    _ 1
-    __ 2
-    !_ 3
-    !__ 4
-    __ 8, 9, 10
-}
-
-i8 ret_num {
-    ret 54
-}
-
-i8 ret_my_num (i8 a) {
-    ret a, 1, 10, 100, 1000
-}
-
+test
 */
