@@ -25,12 +25,12 @@
 
 </div>
 
-Welcome to <a href ="https://onelang.org">One</a>!</br>
+Welcome to <a href="https://onelang.org">One</a>!</br>
 It is an open source, self-hosted, bootstrapping <b>system programming language</b> which makes it easy to
 build reliable and efficient software.
-It is being developed by <a href ="https://github.com/BaseMax">Max</a> and other open-source contributors.
+It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> and other open-source contributors.
 
-<h3>Compiler for One Language will be released in a few months</h3>
+<h3>Compiler for the One Language will be released in a few months</h3>
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -63,9 +63,9 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 - Intermediate level
 - Network and API programming
 - Supports Web Programming (in the future)
-  - Automatic generation of corresponding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website.
-  - Uses variables in CSS, so that we can obtain the colors or sizes from the database.
-  - Auto minify the page results.
+  - Automatic generation of corresponding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website
+  - Uses variables in CSS, so that we can obtain the colors or sizes from the database
+  - Auto minify the page results
 - Performance and high speed
 - Supports inline Assembly code (in the future)
 - Does not require specific libraries and tools on the user system in normal mode (in the future)
@@ -81,9 +81,9 @@ Grammar of "One" language is available [here](grammar.BNF).
 - [x] AST Tree
 - [x] VM
 - [ ] Code Generator (take help from LLVM-C)
-- [ ] Develop a runtime library and add features.
-- [ ] Design web framework for the language.
-- [ ] Rewrite compiler in the One language.
+- [ ] Develop a runtime library and add features
+- [ ] Design web framework for the language
+- [ ] Rewrite compiler in the One language
 
 <!--Include to a section about steps of installation-->
 
@@ -332,7 +332,7 @@ __Convert to HTML/CSS/JS base:__
 
 <h2 id="Getting-started">➤ Getting Started</h2>
 
-Refer [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
+Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
 <!--Installation Steps-->
 
 <!--Prerequisites-->
