@@ -4,6 +4,8 @@ project(One C)
 set(CMAKE_C_STANDARD 11)
 
 include_directories(src)
+include_directories(unit-tests)
+include_directories(unit-tests/unity)
 
 add_executable(One
         src/arg.c
@@ -43,4 +45,11 @@ add_executable(One
         src/vm.h
 
         src/file.c
-        src/file.h)
+        src/file.h
+
+        unit-tests/unity/unity.c
+        unit-tests/unity/unity.h
+        unit-tests/unity/unity_internals.h
+
+        unit-tests/arg-tests.c
+        )
