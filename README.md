@@ -5,7 +5,7 @@
         <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
     </a>
 </p>
-<h1>The One Programming Language</h1>
+<h1>The One Programming Language 💚 💙 🧡 🤍 💖 🖤 🤎 💜 💛</h1>
 
 [Onelang.org](https://onelang.org) |
 [Help wanted](https://github.com/One-Language/One/issues/new)
