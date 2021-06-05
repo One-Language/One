@@ -258,4 +258,4 @@ Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[
 
 ---
 
-Created By Max Base, Develop by One Language Team @ 2021
+Created By Max Base, Developed by the `One` Language Team @ 2021
