@@ -165,8 +165,9 @@ bool parserExceptTokenGo(Parser *pars, TokenType want, ErrorsContainer *errors)
 	return res;
 }
 
-void parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
+AstExpression *parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 {
+	AstExpression * expr;
 	printf("---------- parseExpressionPrimitive\n");
 	switch ((*pars->lex->tokens)->type)
 	{
@@ -175,6 +176,8 @@ void parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 		case TOKEN_VALUE_NUMBER:
 		case TOKEN_VALUE_BOOL:
 			parserNextToken(pars, errors);
+			expr = astExpression(AST_OPERATOR_PLUS, 10, 0, "", false, NULL, NULL);
+			return expr;
 			break;
 		default:
 			// TODO: ErrorAppend(...)
@@ -201,13 +204,28 @@ void parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 	//	}
 }
 
+AstExpression *parseTerm(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+
 AstExpression *parseExpression(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression\n");
-	//	printf("==>%s\n", tokenName((*pars->lex->tokens)->type));
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseTerm(pars, errors);
 
-	parseExpressionPrimitive(pars, errors);
-	AstExpression *expr = astExpression(AST_OPERATOR_DIRECT, 10, 0, "", false, NULL, NULL);
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_PLUS, errors) == true)
+	{
+		parserNextToken(pars, errors);
+		expr = astExpression(AST_OPERATOR_PLUS, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_MINUS, errors) == true)
+	{
+		parserNextToken(pars, errors);
+		expr = astExpression(AST_OPERATOR_MINUS, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
 	return expr;
 }
 

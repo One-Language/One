@@ -1,5 +1,87 @@
+// Hello, World
+
 package main
 
+/**
+ The One Programming Language
+  _        _
+ / \ |\ | |_    Max Base
+ \_/ | \| |_    Copyright 2021
+
+ **/
+
+// any global_var
+// const global_int      = 110
+// const i32 global_int2 = 110
+
+i8 test1 {
+    _ 4+1
+}
+
 /*
-test
+i8 test2{
+}
+
+i8 main {
+    // _
+    _ 1
+    __ 2
+    !_ 3
+    !__ 4
+    __ 8, 9, 10
+}
+
+i8 ret_num {
+    ret 54
+}
+
+i8 ret_my_num (i8 a) {
+    ret a, 1, 10, 100, 1000
+}
+
+*/
+
+
+
+
+/*
+test() {
+    u8 u_age = 32
+
+    age = 5
+
+    const c_police = 110 // You cannot change value of this variable anymore!
+
+    final c_my_phone
+    c_my_phone = 91240405555 // You cannot change value of this variable anymore!
+
+    final c_my_phone2 = 912404011111 // You cannot change value of this variable anymore!
+
+    name = "Max"
+    name = "Max!"
+
+    string s_name = "Max"
+    s_name = "Max?"
+
+    // 5
+    // 5.64.4
+    // if
+
+    if 5 > 4 {
+        _ "Yes\n"
+        // equal to
+        __ "Yes"
+    }
+
+    names = ["Max", "Ali", "John"]
+    string[] sa_names = ["Max", "Ali", "John"]
+    for name in names {
+        _ name
+    }
+    _ "Hello, World!"
+    _ 1, 2, 3, 4, 5
+    _ ret_num()
+    _ ret_my_num(40)
+    _ ret_my_num(10)
+}
 */
