@@ -6,7 +6,7 @@
     </a>
 </p>
 
-# The One Programming Language
+# The One Programming Language 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
 [Help wanted](https://github.com/One-Language/One/issues/new)
