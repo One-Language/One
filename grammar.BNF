@@ -42,11 +42,11 @@
                         | U32
                         | U64
                         | STRING
-                        | CHAR ;; Unlike C language 'char' data type, it can store UTF8 characters. (e.g: "ش")
+                        | CHAR ;; Unlike the C language 'char' data type, it can store UTF8 characters. (e.g.: "ش")
 
 <datatype>           ::= <datatype_primary>
                        | <datatype_primary> "[" "]"
-                       | IDENTIFIER ;; to declare user defined data types like struct
+                       | IDENTIFIER ;; to declare user defined data types like a struct
 
 <function_argument>  ::= <datatype> IDENTIFIER
 
@@ -95,7 +95,7 @@
 <switch_case>    ::= CASE <expression_const> ":" <statements>
 
 <statement_for>  ::= FOR <expression> <block>
-                   | FOR IDENTIFIER IN <expression_const> <block> ;; e.g: in python: `for item in array:`
+                   | FOR IDENTIFIER IN <expression_const> <block> ;; e.g.: in Python: `for item in array:`
 
 <statement_while>::= WHILE <expression> <block>
 
