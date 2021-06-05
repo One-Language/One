@@ -5,7 +5,7 @@
         <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
     </a>
 </p>
-<h1>The One Programming Language</h1>
+<h1>The `One` Programming Language</h1>
 
 [Onelang.org](https://onelang.org) |
 [Help wanted](https://github.com/One-Language/One/issues/new)
@@ -30,7 +30,7 @@ It is an open source, self-hosted, bootstrapping <b>system programming language<
 build reliable and efficient software.
 It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> and other open-source contributors.
 
-<h3>Compiler for the One Language will be released in a few months</h3>
+<h3>Compiler for the `One` Language will be released in a few months</h3>
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -43,7 +43,7 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 <h2 id="table-of-contents">Table of Contents</h2>
 <details open="open">
   <ol>
-    <li><a href="#Features-of-one">Features of One</a></li>
+    <li><a href="#Features-of-one">Features of `One`</a></li>
     <li><a href="#RoadMap">RoadMap</a></li>
     <li><a href="#Code-Examples">Code Examples</a></li>
     <li><a href="#Getting-started">Getting Started</a></li>
@@ -63,7 +63,7 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 - Intermediate level
 - Network and API programming
 - Supports Web Programming (in the future)
-  - Automatic generation of corresponding code for HTML and CSS Language. So, you won't have to learn more than one language to develop a website
+  - Automatic generation of corresponding code for both HTML and CSS. So you won't have to learn more than `One` language to develop a website
   - Uses variables in CSS, so that we can obtain the colors or sizes from the database
   - Auto minify the page results
 - Performance and high speed
@@ -75,7 +75,7 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="RoadMap">➤ RoadMap</h2>
-Grammar of "One" language is available [here](grammar.BNF).
+Grammar of the `One` language is available [here](grammar.BNF).
 
 - [x] Lexer/Parser (Mostly)
 - [x] AST Tree
@@ -83,7 +83,7 @@ Grammar of "One" language is available [here](grammar.BNF).
 - [ ] Code Generator (take help from LLVM-C)
 - [ ] Develop a runtime library and add features
 - [ ] Design web framework for the language
-- [ ] Rewrite compiler in the One language
+- [ ] Rewrite compiler in the `One` language
 
 <!--Include to a section about steps of installation-->
 
@@ -346,8 +346,8 @@ Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the l
 
 <!--Write more about the compiler-->
 <!--Steps-->
-<!--Building One from Source-->
-<!--Hello World in One-->
+<!--Building `One` from Source-->
+<!--Hello World in `One`-->
 <!--Tips to understand the language better-->
 <!--Filename extensions: `.one`-->
 
@@ -356,11 +356,11 @@ Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the l
 <!--Get Involved-->
 <h2 id="Get-Involved"> ➤Get Involved</h2>
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
-To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa">One Discord Server</a>.
+To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa">`One` Discord Server</a>.
 
 If you are not familiar with how to make a pull request on GitHub then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 If you have decided to contribute, please first read the guidelines [here](CONTRIBUTING.md).
-<br/>You can also help in the development of One by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
+<br/>You can also help in the development of `One` by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Thanks to all the <a href ="https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
 
@@ -370,7 +370,7 @@ If you would like to contribute in the development of this project, you can mail
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="license">➤ License</h2>
-One is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
+`One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
