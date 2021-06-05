@@ -5,7 +5,8 @@
         <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
     </a>
 </p>
-<h1>The One Programming Language</h1>
+    
+# The One Programming Language
 
 [Onelang.org](https://onelang.org) |
 [Help wanted](https://github.com/One-Language/One/issues/new)
@@ -30,7 +31,7 @@ It is an open source, self-hosted, bootstrapping <b>system programming language<
 build reliable and efficient software.
 It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> and other open-source contributors.
 
-<h3>Compiler for the One Language will be released in a few months</h3>
+### Compiler for the One Language will be released in a few months
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -210,7 +211,8 @@ error {
 ```
 
 ---
-<h3>Old CLI Development</h3>
+
+### Old CLI Development
 
 ```
 main:
@@ -246,7 +248,8 @@ end
 
 <hr/>
 
-<h3>Old GUI Development: (Web, Software)</h3>
+### Old GUI Development: (Web, Software)
+
 This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
 Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
 
@@ -387,7 +390,7 @@ If you would like to contribute in the development of this project, you can mail
 [PatreonUrl]: https://patreon.com/onelanguage
 [TwitterUrl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
 
-## Contributors ✨
+## Contributors ✨ 🍕 🚀 
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -414,4 +417,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome! 🩱 🕐 1️⃣ 🔂 
