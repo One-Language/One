@@ -4,13 +4,13 @@
 
 In today’s world, there are so many programming languages, and each of them is used for different purposes. If you need executable programs, scripts, and websites for your project, to be able to do all these operations, you need more than 3 different languages.
 
-*The One language* will be a game-changer because it is not focused on any specific area, it’s a multi-purpose language. It will serve all your needs, and become your only need.
+*The One Language* will be a game-changer because it is not focused on any specific area, it’s a multi-purpose language. It will serve all your needs, and become your only need.
 
 ### OUR AIM
 
-*The One language* project aims at reducing the time needed for writing, developing, or maintaining programs.
+*The One Language* project aims at reducing the time needed for writing, developing, or maintaining programs.
 
-During the process of writing codes, every programmer faces some common problems, but they do not think of solving these problems, but they try to get used to them. We, **_the One language developing team_**, want to put an end to this. Our aim is **to solve all these problems and to present you a smooth developing experience**.
+During the process of writing codes, every programmer faces some common problems, but they do not think of solving these problems, but they try to get used to them. We, **_The One Language developing team_**, want to put an end to this. Our aim is **to solve all these problems and to present you a smooth developing experience**.
 
 *The One Language* aims to provide you **a new tool to write programs in an easier and better way**.
 
@@ -56,7 +56,7 @@ We generated C-intermediate code and used a C compiler to generate an executable
 
 ### LIBRARY
 
-*The One language* will have a module/package marketplace to list all the packages compatible with *One*, and users will be able to see the lists of packages such as the most popular, the most downloaded, or recently updated packages.
+*The One Language* will have a module/package marketplace to list all the packages compatible with *One*, and users will be able to see the lists of packages such as the most popular, the most downloaded, or recently updated packages.
 
 Everyone will be allowed to create and publish packages. We will have a quality control team to review all packages, and we will flag the great and useful ones. If your package is flagged by our team, you will have our support to manage the bugs and probably the issues.
 
