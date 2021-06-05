@@ -397,6 +397,7 @@ void parsePackage(Parser *pars, char **package, ErrorsContainer *errors)
 
 int parserCheck(Parser *pars, ErrorsContainer *errors)
 {
+	bool hasPackageName = false;
 	AstFunction *func;
 	AstRoot *root = malloc(sizeof(AstRoot));
 	vmInit(root);
@@ -419,14 +420,18 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 
 		if (parserHasToken(pars, TOKEN_PACKAGE, errors) == true)
 		{
-			if (strcmp(root->package, "") == 0 || strlen(root->package) == 0)
+			if (hasPackageName == true)
 			{
-				parsePackage(pars, &root->package, errors);
-				printf("==>%s\n", root->package);
+				// TODO: AppendError(...), It's not allowerd to define package name twice at a source file!
+				printf("Error: cannot twice define package name in a single file!");
+				exit(1);
+				// parserNextToken(pars, errors);
 			}
 			else
 			{
-				// TODO: AppendError(...), It's not allowerd to define package name twice at a source file!
+				hasPackageName = true;
+				parsePackage(pars, &root->package, errors);
+				printf("==>%s\n", root->package);
 			}
 		}
 		else if (parseDatatype(pars, errors) == true) // if current token is a primitive data-type
