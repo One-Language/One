@@ -63,7 +63,7 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
 - Intermediate level
 - Network and API programming
 - Supports Web Programming (in the future)
-  - Automatic generation of corresponding code for both HTML and CSS. So you won't have to learn more than `One` language to develop a website
+  - Automatic generation of corresponding code for both CSS and HTML. So you won't have to learn more than `One` language to develop a website
   - Uses variables in CSS, so that we can obtain the colors or sizes from the database
   - Auto minify the page results
 - Performance and high speed
@@ -246,7 +246,7 @@ end
 
 <hr/>
 
-<h3>Old GUI Development : (Web, Software)</h3>
+<h3>Old GUI Development: (Web, Software)</h3>
 This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
 Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
 
@@ -290,7 +290,7 @@ header {
 }
 ```
 
-__Convert to HTML/CSS/JS base:__
+__Convert to CSS/HTML/JS base:__
 
 ```html
 <html>
@@ -356,10 +356,12 @@ Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the l
 
 <!--Get Involved-->
 <h2 id="Get-Involved"> ➤Get Involved</h2>
+
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
 To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
 
 If you are not familiar with how to make a pull request on GitHub then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+
 If you have decided to contribute, please first read the guidelines [here](CONTRIBUTING.md).
 <br/>You can also help in the development of `One` by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
 
@@ -371,6 +373,7 @@ If you would like to contribute in the development of this project, you can mail
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="license">➤ License</h2>
+
 `One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
