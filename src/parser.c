@@ -167,7 +167,7 @@ bool parserExceptTokenGo(Parser *pars, TokenType want, ErrorsContainer *errors)
 
 AstExpression *parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 {
-	AstExpression * expr;
+	AstExpression *expr;
 	printf("---------- parseExpressionPrimitive\n");
 	switch ((*pars->lex->tokens)->type)
 	{
@@ -176,7 +176,8 @@ AstExpression *parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 		case TOKEN_VALUE_NUMBER:
 		case TOKEN_VALUE_BOOL:
 			parserNextToken(pars, errors);
-			expr = astExpression(AST_OPERATOR_PLUS, 10, 0, "", false, NULL, NULL);
+			Token* t = (*pars->lex->tokens);
+			expr = astExpression(AST_OPERATOR_DIRECT, t->vint, 0, "", false, NULL, NULL);
 			return expr;
 			break;
 		default:

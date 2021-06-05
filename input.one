@@ -15,7 +15,8 @@ package main
 // const i32 global_int2 = 110
 
 i8 test1 {
-    _ 4+1
+    _ 4
+    //+1
 }
 
 /*
