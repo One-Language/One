@@ -51,12 +51,12 @@ test() {
 
     age = 5
 
-    const c_police = 110 // You cannot change value of this variable anymore!
+    const c_police = 110 // You cannot change the value of this variable anymore!
 
     final c_my_phone
-    c_my_phone = 91240405555 // You cannot change value of this variable anymore!
+    c_my_phone = 91240405555 // You cannot change the value of this variable anymore!
 
-    final c_my_phone2 = 912404011111 // You cannot change value of this variable anymore!
+    final c_my_phone2 = 912404011111 // You cannot change the value of this variable anymore!
 
     name = "Max"
     name = "Max!"
