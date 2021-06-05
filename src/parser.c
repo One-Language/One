@@ -174,7 +174,8 @@ AstExpression *parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 		case TOKEN_VALUE_IDENTIFIER:
 		case TOKEN_VALUE_STRING:
 		case TOKEN_VALUE_NUMBER:
-		case TOKEN_VALUE_BOOL: {
+		case TOKEN_VALUE_BOOL:
+		{
 			printf("[TEST direct]==>%s\n", tokenName((*pars->lex->tokens)->type));
 			Token *t = (*pars->lex->tokens);
 			printf("---> value of current direct value is %d\n", t->vint);

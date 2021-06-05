@@ -27,7 +27,7 @@ void treeExpression(AstExpression* expr)
 	printf("[EXPR] %s ", astOperatorName(expr->operator));
 	if (expr->operator== AST_OPERATOR_DIRECT)
 	{
-//		printf("%d", expr->vint);
+		//		printf("%d", expr->vint);
 		printf("%s", expr->vstring);
 	}
 	else
