@@ -1,7 +1,7 @@
 #include "unity.h"
+#include "token.h"
 #include "error.h"
 #include "lexer.h"
-#include "token.h"
 #include "array.h"
 
 char *filename;
