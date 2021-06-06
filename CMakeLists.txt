@@ -7,6 +7,9 @@ include_directories(src)
 include_directories(unit-tests)
 include_directories(unit-tests/unity)
 
+enable_testing ()
+add_test (NAME lexer.test.c COMMAND test)
+
 add_executable(One
         src/arg.c
         src/arg.h
