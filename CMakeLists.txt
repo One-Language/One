@@ -51,5 +51,7 @@ add_executable(One
         unit-tests/unity/unity.h
         unit-tests/unity/unity_internals.h
 
-        unit-tests/arg-tests.c
+        unit-tests/ast.test.c
+        unit-tests/lexer.test.c
+        unit-tests/parser.test.c
         )
