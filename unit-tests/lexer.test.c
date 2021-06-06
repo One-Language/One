@@ -9,11 +9,11 @@ Lexer *lex;
 
 void setUp(void)
 {
-    //This is the initialization for the variables needed for the unit testing.
-    //It can be updated
-    filename = "tests/1-hello-world.et";
-    input = "";
-    ErrorsInit(errors);
+	//This is the initialization for the variables needed for the unit testing.
+	//It can be updated
+	filename = "tests/1-hello-world.et";
+	input = "";
+	ErrorsInit(errors);
 	lex = lexerInit(filename, input, errors);
 }
 
