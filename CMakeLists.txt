@@ -47,11 +47,4 @@ add_executable(One
         src/file.c
         src/file.h
 
-        unit-tests/unity/unity.c
-        unit-tests/unity/unity.h
-        unit-tests/unity/unity_internals.h
-
-        unit-tests/ast.test.c
-        unit-tests/lexer.test.c
-        unit-tests/parser.test.c
         )
