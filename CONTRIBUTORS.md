@@ -243,7 +243,7 @@
       </td>
       <td align="center">
          <a href="https://github.com/Majalian">
-            <img src="https://avatars.githubusercontent.com/u/81928799?v=4" width="100px;" alt="Majalian"/><br />
+            <img src="https://avatars.githubusercontent.com/u/81928799?v=4" width="100px;" alt="Mujahid Majalian"/><br />
             <sub><b>Majalian</b></sub>
          </a><br />
       </td>
