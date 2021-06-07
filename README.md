@@ -17,11 +17,15 @@
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
 -->
-[![Patreon][PatreonBadge]][PatreonUrl]
-[![Discord][DiscordBadge]][DiscordUrl]
-[![Twitter][TwitterUrl]][TwitterBadge]
+
+[![Patreon][patreonbadge]][patreonurl]
+[![Discord][discordbadge]][discordurl]
+[![Twitter][twitterurl]][twitterbadge]
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </div>
@@ -37,8 +41,7 @@ It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="
     WRITE PROJECT MOTIVATION HERE
 -->
 
-![-----------------------------------------------------](
-https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!-- TABLE OF CONTENTS -->
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -53,8 +56,8 @@ https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.p
   </ol>
 </details>
 
-![-----------------------------------------------------](
-https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 <h2 id="Features-of-one">➤ Features of One</h2>
 
 - Simplicity
@@ -100,7 +103,7 @@ main {
 }
 ```
 
-__Convert to C:__
+**Convert to C:**
 
 ```c
 #include <stdio.h>
@@ -120,7 +123,7 @@ i32 main {
 }
 ```
 
-__Convert to C:__
+**Convert to C:**
 
 ```c
 #include <stdio.h>
@@ -142,7 +145,7 @@ main {
 }
 ```
 
-__Convert to C:__
+**Convert to C:**
 
 ```c
 #include <stdio.h>
@@ -159,7 +162,7 @@ int main(int argc, char *argv[]) {
 
 <hr/>
 
-__Another draft:__
+**Another draft:**
 
 ```c
 import web
@@ -186,7 +189,7 @@ main {
 
 ---
 
-__Another draft:__
+**Another draft:**
 
 ```c
 error {
@@ -293,7 +296,7 @@ header {
 }
 ```
 
-__Convert to CSS/HTML/JS base:__
+**Convert to CSS/HTML/JS base:**
 
 ```html
 <html>
@@ -337,13 +340,14 @@ __Convert to CSS/HTML/JS base:__
 <h2 id="Getting-started">➤ Getting Started</h2>
 
 Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
+
 <!--Installation Steps-->
 
 <!--Prerequisites-->
 
 #### Supported Environments
 
-- [x] GNU / Linux  <!--which Linux?-->
+- [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
 - [ ] macOS (Not complete)
 - [ ] BSD
@@ -382,13 +386,13 @@ If you would like to contribute in the development of this project, you can mail
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
 
-[DiscordBadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
-[PatreonBadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
-[SponsorBadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
-[TwitterBadge]: https://twitter.com/onelangteam
-[DiscordUrl]: https://discord.gg/sFCE2HcMCa
-[PatreonUrl]: https://patreon.com/onelanguage
-[TwitterUrl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
+[discordbadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
+[patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
+[sponsorbadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
+[twitterbadge]: https://twitter.com/onelangteam
+[discordurl]: https://discord.gg/sFCE2HcMCa
+[patreonurl]: https://patreon.com/onelanguage
+[twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
 
 ## Contributors ✨
 

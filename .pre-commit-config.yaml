@@ -43,7 +43,6 @@ repos:
     rev: v2.3.1
     hooks:
       - id: prettier
-        files: ^tmp/.*$
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.26.1
     hooks:
