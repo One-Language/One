@@ -113,6 +113,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jassab",
+      "name": "Jas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41446786?v=4",
+      "profile": "https://github.com/jassab",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
