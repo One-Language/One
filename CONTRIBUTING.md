@@ -18,6 +18,6 @@ To run a single hook use `pre-commit run --all-files <hook_id>`
 
 To update use `pre-commit autoupdate`
 
-* [Quick start](https://pre-commit.com/#quick-start)
-* [Usage](https://pre-commit.com/#usage)
-* [pre-commit-autoupdate](https://pre-commit.com/#pre-commit-autoupdate)
+- [Quick start](https://pre-commit.com/#quick-start)
+- [Usage](https://pre-commit.com/#usage)
+- [pre-commit-autoupdate](https://pre-commit.com/#pre-commit-autoupdate)
