@@ -24,7 +24,7 @@ const saveTemp = async () => {
 
 const parseAst = (ast) => {
   // console.log(ast);
-  for(let func of ast.functions) {
+  for (let func of ast.functions) {
     generator.genFunction(func);
   }
   saveAst(ast);
