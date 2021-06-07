@@ -238,7 +238,7 @@
       <td align="center">
          <a href="https://github.com/basalumutgazi">
             <img src="https://avatars.githubusercontent.com/u/81925269?v=4" width="100px;" alt="basalumutgazi"/><br />
-            <sub><b>Basal Umut Gazi</b></sub>
+            <sub><b>Umut Gazi BAŞAL</b></sub>
          </a><br />
       </td>
       <td align="center">
