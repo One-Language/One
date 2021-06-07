@@ -370,7 +370,7 @@ If you have decided to contribute, please first read the guidelines [here](CONTR
 
 Thanks to all the <a href ="https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
 
-If you would like to contribute in the development of this project, you can mail us at : <maxbasecode@gmail.com>
+If you would like to contribute in the development of this project, you can mail us at: <maxbasecode@gmail.com>
 
 <br/>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
