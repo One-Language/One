@@ -10,10 +10,11 @@
 
 #include "token.h"
 #include "lexer.h"
-#include "parser.h"
 #include "ast.h"
 #include "vm.h"
 #include "tree.h"
+#include "error.h"
+#include "parser.h"
 
 Parser *parserInit(Lexer *lex, ErrorsContainer *errors)
 {
@@ -210,29 +211,81 @@ AstExpression *parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 	//	}
 }
 
-AstExpression *parseTerm(Parser *pars, ErrorsContainer *errors)
+AstExpression *parseExpression_1(Parser *pars, ErrorsContainer *errors)
 {
 	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_2(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_3(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_4(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_5(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_6(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_7(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_8(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_9(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_10(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_11(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_12(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_13(Parser *pars, ErrorsContainer *errors)
+{
+	return parseExpressionPrimitive(pars, errors);
+}
+AstExpression *parseExpression_14(Parser *pars, ErrorsContainer *errors)
+{
+	printf("---------- parseExpression_14\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_13(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_EQUAL, errors) == true) // current token is =
+	{
+		parserNextToken(pars, errors); // SKIP = TOKEN
+		AstExpression * right = parseExpression(pars, errors);
+		expr = astExpression(TOKEN_OPERATOR_EQUAL, 10, 0, "", false, expr, right);
+	}
+
+	return expr;
 }
 
 AstExpression *parseExpression(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression\n");
 	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
-	AstExpression *expr = parseTerm(pars, errors);
 
-	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
-	if (parserHasToken(pars, TOKEN_OPERATOR_PLUS, errors) == true)
-	{
-		parserNextToken(pars, errors);
-		expr = astExpression(AST_OPERATOR_PLUS, 10, 0, "", false, expr, parseExpression(pars, errors));
-	}
-	else if (parserHasToken(pars, TOKEN_OPERATOR_MINUS, errors) == true)
-	{
-		parserNextToken(pars, errors);
-		expr = astExpression(AST_OPERATOR_MINUS, 10, 0, "", false, expr, parseExpression(pars, errors));
-	}
-	return expr;
+	return parseExpression_14(pars, errors);
 }
 
 AstExpressions *parseExpressions(Parser *pars, ErrorsContainer *errors)
