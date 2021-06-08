@@ -219,7 +219,20 @@ AstExpression *parseExpression_1(Parser *pars, ErrorsContainer *errors)
 	// TODO: Adding ()
 	// TODO: Adding .
 	// TODO: Adding ->
-	return parseExpressionPrimitive(pars, errors);
+
+	AstExpression *expr;
+
+	if (parserHasToken(pars, TOKEN_BRACKET_OPEN, errors) == true) // current token is (
+	{
+		parserNextToken(pars, errors); // SKIP ( TOKEN
+		expr = parseExpression(pars, errors);
+		parserExceptTokenGo(pars, TOKEN_BRACKET_CLOSE, errors); // we except ) and skip it
+	}
+	else
+	{
+		expr = parseExpressionPrimitive(pars, errors);
+	}
+	return expr;
 }
 
 AstExpression *parseExpression_2(Parser *pars, ErrorsContainer *errors)
