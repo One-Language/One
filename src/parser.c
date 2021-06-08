@@ -241,23 +241,78 @@ AstExpression *parseExpression_7(Parser *pars, ErrorsContainer *errors)
 }
 AstExpression *parseExpression_8(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_8\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_7(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_BIT_AND, errors) == true) // current token is &
+	{
+		parserNextToken(pars, errors); // SKIP & TOKEN
+		expr = astExpression(TOKEN_OPERATOR_BIT_AND, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+
+	return expr;
 }
 AstExpression *parseExpression_9(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_9\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_8(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_BIT_XOR, errors) == true) // current token is ^
+	{
+		parserNextToken(pars, errors); // SKIP & TOKEN
+		expr = astExpression(TOKEN_OPERATOR_BIT_AND, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+
+	return expr;
 }
 AstExpression *parseExpression_10(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_10\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_9(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_BIT_OR, errors) == true) // current token is |
+	{
+		parserNextToken(pars, errors); // SKIP | TOKEN
+		expr = astExpression(TOKEN_OPERATOR_BIT_OR, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+
+	return expr;
 }
 AstExpression *parseExpression_11(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_11\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_10(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_AND, errors) == true) // current token is &&
+	{
+		parserNextToken(pars, errors); // SKIP && TOKEN
+		expr = astExpression(TOKEN_OPERATOR_AND, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+
+	return expr;
 }
 AstExpression *parseExpression_12(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_12\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_11(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_OR, errors) == true) // current token is ||
+	{
+		parserNextToken(pars, errors); // SKIP || TOKEN
+		expr = astExpression(TOKEN_OPERATOR_OR, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+
+	return expr;
 }
 AstExpression *parseExpression_13(Parser *pars, ErrorsContainer *errors)
 {
@@ -269,15 +324,15 @@ AstExpression *parseExpression_13(Parser *pars, ErrorsContainer *errors)
 	if (parserHasToken(pars, TOKEN_OPERATOR_QUESTION, errors) == true) // current token is ?
 	{
 		parserNextToken(pars, errors); // SKIP ? TOKEN
-		AstExpression * expr_true = parseExpression(pars, errors);
+		AstExpression *expr_true = parseExpression(pars, errors);
 		parserExceptTokenGo(pars, TOKEN_OPERATOR_COLON, errors); // we except : token and skip it...
-		AstExpression * expr_false = parseExpression(pars, errors);
+		AstExpression *expr_false = parseExpression(pars, errors);
 		expr = astExpression3(TOKEN_OPERATOR_IF, 10, 0, "", false, expr, expr_true, expr_false);
 	}
 	else if (parserHasToken(pars, TOKEN_OPERATOR_QUESTIONQUESTION, errors) == true) // current token is ??
 	{
 		parserNextToken(pars, errors); // SKIP ?? TOKEN
-		AstExpression * expr_false = parseExpression(pars, errors);
+		AstExpression *expr_false = parseExpression(pars, errors);
 		expr = astExpression(TOKEN_OPERATOR_IFIF, 10, 0, "", false, expr, expr_false);
 	}
 
@@ -293,7 +348,7 @@ AstExpression *parseExpression_14(Parser *pars, ErrorsContainer *errors)
 	if (parserHasToken(pars, TOKEN_OPERATOR_EQUAL, errors) == true) // current token is =
 	{
 		parserNextToken(pars, errors); // SKIP = TOKEN
-		AstExpression * right = parseExpression(pars, errors);
+		AstExpression *right = parseExpression(pars, errors);
 		expr = astExpression(TOKEN_OPERATOR_EQUAL, 10, 0, "", false, expr, right);
 	}
 

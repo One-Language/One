@@ -374,6 +374,14 @@ Token *tokenNext(Lexer *lex)
 		}
 	}
 
+	// Operator ^
+	else if (*lex->source == '^')
+	{ // if current char is '^'
+		tokenNextChar(lex);
+		t->type = TOKEN_OPERATOR_BIT_XOR;
+		return t;
+	}
+
 	// Operator +
 	// Operator ++
 	else if (*lex->source == '+')
@@ -825,6 +833,8 @@ char *tokenName(TokenType type)
 		case TOKEN_OPERATOR_NOT:
 			return "OPERATOR_NOT";
 
+		case TOKEN_OPERATOR_BIT_XOR:
+			return "OPERATOR_BIT_XOR";
 		case TOKEN_OPERATOR_BIT_OR:
 			return "OPERATOR_BIT_OR";
 		case TOKEN_OPERATOR_OR:
