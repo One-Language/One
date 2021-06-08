@@ -237,7 +237,33 @@ AstExpression *parseExpression_6(Parser *pars, ErrorsContainer *errors)
 }
 AstExpression *parseExpression_7(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_7\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_6(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_EQUALEQUAL, errors) == true) // current token is ==
+	{
+		parserNextToken(pars, errors); // SKIP == TOKEN
+		expr = astExpression(TOKEN_OPERATOR_EQUALEQUAL, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_EQUALEQUALEQUAL, errors) == true) // current token is ===
+	{
+		parserNextToken(pars, errors); // SKIP === TOKEN
+		expr = astExpression(TOKEN_OPERATOR_EQUALEQUALEQUAL, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_NOTEQUALEQUAL, errors) == true) // current token is !==
+	{
+		parserNextToken(pars, errors); // SKIP !== TOKEN
+		expr = astExpression(TOKEN_OPERATOR_NOTEQUALEQUAL, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_NOTEQUAL, errors) == true) // current token is !=
+	{
+		parserNextToken(pars, errors); // SKIP != TOKEN
+		expr = astExpression(TOKEN_OPERATOR_NOTEQUAL, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+
+	return expr;
 }
 AstExpression *parseExpression_8(Parser *pars, ErrorsContainer *errors)
 {
@@ -263,8 +289,8 @@ AstExpression *parseExpression_9(Parser *pars, ErrorsContainer *errors)
 	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
 	if (parserHasToken(pars, TOKEN_OPERATOR_BIT_XOR, errors) == true) // current token is ^
 	{
-		parserNextToken(pars, errors); // SKIP & TOKEN
-		expr = astExpression(TOKEN_OPERATOR_BIT_AND, 10, 0, "", false, expr, parseExpression(pars, errors));
+		parserNextToken(pars, errors); // SKIP ^ TOKEN
+		expr = astExpression(TOKEN_OPERATOR_BIT_XOR, 10, 0, "", false, expr, parseExpression(pars, errors));
 	}
 
 	return expr;

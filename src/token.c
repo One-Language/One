@@ -235,9 +235,25 @@ Token *tokenNext(Lexer *lex)
 	// Operator !
 	// Operator !_
 	// Operator !__
+	// Operator !=
+	// Operator !==
 	else if (*lex->source == '!')
 	{
 		lex->source++; // go to next char
+		if (*lex->source == '=') // it has `!=` prefix
+		{
+			lex->source++; // go to next char
+			if (*lex->source == '=') // it's  !==
+			{
+				lex->source++; // go to next char
+				t->type = TOKEN_OPERATOR_NOTEQUALEQUAL;
+				return t;
+			}
+			else {
+				t->type = TOKEN_OPERATOR_NOTEQUAL;
+				return t;
+			}
+		}
 		if (*lex->source == '_') // it has `!_` prefix
 		{
 			lex->source++; // go to next char
@@ -846,6 +862,11 @@ char *tokenName(TokenType type)
 			return "DOTDOT";
 		case TOKEN_OPERATOR_DOTDOTDOT:
 			return "DOTDOTDOT";
+
+		case TOKEN_OPERATOR_NOTEQUAL:
+			return "OPERATOR_NOTEQUAL";
+		case TOKEN_OPERATOR_NOTEQUALEQUAL:
+			return "OPERATOR_NOTEQUALEQUAL";
 
 		case TOKEN_OPERATOR_COLON:
 			return "OPERATOR_COLON";
