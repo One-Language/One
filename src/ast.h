@@ -135,6 +135,7 @@ char* astOperatorName(TokenType);
 char* astStatementName(AstStatementType);
 
 AstExpression* astExpression(TokenType, int, float, char*, bool, AstExpression*, AstExpression*);
+
 AstExpression* astExpression3(TokenType, int, float, char*, bool, AstExpression*, AstExpression*, AstExpression*);
 
 #endif //_AST_H_

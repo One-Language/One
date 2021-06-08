@@ -74,7 +74,6 @@ char* astOperatorName(TokenType type)
 		case TOKEN_OPERATOR_NOTEQUALEQUAL:
 			return "!==";
 
-
 		case TOKEN_OPERATOR_AND:
 			return "&&";
 		case TOKEN_OPERATOR_BIT_AND:

@@ -8,6 +8,7 @@
 
  **/
 
+#include "token.h"
 #include "vm.h"
 
 void vmInit(AstRoot* root)
