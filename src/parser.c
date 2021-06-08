@@ -213,12 +213,37 @@ AstExpression *parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 
 AstExpression *parseExpression_1(Parser *pars, ErrorsContainer *errors)
 {
+	// TODO: Adding ++
+	// TODO: Adding --
+	// TODO: Adding []
+	// TODO: Adding ()
+	// TODO: Adding .
+	// TODO: Adding ->
 	return parseExpressionPrimitive(pars, errors);
 }
 
 AstExpression *parseExpression_2(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	// TODO: type casting...
+
+	AstExpression *expr;
+	if (parserHasToken(pars, TOKEN_OPERATOR_PLUS, errors) == true) // current token is +
+	{
+		parserNextToken(pars, errors); // SKIP + TOKEN
+		expr = parseExpression_1(pars, errors); // parser expr-value after + operator
+		expr = astExpression(TOKEN_OPERATOR_PLUS, 10, 0, "", false, expr, NULL);
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_MINUS, errors) == true) // current token is -
+	{
+		parserNextToken(pars, errors); // SKIP - TOKEN
+		expr = parseExpression_1(pars, errors); // parser expr-value after - operator
+		expr = astExpression(TOKEN_OPERATOR_MINUS, 10, 0, "", false, expr, NULL);
+	}
+	else
+	{
+		expr = parseExpression_1(pars, errors); // parser expr-value
+	}
+	return expr;
 }
 
 AstExpression *parseExpression_3(Parser *pars, ErrorsContainer *errors)

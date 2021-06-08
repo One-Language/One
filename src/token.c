@@ -258,7 +258,8 @@ Token *tokenNext(Lexer *lex)
 				t->type = TOKEN_OPERATOR_NOTEQUALEQUAL;
 				return t;
 			}
-			else {
+			else
+			{
 				t->type = TOKEN_OPERATOR_NOTEQUAL;
 				return t;
 			}
