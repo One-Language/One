@@ -57,6 +57,9 @@ typedef enum
 	AST_OPERATOR_MUL,
 	AST_OPERATOR_DIV,
 	AST_OPERATOR_POW,
+
+	TOKEN_OPERATOR_IF, // ? :
+	TOKEN_OPERATOR_IFIF, // ??
 	// TODO: adding more operators!
 } AstOperatorType;
 
@@ -89,6 +92,7 @@ typedef struct _ast_expression
 
 	AstExpression* left;
 	AstExpression* right;
+	AstExpression* third;
 } AstExpression;
 
 typedef struct _ast_argument
@@ -127,5 +131,6 @@ char* astOperatorName(AstOperatorType);
 char* astStatementName(AstStatementType);
 
 AstExpression* astExpression(AstOperatorType, int, float, char*, bool, AstExpression*, AstExpression*);
+AstExpression* astExpression3(AstOperatorType, int, float, char*, bool, AstExpression*, AstExpression*, AstExpression*);
 
 #endif //_AST_H_

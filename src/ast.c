@@ -45,6 +45,10 @@ char* astOperatorName(AstOperatorType type)
 			return "**";
 		case AST_OPERATOR_DIRECT:
 			return "VALUE";
+		case TOKEN_OPERATOR_IF:
+			return "?:";
+		case TOKEN_OPERATOR_IFIF:
+			return "??";
 		default:
 			return "UNKNOWM";
 	}
@@ -65,6 +69,22 @@ AstBlock* astBlock(AstStatements* stmts)
 	return ast;
 }
 
+AstExpression* astExpression3(AstOperatorType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right, AstExpression* third)
+{
+	AstExpression* ast = malloc(sizeof(AstExpression));
+	ast->operator= op;
+
+	ast->vint = vi;
+	ast->vfloat = vf;
+	ast->vstring = vs;
+	ast->vbool = vb;
+
+	ast->left = left;
+	ast->right = right;
+	ast->third = third;
+
+	return ast;
+}
 AstExpression* astExpression(AstOperatorType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right)
 {
 	AstExpression* ast = malloc(sizeof(AstExpression));
