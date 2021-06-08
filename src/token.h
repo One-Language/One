@@ -140,6 +140,9 @@ typedef enum
 
 	TOKEN_SQUARE_OPEN, // [
 	TOKEN_SQUARE_CLOSE, // ]
+
+	TOKEN_OPERATOR_QUESTION, // ?
+	TOKEN_OPERATOR_QUESTIONQUESTION, // ??
 } TokenType;
 
 typedef struct _token

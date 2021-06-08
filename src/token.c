@@ -589,6 +589,23 @@ Token *tokenNext(Lexer *lex)
 		}
 	}
 
+	// operator ?
+	else if (*lex->source == '?')
+	{ // it's ? or ?? token
+		tokenNextChar(lex); // go to next character
+		if (*lex->source == '?')
+		{ // it's ??
+			tokenNextChar(lex); // go to next character
+			t->type = TOKEN_OPERATOR_QUESTIONQUESTION;
+			return t;
+		}
+		else
+		{ // it's ? token
+			t->type = TOKEN_OPERATOR_QUESTION;
+			return t;
+		}
+	}
+
 	// string
 	else if (*lex->source == '\"')
 	{ // it's first character of string block-value
@@ -660,6 +677,11 @@ char *tokenName(TokenType type)
 	{
 		case TOKEN_EOF:
 			return "EOF";
+
+		case TOKEN_OPERATOR_QUESTION:
+			return "OPERATOR_QUESTION";
+		case TOKEN_OPERATOR_QUESTIONQUESTION:
+			return "OPERATOR_QUESTIONQUESTION";
 
 		case TOKEN_VALUE_NUMBER:
 			return "VALUE_NUMBER";

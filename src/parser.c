@@ -261,7 +261,19 @@ AstExpression *parseExpression_12(Parser *pars, ErrorsContainer *errors)
 }
 AstExpression *parseExpression_13(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_13\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_12(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_EQUAL, errors) == true) // current token is =
+	{
+		parserNextToken(pars, errors); // SKIP = TOKEN
+		AstExpression * right = parseExpression(pars, errors);
+		expr = astExpression(TOKEN_OPERATOR_EQUAL, 10, 0, "", false, expr, right);
+	}
+
+	return expr;
 }
 AstExpression *parseExpression_14(Parser *pars, ErrorsContainer *errors)
 {
