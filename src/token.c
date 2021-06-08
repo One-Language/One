@@ -140,9 +140,18 @@ Token *tokenNext(Lexer *lex)
 		return t;
 	}
 
+	// Operator %
+	else if (*lex->source == '%')
+	{ // it's % operator
+		tokenNextChar(lex);
+		t->type = TOKEN_OPERATOR_REM;
+		return t;
+	}
+
 	// single-line comment
 	// multi-line comment
-	// DIVIDE operator
+	// Operator `/` DIVIDE
+	// Operator `//` DIVIDE INT
 	else if (*lex->source == '/')
 	{ // it's single-line comment or divide operator!
 		tokenNextChar(lex);
@@ -889,6 +898,9 @@ char *tokenName(TokenType type)
 			return "OPERATOR_G";
 		case TOKEN_OPERATOR_GE:
 			return "OPERATOR_GE";
+
+		case TOKEN_OPERATOR_REM:
+			return "OPERATOR_REMAINDER";
 
 		case TOKEN_OPERATOR_L:
 			return "OPERATOR_L";

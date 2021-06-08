@@ -215,26 +215,116 @@ AstExpression *parseExpression_1(Parser *pars, ErrorsContainer *errors)
 {
 	return parseExpressionPrimitive(pars, errors);
 }
+
 AstExpression *parseExpression_2(Parser *pars, ErrorsContainer *errors)
 {
 	return parseExpressionPrimitive(pars, errors);
 }
+
 AstExpression *parseExpression_3(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_3\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_2(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_MUL, errors) == true) // current token is *
+	{
+		parserNextToken(pars, errors); // SKIP * TOKEN
+		expr = astExpression(TOKEN_OPERATOR_MUL, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_DIV, errors) == true) // current token is /
+	{
+		parserNextToken(pars, errors); // SKIP / TOKEN
+		expr = astExpression(TOKEN_OPERATOR_DIV, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_DIVINT, errors) == true) // current token is //
+	{
+		parserNextToken(pars, errors); // SKIP // TOKEN
+		expr = astExpression(TOKEN_OPERATOR_DIVINT, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_REM, errors) == true) // current token is %
+	{
+		parserNextToken(pars, errors); // SKIP % TOKEN
+		expr = astExpression(TOKEN_OPERATOR_REM, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+
+	return expr;
 }
+
 AstExpression *parseExpression_4(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_4\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_3(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_PLUS, errors) == true) // current token is +
+	{
+		parserNextToken(pars, errors); // SKIP + TOKEN
+		expr = astExpression(TOKEN_OPERATOR_PLUS, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_MINUS, errors) == true) // current token is -
+	{
+		parserNextToken(pars, errors); // SKIP - TOKEN
+		expr = astExpression(TOKEN_OPERATOR_MINUS, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+
+	return expr;
 }
+
 AstExpression *parseExpression_5(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_5\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_4(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_SHIFT_LEFT, errors) == true) // current token is >>
+	{
+		parserNextToken(pars, errors); // SKIP >> TOKEN
+		expr = astExpression(TOKEN_OPERATOR_SHIFT_LEFT, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_SHIFT_RIGHT, errors) == true) // current token is <<
+	{
+		parserNextToken(pars, errors); // SKIP << TOKEN
+		expr = astExpression(TOKEN_OPERATOR_SHIFT_RIGHT, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+
+	return expr;
 }
+
 AstExpression *parseExpression_6(Parser *pars, ErrorsContainer *errors)
 {
-	return parseExpressionPrimitive(pars, errors);
+	printf("---------- parseExpression_6\n");
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	AstExpression *expr = parseExpression_5(pars, errors);
+
+	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+	if (parserHasToken(pars, TOKEN_OPERATOR_GE, errors) == true) // current token is >=
+	{
+		parserNextToken(pars, errors); // SKIP >= TOKEN
+		expr = astExpression(TOKEN_OPERATOR_GE, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_G, errors) == true) // current token is >
+	{
+		parserNextToken(pars, errors); // SKIP > TOKEN
+		expr = astExpression(TOKEN_OPERATOR_G, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_L, errors) == true) // current token is <
+	{
+		parserNextToken(pars, errors); // SKIP < TOKEN
+		expr = astExpression(TOKEN_OPERATOR_L, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+	else if (parserHasToken(pars, TOKEN_OPERATOR_LE, errors) == true) // current token is <=
+	{
+		parserNextToken(pars, errors); // SKIP <= TOKEN
+		expr = astExpression(TOKEN_OPERATOR_LE, 10, 0, "", false, expr, parseExpression(pars, errors));
+	}
+
+	return expr;
 }
+
 AstExpression *parseExpression_7(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression_7\n");
@@ -265,6 +355,7 @@ AstExpression *parseExpression_7(Parser *pars, ErrorsContainer *errors)
 
 	return expr;
 }
+
 AstExpression *parseExpression_8(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression_8\n");
@@ -280,6 +371,7 @@ AstExpression *parseExpression_8(Parser *pars, ErrorsContainer *errors)
 
 	return expr;
 }
+
 AstExpression *parseExpression_9(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression_9\n");
@@ -295,6 +387,7 @@ AstExpression *parseExpression_9(Parser *pars, ErrorsContainer *errors)
 
 	return expr;
 }
+
 AstExpression *parseExpression_10(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression_10\n");
@@ -310,6 +403,7 @@ AstExpression *parseExpression_10(Parser *pars, ErrorsContainer *errors)
 
 	return expr;
 }
+
 AstExpression *parseExpression_11(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression_11\n");
@@ -325,6 +419,7 @@ AstExpression *parseExpression_11(Parser *pars, ErrorsContainer *errors)
 
 	return expr;
 }
+
 AstExpression *parseExpression_12(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression_12\n");
@@ -340,6 +435,7 @@ AstExpression *parseExpression_12(Parser *pars, ErrorsContainer *errors)
 
 	return expr;
 }
+
 AstExpression *parseExpression_13(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression_13\n");
@@ -364,6 +460,7 @@ AstExpression *parseExpression_13(Parser *pars, ErrorsContainer *errors)
 
 	return expr;
 }
+
 AstExpression *parseExpression_14(Parser *pars, ErrorsContainer *errors)
 {
 	printf("---------- parseExpression_14\n");
