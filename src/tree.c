@@ -42,11 +42,13 @@ void treeExpression(AstExpression* expr)
 		treeExpression(expr->left);
 		ident--;
 
-		print_tabs(ident);
-		printf("Right:\n");
-		ident++;
-		treeExpression(expr->right);
-		ident--;
+		if(expr->right != NULL) {
+			print_tabs(ident);
+			printf("Right:\n");
+			ident++;
+			treeExpression(expr->right);
+			ident--;
+		}
 
 		ident--;
 	}
