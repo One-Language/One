@@ -8,6 +8,7 @@
 
  **/
 
+#include "token.h"
 #include "tree.h"
 #include "vm.h"
 
@@ -25,7 +26,7 @@ void treeExpression(AstExpression* expr)
 {
 	print_tabs(ident);
 	printf("[EXPR] %s ", astOperatorName(expr->operator));
-	if (expr->operator== AST_OPERATOR_DIRECT)
+	if (expr->operator== TOKEN_OPERATOR_DIRECT)
 	{
 		//		printf("%d", expr->vint);
 		printf("%s", expr->vstring);

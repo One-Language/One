@@ -182,7 +182,7 @@ AstExpression *parseExpressionPrimitive(Parser *pars, ErrorsContainer *errors)
 			printf("---> value of current direct value is %d\n", t->vint);
 			printf("---> value of current direct value is %s\n", t->vstring);
 			parserNextToken(pars, errors);
-			expr = astExpression(AST_OPERATOR_DIRECT, 0, 0, t->vstring, false, NULL, NULL);
+			expr = astExpression(TOKEN_OPERATOR_DIRECT, 0, 0, t->vstring, false, NULL, NULL);
 			return expr;
 			break;
 		}

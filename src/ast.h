@@ -24,6 +24,7 @@ typedef Array AstFunctions;
 typedef Array AstExpressions;
 
 typedef struct _ast_expression AstExpression;
+//typedef struct _token_type TokenType;
 
 typedef enum
 {
@@ -48,6 +49,7 @@ typedef enum
 	AST_STATEMENT_RETURN,
 } AstStatementType;
 
+/*
 typedef enum
 {
 	AST_OPERATOR_DIRECT, // without an operator!
@@ -62,6 +64,7 @@ typedef enum
 	TOKEN_OPERATOR_IFIF, // ??
 	// TODO: adding more operators!
 } AstOperatorType;
+ */
 
 typedef struct _ast_statement
 {
@@ -83,7 +86,8 @@ typedef struct _ast_type
 
 typedef struct _ast_expression
 {
-	AstOperatorType operator;
+	//	AstOperatorType operator;
+	TokenType operator;
 
 	int vint;
 	float vfloat;
@@ -126,11 +130,11 @@ AstRoot* astRoot(char*, AstFunctions*);
 
 AstStatement* astStatement(AstStatementType);
 
-char* astOperatorName(AstOperatorType);
+char* astOperatorName(TokenType);
 
 char* astStatementName(AstStatementType);
 
-AstExpression* astExpression(AstOperatorType, int, float, char*, bool, AstExpression*, AstExpression*);
-AstExpression* astExpression3(AstOperatorType, int, float, char*, bool, AstExpression*, AstExpression*, AstExpression*);
+AstExpression* astExpression(TokenType, int, float, char*, bool, AstExpression*, AstExpression*);
+AstExpression* astExpression3(TokenType, int, float, char*, bool, AstExpression*, AstExpression*, AstExpression*);
 
 #endif //_AST_H_

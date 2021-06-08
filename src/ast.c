@@ -8,6 +8,7 @@
 
  **/
 
+#include "token.h"
 #include "ast.h"
 
 char* astStatementName(AstStatementType type)
@@ -29,26 +30,67 @@ char* astStatementName(AstStatementType type)
 	}
 }
 
-char* astOperatorName(AstOperatorType type)
+char* astOperatorName(TokenType type)
 {
 	switch (type)
 	{
-		case AST_OPERATOR_PLUS:
+		case TOKEN_OPERATOR_PLUS:
 			return "+";
-		case AST_OPERATOR_MINUS:
+		case TOKEN_OPERATOR_MINUS:
 			return "-";
-		case AST_OPERATOR_MUL:
+		case TOKEN_OPERATOR_MUL:
 			return "*";
-		case AST_OPERATOR_DIV:
+		case TOKEN_OPERATOR_DIV:
 			return "/";
-		case AST_OPERATOR_POW:
+		case TOKEN_OPERATOR_POW:
 			return "**";
-		case AST_OPERATOR_DIRECT:
+		case TOKEN_OPERATOR_DIRECT:
 			return "VALUE";
 		case TOKEN_OPERATOR_IF:
 			return "?:";
 		case TOKEN_OPERATOR_IFIF:
 			return "??";
+
+		case TOKEN_OPERATOR_G:
+			return ">";
+		case TOKEN_OPERATOR_GE:
+			return ">=";
+		case TOKEN_OPERATOR_L:
+			return "<";
+		case TOKEN_OPERATOR_LE:
+			return "<=";
+
+		case TOKEN_OPERATOR_EQUAL:
+			return "=";
+		case TOKEN_OPERATOR_EQUALEQUAL:
+			return "==";
+		case TOKEN_OPERATOR_EQUALEQUALEQUAL:
+			return "===";
+
+		case TOKEN_OPERATOR_NOT:
+			return "!";
+		case TOKEN_OPERATOR_NOTEQUAL:
+			return "!=";
+		case TOKEN_OPERATOR_NOTEQUALEQUAL:
+			return "!==";
+
+
+		case TOKEN_OPERATOR_AND:
+			return "&&";
+		case TOKEN_OPERATOR_BIT_AND:
+			return "&";
+		case TOKEN_OPERATOR_OR:
+			return "||";
+		case TOKEN_OPERATOR_BIT_OR:
+			return "|";
+		case TOKEN_OPERATOR_BIT_XOR:
+			return "^";
+
+		case TOKEN_OPERATOR_SHIFT_LEFT:
+			return ">>";
+		case TOKEN_OPERATOR_SHIFT_RIGHT:
+			return "<<";
+
 		default:
 			return "UNKNOWM";
 	}
@@ -69,7 +111,7 @@ AstBlock* astBlock(AstStatements* stmts)
 	return ast;
 }
 
-AstExpression* astExpression3(AstOperatorType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right, AstExpression* third)
+AstExpression* astExpression3(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right, AstExpression* third)
 {
 	AstExpression* ast = malloc(sizeof(AstExpression));
 	ast->operator= op;
@@ -85,7 +127,7 @@ AstExpression* astExpression3(AstOperatorType op, int vi, float vf, char* vs, bo
 
 	return ast;
 }
-AstExpression* astExpression(AstOperatorType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right)
+AstExpression* astExpression(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right)
 {
 	AstExpression* ast = malloc(sizeof(AstExpression));
 	ast->operator= op;

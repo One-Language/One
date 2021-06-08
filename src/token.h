@@ -25,7 +25,7 @@ typedef struct _location
 	size_t column; // column number: default is 0
 } Location;
 
-typedef enum
+typedef enum _token_type
 {
 	TOKEN_EOF = -1,
 	TOKEN_UNKNOWM,
@@ -122,6 +122,10 @@ typedef enum
 
 	TOKEN_OPERATOR_COLON, // :
 	TOKEN_OPERATOR_COLONCOLON, // ::
+
+	TOKEN_OPERATOR_IF, // ... ? ... : ...
+	TOKEN_OPERATOR_IFIF, // ??
+	TOKEN_OPERATOR_DIRECT, // <value>
 
 	TOKEN_OPERATOR_SEMICOLON, // ;
 	TOKEN_OPERATOR_VIRGOOL, // ,

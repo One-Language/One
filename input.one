@@ -16,6 +16,7 @@ package main
 
 i8 test1 {
     _ 4
+    _ 4+3
     _ 5+1-2+6
 }
 
