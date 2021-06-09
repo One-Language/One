@@ -19,6 +19,6 @@ static void repl()
 			printf("\n");
 			break;
 		}
-		interpret(line);
+		interpret_source(line);
 	}
 }

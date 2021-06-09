@@ -7,7 +7,7 @@
 #include <string.h>
 
 #include "one.h"
-#include "utils/array.h"
+#include "array.h"
 #include "interpret.h"
 
 #include "argument.h"

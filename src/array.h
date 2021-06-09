@@ -12,10 +12,12 @@ typedef struct
 	void **data;
 } Array;
 
-
 static void array_init(Array *list);
+
 static void array_push(Array *list, void *item);
+
 static void *array_pop(Array *list);
+
 static void array_free(Array *list);
 
 #endif //ONE_ARRAY_H
