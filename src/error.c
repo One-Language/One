@@ -14,7 +14,7 @@ void error(ErrorType type, const char* format, ...)
 	va_list args;
 	va_start(args, format);
 	// TODO: Show error type with another custom color!
-	fprintf(stderr, error_name(type));
+	fprintf(stderr, "%s: ", error_name(type));
 	vfprintf(stderr, format, args);
 	va_end(args);
 	fputs("\n", stderr);

@@ -8,6 +8,7 @@
 
 #include "one.h"
 #include "array.h"
+#include "error.h"
 #include "interpret.h"
 
 #include "argument.h"
@@ -21,7 +22,7 @@ ArgumentType argument_type(char *value)
 	if (value[0] == '-')
 	{
 		if (strcmp(value, "-h") == 0 || strcmp(value, "--help") == 0 ||
-			 strcmp(value, "help"))
+			 strcmp(value, "help") == 0)
 			return ARGUMENT_HELP;
 		else if (strcmp(value, "-g") == 0 ||
 			 strcmp(value, "--debug") == 0)
@@ -47,6 +48,7 @@ void argument_parse(int argc, char **argv, char **env, Arguments *args)
 	for (int i = 1; i < argc; i++)
 	{
 		type = argument_type(argv[i]);
+//		printf("[%s] = %s\n", argv[i], argument_type_name(type));
 		if (type == ARGUMENT_HELP)
 		{
 			args->help = true;
@@ -61,6 +63,8 @@ void argument_parse(int argc, char **argv, char **env, Arguments *args)
 		}
 		else if (type == ARGUMENT_ERROR)
 		{
+			error_panic("Could not detect \"%s\" argument.", argv[i]);
+			exit(64);
 			// Todo: Error
 		}
 		else if (type == ARGUMENT_FILE)
@@ -152,4 +156,23 @@ int argument_run(Arguments *args)
 	}
 
 	return ret;
+}
+
+char *argument_type_name(ArgumentType type)
+{
+	switch (type)
+	{
+		case ARGUMENT_HELP:
+			return "HELP";
+		case ARGUMENT_DEBUG:
+			return "DEBUG";
+		case ARGUMENT_ERROR:
+			return "ERROR";
+		case ARGUMENT_FILE:
+			return "FILE";
+		case ARGUMENT_VERSION:
+			return "VERSION";
+		default:
+			return "UNKNOWN";
+	}
 }

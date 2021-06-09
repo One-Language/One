@@ -26,6 +26,7 @@ typedef enum
 	ARGUMENT_HELP,
 	ARGUMENT_VERSION,
 	ARGUMENT_DEBUG,
+
 	ARGUMENT_FILE,
 	ARGUMENT_ERROR,
 } ArgumentType;
@@ -45,5 +46,7 @@ void argument_version(FILE *file, Arguments *args);
 int argument_run_files(Arguments* args);
 
 int argument_run(Arguments *args);
+
+char *argument_type_name(ArgumentType type);
 
 #endif //ONE_ARG_H
