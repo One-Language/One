@@ -48,7 +48,7 @@ void argument_parse(int argc, char **argv, char **env, Arguments *args)
 	for (int i = 1; i < argc; i++)
 	{
 		type = argument_type(argv[i]);
-//		printf("[%s] = %s\n", argv[i], argument_type_name(type));
+		//		printf("[%s] = %s\n", argv[i], argument_type_name(type));
 		if (type == ARGUMENT_HELP)
 		{
 			args->help = true;
@@ -76,11 +76,13 @@ void argument_parse(int argc, char **argv, char **env, Arguments *args)
 	args->input_files = (char **)files.data;
 	args->input_files_count = files.count;
 
-	array_free(&files);
+//	array_free(&files);
 }
 
 void argument_free(Arguments *args)
 {
+	debug("argument_free");
+
 	//     free argc
 	for (int i = 0; i < args->argc; i++)
 		free(args->argv[i]);
@@ -98,6 +100,8 @@ void argument_free(Arguments *args)
 
 void argument_help(FILE *file, Arguments *args)
 {
+	debug("argument_help");
+
 	fprintf(file, "Usage: %s [options] file...\n", args->argv[0]);
 	fprintf(file, "Options:\n");
 	fprintf(file, "    -h, --help                Print out this help text.\n");
@@ -113,18 +117,28 @@ void argument_help(FILE *file, Arguments *args)
 
 void argument_version(FILE *file, Arguments *args)
 {
+	debug("argument_version");
+
 	fprintf(file, "  _        _ \n");
 	fprintf(file, " / \\ |\\ | |_    Max Base\n");
 	fprintf(file, " \\_/ | \\| |_    Copyright 2021\n");
-	fprintf(file, "\n");
+	fprintf(file, "\n Version: ");
 	fprintf(file, ONE_VERSION);
+	fprintf(file, "\n");
+	fprintf(file, "\n");
 }
 
 int argument_run_files(Arguments *args)
 {
+	debug("argument_run_files");
+
+	debug("argument_run_files: input_files_count is %d", args->input_files_count);
+
 	int ret;
 	for (int i = 0; i < args->input_files_count; i++)
 	{
+		printf("==> Run file %d\n", i);
+		printf("==> Run file %s\n", args->input_files[i]);
 		ret = interpret_file(args->input_files[i]);
 		if (ret != EXIT_SUCCESS)
 		{
@@ -136,6 +150,8 @@ int argument_run_files(Arguments *args)
 
 int argument_run(Arguments *args)
 {
+	debug("argument_run");
+
 	int ret = EXIT_SUCCESS;
 
 	if (args->help)
@@ -160,6 +176,8 @@ int argument_run(Arguments *args)
 
 char *argument_type_name(ArgumentType type)
 {
+	debug("argument_type_name");
+
 	switch (type)
 	{
 		case ARGUMENT_HELP:

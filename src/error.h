@@ -13,6 +13,8 @@ typedef enum
 	ERROR_PARSER,
 } ErrorType;
 
+#define debug(format, args...) printf("Debug: " format "\n", ## args)
+
 void error(ErrorType type, const char* format, ...);
 
 char* error_name(ErrorType type);

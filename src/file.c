@@ -11,6 +11,8 @@
 
 char* file_reads(const char* path)
 {
+	debug("file_reads: %s", path);
+
 	FILE* file = fopen(path, "rb");
 	if (file == NULL)
 	{
