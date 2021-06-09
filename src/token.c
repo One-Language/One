@@ -294,6 +294,8 @@ char* token_name(TokenType type)
 			return ":";
 		case TOKEN_OPERATOR_COLONCOLON:
 			return "::";
+		case TOKEN_OPERATOR_QUESTION:
+			return "?";
 		case TOKEN_OPERATOR_DOT:
 			return ".";
 		case TOKEN_OPERATOR_DOTDOT:

@@ -30,10 +30,11 @@ Token lexer_scan()
 
 	lexer.start = lexer.current;
 
-	if(token_is_end()) return token_make(TOKEN_EOF);
+	if (token_is_end()) return token_make(TOKEN_EOF);
 
 	char c = token_advance();
-	switch(c) {
+	switch (c)
+	{
 		case '(': return token_make(TOKEN_OPERATOR_BRACKET_ROUND_LEFT);
 		case ')': return token_make(TOKEN_OPERATOR_BRACKET_ROUND_RIGHT);
 		case '[': return token_make(TOKEN_OPERATOR_BRACKET_SQUARE_LEFT);
@@ -42,13 +43,20 @@ Token lexer_scan()
 		case '}': return token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
 
 		case ',': return token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
+		case '?': return token_make(TOKEN_OPERATOR_QUESTION);
+		case ':': return token_make(token_match(':') ? TOKEN_OPERATOR_COLONCOLON : TOKEN_OPERATOR_COLON);
 
 		case '+': return token_make(token_match('+') ? TOKEN_OPERATOR_PLUSPLUS : TOKEN_OPERATOR_PLUS);
-		case '-': return token_make(TOKEN_OPERATOR_MINUS);
-		case '*': return token_make(TOKEN_OPERATOR_STAR);
-		case '/': return token_make(TOKEN_OPERATOR_SLASH);
+		case '-': return token_make(token_match('-') ? TOKEN_OPERATOR_MINUSMINUS : TOKEN_OPERATOR_MINUS);
+
+		case '*': return token_make(token_match('*') ? TOKEN_OPERATOR_POWER : TOKEN_OPERATOR_STAR);
+		case '/': return token_make(token_match('/') ? TOKEN_OPERATOR_SLASH_INT : TOKEN_OPERATOR_SLASH);
+
+		case '>': return token_make(token_match('=') ? TOKEN_OPERATOR_GREATER_EQUAL : (token_match('>') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT : TOKEN_OPERATOR_SHIFT_RIGHT) : TOKEN_OPERATOR_GREATER));
+		case '<': return token_make(token_match('=') ? TOKEN_OPERATOR_LESS_EQUAL : (token_match('<') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_LEFT : TOKEN_OPERATOR_SHIFT_LEFT) : TOKEN_OPERATOR_LESS));
+
+		case ';': token_match(';'); return lexer_scan();
 	}
 
 	return token_error("Unexpected character.");
-
 }
