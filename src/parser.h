@@ -5,6 +5,8 @@
 #ifndef ONE_PARSER_H
 #define ONE_PARSER_H
 
-static void parser_init();
+void parser_init();
+
+void parser_scan();
 
 #endif //ONE_PARSER_H

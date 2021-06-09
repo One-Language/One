@@ -7,55 +7,83 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "error.h"
 #include "lexer.h"
 
 #include "token.h"
+
 
 // Global variable(s)
 extern Lexer lexer;
 
 bool token_is_alpha(char c)
 {
+	debug("token_is_alpha");
+
 	return (c >= 'a' && c <= 'z') ||
-		   (c >= 'A' && c <= 'Z') ||
-		   c == '_';
+		 (c >= 'A' && c <= 'Z') ||
+		 c == '_';
+}
+
+bool token_is_ident(char c)
+{
+	debug("token_is_ident");
+
+	return (c >= 'a' && c <= 'z') ||
+		 (c >= 'A' && c <= 'Z') ||
+		 c == '_' ||
+		 (c >= '0' && c <= '9');
 }
 
 bool token_is_digit(char c)
 {
+	debug("token_is_digit");
+
 	return c >= '0' && c <= '9';
 }
 
 bool token_is_end()
 {
+	debug("token_is_end");
+
 	return *lexer.current == '\0';
 }
 
 char token_advance()
 {
+	debug("token_advance");
+
 	lexer.current++;
 	return lexer.current[-1];
 }
 
 char token_peek()
 {
+	debug("token_peek");
+
 	return *lexer.current;
 }
 
 char token_peek_next()
 {
+	debug("token_peek_next");
+
 	if (token_is_end()) return '\0';
 	return lexer.current[1];
 }
 
 char token_peek_prev()
 {
+	debug("token_peek_prev");
+
 	if (token_is_end()) return '\0';
 	return lexer.current[-1]; // TODO: Review
 }
 
 bool token_match(char expected)
 {
+	debug("token_match");
+
 	if (token_is_end()) return false;
 	if (*lexer.current != expected) return false;
 	lexer.current++;
@@ -64,6 +92,8 @@ bool token_match(char expected)
 
 Token token_make(TokenType type)
 {
+	debug("token_make");
+
 	Token t;
 	t.type = type;
 	t.start = lexer.start;
@@ -75,6 +105,8 @@ Token token_make(TokenType type)
 
 Token token_error(const char* message)
 {
+	debug("token_error");
+
 	Token t;
 	t.type = TOKEN_ERROR;
 	t.start = message;
@@ -86,6 +118,8 @@ Token token_error(const char* message)
 
 void token_skip_comment_inline()
 {
+	debug("token_skip_comment_inline");
+
 	if (token_peek() == '/' && token_peek_next() == '/')
 	{
 		while (token_peek() != '\n' && !token_is_end()) token_advance();
@@ -94,6 +128,8 @@ void token_skip_comment_inline()
 
 void token_skip_comment_multiline()
 {
+	debug("token_skip_comment_multiline");
+
 	if (token_peek() == '/' && token_peek_next() == '*')
 	{
 		for (;;)
@@ -110,6 +146,8 @@ void token_skip_comment_multiline()
 
 void token_skip_whitespace()
 {
+	debug("token_skip_whitespace");
+
 	char c, c2;
 	for (;;)
 	{
@@ -148,6 +186,8 @@ void token_skip_whitespace()
 
 char* token_name(TokenType type)
 {
+	debug("token_name");
+
 	switch (type)
 	{
 		case TOKEN_EOF:

@@ -13,6 +13,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+typedef struct _location Location;
+
 typedef enum
 {
 	TOKEN_EOF,
@@ -77,7 +79,7 @@ typedef enum
 
 } TokenType;
 
-typedef struct
+typedef struct _token
 {
 	TokenType type;
 	const char* start;
@@ -86,6 +88,8 @@ typedef struct
 } Token;
 
 bool token_is_alpha(char c);
+
+bool token_is_ident(char c);
 
 bool token_is_digit(char c);
 

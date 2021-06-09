@@ -15,10 +15,14 @@
 
 void argument_init(Arguments *args)
 {
+	debug("argument_init");
+
 }
 
 ArgumentType argument_type(char *value)
 {
+	debug("argument_type");
+
 	if (value[0] == '-')
 	{
 		if (strcmp(value, "-h") == 0 || strcmp(value, "--help") == 0 ||
@@ -39,6 +43,10 @@ ArgumentType argument_type(char *value)
 
 void argument_parse(int argc, char **argv, char **env, Arguments *args)
 {
+	debug("argument_parse");
+
+	debug("argument_parse: argc is %d", argc);
+
 	args->argv = argv;
 
 	Array files;
@@ -48,7 +56,8 @@ void argument_parse(int argc, char **argv, char **env, Arguments *args)
 	for (int i = 1; i < argc; i++)
 	{
 		type = argument_type(argv[i]);
-		//		printf("[%s] = %s\n", argv[i], argument_type_name(type));
+		debug("argument_parse: argv[%d] is %s and type is %s", i, argv[i], argument_type_name(type));
+
 		if (type == ARGUMENT_HELP)
 		{
 			args->help = true;
@@ -137,8 +146,9 @@ int argument_run_files(Arguments *args)
 	int ret;
 	for (int i = 0; i < args->input_files_count; i++)
 	{
-		printf("==> Run file %d\n", i);
-		printf("==> Run file %s\n", args->input_files[i]);
+		debug("argument_run_files: Run input_files[%d]", i);
+		debug("argument_run_files: input_files[%d] is %s", i, args->input_files[i]);
+
 		ret = interpret_file(args->input_files[i]);
 		if (ret != EXIT_SUCCESS)
 		{

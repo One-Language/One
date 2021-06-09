@@ -7,6 +7,7 @@
 
 #include "error.h"
 #include "lexer.h"
+#include "token.h"
 #include "parser.h"
 #include "file.h"
 
@@ -14,17 +15,23 @@
 
 int interpret_source(char* source)
 {
+	debug("interpret_source");
 	debug("interpret_source: %s", source);
 
 	// https://www.freebsd.org/cgi/man.cgi?query=sysexits&apropos=0&sektion=0&manpath=FreeBSD+4.3-RELEASE&format=html
 	int ret = EXIT_SUCCESS;
+
 	lexer_init(source);
-	//	parser_init();
+	lexer_scan();
+
+	parser_init();
+	parser_scan();
 	return ret;
 }
 
 int interpret_file(const char* path)
 {
+	debug("interpret_file");
 	debug("interpret_file: %s", path);
 
 	char* source = file_reads(path);

@@ -11,6 +11,8 @@
 
 void error(ErrorType type, const char* format, ...)
 {
+	debug("error");
+
 	va_list args;
 	va_start(args, format);
 	// TODO: Show error type with another custom color!
@@ -27,6 +29,8 @@ void error(ErrorType type, const char* format, ...)
 
 char* error_name(ErrorType type)
 {
+	debug("error_name");
+
 	switch (type)
 	{
 		case ERROR_WARNING:

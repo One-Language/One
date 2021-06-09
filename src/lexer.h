@@ -5,7 +5,9 @@
 #ifndef ONE_LEXER_H
 #define ONE_LEXER_H
 
-typedef struct
+typedef struct _token Token;
+
+typedef struct _location
 {
 	int line;
 	int column;
@@ -19,5 +21,7 @@ typedef struct
 } Lexer;
 
 void lexer_init(char* source);
+
+Token lexer_scan();
 
 #endif //ONE_LEXER_H

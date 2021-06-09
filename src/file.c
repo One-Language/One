@@ -11,6 +11,7 @@
 
 char* file_reads(const char* path)
 {
+	debug("file_reads");
 	debug("file_reads: %s", path);
 
 	FILE* file = fopen(path, "rb");
@@ -22,6 +23,7 @@ char* file_reads(const char* path)
 
 	fseek(file, 0L, SEEK_END);
 	size_t fileSize = ftell(file);
+	debug("file_reads: fileSize is %zu", fileSize);
 	rewind(file);
 
 	char* buffer = (char*)malloc(fileSize + 1);
@@ -31,6 +33,7 @@ char* file_reads(const char* path)
 		exit(74);
 	}
 	size_t bytesRead = fread(buffer, sizeof(char), fileSize, file);
+	debug("file_reads: bytesRead is %zu", bytesRead);
 	if (bytesRead < fileSize)
 	{
 		error_panic("Could not read the \"%s\".\n", path);
