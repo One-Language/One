@@ -28,7 +28,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
-[عربي](README_ar.md)
+[عربي](README_AR.md)
 
 </div>
 
