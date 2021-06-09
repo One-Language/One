@@ -428,3 +428,4 @@ header {
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 يتبع هذا المشروع [جميع-المساهمين](https://github.com/all-contributors/all-contributors) مساهمات من أي نوع مرحب بها! 🩱 🕐 1️⃣ 🔂
+</div>
