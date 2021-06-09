@@ -103,7 +103,7 @@ If/else statements are basically that. You will learn more about them in future 
 
 Let's assume you are writing a program but you need to use a part of your program multiple times. It would be boring and tiring to write the same lines over and over again, right? If you agree with me, you may want to learn how to use functions.
 
-Functions are basically a little piece of code that you use over and over again in your program. Instead of writing the same lines everytime you need a feature that you've created, you can define a function and simply use it again and again. It's easier and quicker.
+Functions are basically a little piece of code that you use over and over again in your program. Instead of writing the same lines every time you need a feature that you've created, you can define a function and simply use it again and again. It's easier and quicker.
 
 Let's remember our translator analogy.
 
