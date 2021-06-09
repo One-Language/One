@@ -32,7 +32,7 @@
 
 <a href="https://onelang.org">One</a>'a hoşgeldiniz!</br>
 One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri sayesinde güvenilebilir ve verimli yazılımlar yaratmayı kolaylaştıran bir <b>sistem programlama dilidir.</b>
- <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> ve diğer katılımcılar tarafından geliştirilmektedir. 
+<a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> ve diğer katılımcılar tarafından geliştirilmektedir.
 
 ### One dilinin Compiler'ı birkaç ay içerisinde yayınlanacaktır
 
