@@ -2,7 +2,6 @@
 // Created by max on 6/9/21.
 //
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>

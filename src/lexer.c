@@ -26,5 +26,4 @@ void lexer_init(char* source)
 
 Token lexer_scan()
 {
-
 }

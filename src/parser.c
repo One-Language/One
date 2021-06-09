@@ -12,11 +12,9 @@
 void parser_init()
 {
 	debug("parser_init");
-
 }
 
 void parser_scan()
 {
 	debug("parser_scan");
-
 }

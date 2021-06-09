@@ -48,4 +48,3 @@ add_executable(One
         src/file.h
 
         )
-

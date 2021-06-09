@@ -12,7 +12,6 @@
 
 #include "token.h"
 
-
 // Global variable(s)
 extern Lexer lexer;
 

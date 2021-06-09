@@ -16,7 +16,6 @@
 void argument_init(Arguments *args)
 {
 	debug("argument_init");
-
 }
 
 ArgumentType argument_type(char *value)
@@ -85,7 +84,7 @@ void argument_parse(int argc, char **argv, char **env, Arguments *args)
 	args->input_files = (char **)files.data;
 	args->input_files_count = files.count;
 
-//	array_free(&files);
+	//	array_free(&files);
 }
 
 void argument_free(Arguments *args)
