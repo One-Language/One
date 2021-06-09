@@ -2,7 +2,7 @@
 
 ## Why do you need to use programming languages?
 
-In our world, almost everything is being done with or by computers, everyone knows that. But, what everyone doesn't know is that everyone can use programming languages. You don't have to be a cool Holywood hacker or an 250 IQ IT guy. Computers (softwares) can help you whoever you are. If you are a designer, you would love to have a software that tells you what keywords you can use, wouldn't you? Or let's assume that you are a translator. You are living with the fear of being unemployed due to computers and translation AIs. Why are you waiting for them to steal your job? Use them to improve your job.
+In our world, almost everything is being done with or by computers, everyone knows that. But, what everyone doesn't know is that everyone can use programming languages. You don't have to be a cool Holywood hacker or an 250 IQ IT guy. Computers (software) can help you whoever you are. If you are a designer, you would love to have a software that tells you what keywords you can use, wouldn't you? Or let's assume that you are a translator. You are living with the fear of being unemployed due to computers and translation AIs. Why are you waiting for them to steal your job? Use them to improve your job.
 
 ## Why should you learn them?
 
