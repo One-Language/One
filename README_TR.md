@@ -22,17 +22,19 @@
 [![Discord][discordbadge]][discordurl]
 [![Twitter][twitterurl]][twitterbadge]
 
+<!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
 [![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
-
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+<!-- prettier-ignore-end -->
+
 [İngilizce](README.md)
+
 </div>
 
 <a href="https://onelang.org">One</a>'a hoşgeldiniz!</br>
 One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri sayesinde güvenilebilir ve verimli yazılımlar yaratmayı kolaylaştıran bir <b>sistem programlama dilidir.</b>
- <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> ve diğer katılımcılar tarafından geliştirilmektedir. 
+<a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> ve diğer katılımcılar tarafından geliştirilmektedir.
 
 ### One dilinin Compiler'ı birkaç ay içerisinde yayınlanacaktır
 
@@ -79,7 +81,7 @@ One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri say
 
 <h2 id="RoadMap">➤ Yol Haritası</h2>
 
- `One` dilinin kurallarını [burada](grammar.BNF) bulabilirsiniz.
+`One` dilinin kurallarını [burada](grammar.BNF) bulabilirsiniz.
 
 - [x] Lexer/Parser (Mostly)
 - [x] AST Tree

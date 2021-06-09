@@ -1,6 +1,6 @@
-const { help, helpWrong } = require("./commands/help");
-const { version } = require("./commands/version");
-const { run } = require("./commands/run");
+const { help, helpWrong } = require('./commands/help');
+const { version } = require('./commands/version');
+const { run } = require('./commands/run');
 
 /*
  * main
@@ -33,10 +33,10 @@ const removeFirst = (args) => {
  * note: args.length is more then 0
  */
 const parseCLI = (args) => {
-  if (args[0] === "run") {
+  if (args[0] === 'run') {
     removeFirst(args);
     run(args);
-  } else if (args[0] === "version") {
+  } else if (args[0] === 'version') {
     removeFirst(args);
     version(args);
   } else {

@@ -1,5 +1,5 @@
-const fs = require("mz/fs");
-const path = require("path");
+const fs = require('mz/fs');
+const path = require('path');
 
 const fileExists = (filepath) => {
   return fs.existsSync(filepath);

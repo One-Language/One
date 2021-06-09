@@ -1,5 +1,5 @@
 const versionNumber = 100;
-const versionString = "1.0.0";
+const versionString = '1.0.0';
 
 /*
  * version

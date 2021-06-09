@@ -1,8 +1,8 @@
-const { genIf } = require("./commands/if");
-const { genWhile } = require("./commands/while");
-const { genFor } = require("./commands/for");
-const { genFunction } = require("./commands/function");
-const { genVariableDefine } = require("./commands/variable-define");
+const { genIf } = require('./commands/if');
+const { genWhile } = require('./commands/while');
+const { genFor } = require('./commands/for');
+const { genFunction } = require('./commands/function');
+const { genVariableDefine } = require('./commands/variable-define');
 // const { parseAst } = require("./vm");
 
 // function generateJSExpression(expression) {
