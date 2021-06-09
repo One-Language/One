@@ -6,7 +6,7 @@ In our world, almost everything is being done with or by computers, everyone kno
 
 ## Why should you learn them?
 
-I believe we have aggreed that we will not let the computers have our jobs but we will use them for us. So, how are we going to do that? Are we going to spend hundreds of dollars for every software and script we need? Are we going to hire a programmer for ourselves? No, you should learn how to write and use programs yourself.
+I believe we have agreed that we will not let the computers have our jobs but we will use them for us. So, how are we going to do that? Are we going to spend hundreds of dollars for every software and script we need? Are we going to hire a programmer for ourselves? No, you should learn how to write and use programs yourself.
 
 Don't be afraid, it is not hard. It's actually piece of cake. Also, you have an aim to reach. This will make things even easier for you. Who knows, you can be a programmer yourself one day. Just start now, and the rest will come.
 
