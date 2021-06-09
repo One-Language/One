@@ -1,10 +1,10 @@
-global.emits = "";
+global.emits = '';
 
 /*
  * emit
  */
 const emit = (source) => {
-  emits += source + "\n";
+  emits += source + '\n';
 };
 
 module.exports = {

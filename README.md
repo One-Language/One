@@ -22,10 +22,14 @@
 [![Discord][discordbadge]][discordurl]
 [![Twitter][twitterurl]][twitterbadge]
 
+<!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+<!-- prettier-ignore-end -->
+
 [Türkçe](README_TR.md)
+
 </div>
 
 Welcome to <a href="https://onelang.org">One</a>!</br>
