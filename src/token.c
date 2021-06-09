@@ -220,8 +220,12 @@ char* token_name(TokenType type)
 
 		case TOKEN_OPERATOR_PLUS:
 			return "+";
+		case TOKEN_OPERATOR_PLUSPLUS:
+			return "++";
 		case TOKEN_OPERATOR_MINUS:
 			return "-";
+		case TOKEN_OPERATOR_MINUSMINUS:
+			return "--";
 		case TOKEN_OPERATOR_STAR:
 			return "*";
 		case TOKEN_OPERATOR_POWER:
