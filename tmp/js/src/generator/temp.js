@@ -8,5 +8,5 @@ const emit = (source) => {
 };
 
 module.exports = {
-  emit,
+  emit
 };
