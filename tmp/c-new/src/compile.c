@@ -63,11 +63,11 @@ int compileFile(char *filename, ErrorsContainer *errors)
 
 int compile(Args *args, ErrorsContainer *errors)
 {
-	if (args->input_file_count == 0)
+	if (args->input_files_count == 0)
 		return EXIT_FAILURE;
 
 	int res = EXIT_SUCCESS;
-	for (int i = 0; i < args->input_file_count; i++)
+	for (int i = 0; i < args->input_files_count; i++)
 	{
 		printf("-->%s\n", args->input_files[i]);
 		int res_now = compileFile(args->input_files[i], errors);

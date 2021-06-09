@@ -1,58 +1,28 @@
-/**
- The One Programming Language
+//
+// Created by max on 6/9/21.
+//
 
- File: error.h
-  _        _
- / \ |\ | |_    Max Base
- \_/ | \| |_    Copyright 2021
-
- **/
-
-#ifndef _ERROR_H_
-#define _ERROR_H_
-
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-typedef struct _location Location;
-typedef struct _token Token;
+#ifndef ONE_ERROR_H
+#define ONE_ERROR_H
 
 typedef enum
 {
-	ERROR,
-	WARNING,
-	NOTE,
-} ErrorLevel;
+	ERROR_WARNING,
+	ERROR_PANIC,
+	ERROR_TOKEN,
+	ERROR_PARSER,
+} ErrorType;
 
-typedef struct _error
-{
-	char *filename;
-	char *message;
-	Location location;
-	ErrorLevel level;
-} Error;
+static void error(ErrorType type, const char* format, ...);
 
-typedef struct _errors
-{
-	int error_count;
-	int error_capacity;
-	Error *errors;
-} ErrorsContainer;
+static char* error_name(ErrorType type);
 
-void ErrorsInit(ErrorsContainer *);
+#define error_panic(format, ...) error(ERROR_PANIC, format, __VA_ARGS__)
 
-void ErrorsPrint(FILE *, Error *);
+#define error_warning(format, ...) error(ERROR_WARNING, format, __VA_ARGS__)
 
-void ErrorsPrints(FILE *, ErrorsContainer *);
+#define error_token(format, ...) error(ERROR_TOKEN, format, __VA_ARGS__)
 
-void ErrorsFree(ErrorsContainer *);
+#define error_parser(format, ...) error(ERROR_PARSER, format, __VA_ARGS__)
 
-void ErrorsAdd(ErrorsContainer *, ErrorLevel, Location, char *);
-
-void error(char *);
-
-char *ErrorLevelName(ErrorLevel);
-
-#endif
+#endif //ONE_ERROR_H

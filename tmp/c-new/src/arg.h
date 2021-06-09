@@ -25,7 +25,7 @@ typedef struct _args
 	bool debug;
 
 	char **input_files;
-	unsigned int input_file_count;
+	unsigned int input_files_count;
 
 	int argc;
 	char **argv;

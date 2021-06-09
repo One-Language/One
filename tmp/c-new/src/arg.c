@@ -53,7 +53,7 @@ void ArgsParse(int argc, char **argv, char **env, Args *args, ErrorsContainer *e
 		}
 	}
 
-	args->input_file_count = files.count;
+	args->input_files_count = files.count;
 	args->input_files = (char **)files.data;
 }
 
@@ -65,7 +65,7 @@ void ArgsFree(Args *args)
 
 	//     free input_files
 	//     TODO
-	//    for (int i = 0; i < args->input_file_count; i++) {
+	//    for (int i = 0; i < args->input_files_count; i++) {
 	//        printf("free %d\n", i);
 	//        free(args->input_files[i]);
 	//    }

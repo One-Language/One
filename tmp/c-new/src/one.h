@@ -8,9 +8,9 @@
 
  **/
 
-#ifndef ONE_ONE_H
-#define ONE_ONE_H
+#ifndef _ONE_H_
+#define _ONE_H_
 
-#define ONE_VERSION "1.0.0"
+#define ONE_VERSION "0.1.0"
 
-#endif //ONE_ONE_H
+#endif

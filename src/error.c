@@ -1,80 +1,43 @@
-/**
- The One Programming Language
+//
+// Created by max on 6/9/21.
+//
 
- File: error.c
-  _        _
- / \ |\ | |_    Max Base
- \_/ | \| |_    Copyright 2021
 
- **/
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
 
-#include "token.h"
 #include "error.h"
 
-void ErrorsInit(ErrorsContainer *errors)
+static void error(ErrorType type, const char* format, ...)
 {
-	errors->error_count = 0;
-	errors->error_capacity = 10;
+	va_list args;
+	va_start(args, format);
+	// TODO: Show error type with another custom color!
+	fprintf(stderr, error_name(type));
+	vfprintf(stderr, format, args);
+	va_end(args);
+	fputs("\n", stderr);
+
+	if (type != ERROR_WARNING)
+	{
+		exit(1);
+	}
 }
 
-char *ErrorLevelName(ErrorLevel level)
+static char* error_name(ErrorType type)
 {
-	switch (level)
+	switch (type)
 	{
-		case ERROR:
-			return "ERROR";
-			break;
-		case WARNING:
+		case ERROR_WARNING:
 			return "WARNING";
-			break;
-		case NOTE:
-			return "NOTE";
-			break;
+		case ERROR_PANIC:
+			return "ERROR";
+		case ERROR_TOKEN:
+			return "TOKEN ERROR";
+		case ERROR_PARSER:
+			return "PARSER ERROR";
 		default:
-			return "UNKNOWN";
+			return "UNKNOWN ERROR";
 	}
-}
-
-void ErrorsPrint(FILE *f, Error *error)
-{
-	char *message;
-	Location position;
-	ErrorLevel level;
-	printf("[%s] %s", ErrorLevelName(error->level), error->message);
-
-	if (error->location.line != 0 && error->location.column != 0)
-	{
-		printf(" at line %d:%d", error->location.line, error->location.column);
-	}
-
-	if (error->filename != NULL)
-	{
-		printf(" file %s", error->filename);
-	}
-
-	printf("\n");
-}
-
-void ErrorsPrints(FILE *f, ErrorsContainer *errors)
-{
-	for (int i = 0; i < errors->error_count; i++)
-	{
-		ErrorsPrint(f, &errors->errors[i]);
-	}
-}
-
-void ErrorsAdd(ErrorsContainer *errors, ErrorLevel level, Location location, char *message)
-{
-	//    error_count;
-	//    error_capacity;
-}
-
-void ErrorsFree(ErrorsContainer *errors)
-{
-}
-
-void error(char *message)
-{
-	// TODO: this function will remove and ErrorsAdd() will be use!
-	printf("[Error]: %s", message);
 }
