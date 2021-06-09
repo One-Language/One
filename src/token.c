@@ -269,6 +269,34 @@ char* token_name(TokenType type)
 		case TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT:
 			return ">>=";
 
+		case TOKEN_OPERATOR_BRACKET_ROUND_LEFT:
+			return "(";
+		case TOKEN_OPERATOR_BRACKET_ROUND_RIGHT:
+			return ")";
+
+		case TOKEN_OPERATOR_BRACKET_SQUARE_LEFT:
+			return "[";
+		case TOKEN_OPERATOR_BRACKET_SQUARE_RIGHT:
+			return "]";
+
+		case TOKEN_OPERATOR_BRACKET_CURLY_LEFT:
+			return "{";
+		case TOKEN_OPERATOR_BRACKET_CURLY_RIGHT:
+			return "}";
+
+		case TOKEN_OPERATOR_COMMA:
+			return ",";
+		case TOKEN_OPERATOR_COLON:
+			return ":";
+		case TOKEN_OPERATOR_COLONCOLON:
+			return "::";
+		case TOKEN_OPERATOR_DOT:
+			return ".";
+		case TOKEN_OPERATOR_DOTDOT:
+			return "..";
+		case TOKEN_OPERATOR_DOTDOTDOT:
+			return "...";
+
 		case TOKEN_IF:
 			return "IF";
 		case TOKEN_ELSE:

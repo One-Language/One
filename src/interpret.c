@@ -22,10 +22,18 @@ int interpret_source(char* source)
 	int ret = EXIT_SUCCESS;
 
 	lexer_init(source);
-	lexer_scan();
+//	lexer_scan();
+
+	Token t;
+	for(;;) {
+		t = lexer_scan();
+		debug("print_token: %s", token_name(t.type));
+		if(t.type == TOKEN_EOF) break;
+	}
 
 	parser_init();
 	parser_scan();
+
 	return ret;
 }
 
