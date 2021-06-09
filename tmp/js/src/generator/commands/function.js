@@ -1,5 +1,5 @@
-const { emit } = require("../temp");
-const { genStatements } = require("../statements");
+const { emit } = require('../temp');
+const { genStatements } = require('../statements');
 
 const genFunction = (command) => {
   console.log(command);

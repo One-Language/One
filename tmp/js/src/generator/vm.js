@@ -1,8 +1,8 @@
-const { fileSave } = require("../cli/io/file");
-const generator = require("../generator/");
+const { fileSave } = require('../cli/io/file');
+const generator = require('../generator/');
 
-const tempFilename = "input.c";
-const astFilename = "input.ast";
+const tempFilename = 'input.c';
+const astFilename = 'input.ast';
 
 const astToStr = (ast) => {
   return JSON.stringify(ast, null, 2);

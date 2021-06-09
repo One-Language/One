@@ -1,7 +1,7 @@
-const { emit } = require("../temp");
+const { emit } = require('../temp');
 
 const genFor = () => {
-  console.log("for");
+  console.log('for');
 };
 
 module.exports = {
