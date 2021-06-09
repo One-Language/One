@@ -7,11 +7,17 @@
 
 typedef struct
 {
+	int line;
+	int column;
+} Location;
+
+typedef struct
+{
 	const char* start;
 	const char* current;
 	Location loc;
 } Lexer;
 
-static void lexer_init(char* source);
+void lexer_init(char* source);
 
 #endif //ONE_LEXER_H

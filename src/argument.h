@@ -42,7 +42,7 @@ void argument_help(FILE *file, Arguments *args);
 
 void argument_version(FILE *file, Arguments *args);
 
-int argument_run_files(Arguments *args);
+int argument_run_files(Arguments* args);
 
 int argument_run(Arguments *args);
 

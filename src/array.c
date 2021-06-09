@@ -2,18 +2,19 @@
 // Created by max on 6/9/21.
 //
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "array.h"
 
-static void array_init(Array *list)
+void array_init(Array *list)
 {
 	list->count = 0;
 	list->size = 0;
 	list->data = NULL;
 }
 
-static void array_push(Array *list, void *item)
+void array_push(Array *list, void *item)
 {
 	if (list->count == list->size)
 	{
@@ -25,14 +26,14 @@ static void array_push(Array *list, void *item)
 	list->count++;
 }
 
-static void *array_pop(Array *list)
+void *array_pop(Array *list)
 {
 	list->count--;
 	void *ret = list->data[list->count];
 	return ret;
 }
 
-static void array_free(Array *list)
+void array_free(Array *list)
 {
 	free(list->data); // it's void**
 	list->count = 0;

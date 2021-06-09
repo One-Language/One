@@ -13,9 +13,9 @@ typedef enum
 	ERROR_PARSER,
 } ErrorType;
 
-static void error(ErrorType type, const char* format, ...);
+void error(ErrorType type, const char* format, ...);
 
-static char* error_name(ErrorType type);
+char* error_name(ErrorType type);
 
 #define error_panic(format, ...) error(ERROR_PANIC, format, __VA_ARGS__)
 

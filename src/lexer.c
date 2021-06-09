@@ -7,7 +7,7 @@
 // Global variable(s)
 Lexer lexer;
 
-static void lexer_init(char* source) {
+void lexer_init(char* source) {
 	lexer.start = source;
 	lexer.current = source;
 	lexer.loc.line=1;

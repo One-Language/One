@@ -5,6 +5,6 @@
 #ifndef ONE_REPL_H
 #define ONE_REPL_H
 
-static void repl();
+static int repl();
 
 #endif //ONE_REPL_H

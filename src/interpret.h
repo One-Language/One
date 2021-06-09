@@ -5,10 +5,8 @@
 #ifndef ONE_INTERPRET_H
 #define ONE_INTERPRET_H
 
-static char* file_reads(const char* path);
+int interpret_file(const char* path);
 
-static int interpret_file(const char* path);
-
-static int interpret_source(const char* source);
+int interpret_source(char* source);
 
 #endif //ONE_INTERPRET_H

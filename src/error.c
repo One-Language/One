@@ -9,7 +9,7 @@
 
 #include "error.h"
 
-static void error(ErrorType type, const char* format, ...)
+void error(ErrorType type, const char* format, ...)
 {
 	va_list args;
 	va_start(args, format);
@@ -25,7 +25,7 @@ static void error(ErrorType type, const char* format, ...)
 	}
 }
 
-static char* error_name(ErrorType type)
+char* error_name(ErrorType type)
 {
 	switch (type)
 	{

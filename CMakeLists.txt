@@ -4,37 +4,52 @@ project(One C)
 set(CMAKE_C_STANDARD 11)
 
 include_directories(src)
+
+# enable_testing()
+# add_subdirectory(test)
 include_directories(test)
 
-add_executable(One
-        src/one.c
+set(PROJECT_HEADERS
         src/one.h
 
-        src/repl.c
         src/repl.h
 
-        src/token.c
         src/token.h
 
-        src/lexer.c
         src/lexer.h
 
-        src/parser.c
         src/parser.h
 
-        src/array.c
         src/array.h
 
-        src/file.c
         src/file.h
 
-        src/argument.c
         src/argument.h
 
-        src/interpret.c
         src/interpret.h
 
-        src/error.c
         src/error.h
-
         )
+
+set(PROJECT_SOURCES
+        src/one.c
+
+        src/repl.c
+
+        src/token.c
+
+        src/lexer.c
+
+        src/parser.c
+
+        src/array.c
+
+        src/file.c
+
+        src/argument.c
+
+        src/interpret.c
+
+        src/error.c)
+
+add_executable(One ${PROJECT_SOURCES} ${PROJECT_HEADERS})

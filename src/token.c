@@ -7,49 +7,54 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "lexer.h"
+
 #include "token.h"
 
-static bool token_is_alpha(char c)
+// Global variable(s)
+extern Lexer lexer;
+
+bool token_is_alpha(char c)
 {
 	return (c >= 'a' && c <= 'z') ||
-		 (c >= 'A' && c <= 'Z') ||
-		 c == '_';
+		   (c >= 'A' && c <= 'Z') ||
+		   c == '_';
 }
 
-static bool token_is_digit(char c)
+bool token_is_digit(char c)
 {
 	return c >= '0' && c <= '9';
 }
 
-static bool token_is_end()
+bool token_is_end()
 {
 	return *lexer.current == '\0';
 }
 
-static char token_advance()
+char token_advance()
 {
 	lexer.current++;
 	return lexer.current[-1];
 }
 
-static char token_peek()
+char token_peek()
 {
 	return *lexer.current;
 }
 
-static char token_peek_next()
+char token_peek_next()
 {
 	if (token_is_end()) return '\0';
 	return lexer.current[1];
 }
 
-static char token_peek_prev()
+char token_peek_prev()
 {
 	if (token_is_end()) return '\0';
 	return lexer.current[-1]; // TODO: Review
 }
 
-static bool token_match(char expected)
+bool token_match(char expected)
 {
 	if (token_is_end()) return false;
 	if (*lexer.current != expected) return false;
@@ -57,18 +62,18 @@ static bool token_match(char expected)
 	return true;
 }
 
-static Token token_make(TokenType type)
+Token token_make(TokenType type)
 {
 	Token t;
 	t.type = type;
 	t.start = lexer.start;
 	t.length = (int)(lexer.current - lexer.start);
-	t.loc.line = lexer.line;
-	t.loc.column = lexer.column;
+	t.loc.line = lexer.loc.line;
+	t.loc.column = lexer.loc.column;
 	return t;
 }
 
-static Token token_error(const char* message)
+Token token_error(const char* message)
 {
 	Token t;
 	t.type = TOKEN_ERROR;
@@ -79,7 +84,7 @@ static Token token_error(const char* message)
 	return t;
 }
 
-static void token_skip_comment_inline()
+void token_skip_comment_inline()
 {
 	if (token_peek() == '/' && token_peek_next() == '/')
 	{
@@ -87,7 +92,7 @@ static void token_skip_comment_inline()
 	}
 }
 
-static void token_skip_comment_multiline()
+void token_skip_comment_multiline()
 {
 	if (token_peek() == '/' && token_peek_next() == '*')
 	{
@@ -103,11 +108,12 @@ static void token_skip_comment_multiline()
 	}
 }
 
-static void token_skip_whitespace()
+void token_skip_whitespace()
 {
+	char c, c2;
 	for (;;)
 	{
-		char c = token_peek();
+		c = token_peek();
 		switch (c)
 		{
 			case ' ':
@@ -120,7 +126,7 @@ static void token_skip_whitespace()
 				token_advance();
 				break;
 			case '/':
-				char c2 = token_peek_next();
+				c2 = token_peek_next();
 				if (c2 == '/')
 				{
 					token_skip_comment_inline();
@@ -137,5 +143,117 @@ static void token_skip_whitespace()
 			default:
 				return;
 		}
+	}
+}
+
+char* token_name(TokenType type)
+{
+	switch (type)
+	{
+		case TOKEN_EOF:
+			return "EOF";
+		case TOKEN_ERROR:
+			return "Error";
+
+		case TOKEN_VALUE_IDENTIFIER:
+			return "value_identifier";
+
+		case TOKEN_VALUE_NUMBER:
+			return "value_number";
+		case TOKEN_VALUE_STRING:
+			return "value_string";
+		case TOKEN_VALUE_CHAR:
+			return "value_char";
+
+		case TOKEN_VALUE_BOOL_TRUE:
+			return "value_true";
+		case TOKEN_VALUE_BOOL_FALSE:
+			return "value_false";
+
+		case TOKEN_OPERATOR_GREATER:
+			return ">";
+		case TOKEN_OPERATOR_GREATER_EQUAL:
+			return "<=";
+		case TOKEN_OPERATOR_LESS:
+			return "<";
+		case TOKEN_OPERATOR_LESS_EQUAL:
+			return "<=";
+
+		case TOKEN_OPERATOR_PLUS:
+			return "+";
+		case TOKEN_OPERATOR_MINUS:
+			return "-";
+		case TOKEN_OPERATOR_STAR:
+			return "*";
+		case TOKEN_OPERATOR_POWER:
+			return "**";
+		case TOKEN_OPERATOR_SLASH:
+			return "/";
+		case TOKEN_OPERATOR_SLASH_INT:
+			return "//";
+
+		case TOKEN_OPERATOR_REMAINDER:
+			return "%";
+
+		case TOKEN_OPERATOR_SHIFT_LEFT:
+			return "<<";
+		case TOKEN_OPERATOR_SHIFT_RIGHT:
+			return ">>";
+
+		case TOKEN_OPERATOR_AND:
+			return "&&";
+		case TOKEN_OPERATOR_BITWISE_AND:
+			return "&";
+
+		case TOKEN_OPERATOR_OR:
+			return "||";
+		case TOKEN_OPERATOR_BITWISE_OR:
+			return "|";
+
+		case TOKEN_OPERATOR_BITWISE_XOR:
+			return "^";
+
+		case TOKEN_OPERATOR_EQUAL_PLUS:
+			return "+=";
+		case TOKEN_OPERATOR_EQUAL_MINUS:
+			return "-=";
+		case TOKEN_OPERATOR_EQUAL_STAR:
+			return "*=";
+		case TOKEN_OPERATOR_EQUAL_POWER:
+			return "**=";
+		case TOKEN_OPERATOR_EQUAL_SLASH:
+			return "/=";
+		case TOKEN_OPERATOR_EQUAL_SLASH_INT:
+			return "//=";
+		case TOKEN_OPERATOR_EQUAL_SHIFT_LEFT:
+			return "<<=";
+		case TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT:
+			return ">>=";
+
+		case TOKEN_IF:
+			return "IF";
+		case TOKEN_ELSE:
+			return "ELSE";
+		case TOKEN_WHILE:
+			return "WHILE";
+		case TOKEN_FOR:
+			return "FOR";
+		case TOKEN_RET:
+			return "RET";
+		case TOKEN_FN:
+			return "FN";
+		case TOKEN_CONST:
+			return "CONST";
+		case TOKEN_FINAL:
+			return "FINAL";
+
+			//	case TOKEN_CLASS:
+			//	case TOKEN_THIS:
+			//	case TOKEN_SUPER:
+
+		case TOKEN_SEMICOLON:
+			return "SEMICOLON";
+		default:
+			return "UNKNOWN";
 	}
 }

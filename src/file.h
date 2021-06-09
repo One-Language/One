@@ -5,6 +5,6 @@
 #ifndef ONE_FILE_H
 #define ONE_FILE_H
 
-static char* file_reads(const char* path);
+char* file_reads(const char* path);
 
 #endif //ONE_FILE_H

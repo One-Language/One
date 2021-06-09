@@ -9,7 +9,7 @@
 
 #include "file.h"
 
-static char* file_reads(const char* path)
+char* file_reads(const char* path)
 {
 	FILE* file = fopen(path, "rb");
 	if (file == NULL)

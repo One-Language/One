@@ -13,12 +13,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct
-{
-	int line;
-	int column;
-} Location;
-
 typedef enum
 {
 	TOKEN_EOF,
@@ -69,16 +63,15 @@ typedef enum
 	TOKEN_IF, // if
 	TOKEN_ELSE, // else
 	TOKEN_WHILE, // while
-	TOKEN_FOR, // while
 	TOKEN_FOR, // for
-	TOKEN_RETURN, // ret
+	TOKEN_RET, // ret
 	TOKEN_FN, // fn
 	TOKEN_CONST, // const
 	TOKEN_FINAL, // final
 
-//	TOKEN_CLASS, // class
-//	TOKEN_THIS, // this
-//	TOKEN_SUPER, // super
+	//	TOKEN_CLASS, // class
+	//	TOKEN_THIS, // this
+	//	TOKEN_SUPER, // super
 
 	TOKEN_SEMICOLON, // ;
 
@@ -92,30 +85,30 @@ typedef struct
 	Location loc;
 } Token;
 
-static bool token_is_alpha(char c);
+bool token_is_alpha(char c);
 
-static bool token_is_digit(char c);
+bool token_is_digit(char c);
 
-static bool token_is_end();
+bool token_is_end();
 
-static char token_advance();
+char token_advance();
 
-static char token_peek();
+char token_peek();
 
-static char token_peek_next();
+char token_peek_next();
 
-static char token_peek_prev();
+char token_peek_prev();
 
-static bool token_match(char expected);
+bool token_match(char expected);
 
-static Token token_make(TokenType type);
+Token token_make(TokenType type);
 
-static Token token_error(const char* message);
+Token token_error(const char* message);
 
-static void token_skip_comment_inline();
+void token_skip_comment_inline();
 
-static void token_skip_comment_multiline();
+void token_skip_comment_multiline();
 
-static void token_skip_whitespace();
+void token_skip_whitespace();
 
 #endif //ONE_TOKEN_H

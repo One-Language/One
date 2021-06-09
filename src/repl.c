@@ -3,14 +3,17 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "interpret.h"
 
 #include "repl.h"
 
-static void repl()
+static int repl()
 {
+	int ret;
 	char line[2048];
+
 	for (;;)
 	{
 		printf("> ");
@@ -19,6 +22,8 @@ static void repl()
 			printf("\n");
 			break;
 		}
-		interpret_source(line);
+		ret = interpret_source(line);
 	}
+
+	return ret;
 }
