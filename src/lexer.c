@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "error.h"
 
@@ -22,6 +23,31 @@ void lexer_init(char* source)
 	lexer.current = source;
 	lexer.loc.line = 1;
 	lexer.loc.column = 0;
+}
+
+TokenType lexer_check_keyword(int start, int length, const char* rest, TokenType type)
+{
+	debug("lexer_check_keyword");
+
+	if (lexer.current - lexer.start == start + length &&
+		 memcmp(lexer.start + start, rest, length) == 0)
+	{
+		return type;
+	}
+
+	return TOKEN_VALUE_IDENTIFIER;
+}
+
+TokenType lexer_identifier_type()
+{
+	debug("lexer_identifier_type");
+
+	switch (lexer.start[0])
+	{
+		case 'i':
+			return lexer_check_keyword(1, 1, "f", TOKEN_IF);
+	}
+	return TOKEN_VALUE_IDENTIFIER;
 }
 
 Token* lexer_skip_comment_inline()
@@ -64,6 +90,7 @@ Token* lexer_skip_comment_multiline()
 Token* lexer_skip_whitespace()
 {
 	debug("lexer_skip_whitespace");
+
 	Token* t;
 	char c, c2;
 	for (;;)
@@ -105,6 +132,8 @@ Token* lexer_skip_whitespace()
 
 Token* lexer_number()
 {
+	debug("lexer_number");
+
 	while (token_is_digit(token_peek()))
 		token_advance();
 
@@ -152,6 +181,25 @@ Token* lexer_string()
 	token_match('"');
 
 	return token_make(TOKEN_VALUE_STRING);
+}
+
+Token* lexer_identifier()
+{
+	debug("lexer_identifier");
+
+	char tmp_str[1024] = {};
+	size_t i = 0;
+
+	tmp_str[i++] = token_advance();
+	while (token_is_ident(token_peek()) && !token_is_end())
+	{
+		tmp_str[i++] = token_advance();
+	}
+	tmp_str[i] = '\0';
+
+	debug("lexer_identifier: print identifier %s", tmp_str);
+
+	return token_make(TOKEN_VALUE_IDENTIFIER);
 }
 
 Token* lexer_scan()
@@ -207,6 +255,14 @@ Token* lexer_scan()
 		case '<': return token_make(token_match('=') ? TOKEN_OPERATOR_LESS_EQUAL : (token_match('<') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_LEFT : TOKEN_OPERATOR_SHIFT_LEFT) : TOKEN_OPERATOR_LESS));
 
 		case ';': token_match(';'); return lexer_scan();
+
+		default:
+			if (token_is_alpha(c))
+			{ // _ [a-z] [A-Z]
+				token_recede();
+				return lexer_identifier();
+			}
+			break;
 	}
 
 	printf("==>'%c'\n", *lexer.current);

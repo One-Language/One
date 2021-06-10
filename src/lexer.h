@@ -6,6 +6,7 @@
 #define ONE_LEXER_H
 
 typedef struct _token Token;
+typedef enum _token_type TokenType;
 
 typedef struct _location
 {
@@ -37,5 +38,11 @@ void lexer_free();
 Token* lexer_skip_comment_inline();
 
 Token* lexer_skip_comment_multiline();
+
+TokenType lexer_check_keyword(int start, int length, const char* rest, TokenType type);
+
+TokenType lexer_identifier_type();
+
+Token* lexer_identifier();
 
 #endif //ONE_LEXER_H

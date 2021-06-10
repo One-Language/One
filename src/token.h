@@ -15,7 +15,7 @@
 
 typedef struct _location Location;
 
-typedef enum
+typedef enum _token_type
 {
 	TOKEN_EOF,
 	TOKEN_ERROR,
