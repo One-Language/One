@@ -57,6 +57,12 @@ void parser_start()
 
 	parser.tokens = (Token**)tokens.data;
 	parser.tokens_count = tokens.count;
+
+//	for (size_t i = 0; i < tokens.count; i++)
+//	{
+//		free(tokens.data[i]);
+//	}
+
 	parser_check();
 }
 
