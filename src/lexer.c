@@ -229,18 +229,6 @@ Token* lexer_scan()
 
 	if (token_is_end()) return token_make(TOKEN_EOF);
 
-	//	printf("-->%c\n", *lexer.current);
-	//	char c1 = token_advance();
-	//	printf("-->%c\n", c1);
-	//	printf("-->%c\n", *lexer.current);
-	//	printf("token_peek_next is: %c\n", token_peek_next());
-	//	printf("token_peek_prev is: %c\n", token_peek_prev());
-	//	printf("-->%c\n", *lexer.current);
-	//
-	//	exit(1);
-	//	lexer.current++;
-	//	return token_error("");
-
 	char c = token_advance();
 	if (token_is_digit(c)) return lexer_number();
 	if (c == '"') return lexer_string();

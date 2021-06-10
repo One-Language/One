@@ -58,11 +58,6 @@ void parser_start()
 	parser.tokens = (Token**)tokens.data;
 	parser.tokens_count = tokens.count;
 
-//	for (size_t i = 0; i < tokens.count; i++)
-//	{
-//		free(tokens.data[i]);
-//	}
-
 	parser_check();
 }
 
@@ -71,15 +66,6 @@ void parser_check()
 	debug("parser_check");
 
 	Token* t;
-
-	//	for (size_t i = 0; i < parser.tokens_count; i++)
-	//	{
-	//		t = parser.tokens[i];
-	//		debug("parser_check: print_token %d <-> %s", t->type, token_name(t->type));
-	//		if(t->type == TOKEN_ERROR) {
-	//			debug("parser_check: print_token_error %s", t->start);
-	//		}
-	//	}
 
 	while ((*parser.tokens)->type != TOKEN_EOF)
 	{
