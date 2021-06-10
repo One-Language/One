@@ -134,7 +134,7 @@ void parser_parse_fn()
 
 	parser_parse_block();
 
-	check("Define function = %s", ident->value);
+	debug_parser("Define function = %s", ident->value);
 }
 
 void parser_parse_block()
@@ -173,7 +173,7 @@ void parser_parse_package()
 		return;
 	}
 
-	check("SET PACKAGE = \"%s\"", t->value);
+	debug_parser("SET PACKAGE = \"%s\"", t->value);
 }
 
 bool parser_expect(TokenType expected)

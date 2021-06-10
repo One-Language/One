@@ -31,13 +31,22 @@ typedef enum
 #define BOLDCYAN "\033[1m\033[36m" /* Bold Cyan */
 #define BOLDWHITE "\033[1m\033[37m" /* Bold White */
 
-#define check(format, args...) \
-	printf(GREEN "Check: " format "\n" RESET, ##args);
+//#define check(format, args...) \
+//	printf(GREEN "Check: " format "\n" RESET, ##args);
 
 //#define check(format, args...)
 
 #define debug(format, args...) \
+	printf(WHITE "Debug: " format "\n" RESET, ##args);
+
+#define debug_token(format, args...) \
 	printf(YELLOW "Debug: " format "\n" RESET, ##args);
+
+#define debug_lexer(format, args...) \
+	printf(CYAN "Debug: " format "\n" RESET, ##args);
+
+#define debug_parser(format, args...) \
+	printf(GREEN "Debug: " format "\n" RESET, ##args);
 
 //#define debug(format, args...)
 

@@ -16,8 +16,8 @@ Lexer lexer;
 
 void lexer_init(char* source)
 {
-	debug("lexer_init");
-	debug("lexer_init: source is %s", source);
+	debug_lexer("lexer_init");
+	debug_lexer("lexer_init: source is %s", source);
 
 	lexer.start = source;
 	lexer.current = source;
@@ -27,7 +27,7 @@ void lexer_init(char* source)
 
 TokenType lexer_check_keyword(int start, int length, const char* rest, TokenType type)
 {
-	debug("lexer_check_keyword");
+	debug_lexer("lexer_check_keyword");
 
 	if (lexer.current - lexer.start == start + length &&
 		 memcmp(lexer.start + start, rest, length) == 0)
@@ -40,7 +40,7 @@ TokenType lexer_check_keyword(int start, int length, const char* rest, TokenType
 
 TokenType lexer_identifier_type()
 {
-	debug("lexer_identifier_type");
+	debug_lexer("lexer_identifier_type");
 
 	switch (lexer.start[0])
 	{
@@ -52,7 +52,7 @@ TokenType lexer_identifier_type()
 
 Token* lexer_skip_comment_inline()
 {
-	debug("lexer_skip_comment_inline");
+	debug_lexer("lexer_skip_comment_inline");
 
 	if (token_peek() == '/' && token_peek_next() == '/')
 	{
@@ -63,7 +63,7 @@ Token* lexer_skip_comment_inline()
 
 Token* lexer_skip_comment_multiline()
 {
-	debug("lexer_skip_comment_multiline");
+	debug_lexer("lexer_skip_comment_multiline");
 
 	if (token_match('/') && token_match('*'))
 	{
@@ -89,7 +89,7 @@ Token* lexer_skip_comment_multiline()
 
 Token* lexer_skip_whitespace()
 {
-	debug("lexer_skip_whitespace");
+	debug_lexer("lexer_skip_whitespace");
 
 	Token* t;
 	char c, c2;
@@ -132,7 +132,7 @@ Token* lexer_skip_whitespace()
 
 Token* lexer_number()
 {
-	debug("lexer_number");
+	debug_lexer("lexer_number");
 
 	char* tmp_str = malloc(60 * sizeof(char) + 1);
 	size_t i = 0;
@@ -164,7 +164,7 @@ Token* lexer_number()
 
 Token* lexer_char()
 {
-	debug("lexer_char");
+	debug_lexer("lexer_char");
 	//	char tmp_str[1024] = {};
 	char* tmp_str = malloc(1024 * sizeof(char) + 1);
 	size_t i = 0;
@@ -178,8 +178,8 @@ Token* lexer_char()
 	}
 	tmp_str[i] = '\0';
 
-	debug("lexer_char: tmp_str is '%s'", tmp_str);
-	debug("lexer_char: tmp_str utf8 length is %zu", token_utf8_string_length(tmp_str));
+	debug_lexer("lexer_char: tmp_str is '%s'", tmp_str);
+	debug_lexer("lexer_char: tmp_str utf8 length is %zu", token_utf8_string_length(tmp_str));
 
 	if (!token_match('\''))
 		return token_error("Expected ' but found another char!");
@@ -190,7 +190,7 @@ Token* lexer_char()
 
 Token* lexer_string()
 {
-	debug("lexer_string");
+	debug_lexer("lexer_string");
 
 	//	char tmp_str[1024] = {};
 	char* tmp_str = malloc(1024 * sizeof(char) + 1);
@@ -212,7 +212,7 @@ Token* lexer_string()
 
 Token* lexer_identifier()
 {
-	debug("lexer_identifier");
+	debug_lexer("lexer_identifier");
 
 	//	char tmp_str[1024] = {};
 	char* tmp_str = malloc(1024 * sizeof(char) + 1);
@@ -225,8 +225,8 @@ Token* lexer_identifier()
 	}
 	tmp_str[ident_length] = '\0';
 
-	debug("lexer_identifier: print identifier %s", tmp_str);
-	debug("lexer_identifier: identifier length is %zu", ident_length);
+	debug_lexer("lexer_identifier: print identifier %s", tmp_str);
+	debug_lexer("lexer_identifier: identifier length is %zu", ident_length);
 
 	for (size_t j = 0;; j++)
 	{
@@ -247,7 +247,7 @@ Token* lexer_identifier()
 
 Token* lexer_scan()
 {
-	debug("lexer_scan");
+	debug_lexer("lexer_scan");
 
 	lexer.start = lexer.current;
 
@@ -300,7 +300,7 @@ Token* lexer_scan()
 			break;
 	}
 
-	debug("lexer_scan: last bad character is %c'", *lexer.current);
+	debug_lexer("lexer_scan: last bad character is %c'", *lexer.current);
 
 	char* msg = (char*)malloc(50 * sizeof(char));
 	sprintf(msg, "Unexpected '%c' character!", *lexer.current);

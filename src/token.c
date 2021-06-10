@@ -17,7 +17,7 @@ extern Lexer lexer;
 
 bool token_is_alpha(char c)
 {
-	debug("token_is_alpha");
+	debug_token("token_is_alpha");
 
 	return (c >= 'a' && c <= 'z') ||
 		 (c >= 'A' && c <= 'Z') ||
@@ -26,7 +26,7 @@ bool token_is_alpha(char c)
 
 bool token_is_ident(char c)
 {
-	debug("token_is_ident");
+	debug_token("token_is_ident");
 
 	return (c >= 'a' && c <= 'z') ||
 		 (c >= 'A' && c <= 'Z') ||
@@ -36,21 +36,21 @@ bool token_is_ident(char c)
 
 bool token_is_digit(char c)
 {
-	debug("token_is_digit");
+	debug_token("token_is_digit");
 
 	return c >= '0' && c <= '9';
 }
 
 bool token_is_end()
 {
-	debug("token_is_end");
+	debug_token("token_is_end");
 
 	return *lexer.current == '\0';
 }
 
 char token_recede()
 {
-	debug("token_recede");
+	debug_token("token_recede");
 
 	lexer.current--;
 	return lexer.current[-1];
@@ -58,7 +58,7 @@ char token_recede()
 
 char token_advance()
 {
-	debug("token_advance");
+	debug_token("token_advance");
 
 	lexer.current++;
 	return lexer.current[-1];
@@ -66,14 +66,14 @@ char token_advance()
 
 char token_peek()
 {
-	debug("token_peek");
+	debug_token("token_peek");
 
 	return *lexer.current;
 }
 
 char token_peek_next()
 {
-	debug("token_peek_next");
+	debug_token("token_peek_next");
 
 	if (token_is_end()) return '\0';
 	return lexer.current[1];
@@ -81,14 +81,14 @@ char token_peek_next()
 
 char token_peek_prev()
 {
-	debug("token_peek_prev");
+	debug_token("token_peek_prev");
 
 	return lexer.current[-1]; // TODO: Review
 }
 
 bool token_match(char expected)
 {
-	debug("token_match");
+	debug_token("token_match");
 
 	if (token_is_end()) return false;
 	if (*lexer.current != expected) return false;
@@ -98,7 +98,7 @@ bool token_match(char expected)
 
 Token* token_make_value(TokenType type, char* value)
 {
-	debug("token_make_string");
+	debug_token("token_make_string");
 
 	Token* t = malloc(sizeof(Token));
 	t->value = value;
@@ -111,21 +111,21 @@ Token* token_make_value(TokenType type, char* value)
 
 Token* token_make(TokenType type)
 {
-	debug("token_make");
+	debug_token("token_make");
 
 	return token_make_value(type, NULL);
 }
 
 Token* token_error(char* message)
 {
-	debug("token_error");
+	debug_token("token_error");
 
 	return token_make_value(TOKEN_ERROR, message);
 }
 
 char* token_name(TokenType type)
 {
-	debug("token_name");
+	debug_token("token_name");
 
 	switch (type)
 	{
