@@ -91,16 +91,16 @@ AstRoot* parser_check()
 	AstGlobalStatenent* stmt;
 	AstFunctions fns;
 
-//	Array vars;
-//	Array structs;
-//	Array enums;
-//	Array types;
+	//	Array vars;
+	//	Array structs;
+	//	Array enums;
+	//	Array types;
 
 	array_init(&fns);
-//	array_init(&vars);
-//	array_init(&structs);
-//	array_init(&enums);
-//	array_init(&types);
+	//	array_init(&vars);
+	//	array_init(&structs);
+	//	array_init(&enums);
+	//	array_init(&types);
 
 	while ((*parser.tokens)->type != TOKEN_EOF)
 	{
@@ -219,12 +219,12 @@ AstFunction* parser_parse_fn()
 {
 	debug_parser("parser_parse_fn");
 
-	AstFunction* fn;// = malloc(sizeof(AstFunction));
+	AstFunction* fn; // = malloc(sizeof(AstFunction));
 	AstBlock* block;
 	Token* ident;
 
 	AstArguments args;
-	//	array_init(&args);
+	array_init(&args);
 
 	parser_expect(TOKEN_FN);
 	ident = PARSER_CURRENT;
@@ -236,9 +236,9 @@ AstFunction* parser_parse_fn()
 	fn = ast_make_function((char*)ident->value, args, block);
 
 	//	fn->arguments = args;
-//	//	array_free(&args);
-//	fn->name = (char*)ident->value;
-//	fn->block = block;
+	// 	array_free(&args);
+	//	fn->name = (char*)ident->value;
+	//	fn->block = block;
 
 	return fn;
 }
