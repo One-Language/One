@@ -11,6 +11,8 @@
 #ifndef ONE_ONE_H
 #define ONE_ONE_H
 
+#define ONE_PACKAGE_DEFAULT "main"
+
 #define ONE_VERSION "1.0.0"
 
 #endif //ONE_ONE_H

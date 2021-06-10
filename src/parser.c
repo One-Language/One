@@ -9,6 +9,7 @@
 #include "lexer.h"
 #include "token.h"
 #include "array.h"
+#include "one.h"
 
 #include "parser.h"
 
@@ -111,7 +112,15 @@ void parser_prev()
 
 void parser_parse()
 {
+	debug_parser("parser_parse");
+
 	size_t i = parser.tokens_index;
+
+	if(parser.tokens_index == 0 && PARSER_CURRENT->type != TOKEN_PACKAGE && parser.package == NULL) {
+		info_parser("User not defined a package name, so we set it to '%s' as default.", ONE_PACKAGE_DEFAULT);
+		parser.package = ONE_PACKAGE_DEFAULT;
+	}
+
 	if (PARSER_CURRENT->type == TOKEN_PACKAGE)
 	{
 		return parser_parse_package();
@@ -177,6 +186,7 @@ void parser_parse_package()
 	}
 
 	info_parser("SET PACKAGE = \"%s\"", t->value);
+	parser.package = (const char*) t->value;
 }
 
 bool parser_expect(TokenType expected)

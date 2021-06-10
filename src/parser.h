@@ -9,7 +9,7 @@ typedef struct _token Token;
 
 typedef struct
 {
-	char* package;
+	const char* package;
 	const char* path;
 
 	Token** tokens;
