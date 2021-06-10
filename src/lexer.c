@@ -199,7 +199,21 @@ Token* lexer_identifier()
 
 	debug("lexer_identifier: print identifier %s", tmp_str);
 
-	return token_make(TOKEN_VALUE_IDENTIFIER);
+	for (i = 0;; i++)
+	{
+		if (keywords[i].type == TOKEN_VALUE_IDENTIFIER)
+		{
+			return token_make(TOKEN_VALUE_IDENTIFIER);
+			break;
+		}
+		else if (strncmp(keywords[i].identifier, tmp_str, keywords[i].length) == 0)
+		{
+			return token_make(keywords[i].type);
+			break;
+		}
+	}
+
+	//	return token_make(TOKEN_VALUE_IDENTIFIER);
 }
 
 Token* lexer_scan()
