@@ -28,7 +28,9 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
-[İngilizce](README.md)
+[İngilizce - English](README.md)
+&nbsp;
+[عربي](README_AR.md)
 
 </div>
 
