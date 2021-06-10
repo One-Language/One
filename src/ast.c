@@ -175,7 +175,7 @@ AstFunction* ast_make_function(char* name, AstArguments* args, AstBlock* block)
 	return ast;
 }
 
-AstRoot* ast_make_root(char* package, AstFunctions* funcs)
+AstRoot* ast_make_root(char* package, AstFunctions funcs)
 {
 	AstRoot* ast = malloc(sizeof(AstRoot));
 	ast->package = package;

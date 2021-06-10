@@ -7,6 +7,6 @@
 
 void tree_show(FILE* f, AstRoot* root);
 
-void tree_show_functions(FILE* f, AstFunctions* fns);
+void tree_show_functions(FILE* f, AstFunctions fns);
 
 #endif //ONE_TREE_H

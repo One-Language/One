@@ -139,7 +139,7 @@ typedef struct _ast_root
 {
 	char* package;
 
-	AstFunctions* functions;
+	AstFunctions functions;
 
 	Array* vars;
 	Array* types;
@@ -170,7 +170,7 @@ AstArgument* ast_make_argument(char* name, AstType* type);
 
 AstFunction* ast_make_function(char* name, AstArguments* args, AstBlock* block);
 
-AstRoot* ast_make_root(char* package, AstFunctions* funcs);
+AstRoot* ast_make_root(char* package, AstFunctions funcs);
 
 AstStatement* ast_make_statement(AstStatementType type);
 

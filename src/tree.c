@@ -21,33 +21,24 @@ void tree_show(FILE* f, AstRoot* root) // Question: why at here I have to put **
 {
 	debug_tree("tree_show");
 
-	AstFunctions* fns = root->functions;
+	AstFunctions fns = root->functions;
 	//	printf("==>%zu\n", (*root)->functions->count);
 
-
-
-
-
-
-
-	printf("==>%zu\n", fns->count);
+	printf("==>%d\n", fns.count);
 	printf("=============\n");
-	printf("==>%zu\n", fns->count);
-
-
+	printf("==>%d\n", fns.count);
 
 	//	print_tree(f, BOLDBLUE "- AST Tree of One Programming Language\n" RESET);
 	//	printf("==>%zu\n", (*root)->functions->count);
 	tree_show_functions(f, fns);
 }
 
-void tree_show_functions(FILE* f, AstFunctions* fns)
+void tree_show_functions(FILE* f, AstFunctions fns)
 {
-	print_tree(f, BOLDBLUE "| Functions (%d)\n", fns->count);
-	print_tree(f, BOLDBLUE "| Functions (%zu)\n", fns->count);
-	//	for (size_t i = 0; i < fns.count; i++)
-	//	{
-	//		AstFunction* fn = (AstFunction*)fns.data[i];
-	//		print_tree(f, BOLDBLUE "| Function %s\n", fn->name);
-	//	}
+	print_tree(f, BOLDBLUE "| Functions (%d)\n", fns.count);
+	for (int i = 0; i < fns.count; i++)
+	{
+		AstFunction* fn = (AstFunction*)fns.data[i];
+		print_tree(f, BOLDBLUE "| Function %s\n", fn->name);
+	}
 }

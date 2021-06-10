@@ -91,16 +91,16 @@ AstRoot* parser_check()
 	AstGlobalStatenent* stmt;
 	AstFunctions fns;
 
-	Array vars;
-	Array structs;
-	Array enums;
-	Array types;
+//	Array vars;
+//	Array structs;
+//	Array enums;
+//	Array types;
 
 	array_init(&fns);
-	array_init(&vars);
-	array_init(&structs);
-	array_init(&enums);
-	array_init(&types);
+//	array_init(&vars);
+//	array_init(&structs);
+//	array_init(&enums);
+//	array_init(&types);
 
 	while ((*parser.tokens)->type != TOKEN_EOF)
 	{
@@ -142,11 +142,10 @@ AstRoot* parser_check()
 	}
 
 	root->package = (char*)parser.package;
-
-	root->functions = &fns;
+	root->functions = fns;
 
 	printf("==>%d\n", fns.count);
-	printf("==>%d\n", root->functions->count);
+	printf("==>%d\n", root->functions.count);
 
 	//	root->vars = &vars;
 	//	root->types = &types;
@@ -305,6 +304,7 @@ AstStatement* parser_parse_statement()
 		error_parser("We face to %s as a unknown type of token at print statement!", token_name(PARSER_CURRENT->type));
 		return NULL;
 	}
+	return NULL;
 }
 
 AstStatement* parser_parse_statement_prints()
