@@ -98,7 +98,7 @@ typedef struct _ast_statement
 
 typedef struct _ast_block
 {
-	AstStatements* statements;
+	AstStatements statements;
 } AstBlock;
 
 typedef struct _ast_type
@@ -160,7 +160,7 @@ char* ast_value_name(AstValueType type);
 
 AstType* ast_make_type(int type, bool hasArray);
 
-AstBlock* ast_make_block(AstStatements* stmts);
+AstBlock* ast_make_block(AstStatements stmts);
 
 AstExpression* ast_make_expression_3(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right, AstExpression* third);
 

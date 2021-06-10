@@ -264,10 +264,11 @@ AstBlock* parser_parse_statements()
 	while (PARSER_CURRENT->type != TOKEN_OPERATOR_BRACKET_CURLY_RIGHT)
 	{
 		stmt = parser_parse_statement();
+		printf("STMT TYPE ===>%s\n", ast_statement_name(stmt->type));
 		array_push(&stmts, (void*)stmt);
 	}
 
-	AstBlock* block = ast_make_block(&stmts);
+	AstBlock* block = ast_make_block(stmts);
 	//	array_free(&stmts); // TODO
 
 	return block;

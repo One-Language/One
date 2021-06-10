@@ -71,14 +71,16 @@ void tree_show_statement(FILE* f, AstStatement* stmt)
 	print_tree(f, BOLDBLUE TREE_PREFIX "Statement: %s\n" RESET, ast_statement_name(stmt->type));
 }
 
-void tree_show_statements(FILE* f, AstStatements* stmts)
+void tree_show_statements(FILE* f, AstStatements stmts)
 {
+	AstStatement* stmt;
 	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Block (%d)\n" RESET, stmts->count);
+	print_tree(f, BOLDBLUE TREE_PREFIX "Block (%d)\n" RESET, stmts.count);
 	ident++;
-	for (int i = 0; i < stmts->count; i++)
+	for (int i = 0; i < stmts.count; i++)
 	{
-		tree_show_statement(f, (AstStatement*)stmts->data[i]);
+		stmt = stmts.data[i];
+		tree_show_statement(f, stmt);
 	}
 	ident--;
 }

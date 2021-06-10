@@ -119,7 +119,7 @@ AstType* ast_make_type(int type, bool hasArray)
 	return ast;
 }
 
-AstBlock* ast_make_block(AstStatements* stmts)
+AstBlock* ast_make_block(AstStatements stmts)
 {
 	AstBlock* ast = malloc(sizeof(AstBlock));
 	ast->statements = stmts;
