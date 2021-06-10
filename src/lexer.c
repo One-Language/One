@@ -280,8 +280,11 @@ Token* lexer_scan()
 			break;
 	}
 
-	printf("==>'%c'\n", *lexer.current);
-	return token_error("Unexpected character.");
+	debug("lexer_scan: last bad character is %c'", *lexer.current);
+
+	char* msg = (char*)malloc(50 * sizeof(char));
+	sprintf(msg, "Unexpected '%c' character!", *lexer.current);
+	return token_error(msg);
 }
 
 void lexer_free()

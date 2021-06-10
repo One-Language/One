@@ -220,7 +220,7 @@ bool token_match(char expected);
 
 Token* token_make(TokenType type);
 
-Token* token_error(const char* message);
+Token* token_error(char* message);
 
 char* token_name(TokenType type);
 

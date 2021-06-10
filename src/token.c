@@ -109,7 +109,7 @@ Token* token_make(TokenType type)
 	return t;
 }
 
-Token* token_error(const char* message)
+Token* token_error(char* message)
 {
 	debug("token_error");
 
@@ -287,7 +287,7 @@ char* token_name(TokenType type)
 			return "FOR";
 		case TOKEN_DO:
 			return "do";
-			
+
 		case TOKEN_RET:
 			return "RET";
 		case TOKEN_FN:

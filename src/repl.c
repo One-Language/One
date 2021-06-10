@@ -22,7 +22,7 @@ static int repl()
 			printf("\n");
 			break;
 		}
-		ret = interpret_source(line);
+		ret = interpret_source(line, NULL);
 	}
 
 	return ret;

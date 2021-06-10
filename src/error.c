@@ -6,7 +6,13 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
+#include "lexer.h"
+#include "token.h"
+#include "parser.h"
+
 #include "error.h"
+
+extern Parser parser;
 
 void error(ErrorType type, const char* format, ...)
 {
@@ -18,6 +24,9 @@ void error(ErrorType type, const char* format, ...)
 	fprintf(stderr, "%s: ", error_name(type));
 	vfprintf(stderr, format, args);
 	va_end(args);
+
+	Token* current_token = (*parser.tokens);
+	fprintf(stderr, " at %s:%d:%d", parser.path == NULL ? "REPL" : parser.path, current_token->loc.line, current_token->loc.column);
 	fputs("\n", stderr);
 
 	if (type != ERROR_WARNING)

@@ -9,6 +9,9 @@ typedef struct _token Token;
 
 typedef struct
 {
+	char* package;
+	const char* path;
+
 	Token** tokens;
 	size_t tokens_count;
 } Parser;
@@ -24,5 +27,7 @@ void parser_push(Token* t);
 void parser_check();
 
 void parser_free();
+
+bool parser_expect(TokenType expected);
 
 #endif //ONE_PARSER_H

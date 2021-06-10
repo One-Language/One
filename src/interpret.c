@@ -13,7 +13,9 @@
 
 #include "interpret.h"
 
-int interpret_source(char* source)
+extern Parser parser;
+
+int interpret_source(char* source, const char* path)
 {
 	debug("interpret_source");
 	debug("interpret_source: %s", source);
@@ -24,6 +26,7 @@ int interpret_source(char* source)
 	lexer_init(source);
 
 	parser_init();
+	parser.path = path;
 	parser_scan();
 	lexer_free();
 
@@ -39,7 +42,7 @@ int interpret_file(const char* path)
 	debug("interpret_file: %s", path);
 
 	char* source = file_reads(path);
-	int ret = interpret_source(source);
+	int ret = interpret_source(source, path);
 	free(source);
 	return ret;
 }
