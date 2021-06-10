@@ -23,7 +23,8 @@ void tree_show(FILE* f, AstRoot* root) // Question: why at here I have to put **
 
 	//	printf("==>%zu\n", (*root)->functions->count);
 	printf("==>%zu\n", root->functions->count);
-	print_tree(f, BOLDBLUE "- AST Tree of One Programming Language\n");
+	printf("=============\n");
+//	print_tree(f, BOLDBLUE "- AST Tree of One Programming Language\n" RESET);
 	//	printf("==>%zu\n", (*root)->functions->count);
 	printf("==>%zu\n", root->functions->count);
 	//	tree_show_functions(f, (*root)->functions);
