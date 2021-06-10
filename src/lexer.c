@@ -24,26 +24,123 @@ void lexer_init(char* source)
 	lexer.loc.column = 0;
 }
 
+void lexer_skip_whitespace()
+{
+	debug("lexer_skip_whitespace");
+
+	char c, c2;
+	for (;;)
+	{
+		c = token_peek();
+		switch (c)
+		{
+			case ' ':
+			case '\t':
+			case '\r':
+				token_advance();
+				break;
+			case '\n':
+				lexer.loc.line++;
+				token_advance();
+				break;
+			case '/':
+				c2 = token_peek_next();
+				if (c2 == '/')
+				{
+					token_skip_comment_inline();
+				}
+				else if (c2 == '*')
+				{
+					token_skip_comment_multiline();
+				}
+				else
+				{
+					return;
+				}
+				break;
+			default:
+				return;
+		}
+	}
+}
+
+Token lexer_number()
+{
+	while (token_is_digit(token_peek()))
+		token_advance();
+
+	if (token_peek() == '.' && token_is_digit(token_peek_next()))
+	{
+		token_advance();
+		while (token_is_digit(token_peek()))
+			token_advance();
+	}
+
+	return token_make(TOKEN_VALUE_NUMBER);
+}
+
+Token lexer_char()
+{
+	debug("lexer_char");
+	char tmp_str[1024] = {};
+	size_t i = 0;
+
+	token_match('\'');
+	while (token_peek() != '\'' && !token_is_end())
+	{
+		tmp_str[i++] = token_peek();
+		if (token_utf8_string_length(tmp_str) > 1) break;
+		token_advance();
+	}
+	tmp_str[i] = '\0';
+
+	debug("lexer_char: tmp_str is '%s'", tmp_str);
+	debug("lexer_char: tmp_str utf8 length is %zu", token_utf8_string_length(tmp_str));
+
+	if (!token_match('\''))
+		return token_error("Expected ' but found another char!");
+
+	return token_make(TOKEN_VALUE_CHAR);
+}
+
+Token lexer_string()
+{
+	debug("lexer_string");
+
+	token_match('"');
+	while (token_peek() != '"' && !token_is_end())
+		token_advance();
+	token_match('"');
+
+	return token_make(TOKEN_VALUE_STRING);
+}
+
 Token lexer_scan()
 {
 	debug("lexer_scan");
 
 	lexer.start = lexer.current;
 
+	lexer_skip_whitespace();
 	if (token_is_end()) return token_make(TOKEN_EOF);
 
-	printf("-->%c\n", *lexer.current);
-	char c1 = token_advance();
-	printf("-->%c\n", c1);
-	printf("-->%c\n", *lexer.current);
-	printf("token_peek_next is: %c\n", token_peek_next());
-	printf("token_peek_prev is: %c\n", token_peek_prev());
-	printf("-->%c\n", *lexer.current);
+	//	printf("-->%c\n", *lexer.current);
+	//	char c1 = token_advance();
+	//	printf("-->%c\n", c1);
+	//	printf("-->%c\n", *lexer.current);
+	//	printf("token_peek_next is: %c\n", token_peek_next());
+	//	printf("token_peek_prev is: %c\n", token_peek_prev());
+	//	printf("-->%c\n", *lexer.current);
+	//
+	//	exit(1);
+	//	lexer.current++;
+	//	return token_error("");
 
-	exit(1);
-	lexer.current++;
-	return token_error("");
 	char c = token_advance();
+	if (token_is_digit(c)) return lexer_number();
+	if (c == '"') return lexer_string();
+	if (c == '\'') return lexer_char();
+
 	switch (c)
 	{
 		case '(': return token_make(TOKEN_OPERATOR_BRACKET_ROUND_LEFT);

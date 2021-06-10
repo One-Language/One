@@ -22,17 +22,27 @@ int interpret_source(char* source)
 	int ret = EXIT_SUCCESS;
 
 	lexer_init(source);
-//	lexer_scan();
 
+	bool lexer_success = true;
 	Token t;
-	for(;;) {
+	for (;;)
+	{
 		t = lexer_scan();
-//		debug("print_token: %s", token_name(t.type));
-		if(t.type == TOKEN_EOF) break;
+		debug("print_token: %s", token_name(t.type));
+		if (t.type == TOKEN_ERROR)
+		{
+			printf("Error: %s\n", t.start);
+			break;
+			lexer_success = false;
+		}
+		if (t.type == TOKEN_EOF) break;
 	}
 
-	parser_init();
-	parser_scan();
+	if (lexer_success)
+	{
+		parser_init();
+		parser_scan();
+	}
 
 	return ret;
 }

@@ -82,7 +82,6 @@ char token_peek_prev()
 {
 	debug("token_peek_prev");
 
-	if (token_is_end()) return '\0';
 	return lexer.current[-1]; // TODO: Review
 }
 
@@ -146,46 +145,6 @@ void token_skip_comment_multiline()
 			{
 				break;
 			}
-		}
-	}
-}
-
-void token_skip_whitespace()
-{
-	debug("token_skip_whitespace");
-
-	char c, c2;
-	for (;;)
-	{
-		c = token_peek();
-		switch (c)
-		{
-			case ' ':
-			case '\t':
-			case '\r':
-				token_advance();
-				break;
-			case '\n':
-				lexer.loc.line++;
-				token_advance();
-				break;
-			case '/':
-				c2 = token_peek_next();
-				if (c2 == '/')
-				{
-					token_skip_comment_inline();
-				}
-				else if (c2 == '*')
-				{
-					token_skip_comment_multiline();
-				}
-				else
-				{
-					return;
-				}
-				break;
-			default:
-				return;
 		}
 	}
 }
@@ -336,4 +295,12 @@ char* token_name(TokenType type)
 		default:
 			return "UNKNOWN";
 	}
+}
+
+size_t token_utf8_string_length(char* s)
+{
+	size_t len = 0;
+	for (; *s; ++s)
+		if ((*s & 0xC0) != 0x80) ++len;
+	return len;
 }

@@ -6,6 +6,8 @@
 #include <stdlib.h>
 
 #include "error.h"
+#include "lexer.h"
+#include "token.h"
 
 #include "parser.h"
 

@@ -5,6 +5,14 @@
 #ifndef ONE_PARSER_H
 #define ONE_PARSER_H
 
+typedef struct _token Token;
+
+typedef struct
+{
+	Token** tokens;
+	size_t tokens_count;
+} Parser;
+
 void parser_init();
 
 void parser_scan();

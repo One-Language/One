@@ -137,4 +137,6 @@ char* token_name(TokenType type);
 
 char token_recede();
 
+size_t token_utf8_string_length(char* s);
+
 #endif //ONE_TOKEN_H
