@@ -57,15 +57,47 @@ void tree_show_function(FILE* f, AstFunction* fn)
 {
 	tree_show_ident();
 	print_tree(f, BOLDBLUE TREE_PREFIX "Function %s\n" RESET, fn->name);
-	ident++;
 
+	ident++;
 	tree_show_arguments(f, fn->arguments);
 
+	tree_show_block(f, fn->block);
 	ident--;
+}
+
+void tree_show_statement(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement: %s\n" RESET, ast_statement_name(stmt->type));
+}
+
+void tree_show_statements(FILE* f, AstStatements* stmts)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Block (%d)\n" RESET, stmts->count);
+	ident++;
+	for (int i = 0; i < stmts->count; i++)
+	{
+		tree_show_statement(f, (AstStatement*)stmts->data[i]);
+	}
+	ident--;
+}
+
+void tree_show_block(FILE* f, AstBlock* block)
+{
+	tree_show_statements(f, block->statements);
 }
 
 void tree_show_arguments(FILE* f, AstArguments args)
 {
 	tree_show_ident();
 	print_tree(f, BOLDBLUE TREE_PREFIX "Arguments (%d)\n" RESET, args.count);
+
+	ident++;
+	for (int i = 0; i < args.count; i++)
+	{
+		tree_show_ident();
+		print_tree(f, BOLDBLUE TREE_PREFIX "Argument [%d]\n" RESET, args.count);
+	}
+	ident--;
 }

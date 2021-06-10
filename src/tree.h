@@ -13,4 +13,10 @@ void tree_show_function(FILE* f, AstFunction* fn);
 
 void tree_show_arguments(FILE* f, AstArguments args);
 
+void tree_show_block(FILE* f, AstBlock* block);
+
+void tree_show_statement(FILE* f, AstStatement* stmts);
+
+void tree_show_statements(FILE* f, AstStatements* stmts);
+
 #endif //ONE_TREE_H
