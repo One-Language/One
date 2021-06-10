@@ -33,6 +33,25 @@ char* ast_statement_name(AstStatementType type)
 			return "PRINTDB";
 		case AST_STATEMENT_PRINTDBNL:
 			return "PRINTDBNL";
+
+		case AST_STATEMENT_WHILE:
+			return "WHILE";
+		case AST_STATEMENT_FOR:
+			return "FOR";
+		case AST_STATEMENT_DO:
+			return "DO";
+		case AST_STATEMENT_MATCH:
+			return "MATCH";
+
+		case AST_STATEMENT_EXPRESSION:
+			return "EXPRESSION";
+
+		case AST_STATEMENT_IF:
+			return "IF";
+
+		case AST_STATEMENT_VARIABLE:
+			return "VARIABLE";
+
 		default:
 			return "UNKNOWM";
 	}

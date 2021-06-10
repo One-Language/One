@@ -284,6 +284,8 @@ char* token_name(TokenType type)
 
 		case TOKEN_WHILE:
 			return "WHILE";
+		case TOKEN_MATCH:
+			return "MATCH";
 		case TOKEN_FOR:
 			return "FOR";
 		case TOKEN_DO:

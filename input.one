@@ -1,8 +1,13 @@
-// One Programming Language
-/*
- * Multi-line comments
-*/
-110
-"Hello, World"
-hi
-if
+package max
+
+fn test {
+    _ "hi"
+    _ "hi"
+}
+
+fn main {
+    _ 1
+    _ 110
+    _ 123
+}
+

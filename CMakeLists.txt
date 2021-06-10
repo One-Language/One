@@ -14,6 +14,8 @@ set(PROJECT_HEADERS
 
         src/repl.h
 
+        src/ast.h
+
         src/token.h
 
         src/lexer.h
@@ -35,6 +37,8 @@ set(PROJECT_SOURCES
         src/one.c
 
         src/repl.c
+
+        src/ast.c
 
         src/token.c
 

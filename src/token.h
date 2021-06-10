@@ -113,6 +113,7 @@ typedef enum _token_type
 	TOKEN_WHILE, // while
 	TOKEN_FOR, // for
 	TOKEN_DO, // do
+    TOKEN_MATCH, // match
 
 	TOKEN_RET, // ret
 	TOKEN_FN, // fn
@@ -172,8 +173,9 @@ static Keyword keywords[] = {
 	 {"else", 4, TOKEN_ELSE, false},
 
 	 {"do", 2, TOKEN_DO, false},
-	 {"while", 5, TOKEN_WHILE, false},
+     {"while", 5, TOKEN_WHILE, false},
 	 {"for", 3, TOKEN_FOR, false},
+     {"match", 5, TOKEN_MATCH, false},
 
 	 {"in", 2, TOKEN_IN, false},
 	 {"as", 2, TOKEN_AS, false},
