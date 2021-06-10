@@ -113,7 +113,7 @@ typedef enum _token_type
 	TOKEN_WHILE, // while
 	TOKEN_FOR, // for
 	TOKEN_DO, // do
-    TOKEN_MATCH, // match
+	TOKEN_MATCH, // match
 
 	TOKEN_RET, // ret
 	TOKEN_FN, // fn
@@ -173,9 +173,9 @@ static Keyword keywords[] = {
 	 {"else", 4, TOKEN_ELSE, false},
 
 	 {"do", 2, TOKEN_DO, false},
-     {"while", 5, TOKEN_WHILE, false},
+	 {"while", 5, TOKEN_WHILE, false},
 	 {"for", 3, TOKEN_FOR, false},
-     {"match", 5, TOKEN_MATCH, false},
+	 {"match", 5, TOKEN_MATCH, false},
 
 	 {"in", 2, TOKEN_IN, false},
 	 {"as", 2, TOKEN_AS, false},
@@ -198,8 +198,8 @@ static Keyword keywords[] = {
 	 {"f32", 3, TOKEN_TYPE_F32, false},
 	 {"f64", 3, TOKEN_TYPE_F64, false},
 
-//	 {"!_", 2, TOKEN_PRINTDB, false},
-//	 {"!__", 3, TOKEN_PRINTDBNL, false},
+	 //	 {"!_", 2, TOKEN_PRINTDB, false},
+	 //	 {"!__", 3, TOKEN_PRINTDBNL, false},
 
 	 {NULL, 0, TOKEN_VALUE_IDENTIFIER, false} // Sentinel to mark the end of the array.
 };

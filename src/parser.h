@@ -25,7 +25,7 @@ void parser_start();
 
 void parser_push(Token* t);
 
-void parser_check();
+AstRoot* parser_check();
 
 void parser_free();
 
@@ -37,7 +37,7 @@ void parser_parse();
 
 void parser_parse_package();
 
-void parser_parse_fn();
+AstFunction* parser_parse_fn();
 
 AstBlock* parser_parse_block();
 

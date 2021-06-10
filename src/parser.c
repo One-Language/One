@@ -76,10 +76,11 @@ void parser_start()
 	parser_check();
 }
 
-void parser_check()
+AstRoot* parser_check()
 {
 	debug_parser("parser_check");
 
+	AstRoot* root;
 	Token* t;
 
 	while ((*parser.tokens)->type != TOKEN_EOF)
@@ -94,9 +95,12 @@ void parser_check()
 		}
 
 		parser_parse();
-
-		//		parser.tokens++;
+		// parser.tokens++;
 	}
+
+	root->package = parser.package;
+	root->functions;
+	return root;
 }
 
 void parser_next()
@@ -111,7 +115,7 @@ void parser_prev()
 	parser.tokens--;
 }
 
-void parser_parse()
+Ast parser_parse()
 {
 	debug_parser("parser_parse");
 
@@ -140,16 +144,29 @@ void parser_parse()
 	}
 }
 
-void parser_parse_fn()
+AstFunction* parser_parse_fn()
 {
 	debug_parser("parser_parse_fn");
 
+	AstFunction* fn;
+	AstBlock* block;
+	Token* ident;
+	AstArguments args;
+
 	parser_expect(TOKEN_FN);
-	Token* ident = PARSER_CURRENT;
+	ident = PARSER_CURRENT;
 	parser_expect(TOKEN_VALUE_IDENTIFIER);
 
 	info_parser("Define function = %s", ident->value);
-	parser_parse_block();
+	block = parser_parse_block();
+
+	array_init(&args);
+
+	fn->arguments = &args;
+	//	array_free(&args);
+	fn->name = ident->value;
+	fn->block = block;
+	return fn;
 }
 
 AstBlock* parser_parse_block()
