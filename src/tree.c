@@ -67,19 +67,24 @@ void tree_show_function(FILE* f, AstFunction* fn)
 
 void tree_show_statement_prints(FILE* f, AstStatement* stmt)
 {
-	if(stmt->type == AST_STATEMENT_PRINT) {
+	if (stmt->type == AST_STATEMENT_PRINT)
+	{
 		tree_show_statement_print(f, stmt);
 	}
-	else if(stmt->type == AST_STATEMENT_PRINTNL) {
+	else if (stmt->type == AST_STATEMENT_PRINTNL)
+	{
 		tree_show_statement_printnl(f, stmt);
 	}
-	else if(stmt->type == AST_STATEMENT_PRINTDB) {
+	else if (stmt->type == AST_STATEMENT_PRINTDB)
+	{
 		tree_show_statement_printdb(f, stmt);
 	}
-	else if(stmt->type == AST_STATEMENT_PRINTDBNL) {
+	else if (stmt->type == AST_STATEMENT_PRINTDBNL)
+	{
 		tree_show_statement_printdbnl(f, stmt);
 	}
-	else {
+	else
+	{
 		error_tree("Cannot show tree of a unknown '%s' statement at prints_tree!", ast_statement_name(stmt->type));
 	}
 }
