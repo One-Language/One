@@ -123,9 +123,9 @@ char token_peek_prev();
 
 bool token_match(char expected);
 
-Token token_make(TokenType type);
+Token* token_make(TokenType type);
 
-Token token_error(const char* message);
+Token* token_error(const char* message);
 
 void token_skip_comment_inline();
 

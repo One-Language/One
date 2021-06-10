@@ -48,7 +48,8 @@ bool token_is_end()
 	return *lexer.current == '\0';
 }
 
-char token_recede() {
+char token_recede()
+{
 	debug("token_recede");
 
 	lexer.current--;
@@ -95,29 +96,29 @@ bool token_match(char expected)
 	return true;
 }
 
-Token token_make(TokenType type)
+Token* token_make(TokenType type)
 {
 	debug("token_make");
 
-	Token t;
-	t.type = type;
-	t.start = lexer.start;
-	t.length = (int)(lexer.current - lexer.start);
-	t.loc.line = lexer.loc.line;
-	t.loc.column = lexer.loc.column;
+	Token* t = malloc(sizeof(Token));
+	t->type = type;
+	t->start = lexer.start;
+	t->length = (int)(lexer.current - lexer.start);
+	t->loc.line = lexer.loc.line;
+	t->loc.column = lexer.loc.column;
 	return t;
 }
 
-Token token_error(const char* message)
+Token* token_error(const char* message)
 {
 	debug("token_error");
 
-	Token t;
-	t.type = TOKEN_ERROR;
-	t.start = message;
-	t.length = (int)strlen(message);
-	t.loc.line = lexer.loc.line;
-	t.loc.column = lexer.loc.column;
+	Token* t = malloc(sizeof(Token));
+	t->type = TOKEN_ERROR;
+	t->start = message;
+	t->length = (int)strlen(message);
+	t->loc.line = lexer.loc.line;
+	t->loc.column = lexer.loc.column;
 	return t;
 }
 

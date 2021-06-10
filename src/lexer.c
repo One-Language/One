@@ -64,7 +64,7 @@ void lexer_skip_whitespace()
 	}
 }
 
-Token lexer_number()
+Token* lexer_number()
 {
 	while (token_is_digit(token_peek()))
 		token_advance();
@@ -79,7 +79,7 @@ Token lexer_number()
 	return token_make(TOKEN_VALUE_NUMBER);
 }
 
-Token lexer_char()
+Token* lexer_char()
 {
 	debug("lexer_char");
 	char tmp_str[1024] = {};
@@ -103,7 +103,7 @@ Token lexer_char()
 	return token_make(TOKEN_VALUE_CHAR);
 }
 
-Token lexer_string()
+Token* lexer_string()
 {
 	debug("lexer_string");
 
@@ -115,7 +115,7 @@ Token lexer_string()
 	return token_make(TOKEN_VALUE_STRING);
 }
 
-Token lexer_scan()
+Token* lexer_scan()
 {
 	debug("lexer_scan");
 
@@ -167,4 +167,9 @@ Token lexer_scan()
 	}
 
 	return token_error("Unexpected character.");
+}
+
+void lexer_free() {
+//	free(lexer.start);
+//	free(lexer.current);
 }

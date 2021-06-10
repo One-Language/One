@@ -22,6 +22,16 @@ typedef struct
 
 void lexer_init(char* source);
 
-Token lexer_scan();
+void lexer_skip_whitespace();
+
+Token* lexer_number();
+
+Token* lexer_char();
+
+Token* lexer_string();
+
+Token* lexer_scan();
+
+void lexer_free();
 
 #endif //ONE_LEXER_H

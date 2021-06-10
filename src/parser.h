@@ -17,4 +17,10 @@ void parser_init();
 
 void parser_scan();
 
+void parser_start();
+
+void parser_check();
+
+void parser_free();
+
 #endif //ONE_PARSER_H
