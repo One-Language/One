@@ -21,13 +21,24 @@ void tree_show(FILE* f, AstRoot* root) // Question: why at here I have to put **
 {
 	debug_tree("tree_show");
 
+	AstFunctions* fns = root->functions;
 	//	printf("==>%zu\n", (*root)->functions->count);
-	printf("==>%zu\n", root->functions->count);
+
+
+
+
+
+
+
+	printf("==>%zu\n", fns->count);
 	printf("=============\n");
-//	print_tree(f, BOLDBLUE "- AST Tree of One Programming Language\n" RESET);
+	printf("==>%zu\n", fns->count);
+
+
+
+	//	print_tree(f, BOLDBLUE "- AST Tree of One Programming Language\n" RESET);
 	//	printf("==>%zu\n", (*root)->functions->count);
-	printf("==>%zu\n", root->functions->count);
-	//	tree_show_functions(f, (*root)->functions);
+	tree_show_functions(f, fns);
 }
 
 void tree_show_functions(FILE* f, AstFunctions* fns)
