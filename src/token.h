@@ -105,7 +105,7 @@ typedef enum _token_type
 	TOKEN_PRINT, // _
 	TOKEN_PRINTNL, // __
 	TOKEN_PRINTDB, // !_
-	TOKEN_PRINTNLDB, // !__
+	TOKEN_PRINTDBNL, // !__
 
 	TOKEN_IF, // if
 	TOKEN_ELSE, // else
@@ -196,8 +196,8 @@ static Keyword keywords[] = {
 	 {"f32", 3, TOKEN_TYPE_F32, false},
 	 {"f64", 3, TOKEN_TYPE_F64, false},
 
-	 {"!_", 2, TOKEN_PRINTDB, false},
-	 {"!__", 3, TOKEN_PRINTNLDB, false},
+//	 {"!_", 2, TOKEN_PRINTDB, false},
+//	 {"!__", 3, TOKEN_PRINTDBNL, false},
 
 	 {NULL, 0, TOKEN_VALUE_IDENTIFIER, false} // Sentinel to mark the end of the array.
 };

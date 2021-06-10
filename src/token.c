@@ -321,7 +321,7 @@ char* token_name(TokenType type)
 			return "__";
 		case TOKEN_PRINTDB:
 			return "!_";
-		case TOKEN_PRINTNLDB:
+		case TOKEN_PRINTDBNL:
 			return "!__";
 
 		case TOKEN_PACKAGE:

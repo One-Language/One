@@ -167,7 +167,6 @@ void parser_parse_statements()
 	while (PARSER_CURRENT->type != TOKEN_OPERATOR_BRACKET_CURLY_RIGHT)
 	{
 		parser_parse_statement();
-		parser_next();
 	}
 }
 
@@ -177,7 +176,7 @@ void parser_parse_statement()
 
 	info_parser("statement type = %s", token_name(PARSER_CURRENT->type));
 
-	if (PARSER_CURRENT->type == TOKEN_PRINT || PARSER_CURRENT->type == TOKEN_PRINTNL || PARSER_CURRENT->type == TOKEN_PRINTDB || PARSER_CURRENT->type == TOKEN_PRINTNLDB)
+	if (PARSER_CURRENT->type == TOKEN_PRINT || PARSER_CURRENT->type == TOKEN_PRINTNL || PARSER_CURRENT->type == TOKEN_PRINTDB || PARSER_CURRENT->type == TOKEN_PRINTDBNL)
 	{
 		parser_parse_statement_prints();
 	}
@@ -199,7 +198,7 @@ void parser_parse_statement_prints()
 	{
 		parser_parse_statement_printdb();
 	}
-	else if (PARSER_CURRENT->type == TOKEN_PRINTNLDB)
+	else if (PARSER_CURRENT->type == TOKEN_PRINTDBNL)
 	{
 		parser_parse_statement_printdbnl();
 	}
@@ -212,24 +211,32 @@ void parser_parse_statement_prints()
 void parser_parse_statement_print()
 {
 	debug_parser("parser_parse_statement_print");
+
+	parser_expect(TOKEN_PRINT);
 	parser_parse_expressions();
 }
 
 void parser_parse_statement_printnl()
 {
 	debug_parser("parser_parse_statement_printnl");
+
+	parser_expect(TOKEN_PRINTNL);
 	parser_parse_expressions();
 }
 
 void parser_parse_statement_printdb()
 {
 	debug_parser("parser_parse_statement_printdb");
+
+	parser_expect(TOKEN_PRINTDB);
 	parser_parse_expressions();
 }
 
 void parser_parse_statement_printdbnl()
 {
 	debug_parser("parser_parse_statement_printdbnl");
+
+	parser_expect(TOKEN_PRINTDBNL);
 	parser_parse_expressions();
 }
 
@@ -246,7 +253,9 @@ void parser_parse_expressions()
 		if (parser_has(TOKEN_OPERATOR_COMMA))
 		{
 			parser_expect(TOKEN_OPERATOR_COMMA);
-		} else {
+		}
+		else
+		{
 			break;
 		}
 	}
@@ -255,6 +264,18 @@ void parser_parse_expressions()
 void parser_parse_expression()
 {
 	debug_parser("parser_parse_expression");
+	if (PARSER_CURRENT->type == TOKEN_VALUE_STRING)
+	{
+		parser_next();
+	}
+	else if (PARSER_CURRENT->type == TOKEN_VALUE_NUMBER)
+	{
+		parser_next();
+	}
+	else
+	{
+		error_parser("Bad token as expression, we face to a %s token!", token_name(PARSER_CURRENT->type));
+	}
 }
 
 void parser_parse_package()
