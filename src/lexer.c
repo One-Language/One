@@ -59,7 +59,7 @@ Token* lexer_skip_comment_multiline()
 Token* lexer_skip_whitespace()
 {
 	debug("lexer_skip_whitespace");
-
+	Token* t;
 	char c, c2;
 	for (;;)
 	{
@@ -79,11 +79,13 @@ Token* lexer_skip_whitespace()
 				c2 = token_peek_next();
 				if (c2 == '/')
 				{
-					return lexer_skip_comment_inline();
+					t=lexer_skip_comment_inline();
+					if(t != NULL) return t;
 				}
 				else if (c2 == '*')
 				{
-					return lexer_skip_comment_multiline();
+					t= lexer_skip_comment_multiline();
+					if(t != NULL) return t;
 				}
 				else
 				{
@@ -172,7 +174,7 @@ Token* lexer_scan()
 	//	return token_error("");
 
 	char c = token_advance();
-	if (token_is_digit(c)) return lexer_number();
+		if (token_is_digit(c)) return lexer_number();
 	if (c == '"') return lexer_string();
 	if (c == '\'') return lexer_char();
 
@@ -202,6 +204,7 @@ Token* lexer_scan()
 		case ';': token_match(';'); return lexer_scan();
 	}
 
+	printf("==>'%c'\n", *lexer.current);
 	return token_error("Unexpected character.");
 }
 

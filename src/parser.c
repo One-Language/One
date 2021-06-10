@@ -68,6 +68,9 @@ void parser_check()
 	{
 		t = parser.tokens[i];
 		debug("parser_check: print_token %d <-> %s", t->type, token_name(t->type));
+		if(t->type == TOKEN_ERROR) {
+			debug("parser_check: print_token_error %s", t->start);
+		}
 	}
 }
 
