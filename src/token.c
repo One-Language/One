@@ -136,6 +136,40 @@ char* token_name(TokenType type)
 		case TOKEN_VALUE_IDENTIFIER:
 			return "value_identifier";
 
+		case TOKEN_TYPE_I8:
+			return "type_i8";
+		case TOKEN_TYPE_I16:
+			return "type_i16";
+		case TOKEN_TYPE_I32:
+			return "type_i32";
+		case TOKEN_TYPE_I64:
+			return "type_i64";
+		case TOKEN_TYPE_I128:
+			return "type_i128";
+
+		case TOKEN_TYPE_U8:
+			return "type_u8";
+		case TOKEN_TYPE_U16:
+			return "type_u16";
+		case TOKEN_TYPE_U32:
+			return "type_u32";
+		case TOKEN_TYPE_U64:
+			return "type_u64";
+		case TOKEN_TYPE_U128:
+			return "type_u128";
+
+		case TOKEN_TYPE_F32:
+			return "type_f32";
+		case TOKEN_TYPE_F64:
+			return "type_f64";
+
+		case TOKEN_TYPE_BOOL:
+			return "type_bool";
+		case TOKEN_TYPE_STRING:
+			return "type_string";
+		case TOKEN_TYPE_CHAR:
+			return "type_char";
+
 		case TOKEN_VALUE_NUMBER:
 			return "value_number";
 		case TOKEN_VALUE_STRING:
@@ -246,22 +280,60 @@ char* token_name(TokenType type)
 			return "IF";
 		case TOKEN_ELSE:
 			return "ELSE";
+
 		case TOKEN_WHILE:
 			return "WHILE";
 		case TOKEN_FOR:
 			return "FOR";
+		case TOKEN_DO:
+			return "do";
+			
 		case TOKEN_RET:
 			return "RET";
 		case TOKEN_FN:
 			return "FN";
-		case TOKEN_CONST:
-			return "CONST";
-		case TOKEN_FINAL:
-			return "FINAL";
 
 			//	case TOKEN_CLASS:
 			//	case TOKEN_THIS:
 			//	case TOKEN_SUPER:
+
+		case TOKEN_IS:
+			return "is";
+		case TOKEN_IN:
+			return "in";
+		case TOKEN_AS:
+			return "as";
+		case TOKEN_SWITCH:
+			return "switch";
+		case TOKEN_CASE:
+			return "case";
+		case TOKEN_BREAK:
+			return "break";
+		case TOKEN_CONTINUE:
+			return "continue";
+		case TOKEN_GO:
+			return "go";
+
+		case TOKEN_PRINT:
+			return "__";
+		case TOKEN_PRINTNL:
+			return "__";
+		case TOKEN_PRINTDB:
+			return "!_";
+		case TOKEN_PRINTNLDB:
+			return "!__";
+
+		case TOKEN_PACKAGE:
+			return "package";
+		case TOKEN_IMPORT:
+			return "import";
+
+		case TOKEN_CONST:
+			return "CONST";
+		case TOKEN_FINAL:
+			return "FINAL";
+		case TOKEN_STATIC:
+			return "static";
 
 		case TOKEN_SEMICOLON:
 			return "SEMICOLON";
