@@ -134,15 +134,15 @@ Token* lexer_number()
 {
 	debug("lexer_number");
 
-	char tmp_str[60] = {};
+	char* tmp_str = malloc(60 * sizeof(char)+1);
 	size_t i = 0;
 
 	while (token_is_digit(token_peek()))
 	{
-//		char c1= token_peek();
-//		char c2 = token_advance();
-//		printf(">>>> %c, %c\n", c1, c2);
-//		printf(">>>> %c, %c\n", token_peek(), token_advance());
+		//		char c1= token_peek();
+		//		char c2 = token_advance();
+		//		printf(">>>> %c, %c\n", c1, c2);
+		//		printf(">>>> %c, %c\n", token_peek(), token_advance());
 		tmp_str[i++] = token_advance();
 	}
 
@@ -156,16 +156,17 @@ Token* lexer_number()
 	}
 	tmp_str[i] = '\0';
 
-//	printf("===>%s\n", tmp_str);
+	//	printf("===>%s\n", tmp_str);
 
-	return token_make(TOKEN_VALUE_NUMBER);
+	//	return token_make(TOKEN_VALUE_NUMBER);
 	return token_make_value(TOKEN_VALUE_NUMBER, tmp_str);
 }
 
 Token* lexer_char()
 {
 	debug("lexer_char");
-	char tmp_str[1024] = {};
+//	char tmp_str[1024] = {};
+	char* tmp_str = malloc(1024 * sizeof(char)+1);
 	size_t i = 0;
 
 	token_match('\'');
@@ -191,7 +192,8 @@ Token* lexer_string()
 {
 	debug("lexer_string");
 
-	char tmp_str[1024] = {};
+//	char tmp_str[1024] = {};
+	char* tmp_str = malloc(1024 * sizeof(char)+1);
 	size_t i = 0;
 
 	token_match('"');
@@ -212,7 +214,8 @@ Token* lexer_identifier()
 {
 	debug("lexer_identifier");
 
-	char tmp_str[1024] = {};
+//	char tmp_str[1024] = {};
+	char* tmp_str = malloc(1024 * sizeof(char)+1);
 	size_t ident_length = 0;
 
 	tmp_str[ident_length++] = token_advance();
@@ -229,7 +232,7 @@ Token* lexer_identifier()
 	{
 		if (keywords[j].type == TOKEN_VALUE_IDENTIFIER) // it's end of the Keyword list/table
 		{
-			return token_make(TOKEN_VALUE_IDENTIFIER);
+			return token_make_value(TOKEN_VALUE_IDENTIFIER, tmp_str);
 			break;
 		}
 		else if (keywords[j].length == ident_length // fast search performance
@@ -255,7 +258,8 @@ Token* lexer_scan()
 	if (token_is_end()) return token_make(TOKEN_EOF);
 
 	char c = token_advance();
-	if (token_is_digit(c)) {
+	if (token_is_digit(c))
+	{
 		token_recede();
 		return lexer_number();
 	}

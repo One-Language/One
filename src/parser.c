@@ -21,6 +21,8 @@ Array tokens;
 
 #define PARSER_CURRENT (*parser.tokens)
 
+#define PARSER_CURRENT_LOG printf("Current Token is %s (%d)", token_name((*parser.tokens)->type), (*parser.tokens)->type); if((*parser.tokens)->value != NULL) printf("%s", (*parser.tokens)->value); printf("\n");
+
 void parser_init()
 {
 	debug("parser_init");
@@ -103,31 +105,48 @@ void parser_prev()
 
 void parser_parse()
 {
+	size_t i = parser.tokens_index;
 	if (PARSER_CURRENT->type == TOKEN_PACKAGE)
 	{
 		parser_parse_package();
+	}
+	if(PARSER_CURRENT->type == TOKEN_EOF) return;
+	if(parser.tokens_index == i) {
+		error_parser("Cannot parse this kind of statement, we face to %s token!", token_name(PARSER_CURRENT->type));
 	}
 }
 
 void parser_parse_package()
 {
+	Token* t;
 	if (parser.tokens_index == 0)
 	{
 		parser_expect(TOKEN_PACKAGE);
-		if(PARSER_HAS(TOKEN_VALUE_IDENTIFIER)) {
+		if (PARSER_HAS(TOKEN_VALUE_IDENTIFIER))
+		{
+			PARSER_CURRENT_LOG
+			t = PARSER_CURRENT;
 			parser_expect(TOKEN_VALUE_IDENTIFIER);
 		}
-		else if(PARSER_HAS(TOKEN_VALUE_STRING)) {
+		else if (PARSER_HAS(TOKEN_VALUE_STRING))
+		{
+			PARSER_CURRENT_LOG
+			t = PARSER_CURRENT;
 			parser_expect(TOKEN_VALUE_STRING);
 		}
-		else {
+		else
+		{
 			error_parser("You cannot set package name as %s token, you have to write this in two general forms:\n\t1- Identifier: `package yourname`\n\t2- String: `package \"your-name\"`", token_name(PARSER_CURRENT->type));
+			return;
 		}
 	}
 	else
 	{
 		error_parser("You are unable to define package name at middle or end of the file and you have to set package name at top!");
+		return;
 	}
+
+	printf("SET PACKAGE = \"%s\"\n", t->value);
 }
 
 bool parser_expect(TokenType expected)
