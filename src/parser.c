@@ -10,6 +10,7 @@
 #include "token.h"
 #include "array.h"
 #include "one.h"
+#include "ast.h"
 
 #include "parser.h"
 
@@ -151,93 +152,128 @@ void parser_parse_fn()
 	parser_parse_block();
 }
 
-void parser_parse_block()
+AstBlock* parser_parse_block()
 {
 	debug_parser("parser_parse_block");
 
 	parser_expect(TOKEN_OPERATOR_BRACKET_CURLY_LEFT);
-	parser_parse_statements();
+	AstBlock* block = parser_parse_statements();
 	parser_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
+	return block;
 }
 
-void parser_parse_statements()
+AstBlock* parser_parse_statements()
 {
 	debug_parser("parser_parse_statements");
 
+	AstStatement* stmt;
+	AstStatements stmts;
+	array_init(&stmts);
+
 	while (PARSER_CURRENT->type != TOKEN_OPERATOR_BRACKET_CURLY_RIGHT)
 	{
-		parser_parse_statement();
+		stmt = parser_parse_statement();
+		array_push(&stmts, (void*)stmt);
 	}
+
+	AstBlock* block = ast_make_block(&stmts);
+	//	array_free(&stmts); // TODO
+
+	return block;
 }
 
-void parser_parse_statement()
+AstStatement* parser_parse_statement()
 {
+	AstStatement* stmt;
+
 	debug_parser("parser_parse_statement");
 
 	info_parser("statement type = %s", token_name(PARSER_CURRENT->type));
 
 	if (PARSER_CURRENT->type == TOKEN_PRINT || PARSER_CURRENT->type == TOKEN_PRINTNL || PARSER_CURRENT->type == TOKEN_PRINTDB || PARSER_CURRENT->type == TOKEN_PRINTDBNL)
 	{
-		parser_parse_statement_prints();
+		stmt = parser_parse_statement_prints();
 	}
+	else
+	{
+		error_parser("We face to %s as a unknown type of token at print statement!", token_name(PARSER_CURRENT->type));
+	}
+	return stmt;
 }
 
-void parser_parse_statement_prints()
+AstStatement* parser_parse_statement_prints()
 {
 	debug_parser("parser_parse_statement_prints");
 
 	if (PARSER_CURRENT->type == TOKEN_PRINT)
 	{
-		parser_parse_statement_print();
+		return parser_parse_statement_print();
 	}
 	else if (PARSER_CURRENT->type == TOKEN_PRINTNL)
 	{
-		parser_parse_statement_printnl();
+		return parser_parse_statement_printnl();
 	}
 	else if (PARSER_CURRENT->type == TOKEN_PRINTDB)
 	{
-		parser_parse_statement_printdb();
+		return parser_parse_statement_printdb();
 	}
 	else if (PARSER_CURRENT->type == TOKEN_PRINTDBNL)
 	{
-		parser_parse_statement_printdbnl();
+		return parser_parse_statement_printdbnl();
 	}
 	else
 	{
 		error_parser("We expect a print statement but we face to a %s token!", token_name(PARSER_CURRENT->type));
+		return NULL;
 	}
 }
 
-void parser_parse_statement_print()
+AstStatement* parser_parse_statement_print()
 {
 	debug_parser("parser_parse_statement_print");
 
+	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINT);
+
 	parser_expect(TOKEN_PRINT);
 	parser_parse_expressions();
+
+	return stmt;
 }
 
-void parser_parse_statement_printnl()
+AstStatement* parser_parse_statement_printnl()
 {
 	debug_parser("parser_parse_statement_printnl");
 
+	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINTNL);
+
 	parser_expect(TOKEN_PRINTNL);
 	parser_parse_expressions();
+
+	return stmt;
 }
 
-void parser_parse_statement_printdb()
+AstStatement* parser_parse_statement_printdb()
 {
 	debug_parser("parser_parse_statement_printdb");
 
+	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINTDB);
+
 	parser_expect(TOKEN_PRINTDB);
 	parser_parse_expressions();
+
+	return stmt;
 }
 
-void parser_parse_statement_printdbnl()
+AstStatement* parser_parse_statement_printdbnl()
 {
 	debug_parser("parser_parse_statement_printdbnl");
 
+	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINTDBNL);
+
 	parser_expect(TOKEN_PRINTDBNL);
 	parser_parse_expressions();
+
+	return stmt;
 }
 
 void parser_parse_expressions()

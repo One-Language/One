@@ -39,23 +39,23 @@ void parser_parse_package();
 
 void parser_parse_fn();
 
-void parser_parse_block();
+AstBlock* parser_parse_block();
 
 void parser_parse();
 
-void parser_parse_statements();
+AstBlock* parser_parse_statements();
 
-void parser_parse_statement();
+AstStatement* parser_parse_statement();
 
-void parser_parse_statement_prints();
+AstStatement* parser_parse_statement_prints();
 
-void parser_parse_statement_print();
+AstStatement* parser_parse_statement_print();
 
-void parser_parse_statement_printnl();
+AstStatement* parser_parse_statement_printnl();
 
-void parser_parse_statement_printdb();
+AstStatement* parser_parse_statement_printdb();
 
-void parser_parse_statement_printdbnl();
+AstStatement* parser_parse_statement_printdbnl();
 
 void parser_parse_expressions();
 
