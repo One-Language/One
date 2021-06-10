@@ -48,7 +48,7 @@ void parser_scan()
 		debug("parser_scan: print_token %s", token_name(t->type));
 		if (t->type == TOKEN_ERROR)
 		{
-			printf("Error: %s\n", t->start);
+			printf("Error: %s\n", t->value);
 			break;
 		}
 		else if (t->type == TOKEN_EOF)
@@ -78,8 +78,8 @@ void parser_check()
 		debug("parser_check: print_token %d <-> %s", t->type, token_name(t->type));
 		if (t->type == TOKEN_ERROR)
 		{
-			debug("parser_check: print_token_error %s", t->start);
-			error_token(t->start);
+			debug("parser_check: print_token_error %s", t->value);
+			error_token(t->value);
 			break;
 		}
 
@@ -115,10 +115,10 @@ void parser_parse_package()
 	{
 		parser_expect(TOKEN_PACKAGE);
 		if(PARSER_HAS(TOKEN_VALUE_IDENTIFIER)) {
-
+			parser_expect(TOKEN_VALUE_IDENTIFIER);
 		}
 		else if(PARSER_HAS(TOKEN_VALUE_STRING)) {
-
+			parser_expect(TOKEN_VALUE_STRING);
 		}
 		else {
 			error_parser("You cannot set package name as %s token, you have to write this in two general forms:\n\t1- Identifier: `package yourname`\n\t2- String: `package \"your-name\"`", token_name(PARSER_CURRENT->type));

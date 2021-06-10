@@ -134,17 +134,32 @@ Token* lexer_number()
 {
 	debug("lexer_number");
 
+	char tmp_str[60] = {};
+	size_t i = 0;
+
 	while (token_is_digit(token_peek()))
-		token_advance();
+	{
+//		char c1= token_peek();
+//		char c2 = token_advance();
+//		printf(">>>> %c, %c\n", c1, c2);
+//		printf(">>>> %c, %c\n", token_peek(), token_advance());
+		tmp_str[i++] = token_advance();
+	}
 
 	if (token_peek() == '.' && token_is_digit(token_peek_next()))
 	{
-		token_advance();
+		tmp_str[i++] = token_advance();
 		while (token_is_digit(token_peek()))
-			token_advance();
+		{
+			tmp_str[i++] = token_advance();
+		}
 	}
+	tmp_str[i] = '\0';
+
+//	printf("===>%s\n", tmp_str);
 
 	return token_make(TOKEN_VALUE_NUMBER);
+	return token_make_value(TOKEN_VALUE_NUMBER, tmp_str);
 }
 
 Token* lexer_char()
@@ -168,19 +183,29 @@ Token* lexer_char()
 	if (!token_match('\''))
 		return token_error("Expected ' but found another char!");
 
-	return token_make(TOKEN_VALUE_CHAR);
+	//	return token_make(TOKEN_VALUE_CHAR);
+	return token_make_value(TOKEN_VALUE_CHAR, tmp_str);
 }
 
 Token* lexer_string()
 {
 	debug("lexer_string");
 
+	char tmp_str[1024] = {};
+	size_t i = 0;
+
 	token_match('"');
 	while (token_peek() != '"' && !token_is_end())
+	{
+		tmp_str[i++] = token_peek();
 		token_advance();
+	}
+	tmp_str[i] = '\0';
+
 	token_match('"');
 
-	return token_make(TOKEN_VALUE_STRING);
+	//	return token_make(TOKEN_VALUE_STRING);
+	return token_make_value(TOKEN_VALUE_STRING, tmp_str);
 }
 
 Token* lexer_identifier()
@@ -230,7 +255,10 @@ Token* lexer_scan()
 	if (token_is_end()) return token_make(TOKEN_EOF);
 
 	char c = token_advance();
-	if (token_is_digit(c)) return lexer_number();
+	if (token_is_digit(c)) {
+		token_recede();
+		return lexer_number();
+	}
 	if (c == '"') return lexer_string();
 	if (c == '\'') return lexer_char();
 

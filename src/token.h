@@ -141,7 +141,8 @@ typedef enum _token_type
 typedef struct _token
 {
 	TokenType type;
-	const char* start;
+
+	const char* value;
 	size_t length;
 	Location loc;
 } Token;
@@ -219,6 +220,8 @@ char token_peek_prev();
 bool token_match(char expected);
 
 Token* token_make(TokenType type);
+
+Token* token_make_value(TokenType type, char* value);
 
 Token* token_error(char* message);
 

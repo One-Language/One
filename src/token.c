@@ -96,30 +96,31 @@ bool token_match(char expected)
 	return true;
 }
 
-Token* token_make(TokenType type)
+Token* token_make_value(TokenType type, char* value)
 {
-	debug("token_make");
+	debug("token_make_string");
 
 	Token* t = malloc(sizeof(Token));
+	t->value = value;
 	t->type = type;
-	t->start = lexer.start;
 	t->length = (int)(lexer.current - lexer.start);
 	t->loc.line = lexer.loc.line;
 	t->loc.column = lexer.loc.column;
 	return t;
 }
 
+Token* token_make(TokenType type)
+{
+	debug("token_make");
+
+	return token_make_value(type, NULL);
+}
+
 Token* token_error(char* message)
 {
 	debug("token_error");
 
-	Token* t = malloc(sizeof(Token));
-	t->type = TOKEN_ERROR;
-	t->start = message;
-	t->length = (int)strlen(message);
-	t->loc.line = lexer.loc.line;
-	t->loc.column = lexer.loc.column;
-	return t;
+	return token_make_value(TOKEN_ERROR, message);
 }
 
 char* token_name(TokenType type)
