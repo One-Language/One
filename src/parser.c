@@ -116,7 +116,8 @@ void parser_parse()
 
 	size_t i = parser.tokens_index;
 
-	if(parser.tokens_index == 0 && PARSER_CURRENT->type != TOKEN_PACKAGE && parser.package == NULL) {
+	if (parser.tokens_index == 0 && PARSER_CURRENT->type != TOKEN_PACKAGE && parser.package == NULL)
+	{
 		info_parser("User not defined a package name, so we set it to '%s' as default.", ONE_PACKAGE_DEFAULT);
 		parser.package = ONE_PACKAGE_DEFAULT;
 	}
@@ -140,23 +141,111 @@ void parser_parse()
 
 void parser_parse_fn()
 {
+	debug_parser("parser_parse_fn");
+
 	parser_expect(TOKEN_FN);
 	Token* ident = PARSER_CURRENT;
 	parser_expect(TOKEN_VALUE_IDENTIFIER);
 
-	parser_parse_block();
-
 	info_parser("Define function = %s", ident->value);
+	parser_parse_block();
 }
 
 void parser_parse_block()
 {
+	debug_parser("parser_parse_block");
+
 	parser_expect(TOKEN_OPERATOR_BRACKET_CURLY_LEFT);
+	parser_parse_statements();
 	parser_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
 }
 
+void parser_parse_statements()
+{
+	debug_parser("parser_parse_statements");
+
+	while (PARSER_CURRENT->type != TOKEN_OPERATOR_BRACKET_CURLY_RIGHT)
+	{
+		parser_parse_statement();
+		parser_next();
+	}
+}
+
+void parser_parse_statement()
+{
+	debug_parser("parser_parse_statement");
+
+	info_parser("statement type = %s", token_name(PARSER_CURRENT->type));
+
+	if (PARSER_CURRENT->type == TOKEN_PRINT || PARSER_CURRENT->type == TOKEN_PRINTNL || PARSER_CURRENT->type == TOKEN_PRINTDB || PARSER_CURRENT->type == TOKEN_PRINTNLDB)
+	{
+		parser_parse_statement_prints();
+	}
+}
+
+void parser_parse_statement_prints()
+{
+	debug_parser("parser_parse_statement_prints");
+
+	if (PARSER_CURRENT->type == TOKEN_PRINT)
+	{
+		parser_parse_statement_print();
+	}
+	else if (PARSER_CURRENT->type == TOKEN_PRINTNL)
+	{
+		parser_parse_statement_printnl();
+	}
+	else if (PARSER_CURRENT->type == TOKEN_PRINTDB)
+	{
+		parser_parse_statement_printdb();
+	}
+	else if (PARSER_CURRENT->type == TOKEN_PRINTNLDB)
+	{
+		parser_parse_statement_printdbnl();
+	}
+	else
+	{
+		error_parser("We expect a print statement but we face to a %s token!", token_name(PARSER_CURRENT->type));
+	}
+}
+
+void parser_parse_statement_print()
+{
+	debug_parser("parser_parse_statement_print");
+	parser_parse_expressions();
+}
+
+void parser_parse_statement_printnl()
+{
+	debug_parser("parser_parse_statement_printnl");
+	parser_parse_expressions();
+}
+
+void parser_parse_statement_printdb()
+{
+	debug_parser("parser_parse_statement_printdb");
+	parser_parse_expressions();
+}
+
+void parser_parse_statement_printdbnl()
+{
+	debug_parser("parser_parse_statement_printdbnl");
+	parser_parse_expressions();
+}
+
+void parser_parse_expressions() {
+	debug_parser("parser_parse_expressions");
+}
+
+void parser_parse_expression() {
+	debug_parser("parser_parse_expression");
+}
+
+
 void parser_parse_package()
 {
+	debug_parser("parser_parse_package");
+
 	Token* t;
 	if (parser.tokens_index == 0)
 	{
@@ -186,11 +275,13 @@ void parser_parse_package()
 	}
 
 	info_parser("SET PACKAGE = \"%s\"", t->value);
-	parser.package = (const char*) t->value;
+	parser.package = (const char*)t->value;
 }
 
 bool parser_expect(TokenType expected)
 {
+	debug_parser("parser_expect");
+
 	if (PARSER_CURRENT->type == expected)
 	{
 		parser.tokens++;
@@ -205,6 +296,8 @@ bool parser_expect(TokenType expected)
 
 bool parser_has(TokenType expected)
 {
+	debug_parser("parser_has");
+
 	if (PARSER_CURRENT->type == expected)
 	{
 		return true;
@@ -214,5 +307,7 @@ bool parser_has(TokenType expected)
 
 void parser_free()
 {
+	debug_parser("parser_free");
+
 	// TODO
 }

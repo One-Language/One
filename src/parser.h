@@ -43,4 +43,22 @@ void parser_parse_block();
 
 void parser_parse();
 
+void parser_parse_statements();
+
+void parser_parse_statement();
+
+void parser_parse_statement_prints();
+
+void parser_parse_statement_print();
+
+void parser_parse_statement_printnl();
+
+void parser_parse_statement_printdb();
+
+void parser_parse_statement_printdbnl();
+
+void parser_parse_expressions();
+
+void parser_parse_expression();
+
 #endif //ONE_PARSER_H
