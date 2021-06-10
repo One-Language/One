@@ -29,6 +29,8 @@
 <!-- prettier-ignore-end -->
 
 [Türkçe](README_TR.md)
+&nbsp;
+[عربي](README_AR.md)
 
 </div>
 
