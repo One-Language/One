@@ -132,7 +132,7 @@ AstRoot* astRoot(char*, AstFunctions*);
 
 AstStatement* astStatement(AstStatementType);
 
-char* astOperatorName(TokenType);
+//char* astOperatorName(TokenType);
 
 char* astStatementName(AstStatementType);
 
