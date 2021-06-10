@@ -38,6 +38,48 @@ char* ast_name(AstStatementType type)
 	}
 }
 
+char* ast_value_name(AstValueType type)
+{
+	switch (type)
+	{
+		case AST_TYPE_I8:
+			return "i8";
+		case AST_TYPE_I16:
+			return "i16";
+		case AST_TYPE_I32:
+			return "i32";
+		case AST_TYPE_I64:
+			return "i64";
+		case AST_TYPE_I128:
+			return "i128";
+
+		case AST_TYPE_U8:
+			return "u8";
+		case AST_TYPE_U16:
+			return "u16";
+		case AST_TYPE_U32:
+			return "u32";
+		case AST_TYPE_U64:
+			return "u64";
+		case AST_TYPE_U128:
+			return "u128";
+
+		case AST_TYPE_F32:
+			return "f32";
+		case AST_TYPE_F64:
+			return "f64";
+
+		case AST_TYPE_STRING:
+			return "string";
+		case AST_TYPE_CHAR:
+			return "char";
+		case AST_TYPE_BOOL:
+			return "bool";
+		default:
+			return "UNKNOWM";
+	}
+}
+
 AstType* ast_make_type(int type, bool hasArray)
 {
 	AstType* ast = malloc(sizeof(AstType));
