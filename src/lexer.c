@@ -188,31 +188,32 @@ Token* lexer_identifier()
 	debug("lexer_identifier");
 
 	char tmp_str[1024] = {};
-	size_t i = 0;
+	size_t ident_length = 0;
 
-	tmp_str[i++] = token_advance();
+	tmp_str[ident_length++] = token_advance();
 	while (token_is_ident(token_peek()) && !token_is_end())
 	{
-		tmp_str[i++] = token_advance();
+		tmp_str[ident_length++] = token_advance();
 	}
-	tmp_str[i] = '\0';
+	tmp_str[ident_length] = '\0';
 
 	debug("lexer_identifier: print identifier %s", tmp_str);
+	debug("lexer_identifier: identifier length is %zu", ident_length);
 
-	for (i = 0;; i++)
+	for (size_t j = 0;; j++)
 	{
-		if (keywords[i].type == TOKEN_VALUE_IDENTIFIER)
+		if (keywords[j].type == TOKEN_VALUE_IDENTIFIER) // it's end of the Keyword list/table
 		{
 			return token_make(TOKEN_VALUE_IDENTIFIER);
 			break;
 		}
-		else if (strncmp(keywords[i].identifier, tmp_str, keywords[i].length) == 0)
+		else if (keywords[j].length == ident_length // fast search performance
+			 && strncmp(keywords[j].identifier, tmp_str, keywords[j].length) == 0)
 		{
-			return token_make(keywords[i].type);
+			return token_make(keywords[j].type);
 			break;
 		}
 	}
-
 	//	return token_make(TOKEN_VALUE_IDENTIFIER);
 }
 
