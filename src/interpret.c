@@ -25,7 +25,6 @@ int interpret_source(char* source)
 
 	parser_init();
 	parser_scan();
-	parser_scan();
 	lexer_free();
 
 	parser_start();
