@@ -40,22 +40,25 @@ typedef enum
 	printf(WHITE "Debug: " format "\n" RESET, ##args);
 
 #define debug_token(format, args...) \
-	printf(YELLOW "Debug: " format "\n" RESET, ##args);
+	printf(YELLOW "Token Debug: " format "\n" RESET, ##args);
 
 #define debug_lexer(format, args...) \
-	printf(CYAN "Debug: " format "\n" RESET, ##args);
+	printf(CYAN "Lexer Debug: " format "\n" RESET, ##args);
 
 #define debug_parser(format, args...) \
-	printf(GREEN "Debug: " format "\n" RESET, ##args);
+	printf(GREEN "Parser Debug: " format "\n" RESET, ##args);
+
+#define info(format, args...) \
+	printf(BOLDWHITE "INFO: " format "\n" RESET, ##args);
 
 #define info_token(format, args...) \
-	printf(BOLDYELLOW "INFO: " format "\n" RESET, ##args);
+	printf(BOLDYELLOW "Token INFO: " format "\n" RESET, ##args);
 
 #define info_lexer(format, args...) \
-	printf(BOLDCYAN "INFO: " format "\n" RESET, ##args);
+	printf(BOLDCYAN "Lexer INFO: " format "\n" RESET, ##args);
 
 #define info_parser(format, args...) \
-	printf(BOLDGREEN "INFO: " format "\n" RESET, ##args);
+	printf(BOLDGREEN "Parser INFO: " format "\n" RESET, ##args);
 
 //#define debug(format, args...)
 
