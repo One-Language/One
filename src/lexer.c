@@ -24,7 +24,7 @@ void lexer_init(char* source)
 	lexer.loc.column = 0;
 }
 
-void lexer_skip_comment_inline()
+Token* lexer_skip_comment_inline()
 {
 	debug("lexer_skip_comment_inline");
 
@@ -32,26 +32,31 @@ void lexer_skip_comment_inline()
 	{
 		while (token_peek() != '\n' && !token_is_end()) token_advance();
 	}
+	return NULL;
 }
 
-void lexer_skip_comment_multiline()
+Token* lexer_skip_comment_multiline()
 {
 	debug("lexer_skip_comment_multiline");
 
-	if (token_peek() == '/' && token_peek_next() == '*')
+	if (token_match('/') && token_match('*'))
 	{
 		for (;;)
 		{
-			char c1 = token_peek();
-			char c2 = token_peek_next();
+			char c1 = token_advance();
+			char c2 = token_peek();
+			if (token_is_end()) token_error("You not close multi-line comment and we face to EOF!");
+
 			if (c1 == '*' && c2 == '/')
 			{
 				break;
 			}
 		}
 	}
+	return NULL;
 }
-void lexer_skip_whitespace()
+
+Token* lexer_skip_whitespace()
 {
 	debug("lexer_skip_whitespace");
 
@@ -74,19 +79,19 @@ void lexer_skip_whitespace()
 				c2 = token_peek_next();
 				if (c2 == '/')
 				{
-					lexer_skip_comment_inline();
+					return lexer_skip_comment_inline();
 				}
 				else if (c2 == '*')
 				{
-					lexer_skip_comment_multiline();
+					return lexer_skip_comment_multiline();
 				}
 				else
 				{
-					return;
+					return NULL;
 				}
 				break;
 			default:
-				return;
+				return NULL;
 		}
 	}
 }
@@ -148,7 +153,10 @@ Token* lexer_scan()
 
 	lexer.start = lexer.current;
 
-	lexer_skip_whitespace();
+	Token* t = lexer_skip_whitespace();
+	if (t != NULL)
+		return t;
+
 	if (token_is_end()) return token_make(TOKEN_EOF);
 
 	//	printf("-->%c\n", *lexer.current);

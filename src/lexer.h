@@ -22,7 +22,7 @@ typedef struct
 
 void lexer_init(char* source);
 
-void lexer_skip_whitespace();
+Token* lexer_skip_whitespace();
 
 Token* lexer_number();
 
@@ -34,8 +34,8 @@ Token* lexer_scan();
 
 void lexer_free();
 
-void lexer_skip_comment_inline();
+Token* lexer_skip_comment_inline();
 
-void lexer_skip_comment_multiline();
+Token* lexer_skip_comment_multiline();
 
 #endif //ONE_LEXER_H
