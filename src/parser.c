@@ -73,7 +73,7 @@ void parser_start()
 	parser.tokens = (Token**)tokens.data;
 	parser.tokens_count = tokens.count;
 
-	parser_check();
+	AstRoot* root = parser_check();
 }
 
 AstRoot* parser_check()
@@ -139,10 +139,10 @@ AstRoot* parser_check()
 
 	root->functions = &fns;
 
-	root->vars = &vars;
-	root->types = &types;
-	root->strucs = &structs;
-	root->enums = &enums;
+	//	root->vars = &vars;
+	//	root->types = &types;
+	//	root->strucs = &structs;
+	//	root->enums = &enums;
 
 	//	array_free(&fns);
 	//	array_free(&vars);
@@ -211,10 +211,12 @@ AstFunction* parser_parse_fn()
 {
 	debug_parser("parser_parse_fn");
 
-	AstFunction* fn;
+	AstFunction* fn = malloc(sizeof(AstFunction));
 	AstBlock* block;
 	Token* ident;
+
 	AstArguments args;
+	//	array_init(&args);
 
 	parser_expect(TOKEN_FN);
 	ident = PARSER_CURRENT;
@@ -223,12 +225,11 @@ AstFunction* parser_parse_fn()
 	info_parser("Define function = %s", ident->value);
 	block = parser_parse_block();
 
-	array_init(&args);
-
 	fn->arguments = &args;
 	//	array_free(&args);
 	fn->name = (char*)ident->value;
 	fn->block = block;
+
 	return fn;
 }
 
@@ -274,6 +275,21 @@ AstStatement* parser_parse_statement()
 	{
 		stmt = parser_parse_statement_prints();
 		return stmt;
+	}
+	else if (PARSER_CURRENT->type == TOKEN_IF)
+	{
+	}
+	else if (PARSER_CURRENT->type == TOKEN_WHILE)
+	{
+	}
+	else if (PARSER_CURRENT->type == TOKEN_DO)
+	{
+	}
+	else if (PARSER_CURRENT->type == TOKEN_MATCH)
+	{
+	}
+	else if (PARSER_CURRENT->type == TOKEN_SWITCH)
+	{
 	}
 	else
 	{

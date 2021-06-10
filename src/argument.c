@@ -111,7 +111,7 @@ void argument_help(FILE *file, Arguments *args)
 	debug("argument_help");
 
 	fprintf(file, "Usage: %s [options] file...\n", args->argv[0]);
-	fprintf(file, "Options:\n");
+	fprintf(file, "\nOptions:\n");
 	fprintf(file, "    -h, --help                Print out this help text.\n");
 	fprintf(file, "    -g, --debug               Include debug information in "
 				  "the build.\n");
