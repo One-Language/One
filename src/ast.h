@@ -174,6 +174,6 @@ AstRoot* ast_make_root(char* package, AstFunctions* funcs);
 
 AstStatement* ast_make_statement(AstStatementType type);
 
-void ast_free(AstRoot* root);
+void ast_free(AstRoot** root);
 
 #endif //ONE_AST_H

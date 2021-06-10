@@ -79,7 +79,7 @@ void parser_start()
 
 	tree_show(stdout, root);
 
-	ast_free(root);
+	ast_free(&root);
 }
 
 AstRoot* parser_check()
@@ -144,6 +144,9 @@ AstRoot* parser_check()
 	root->package = (char*)parser.package;
 
 	root->functions = &fns;
+
+	printf("==>%d\n", fns.count);
+	printf("==>%d\n", root->functions->count);
 
 	//	root->vars = &vars;
 	//	root->types = &types;
