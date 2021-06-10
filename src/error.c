@@ -8,6 +8,8 @@
 
 #include "lexer.h"
 #include "token.h"
+#include "array.h"
+#include "ast.h"
 #include "parser.h"
 
 #include "error.h"
