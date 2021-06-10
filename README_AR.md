@@ -30,7 +30,9 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
-[عربي](README_AR.md)
+[Türkçe](README_TR.md)
+&nbsp;
+[English](README.md)
 
 </div>
 
