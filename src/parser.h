@@ -13,6 +13,7 @@ typedef struct
 	const char* path;
 
 	Token** tokens;
+	size_t tokens_index;
 	size_t tokens_count;
 } Parser;
 
@@ -29,5 +30,13 @@ void parser_check();
 void parser_free();
 
 bool parser_expect(TokenType expected);
+
+bool parser_has(TokenType expected);
+
+void parser_parse();
+
+void parser_parse_package();
+
+void parser_parse();
 
 #endif //ONE_PARSER_H
