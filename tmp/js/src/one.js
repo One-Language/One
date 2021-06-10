@@ -1,3 +1,3 @@
-const { main } = require("./cli/");
+const { main } = require('./cli/');
 
 main(process.argv);

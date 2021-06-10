@@ -1,4 +1,4 @@
-const { genStatement } = require("./statement");
+const { genStatement } = require('./statement');
 
 const genStatements = (stmts) => {
   for (let stmt of stmts) {

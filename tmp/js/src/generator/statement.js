@@ -1,24 +1,24 @@
-const { genIf } = require("./commands/if");
-const { genWhile } = require("./commands/while");
-const { genFor } = require("./commands/for");
-const { genVariableDefine } = require("./commands/variable-define");
-const { genPrint } = require("./commands/print");
+const { genIf } = require('./commands/if');
+const { genWhile } = require('./commands/while');
+const { genFor } = require('./commands/for');
+const { genVariableDefine } = require('./commands/variable-define');
+const { genPrint } = require('./commands/print');
 
 const genStatement = (stmt) => {
   console.log(stmt);
   switch (stmt.type) {
-    case "if":
+    case 'if':
       return genVariableDefine(stmt);
-    case "while":
+    case 'while':
       return genWhile(stmt);
-    case "for":
+    case 'for':
       return genFor(stmt);
-    case "print":
+    case 'print':
       return genPrint(stmt);
-    case "var_assignment":
+    case 'var_assignment':
       return genVariableDefine(stmt);
     default:
-      console.warn("Error: bad statement!");
+      console.warn('Error: bad statement!');
       return null;
   }
 };

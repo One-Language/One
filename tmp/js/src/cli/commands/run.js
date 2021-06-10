@@ -1,10 +1,10 @@
-const { parseFile } = require("../../scanner/parser");
+const { parseFile } = require('../../scanner/parser');
 
 /*
  * run
  */
 const run = (args) => {
-  console.log("Run");
+  console.log('Run');
   if (args.length === 0) {
     // Interactive environment
     return;

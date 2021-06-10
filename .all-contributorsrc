@@ -56,7 +56,10 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/81925269?v=4",
       "profile": "https://github.com/basalumutgazi",
       "contributions": [
-        "doc"
+        "doc",
+        "translation",
+        "projectManagement",
+        "mentoring"
       ]
     },
     {
@@ -129,7 +132,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/81928799?v=4",
       "profile": "https://www.upwork.com/freelancers/~013dd1f9db3380689d",
       "contributions": [
-        "doc"
+        "doc",
+        "projectManagement"
       ]
     }
   ],

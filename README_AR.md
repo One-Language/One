@@ -1,15 +1,17 @@
+<div dir="rtl">
+
 <div align="center">
 
 <p>
-    <a href="https://onelang.org/" alt="The One Programming Language">
+    <a href="https://onelang.org/" alt="The One لغة برمجة">
         <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
     </a>
 </p>
 
-# The One Programming Language 💚 💙 🧡 🤍 💖 🖤
+# The One لغة برمجة 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Help wanted](https://github.com/One-Language/One/issues/new)
+[للمساعدة](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
@@ -24,22 +26,21 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+[![جميع المساهمين](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
 [Türkçe](README_TR.md)
 &nbsp;
-[عربي](README_AR.md)
+[English](README.md)
 
 </div>
 
-Welcome to <a href="https://onelang.org">One</a>!</br>
-It is an open source, self-hosted, bootstrapping <b>system programming language</b> which makes it easy to
-build reliable and efficient software.
-It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> and other open-source contributors.
+اهلا وسهلا بك في <a href="https://onelang.org">One</a>!</br>
+إنها لغة برمجة نظام مفتوحة المصدر ، مستضافة ذاتيًا ، مما يجعل من السهل إنشاء برامج موثوقة وفعالة.
+يتم تطويره من قبل <a href="https://github.com/BaseMax">ماكس</a>, <a href="https://github.com/jbampton">جون</a> ومساهمين آخرين من المصادر المفتوحة.
 
-### Compiler for the One Language will be released in a few months
+### سيصدر المترجم للغة الواحدة "ONE" في غضون أشهر قليلة
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -47,58 +48,58 @@ It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<!-- TABLE OF CONTENTS -->
-<h2 id="table-of-contents">Table of Contents</h2>
+<!-- جدول المحتويات -->
+<h2 id="table-of-contents">جدول المحتويات</h2>
 <details open="open">
   <ol>
-    <li><a href="#Features-of-one">Features of <b>One</b></a></li>
-    <li><a href="#RoadMap">RoadMap</a></li>
-    <li><a href="#Code-Examples">Code Examples</a></li>
-    <li><a href="#Getting-started">Getting Started</a></li>
-    <li><a href="#Get-Involved">Get Involved</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#Features-of-one">ميزات <b>One</b></a></li>
+    <li><a href="#RoadMap">خريطة الطريق</a></li>
+    <li><a href="#Code-Examples">أمثلة التعليمات البرمجية</a></li>
+    <li><a href="#Getting-started">البدء</a></li>
+    <li><a href="#Get-Involved">شارك</a></li>
+    <li><a href="#license">الرخصة</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Features-of-one">➤ Features of One</h2>
+<h2 id="Features-of-one">➤ مميزات لغة البرمجة One</h2>
 
-- Simplicity
-- Compiler
-- Ability to create output file (x86_64, i386)
-- System Programming Language
-- Intermediate level
-- Network and API programming
-- Supports Web Programming (in the future)
-  - Automatic generation of corresponding code for both CSS and HTML. So you won't have to learn more than `One` language to develop a website
-  - Uses variables in CSS, so that we can obtain the colors or sizes from the database
-  - Auto minify the page results
-- Performance and high speed
-- Supports inline Assembly code (in the future)
-- Does not require specific libraries and tools on the user system in normal mode (in the future)
-- Does not require external runtime libraries in normal mode (in the future)
-- Does not require external compilers to do the compilation (in the future)
+- البساطة
+- مترجم
+- القدرة على إنشاء ملف الإخراج (x86_64, i386)
+- لغة برمجة النظام
+- المستوى المتوسط
+- برمجة الشبكات و API
+- يدعم برمجة الويب (في المستقبل)
+  - الإنشاء التلقائي للرمز المقابل لكل من CSS و HTML. لذلك لن تضطر إلى تعلم أكثر من لغة واحدة لتطوير موقع ويب
+  - يستخدم المتغيرات في CSS ، حتى نتمكن من الحصول على الألوان أو الأحجام من قاعدة البيانات
+  - تصغير نتائج الصفحة تلقائيًا
+- أداء وسرعة عالية
+- يدعم رمز التجميع المضمن (في المستقبل)
+- لا يتطلب مكتبات وأدوات محددة على نظام المستخدم في الوضع العادي (في المستقبل)
+- لا يتطلب مكتبات وقت تشغيل خارجية في الوضع العادي (في المستقبل)
+- لا يتطلب من المترجمين الخارجيين القيام بالتجميع (في المستقبل)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="RoadMap">➤ RoadMap</h2>
+<h2 id="RoadMap">➤ خارطة الطريق</h2>
 
-Grammar of the `One` language is available [here](grammar.BNF).
+قواعد اللغة الواحدة متوفرة . [هنا](grammar.BNF).
 
-- [x] Lexer/Parser (Mostly)
-- [x] AST Tree
+- [x] المعجم / المحلل اللغوي (في الغالب)
+- [x] شجرة AST
 - [x] VM
-- [ ] Code Generator (get inspired from LLVM-C)
-- [ ] Develop a runtime library and add features
-- [ ] Design web framework for the language
-- [ ] Rewrite compiler in the `One` language
+- [ ] مولد الشفرة (استلهم من LLVM-C)
+- [ ] قم بتطوير مكتبة وقت التشغيل وإضافة ميزات
+- [ ] تصميم إطار عمل للغة
+- [ ] أعد كتابة المترجم بلغة ONE
 
 <!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Code-Examples">➤ Code Examples</h2>
+<h2 id="Code-Examples">➤ أمثلة التعليمات البرمجية</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -107,7 +108,7 @@ main {
 }
 ```
 
-**Convert to C:**
+**التحويل الى C:**
 
 ```c
 #include <stdio.h>
@@ -127,7 +128,7 @@ i32 main {
 }
 ```
 
-**Convert to C:**
+**التحويل الى C:**
 
 ```c
 #include <stdio.h>
@@ -149,7 +150,7 @@ main {
 }
 ```
 
-**Convert to C:**
+**التحويل الى C:**
 
 ```c
 #include <stdio.h>
@@ -166,7 +167,7 @@ int main(int argc, char *argv[]) {
 
 <hr/>
 
-**Another draft:**
+**مسودة أخرى:**
 
 ```c
 import web
@@ -193,7 +194,7 @@ main {
 
 ---
 
-**Another draft:**
+**مسودة أخرى:**
 
 ```c
 error {
@@ -219,7 +220,7 @@ error {
 
 ---
 
-### Old CLI Development
+### تطوير CLI القديم
 
 ```
 main:
@@ -255,10 +256,10 @@ end
 
 <hr/>
 
-### Old GUI Development: (Web, Software)
+### تطوير واجهة المستخدم الرسومية القديمة: (الويب ، البرامج)
 
-This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
-Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
+تم تصميم هذه البنية فقط لمواقع الويب والبرامج الأصلية. في المستقبل ، سيكون متاحًا أيضًا لتطبيقات الأجهزة المحمولة (الأصلية). (native).<br/>
+الهياكل المتنقلة لم تكتمل بعد وتتطلب المزيد من التفكير والاهتمام. <br/><br/>مثال لإثبات عمل اللغة:
 
 ```css
 title "Name - Main"
@@ -300,7 +301,7 @@ header {
 }
 ```
 
-**Convert to CSS/HTML/JS base:**
+**التحويل إلى قاعدة CSS / HTML / JS:**
 
 ```html
 <html>
@@ -341,15 +342,15 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Getting-started">➤ Getting Started</h2>
+<h2 id="Getting-started">➤ البدء</h2>
 
-Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
+الرجوع الى [هذا الرابط](https://github.com/ET-Lang/ET/wiki) لبدء تعلم اللغة.
 
 <!--Installation Steps-->
 
 <!--Prerequisites-->
 
-#### Supported Environments
+#### البيئات المدعومة
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
@@ -366,26 +367,26 @@ Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the l
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved"> ➤Get Involved</h2>
+<h2 id="Get-Involved"> ➤شارك</h2>
 
-We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
-To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
+نرحب بجميع أنواع المساهمات ، بما في ذلك تقارير الأخطاء وطلبات الميزات وتحسينات الوثائق وما إلى ذلك.
+لطرح سؤال أو فتح مناقشة أو إنشاء مشكلة أو الانضمام إلى . <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
 
-If you are not familiar with how to make a pull request on GitHub then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+إذا لم تكن على دراية بكيفية تقديم طلب سحب على GitHub ، فيرجى قراءة هذا . [الدليل](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-If you have decided to contribute, please first read the guidelines [here](CONTRIBUTING.md).
-<br/>You can also help in the development of `One` by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
+إذا كنت قد قررت المساهمة ، يرجى قراءة الإرشادات هنا أولاً. [هنا](CONTRIBUTING.md).
+<br/>يمكنك أيضًا المساعدة في تطوير `One` من خلال تقديم بعض التبرعات على [:heart: Patreon](https://www.patreon.com/onelanguage).
 
-Thanks to all the <a href ="https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
+شكرا لجميع <a href ="https://github.com/One-Language/One/graphs/contributors">المساهمين</a>!!
 
-If you would like to contribute in the development of this project, you can mail us at: <maxbasecode@gmail.com>
+إذا كنت ترغب في المساهمة في تطوير هذا المشروع, يمكنك مراسلتنا على: <maxbasecode@gmail.com>
 
-<br/>Created By Max Base @ 2019
+<br/>تم إنشاؤه بواسطة Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ License</h2>
+<h2 id="license">➤ الرخصة</h2>
 
-`One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
+`One` تم إصدارها بموجب رخصة جنو العمومية العامة v3.0. يرجى الرجوع إلى المصطلحات الموجودة في ملف الترخيص المتضمن في المستودع.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
@@ -398,9 +399,9 @@ If you would like to contribute in the development of this project, you can mail
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
 
-## Contributors ✨
+## المساهمون ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+شكرًا لهؤلاء الأشخاص الرائعين ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -409,7 +410,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://maxbase.org/"><img src="https://avatars.githubusercontent.com/u/2658040?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Max Base</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=BaseMax" title="Code">💻</a> <a href="https://github.com/One-Language/One/issues?q=author%3ABaseMax" title="Bug reports">🐛</a> <a href="#business-BaseMax" title="Business development">💼</a> <a href="#content-BaseMax" title="Content">🖋</a> <a href="https://github.com/One-Language/One/commits?author=BaseMax" title="Documentation">📖</a> <a href="#example-BaseMax" title="Examples">💡</a> <a href="#ideas-BaseMax" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-BaseMax" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-BaseMax" title="Maintenance">🚧</a> <a href="#mentoring-BaseMax" title="Mentoring">🧑‍🏫</a> <a href="#projectManagement-BaseMax" title="Project Management">📆</a> <a href="#question-BaseMax" title="Answering Questions">💬</a> <a href="https://github.com/One-Language/One/pulls?q=is%3Apr+reviewed-by%3ABaseMax" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/One-Language/One/commits?author=BaseMax" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/jbampton"><img src="https://avatars.githubusercontent.com/u/418747?v=4?s=100" width="100px;" alt=""/><br /><sub><b>John Bampton</b></sub></a><br /><a href="#projectManagement-jbampton" title="Project Management">📆</a> <a href="#business-jbampton" title="Business development">💼</a> <a href="https://github.com/One-Language/One/commits?author=jbampton" title="Code">💻</a> <a href="https://github.com/One-Language/One/commits?author=jbampton" title="Documentation">📖</a> <a href="#eventOrganizing-jbampton" title="Event Organizing">📋</a> <a href="#financial-jbampton" title="Financial">💵</a> <a href="#fundingFinding-jbampton" title="Funding Finding">🔍</a> <a href="#ideas-jbampton" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-jbampton" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-jbampton" title="Maintenance">🚧</a> <a href="#mentoring-jbampton" title="Mentoring">🧑‍🏫</a> <a href="https://github.com/One-Language/One/pulls?q=is%3Apr+reviewed-by%3Ajbampton" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/One-Language/One/commits?author=jbampton" title="Tests">⚠️</a> <a href="#tutorial-jbampton" title="Tutorials">✅</a> <a href="#talk-jbampton" title="Talks">📢</a></td>
-    <td align="center"><a href="https://github.com/basalumutgazi"><img src="https://avatars.githubusercontent.com/u/81925269?v=4?s=100" width="100px;" alt=""/><br /><sub><b>basalumutgazi</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=basalumutgazi" title="Documentation">📖</a> <a href="#translation-basalumutgazi" title="Translation">🌍</a> <a href="#projectManagement-basalumutgazi" title="Project Management">📆</a> <a href="#mentoring-basalumutgazi" title="Mentoring">🧑‍🏫</a></td>
+    <td align="center"><a href="https://github.com/basalumutgazi"><img src="https://avatars.githubusercontent.com/u/81925269?v=4?s=100" width="100px;" alt=""/><br /><sub><b>basalumutgazi</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=basalumutgazi" title="Documentation">📖</a> <a href="#translation-basalumutgazi" title="Translation">🌍</a> <a href="#projectManagement-basalumutgazi" title="Project Management">📆</a></td>
     <td align="center"><a href="https://github.com/n4i9kita"><img src="https://avatars.githubusercontent.com/u/60391776?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nikita Sharma</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=n4i9kita" title="Documentation">📖</a></td>
     <td align="center"><a href="http://aaronmeese.com"><img src="https://avatars.githubusercontent.com/u/17814535?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aaron Meese</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=ajmeese7" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/tHe-AK"><img src="https://avatars.githubusercontent.com/u/19654243?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akshay Kapoor</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=tHe-AK" title="Documentation">📖</a></td>
@@ -428,4 +429,5 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome! 🩱 🕐 1️⃣ 🔂
+يتبع هذا المشروع [جميع-المساهمين](https://github.com/all-contributors/all-contributors) مساهمات من أي نوع مرحب بها! 🩱 🕐 1️⃣ 🔂
+</div>
