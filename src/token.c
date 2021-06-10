@@ -48,6 +48,13 @@ bool token_is_end()
 	return *lexer.current == '\0';
 }
 
+char token_recede() {
+	debug("token_recede");
+
+	lexer.current--;
+	return lexer.current[-1];
+}
+
 char token_advance()
 {
 	debug("token_advance");

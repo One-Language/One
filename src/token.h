@@ -91,7 +91,6 @@ typedef enum
 	TOKEN_CONST, // const
 	TOKEN_FINAL, // final
 
-
 	//	TOKEN_CLASS, // class
 	//	TOKEN_THIS, // this
 	//	TOKEN_SUPER, // super
@@ -135,5 +134,7 @@ void token_skip_comment_multiline();
 void token_skip_whitespace();
 
 char* token_name(TokenType type);
+
+char token_recede();
 
 #endif //ONE_TOKEN_H
