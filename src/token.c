@@ -316,7 +316,7 @@ char* token_name(TokenType type)
 			return "go";
 
 		case TOKEN_PRINT:
-			return "__";
+			return "_";
 		case TOKEN_PRINTNL:
 			return "__";
 		case TOKEN_PRINTDB:
