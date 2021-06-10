@@ -127,12 +127,6 @@ Token* token_make(TokenType type);
 
 Token* token_error(const char* message);
 
-void token_skip_comment_inline();
-
-void token_skip_comment_multiline();
-
-void token_skip_whitespace();
-
 char* token_name(TokenType type);
 
 char token_recede();

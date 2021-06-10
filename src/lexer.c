@@ -24,6 +24,33 @@ void lexer_init(char* source)
 	lexer.loc.column = 0;
 }
 
+void lexer_skip_comment_inline()
+{
+	debug("lexer_skip_comment_inline");
+
+	if (token_peek() == '/' && token_peek_next() == '/')
+	{
+		while (token_peek() != '\n' && !token_is_end()) token_advance();
+	}
+}
+
+void lexer_skip_comment_multiline()
+{
+	debug("lexer_skip_comment_multiline");
+
+	if (token_peek() == '/' && token_peek_next() == '*')
+	{
+		for (;;)
+		{
+			char c1 = token_peek();
+			char c2 = token_peek_next();
+			if (c1 == '*' && c2 == '/')
+			{
+				break;
+			}
+		}
+	}
+}
 void lexer_skip_whitespace()
 {
 	debug("lexer_skip_whitespace");
@@ -47,11 +74,11 @@ void lexer_skip_whitespace()
 				c2 = token_peek_next();
 				if (c2 == '/')
 				{
-					token_skip_comment_inline();
+					lexer_skip_comment_inline();
 				}
 				else if (c2 == '*')
 				{
-					token_skip_comment_multiline();
+					lexer_skip_comment_multiline();
 				}
 				else
 				{

@@ -34,4 +34,8 @@ Token* lexer_scan();
 
 void lexer_free();
 
+void lexer_skip_comment_inline();
+
+void lexer_skip_comment_multiline();
+
 #endif //ONE_LEXER_H

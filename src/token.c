@@ -122,34 +122,6 @@ Token* token_error(const char* message)
 	return t;
 }
 
-void token_skip_comment_inline()
-{
-	debug("token_skip_comment_inline");
-
-	if (token_peek() == '/' && token_peek_next() == '/')
-	{
-		while (token_peek() != '\n' && !token_is_end()) token_advance();
-	}
-}
-
-void token_skip_comment_multiline()
-{
-	debug("token_skip_comment_multiline");
-
-	if (token_peek() == '/' && token_peek_next() == '*')
-	{
-		for (;;)
-		{
-			char c1 = token_peek();
-			char c2 = token_peek_next();
-			if (c1 == '*' && c2 == '/')
-			{
-				break;
-			}
-		}
-	}
-}
-
 char* token_name(TokenType type)
 {
 	debug("token_name");
