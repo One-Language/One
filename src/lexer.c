@@ -134,7 +134,7 @@ Token* lexer_number()
 {
 	debug("lexer_number");
 
-	char* tmp_str = malloc(60 * sizeof(char)+1);
+	char* tmp_str = malloc(60 * sizeof(char) + 1);
 	size_t i = 0;
 
 	while (token_is_digit(token_peek()))
@@ -165,8 +165,8 @@ Token* lexer_number()
 Token* lexer_char()
 {
 	debug("lexer_char");
-//	char tmp_str[1024] = {};
-	char* tmp_str = malloc(1024 * sizeof(char)+1);
+	//	char tmp_str[1024] = {};
+	char* tmp_str = malloc(1024 * sizeof(char) + 1);
 	size_t i = 0;
 
 	token_match('\'');
@@ -192,8 +192,8 @@ Token* lexer_string()
 {
 	debug("lexer_string");
 
-//	char tmp_str[1024] = {};
-	char* tmp_str = malloc(1024 * sizeof(char)+1);
+	//	char tmp_str[1024] = {};
+	char* tmp_str = malloc(1024 * sizeof(char) + 1);
 	size_t i = 0;
 
 	token_match('"');
@@ -214,8 +214,8 @@ Token* lexer_identifier()
 {
 	debug("lexer_identifier");
 
-//	char tmp_str[1024] = {};
-	char* tmp_str = malloc(1024 * sizeof(char)+1);
+	//	char tmp_str[1024] = {};
+	char* tmp_str = malloc(1024 * sizeof(char) + 1);
 	size_t ident_length = 0;
 
 	tmp_str[ident_length++] = token_advance();
