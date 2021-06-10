@@ -44,7 +44,7 @@ char* ast_statement_name(AstStatementType type)
 			return "MATCH";
 
 		case AST_STATEMENT_EXPRESSION:
-			return "EXPRESSION";
+			return "EXPRESSIONS";
 
 		case AST_STATEMENT_IF:
 			return "IF";
@@ -53,7 +53,7 @@ char* ast_statement_name(AstStatementType type)
 			return "VARIABLE";
 
 		default:
-			return "UNKNOWM";
+			return "UNKNOWN";
 	}
 }
 
@@ -96,7 +96,7 @@ char* ast_value_name(AstValueType type)
 			return "bool";
 
 		default:
-			return "UNKNOWM";
+			return "UNKNOWN";
 	}
 }
 
