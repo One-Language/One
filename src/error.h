@@ -49,13 +49,13 @@ typedef enum
 	printf(GREEN "Debug: " format "\n" RESET, ##args);
 
 #define info_token(format, args...) \
-	printf(BOLDYELLOW "Debug: " format "\n" RESET, ##args);
+	printf(BOLDYELLOW "INFO: " format "\n" RESET, ##args);
 
 #define info_lexer(format, args...) \
-	printf(BOLDCYAN "Debug: " format "\n" RESET, ##args);
+	printf(BOLDCYAN "INFO: " format "\n" RESET, ##args);
 
 #define info_parser(format, args...) \
-	printf(BOLDGREEN "Debug: " format "\n" RESET, ##args);
+	printf(BOLDGREEN "INFO: " format "\n" RESET, ##args);
 
 //#define debug(format, args...)
 

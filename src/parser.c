@@ -21,10 +21,13 @@ Array tokens;
 
 #define PARSER_CURRENT (*parser.tokens)
 
-#define PARSER_CURRENT_LOG                                                                              \
-	printf(RED "Current Token is %s (%d)", token_name((*parser.tokens)->type), (*parser.tokens)->type); \
-	if ((*parser.tokens)->value != NULL) printf(": %s", (*parser.tokens)->value);                       \
-	printf("\n" RESET);
+#define PARSER_CURRENT_LOG                              \
+	debug_parser(                                       \
+		 "Current Token is %s (%d)%s%s",              \
+		 token_name((*parser.tokens)->type),            \
+		 (*parser.tokens)->type,                        \
+		 ((*parser.tokens)->value != NULL) ? ": " : "", \
+		 ((*parser.tokens)->value != NULL) ? (*parser.tokens)->value : "");
 
 void parser_init()
 {
