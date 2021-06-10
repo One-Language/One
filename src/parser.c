@@ -233,14 +233,29 @@ void parser_parse_statement_printdbnl()
 	parser_parse_expressions();
 }
 
-void parser_parse_expressions() {
+void parser_parse_expressions()
+{
 	debug_parser("parser_parse_expressions");
+
+	bool is_multi = false;
+
+	for (;;)
+	{
+		parser_parse_expression();
+
+		if (parser_has(TOKEN_OPERATOR_COMMA))
+		{
+			parser_expect(TOKEN_OPERATOR_COMMA);
+		} else {
+			break;
+		}
+	}
 }
 
-void parser_parse_expression() {
+void parser_parse_expression()
+{
 	debug_parser("parser_parse_expression");
 }
-
 
 void parser_parse_package()
 {
