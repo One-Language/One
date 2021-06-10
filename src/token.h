@@ -167,6 +167,7 @@ static Keyword keywords[] = {
 	 {"package", 7, TOKEN_PACKAGE, false},
 	 {"import", 6, TOKEN_IMPORT, false},
 
+	 {"fn", 2, TOKEN_FN, false},
 	 {"if", 2, TOKEN_IF, false},
 	 {"else", 4, TOKEN_ELSE, false},
 

@@ -21,7 +21,10 @@ Array tokens;
 
 #define PARSER_CURRENT (*parser.tokens)
 
-#define PARSER_CURRENT_LOG printf("Current Token is %s (%d)", token_name((*parser.tokens)->type), (*parser.tokens)->type); if((*parser.tokens)->value != NULL) printf("%s", (*parser.tokens)->value); printf("\n");
+#define PARSER_CURRENT_LOG                                                                              \
+	printf(RED "Current Token is %s (%d)", token_name((*parser.tokens)->type), (*parser.tokens)->type); \
+	if ((*parser.tokens)->value != NULL) printf(": %s", (*parser.tokens)->value);                       \
+	printf("\n" RESET);
 
 void parser_init()
 {
@@ -108,12 +111,36 @@ void parser_parse()
 	size_t i = parser.tokens_index;
 	if (PARSER_CURRENT->type == TOKEN_PACKAGE)
 	{
-		parser_parse_package();
+		return parser_parse_package();
 	}
-	if(PARSER_CURRENT->type == TOKEN_EOF) return;
-	if(parser.tokens_index == i) {
+	else if (PARSER_CURRENT->type == TOKEN_FN)
+	{
+		return parser_parse_fn();
+	}
+
+	if (PARSER_CURRENT->type == TOKEN_EOF)
+		return;
+	else if (parser.tokens_index == i)
+	{
 		error_parser("Cannot parse this kind of statement, we face to %s token!", token_name(PARSER_CURRENT->type));
 	}
+}
+
+void parser_parse_fn()
+{
+	parser_expect(TOKEN_FN);
+	Token* ident = PARSER_CURRENT;
+	parser_expect(TOKEN_VALUE_IDENTIFIER);
+
+	parser_parse_block();
+
+	check("Define function %s\n", ident->value);
+}
+
+void parser_parse_block()
+{
+	parser_expect(TOKEN_OPERATOR_BRACKET_CURLY_LEFT);
+	parser_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
 }
 
 void parser_parse_package()
@@ -146,7 +173,7 @@ void parser_parse_package()
 		return;
 	}
 
-	printf("SET PACKAGE = \"%s\"\n", t->value);
+	check("SET PACKAGE = \"%s\"\n", t->value);
 }
 
 bool parser_expect(TokenType expected)
@@ -170,10 +197,6 @@ bool parser_has(TokenType expected)
 		return true;
 	}
 	return false;
-}
-
-void parser_package()
-{
 }
 
 void parser_free()

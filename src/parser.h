@@ -37,6 +37,10 @@ void parser_parse();
 
 void parser_parse_package();
 
+void parser_parse_fn();
+
+void parser_parse_block();
+
 void parser_parse();
 
 #endif //ONE_PARSER_H
