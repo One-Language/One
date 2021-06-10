@@ -45,7 +45,7 @@ Token* lexer_skip_comment_multiline()
 		{
 			char c1 = token_advance();
 			char c2 = token_peek();
-			if (token_is_end()) token_error("You not close multi-line comment and we face to EOF!");
+			if (token_is_end()) return token_error("You not close multi-line comment and we face to EOF!");
 
 			if (c1 == '*' && c2 == '/')
 			{
@@ -53,6 +53,11 @@ Token* lexer_skip_comment_multiline()
 			}
 		}
 	}
+
+	token_match('/');
+	//	if(!token_match('/'))
+	//		return token_error("You have to close multi-line comment correctly!");
+
 	return NULL;
 }
 
@@ -79,13 +84,13 @@ Token* lexer_skip_whitespace()
 				c2 = token_peek_next();
 				if (c2 == '/')
 				{
-					t=lexer_skip_comment_inline();
-					if(t != NULL) return t;
+					t = lexer_skip_comment_inline();
+					if (t != NULL) return t;
 				}
 				else if (c2 == '*')
 				{
-					t= lexer_skip_comment_multiline();
-					if(t != NULL) return t;
+					t = lexer_skip_comment_multiline();
+					if (t != NULL) return t;
 				}
 				else
 				{
@@ -174,7 +179,7 @@ Token* lexer_scan()
 	//	return token_error("");
 
 	char c = token_advance();
-		if (token_is_digit(c)) return lexer_number();
+	if (token_is_digit(c)) return lexer_number();
 	if (c == '"') return lexer_string();
 	if (c == '\'') return lexer_char();
 
