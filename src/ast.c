@@ -34,7 +34,7 @@ char* ast_statement_name(AstStatementType type)
 		case AST_GLOBAL_STATEMENT_TYPE:
 			return "TYPE";
 
-		case AST_STATEMENT_RETURN:
+		case AST_STATEMENT_RET:
 			return "RET";
 		case AST_STATEMENT_PRINT:
 			return "PRINT";

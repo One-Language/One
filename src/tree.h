@@ -19,4 +19,12 @@ void tree_show_statement(FILE* f, AstStatement* stmts);
 
 void tree_show_statements(FILE* f, AstStatements stmts);
 
+void tree_show_statement_print(FILE* f, AstStatement* stmt);
+
+void tree_show_statement_printnl(FILE* f, AstStatement* stmt);
+
+void tree_show_statement_printdb(FILE* f, AstStatement* stmt);
+
+void tree_show_statement_printdbnl(FILE* f, AstStatement* stmt);
+
 #endif //ONE_TREE_H

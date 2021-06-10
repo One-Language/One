@@ -1,8 +1,8 @@
 package max
 
 fn test {
-    _ "hi"
-    _ "hi"
+    _ 1
+    _ 2
 }
 
 fn main {

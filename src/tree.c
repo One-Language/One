@@ -65,10 +65,121 @@ void tree_show_function(FILE* f, AstFunction* fn)
 	ident--;
 }
 
+void tree_show_statement_prints(FILE* f, AstStatement* stmt)
+{
+	if(stmt->type == AST_STATEMENT_PRINT) {
+		tree_show_statement_print(f, stmt);
+	}
+	else if(stmt->type == AST_STATEMENT_PRINTNL) {
+		tree_show_statement_printnl(f, stmt);
+	}
+	else if(stmt->type == AST_STATEMENT_PRINTDB) {
+		tree_show_statement_printdb(f, stmt);
+	}
+	else if(stmt->type == AST_STATEMENT_PRINTDBNL) {
+		tree_show_statement_printdbnl(f, stmt);
+	}
+	else {
+		error_tree("Cannot show tree of a unknown '%s' statement at prints_tree!", ast_statement_name(stmt->type));
+	}
+}
+
+void tree_show_statement_print(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Print\n" RESET);
+}
+
+void tree_show_statement_printnl(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement PrintNL\n" RESET);
+}
+
+void tree_show_statement_printdb(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement PrintDb\n" RESET);
+}
+
+void tree_show_statement_printdbnl(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement PrintDbNL\n" RESET);
+}
+
+void tree_show_statement_while(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement While\n" RESET);
+}
+
+void tree_show_statement_do(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Do\n" RESET);
+}
+
+void tree_show_statement_for(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement For\n" RESET);
+}
+
+void tree_show_statement_ret(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Ret\n" RESET);
+}
+
+void tree_show_statement_variable(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Variable\n" RESET);
+}
+
+void tree_show_statement_expression(FILE* f, AstStatement* stmt)
+{
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Expression\n" RESET);
+}
+
 void tree_show_statement(FILE* f, AstStatement* stmt)
 {
 	tree_show_ident();
 	print_tree(f, BOLDBLUE TREE_PREFIX "Statement: %s\n" RESET, ast_statement_name(stmt->type));
+
+	ident++;
+	if (stmt->type == AST_STATEMENT_PRINT || stmt->type == AST_STATEMENT_PRINTNL || stmt->type == AST_STATEMENT_PRINTDB || stmt->type == AST_STATEMENT_PRINTDBNL)
+	{
+		tree_show_statement_prints(f, stmt);
+	}
+	else if (stmt->type == AST_STATEMENT_WHILE)
+	{
+		tree_show_statement_while(f, stmt);
+	}
+	else if (stmt->type == AST_STATEMENT_DO)
+	{
+		tree_show_statement_do(f, stmt);
+	}
+	else if (stmt->type == AST_STATEMENT_FOR)
+	{
+		tree_show_statement_for(f, stmt);
+	}
+	else if (stmt->type == AST_STATEMENT_RET)
+	{
+		tree_show_statement_ret(f, stmt);
+	}
+	else if (stmt->type == AST_STATEMENT_VARIABLE)
+	{
+		tree_show_statement_variable(f, stmt);
+	}
+	else
+	{
+		error_tree("Cannot show tree of a unknown '%s' statement!", ast_statement_name(stmt->type));
+	}
+
+	ident--;
 }
 
 void tree_show_statements(FILE* f, AstStatements stmts)

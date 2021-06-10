@@ -74,6 +74,8 @@ void error(ErrorType type, const char* format, ...);
 
 char* error_name(ErrorType type);
 
+#define error_tree(format, args...) error(ERROR_TOKEN, format, ##args)
+
 #define error_panic(format, args...) error(ERROR_PANIC, format, ##args)
 
 #define error_warning(format, ...) error(ERROR_WARNING, format, ##args)
