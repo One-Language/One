@@ -153,6 +153,7 @@ Token* lexer_scan()
 		case ',': return token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
 		case '?': return token_make(TOKEN_OPERATOR_QUESTION);
 		case ':': return token_make(token_match(':') ? TOKEN_OPERATOR_COLONCOLON : TOKEN_OPERATOR_COLON);
+		case '.': return token_make(token_match('.') ? (token_match('.') ? TOKEN_OPERATOR_DOTDOTDOT : TOKEN_OPERATOR_DOTDOT) : TOKEN_OPERATOR_DOT);
 
 		case '+': return token_make(token_match('+') ? TOKEN_OPERATOR_PLUSPLUS : TOKEN_OPERATOR_PLUS);
 		case '-': return token_make(token_match('-') ? TOKEN_OPERATOR_MINUSMINUS : TOKEN_OPERATOR_MINUS);
@@ -169,7 +170,8 @@ Token* lexer_scan()
 	return token_error("Unexpected character.");
 }
 
-void lexer_free() {
-//	free(lexer.start);
-//	free(lexer.current);
+void lexer_free()
+{
+	//	free(lexer.start);
+	//	free(lexer.current);
 }

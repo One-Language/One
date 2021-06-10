@@ -19,6 +19,8 @@ void parser_scan();
 
 void parser_start();
 
+void parser_push(Token* t);
+
 void parser_check();
 
 void parser_free();
