@@ -19,7 +19,7 @@
 
 #include "ast.h"
 
-char* ast_name(AstStatementType type)
+char* ast_statement_name(AstStatementType type)
 {
 	switch (type)
 	{
@@ -75,6 +75,7 @@ char* ast_value_name(AstValueType type)
 			return "char";
 		case AST_TYPE_BOOL:
 			return "bool";
+
 		default:
 			return "UNKNOWM";
 	}

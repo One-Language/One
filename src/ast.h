@@ -120,24 +120,24 @@ typedef struct _ast_root
 	AstFunctions* functions;
 } AstRoot;
 
-AstType* astType(int, bool);
+char* ast_statement_name(AstStatementType type);
 
-AstBlock* astBlock(AstStatements*);
+char* ast_value_name(AstValueType type);
 
-AstArgument* astArgument(char*, AstType*);
+AstType* ast_make_type(int type, bool hasArray);
 
-AstFunction* astFunction(char*, AstArguments*, AstBlock*);
+AstBlock* ast_make_block(AstStatements* stmts);
 
-AstRoot* astRoot(char*, AstFunctions*);
+AstExpression* ast_make_expression_3(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right, AstExpression* third);
 
-AstStatement* astStatement(AstStatementType);
+AstExpression* ast_make_expression_2(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right);
 
-//char* astOperatorName(TokenType);
+AstArgument* ast_make_argument(char* name, AstType* type);
 
-char* astStatementName(AstStatementType);
+AstFunction* ast_make_function(char* name, AstArguments* args, AstBlock* block);
 
-AstExpression* astExpression(TokenType, int, float, char*, bool, AstExpression*, AstExpression*);
+AstRoot* ast_make_root(char* package, AstFunctions* funcs);
 
-AstExpression* astExpression3(TokenType, int, float, char*, bool, AstExpression*, AstExpression*, AstExpression*);
+AstStatement* ast_make_statement(AstStatementType type);
 
 #endif //ONE_AST_H
