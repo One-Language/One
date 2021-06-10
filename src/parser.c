@@ -219,7 +219,7 @@ AstFunction* parser_parse_fn()
 {
 	debug_parser("parser_parse_fn");
 
-	AstFunction* fn = malloc(sizeof(AstFunction));
+	AstFunction* fn;// = malloc(sizeof(AstFunction));
 	AstBlock* block;
 	Token* ident;
 
@@ -233,10 +233,12 @@ AstFunction* parser_parse_fn()
 	info_parser("Define function = %s", ident->value);
 	block = parser_parse_block();
 
-	fn->arguments = &args;
-	//	array_free(&args);
-	fn->name = (char*)ident->value;
-	fn->block = block;
+	fn = ast_make_function((char*)ident->value, args, block);
+
+	//	fn->arguments = args;
+//	//	array_free(&args);
+//	fn->name = (char*)ident->value;
+//	fn->block = block;
 
 	return fn;
 }

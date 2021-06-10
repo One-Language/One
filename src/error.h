@@ -45,8 +45,10 @@ typedef enum
 #define debug_lexer(format, args...) \
 	printf(CYAN "Lexer Debug: " format "\n" RESET, ##args);
 
-#define debug_tree(format, args...) \
-	printf(BLUE "Tree INFO: " format "\n" RESET, ##args);
+//#define debug_tree(format, args...) \
+//	printf(BLUE "Tree INFO: " format "\n" RESET, ##args);
+
+#define debug_tree(format, args...)
 
 #define debug_parser(format, args...) \
 	printf(GREEN "Parser Debug: " format "\n" RESET, ##args);

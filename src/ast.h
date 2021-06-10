@@ -131,7 +131,7 @@ typedef struct _ast_argument
 typedef struct _ast_function
 {
 	char* name;
-	AstArguments* arguments;
+	AstArguments arguments;
 	AstBlock* block;
 } AstFunction;
 
@@ -168,7 +168,7 @@ AstExpression* ast_make_expression_2(TokenType op, int vi, float vf, char* vs, b
 
 AstArgument* ast_make_argument(char* name, AstType* type);
 
-AstFunction* ast_make_function(char* name, AstArguments* args, AstBlock* block);
+AstFunction* ast_make_function(char* name, AstArguments args, AstBlock* block);
 
 AstRoot* ast_make_root(char* package, AstFunctions funcs);
 

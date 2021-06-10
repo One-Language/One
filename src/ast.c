@@ -166,7 +166,7 @@ AstArgument* ast_make_argument(char* name, AstType* type)
 	return ast;
 }
 
-AstFunction* ast_make_function(char* name, AstArguments* args, AstBlock* block)
+AstFunction* ast_make_function(char* name, AstArguments args, AstBlock* block)
 {
 	AstFunction* ast = malloc(sizeof(AstFunction));
 	ast->name = name;
