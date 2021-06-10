@@ -189,3 +189,8 @@ AstStatement* ast_make_statement(AstStatementType type)
 	ast->type = type;
 	return ast;
 }
+
+void ast_free(AstRoot* root)
+{
+	//	free(root); // TODO
+}

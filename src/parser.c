@@ -11,6 +11,7 @@
 #include "array.h"
 #include "one.h"
 #include "ast.h"
+#include "tree.h"
 
 #include "parser.h"
 
@@ -21,7 +22,8 @@ Array tokens;
 // macro
 #define PARSER_HAS(want_type) ((*parser.tokens)->type == want_type)
 
-#define PARSER_CURRENT (*parser.tokens)
+#define PARSER_CURRENT \
+	(*parser.tokens)
 
 #define PARSER_CURRENT_LOG                              \
 	debug_parser(                                       \
@@ -74,6 +76,10 @@ void parser_start()
 	parser.tokens_count = tokens.count;
 
 	AstRoot* root = parser_check();
+
+	tree_show(stdout, root);
+
+	ast_free(root);
 }
 
 AstRoot* parser_check()
