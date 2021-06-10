@@ -43,6 +43,8 @@ char* error_name(ErrorType type)
 
 	switch (type)
 	{
+		case ERROR_TREE:
+			return "TREE";
 		case ERROR_WARNING:
 			return "WARNING";
 		case ERROR_PANIC:

@@ -11,6 +11,7 @@ typedef enum
 	ERROR_PANIC,
 	ERROR_TOKEN,
 	ERROR_PARSER,
+	ERROR_TREE,
 } ErrorType;
 
 #define RESET "\033[0m"
@@ -74,7 +75,7 @@ void error(ErrorType type, const char* format, ...);
 
 char* error_name(ErrorType type);
 
-#define error_tree(format, args...) error(ERROR_TOKEN, format, ##args)
+#define error_tree(format, args...) error(ERROR_TREE, format, ##args)
 
 #define error_panic(format, args...) error(ERROR_PANIC, format, ##args)
 
