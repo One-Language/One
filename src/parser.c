@@ -28,7 +28,7 @@ Array tokens;
 
 void parser_init()
 {
-	debug("parser_init");
+	debug_parser("parser_init");
 
 	parser.package = NULL;
 	parser.tokens = NULL;
@@ -43,14 +43,14 @@ void parser_push(Token* t)
 
 void parser_scan()
 {
-	debug("parser_scan");
+	debug_parser("parser_scan");
 
 	Token* t;
 	for (;;)
 	{
 		t = lexer_scan();
 		parser_push(t);
-		debug("parser_scan: print_token %s", token_name(t->type));
+		debug_parser("parser_scan: print_token %s", token_name(t->type));
 		if (t->type == TOKEN_ERROR)
 		{
 			printf("Error: %s\n", t->value);
@@ -63,7 +63,7 @@ void parser_scan()
 
 void parser_start()
 {
-	debug("parser_start");
+	debug_parser("parser_start");
 
 	parser.tokens = (Token**)tokens.data;
 	parser.tokens_count = tokens.count;
@@ -73,17 +73,17 @@ void parser_start()
 
 void parser_check()
 {
-	debug("parser_check");
+	debug_parser("parser_check");
 
 	Token* t;
 
 	while ((*parser.tokens)->type != TOKEN_EOF)
 	{
 		t = *parser.tokens;
-		debug("parser_check: print_token %d <-> %s", t->type, token_name(t->type));
+		debug_parser("parser_check: print_token %d <-> %s", t->type, token_name(t->type));
 		if (t->type == TOKEN_ERROR)
 		{
-			debug("parser_check: print_token_error %s", t->value);
+			debug_parser("parser_check: print_token_error %s", t->value);
 			error_token(t->value);
 			break;
 		}
@@ -134,7 +134,7 @@ void parser_parse_fn()
 
 	parser_parse_block();
 
-	debug_parser("Define function = %s", ident->value);
+	info_parser("Define function = %s", ident->value);
 }
 
 void parser_parse_block()
@@ -173,7 +173,7 @@ void parser_parse_package()
 		return;
 	}
 
-	debug_parser("SET PACKAGE = \"%s\"", t->value);
+	info_parser("SET PACKAGE = \"%s\"", t->value);
 }
 
 bool parser_expect(TokenType expected)
