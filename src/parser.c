@@ -23,7 +23,7 @@ Array tokens;
 
 #define PARSER_CURRENT_LOG                              \
 	debug_parser(                                       \
-		 "Current Token is %s (%d)%s%s",              \
+		 "Current Token is %s (%d)%s%s",                \
 		 token_name((*parser.tokens)->type),            \
 		 (*parser.tokens)->type,                        \
 		 ((*parser.tokens)->value != NULL) ? ": " : "", \
