@@ -23,6 +23,17 @@ char* ast_statement_name(AstStatementType type)
 {
 	switch (type)
 	{
+		case AST_GLOBAL_STATEMENT_FN:
+			return "FN";
+		case AST_GLOBAL_STATEMENT_VAR:
+			return "VAR";
+		case AST_GLOBAL_STATEMENT_ENUM:
+			return "ENUM";
+		case AST_GLOBAL_STATEMENT_STRUCT:
+			return "STRUCT";
+		case AST_GLOBAL_STATEMENT_TYPE:
+			return "TYPE";
+
 		case AST_STATEMENT_RETURN:
 			return "RET";
 		case AST_STATEMENT_PRINT:

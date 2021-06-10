@@ -80,8 +80,21 @@ AstRoot* parser_check()
 {
 	debug_parser("parser_check");
 
-	AstRoot* root;
 	Token* t;
+	AstRoot* root = malloc(sizeof(AstRoot));
+	AstGlobalStatenent* stmt;
+	AstFunctions fns;
+
+	Array vars;
+	Array structs;
+	Array enums;
+	Array types;
+
+	array_init(&fns);
+	array_init(&vars);
+	array_init(&structs);
+	array_init(&enums);
+	array_init(&types);
 
 	while ((*parser.tokens)->type != TOKEN_EOF)
 	{
@@ -94,30 +107,74 @@ AstRoot* parser_check()
 			break;
 		}
 
-		parser_parse();
+		stmt = parser_parse();
+		if (stmt != NULL)
+		{
+			if (stmt->type == AST_GLOBAL_STATEMENT_FN)
+			{
+				array_push(&fns, (void*)stmt->fn);
+			}
+			//			else if (stmt->type == AST_GLOBAL_STATEMENT_VAR)
+			//			{
+			//				array_push(&vars, stmt->var);
+			//			}
+			//			else if (stmt->type == AST_GLOBAL_STATEMENT_TYPE)
+			//			{
+			//				array_push(&vars, stmt->type);
+			//			}
+			//			else if (stmt->type == AST_GLOBAL_STATEMENT_STRUCT)
+			//			{
+			//				array_push(&structs, stmt->struct);
+			//			}
+			//			else if (stmt->type == AST_GLOBAL_STATEMENT_ENUM)
+			//			{
+			//				array_push(&enums, stmt->enum);
+			//			}
+		}
+
 		// parser.tokens++;
 	}
 
-	root->package = parser.package;
-	root->functions;
+	root->package = (char*)parser.package;
+
+	root->functions = &fns;
+
+	root->vars = &vars;
+	root->types = &types;
+	root->strucs = &structs;
+	root->enums = &enums;
+
+	//	array_free(&fns);
+	//	array_free(&vars);
+	//	array_free(&types);
+	//	array_free(&structs);
+	//	array_free(&enums);
+
 	return root;
 }
 
 void parser_next()
 {
+	debug_parser("parser_next");
+
 	parser.tokens_index++;
 	parser.tokens++;
 }
 
 void parser_prev()
 {
+	debug_parser("parser_prev");
+
 	parser.tokens_index--;
 	parser.tokens--;
 }
 
-Ast parser_parse()
+AstGlobalStatenent* parser_parse()
 {
 	debug_parser("parser_parse");
+
+	AstGlobalStatenent* stmt = malloc(sizeof(AstGlobalStatenent));
+	AstFunction* fn;
 
 	size_t i = parser.tokens_index;
 
@@ -129,19 +186,25 @@ Ast parser_parse()
 
 	if (PARSER_CURRENT->type == TOKEN_PACKAGE)
 	{
-		return parser_parse_package();
+		parser_parse_package();
+		return NULL;
 	}
 	else if (PARSER_CURRENT->type == TOKEN_FN)
 	{
-		return parser_parse_fn();
+		fn = parser_parse_fn();
+		stmt->type = AST_GLOBAL_STATEMENT_FN;
+		stmt->fn = fn;
+		return stmt;
 	}
 
 	if (PARSER_CURRENT->type == TOKEN_EOF)
-		return;
+		return NULL;
 	else if (parser.tokens_index == i)
 	{
 		error_parser("Cannot parse this kind of statement, we face to %s token!", token_name(PARSER_CURRENT->type));
 	}
+
+	return stmt;
 }
 
 AstFunction* parser_parse_fn()
@@ -164,7 +227,7 @@ AstFunction* parser_parse_fn()
 
 	fn->arguments = &args;
 	//	array_free(&args);
-	fn->name = ident->value;
+	fn->name = (char*)ident->value;
 	fn->block = block;
 	return fn;
 }
@@ -201,21 +264,22 @@ AstBlock* parser_parse_statements()
 
 AstStatement* parser_parse_statement()
 {
-	AstStatement* stmt;
-
 	debug_parser("parser_parse_statement");
+
+	AstStatement* stmt;
 
 	info_parser("statement type = %s", token_name(PARSER_CURRENT->type));
 
 	if (PARSER_CURRENT->type == TOKEN_PRINT || PARSER_CURRENT->type == TOKEN_PRINTNL || PARSER_CURRENT->type == TOKEN_PRINTDB || PARSER_CURRENT->type == TOKEN_PRINTDBNL)
 	{
 		stmt = parser_parse_statement_prints();
+		return stmt;
 	}
 	else
 	{
 		error_parser("We face to %s as a unknown type of token at print statement!", token_name(PARSER_CURRENT->type));
+		return NULL;
 	}
-	return stmt;
 }
 
 AstStatement* parser_parse_statement_prints()
@@ -364,7 +428,7 @@ void parser_parse_package()
 	}
 
 	info_parser("SET PACKAGE = \"%s\"", t->value);
-	parser.package = (const char*)t->value;
+	parser.package = (char*)t->value;
 }
 
 bool parser_expect(TokenType expected)

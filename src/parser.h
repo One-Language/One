@@ -33,15 +33,13 @@ bool parser_expect(TokenType expected);
 
 bool parser_has(TokenType expected);
 
-void parser_parse();
+AstGlobalStatenent* parser_parse();
 
 void parser_parse_package();
 
 AstFunction* parser_parse_fn();
 
 AstBlock* parser_parse_block();
-
-void parser_parse();
 
 AstBlock* parser_parse_statements();
 

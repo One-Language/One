@@ -14,6 +14,10 @@
 typedef Array AstArguments;
 typedef Array AstStatements;
 typedef Array AstFunctions;
+typedef Array AstStructs;
+typedef Array AstEnums;
+typedef Array AstConsts;
+typedef Array AstTypes;
 typedef Array AstExpressions;
 
 typedef struct _ast_expression AstExpression;
@@ -43,6 +47,12 @@ typedef enum
 
 typedef enum
 {
+	AST_GLOBAL_STATEMENT_FN,
+	AST_GLOBAL_STATEMENT_VAR,
+	AST_GLOBAL_STATEMENT_ENUM,
+	AST_GLOBAL_STATEMENT_STRUCT,
+	AST_GLOBAL_STATEMENT_TYPE,
+
 	AST_STATEMENT_PRINT,
 	AST_STATEMENT_PRINTNL,
 	AST_STATEMENT_PRINTDB,
@@ -128,8 +138,21 @@ typedef struct _ast_function
 typedef struct _ast_root
 {
 	char* package;
+
 	AstFunctions* functions;
+
+	Array* vars;
+	Array* types;
+	Array* strucs;
+	Array* enums;
 } AstRoot;
+
+typedef struct _ast_global_statement
+{
+	AstStatementType type;
+
+	AstFunction* fn;
+} AstGlobalStatenent;
 
 char* ast_statement_name(AstStatementType type);
 
