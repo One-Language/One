@@ -31,6 +31,7 @@
 [Türkçe](README_TR.md)
 &nbsp;
 [عربي](README_AR.md)
+[Español](README_ES.md)
 
 </div>
 
