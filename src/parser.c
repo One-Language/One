@@ -424,7 +424,7 @@ AstExpression* parser_parse_expression()
 	if (PARSER_CURRENT->type == TOKEN_VALUE_STRING)
 	{
 		expr->operator= AST_TYPE_STRING;
-		expr->vstring = (char*) PARSER_CURRENT->value;
+		expr->vstring = (char*)PARSER_CURRENT->value;
 		info_parser("parser_parse_expression: string value is '%s'", expr->vstring);
 
 		parser_next();
@@ -432,7 +432,7 @@ AstExpression* parser_parse_expression()
 	else if (PARSER_CURRENT->type == TOKEN_VALUE_NUMBER)
 	{
 		expr->operator= AST_TYPE_I32;
-		expr->vstring = (char*) PARSER_CURRENT->value;
+		expr->vstring = (char*)PARSER_CURRENT->value;
 		info_parser("parser_parse_expression: number value is '%s'", expr->vstring);
 
 		parser_next();

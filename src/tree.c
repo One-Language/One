@@ -92,28 +92,28 @@ void tree_show_statement_prints(FILE* f, AstStatement* stmt)
 
 void tree_show_statement_print(FILE* f, AstStatement* stmt)
 {
-	tree_show_ident();
+	//	tree_show_ident();
 	//	print_tree(f, BOLDGREEN TREE_PREFIX "Statement Print\n" RESET);
 	tree_show_expressions(f, stmt->expressions);
 }
 
 void tree_show_statement_printnl(FILE* f, AstStatement* stmt)
 {
-	tree_show_ident();
+	//	tree_show_ident();
 	//	print_tree(f, BOLDGREEN TREE_PREFIX "Statement PrintNL\n" RESET);
 	tree_show_expressions(f, stmt->expressions);
 }
 
 void tree_show_statement_printdb(FILE* f, AstStatement* stmt)
 {
-	tree_show_ident();
+	//	tree_show_ident();
 	//	print_tree(f, BOLDGREEN TREE_PREFIX "Statement PrintDb\n" RESET);
 	tree_show_expressions(f, stmt->expressions);
 }
 
 void tree_show_statement_printdbnl(FILE* f, AstStatement* stmt)
 {
-	tree_show_ident();
+//	tree_show_ident();
 	//	print_tree(f, BOLDGREEN TREE_PREFIX "Statement PrintDbNL\n" RESET);
 	tree_show_expressions(f, stmt->expressions);
 }
@@ -151,8 +151,8 @@ void tree_show_statement_variable(FILE* f, AstStatement* stmt)
 
 void tree_show_statement_expression(FILE* f, AstStatement* stmt)
 {
-//	tree_show_ident();
-//	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Expression\n" RESET);
+	//	tree_show_ident();
+	//	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Expression\n" RESET);
 }
 
 void tree_show_expression(FILE* f, AstExpression* expr)
@@ -168,11 +168,13 @@ void tree_show_expressions(FILE* f, AstExpressions exprs)
 	tree_show_ident();
 	print_tree(f, BOLDBLUE TREE_PREFIX "Expressions (%d)\n" RESET, exprs.count);
 
+	ident++;
 	for (int i = 0; i < exprs.count; i++)
 	{
-		expr = exprs. data[i];
+		expr = exprs.data[i];
 		tree_show_expression(f, expr);
 	}
+	ident--;
 }
 
 void tree_show_statement(FILE* f, AstStatement* stmt)
