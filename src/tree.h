@@ -27,4 +27,20 @@ void tree_show_statement_printdb(FILE* f, AstStatement* stmt);
 
 void tree_show_statement_printdbnl(FILE* f, AstStatement* stmt);
 
+void tree_show_statement_while(FILE* f, AstStatement* stmt);
+
+void tree_show_statement_do(FILE* f, AstStatement* stmt);
+
+void tree_show_statement_for(FILE* f, AstStatement* stmt);
+
+void tree_show_statement_ret(FILE* f, AstStatement* stmt);
+
+void tree_show_statement_variable(FILE* f, AstStatement* stmt);
+
+void tree_show_statement_expression(FILE* f, AstStatement* stmt);
+
+void tree_show_expression(FILE* f, AstExpression* exprs);
+
+void tree_show_expressions(FILE* f, AstExpressions exprs);
+
 #endif //ONE_TREE_H

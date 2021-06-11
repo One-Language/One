@@ -344,7 +344,7 @@ AstStatement* parser_parse_statement_print()
 	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINT);
 
 	parser_expect(TOKEN_PRINT);
-	parser_parse_expressions();
+	stmt->expressions = parser_parse_expressions();
 
 	return stmt;
 }
@@ -356,7 +356,7 @@ AstStatement* parser_parse_statement_printnl()
 	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINTNL);
 
 	parser_expect(TOKEN_PRINTNL);
-	parser_parse_expressions();
+	stmt->expressions = parser_parse_expressions();
 
 	return stmt;
 }
@@ -368,7 +368,7 @@ AstStatement* parser_parse_statement_printdb()
 	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINTDB);
 
 	parser_expect(TOKEN_PRINTDB);
-	parser_parse_expressions();
+	stmt->expressions = parser_parse_expressions();
 
 	return stmt;
 }
@@ -380,20 +380,27 @@ AstStatement* parser_parse_statement_printdbnl()
 	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINTDBNL);
 
 	parser_expect(TOKEN_PRINTDBNL);
-	parser_parse_expressions();
+	stmt->expressions = parser_parse_expressions();
 
 	return stmt;
 }
 
-void parser_parse_expressions()
+AstExpressions parser_parse_expressions()
 {
+	debug_parser("parser_parse_expressions");
+
+	AstExpression* expr;
+	AstExpressions exprs;
+	array_init(&exprs);
+
 	debug_parser("parser_parse_expressions");
 
 	bool is_multi = false;
 
 	for (;;)
 	{
-		parser_parse_expression();
+		expr = parser_parse_expression();
+		array_push(&exprs, (void*)expr);
 
 		if (parser_has(TOKEN_OPERATOR_COMMA))
 		{
@@ -404,23 +411,37 @@ void parser_parse_expressions()
 			break;
 		}
 	}
+
+	return exprs;
 }
 
-void parser_parse_expression()
+AstExpression* parser_parse_expression()
 {
 	debug_parser("parser_parse_expression");
+
+	AstExpression* expr = malloc(sizeof(AstExpression));
+
 	if (PARSER_CURRENT->type == TOKEN_VALUE_STRING)
 	{
+		expr->operator= AST_TYPE_STRING;
+		expr->vstring = (char*) PARSER_CURRENT->value;
+		info_parser("parser_parse_expression: string value is '%s'", expr->vstring);
+
 		parser_next();
 	}
 	else if (PARSER_CURRENT->type == TOKEN_VALUE_NUMBER)
 	{
+		expr->operator= AST_TYPE_I32;
+		expr->vstring = (char*) PARSER_CURRENT->value;
+		info_parser("parser_parse_expression: number value is '%s'", expr->vstring);
+
 		parser_next();
 	}
 	else
 	{
 		error_parser("Bad token as expression, we face to a %s token!", token_name(PARSER_CURRENT->type));
 	}
+	return expr;
 }
 
 void parser_parse_package()

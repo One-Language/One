@@ -92,7 +92,7 @@ typedef enum
 typedef struct _ast_statement
 {
 	AstStatementType type;
-	AstExpressions* expressions;
+	AstExpressions expressions;
 	AstExpression* expression;
 } AstStatement;
 

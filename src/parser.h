@@ -55,8 +55,8 @@ AstStatement* parser_parse_statement_printdb();
 
 AstStatement* parser_parse_statement_printdbnl();
 
-void parser_parse_expressions();
+AstExpressions parser_parse_expressions();
 
-void parser_parse_expression();
+AstExpression* parser_parse_expression();
 
 #endif //ONE_PARSER_H

@@ -8,7 +8,6 @@
 #include "array.h"
 #include "lexer.h"
 #include "token.h"
-
 #include "ast.h"
 #include "parser.h"
 #include "error.h"
@@ -30,6 +29,7 @@ void tree_show_ident()
 		printf("    ");
 	}
 }
+
 void tree_show(FILE* f, AstRoot* root) // Question: why at here I have to put **  and cannot use *? If i wrote * value will be wrong!
 {
 	debug_tree("tree_show");
@@ -56,7 +56,8 @@ void tree_show_functions(FILE* f, AstFunctions fns)
 void tree_show_function(FILE* f, AstFunction* fn)
 {
 	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Function %s\n" RESET, fn->name);
+	//	print_tree(f, BOLDBLUE TREE_PREFIX "Function: %s\n" RESET, fn->name);
+	print_tree(f, BOLDGREEN TREE_PREFIX "Function: %s\n" RESET, fn->name);
 
 	ident++;
 	tree_show_arguments(f, fn->arguments);
@@ -92,67 +93,92 @@ void tree_show_statement_prints(FILE* f, AstStatement* stmt)
 void tree_show_statement_print(FILE* f, AstStatement* stmt)
 {
 	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Print\n" RESET);
+	//	print_tree(f, BOLDGREEN TREE_PREFIX "Statement Print\n" RESET);
+	tree_show_expressions(f, stmt->expressions);
 }
 
 void tree_show_statement_printnl(FILE* f, AstStatement* stmt)
 {
 	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement PrintNL\n" RESET);
+	//	print_tree(f, BOLDGREEN TREE_PREFIX "Statement PrintNL\n" RESET);
+	tree_show_expressions(f, stmt->expressions);
 }
 
 void tree_show_statement_printdb(FILE* f, AstStatement* stmt)
 {
 	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement PrintDb\n" RESET);
+	//	print_tree(f, BOLDGREEN TREE_PREFIX "Statement PrintDb\n" RESET);
+	tree_show_expressions(f, stmt->expressions);
 }
 
 void tree_show_statement_printdbnl(FILE* f, AstStatement* stmt)
 {
 	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement PrintDbNL\n" RESET);
+	//	print_tree(f, BOLDGREEN TREE_PREFIX "Statement PrintDbNL\n" RESET);
+	tree_show_expressions(f, stmt->expressions);
 }
 
 void tree_show_statement_while(FILE* f, AstStatement* stmt)
 {
-	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement While\n" RESET);
+	//	tree_show_ident();
+	//	print_tree(f, BOLDBLUE TREE_PREFIX "Statement While\n" RESET);
 }
 
 void tree_show_statement_do(FILE* f, AstStatement* stmt)
 {
-	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Do\n" RESET);
+	//	tree_show_ident();
+	//	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Do\n" RESET);
 }
 
 void tree_show_statement_for(FILE* f, AstStatement* stmt)
 {
-	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement For\n" RESET);
+	//	tree_show_ident();
+	//	print_tree(f, BOLDBLUE TREE_PREFIX "Statement For\n" RESET);
 }
 
 void tree_show_statement_ret(FILE* f, AstStatement* stmt)
 {
-	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Ret\n" RESET);
+	//	tree_show_ident();
+	//	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Ret\n" RESET);
+	tree_show_expressions(f, stmt->expressions);
 }
 
 void tree_show_statement_variable(FILE* f, AstStatement* stmt)
 {
-	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Variable\n" RESET);
+	//	tree_show_ident();
+	//	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Variable\n" RESET);
 }
 
 void tree_show_statement_expression(FILE* f, AstStatement* stmt)
 {
+//	tree_show_ident();
+//	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Expression\n" RESET);
+}
+
+void tree_show_expression(FILE* f, AstExpression* expr)
+{
 	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement Expression\n" RESET);
+	print_tree(f, BOLDBLUE TREE_PREFIX "Expression %s\n" RESET, ast_value_name(expr->operator));
+}
+
+void tree_show_expressions(FILE* f, AstExpressions exprs)
+{
+	AstExpression* expr;
+
+	tree_show_ident();
+	print_tree(f, BOLDBLUE TREE_PREFIX "Expressions (%d)\n" RESET, exprs.count);
+
+	for (int i = 0; i < exprs.count; i++)
+	{
+		expr = exprs. data[i];
+		tree_show_expression(f, expr);
+	}
 }
 
 void tree_show_statement(FILE* f, AstStatement* stmt)
 {
 	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Statement: %s\n" RESET, ast_statement_name(stmt->type));
+	print_tree(f, BOLDGREEN TREE_PREFIX "Statement: %s\n" RESET, ast_statement_name(stmt->type));
 
 	ident++;
 	if (stmt->type == AST_STATEMENT_PRINT || stmt->type == AST_STATEMENT_PRINTNL || stmt->type == AST_STATEMENT_PRINTDB || stmt->type == AST_STATEMENT_PRINTDBNL)
