@@ -86,9 +86,11 @@ void parser_start()
 
 void parser_tokens_log()
 {
+	debug_parser("parser_tokens_log");
+
 	for (size_t i = 0; i < parser.tokens_count; i++)
 	{
-		info_parser("Token is %s (%s)", token_name(parser.tokens[i]->type), parser.tokens[i]->value == NULL ? "Null" : parser.tokens[i]->value);
+		info_parser("Token[%zu] is %s (%s)", i, token_name(parser.tokens[i]->type), parser.tokens[i]->value == NULL ? "Null" : parser.tokens[i]->value);
 	}
 }
 
@@ -155,8 +157,8 @@ AstRoot* parser_check()
 	root->package = (char*)parser.package;
 	root->functions = fns;
 
-	printf("==>%d\n", fns.count);
-	printf("==>%d\n", root->functions.count);
+	//	printf("==>%d\n", fns.count);
+	//	printf("==>%d\n", root->functions.count);
 
 	//	root->vars = &vars;
 	//	root->types = &types;
@@ -276,7 +278,7 @@ AstBlock* parser_parse_statements()
 	while (PARSER_CURRENT->type != TOKEN_OPERATOR_BRACKET_CURLY_RIGHT)
 	{
 		stmt = parser_parse_statement();
-		printf("STMT TYPE ===>%s\n", ast_statement_name(stmt->type));
+		//		printf("STMT TYPE ===>%s\n", ast_statement_name(stmt->type));
 		array_push(&stmts, (void*)stmt);
 	}
 
@@ -357,7 +359,7 @@ AstStatement* parser_parse_statement_print()
 
 	parser_expect(TOKEN_PRINT);
 
-	printf("====::::: current token is %s\n", token_name(PARSER_CURRENT->type));
+	//	printf("====::::: current token is %s\n", token_name(PARSER_CURRENT->type));
 
 	stmt->expressions = parser_parse_expressions();
 
@@ -412,14 +414,14 @@ AstExpressions parser_parse_expressions()
 
 	do {
 		if (is_first == false) parser_expect(TOKEN_OPERATOR_COMMA);
-		printf("1/at exprs parser ====::::: current token is %s - %s\n", token_name(PARSER_CURRENT->type), PARSER_CURRENT->value);
+		//		printf("1/at exprs parser ====::::: current token is %s - %s\n", token_name(PARSER_CURRENT->type), PARSER_CURRENT->value);
 		expr = parser_parse_expression();
-		printf("2/at exprs parser ====::::: current token is %s\n", token_name(PARSER_CURRENT->type));
+		//		printf("2/at exprs parser ====::::: current token is %s\n", token_name(PARSER_CURRENT->type));
 		array_push(&exprs, expr);
 		if (is_first == true) is_first = false;
 	} while (PARSER_CURRENT->type == TOKEN_OPERATOR_COMMA);
 
-	printf("SOOOO at bottom of exprs parser ====::::: current token is %s\n", token_name(PARSER_CURRENT->type));
+	//	printf("SOOOO at bottom of exprs parser ====::::: current token is %s\n", token_name(PARSER_CURRENT->type));
 
 	//	for (;;)
 	//	{
@@ -447,7 +449,7 @@ AstExpression* parser_parse_expression()
 
 	AstExpression* expr = malloc(sizeof(AstExpression));
 
-	printf("1/at expr parser====::::: current token is %s - %s\n", token_name(PARSER_CURRENT->type), PARSER_CURRENT->value);
+	//	printf("1/at expr parser====::::: current token is %s - %s\n", token_name(PARSER_CURRENT->type), PARSER_CURRENT->value);
 
 	if (PARSER_CURRENT->type == TOKEN_VALUE_STRING)
 	{
@@ -470,7 +472,7 @@ AstExpression* parser_parse_expression()
 		error_parser("Bad token as expression, we face to a %s token!", token_name(PARSER_CURRENT->type));
 	}
 
-	printf("2/at expr parser====::::: current token is %s\n", token_name(PARSER_CURRENT->type));
+	//	printf("2/at expr parser====::::: current token is %s\n", token_name(PARSER_CURRENT->type));
 
 	return expr;
 }

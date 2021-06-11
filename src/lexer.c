@@ -275,7 +275,7 @@ Token* lexer_scan()
 		case '{': return token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT);
 		case '}': return token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
 
-		case ',': return token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
+		case ',': return token_make(TOKEN_OPERATOR_COMMA);
 		case '?': return token_make(TOKEN_OPERATOR_QUESTION);
 		case ':': return token_make(token_match(':') ? TOKEN_OPERATOR_COLONCOLON : TOKEN_OPERATOR_COLON);
 		case '.': return token_make(token_match('.') ? (token_match('.') ? TOKEN_OPERATOR_DOTDOTDOT : TOKEN_OPERATOR_DOTDOT) : TOKEN_OPERATOR_DOT);
