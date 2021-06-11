@@ -59,4 +59,10 @@ AstExpressions parser_parse_expressions();
 
 AstExpression* parser_parse_expression();
 
+void parser_next();
+
+void parser_prev();
+
+void parser_tokens_log();
+
 #endif //ONE_PARSER_H
