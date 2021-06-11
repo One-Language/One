@@ -28,10 +28,10 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
-[Türkçe](README_TR.md)
-&nbsp;
+[English](README.md)
 [عربي](README_AR.md)
 [Español](README_ES.md)
+[Türkçe](README_TR.md)
 
 </div>
 
