@@ -113,7 +113,7 @@ void tree_show_statement_printdb(FILE* f, AstStatement* stmt)
 
 void tree_show_statement_printdbnl(FILE* f, AstStatement* stmt)
 {
-//	tree_show_ident();
+	//	tree_show_ident();
 	//	print_tree(f, BOLDGREEN TREE_PREFIX "Statement PrintDbNL\n" RESET);
 	tree_show_expressions(f, stmt->expressions);
 }

@@ -209,6 +209,7 @@ AstGlobalStatenent* parser_parse()
 		return NULL;
 	else if (parser.tokens_index == i)
 	{
+		printf("==>%s\n", PARSER_CURRENT->value);
 		error_parser("Cannot parse this kind of statement, we face to %s token!", token_name(PARSER_CURRENT->type));
 	}
 
@@ -344,6 +345,9 @@ AstStatement* parser_parse_statement_print()
 	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINT);
 
 	parser_expect(TOKEN_PRINT);
+
+	printf("====::::: current token is %s\n", token_name(PARSER_CURRENT->type));
+
 	stmt->expressions = parser_parse_expressions();
 
 	return stmt;
@@ -393,24 +397,32 @@ AstExpressions parser_parse_expressions()
 	AstExpressions exprs;
 	array_init(&exprs);
 
-	debug_parser("parser_parse_expressions");
+	bool is_first = true;
 
-	bool is_multi = false;
+	do {
+		if (is_first == false) parser_expect(TOKEN_OPERATOR_COMMA);
+		if (is_first == true) is_first = false;
 
-	for (;;)
-	{
 		expr = parser_parse_expression();
-		array_push(&exprs, (void*)expr);
+		array_push(&exprs, expr);
+	} while (PARSER_CURRENT->type == TOKEN_OPERATOR_COMMA);
 
-		if (parser_has(TOKEN_OPERATOR_COMMA))
-		{
-			parser_expect(TOKEN_OPERATOR_COMMA);
-		}
-		else
-		{
-			break;
-		}
-	}
+	//	for (;;)
+	//	{
+	//		expr = parser_parse_expression();
+	//		array_push(&exprs, (void*)expr);
+	//
+	//		printf("::::: current token is %s\n", token_name(PARSER_CURRENT->type));
+	//
+	//		if (parser_has(TOKEN_OPERATOR_COMMA))
+	//		{
+	//			parser_expect(TOKEN_OPERATOR_COMMA);
+	//		}
+	//		else
+	//		{
+	//			break;
+	//		}
+	//	}
 
 	return exprs;
 }
@@ -486,7 +498,7 @@ bool parser_expect(TokenType expected)
 
 	if (PARSER_CURRENT->type == expected)
 	{
-		parser.tokens++;
+		parser_next();
 		return true;
 	}
 	else
