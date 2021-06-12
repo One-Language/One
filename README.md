@@ -369,7 +369,7 @@ Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the l
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved"> ➤Get Involved</h2>
+<h2 id="Get-Involved"> ➤ Get Involved</h2>
 
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
 To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.

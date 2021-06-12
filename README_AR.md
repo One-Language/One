@@ -371,7 +371,7 @@ header {
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved"> ➤شارك</h2>
+<h2 id="Get-Involved">➤ شارك</h2>
 
 نرحب بجميع أنواع المساهمات ، بما في ذلك تقارير الأخطاء وطلبات الميزات وتحسينات الوثائق وما إلى ذلك.
 لطرح سؤال أو فتح مناقشة أو إنشاء مشكلة أو الانضمام إلى . <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.

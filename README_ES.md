@@ -369,7 +369,7 @@ Puedes revisar [este link](https://github.com/ET-Lang/ET/wiki) para comenzar a a
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved"> ➤Get Involved</h2>
+<h2 id="Get-Involved">➤ Involucrarse</h2>
 
 Aceptamos cualquier tipo de contribuciones, incluyendo reportes de bugs, solicitud de funciones, mejoras en la documentación, etc.
 Para hacer una pregunta o iniciar una conversación, create an issue o únete al <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Servidor de Discord</a>.
@@ -386,7 +386,7 @@ Si te gustaría contribuir al desarrollo de este proyecto, puedes esctibirnos a:
 <br/>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ License</h2>
+<h2 id="license">➤ Licencia</h2>
 
 `One` está publicado bajo la Licencia Pública General GNU v3.0. Por favor revisa los términos en el archivo <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENCIA</a> incluido en el repositorio.
 
