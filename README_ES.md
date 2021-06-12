@@ -30,9 +30,11 @@
 
 [English](README.md)
 &nbsp;
-[Türkçe](README_TR.md)
-&nbsp;
 [عربي](README_AR.md)
+&nbsp;
+[Español](README_ES.md)
+&nbsp;
+[Türkçe](README_TR.md)
 
 </div>
 
