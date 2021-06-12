@@ -144,6 +144,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "RayhanADev",
+      "name": "Ray Arayilakath",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72509475?v=4",
+      "profile": "https://rayhanadev.vercel.app/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
