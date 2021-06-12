@@ -28,12 +28,13 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
-[Türkçe](README_TR.md)
+[English](README.md)
 &nbsp;
 [عربي](README_AR.md)
 &nbsp;
 [Español](README_ES.md)
-
+&nbsp;
+[Türkçe](README_TR.md)
 </div>
 
 Welcome to <a href="https://onelang.org">One</a>!</br>
