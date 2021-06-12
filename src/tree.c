@@ -158,7 +158,7 @@ void tree_show_statement_expression(FILE* f, AstStatement* stmt)
 void tree_show_expression(FILE* f, AstExpression* expr)
 {
 	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Expression %s\n" RESET, ast_value_name(expr->operator));
+	print_tree(f, BOLDBLUE TREE_PREFIX "Expression %s: %s\n" RESET, ast_value_name(expr->operator), expr->vstring == NULL ? "Null" : expr->vstring);
 }
 
 void tree_show_expressions(FILE* f, AstExpressions exprs)
