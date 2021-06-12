@@ -369,7 +369,7 @@ Dili öğrenmeye başlamak için [bu linke](https://github.com/ET-Lang/ET/wiki) 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved"> ➤ Bize katılın</h2>
+<h2 id="Get-Involved">➤ Bize katılın</h2>
 
 Bug raporlamaları, özellik istekleri, dokümentasyon geliştirmeleri vb. dahil olmak üzere her türlü katkıyı nezaketle karşılıyoruz.
 Soru sormak ya da bir tartışma başlatmak için bir issue oluşturun ya da <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>'ına katılın.
