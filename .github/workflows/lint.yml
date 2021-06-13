@@ -11,7 +11,7 @@ jobs:
       - name: Install
         run: wget -O - -q https://git.io/misspell | sh -s -- -b .
       - name: Misspell
-        run: git ls-files --empty-directory | grep -v README_TR.md | grep -v README_ES.md | xargs ./misspell -error
+        run: git ls-files --empty-directory | grep -v README_TR.md | grep -v README_ES.md | grep -v README_AR.md | xargs ./misspell -error
   pre-commit:
     name: Run pre-commit  # https://pre-commit.com/
     runs-on: ubuntu-latest
