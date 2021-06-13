@@ -876,7 +876,7 @@ AstExpression *parser_parse_expression_term()
 	{
 		TokenType op = PARSER_CURRENT->type;
 		parser_next();
-		expr = ast_make_expression_2(op, -1, expr, parser_parse_expression_term());
+		expr = ast_make_expression_2(op, -1, expr, parser_parse_expression_factor());
 	}
 	return expr;
 }
