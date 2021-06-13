@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.19)
 set(CMAKE_C_STANDARD 11)
-project(One C)
+project(One C CXX)
+
+#enable_language(C++)
+
 
 find_package(LLVM REQUIRED CONFIG)
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
