@@ -158,7 +158,30 @@ void tree_show_statement_expression(FILE* f, AstStatement* stmt)
 void tree_show_expression(FILE* f, AstExpression* expr)
 {
 	tree_show_ident();
-	print_tree(f, BOLDBLUE TREE_PREFIX "Expression %s: %s\n" RESET, ast_value_name(expr->operator), expr->vstring == NULL ? "Null" : expr->vstring);
+	if(expr->operator == TOKEN_OPERATOR_NONE) {
+		print_tree(f, BOLDBLUE TREE_PREFIX "Expression Direct: %s\n" RESET, expr->vstring == NULL ? "" : expr->vstring);
+	}
+	else {
+		print_tree(f, BOLDBLUE TREE_PREFIX "Expression %s\n" RESET, token_name(expr->operator));
+
+		ident++;
+		if(expr->left != NULL) {
+			tree_show_ident();
+			print_tree(f, BOLDBLUE TREE_PREFIX "Expression Left\n" RESET);
+			ident++;
+			tree_show_expression(f, expr->left);
+			ident--;
+		}
+		if(expr->right != NULL) {
+			tree_show_ident();
+			print_tree(f, BOLDBLUE TREE_PREFIX "Expression Right\n" RESET );
+			ident++;
+			tree_show_expression(f, expr->right);
+			ident--;
+		}
+		ident--;
+	}
+
 }
 
 void tree_show_expressions(FILE* f, AstExpressions exprs)

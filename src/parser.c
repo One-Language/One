@@ -446,13 +446,18 @@ AstExpressions parser_parse_expressions()
 AstExpression *parser_parse_expression_primary()
 {
 	debug_parser("parser_parse_expression_primary");
+
+	AstType t;
 	AstExpression *expr = malloc(sizeof(AstExpression));
 
 	//	printf("1/at expr parser====::::: current token is %s - %s\n", token_name(PARSER_CURRENT->type), PARSER_CURRENT->value);
 
 	if (PARSER_CURRENT->type == TOKEN_VALUE_STRING)
 	{
-		expr->operator= AST_TYPE_STRING;
+		expr->operator= TOKEN_OPERATOR_NONE;
+		t.type = AST_TYPE_STRING;
+		t.hasArray = false;
+		expr->type = t;
 		expr->vstring = (char *)PARSER_CURRENT->value;
 		info_parser("parser_parse_expression: string value is '%s'", expr->vstring);
 
@@ -460,7 +465,10 @@ AstExpression *parser_parse_expression_primary()
 	}
 	else if (PARSER_CURRENT->type == TOKEN_VALUE_NUMBER)
 	{
-		expr->operator= AST_TYPE_I32;
+		expr->operator= TOKEN_OPERATOR_NONE;
+		t.type = AST_TYPE_I32;
+		t.hasArray = false;
+		expr->type = t;
 		expr->vstring = (char *)PARSER_CURRENT->value;
 		info_parser("parser_parse_expression: number value is '%s'", expr->vstring);
 
@@ -845,13 +853,15 @@ AstExpression *parser_parse_expression_factor()
 {
 	debug_parser("parser_parse_expression_factor");
 
-	AstExpression* expr;
-	if(PARSER_CURRENT->type == TOKEN_OPERATOR_BRACKET_ROUND_LEFT) {
+	AstExpression *expr;
+	if (PARSER_CURRENT->type == TOKEN_OPERATOR_BRACKET_ROUND_LEFT)
+	{
 		parser_expect(TOKEN_OPERATOR_BRACKET_ROUND_LEFT);
 		expr = parser_parse_expression();
 		parser_expect(TOKEN_OPERATOR_BRACKET_ROUND_RIGHT);
 	}
-	else {
+	else
+	{
 		expr = parser_parse_expression_primary();
 	}
 	return expr;
@@ -864,7 +874,9 @@ AstExpression *parser_parse_expression_term()
 	AstExpression *expr = parser_parse_expression_factor();
 	while (PARSER_CURRENT->type == TOKEN_OPERATOR_STAR || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH_INT)
 	{
-		expr = ast_make_expression_2(PARSER_CURRENT->type, -1, expr, parser_parse_expression_term());
+		TokenType op = PARSER_CURRENT->type;
+		parser_next();
+		expr = ast_make_expression_2(op, -1, expr, parser_parse_expression_term());
 	}
 	return expr;
 }

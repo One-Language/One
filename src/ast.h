@@ -103,7 +103,7 @@ typedef struct _ast_block
 
 typedef struct _ast_type
 {
-	int type;
+	AstValueType type;
 	bool hasArray;
 } AstType;
 
@@ -111,6 +111,7 @@ typedef struct _ast_expression
 {
 	//	AstOperatorType operator;
 	TokenType operator;
+	AstType  type;
 
 	int vint;
 	float vfloat;

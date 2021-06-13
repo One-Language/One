@@ -125,7 +125,7 @@ Token* token_error(char* message)
 
 char* token_name(TokenType type)
 {
-	debug_token("token_name");
+//	debug_token("token_name");
 
 	switch (type)
 	{
@@ -182,6 +182,9 @@ char* token_name(TokenType type)
 			return "value_true";
 		case TOKEN_VALUE_BOOL_FALSE:
 			return "value_false";
+
+		case TOKEN_OPERATOR_NONE:
+			return "NonOp";
 
 		case TOKEN_OPERATOR_EQUAL_EQUAL:
 			return "==";

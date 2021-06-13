@@ -133,7 +133,7 @@ AstExpression* ast_make_expression_3(TokenType op, int value, AstExpression* lef
 
 	ast->vint = value;
 //	ast->vfloat = vf;
-	ast->vstring = "None";
+	ast->vstring = NULL;
 //	ast->vbool = vb;
 
 	ast->left = left;
@@ -148,7 +148,7 @@ AstExpression* ast_make_expression_2(TokenType op, int value, AstExpression* lef
 	ast->operator= op;
 
 	ast->vint = value;
-	ast->vstring = "None";
+	ast->vstring = NULL;
 
 	ast->left = left;
 	ast->right = right;
