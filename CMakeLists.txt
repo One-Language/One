@@ -1,13 +1,38 @@
 cmake_minimum_required(VERSION 3.19)
+set(CMAKE_C_STANDARD 11)
 project(One C)
 
-set(CMAKE_C_STANDARD 11)
+find_package(LLVM REQUIRED CONFIG)
+message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
+message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
 
 include_directories(src)
 
 # enable_testing()
 # add_subdirectory(test)
 include_directories(test)
+
+include_directories(${LLVM_INCLUDE_DIRS})
+add_definitions(${LLVM_DEFINITIONS})
+
+
+llvm_map_components_to_libnames(llvm_libs support core irreader)
+
+
+set(LLVMCONF
+        llvm-config)
+
+#set(RFLAGS
+#        -O3)
+
+set(CFLAGS
+        #        `${LLVMCONF} --cflags` -Wall ${RFLAGS})
+    -I/usr/include  -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Wall -O3)
+
+
+set(LIBS
+#        `${LLVMCONF} --ldflags --libs --system-libs`)
+        -L/usr/lib  -lLLVM-11)
 
 set(PROJECT_HEADERS
         src/one.h
@@ -68,4 +93,7 @@ set(PROJECT_SOURCES
 
         src/error.c)
 
+#add_executable(One ${PROJECT_SOURCES} ${PROJECT_HEADERS} ${CFLAGS} ${LIBS})
 add_executable(One ${PROJECT_SOURCES} ${PROJECT_HEADERS})
+
+target_link_libraries(One ${llvm_libs})
