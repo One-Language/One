@@ -14,6 +14,7 @@ include_directories(test)
 
 include_directories(${LLVM_INCLUDE_DIRS})
 include_directories(/usr/include)
+link_directories(/usr/lib)
 
 add_definitions(${LLVM_DEFINITIONS})
 
