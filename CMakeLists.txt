@@ -13,17 +13,25 @@ include_directories(src)
 include_directories(test)
 
 include_directories(${LLVM_INCLUDE_DIRS})
+include_directories(/usr/include)
+
 add_definitions(${LLVM_DEFINITIONS})
 
-
 llvm_map_components_to_libnames(llvm_libs support core irreader)
-
 
 set(LLVMCONF
         llvm-config)
 
 #set(RFLAGS
 #        -O3)
+
+add_definitions(
+        -D_GNU_SOURCE
+        -D__STDC_CONSTANT_MACROS
+        -D__STDC_FORMAT_MACROS
+        -D__STDC_LIMIT_MACROS
+)
+
 
 set(CFLAGS
         #        `${LLVMCONF} --cflags` -Wall ${RFLAGS})
@@ -97,3 +105,10 @@ set(PROJECT_SOURCES
 add_executable(One ${PROJECT_SOURCES} ${PROJECT_HEADERS})
 
 target_link_libraries(One ${llvm_libs})
+
+target_link_libraries(One
+        pthread
+        z
+        dl
+        LLVM-11
+        )
