@@ -3,6 +3,7 @@ package max
 fn test {
     _ 1
     _ 2, 4, 6, 8
+    _ 5+5
 }
 /*
 fn main {

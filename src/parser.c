@@ -443,10 +443,8 @@ AstExpressions parser_parse_expressions()
 	return exprs;
 }
 
-AstExpression* parser_parse_expression()
+AstExpression* parser_parse_expression_primary()
 {
-	debug_parser("parser_parse_expression");
-
 	AstExpression* expr = malloc(sizeof(AstExpression));
 
 	//	printf("1/at expr parser====::::: current token is %s - %s\n", token_name(PARSER_CURRENT->type), PARSER_CURRENT->value);
@@ -471,10 +469,162 @@ AstExpression* parser_parse_expression()
 	{
 		error_parser("Bad token as expression, we face to a %s token!", token_name(PARSER_CURRENT->type));
 	}
-
-	//	printf("2/at expr parser====::::: current token is %s\n", token_name(PARSER_CURRENT->type));
-
 	return expr;
+}
+
+ParseRule rules[] = {
+/* Compiling Expressions rules < Calls and Functions infix-left-paren
+  [TOKEN_LEFT_PAREN]    = {grouping, NULL,   PREC_NONE},
+*/
+//> Calls and Functions infix-left-paren
+	 [TOKEN_OPERATOR_BRACKET_ROUND_LEFT]    = {grouping, call,   PREC_CALL},
+//< Calls and Functions infix-left-paren
+	 [TOKEN_OPERATOR_BRACKET_ROUND_RIGHT]   = {NULL,     NULL,   PREC_NONE},
+	 [TOKEN_OPERATOR_BRACKET_SQUARE_LEFT]    = {NULL,     NULL,   PREC_NONE}, // [big]
+	 [TOKEN_OPERATOR_BRACKET_SQUARE_RIGHT]   = {NULL,     NULL,   PREC_NONE},
+	 [TOKEN_OPERATOR_COMMA]         = {NULL,     NULL,   PREC_NONE},
+/* Compiling Expressions rules < Classes and Instances table-dot
+  [TOKEN_DOT]           = {NULL,     NULL,   PREC_NONE},
+*/
+//> Classes and Instances table-dot
+	 [TOKEN_OPERATOR_DOT]           = {NULL,     dot,    PREC_CALL},
+//< Classes and Instances table-dot
+	 [TOKEN_OPERATOR_MINUS]         = {unary,    binary, PREC_TERM},
+	 [TOKEN_OPERATOR_PLUS]          = {NULL,     binary, PREC_TERM},
+	 [TOKEN_SEMICOLON]     = {NULL,     NULL,   PREC_NONE},
+	 [TOKEN_OPERATOR_SLASH]         = {NULL,     binary, PREC_FACTOR},
+	 [TOKEN_OPERATOR_STAR]          = {NULL,     binary, PREC_FACTOR},
+/* Compiling Expressions rules < Types of Values table-not
+  [TOKEN_BANG]          = {NULL,     NULL,   PREC_NONE},
+*/
+//> Types of Values table-not
+	 [TOKEN_OPERATOR_B]          = {unary,    NULL,   PREC_NONE},
+//< Types of Values table-not
+/* Compiling Expressions rules < Types of Values table-equal
+  [TOKEN_BANG_EQUAL]    = {NULL,     NULL,   PREC_NONE},
+*/
+//> Types of Values table-equal
+	 [TOKEN_BANG_EQUAL]    = {NULL,     binary, PREC_EQUALITY},
+//< Types of Values table-equal
+	 [TOKEN_EQUAL]         = {NULL,     NULL,   PREC_NONE},
+/* Compiling Expressions rules < Types of Values table-comparisons
+  [TOKEN_EQUAL_EQUAL]   = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_GREATER]       = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_GREATER_EQUAL] = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_LESS]          = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_LESS_EQUAL]    = {NULL,     NULL,   PREC_NONE},
+*/
+//> Types of Values table-comparisons
+	 [TOKEN_EQUAL_EQUAL]   = {NULL,     binary, PREC_EQUALITY},
+	 [TOKEN_GREATER]       = {NULL,     binary, PREC_COMPARISON},
+	 [TOKEN_GREATER_EQUAL] = {NULL,     binary, PREC_COMPARISON},
+	 [TOKEN_LESS]          = {NULL,     binary, PREC_COMPARISON},
+	 [TOKEN_LESS_EQUAL]    = {NULL,     binary, PREC_COMPARISON},
+//< Types of Values table-comparisons
+/* Compiling Expressions rules < Global Variables table-identifier
+  [TOKEN_IDENTIFIER]    = {NULL,     NULL,   PREC_NONE},
+*/
+//> Global Variables table-identifier
+	 [TOKEN_IDENTIFIER]    = {variable, NULL,   PREC_NONE},
+//< Global Variables table-identifier
+/* Compiling Expressions rules < Strings table-string
+  [TOKEN_STRING]        = {NULL,     NULL,   PREC_NONE},
+*/
+//> Strings table-string
+	 [TOKEN_STRING]        = {string,   NULL,   PREC_NONE},
+//< Strings table-string
+	 [TOKEN_NUMBER]        = {number,   NULL,   PREC_NONE},
+/* Compiling Expressions rules < Jumping Back and Forth table-and
+  [TOKEN_AND]           = {NULL,     NULL,   PREC_NONE},
+*/
+//> Jumping Back and Forth table-and
+	 [TOKEN_AND]           = {NULL,     and_,   PREC_AND},
+//< Jumping Back and Forth table-and
+	 [TOKEN_CLASS]         = {NULL,     NULL,   PREC_NONE},
+	 [TOKEN_ELSE]          = {NULL,     NULL,   PREC_NONE},
+/* Compiling Expressions rules < Types of Values table-false
+  [TOKEN_FALSE]         = {NULL,     NULL,   PREC_NONE},
+*/
+//> Types of Values table-false
+	 [TOKEN_FALSE]         = {literal,  NULL,   PREC_NONE},
+//< Types of Values table-false
+	 [TOKEN_FOR]           = {NULL,     NULL,   PREC_NONE},
+	 [TOKEN_FUN]           = {NULL,     NULL,   PREC_NONE},
+	 [TOKEN_IF]            = {NULL,     NULL,   PREC_NONE},
+/* Compiling Expressions rules < Types of Values table-nil
+  [TOKEN_NIL]           = {NULL,     NULL,   PREC_NONE},
+*/
+//> Types of Values table-nil
+	 [TOKEN_NIL]           = {literal,  NULL,   PREC_NONE},
+//< Types of Values table-nil
+/* Compiling Expressions rules < Jumping Back and Forth table-or
+  [TOKEN_OR]            = {NULL,     NULL,   PREC_NONE},
+*/
+//> Jumping Back and Forth table-or
+	 [TOKEN_OR]            = {NULL,     or_,    PREC_OR},
+//< Jumping Back and Forth table-or
+	 [TOKEN_PRINT]         = {NULL,     NULL,   PREC_NONE},
+	 [TOKEN_RETURN]        = {NULL,     NULL,   PREC_NONE},
+/* Compiling Expressions rules < Superclasses table-super
+  [TOKEN_SUPER]         = {NULL,     NULL,   PREC_NONE},
+*/
+//> Superclasses table-super
+	 [TOKEN_SUPER]         = {super_,   NULL,   PREC_NONE},
+//< Superclasses table-super
+/* Compiling Expressions rules < Methods and Initializers table-this
+  [TOKEN_THIS]          = {NULL,     NULL,   PREC_NONE},
+*/
+//> Methods and Initializers table-this
+	 [TOKEN_THIS]          = {this_,    NULL,   PREC_NONE},
+//< Methods and Initializers table-this
+/* Compiling Expressions rules < Types of Values table-true
+  [TOKEN_TRUE]          = {NULL,     NULL,   PREC_NONE},
+*/
+//> Types of Values table-true
+	 [TOKEN_TRUE]          = {literal,  NULL,   PREC_NONE},
+//< Types of Values table-true
+	 [TOKEN_VAR]           = {NULL,     NULL,   PREC_NONE},
+	 [TOKEN_WHILE]         = {NULL,     NULL,   PREC_NONE},
+	 [TOKEN_ERROR]         = {NULL,     NULL,   PREC_NONE},
+	 [TOKEN_EOF]           = {NULL,     NULL,   PREC_NONE},
+};
+
+static ParseRule* getRule(TokenType type) {
+	return &rules[type];
+}
+
+AstExpression* parser_parse_expression_precedence(Precedence precedence)
+{
+	advance();
+	ParseFn prefixRule = getRule(parser.previous.type)->prefix;
+	if (prefixRule == NULL)
+	{
+		error("Expect expression.");
+		return;
+	}
+
+	bool canAssign = precedence <= PREC_ASSIGNMENT;
+	prefixRule(canAssign);
+
+	while (precedence <= getRule(parser.current.type)->precedence)
+	{
+		advance();
+		ParseFn infixRule = getRule(parser.previous.type)->infix;
+
+		infixRule(canAssign);
+	}
+
+	if (canAssign && match(TOKEN_EQUAL))
+	{
+		error("Invalid assignment target.");
+	}
+}
+
+AstExpression* parser_parse_expression()
+{
+	debug_parser("parser_parse_expression");
+	return parser_parse_expression_precedence();
+	//	return parser_parse_expression_primary();
 }
 
 void parser_parse_package()

@@ -321,6 +321,10 @@ char* token_name(TokenType type)
 			return "_";
 		case TOKEN_PRINTNL:
 			return "__";
+		case TOKEN_OPERATOR_BANG:
+			return "!";
+		case TOKEN_OPERATOR_EQUAL_BANG:
+			return "!=";
 		case TOKEN_PRINTDB:
 			return "!_";
 		case TOKEN_PRINTDBNL:
