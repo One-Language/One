@@ -87,4 +87,6 @@ typedef struct {
 	Precedence precedence;
 } ParseRule;
 
+AstExpression *parser_parse_expression_primary();
+
 #endif //ONE_PARSER_H

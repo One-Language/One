@@ -183,6 +183,11 @@ char* token_name(TokenType type)
 		case TOKEN_VALUE_BOOL_FALSE:
 			return "value_false";
 
+		case TOKEN_OPERATOR_EQUAL_EQUAL:
+			return "==";
+		case TOKEN_OPERATOR_EQUAL:
+			return "=";
+
 		case TOKEN_OPERATOR_GREATER:
 			return ">";
 		case TOKEN_OPERATOR_GREATER_EQUAL:

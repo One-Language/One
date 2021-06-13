@@ -126,15 +126,15 @@ AstBlock* ast_make_block(AstStatements stmts)
 	return ast;
 }
 
-AstExpression* ast_make_expression_3(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right, AstExpression* third)
+AstExpression* ast_make_expression_3(TokenType op, int value, AstExpression* left, AstExpression* right, AstExpression* third)
 {
 	AstExpression* ast = malloc(sizeof(AstExpression));
 	ast->operator= op;
 
-	ast->vint = vi;
-	ast->vfloat = vf;
-	ast->vstring = vs;
-	ast->vbool = vb;
+	ast->vint = value;
+//	ast->vfloat = vf;
+	ast->vstring = "None";
+//	ast->vbool = vb;
 
 	ast->left = left;
 	ast->right = right;
@@ -142,15 +142,13 @@ AstExpression* ast_make_expression_3(TokenType op, int vi, float vf, char* vs, b
 
 	return ast;
 }
-AstExpression* ast_make_expression_2(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right)
+AstExpression* ast_make_expression_2(TokenType op, int value, AstExpression* left, AstExpression* right)
 {
 	AstExpression* ast = malloc(sizeof(AstExpression));
 	ast->operator= op;
 
-	ast->vint = vi;
-	ast->vfloat = vf;
-	ast->vstring = vs;
-	ast->vbool = vb;
+	ast->vint = value;
+	ast->vstring = "None";
 
 	ast->left = left;
 	ast->right = right;

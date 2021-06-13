@@ -43,7 +43,7 @@ void parser_init()
 	array_init(&tokens);
 }
 
-void parser_push(Token* t)
+void parser_push(Token *t)
 {
 	array_push(&tokens, t);
 }
@@ -52,7 +52,7 @@ void parser_scan()
 {
 	debug_parser("parser_scan");
 
-	Token* t;
+	Token *t;
 	for (;;)
 	{
 		t = lexer_scan();
@@ -72,12 +72,12 @@ void parser_start()
 {
 	debug_parser("parser_start");
 
-	parser.tokens = (Token**)tokens.data;
+	parser.tokens = (Token **)tokens.data;
 	parser.tokens_count = tokens.count;
 
 	parser_tokens_log();
 
-	AstRoot* root = parser_check();
+	AstRoot *root = parser_check();
 
 	tree_show(stdout, root);
 
@@ -94,13 +94,13 @@ void parser_tokens_log()
 	}
 }
 
-AstRoot* parser_check()
+AstRoot *parser_check()
 {
 	debug_parser("parser_check");
 
-	Token* t;
-	AstRoot* root = malloc(sizeof(AstRoot));
-	AstGlobalStatenent* stmt;
+	Token *t;
+	AstRoot *root = malloc(sizeof(AstRoot));
+	AstGlobalStatenent *stmt;
 	AstFunctions fns;
 
 	//	Array vars;
@@ -130,7 +130,7 @@ AstRoot* parser_check()
 		{
 			if (stmt->type == AST_GLOBAL_STATEMENT_FN)
 			{
-				array_push(&fns, (void*)stmt->fn);
+				array_push(&fns, (void *)stmt->fn);
 			}
 			//			else if (stmt->type == AST_GLOBAL_STATEMENT_VAR)
 			//			{
@@ -154,7 +154,7 @@ AstRoot* parser_check()
 		// parser.tokens++;
 	}
 
-	root->package = (char*)parser.package;
+	root->package = (char *)parser.package;
 	root->functions = fns;
 
 	//	printf("==>%d\n", fns.count);
@@ -190,12 +190,12 @@ void parser_prev()
 	parser.tokens--;
 }
 
-AstGlobalStatenent* parser_parse()
+AstGlobalStatenent *parser_parse()
 {
 	debug_parser("parser_parse");
 
-	AstGlobalStatenent* stmt = malloc(sizeof(AstGlobalStatenent));
-	AstFunction* fn;
+	AstGlobalStatenent *stmt = malloc(sizeof(AstGlobalStatenent));
+	AstFunction *fn;
 
 	size_t i = parser.tokens_index;
 
@@ -229,13 +229,13 @@ AstGlobalStatenent* parser_parse()
 	return stmt;
 }
 
-AstFunction* parser_parse_fn()
+AstFunction *parser_parse_fn()
 {
 	debug_parser("parser_parse_fn");
 
-	AstFunction* fn; // = malloc(sizeof(AstFunction));
-	AstBlock* block;
-	Token* ident;
+	AstFunction *fn; // = malloc(sizeof(AstFunction));
+	AstBlock *block;
+	Token *ident;
 
 	AstArguments args;
 	array_init(&args);
@@ -247,7 +247,7 @@ AstFunction* parser_parse_fn()
 	info_parser("Define function = %s", ident->value);
 	block = parser_parse_block();
 
-	fn = ast_make_function((char*)ident->value, args, block);
+	fn = ast_make_function((char *)ident->value, args, block);
 
 	//	fn->arguments = args;
 	// 	array_free(&args);
@@ -257,21 +257,21 @@ AstFunction* parser_parse_fn()
 	return fn;
 }
 
-AstBlock* parser_parse_block()
+AstBlock *parser_parse_block()
 {
 	debug_parser("parser_parse_block");
 
 	parser_expect(TOKEN_OPERATOR_BRACKET_CURLY_LEFT);
-	AstBlock* block = parser_parse_statements();
+	AstBlock *block = parser_parse_statements();
 	parser_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
 	return block;
 }
 
-AstBlock* parser_parse_statements()
+AstBlock *parser_parse_statements()
 {
 	debug_parser("parser_parse_statements");
 
-	AstStatement* stmt;
+	AstStatement *stmt;
 	AstStatements stmts;
 	array_init(&stmts);
 
@@ -279,20 +279,20 @@ AstBlock* parser_parse_statements()
 	{
 		stmt = parser_parse_statement();
 		//		printf("STMT TYPE ===>%s\n", ast_statement_name(stmt->type));
-		array_push(&stmts, (void*)stmt);
+		array_push(&stmts, (void *)stmt);
 	}
 
-	AstBlock* block = ast_make_block(stmts);
+	AstBlock *block = ast_make_block(stmts);
 	//	array_free(&stmts); // TODO
 
 	return block;
 }
 
-AstStatement* parser_parse_statement()
+AstStatement *parser_parse_statement()
 {
 	debug_parser("parser_parse_statement");
 
-	AstStatement* stmt;
+	AstStatement *stmt;
 
 	info_parser("statement type = %s", token_name(PARSER_CURRENT->type));
 
@@ -324,7 +324,7 @@ AstStatement* parser_parse_statement()
 	return NULL;
 }
 
-AstStatement* parser_parse_statement_prints()
+AstStatement *parser_parse_statement_prints()
 {
 	debug_parser("parser_parse_statement_prints");
 
@@ -351,11 +351,11 @@ AstStatement* parser_parse_statement_prints()
 	}
 }
 
-AstStatement* parser_parse_statement_print()
+AstStatement *parser_parse_statement_print()
 {
 	debug_parser("parser_parse_statement_print");
 
-	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINT);
+	AstStatement *stmt = ast_make_statement(AST_STATEMENT_PRINT);
 
 	parser_expect(TOKEN_PRINT);
 
@@ -366,11 +366,11 @@ AstStatement* parser_parse_statement_print()
 	return stmt;
 }
 
-AstStatement* parser_parse_statement_printnl()
+AstStatement *parser_parse_statement_printnl()
 {
 	debug_parser("parser_parse_statement_printnl");
 
-	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINTNL);
+	AstStatement *stmt = ast_make_statement(AST_STATEMENT_PRINTNL);
 
 	parser_expect(TOKEN_PRINTNL);
 	stmt->expressions = parser_parse_expressions();
@@ -378,11 +378,11 @@ AstStatement* parser_parse_statement_printnl()
 	return stmt;
 }
 
-AstStatement* parser_parse_statement_printdb()
+AstStatement *parser_parse_statement_printdb()
 {
 	debug_parser("parser_parse_statement_printdb");
 
-	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINTDB);
+	AstStatement *stmt = ast_make_statement(AST_STATEMENT_PRINTDB);
 
 	parser_expect(TOKEN_PRINTDB);
 	stmt->expressions = parser_parse_expressions();
@@ -390,11 +390,11 @@ AstStatement* parser_parse_statement_printdb()
 	return stmt;
 }
 
-AstStatement* parser_parse_statement_printdbnl()
+AstStatement *parser_parse_statement_printdbnl()
 {
 	debug_parser("parser_parse_statement_printdbnl");
 
-	AstStatement* stmt = ast_make_statement(AST_STATEMENT_PRINTDBNL);
+	AstStatement *stmt = ast_make_statement(AST_STATEMENT_PRINTDBNL);
 
 	parser_expect(TOKEN_PRINTDBNL);
 	stmt->expressions = parser_parse_expressions();
@@ -406,7 +406,7 @@ AstExpressions parser_parse_expressions()
 {
 	debug_parser("parser_parse_expressions");
 
-	AstExpression* expr;
+	AstExpression *expr;
 	AstExpressions exprs;
 	array_init(&exprs);
 
@@ -443,16 +443,17 @@ AstExpressions parser_parse_expressions()
 	return exprs;
 }
 
-AstExpression* parser_parse_expression_primary()
+AstExpression *parser_parse_expression_primary()
 {
-	AstExpression* expr = malloc(sizeof(AstExpression));
+	debug_parser("parser_parse_expression_primary");
+	AstExpression *expr = malloc(sizeof(AstExpression));
 
 	//	printf("1/at expr parser====::::: current token is %s - %s\n", token_name(PARSER_CURRENT->type), PARSER_CURRENT->value);
 
 	if (PARSER_CURRENT->type == TOKEN_VALUE_STRING)
 	{
 		expr->operator= AST_TYPE_STRING;
-		expr->vstring = (char*)PARSER_CURRENT->value;
+		expr->vstring = (char *)PARSER_CURRENT->value;
 		info_parser("parser_parse_expression: string value is '%s'", expr->vstring);
 
 		parser_next();
@@ -460,7 +461,7 @@ AstExpression* parser_parse_expression_primary()
 	else if (PARSER_CURRENT->type == TOKEN_VALUE_NUMBER)
 	{
 		expr->operator= AST_TYPE_I32;
-		expr->vstring = (char*)PARSER_CURRENT->value;
+		expr->vstring = (char *)PARSER_CURRENT->value;
 		info_parser("parser_parse_expression: number value is '%s'", expr->vstring);
 
 		parser_next();
@@ -471,159 +472,417 @@ AstExpression* parser_parse_expression_primary()
 	}
 	return expr;
 }
+//
+//ParseRule rules[] = {
+//	 [TOKEN_OPERATOR_BRACKET_ROUND_RIGHT] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_OPERATOR_BRACKET_SQUARE_LEFT] = {NULL, NULL, PREC_NONE}, // [big]
+//	 [TOKEN_OPERATOR_BRACKET_SQUARE_RIGHT] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_OPERATOR_COMMA] = {NULL, NULL, PREC_NONE},
+//
+////	 [TOKEN_OPERATOR_DOT] = {NULL, dot, PREC_CALL},
+//
+//	 [TOKEN_OPERATOR_MINUS] = {unary, binary, PREC_TERM},
+//	 [TOKEN_OPERATOR_PLUS] = {NULL, binary, PREC_TERM},
+//	 [TOKEN_SEMICOLON] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_OPERATOR_SLASH] = {NULL, binary, PREC_FACTOR},
+//	 [TOKEN_OPERATOR_STAR] = {NULL, binary, PREC_FACTOR},
+//
+//	 [TOKEN_OPERATOR_BANG] = {unary, NULL, PREC_NONE},
+//
+//	 [TOKEN_OPERATOR_EQUAL_BANG] = {NULL, binary, PREC_EQUALITY},
+//	 [TOKEN_OPERATOR_EQUAL] = {NULL, NULL, PREC_NONE},
+//
+//	 [TOKEN_OPERATOR_EQUAL_EQUAL] = {NULL, binary, PREC_EQUALITY},
+//	 [TOKEN_OPERATOR_GREATER] = {NULL, binary, PREC_COMPARISON},
+//	 [TOKEN_OPERATOR_GREATER_EQUAL] = {NULL, binary, PREC_COMPARISON},
+//	 [TOKEN_OPERATOR_LESS] = {NULL, binary, PREC_COMPARISON},
+//	 [TOKEN_OPERATOR_LESS_EQUAL] = {NULL, binary, PREC_COMPARISON},
+//
+//	 [TOKEN_VALUE_IDENTIFIER] = {variable, NULL, PREC_NONE},
+//	 [TOKEN_VALUE_STRING] = {string, NULL, PREC_NONE},
+//	 [TOKEN_VALUE_NUMBER] = {number, NULL, PREC_NONE},
+//	 [TOKEN_OPERATOR_AND] = {NULL, and_, PREC_AND},
+//	 [TOKEN_ELSE] = {NULL, NULL, PREC_NONE},
+//
+//	 [TOKEN_] = {literal, NULL, PREC_NONE},
+//
+//	 [TOKEN_FOR] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_FN] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_IF] = {NULL, NULL, PREC_NONE},
+//
+//	 [TOKEN_OR] = {NULL, or_, PREC_OR},
+//	 [TOKEN_PRINT] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_PRINTNL] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_RETURN] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_SUPER] = {super_, NULL, PREC_NONE},
+//
+//	 [TOKEN_] = {this_, NULL, PREC_NONE},
+//	 [TOKEN_TRUE] = {literal, NULL, PREC_NONE},
+//	 [TOKEN_VAR] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_WHILE] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_ERROR] = {NULL, NULL, PREC_NONE},
+//	 [TOKEN_EOF] = {NULL, NULL, PREC_NONE},
+//};
+//
+//static ParseRule* getRule(TokenType type)
+//{
+//	return &rules[type];
+//}
+//
+//AstExpression* parser_parse_expression_precedence(Precedence precedence)
+//{
+//	advance();
+//	ParseFn prefixRule = getRule(parser.previous.type)->prefix;
+//	if (prefixRule == NULL)
+//	{
+//		error("Expect expression.");
+//		return;
+//	}
+//
+//	bool canAssign = precedence <= PREC_ASSIGNMENT;
+//	prefixRule(canAssign);
+//
+//	while (precedence <= getRule(parser.current.type)->precedence)
+//	{
+//		advance();
+//		ParseFn infixRule = getRule(parser.previous.type)->infix;
+//
+//		infixRule(canAssign);
+//	}
+//
+//	if (canAssign && match(TOKEN_EQUAL))
+//	{
+//		error("Invalid assignment target.");
+//	}
+//}
 
-ParseRule rules[] = {
-/* Compiling Expressions rules < Calls and Functions infix-left-paren
-  [TOKEN_LEFT_PAREN]    = {grouping, NULL,   PREC_NONE},
-*/
-//> Calls and Functions infix-left-paren
-	 [TOKEN_OPERATOR_BRACKET_ROUND_LEFT]    = {grouping, call,   PREC_CALL},
-//< Calls and Functions infix-left-paren
-	 [TOKEN_OPERATOR_BRACKET_ROUND_RIGHT]   = {NULL,     NULL,   PREC_NONE},
-	 [TOKEN_OPERATOR_BRACKET_SQUARE_LEFT]    = {NULL,     NULL,   PREC_NONE}, // [big]
-	 [TOKEN_OPERATOR_BRACKET_SQUARE_RIGHT]   = {NULL,     NULL,   PREC_NONE},
-	 [TOKEN_OPERATOR_COMMA]         = {NULL,     NULL,   PREC_NONE},
-/* Compiling Expressions rules < Classes and Instances table-dot
-  [TOKEN_DOT]           = {NULL,     NULL,   PREC_NONE},
-*/
-//> Classes and Instances table-dot
-	 [TOKEN_OPERATOR_DOT]           = {NULL,     dot,    PREC_CALL},
-//< Classes and Instances table-dot
-	 [TOKEN_OPERATOR_MINUS]         = {unary,    binary, PREC_TERM},
-	 [TOKEN_OPERATOR_PLUS]          = {NULL,     binary, PREC_TERM},
-	 [TOKEN_SEMICOLON]     = {NULL,     NULL,   PREC_NONE},
-	 [TOKEN_OPERATOR_SLASH]         = {NULL,     binary, PREC_FACTOR},
-	 [TOKEN_OPERATOR_STAR]          = {NULL,     binary, PREC_FACTOR},
-/* Compiling Expressions rules < Types of Values table-not
-  [TOKEN_BANG]          = {NULL,     NULL,   PREC_NONE},
-*/
-//> Types of Values table-not
-	 [TOKEN_OPERATOR_B]          = {unary,    NULL,   PREC_NONE},
-//< Types of Values table-not
-/* Compiling Expressions rules < Types of Values table-equal
-  [TOKEN_BANG_EQUAL]    = {NULL,     NULL,   PREC_NONE},
-*/
-//> Types of Values table-equal
-	 [TOKEN_BANG_EQUAL]    = {NULL,     binary, PREC_EQUALITY},
-//< Types of Values table-equal
-	 [TOKEN_EQUAL]         = {NULL,     NULL,   PREC_NONE},
-/* Compiling Expressions rules < Types of Values table-comparisons
-  [TOKEN_EQUAL_EQUAL]   = {NULL,     NULL,   PREC_NONE},
-  [TOKEN_GREATER]       = {NULL,     NULL,   PREC_NONE},
-  [TOKEN_GREATER_EQUAL] = {NULL,     NULL,   PREC_NONE},
-  [TOKEN_LESS]          = {NULL,     NULL,   PREC_NONE},
-  [TOKEN_LESS_EQUAL]    = {NULL,     NULL,   PREC_NONE},
-*/
-//> Types of Values table-comparisons
-	 [TOKEN_EQUAL_EQUAL]   = {NULL,     binary, PREC_EQUALITY},
-	 [TOKEN_GREATER]       = {NULL,     binary, PREC_COMPARISON},
-	 [TOKEN_GREATER_EQUAL] = {NULL,     binary, PREC_COMPARISON},
-	 [TOKEN_LESS]          = {NULL,     binary, PREC_COMPARISON},
-	 [TOKEN_LESS_EQUAL]    = {NULL,     binary, PREC_COMPARISON},
-//< Types of Values table-comparisons
-/* Compiling Expressions rules < Global Variables table-identifier
-  [TOKEN_IDENTIFIER]    = {NULL,     NULL,   PREC_NONE},
-*/
-//> Global Variables table-identifier
-	 [TOKEN_IDENTIFIER]    = {variable, NULL,   PREC_NONE},
-//< Global Variables table-identifier
-/* Compiling Expressions rules < Strings table-string
-  [TOKEN_STRING]        = {NULL,     NULL,   PREC_NONE},
-*/
-//> Strings table-string
-	 [TOKEN_STRING]        = {string,   NULL,   PREC_NONE},
-//< Strings table-string
-	 [TOKEN_NUMBER]        = {number,   NULL,   PREC_NONE},
-/* Compiling Expressions rules < Jumping Back and Forth table-and
-  [TOKEN_AND]           = {NULL,     NULL,   PREC_NONE},
-*/
-//> Jumping Back and Forth table-and
-	 [TOKEN_AND]           = {NULL,     and_,   PREC_AND},
-//< Jumping Back and Forth table-and
-	 [TOKEN_CLASS]         = {NULL,     NULL,   PREC_NONE},
-	 [TOKEN_ELSE]          = {NULL,     NULL,   PREC_NONE},
-/* Compiling Expressions rules < Types of Values table-false
-  [TOKEN_FALSE]         = {NULL,     NULL,   PREC_NONE},
-*/
-//> Types of Values table-false
-	 [TOKEN_FALSE]         = {literal,  NULL,   PREC_NONE},
-//< Types of Values table-false
-	 [TOKEN_FOR]           = {NULL,     NULL,   PREC_NONE},
-	 [TOKEN_FUN]           = {NULL,     NULL,   PREC_NONE},
-	 [TOKEN_IF]            = {NULL,     NULL,   PREC_NONE},
-/* Compiling Expressions rules < Types of Values table-nil
-  [TOKEN_NIL]           = {NULL,     NULL,   PREC_NONE},
-*/
-//> Types of Values table-nil
-	 [TOKEN_NIL]           = {literal,  NULL,   PREC_NONE},
-//< Types of Values table-nil
-/* Compiling Expressions rules < Jumping Back and Forth table-or
-  [TOKEN_OR]            = {NULL,     NULL,   PREC_NONE},
-*/
-//> Jumping Back and Forth table-or
-	 [TOKEN_OR]            = {NULL,     or_,    PREC_OR},
-//< Jumping Back and Forth table-or
-	 [TOKEN_PRINT]         = {NULL,     NULL,   PREC_NONE},
-	 [TOKEN_RETURN]        = {NULL,     NULL,   PREC_NONE},
-/* Compiling Expressions rules < Superclasses table-super
-  [TOKEN_SUPER]         = {NULL,     NULL,   PREC_NONE},
-*/
-//> Superclasses table-super
-	 [TOKEN_SUPER]         = {super_,   NULL,   PREC_NONE},
-//< Superclasses table-super
-/* Compiling Expressions rules < Methods and Initializers table-this
-  [TOKEN_THIS]          = {NULL,     NULL,   PREC_NONE},
-*/
-//> Methods and Initializers table-this
-	 [TOKEN_THIS]          = {this_,    NULL,   PREC_NONE},
-//< Methods and Initializers table-this
-/* Compiling Expressions rules < Types of Values table-true
-  [TOKEN_TRUE]          = {NULL,     NULL,   PREC_NONE},
-*/
-//> Types of Values table-true
-	 [TOKEN_TRUE]          = {literal,  NULL,   PREC_NONE},
-//< Types of Values table-true
-	 [TOKEN_VAR]           = {NULL,     NULL,   PREC_NONE},
-	 [TOKEN_WHILE]         = {NULL,     NULL,   PREC_NONE},
-	 [TOKEN_ERROR]         = {NULL,     NULL,   PREC_NONE},
-	 [TOKEN_EOF]           = {NULL,     NULL,   PREC_NONE},
-};
+//AstExpression *parseExpression_1()
+//{
+//	// TODO: Adding ++
+//	// TODO: Adding --
+//	// TODO: Adding []
+//	// TODO: Adding ()
+//	// TODO: Adding .
+//	// TODO: Adding ->
+//
+//	AstExpression *expr;
+//
+//	if (parserHasToken(pars, TOKEN_BRACKET_OPEN, errors) == true) // current token is (
+//	{
+//		parserNextToken(); // SKIP ( TOKEN
+//		expr = parseExpression();
+//		parserExceptTokenGo(pars, TOKEN_BRACKET_CLOSE, errors); // we except ) and skip it
+//	}
+//	else
+//	{
+//		expr = parseExpressionPrimitive();
+//	}
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_2()
+//{
+//	// TODO: type casting...
+//
+//	AstExpression *expr;
+//	if (parserHasToken(pars, TOKEN_OPERATOR_PLUS, errors) == true) // current token is +
+//	{
+//		parserNextToken(); // SKIP + TOKEN
+//		expr = parseExpression_1(); // parser expr-value after + operator
+//		expr = astExpression(TOKEN_OPERATOR_PLUS, 10, 0, "", false, expr, NULL);
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_MINUS, errors) == true) // current token is -
+//	{
+//		parserNextToken(); // SKIP - TOKEN
+//		expr = parseExpression_1(); // parser expr-value after - operator
+//		expr = astExpression(TOKEN_OPERATOR_MINUS, 10, 0, "", false, expr, NULL);
+//	}
+//	else
+//	{
+//		expr = parseExpression_1(); // parser expr-value
+//	}
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_3()
+//{
+//	printf("---------- parseExpression_3\n");
+//	AstExpression *expr = parseExpression_2();
+//
+//	if (parserHasToken(pars, TOKEN_OPERATOR_MUL, errors) == true) // current token is *
+//	{
+//		parserNextToken(); // SKIP * TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_MUL, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_DIV, errors) == true) // current token is /
+//	{
+//		parserNextToken(); // SKIP / TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_DIV, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_DIVINT, errors) == true) // current token is //
+//	{
+//		parserNextToken(); // SKIP // TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_DIVINT, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_REM, errors) == true) // current token is %
+//	{
+//		parserNextToken(); // SKIP % TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_REM, 10, 0, "", false, expr, parseExpression());
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_4()
+//{
+//	printf("---------- parseExpression_4\n");
+//	AstExpression *expr = parseExpression_3();
+//
+//	if (parserHasToken(pars, TOKEN_OPERATOR_PLUS, errors) == true) // current token is +
+//	{
+//		parserNextToken(); // SKIP + TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_PLUS, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_MINUS, errors) == true) // current token is -
+//	{
+//		parserNextToken(); // SKIP - TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_MINUS, 10, 0, "", false, expr, parseExpression());
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_5()
+//{
+//	printf("---------- parseExpression_5\n");
+//	AstExpression *expr = parseExpression_4();
+//
+//	if (parserHasToken(pars, TOKEN_OPERATOR_SHIFT_LEFT, errors) == true) // current token is >>
+//	{
+//		parserNextToken(); // SKIP >> TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_SHIFT_LEFT, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_SHIFT_RIGHT, errors) == true) // current token is <<
+//	{
+//		parserNextToken(); // SKIP << TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_SHIFT_RIGHT, 10, 0, "", false, expr, parseExpression());
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_6()
+//{
+//	printf("---------- parseExpression_6\n");
+//	AstExpression *expr = parseExpression_5();
+//
+//	if (parserHasToken(pars, TOKEN_OPERATOR_GE, errors) == true) // current token is >=
+//	{
+//		parserNextToken(); // SKIP >= TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_GE, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_G, errors) == true) // current token is >
+//	{
+//		parserNextToken(); // SKIP > TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_G, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_L, errors) == true) // current token is <
+//	{
+//		parserNextToken(); // SKIP < TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_L, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_LE, errors) == true) // current token is <=
+//	{
+//		parserNextToken(); // SKIP <= TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_LE, 10, 0, "", false, expr, parseExpression());
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_7()
+//{
+//	printf("---------- parseExpression_7\n");
+//	AstExpression *expr = parseExpression_6();
+//
+//	if (parserHasToken(pars, TOKEN_OPERATOR_EQUALEQUAL, errors) == true) // current token is ==
+//	{
+//		parserNextToken(); // SKIP == TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_EQUALEQUAL, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_EQUALEQUALEQUAL, errors) == true) // current token is ===
+//	{
+//		parserNextToken(); // SKIP === TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_EQUALEQUALEQUAL, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_NOTEQUALEQUAL, errors) == true) // current token is !==
+//	{
+//		parserNextToken(); // SKIP !== TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_NOTEQUALEQUAL, 10, 0, "", false, expr, parseExpression());
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_NOTEQUAL, errors) == true) // current token is !=
+//	{
+//		parserNextToken(); // SKIP != TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_NOTEQUAL, 10, 0, "", false, expr, parseExpression());
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_8()
+//{
+//	printf("---------- parseExpression_8\n");
+//	AstExpression *expr = parseExpression_7();
+//
+//	if (parserHasToken(pars, TOKEN_OPERATOR_BIT_AND, errors) == true) // current token is &
+//	{
+//		parserNextToken(); // SKIP & TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_BIT_AND, 10, 0, "", false, expr, parseExpression());
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_9()
+//{
+//	printf("---------- parseExpression_9\n");
+//	AstExpression *expr = parseExpression_8();
+//
+//	if (parserHasToken(pars, TOKEN_OPERATOR_BIT_XOR, errors) == true) // current token is ^
+//	{
+//		parserNextToken(); // SKIP ^ TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_BIT_XOR, 10, 0, "", false, expr, parseExpression());
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_10()
+//{
+//	printf("---------- parseExpression_10\n");
+//	AstExpression *expr = parseExpression_9();
+//
+//	if (parserHasToken(pars, TOKEN_OPERATOR_BIT_OR, errors) == true) // current token is |
+//	{
+//		parserNextToken(); // SKIP | TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_BIT_OR, 10, 0, "", false, expr, parseExpression());
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_11()
+//{
+//	printf("---------- parseExpression_11\n");
+//	AstExpression *expr = parseExpression_10();
+//
+//	if (parserHasToken(pars, TOKEN_OPERATOR_AND, errors) == true) // current token is &&
+//	{
+//		parserNextToken(); // SKIP && TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_AND, 10, 0, "", false, expr, parseExpression());
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_12()
+//{
+//	printf("---------- parseExpression_12\n");
+//	AstExpression *expr = parseExpression_11();
+//
+//	if (parserHasToken(pars, TOKEN_OPERATOR_OR, errors) == true) // current token is ||
+//	{
+//		parserNextToken(); // SKIP || TOKEN
+//		expr = astExpression(TOKEN_OPERATOR_OR, 10, 0, "", false, expr, parseExpression());
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_13()
+//{
+//	printf("---------- parseExpression_13\n");
+//	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+//	AstExpression *expr = parseExpression_12();
+//
+//	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+//	if (parserHasToken(pars, TOKEN_OPERATOR_QUESTION, errors) == true) // current token is ?
+//	{
+//		parserNextToken(); // SKIP ? TOKEN
+//		AstExpression *expr_true = parseExpression();
+//		parserExceptTokenGo(pars, TOKEN_OPERATOR_COLON, errors); // we except : token and skip it...
+//		AstExpression *expr_false = parseExpression();
+//		expr = astExpression3(TOKEN_OPERATOR_IF, 10, 0, "", false, expr, expr_true, expr_false);
+//	}
+//	else if (parserHasToken(pars, TOKEN_OPERATOR_QUESTIONQUESTION, errors) == true) // current token is ??
+//	{
+//		parserNextToken(); // SKIP ?? TOKEN
+//		AstExpression *expr_false = parseExpression();
+//		expr = astExpression(TOKEN_OPERATOR_IFIF, 10, 0, "", false, expr, expr_false);
+//	}
+//
+//	return expr;
+//}
+//
+//AstExpression *parseExpression_14()
+//{
+//	printf("---------- parseExpression_14\n");
+//	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+//	AstExpression *expr = parseExpression_13();
+//
+//	printf("[TEST]==>%s\n", tokenName((*pars->lex->tokens)->type));
+//	if (parserHasToken(pars, TOKEN_OPERATOR_EQUAL, errors) == true) // current token is =
+//	{
+//		parserNextToken(); // SKIP = TOKEN
+//		AstExpression *right = parseExpression();
+//		expr = astExpression(TOKEN_OPERATOR_EQUAL, 10, 0, "", false, expr, right);
+//	}
+//
+//	return expr;
+//}
 
-static ParseRule* getRule(TokenType type) {
-	return &rules[type];
-}
-
-AstExpression* parser_parse_expression_precedence(Precedence precedence)
+AstExpression *parser_parse_expression_factor()
 {
-	advance();
-	ParseFn prefixRule = getRule(parser.previous.type)->prefix;
-	if (prefixRule == NULL)
-	{
-		error("Expect expression.");
-		return;
+	debug_parser("parser_parse_expression_factor");
+
+	AstExpression* expr;
+	if(PARSER_CURRENT->type == TOKEN_OPERATOR_BRACKET_ROUND_LEFT) {
+		parser_expect(TOKEN_OPERATOR_BRACKET_ROUND_LEFT);
+		expr = parser_parse_expression();
+		parser_expect(TOKEN_OPERATOR_BRACKET_ROUND_RIGHT);
 	}
-
-	bool canAssign = precedence <= PREC_ASSIGNMENT;
-	prefixRule(canAssign);
-
-	while (precedence <= getRule(parser.current.type)->precedence)
-	{
-		advance();
-		ParseFn infixRule = getRule(parser.previous.type)->infix;
-
-		infixRule(canAssign);
+	else {
+		expr = parser_parse_expression_primary();
 	}
-
-	if (canAssign && match(TOKEN_EQUAL))
-	{
-		error("Invalid assignment target.");
-	}
+	return expr;
 }
 
-AstExpression* parser_parse_expression()
+AstExpression *parser_parse_expression_term()
+{
+	debug_parser("parser_parse_expression_term");
+
+	AstExpression *expr = parser_parse_expression_factor();
+	while (PARSER_CURRENT->type == TOKEN_OPERATOR_STAR || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH_INT)
+	{
+		expr = ast_make_expression_2(PARSER_CURRENT->type, -1, expr, parser_parse_expression_term());
+	}
+	return expr;
+}
+
+AstExpression *parser_parse_expression()
 {
 	debug_parser("parser_parse_expression");
-	return parser_parse_expression_precedence();
+
+	AstExpression *expr = parser_parse_expression_term();
+	while (PARSER_CURRENT->type == TOKEN_OPERATOR_PLUS || PARSER_CURRENT->type == TOKEN_OPERATOR_MINUS)
+	{
+		TokenType op = PARSER_CURRENT->type;
+		parser_next();
+		expr = ast_make_expression_2(op, -1, expr, parser_parse_expression_term());
+	}
+	return expr;
+
+	//	return parser_parse_expression_precedence();
 	//	return parser_parse_expression_primary();
 }
 
@@ -631,7 +890,7 @@ void parser_parse_package()
 {
 	debug_parser("parser_parse_package");
 
-	Token* t;
+	Token *t;
 	if (parser.tokens_index == 0)
 	{
 		parser_expect(TOKEN_PACKAGE);
@@ -660,7 +919,7 @@ void parser_parse_package()
 	}
 
 	info_parser("SET PACKAGE = \"%s\"", t->value);
-	parser.package = (char*)t->value;
+	parser.package = (char *)t->value;
 }
 
 bool parser_expect(TokenType expected)
