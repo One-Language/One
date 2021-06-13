@@ -32,6 +32,10 @@ set(PROJECT_HEADERS
 
         src/interpret.h
 
+        src/value.h
+
+        src/generator.h
+
         src/error.h
         )
 
@@ -57,6 +61,10 @@ set(PROJECT_SOURCES
         src/argument.c
 
         src/interpret.c
+
+        src/value.c
+
+        src/generator.c
 
         src/error.c)
 
