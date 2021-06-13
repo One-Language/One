@@ -356,10 +356,14 @@ header {
 
 #### البيئات المدعومة
 
+</div>
+
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
 - [ ] macOS (Not complete)
 - [ ] BSD
+
+<div dir="rtl">
 
 <!--Write more about the compiler-->
 <!--Steps-->
