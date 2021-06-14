@@ -30,9 +30,13 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
-[Türkçe](README_TR.md)
-&nbsp;
 [English](README.md)
+&nbsp;
+[عربي](README_AR.md)
+&nbsp;
+[Español](README_ES.md)
+&nbsp;
+[Türkçe](README_TR.md)
 
 </div>
 
@@ -352,10 +356,14 @@ header {
 
 #### البيئات المدعومة
 
+</div>
+
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
 - [ ] macOS (Not complete)
 - [ ] BSD
+
+<div dir="rtl">
 
 <!--Write more about the compiler-->
 <!--Steps-->
@@ -367,7 +375,7 @@ header {
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved"> ➤شارك</h2>
+<h2 id="Get-Involved">➤ شارك</h2>
 
 نرحب بجميع أنواع المساهمات ، بما في ذلك تقارير الأخطاء وطلبات الميزات وتحسينات الوثائق وما إلى ذلك.
 لطرح سؤال أو فتح مناقشة أو إنشاء مشكلة أو الانضمام إلى . <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.

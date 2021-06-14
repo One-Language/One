@@ -103,7 +103,7 @@ typedef struct _ast_block
 
 typedef struct _ast_type
 {
-	int type;
+	AstValueType type;
 	bool hasArray;
 } AstType;
 
@@ -111,6 +111,7 @@ typedef struct _ast_expression
 {
 	//	AstOperatorType operator;
 	TokenType operator;
+	AstType  type;
 
 	int vint;
 	float vfloat;
@@ -162,9 +163,9 @@ AstType* ast_make_type(int type, bool hasArray);
 
 AstBlock* ast_make_block(AstStatements stmts);
 
-AstExpression* ast_make_expression_3(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right, AstExpression* third);
+AstExpression* ast_make_expression_3(TokenType op, int value, AstExpression* left, AstExpression* right, AstExpression* third);
 
-AstExpression* ast_make_expression_2(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right);
+AstExpression* ast_make_expression_2(TokenType op, int value, AstExpression* left, AstExpression* right);
 
 AstArgument* ast_make_argument(char* name, AstType* type);
 
