@@ -76,20 +76,20 @@
 - سطح متوسط و نحو نزدیک به انسان
 - شبکه و طراحی وبسرویس
 - سازگار برای طراحی وب (در آینده ای مزدیک)
-  - Automatic generation of corresponding code for both CSS and HTML. So you won't have to learn more than `One` language to develop a website
-  - Uses variables in CSS, so that we can obtain the colors or sizes from the database
-  - Auto minify the page results
-- Performance and high speed
-- Supports inline Assembly code (in the future)
+  - بصورت خودکار کد های زبان های دیگر را برای شما تولید می کند و برای طراحی وب سایت شما نیاز به یادگیری زبان دیگری ندارید و تنها زبان وان است که استفاده می کنید.
+  - استفاده از متغییر در استایل CSS, بنابراین حتی می توانید مشخصات ظاهری و رنگ ها را از دیتابیس نیز دریافت کنید.
+  - امکان خودکار کوتاه کردن نتیجه های وب سایت (minify)
+- عملکرد و سرعت بالا
+- پشتیبانی از دستورات خطی اسمبلی در لابه لای برنامه (در آینده)
 - Does not require specific libraries and tools on the user system in normal mode (in the future)
-- Does not require external runtime libraries in normal mode (in the future)
-- Does not require external compilers to do the compilation (in the future)
+- به کتابخانه زمان اجرای جانبی دیگری نیاز ندارد (در آینده)
+- به کامپایلر خارجی دیگری برای کامپایل احتیاج ندارد (در آینده)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="RoadMap">➤ نقشه و مسیر پروژه</h2>
 
-Grammar of the `One` language is available [here](grammar.BNF).
+نحو و گرامر زبان `وان` نیز در [اینجا](grammar.BNF) در دسترس است.
 
 - [x] Lexer/Parser (Mostly)
 - [x] AST Tree
@@ -103,7 +103,7 @@ Grammar of the `One` language is available [here](grammar.BNF).
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Code-Examples">➤ Code Examples</h2>
+<h2 id="Code-Examples">➤ نمونه کد ها</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -112,7 +112,7 @@ main {
 }
 ```
 
-**Convert to C:**
+**تبدیل به زبان سی C:**
 
 ```c
 #include <stdio.h>
@@ -132,7 +132,7 @@ i32 main {
 }
 ```
 
-**Convert to C:**
+**تبدیل به زبان سی C:**
 
 ```c
 #include <stdio.h>
@@ -154,7 +154,7 @@ main {
 }
 ```
 
-**Convert to C:**
+**تبدیل به زبان سی C:**
 
 ```c
 #include <stdio.h>
@@ -171,7 +171,7 @@ int main(int argc, char *argv[]) {
 
 <hr/>
 
-**Another draft:**
+**چک نویس دیگر:**
 
 ```c
 import web
@@ -198,7 +198,7 @@ main {
 
 ---
 
-**Another draft:**
+**نمونه دیگر:**
 
 ```c
 error {
@@ -224,7 +224,7 @@ error {
 
 ---
 
-### Old CLI Development
+### رابط طراحی کنسولی قبلی
 
 ```
 main:
@@ -260,7 +260,7 @@ end
 
 <hr/>
 
-### Old GUI Development: (Web, Software)
+### توسعه نرم افزار گرافیکی و سایت
 
 This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
 Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
@@ -305,7 +305,7 @@ header {
 }
 ```
 
-**Convert to CSS/HTML/JS base:**
+**تبدیل خودکار به CSS/HTML/JS:**
 
 ```html
 <html>
@@ -348,13 +348,13 @@ header {
 
 <h2 id="Getting-started">➤ Getting Started</h2>
 
-Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
+می توانید برای یادگیری بیشتر نحو این زبان به [این صفحه](https://github.com/ET-Lang/ET/wiki) راهنما مراجعه کنید.
 
 <!--Installation Steps-->
 
 <!--Prerequisites-->
 
-#### Supported Environments
+#### پلتفرم و محیط های پشتیبانی شده
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
@@ -371,7 +371,7 @@ Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the l
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved">➤ Get Involved</h2>
+<h2 id="Get-Involved">➤ مشارکت کردن</h2>
 
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
 To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
@@ -388,7 +388,7 @@ If you would like to contribute in the development of this project, you can mail
 <br/>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ License</h2>
+<h2 id="license">➤ مجوز و لایسنس</h2>
 
 `One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
 
