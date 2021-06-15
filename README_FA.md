@@ -6,9 +6,9 @@
     </a>
 </p>
 
-# The One Programming Language 💚 💙 🧡 🤍 💖 🖤
+# زبان برنامه نویسی وان💚 💙 🧡 🤍 💖 🖤
 
-[Onelang.org](https://onelang.org) |
+[Onelang.ir](https://onelang.ir) |
 [Help wanted](https://github.com/One-Language/One/issues/new)
 
 </div>
@@ -24,7 +24,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
@@ -38,12 +38,13 @@
 
 </div>
 
-Welcome to <a href="https://onelang.org">One</a>!</br>
-It is an open source, self-hosted, bootstrapping <b>system programming language</b> which makes it easy to
-build reliable and efficient software.
-It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> and other open-source contributors.
+به <a href="https://onelang.org">وان</a> خوش آمدید!</br>
 
-### Compiler for the One Language will be released in a few months
+این یک <b>زبان برنامه نویسی سیستمی</b>، خود میزبان و منبع باز هست که طراحی نرم افزار های توسعه پذیر و سریع رو راحت می کند.
+
+این زبان توسط <a href="https://github.com/BaseMax">مکس</a> و <a href="https://github.com/jbampton">جوهن</a> و دیگر توسط توسعه دهندگان پروژه طراحی می شود.
+
+### کامپایلر برای زبان وان در ماه هایی پیش رو آماده می شود.
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -52,43 +53,43 @@ It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!-- TABLE OF CONTENTS -->
-<h2 id="table-of-contents">Table of Contents</h2>
+<h2 id="table-of-contents">فهرست</h2>
 <details open="open">
   <ol>
-    <li><a href="#Features-of-one">Features of <b>One</b></a></li>
-    <li><a href="#RoadMap">RoadMap</a></li>
-    <li><a href="#Code-Examples">Code Examples</a></li>
-    <li><a href="#Getting-started">Getting Started</a></li>
-    <li><a href="#Get-Involved">Get Involved</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#Features-of-one">ویژگی های <b>زبان وان</b></a></li>
+    <li><a href="#RoadMap">نقشه و مسیر پروژه</a></li>
+    <li><a href="#Code-Examples">نمونه کد ها</a></li>
+    <li><a href="#Getting-started">طریقه شروع</a></li>
+    <li><a href="#Get-Involved">مشارکت کردن</a></li>
+    <li><a href="#license">مجوز و لایسنس</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Features-of-one">➤ Features of One</h2>
+<h2 id="Features-of-one">➤ ویژگی های زبان وان</h2>
 
-- Simplicity
-- Compiler
-- Ability to create output file (x86_64, i386)
-- System Programming Language
-- Intermediate level
-- Network and API programming
-- Supports Web Programming (in the future)
-  - Automatic generation of corresponding code for both CSS and HTML. So you won't have to learn more than `One` language to develop a website
-  - Uses variables in CSS, so that we can obtain the colors or sizes from the database
-  - Auto minify the page results
-- Performance and high speed
-- Supports inline Assembly code (in the future)
+- سادگی
+- کامپایلری
+- امکان ایجاد فایل خروجی قابل اجرا برای معماری های مختلف (x86_64, i386)
+- زبان برنامه نویسی سیستمی
+- سطح متوسط و نحو نزدیک به انسان
+- شبکه و طراحی وبسرویس
+- سازگار برای طراحی وب (در آینده ای مزدیک)
+  - بصورت خودکار کد های زبان های دیگر را برای شما تولید می کند و برای طراحی وب سایت شما نیاز به یادگیری زبان دیگری ندارید و تنها زبان وان است که استفاده می کنید.
+  - استفاده از متغییر در استایل CSS, بنابراین حتی می توانید مشخصات ظاهری و رنگ ها را از دیتابیس نیز دریافت کنید.
+  - امکان خودکار کوتاه کردن نتیجه های وب سایت (minify)
+- عملکرد و سرعت بالا
+- پشتیبانی از دستورات خطی اسمبلی در لابه لای برنامه (در آینده)
 - Does not require specific libraries and tools on the user system in normal mode (in the future)
-- Does not require external runtime libraries in normal mode (in the future)
-- Does not require external compilers to do the compilation (in the future)
+- به کتابخانه زمان اجرای جانبی دیگری نیاز ندارد (در آینده)
+- به کامپایلر خارجی دیگری برای کامپایل احتیاج ندارد (در آینده)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="RoadMap">➤ RoadMap</h2>
+<h2 id="RoadMap">➤ نقشه و مسیر پروژه</h2>
 
-Grammar of the `One` language is available [here](grammar.BNF).
+نحو و گرامر زبان `وان` نیز در [اینجا](grammar.BNF) در دسترس است.
 
 - [x] Lexer/Parser (Mostly)
 - [x] AST Tree
@@ -102,7 +103,7 @@ Grammar of the `One` language is available [here](grammar.BNF).
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Code-Examples">➤ Code Examples</h2>
+<h2 id="Code-Examples">➤ نمونه کد ها</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -111,7 +112,7 @@ main {
 }
 ```
 
-**Convert to C:**
+**تبدیل به زبان سی C:**
 
 ```c
 #include <stdio.h>
@@ -131,7 +132,7 @@ i32 main {
 }
 ```
 
-**Convert to C:**
+**تبدیل به زبان سی C:**
 
 ```c
 #include <stdio.h>
@@ -153,7 +154,7 @@ main {
 }
 ```
 
-**Convert to C:**
+**تبدیل به زبان سی C:**
 
 ```c
 #include <stdio.h>
@@ -170,7 +171,7 @@ int main(int argc, char *argv[]) {
 
 <hr/>
 
-**Another draft:**
+**چک نویس دیگر:**
 
 ```c
 import web
@@ -197,7 +198,7 @@ main {
 
 ---
 
-**Another draft:**
+**نمونه دیگر:**
 
 ```c
 error {
@@ -223,7 +224,7 @@ error {
 
 ---
 
-### Old CLI Development
+### رابط طراحی کنسولی قبلی
 
 ```
 main:
@@ -259,7 +260,7 @@ end
 
 <hr/>
 
-### Old GUI Development: (Web, Software)
+### توسعه نرم افزار گرافیکی و سایت
 
 This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
 Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
@@ -304,7 +305,7 @@ header {
 }
 ```
 
-**Convert to CSS/HTML/JS base:**
+**تبدیل خودکار به CSS/HTML/JS:**
 
 ```html
 <html>
@@ -347,13 +348,13 @@ header {
 
 <h2 id="Getting-started">➤ Getting Started</h2>
 
-Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
+می توانید برای یادگیری بیشتر نحو این زبان به [این صفحه](https://github.com/ET-Lang/ET/wiki) راهنما مراجعه کنید.
 
 <!--Installation Steps-->
 
 <!--Prerequisites-->
 
-#### Supported Environments
+#### پلتفرم و محیط های پشتیبانی شده
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
@@ -370,7 +371,7 @@ Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the l
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved">➤ Get Involved</h2>
+<h2 id="Get-Involved">➤ مشارکت کردن</h2>
 
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
 To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
@@ -387,7 +388,7 @@ If you would like to contribute in the development of this project, you can mail
 <br/>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ License</h2>
+<h2 id="license">➤ مجوز و لایسنس</h2>
 
 `One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
 
@@ -402,9 +403,9 @@ If you would like to contribute in the development of this project, you can mail
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
 
-## Contributors ✨
+## مشارکت کنندگان ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+با تشکر از تمامی افرادی که در این مسیر با ما همراه هستند ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -426,10 +427,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://www.upwork.com/freelancers/~013dd1f9db3380689d"><img src="https://avatars.githubusercontent.com/u/81928799?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mujahid Al-Majali</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=Majalian" title="Documentation">📖</a> <a href="#projectManagement-Majalian" title="Project Management">📆</a></td>
     <td align="center"><a href="https://github.com/Anderson-Garcia"><img src="https://avatars.githubusercontent.com/u/68165804?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anderson García</b></sub></a><br /><a href="#translation-Anderson-Garcia" title="Translation">🌍</a></td>
     <td align="center"><a href="https://rayhanadev.vercel.app/"><img src="https://avatars.githubusercontent.com/u/72509475?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ray Arayilakath</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=RayhanADev" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://bandism.net/"><img src="https://avatars.githubusercontent.com/u/22633385?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ikko Ashimine</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=eltociear" title="Documentation">📖</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/murataka"><img src="https://avatars.githubusercontent.com/u/5358438?v=4?s=100" width="100px;" alt=""/><br /><sub><b>murat aka</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=murataka" title="Code">💻</a></td>
   </tr>
 </table>
 
