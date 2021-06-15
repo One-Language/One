@@ -162,6 +162,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "murataka",
+      "name": "murat aka",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5358438?v=4",
+      "profile": "https://github.com/murataka",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
