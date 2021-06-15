@@ -4,20 +4,20 @@
 
 #include <string.h>
 
-#include <llvm-c/Core.h>
-#include <llvm-c/DebugInfo.h>
-
 #include "array.h"
 #include "lexer.h"
 #include "token.h"
 #include "ast.h"
 #include "parser.h"
+#include "error.h"
 
 #include "generator.h"
 
 LLVMValueRef func_main;
 LLVMModuleRef generator_init(AstRoot* root)
 {
+	debug("generator_init");
+
 	char* filename = "input.one";
 	LLVMModuleRef module = LLVMModuleCreateWithName(filename);
 	LLVMSetSourceFileName(module, filename, strlen(filename));
@@ -25,7 +25,7 @@ LLVMModuleRef generator_init(AstRoot* root)
 	LLVMDIBuilderRef dibuilder = NULL;
 	LLVMMetadataRef file_meta = NULL;
 
-	if (!generateRoot(root, filename, file_meta, module, dibuilder, builder))
+	if (!generator_root(root, filename, file_meta, module, dibuilder, builder))
 	{
 		LLVMDisposeModule(module);
 		LLVMDisposeBuilder(builder);
@@ -38,8 +38,10 @@ LLVMModuleRef generator_init(AstRoot* root)
 	}
 }
 
-bool generateRoot(AstRoot* ast, char* file, LLVMMetadataRef file_meta, LLVMModuleRef module, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder)
+bool generator_root(AstRoot* ast, char* file, LLVMMetadataRef file_meta, LLVMModuleRef module, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder)
 {
+	debug("generator_root");
+
 	bool error = false;
 	for (int i = 0; i < ast->functions.count; i++)
 	{
@@ -64,6 +66,8 @@ bool generateRoot(AstRoot* ast, char* file, LLVMMetadataRef file_meta, LLVMModul
 
 LLVMMetadataRef generateTypeMeta(LLVMDIBuilderRef dibuilder, LLVMTypeRef type, LLVMMetadataRef file)
 {
+	debug("generateTypeMeta");
+
 	if (type == NULL)
 	{
 		return NULL;
@@ -128,6 +132,8 @@ LLVMMetadataRef generateTypeMeta(LLVMDIBuilderRef dibuilder, LLVMTypeRef type, L
 
 bool generateFunctionShell(AstFunction* ast, char* file, LLVMModuleRef module, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder)
 {
+	debug("generateFunctionShell");
+
 	bool error = false;
 	LLVMTypeRef return_type;
 
@@ -146,6 +152,8 @@ bool generateFunctionShell(AstFunction* ast, char* file, LLVMModuleRef module, L
 
 LLVMValueRef generateValueInFunction(AstStatement* ast, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder)
 {
+	debug("generateValueInFunction");
+
 	if (ast == NULL)
 	{
 		return NULL;
@@ -154,6 +162,8 @@ LLVMValueRef generateValueInFunction(AstStatement* ast, LLVMDIBuilderRef dibuild
 
 LLVMValueRef generateValueCodeBlock(AstBlock* ast, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder)
 {
+	debug("generateValueCodeBlock");
+
 	bool error = false;
 
 	for (int i = 0; i < ast->statements.count; i++)
@@ -177,6 +187,8 @@ LLVMValueRef generateValueCodeBlock(AstBlock* ast, LLVMDIBuilderRef dibuilder, L
 
 bool generateFunctionBody(AstFunction* ast, LLVMModuleRef module, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder)
 {
+	debug("generateFunctionBody");
+
 	LLVMBasicBlockRef entry = LLVMAppendBasicBlock(func_main, "");
 	LLVMBasicBlockRef block = LLVMAppendBasicBlock(func_main, "");
 	LLVMBasicBlockRef exit = LLVMAppendBasicBlock(func_main, "");
@@ -202,4 +214,6 @@ bool generateFunctionBody(AstFunction* ast, LLVMModuleRef module, LLVMDIBuilderR
 
 void generator_free()
 {
+	debug("generator_free");
+
 }

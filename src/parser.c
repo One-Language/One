@@ -12,6 +12,7 @@
 #include "one.h"
 #include "ast.h"
 #include "tree.h"
+#include "generator.h"
 
 #include "parser.h"
 
@@ -80,6 +81,9 @@ void parser_start()
 	AstRoot *root = parser_check();
 
 	tree_show(stdout, root);
+
+	generator_init(root);
+	generator_free();
 
 	ast_free(&root);
 }

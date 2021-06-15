@@ -5,9 +5,14 @@
 #ifndef ONE_GENERATOR_H
 #define ONE_GENERATOR_H
 
-bool generateRoot(AstRoot* ast, char* file, LLVMMetadataRef file_meta, LLVMModuleRef module, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder);
+#include <llvm-c/Core.h>
+#include <llvm-c/DebugInfo.h>
 
 LLVMModuleRef generator_init(AstRoot* root);
+
+bool generator_root(AstRoot* ast, char* file, LLVMMetadataRef file_meta, LLVMModuleRef module, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder);
+
+void generator_free();
 
 LLVMMetadataRef generateTypeMeta(LLVMDIBuilderRef dibuilder, LLVMTypeRef type, LLVMMetadataRef file);
 
