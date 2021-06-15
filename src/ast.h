@@ -111,7 +111,7 @@ typedef struct _ast_expression
 {
 	//	AstOperatorType operator;
 	TokenType operator;
-	AstType  type;
+	AstType type;
 
 	int vint;
 	float vfloat;

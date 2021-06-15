@@ -125,7 +125,7 @@ Token* token_error(char* message)
 
 char* token_name(TokenType type)
 {
-//	debug_token("token_name");
+	//	debug_token("token_name");
 
 	switch (type)
 	{

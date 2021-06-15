@@ -161,8 +161,8 @@ void tree_show_expression(FILE* f, AstExpression* expr)
 	{
 		tree_show_ident();
 		print_tree(f, BOLDBLUE TREE_PREFIX "Expression Direct: %s\n" RESET, expr->vstring == NULL ? "" : expr->vstring);
-//		tree_show_ident();
-//		print_tree(f, BOLDBLUE TREE_PREFIX "Expression Direct: %d\n" RESET, expr->vint);
+		//		tree_show_ident();
+		//		print_tree(f, BOLDBLUE TREE_PREFIX "Expression Direct: %d\n" RESET, expr->vint);
 	}
 	else
 	{

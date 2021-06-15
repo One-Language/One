@@ -144,27 +144,33 @@ bool generateFunctionShell(AstFunction* ast, char* file, LLVMModuleRef module, L
 	return !error;
 }
 
-LLVMValueRef generateValueInFunction(AstStatement * ast, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder) {
-	if(ast == NULL) {
+LLVMValueRef generateValueInFunction(AstStatement* ast, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder)
+{
+	if (ast == NULL)
+	{
 		return NULL;
 	}
-
-
 }
 
-LLVMValueRef generateValueCodeBlock(AstBlock * ast, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder) {
+LLVMValueRef generateValueCodeBlock(AstBlock* ast, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder)
+{
 	bool error = false;
 
-	for(int i = 0; i < ast->statements.count; i++) {
+	for (int i = 0; i < ast->statements.count; i++)
+	{
 		LLVMValueRef value = NULL;
-		if(value == NULL) {
+		if (value == NULL)
+		{
 			error = true;
 		}
 	}
 
-	if(error) {
+	if (error)
+	{
 		return NULL;
-	} else {
+	}
+	else
+	{
 		return (LLVMValueRef)1;
 	}
 }
