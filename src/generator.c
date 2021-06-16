@@ -27,6 +27,8 @@ LLVMModuleRef generator_init(AstRoot* root)
 
 	if (!generator_root(root, filename, file_meta, module, dibuilder, builder))
 	{
+		printf("==============> Error:");
+		printf("root is empty probably!\n");
 		LLVMDisposeModule(module);
 		LLVMDisposeBuilder(builder);
 		return NULL;
@@ -34,6 +36,40 @@ LLVMModuleRef generator_init(AstRoot* root)
 	else
 	{
 		LLVMDisposeBuilder(builder);
+
+		char* error_msg;
+		char* out_file = "one.o";
+
+		char* host_triple = LLVMGetDefaultTargetTriple();
+		char* triple = host_triple;
+
+		LLVMCodeGenOptLevel opt_level = LLVMCodeGenLevelDefault;
+		LLVMTargetRef target = NULL;
+		LLVMInitializeAllTargetInfos();
+		LLVMInitializeAllTargets();
+		LLVMInitializeAllAsmPrinters();
+		LLVMInitializeAllTargetMCs();
+		if (LLVMGetTargetFromTriple(triple, &target, &error_msg))
+		{
+			printf("==============> Error:");
+			printf(error_msg);
+			LLVMDisposeMessage(error_msg);
+			return NULL;
+		}
+
+		LLVMTargetMachineRef target_machine = LLVMCreateTargetMachine(target, triple, "", "", opt_level, LLVMRelocPIC, LLVMCodeModelDefault);
+		LLVMModuleRef linked_module = LLVMModuleCreateWithName("test");
+
+
+		if (LLVMTargetMachineEmitToFile(target_machine, linked_module, out_file, LLVMObjectFile, &error_msg)) {
+			printf("==============> Error:");
+			printf("Failed to output object: %s", error_msg);
+			LLVMDisposeMessage(error_msg);
+			return NULL;
+		}
+
+
+
 		return module;
 	}
 }
@@ -48,6 +84,7 @@ bool generator_root(AstRoot* ast, char* file, LLVMMetadataRef file_meta, LLVMMod
 		AstFunction* fn = ast->functions.data[i];
 		if (!generateFunctionShell(fn, "input.one", module, dibuilder, builder))
 		{
+			printf("Error: error in function shell!\n");
 			error = true;
 		}
 	}
@@ -57,6 +94,7 @@ bool generator_root(AstRoot* ast, char* file, LLVMMetadataRef file_meta, LLVMMod
 		AstFunction* fn = ast->functions.data[i];
 		if (!generateFunctionBody(fn, module, dibuilder, builder))
 		{
+			printf("Error: error in function body!\n");
 			error = true;
 		}
 	}
@@ -209,11 +247,11 @@ bool generateFunctionBody(AstFunction* ast, LLVMModuleRef module, LLVMDIBuilderR
 
 	LLVMBuildRetVoid(builder);
 
+	return true; // TODO: it's fake ret!
 	return ret && !error;
 }
 
 void generator_free()
 {
 	debug("generator_free");
-
 }

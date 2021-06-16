@@ -8,6 +8,15 @@
 #include <llvm-c/Core.h>
 #include <llvm-c/DebugInfo.h>
 
+#include <llvm-c/Linker.h>
+#include <llvm-c/Transforms/PassManagerBuilder.h>
+#include <llvm-c/Transforms/Scalar.h>
+#include <llvm-c/Target.h>
+#include <llvm-c/TargetMachine.h>
+#include <llvm-c/BitWriter.h>
+#include <llvm-c/BitReader.h>
+#include <llvm-c/IRReader.h>
+
 LLVMModuleRef generator_init(AstRoot* root);
 
 bool generator_root(AstRoot* ast, char* file, LLVMMetadataRef file_meta, LLVMModuleRef module, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder);
