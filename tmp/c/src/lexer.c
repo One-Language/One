@@ -2,7 +2,7 @@
  File: lexer.c
   _        _
  / \ |\ | |_    Author: Max Base
- \_/ | \| |_    Copyright 2021
+ \_/ | \| |_    Copyright 2021; One Language Contributors
 
  **/
 

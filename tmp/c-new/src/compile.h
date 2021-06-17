@@ -4,7 +4,7 @@
  File: compile.h
   _        _
  / \ |\ | |_    Max Base
- \_/ | \| |_    Copyright 2021
+ \_/ | \| |_    Copyright 2021; One Language Contributors
 
  **/
 

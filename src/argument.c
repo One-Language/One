@@ -4,7 +4,7 @@
  File: argument.c
   _        _
  / \ |\ | |_    Max Base
- \_/ | \| |_    Copyright 2021
+ \_/ | \| |_    Copyright 2021; One Language Contributors
 
  **/
 
@@ -135,7 +135,7 @@ void argument_version(FILE *file, Arguments *args)
 
 	fprintf(file, "  _        _ \n");
 	fprintf(file, " / \\ |\\ | |_    Max Base\n");
-	fprintf(file, " \\_/ | \\| |_    Copyright 2021\n");
+	fprintf(file, " \\_/ | \\| |_    Copyright 2021; One Language Contributors\n");
 	fprintf(file, "\n Version: ");
 	fprintf(file, ONE_VERSION);
 	fprintf(file, "\n");
