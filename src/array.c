@@ -1,6 +1,12 @@
-//
-// Created by max on 6/9/21.
-//
+/**
+ The One Programming Language
+
+ File: array.c
+  _        _
+ / \ |\ | |_    Max Base
+ \_/ | \| |_    Copyright 2021
+
+ **/
 
 #include <stdio.h>
 #include <stdlib.h>

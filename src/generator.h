@@ -1,6 +1,12 @@
-//
-// Created by max on 6/13/21.
-//
+/**
+ The One Programming Language
+
+ File: generator.h
+  _        _
+ / \ |\ | |_    Max Base
+ \_/ | \| |_    Copyright 2021
+
+ **/
 
 #ifndef ONE_GENERATOR_H
 #define ONE_GENERATOR_H

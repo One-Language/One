@@ -1,6 +1,12 @@
-//
-// Created by max on 6/9/21.
-//
+/**
+ The One Programming Language
+
+ File: interpret.h
+  _        _
+ / \ |\ | |_    Max Base
+ \_/ | \| |_    Copyright 2021
+
+ **/
 
 #ifndef ONE_INTERPRET_H
 #define ONE_INTERPRET_H

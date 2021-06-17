@@ -1,6 +1,12 @@
-//
-// Created by max on 6/10/21.
-//
+/**
+ The One Programming Language
+
+ File: tree.h
+  _        _
+ / \ |\ | |_    Max Base
+ \_/ | \| |_    Copyright 2021
+
+ **/
 
 #ifndef ONE_TREE_H
 #define ONE_TREE_H

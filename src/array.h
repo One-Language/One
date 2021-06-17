@@ -1,6 +1,12 @@
-//
-// Created by max on 6/9/21.
-//
+/**
+ The One Programming Language
+
+ File: array.h
+  _        _
+ / \ |\ | |_    Max Base
+ \_/ | \| |_    Copyright 2021
+
+ **/
 
 #ifndef ONE_ARRAY_H
 #define ONE_ARRAY_H

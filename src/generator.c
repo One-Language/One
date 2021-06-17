@@ -1,6 +1,12 @@
-//
-// Created by max on 6/13/21.
-//
+/**
+ The One Programming Language
+
+ File: generator.c
+  _        _
+ / \ |\ | |_    Max Base
+ \_/ | \| |_    Copyright 2021
+
+ **/
 
 #include <string.h>
 
@@ -58,23 +64,21 @@ LLVMModuleRef generator_init(AstRoot* root)
 		}
 
 		LLVMTargetMachineRef target_machine = LLVMCreateTargetMachine(target, triple, "", "", opt_level, LLVMRelocPIC, LLVMCodeModelDefault);
-		<<<<<<< HEAD
-		if (LLVMTargetMachineEmitToFile(target_machine, module, out_file, LLVMObjectFile, &error_msg))
-		=======
-		LLVMModuleRef linked_module = LLVMModuleCreateWithName("test");
+		< < < < < < < HEAD if (LLVMTargetMachineEmitToFile(target_machine, module, out_file, LLVMObjectFile, &error_msg)) == == == =
+																																		LLVMModuleRef linked_module = LLVMModuleCreateWithName("test");
 
 		if (LLVMTargetMachineEmitToFile(target_machine, linked_module, out_file, LLVMObjectFile, &error_msg))
-		>>>>>>> d2bc46293be82625303d621f0bce17418e50c236
-		{
-			printf("==============> Error:");
-			printf("Failed to output object: %s", error_msg);
-			LLVMDisposeMessage(error_msg);
-			return NULL;
-		}
+			>>>>>>> d2bc46293be82625303d621f0bce17418e50c236
+			{
+				printf("==============> Error:");
+				printf("Failed to output object: %s", error_msg);
+				LLVMDisposeMessage(error_msg);
+				return NULL;
+			}
 
-		<<<<<<< HEAD
+		< < < < < < < HEAD
 
-			 out_file = "one.ll";
+						   out_file = "one.ll";
 		if (LLVMPrintModuleToFile(module, out_file, &error_msg))
 		{
 			printf("==============> Error:");
@@ -82,9 +86,8 @@ LLVMModuleRef generator_init(AstRoot* root)
 			LLVMDisposeMessage(error_msg);
 		}
 
-		=======
-		>>>>>>> d2bc46293be82625303d621f0bce17418e50c236
-		return module;
+		== == == =
+					  >>>>>>> d2bc46293be82625303d621f0bce17418e50c236 return module;
 	}
 }
 
