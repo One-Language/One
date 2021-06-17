@@ -64,21 +64,15 @@ LLVMModuleRef generator_init(AstRoot* root)
 		}
 
 		LLVMTargetMachineRef target_machine = LLVMCreateTargetMachine(target, triple, "", "", opt_level, LLVMRelocPIC, LLVMCodeModelDefault);
-		< < < < < < < HEAD if (LLVMTargetMachineEmitToFile(target_machine, module, out_file, LLVMObjectFile, &error_msg)) == == == =
-																																		LLVMModuleRef linked_module = LLVMModuleCreateWithName("test");
+		if (LLVMTargetMachineEmitToFile(target_machine, module, out_file, LLVMObjectFile, &error_msg))
+		{
+			printf("==============> Error:");
+			printf("Failed to output object: %s", error_msg);
+			LLVMDisposeMessage(error_msg);
+			return NULL;
+		}
 
-		if (LLVMTargetMachineEmitToFile(target_machine, linked_module, out_file, LLVMObjectFile, &error_msg))
-			>>>>>>> d2bc46293be82625303d621f0bce17418e50c236
-			{
-				printf("==============> Error:");
-				printf("Failed to output object: %s", error_msg);
-				LLVMDisposeMessage(error_msg);
-				return NULL;
-			}
-
-		< < < < < < < HEAD
-
-						   out_file = "one.ll";
+		out_file = "one.ll";
 		if (LLVMPrintModuleToFile(module, out_file, &error_msg))
 		{
 			printf("==============> Error:");
@@ -86,8 +80,7 @@ LLVMModuleRef generator_init(AstRoot* root)
 			LLVMDisposeMessage(error_msg);
 		}
 
-		== == == =
-					  >>>>>>> d2bc46293be82625303d621f0bce17418e50c236 return module;
+		return module;
 	}
 }
 
