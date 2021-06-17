@@ -50,18 +50,18 @@
 <h2 id="table-of-contents">فهرست</h2>
 <details open="open">
   <ol>
-    <li><a href="#Features-of-one">ویژگی های <b>زبان وان</b></a></li>
-    <li><a href="#RoadMap">نقشه و مسیر پروژه</a></li>
-    <li><a href="#Code-Examples">نمونه کد ها</a></li>
-    <li><a href="#Getting-started">طریقه شروع</a></li>
-    <li><a href="#Get-Involved">مشارکت کردن</a></li>
+    <li><a href="#features-of-one">ویژگی های <b>زبان وان</b></a></li>
+    <li><a href="#roadmap">نقشه و مسیر پروژه</a></li>
+    <li><a href="#code-examples">نمونه کد ها</a></li>
+    <li><a href="#getting-started">طریقه شروع</a></li>
+    <li><a href="#get-involved">مشارکت کردن</a></li>
     <li><a href="#license">مجوز و لایسنس</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Features-of-one">➤ ویژگی های زبان وان</h2>
+<h2 id="features-of-one">➤ ویژگی های زبان وان</h2>
 
 - سادگی
 - کامپایلری
@@ -81,7 +81,7 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="RoadMap">➤ نقشه و مسیر پروژه</h2>
+<h2 id="roadmap">➤ نقشه و مسیر پروژه</h2>
 
 نحو و گرامر زبان `وان` نیز در [اینجا](grammar.BNF) در دسترس است.
 
@@ -97,7 +97,7 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Code-Examples">➤ نمونه کد ها</h2>
+<h2 id="code-examples">➤ نمونه کد ها</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -340,7 +340,7 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Getting-started">➤ Getting Started</h2>
+<h2 id="getting-started">➤ Getting Started</h2>
 
 می توانید برای یادگیری بیشتر نحو این زبان به [این صفحه](https://github.com/ET-Lang/ET/wiki) راهنما مراجعه کنید.
 
@@ -365,7 +365,7 @@ header {
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved">➤ مشارکت کردن</h2>
+<h2 id="get-involved">➤ مشارکت کردن</h2>
 
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
 To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.

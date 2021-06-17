@@ -48,7 +48,7 @@ Está siendo desarrollado por <a href="https://github.com/BaseMax">Max</a>, <a h
 <h2 id="table-of-contents">Tabla de Contenidos</h2>
 <details open="open">
   <ol>
-    <li><a href="#Características de ">Características de <b>One</b></a></li>
+    <li><a href="#Características de">Características de <b>One</b></a></li>
     <li><a href="#Hoja de Ruta">Hoja de Ruta</a></li>
     <li><a href="#ejemplos del código">Ejemplos del código</a></li>
     <li><a href="#Primeros pasos">Primeros Pasos</a></li>
@@ -79,7 +79,7 @@ Está siendo desarrollado por <a href="https://github.com/BaseMax">Max</a>, <a h
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="RoadMap">➤ RoadMap</h2>
+<h2 id="roadmap">➤ RoadMap</h2>
 
 La gramática del lenguaje `One` está disponible [aquí](grammar.BNF).
 
@@ -363,7 +363,7 @@ Puedes revisar [este link](https://github.com/ET-Lang/ET/wiki) para comenzar a a
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved">➤ Involucrarse</h2>
+<h2 id="get-involved">➤ Involucrarse</h2>
 
 Aceptamos cualquier tipo de contribuciones, incluyendo reportes de bugs, solicitud de funciones, mejoras en la documentación, etc.
 Para hacer una pregunta o iniciar una conversación, create an issue o únete al <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Servidor de Discord</a>.

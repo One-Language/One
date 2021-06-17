@@ -50,18 +50,18 @@
 <h2 id="table-of-contents">جدول المحتويات</h2>
 <details open="open">
   <ol>
-    <li><a href="#Features-of-one">ميزات <b>One</b></a></li>
-    <li><a href="#RoadMap">خريطة الطريق</a></li>
-    <li><a href="#Code-Examples">أمثلة التعليمات البرمجية</a></li>
-    <li><a href="#Getting-started">البدء</a></li>
-    <li><a href="#Get-Involved">شارك</a></li>
+    <li><a href="#features-of-one">ميزات <b>One</b></a></li>
+    <li><a href="#roadmap">خريطة الطريق</a></li>
+    <li><a href="#code-examples">أمثلة التعليمات البرمجية</a></li>
+    <li><a href="#getting-started">البدء</a></li>
+    <li><a href="#get-involved">شارك</a></li>
     <li><a href="#license">الرخصة</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Features-of-one">➤ مميزات لغة البرمجة One</h2>
+<h2 id="features-of-one">➤ مميزات لغة البرمجة One</h2>
 
 - البساطة
 - مترجم
@@ -81,7 +81,7 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="RoadMap">➤ خارطة الطريق</h2>
+<h2 id="roadmap">➤ خارطة الطريق</h2>
 
 قواعد اللغة الواحدة متوفرة . [هنا](grammar.BNF).
 
@@ -97,7 +97,7 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Code-Examples">➤ أمثلة التعليمات البرمجية</h2>
+<h2 id="code-examples">➤ أمثلة التعليمات البرمجية</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 </div>
@@ -376,7 +376,7 @@ header {
 
 <div dir="rtl">
 
-<h2 id="Getting-started">➤ البدء</h2>
+<h2 id="getting-started">➤ البدء</h2>
 
 الرجوع الى [هذا الرابط](https://github.com/ET-Lang/ET/wiki) لبدء تعلم اللغة.
 
@@ -405,7 +405,7 @@ header {
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved">➤ شارك</h2>
+<h2 id="get-involved">➤ شارك</h2>
 
 نرحب بجميع أنواع المساهمات ، بما في ذلك تقارير الأخطاء وطلبات الميزات وتحسينات الوثائق وما إلى ذلك.
 لطرح سؤال أو فتح مناقشة أو إنشاء مشكلة أو الانضمام إلى . <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
