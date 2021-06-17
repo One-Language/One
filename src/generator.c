@@ -58,10 +58,8 @@ LLVMModuleRef generator_init(AstRoot* root)
 		}
 
 		LLVMTargetMachineRef target_machine = LLVMCreateTargetMachine(target, triple, "", "", opt_level, LLVMRelocPIC, LLVMCodeModelDefault);
-		LLVMModuleRef linked_module = LLVMModuleCreateWithName("test");
-
-
-		if (LLVMTargetMachineEmitToFile(target_machine, linked_module, out_file, LLVMObjectFile, &error_msg)) {
+		if (LLVMTargetMachineEmitToFile(target_machine, module, out_file, LLVMObjectFile, &error_msg))
+		{
 			printf("==============> Error:");
 			printf("Failed to output object: %s", error_msg);
 			LLVMDisposeMessage(error_msg);
@@ -69,6 +67,13 @@ LLVMModuleRef generator_init(AstRoot* root)
 		}
 
 
+		out_file = "one.ll";
+		if (LLVMPrintModuleToFile(module, out_file, &error_msg))
+		{
+			printf("==============> Error:");
+			printf("Failed to output LLVM IR: %s", error_msg);
+			LLVMDisposeMessage(error_msg);
+		}
 
 		return module;
 	}
@@ -206,7 +211,7 @@ LLVMValueRef generateValueCodeBlock(AstBlock* ast, LLVMDIBuilderRef dibuilder, L
 
 	for (int i = 0; i < ast->statements.count; i++)
 	{
-		LLVMValueRef value = NULL;
+		LLVMValueRef value = NULL; // It's joking?
 		if (value == NULL)
 		{
 			error = true;
@@ -247,6 +252,8 @@ bool generateFunctionBody(AstFunction* ast, LLVMModuleRef module, LLVMDIBuilderR
 
 	LLVMBuildRetVoid(builder);
 
+	printf("-->%d\n", ret);
+	printf("-->%d\n", error);
 	return true; // TODO: it's fake ret!
 	return ret && !error;
 }
