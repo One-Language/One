@@ -60,15 +60,13 @@ LLVMModuleRef generator_init(AstRoot* root)
 		LLVMTargetMachineRef target_machine = LLVMCreateTargetMachine(target, triple, "", "", opt_level, LLVMRelocPIC, LLVMCodeModelDefault);
 		LLVMModuleRef linked_module = LLVMModuleCreateWithName("test");
 
-
-		if (LLVMTargetMachineEmitToFile(target_machine, linked_module, out_file, LLVMObjectFile, &error_msg)) {
+		if (LLVMTargetMachineEmitToFile(target_machine, linked_module, out_file, LLVMObjectFile, &error_msg))
+		{
 			printf("==============> Error:");
 			printf("Failed to output object: %s", error_msg);
 			LLVMDisposeMessage(error_msg);
 			return NULL;
 		}
-
-
 
 		return module;
 	}
