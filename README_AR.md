@@ -100,13 +100,19 @@
 <h2 id="Code-Examples">➤ أمثلة التعليمات البرمجية</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
+</div>
+
 ```c
 main {
    ret 0
 }
 ```
 
+<div dir="rtl">
+
 **التحويل الى C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -126,7 +132,11 @@ i32 main {
 }
 ```
 
+<div dir="rtl">
+
 **التحويل الى C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -148,7 +158,11 @@ main {
 }
 ```
 
+<div dir="rtl">
+
 **التحويل الى C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -165,7 +179,11 @@ int main(int argc, char *argv[]) {
 
 <hr/>
 
+<div dir="rtl">
+
 **مسودة أخرى:**
+
+</div>
 
 ```c
 import web
@@ -192,7 +210,11 @@ main {
 
 ---
 
+<div dir="rtl">
+
 **مسودة أخرى:**
+
+</div>
 
 ```c
 error {
@@ -218,7 +240,11 @@ error {
 
 ---
 
+<div dir="rtl">
+
 ### تطوير CLI القديم
+
+</div>
 
 ```
 main:
@@ -254,10 +280,14 @@ end
 
 <hr/>
 
+<div dir="rtl">
+
 ### تطوير واجهة المستخدم الرسومية القديمة: (الويب ، البرامج)
 
 تم تصميم هذه البنية فقط لمواقع الويب والبرامج الأصلية. في المستقبل ، سيكون متاحًا أيضًا لتطبيقات الأجهزة المحمولة (الأصلية). (native).<br/>
 الهياكل المتنقلة لم تكتمل بعد وتتطلب المزيد من التفكير والاهتمام. <br/><br/>مثال لإثبات عمل اللغة:
+
+</div>
 
 ```css
 title "Name - Main"
@@ -299,7 +329,11 @@ header {
 }
 ```
 
+<div dir="rtl">
+
 **التحويل إلى قاعدة CSS / HTML / JS:**
+
+</div>
 
 ```html
 <html>
@@ -339,6 +373,8 @@ header {
 ```
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+<div dir="rtl">
 
 <h2 id="Getting-started">➤ البدء</h2>
 
