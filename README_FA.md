@@ -1,3 +1,4 @@
+<div dir="rtl">
 <div align="center">
 
 <p>
@@ -85,6 +86,8 @@
 
 نحو و گرامر زبان `وان` نیز در [اینجا](grammar.BNF) در دسترس است.
 
+</div>
+
 - [x] Lexer/Parser (Mostly)
 - [x] AST Tree
 - [x] VM
@@ -93,6 +96,8 @@
 - [ ] Design web framework for the language
 - [ ] Rewrite compiler in the `One` language
 
+<div dir="rtl">
+
 <!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
@@ -100,13 +105,19 @@
 <h2 id="code-examples">➤ نمونه کد ها</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
+</div>
+
 ```c
 main {
    ret 0
 }
 ```
 
+<div dir="rtl">
+
 **تبدیل به زبان سی C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -126,7 +137,11 @@ i32 main {
 }
 ```
 
+<div dir="rtl">
+
 **تبدیل به زبان سی C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -148,7 +163,11 @@ main {
 }
 ```
 
+<div dir="rtl">
+
 **تبدیل به زبان سی C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -165,7 +184,11 @@ int main(int argc, char *argv[]) {
 
 <hr/>
 
+<div dir="rtl">
+
 **چک نویس دیگر:**
+
+</div>
 
 ```c
 import web
@@ -192,7 +215,11 @@ main {
 
 ---
 
+<div dir="rtl">
+
 **نمونه دیگر:**
+
+</div>
 
 ```c
 error {
@@ -218,7 +245,11 @@ error {
 
 ---
 
+<div dir="rtl">
+
 ### رابط طراحی کنسولی قبلی
+
+</div>
 
 ```
 main:
@@ -254,7 +285,11 @@ end
 
 <hr/>
 
+<div dir="rtl">
+
 ### توسعه نرم افزار گرافیکی و سایت
+
+</div>
 
 This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
 Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
@@ -299,7 +334,11 @@ header {
 }
 ```
 
+<div dir="rtl">
+
 **تبدیل خودکار به CSS/HTML/JS:**
+
+</div>
 
 ```html
 <html>
@@ -342,6 +381,8 @@ header {
 
 <h2 id="getting-started">➤ Getting Started</h2>
 
+<div dir="rtl">
+
 می توانید برای یادگیری بیشتر نحو این زبان به [این صفحه](https://github.com/ET-Lang/ET/wiki) راهنما مراجعه کنید.
 
 <!--Installation Steps-->
@@ -349,6 +390,8 @@ header {
 <!--Prerequisites-->
 
 #### پلتفرم و محیط های پشتیبانی شده
+
+</div>
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
@@ -364,8 +407,12 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+<div dir="rtl">
+
 <!--Get Involved-->
 <h2 id="get-involved">➤ مشارکت کردن</h2>
+
+</div>
 
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
 To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
@@ -382,7 +429,11 @@ If you would like to contribute in the development of this project, you can mail
 <br/>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+<div dir="rtl">
+
 <h2 id="license">➤ مجوز و لایسنس</h2>
+
+</div>
 
 `One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
 
