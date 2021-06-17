@@ -1,16 +1,16 @@
 /**
  The One Programming Language
 
- File: lexer.test.c
+ File: test.h
   _        _
  / \ |\ | |_    Max Base
  \_/ | \| |_    Copyright 2021; One Language Contributors
 
  **/
 
-#include "test.h"
+#ifndef ONE_TEST_H
+#define ONE_TEST_H
 
-int main()
-{
-	return 0;
-}
+
+
+#endif //ONE_TEST_H
