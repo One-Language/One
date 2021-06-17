@@ -55,18 +55,18 @@ It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="
 <h2 id="table-of-contents">Table of Contents</h2>
 <details open="open">
   <ol>
-    <li><a href="#Features-of-one">Features of <b>One</b></a></li>
-    <li><a href="#RoadMap">RoadMap</a></li>
-    <li><a href="#Code-Examples">Code Examples</a></li>
-    <li><a href="#Getting-started">Getting Started</a></li>
-    <li><a href="#Get-Involved">Get Involved</a></li>
+    <li><a href="#features-of-one">Features of <b>One</b></a></li>
+    <li><a href="#roadmap">RoadMap</a></li>
+    <li><a href="#code-examples">Code Examples</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#get-involved">Get Involved</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Features-of-one">➤ Features of One</h2>
+<h2 id="features-of-one">➤ Features of One</h2>
 
 - Simplicity
 - Compiler
@@ -86,7 +86,7 @@ It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="RoadMap">➤ RoadMap</h2>
+<h2 id="roadmap">➤ RoadMap</h2>
 
 Grammar of the `One` language is available [here](grammar.BNF).
 
@@ -102,7 +102,7 @@ Grammar of the `One` language is available [here](grammar.BNF).
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Code-Examples">➤ Code Examples</h2>
+<h2 id="code-examples">➤ Code Examples</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -345,7 +345,7 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Getting-started">➤ Getting Started</h2>
+<h2 id="getting-started">➤ Getting Started</h2>
 
 Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
 
@@ -370,7 +370,7 @@ Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the l
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved">➤ Get Involved</h2>
+<h2 id="get-involved">➤ Get Involved</h2>
 
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
 To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.

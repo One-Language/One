@@ -48,18 +48,18 @@ One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri say
 <h2 id="table-of-contents">İçindekiler</h2>
 <details open="open">
   <ol>
-    <li><a href="#Features-of-one"><b>One</b></a> dilinin özellikleri</li>
-    <li><a href="#RoadMap">Yol Haritası</a></li>
-    <li><a href="#Code-Examples">Kod Örnekleri</a></li>
-    <li><a href="#Getting-started">İlk kullanım kılavuzu</a></li>
-    <li><a href="#Get-Involved">Dahil olun</a></li>
+    <li><a href="#features-of-one"><b>One</b></a> dilinin özellikleri</li>
+    <li><a href="#roadmap">Yol Haritası</a></li>
+    <li><a href="#code-examples">Kod Örnekleri</a></li>
+    <li><a href="#getting-started">İlk kullanım kılavuzu</a></li>
+    <li><a href="#get-involved">Dahil olun</a></li>
     <li><a href="#license">Lisans</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Features-of-one">➤ One Dilinin Özellikleri</h2>
+<h2 id="features-of-one">➤ One Dilinin Özellikleri</h2>
 
 - Basit.
 - Compiler.
@@ -79,7 +79,7 @@ One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri say
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="RoadMap">➤ Yol Haritası</h2>
+<h2 id="roadmap">➤ Yol Haritası</h2>
 
 `One` dilinin kurallarını [burada](grammar.BNF) bulabilirsiniz.
 
@@ -95,7 +95,7 @@ One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri say
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Code-Examples">➤ Kod Örnekleri</h2>
+<h2 id="code-examples">➤ Kod Örnekleri</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -338,7 +338,7 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Getting-started">➤ İlk Kullanım Kılavuzu</h2>
+<h2 id="getting-started">➤ İlk Kullanım Kılavuzu</h2>
 
 Dili öğrenmeye başlamak için [bu linke](https://github.com/ET-Lang/ET/wiki) göz atabilirsiniz.
 
@@ -363,7 +363,7 @@ Dili öğrenmeye başlamak için [bu linke](https://github.com/ET-Lang/ET/wiki) 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved">➤ Bize katılın</h2>
+<h2 id="get-involved">➤ Bize katılın</h2>
 
 Bug raporlamaları, özellik istekleri, dokümentasyon geliştirmeleri vb. dahil olmak üzere her türlü katkıyı nezaketle karşılıyoruz.
 Soru sormak ya da bir tartışma başlatmak için bir issue oluşturun ya da <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>'ına katılın.
