@@ -10,7 +10,7 @@
 # زبان برنامه نویسی وان💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.ir](https://onelang.ir) |
-[Help wanted](https://github.com/One-Language/One/issues/new)
+[کمک خواست](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
@@ -76,7 +76,7 @@
   - امکان خودکار کوتاه کردن نتیجه های وب سایت (minify)
 - عملکرد و سرعت بالا
 - پشتیبانی از دستورات خطی اسمبلی در لابه لای برنامه (در آینده)
-- Does not require specific libraries and tools on the user system in normal mode (in the future)
+- عدم نیاز به ابزارها و کتابخانه های مخصوص بر روی سیستم کاربر در حالت معمول (در آینده)
 - به کتابخانه زمان اجرای جانبی دیگری نیاز ندارد (در آینده)
 - به کامپایلر خارجی دیگری برای کامپایل احتیاج ندارد (در آینده)
 
@@ -289,10 +289,12 @@ end
 
 ### توسعه نرم افزار گرافیکی و سایت
 
-</div>
 
-This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
-Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
+
+این معماری برای وبسایت ها و نرم افزار های محلی در حال طراحی است. در آینده، برای اپ های موبایل هم در دسترس خواهد بود. معماری موبایل هنوز تکمیل نشده و نیازمند فکر و توجه بیشتر است.<br/><br/>مثال برای نشان دادن کارکرد زبان:
+    
+    
+</div>
 
 ```css
 title "Name - Main"
@@ -378,8 +380,11 @@ header {
 ```
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<div dir="rtl">
+    
+<h2 id="getting-started">➤ شروع کنید</h2>
 
-<h2 id="getting-started">➤ Getting Started</h2>
+</div>
 
 <div dir="rtl">
 
@@ -414,28 +419,40 @@ header {
 
 </div>
 
-We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
-To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
+<div dir="rtl">
+ما از انواع مشارکت ها، از جمله گزارش اشکال، درخواست ویژگی، بهبود اسناد و غیره استقبال می کنیم.
 
-If you are not familiar with how to make a pull request on GitHub then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+برای پرسیدن سوال یا باز کردن بحث، یک موضوع بسازید یا به <a href ="https://discord.gg/sFCE2HcMCa"><b>وان</b> سرور دیسکورد</a> بپیوندید.
 
-If you have decided to contribute, please first read the guidelines [here](CONTRIBUTING.md).
-<br/>You can also help in the development of `One` by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
+اگر شما با نحوه ساختن درخواست pull در گیت هاب آشنا نیستید لطفا این [راهنما](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) را بخوانید.
 
-Thanks to all the <a href ="https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
+اگر تصمیم به مشارکت گرفتید، لطفا ابتدا رهنمودها را از [اینجا](CONTRIBUTING.md) بخوانید.
 
-If you would like to contribute in the development of this project, you can mail us at: <maxbasecode@gmail.com>
+شما همچنین میتوانید با کمک های مالی به توسعه `وان` کمک کنید [:heart: Patreon](https://www.patreon.com/onelanguage).
 
-<br/>Created By Max Base @ 2019
+تشکر از تمامی <a href ="https://github.com/One-Language/One/graphs/contributors">مشارکت کننده ها</a>!!
+
+
+اگر شما تمایل به مشارکت در توسعه این پروژه دارید، میتوانید به ما ایمیل بزنید: <maxbasecode@gmail.com> 
+
+
+<br/> ساخته شده توسط Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+</div>
+    
 <div dir="rtl">
 
 <h2 id="license">➤ مجوز و لایسنس</h2>
 
 </div>
+    
+<div dir="rtl">
+    
+`وان` تحت لایسنس GNU General Public License v3.0 انتشار یافته. لطفا به شرایط در فایل <a href="https://github.com/One-Language/One/blob/master/LICENSE">لایسنس</a> موجود در مخزن مراجعه کنید.
+    
+</div>
 
-`One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
