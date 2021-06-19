@@ -303,6 +303,7 @@ Token* lexer_scan()
 		case '>': return token_make(token_match('=') ? TOKEN_OPERATOR_GREATER_EQUAL : (token_match('>') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT : TOKEN_OPERATOR_SHIFT_RIGHT) : TOKEN_OPERATOR_GREATER));
 		case '<': return token_make(token_match('=') ? (token_match('>') ? TOKEN_OPERATOR_EQUAL_THREE : TOKEN_OPERATOR_LESS_EQUAL) : (token_match('<') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_LEFT : TOKEN_OPERATOR_SHIFT_LEFT) : TOKEN_OPERATOR_LESS));
 		case '=': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_EQUAL : TOKEN_OPERATOR_EQUAL);
+		case '%': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_REMAINDER : TOKEN_OPERATOR_REMAINDER);
 		case ';': token_match(';'); return lexer_scan();
 
 		default:

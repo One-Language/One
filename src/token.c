@@ -356,6 +356,8 @@ char* token_name(TokenType type)
 		case TOKEN_STATIC:
 			return "static";
 
+		case TOKEN_OPERATOR_EQUAL_REMAINDER:
+			return "%=";
 		case TOKEN_OPERATOR_EQUAL_AND:
 			return "&&=";
 		case TOKEN_OPERATOR_EQUAL_BITWISE_AND:

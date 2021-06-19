@@ -58,56 +58,61 @@ void parser_push(Token *t)
 Precedence precedence_get(TokenType type)
 {
 	// cpp: 1
-	// cpp: 2
+	// cpp: 2, a++   a--
 	if (type == TOKEN_OPERATOR_PLUSPLUS || type == TOKEN_OPERATOR_MINUSMINUS || type == TOKEN_OPERATOR_DOT)
-		return 150;
-	// cpp: 3
-	if (type == TOKEN_OPERATOR_GREATER || type == TOKEN_OPERATOR_SLASH || type == TOKEN_OPERATOR_SLASH_INT)
-		return 10;
+		return 160;
 
+	// cpp: 3, ++a  --a  +a  -a  !a   ~a   *a   &a
+//	if (type == TOKEN_OPERATOR_AND || type == TOKEN_OPERATOR_STAR) // TODO:
+//		return 150;
+
+	// cpp: 4
+	// cpp: 5, a*b   a/b   a%b
+	if (type == TOKEN_OPERATOR_STAR || type == TOKEN_OPERATOR_SLASH || type == TOKEN_OPERATOR_SLASH_INT || type == TOKEN_OPERATOR_REMAINDER)
+		return 140;
+
+	// cpp: 6
 	if (type == TOKEN_OPERATOR_PLUS || type == TOKEN_OPERATOR_MINUS)
-		return 20;
-
-	if (type == TOKEN_OPERATOR_STAR || type == TOKEN_OPERATOR_SLASH || type == TOKEN_OPERATOR_SLASH_INT)
-		return 40;
+		return 130;
 
 	// cpp: 7
 	if(type == TOKEN_OPERATOR_SHIFT_LEFT || type == TOKEN_OPERATOR_SHIFT_RIGHT)
-		return 50;
+		return 120;
 
 	// cpp: 8
 	if(type == TOKEN_OPERATOR_EQUAL_THREE)
-		return 50;
+		return 110;
 
 	// cpp: 9
 	if(type == TOKEN_OPERATOR_GREATER || type == TOKEN_OPERATOR_GREATER || type == TOKEN_OPERATOR_LESS || type == TOKEN_OPERATOR_LESS_EQUAL)
-		return 50;
+		return 100;
 
 	// cpp: 10
 	if(type == TOKEN_OPERATOR_EQUAL_EQUAL || type == TOKEN_OPERATOR_EQUAL_BANG)
-		return 50;
+		return 90;
 	// cpp: 11
 	if(type == TOKEN_OPERATOR_BITWISE_AND)
-		return 50;
+		return 80;
 	// cpp: 12
 	if(type == TOKEN_OPERATOR_BITWISE_XOR)
-		return 50;
+		return 70;
 	// cpp: 13
 	if(type == TOKEN_OPERATOR_BITWISE_OR)
-		return 50;
+		return 60;
 	// cpp: 14
 	if(type == TOKEN_OPERATOR_AND)
 		return 50;
 	// cpp: 15
 	if(type == TOKEN_OPERATOR_OR)
-		return 50;
+		return 40;
 	// cpp: 16
 	if (type == TOKEN_OPERATOR_QUESTION || type == TOKEN_OPERATOR_EQUAL || type == TOKEN_OPERATOR_EQUAL_MINUS ||
 		 type == TOKEN_OPERATOR_EQUAL_PLUS || type == TOKEN_OPERATOR_EQUAL_STAR || type == TOKEN_OPERATOR_EQUAL_SLASH ||
 		 type == TOKEN_OPERATOR_EQUAL_SLASH_INT || type == TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT || type == TOKEN_OPERATOR_EQUAL_SHIFT_LEFT ||
 		 type == TOKEN_OPERATOR_EQUAL_OR || type == TOKEN_OPERATOR_EQUAL_BITWISE_OR || type == TOKEN_OPERATOR_EQUAL_AND ||
-		 type == TOKEN_OPERATOR_EQUAL_BITWISE_AND)
-		return 40;
+		 type == TOKEN_OPERATOR_EQUAL_BITWISE_AND || type == TOKEN_OPERATOR_EQUAL_REMAINDER)
+		return 30;
+	// cpp: 170
 }
 
 /*
