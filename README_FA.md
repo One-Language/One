@@ -378,8 +378,11 @@ header {
 ```
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
+<div dir="rtl">
+    
 <h2 id="getting-started">➤ شروع کنید</h2>
+
+</div>
 
 <div dir="rtl">
 
