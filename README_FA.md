@@ -440,6 +440,7 @@ header {
 
 `وان` انتشار یافته  تحت لایسنس GNU General Public License v3.0. لطفا به شرایط در فایل <a href="https://github.com/One-Language/One/blob/master/LICENSE">لایسنس</a> موجود در مخزن مراجعه کنید.
 
+
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
 
