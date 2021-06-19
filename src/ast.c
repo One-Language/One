@@ -142,6 +142,20 @@ AstExpression* ast_make_expression_3(TokenType op, int value, AstExpression* lef
 
 	return ast;
 }
+
+AstExpression* ast_make_expression_unary(TokenType op,  AstExpression* value)
+{
+	AstExpression* ast = malloc(sizeof(AstExpression));
+	ast->operator= op;
+
+	ast->vint = 0;
+	ast->vstring = NULL;
+
+	ast->left = value;
+	ast->right = NULL;
+
+	return ast;
+}
 AstExpression* ast_make_expression_2(TokenType op, int value, AstExpression* left, AstExpression* right)
 {
 	AstExpression* ast = malloc(sizeof(AstExpression));

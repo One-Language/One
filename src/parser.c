@@ -63,8 +63,8 @@ Precedence precedence_get(TokenType type)
 		return 160;
 
 	// cpp: 3, ++a  --a  +a  -a  !a   ~a   *a   &a
-//	if (type == TOKEN_OPERATOR_AND || type == TOKEN_OPERATOR_STAR) // TODO:
-//		return 150;
+	//	if (type == TOKEN_OPERATOR_AND || type == TOKEN_OPERATOR_STAR) // TODO:
+	//		return 150;
 
 	// cpp: 4
 	// cpp: 5, a*b   a/b   a%b
@@ -76,34 +76,34 @@ Precedence precedence_get(TokenType type)
 		return 130;
 
 	// cpp: 7
-	if(type == TOKEN_OPERATOR_SHIFT_LEFT || type == TOKEN_OPERATOR_SHIFT_RIGHT)
+	if (type == TOKEN_OPERATOR_SHIFT_LEFT || type == TOKEN_OPERATOR_SHIFT_RIGHT)
 		return 120;
 
 	// cpp: 8
-	if(type == TOKEN_OPERATOR_EQUAL_THREE)
+	if (type == TOKEN_OPERATOR_EQUAL_THREE)
 		return 110;
 
 	// cpp: 9
-	if(type == TOKEN_OPERATOR_GREATER || type == TOKEN_OPERATOR_GREATER || type == TOKEN_OPERATOR_LESS || type == TOKEN_OPERATOR_LESS_EQUAL)
+	if (type == TOKEN_OPERATOR_GREATER || type == TOKEN_OPERATOR_GREATER || type == TOKEN_OPERATOR_LESS || type == TOKEN_OPERATOR_LESS_EQUAL)
 		return 100;
 
 	// cpp: 10
-	if(type == TOKEN_OPERATOR_EQUAL_EQUAL || type == TOKEN_OPERATOR_EQUAL_BANG)
+	if (type == TOKEN_OPERATOR_EQUAL_EQUAL || type == TOKEN_OPERATOR_EQUAL_BANG)
 		return 90;
 	// cpp: 11
-	if(type == TOKEN_OPERATOR_BITWISE_AND)
+	if (type == TOKEN_OPERATOR_BITWISE_AND)
 		return 80;
 	// cpp: 12
-	if(type == TOKEN_OPERATOR_BITWISE_XOR)
+	if (type == TOKEN_OPERATOR_BITWISE_XOR)
 		return 70;
 	// cpp: 13
-	if(type == TOKEN_OPERATOR_BITWISE_OR)
+	if (type == TOKEN_OPERATOR_BITWISE_OR)
 		return 60;
 	// cpp: 14
-	if(type == TOKEN_OPERATOR_AND)
+	if (type == TOKEN_OPERATOR_AND)
 		return 50;
 	// cpp: 15
-	if(type == TOKEN_OPERATOR_OR)
+	if (type == TOKEN_OPERATOR_OR)
 		return 40;
 	// cpp: 16
 	if (type == TOKEN_OPERATOR_QUESTION || type == TOKEN_OPERATOR_EQUAL || type == TOKEN_OPERATOR_EQUAL_MINUS ||
@@ -595,6 +595,63 @@ AstExpression *parser_parse_expression_primary()
 	}
 	return expr;
 }
+
+AstExpression *parser_parse_expression_factor()
+{
+	debug_parser("parser_parse_expression_factor");
+
+	AstExpression *expr;
+	if (PARSER_CURRENT->type == TOKEN_OPERATOR_BRACKET_ROUND_LEFT)
+	{
+		parser_expect(TOKEN_OPERATOR_BRACKET_ROUND_LEFT);
+		expr = parser_parse_expression();
+		parser_expect(TOKEN_OPERATOR_BRACKET_ROUND_RIGHT);
+	}
+	else
+	{
+		if(PARSER_CURRENT->type == TOKEN_OPERATOR_MINUS || PARSER_CURRENT->type == TOKEN_OPERATOR_PLUS) {
+			expr = ast_make_expression_unary(PARSER_CURRENT->type, parser_parse_expression_primary());
+		}
+		else {
+			expr = parser_parse_expression_primary();
+		}
+	}
+	return expr;
+}
+
+// 5 of the cpp op tables
+AstExpression *parser_parse_expression_term()
+{
+	debug_parser("parser_parse_expression_term");
+
+	AstExpression *expr = parser_parse_expression_factor();
+	while (PARSER_CURRENT->type == TOKEN_OPERATOR_STAR || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH_INT || PARSER_CURRENT->type == TOKEN_OPERATOR_REMAINDER)
+	{
+		TokenType op = PARSER_CURRENT->type;
+		parser_next();
+		expr = ast_make_expression_2(op, -1, expr, parser_parse_expression_factor());
+	}
+	return expr;
+}
+
+// 6 of the cpp op tables
+AstExpression *parser_parse_expression()
+{
+	debug_parser("parser_parse_expression");
+
+	AstExpression *expr = parser_parse_expression_term();
+	while (PARSER_CURRENT->type == TOKEN_OPERATOR_PLUS || PARSER_CURRENT->type == TOKEN_OPERATOR_MINUS)
+	{
+		TokenType op = PARSER_CURRENT->type;
+		parser_next();
+		expr = ast_make_expression_2(op, -1, expr, parser_parse_expression_term());
+	}
+	return expr;
+
+	//	return parser_parse_expression_precedence();
+	//	return parser_parse_expression_primary();
+}
+
 //
 //ParseRule rules[] = {
 //	 [TOKEN_OPERATOR_BRACKET_ROUND_RIGHT] = {NULL, NULL, PREC_NONE},
@@ -963,57 +1020,6 @@ AstExpression *parser_parse_expression_primary()
 //
 //	return expr;
 //}
-
-AstExpression *parser_parse_expression_factor()
-{
-	debug_parser("parser_parse_expression_factor");
-
-	AstExpression *expr;
-	if (PARSER_CURRENT->type == TOKEN_OPERATOR_BRACKET_ROUND_LEFT)
-	{
-		parser_expect(TOKEN_OPERATOR_BRACKET_ROUND_LEFT);
-		expr = parser_parse_expression();
-		parser_expect(TOKEN_OPERATOR_BRACKET_ROUND_RIGHT);
-	}
-	else
-	{
-		expr = parser_parse_expression_primary();
-	}
-	return expr;
-}
-
-// 5 of the cpp op tables
-AstExpression *parser_parse_expression_term()
-{
-	debug_parser("parser_parse_expression_term");
-
-	AstExpression *expr = parser_parse_expression_factor();
-	while (PARSER_CURRENT->type == TOKEN_OPERATOR_STAR || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH_INT || PARSER_CURRENT->type == TOKEN_OPERATOR_REMAINDER)
-	{
-		TokenType op = PARSER_CURRENT->type;
-		parser_next();
-		expr = ast_make_expression_2(op, -1, expr, parser_parse_expression_factor());
-	}
-	return expr;
-}
-
-// 6 of the cpp op tables
-AstExpression *parser_parse_expression()
-{
-	debug_parser("parser_parse_expression");
-
-	AstExpression *expr = parser_parse_expression_term();
-	while (PARSER_CURRENT->type == TOKEN_OPERATOR_PLUS || PARSER_CURRENT->type == TOKEN_OPERATOR_MINUS)
-	{
-		TokenType op = PARSER_CURRENT->type;
-		parser_next();
-		expr = ast_make_expression_2(op, -1, expr, parser_parse_expression_term());
-	}
-	return expr;
-
-	//	return parser_parse_expression_precedence();
-	//	return parser_parse_expression_primary();
-}
 
 void parser_parse_package()
 {
