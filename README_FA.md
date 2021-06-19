@@ -414,6 +414,7 @@ header {
 
 </div>
 
+<div dir="rtl">
 ما از انواع مشارکت ها، از جمله گزارش اشکال، درخواست ویژگی، بهبود اسناد و غیره استقبال می کنیم.
 
 برای پرسیدن سوال یا باز کردن بحث، یک موضوع بسازید یا به <a href ="https://discord.gg/sFCE2HcMCa"><b>وان</b> سرور دیسکورد</a> بپیوندید.
@@ -433,13 +434,19 @@ header {
 <br/> ساخته شده توسط Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+</div>
+    
 <div dir="rtl">
 
 <h2 id="license">➤ مجوز و لایسنس</h2>
 
 </div>
-
+    
+<div dir="rtl">
+    
 `وان` تحت لایسنس GNU General Public License v3.0 انتشار یافته. لطفا به شرایط در فایل <a href="https://github.com/One-Language/One/blob/master/LICENSE">لایسنس</a> موجود در مخزن مراجعه کنید.
+    
+</div>
 
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
