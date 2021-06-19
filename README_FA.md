@@ -10,7 +10,7 @@
 # زبان برنامه نویسی وان💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.ir](https://onelang.ir) |
-[Help wanted](https://github.com/One-Language/One/issues/new)
+[کمک خواست](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
