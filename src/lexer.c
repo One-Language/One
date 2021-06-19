@@ -287,17 +287,22 @@ Token* lexer_scan()
 
 		case '!': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_BANG : TOKEN_OPERATOR_BANG);
 
+		case '&': return token_make(token_match('&') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_AND: TOKEN_OPERATOR_AND) : (token_match('=') ? TOKEN_OPERATOR_EQUAL_BITWISE_AND : TOKEN_OPERATOR_BITWISE_AND));
+
+		case '|': return token_make(token_match('|') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_OR: TOKEN_OPERATOR_OR) : (token_match('=') ? TOKEN_OPERATOR_EQUAL_BITWISE_OR : TOKEN_OPERATOR_BITWISE_OR));
+
+
 		case '.': return token_make(token_match('.') ? (token_match('.') ? TOKEN_OPERATOR_DOTDOTDOT : TOKEN_OPERATOR_DOTDOT) : TOKEN_OPERATOR_DOT);
 
-		case '+': return token_make(token_match('+') ? TOKEN_OPERATOR_PLUSPLUS : TOKEN_OPERATOR_PLUS);
-		case '-': return token_make(token_match('-') ? TOKEN_OPERATOR_MINUSMINUS : TOKEN_OPERATOR_MINUS);
+		case '+': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_PLUS : (token_match('+') ? TOKEN_OPERATOR_PLUSPLUS : TOKEN_OPERATOR_PLUS));
+		case '-': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_MINUS : (token_match('-') ? TOKEN_OPERATOR_MINUSMINUS : TOKEN_OPERATOR_MINUS));
 
-		case '*': return token_make(token_match('*') ? TOKEN_OPERATOR_POWER : TOKEN_OPERATOR_STAR);
-		case '/': return token_make(token_match('/') ? TOKEN_OPERATOR_SLASH_INT : TOKEN_OPERATOR_SLASH);
+		case '*': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_STAR : (token_match('*') ? TOKEN_OPERATOR_POWER : TOKEN_OPERATOR_STAR));
+		case '/': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_SLASH : (token_match('/') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SLASH_INT : TOKEN_OPERATOR_SLASH_INT) : TOKEN_OPERATOR_SLASH));
 
 		case '>': return token_make(token_match('=') ? TOKEN_OPERATOR_GREATER_EQUAL : (token_match('>') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT : TOKEN_OPERATOR_SHIFT_RIGHT) : TOKEN_OPERATOR_GREATER));
 		case '<': return token_make(token_match('=') ? TOKEN_OPERATOR_LESS_EQUAL : (token_match('<') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_LEFT : TOKEN_OPERATOR_SHIFT_LEFT) : TOKEN_OPERATOR_LESS));
-
+		case '=': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_EQUAL : TOKEN_OPERATOR_EQUAL);
 		case ';': token_match(';'); return lexer_scan();
 
 		default:
