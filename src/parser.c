@@ -607,14 +607,15 @@ AstExpression *parser_parse_expression_factor()
 		expr = parser_parse_expression();
 		parser_expect(TOKEN_OPERATOR_BRACKET_ROUND_RIGHT);
 	}
+	else if (PARSER_CURRENT->type == TOKEN_OPERATOR_MINUS || PARSER_CURRENT->type == TOKEN_OPERATOR_PLUS || PARSER_CURRENT->type == TOKEN_OPERATOR_BANG)
+	{
+		TokenType  op = PARSER_CURRENT->type;
+		parser_next();
+		expr = ast_make_expression_unary(op, parser_parse_expression_primary());
+	}
 	else
 	{
-		if(PARSER_CURRENT->type == TOKEN_OPERATOR_MINUS || PARSER_CURRENT->type == TOKEN_OPERATOR_PLUS) {
-			expr = ast_make_expression_unary(PARSER_CURRENT->type, parser_parse_expression_primary());
-		}
-		else {
-			expr = parser_parse_expression_primary();
-		}
+		expr = parser_parse_expression_primary();
 	}
 	return expr;
 }

@@ -176,21 +176,29 @@ void tree_show_expression(FILE* f, AstExpression* expr)
 		print_tree(f, BOLDBLUE TREE_PREFIX "Expression %s\n" RESET, token_name(expr->operator));
 
 		ident++;
-		if (expr->left != NULL)
-		{
+		if(expr->left != NULL && expr->right == NULL) {
 			tree_show_ident();
-			print_tree(f, BOLDBLUE TREE_PREFIX "Expression Left\n" RESET);
+			print_tree(f, BOLDBLUE TREE_PREFIX "Expression Single\n" RESET);
 			ident++;
 			tree_show_expression(f, expr->left);
 			ident--;
-		}
-		if (expr->right != NULL)
-		{
-			tree_show_ident();
-			print_tree(f, BOLDBLUE TREE_PREFIX "Expression Right\n" RESET);
-			ident++;
-			tree_show_expression(f, expr->right);
-			ident--;
+		} else {
+			if (expr->left != NULL)
+			{
+				tree_show_ident();
+				print_tree(f, BOLDBLUE TREE_PREFIX "Expression Left\n" RESET);
+				ident++;
+				tree_show_expression(f, expr->left);
+				ident--;
+			}
+			if (expr->right != NULL)
+			{
+				tree_show_ident();
+				print_tree(f, BOLDBLUE TREE_PREFIX "Expression Right\n" RESET);
+				ident++;
+				tree_show_expression(f, expr->right);
+				ident--;
+			}
 		}
 		ident--;
 	}
