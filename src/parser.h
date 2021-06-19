@@ -73,9 +73,11 @@ void parser_tokens_log();
 
 typedef void (*ParseFn)(bool canAssign);
 
-typedef enum
+typedef int Precedence;
+
+/*
+ * typedef enum
 {
-	PREC_NONE,
 	PREC_ASSIGNMENT, // =
 	PREC_OR, // or
 	PREC_AND, // and
@@ -85,8 +87,12 @@ typedef enum
 	PREC_FACTOR, // * /
 	PREC_UNARY, // ! -
 	PREC_CALL, // . ()
-	PREC_PRIMARY
+	PREC_PRIMARY,
+	PREC_NONE, // non operators!
 } Precedence;
+*/
+
+char *precedence_name(Precedence type);
 
 typedef struct
 {

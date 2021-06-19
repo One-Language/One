@@ -55,6 +55,69 @@ void parser_push(Token *t)
 	array_push(&tokens, t);
 }
 
+Precedence precedence_get(TokenType type)
+{
+	// cpp: 1
+	// cpp: 2
+	if (type == TOKEN_OPERATOR_PLUSPLUS || type == TOKEN_OPERATOR_MINUSMINUS || type == TOKEN_OPERATOR_DOT)
+		return 150;
+	// cpp: 3
+	if (type == TOKEN_OPERATOR_GREATER || type == TOKEN_OPERATOR_SLASH || type == TOKEN_OPERATOR_SLASH_INT)
+		return 10;
+
+	if (type == TOKEN_OPERATOR_PLUS || type == TOKEN_OPERATOR_MINUS)
+		return 20;
+
+	if (type == TOKEN_OPERATOR_STAR || type == TOKEN_OPERATOR_SLASH || type == TOKEN_OPERATOR_SLASH_INT)
+		return 40;
+
+	if (type == TOKEN_OPERATOR_QUESTION || type == TOKEN_OPERATOR_EQUAL || type == TOKEN_OPERATOR_EQUAL_MINUS || type == TOKEN_OPERATOR_EQUAL_PLUS || type == TOKEN_OPERATOR_EQUAL_STAR || type == TOKEN_OPERATOR_EQUAL_SLASH || type == TOKEN_OPERATOR_EQUAL_SLASH_INT || type == TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT || type == /home/max/Projects/One/src/parser.c)
+		return 40;
+}
+
+char *precedence_name(Precedence type)
+{
+	switch (type)
+	{
+		case PREC_ASSIGNMENT: // =
+			return "PREC_ASSIGNMETN";
+			break;
+		case PREC_OR: // or
+			return "PREC_OR";
+			break;
+		case PREC_AND: // and
+			return "PREC_AND";
+			break;
+		case PREC_EQUALITY: // == !=
+			return "PREC_EQUALITY";
+			break;
+		case PREC_COMPARISON: // < > <= >=
+			return "PREC_COMPARISON";
+			break;
+		case PREC_TERM: // + -
+			return "PREC_TERM";
+			break;
+		case PREC_FACTOR: // * /
+			return "PREC_FACTOR";
+			break;
+		case PREC_UNARY: // ! -
+			return "PREC_UNARY";
+			break;
+		case PREC_CALL: // . ()
+			return "PREC_CALL";
+			break;
+		case PREC_PRIMARY:
+			return "PREC_PRIMARY";
+			break;
+		case PREC_NONE: // non operators!
+			return "PREC_NONE";
+			break;
+		default:
+			return "PREC_NONE";
+			break;
+	}
+}
+
 void parser_scan()
 {
 	debug_parser("parser_scan");
@@ -877,12 +940,13 @@ AstExpression *parser_parse_expression_factor()
 	return expr;
 }
 
+// 5 of the cpp op tables
 AstExpression *parser_parse_expression_term()
 {
 	debug_parser("parser_parse_expression_term");
 
 	AstExpression *expr = parser_parse_expression_factor();
-	while (PARSER_CURRENT->type == TOKEN_OPERATOR_STAR || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH_INT)
+	while (PARSER_CURRENT->type == TOKEN_OPERATOR_STAR || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH || PARSER_CURRENT->type == TOKEN_OPERATOR_SLASH_INT || PARSER_CURRENT->type == TOKEN_OPERATOR_REMAINDER)
 	{
 		TokenType op = PARSER_CURRENT->type;
 		parser_next();
@@ -891,6 +955,7 @@ AstExpression *parser_parse_expression_term()
 	return expr;
 }
 
+// 6 of the cpp op tables
 AstExpression *parser_parse_expression()
 {
 	debug_parser("parser_parse_expression");
