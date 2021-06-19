@@ -71,10 +71,46 @@ Precedence precedence_get(TokenType type)
 	if (type == TOKEN_OPERATOR_STAR || type == TOKEN_OPERATOR_SLASH || type == TOKEN_OPERATOR_SLASH_INT)
 		return 40;
 
-	if (type == TOKEN_OPERATOR_QUESTION || type == TOKEN_OPERATOR_EQUAL || type == TOKEN_OPERATOR_EQUAL_MINUS || type == TOKEN_OPERATOR_EQUAL_PLUS || type == TOKEN_OPERATOR_EQUAL_STAR || type == TOKEN_OPERATOR_EQUAL_SLASH || type == TOKEN_OPERATOR_EQUAL_SLASH_INT || type == TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT || type == /home/max/Projects/One/src/parser.c)
+	// cpp: 7
+	if(type == TOKEN_OPERATOR_SHIFT_LEFT || type == TOKEN_OPERATOR_SHIFT_RIGHT)
+		return 50;
+
+	// cpp: 8
+	if(type == TOKEN_OPERATOR_EQUAL_THREE)
+		return 50;
+
+	// cpp: 9
+	if(type == TOKEN_OPERATOR_GREATER || type == TOKEN_OPERATOR_GREATER || type == TOKEN_OPERATOR_LESS || type == TOKEN_OPERATOR_LESS_EQUAL)
+		return 50;
+
+	// cpp: 10
+	if(type == TOKEN_OPERATOR_EQUAL_EQUAL || type == TOKEN_OPERATOR_EQUAL_BANG)
+		return 50;
+	// cpp: 11
+	if(type == TOKEN_OPERATOR_BITWISE_AND)
+		return 50;
+	// cpp: 12
+	if(type == TOKEN_OPERATOR_BITWISE_XOR)
+		return 50;
+	// cpp: 13
+	if(type == TOKEN_OPERATOR_BITWISE_OR)
+		return 50;
+	// cpp: 14
+	if(type == TOKEN_OPERATOR_AND)
+		return 50;
+	// cpp: 15
+	if(type == TOKEN_OPERATOR_OR)
+		return 50;
+	// cpp: 16
+	if (type == TOKEN_OPERATOR_QUESTION || type == TOKEN_OPERATOR_EQUAL || type == TOKEN_OPERATOR_EQUAL_MINUS ||
+		 type == TOKEN_OPERATOR_EQUAL_PLUS || type == TOKEN_OPERATOR_EQUAL_STAR || type == TOKEN_OPERATOR_EQUAL_SLASH ||
+		 type == TOKEN_OPERATOR_EQUAL_SLASH_INT || type == TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT || type == TOKEN_OPERATOR_EQUAL_SHIFT_LEFT ||
+		 type == TOKEN_OPERATOR_EQUAL_OR || type == TOKEN_OPERATOR_EQUAL_BITWISE_OR || type == TOKEN_OPERATOR_EQUAL_AND ||
+		 type == TOKEN_OPERATOR_EQUAL_BITWISE_AND)
 		return 40;
 }
 
+/*
 char *precedence_name(Precedence type)
 {
 	switch (type)
@@ -117,6 +153,7 @@ char *precedence_name(Precedence type)
 			break;
 	}
 }
+*/
 
 void parser_scan()
 {

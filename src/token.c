@@ -365,6 +365,9 @@ char* token_name(TokenType type)
 		case TOKEN_OPERATOR_EQUAL_BITWISE_OR:
 			return "|=";
 
+		case TOKEN_OPERATOR_EQUAL_THREE:
+			return "<=>";
+
 		case TOKEN_SEMICOLON:
 			return "SEMICOLON";
 		default:
