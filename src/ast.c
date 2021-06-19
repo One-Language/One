@@ -143,7 +143,7 @@ AstExpression* ast_make_expression_3(TokenType op, int value, AstExpression* lef
 	return ast;
 }
 
-AstExpression* ast_make_expression_unary(TokenType op,  AstExpression* value)
+AstExpression* ast_make_expression_unary(TokenType op, AstExpression* value)
 {
 	AstExpression* ast = malloc(sizeof(AstExpression));
 	ast->operator= op;

@@ -163,7 +163,7 @@ AstType* ast_make_type(int type, bool hasArray);
 
 AstBlock* ast_make_block(AstStatements stmts);
 
-AstExpression* ast_make_expression_unary(TokenType op,  AstExpression* value);
+AstExpression* ast_make_expression_unary(TokenType op, AstExpression* value);
 
 AstExpression* ast_make_expression_3(TokenType op, int value, AstExpression* left, AstExpression* right, AstExpression* third);
 

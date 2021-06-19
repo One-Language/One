@@ -92,7 +92,7 @@ typedef int Precedence;
 } Precedence;
 */
 
-char *precedence_name(Precedence type);
+char* precedence_name(Precedence type);
 
 typedef struct
 {

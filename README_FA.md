@@ -289,11 +289,8 @@ end
 
 ### توسعه نرم افزار گرافیکی و سایت
 
-
-
 این معماری برای وبسایت ها و نرم افزار های محلی در حال طراحی است. در آینده، برای اپ های موبایل هم در دسترس خواهد بود. معماری موبایل هنوز تکمیل نشده و نیازمند فکر و توجه بیشتر است.<br/><br/>مثال برای نشان دادن کارکرد زبان:
-    
-    
+
 </div>
 
 ```css
@@ -380,8 +377,9 @@ header {
 ```
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 <div dir="rtl">
-    
+
 <h2 id="getting-started">➤ شروع کنید</h2>
 
 </div>
@@ -432,27 +430,24 @@ header {
 
 تشکر از تمامی <a href ="https://github.com/One-Language/One/graphs/contributors">مشارکت کننده ها</a>!!
 
-
-اگر شما تمایل به مشارکت در توسعه این پروژه دارید، میتوانید به ما ایمیل بزنید: <maxbasecode@gmail.com> 
-
+اگر شما تمایل به مشارکت در توسعه این پروژه دارید، میتوانید به ما ایمیل بزنید: <maxbasecode@gmail.com>
 
 <br/> ساخته شده توسط Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 </div>
-    
+
 <div dir="rtl">
 
 <h2 id="license">➤ مجوز و لایسنس</h2>
 
 </div>
-    
-<div dir="rtl">
-    
-`وان` تحت لایسنس GNU General Public License v3.0 انتشار یافته. لطفا به شرایط در فایل <a href="https://github.com/One-Language/One/blob/master/LICENSE">لایسنس</a> موجود در مخزن مراجعه کنید.
-    
-</div>
 
+<div dir="rtl">
+
+`وان` تحت لایسنس GNU General Public License v3.0 انتشار یافته. لطفا به شرایط در فایل <a href="https://github.com/One-Language/One/blob/master/LICENSE">لایسنس</a> موجود در مخزن مراجعه کنید.
+
+</div>
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->

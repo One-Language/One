@@ -11,6 +11,4 @@
 #ifndef ONE_TEST_H
 #define ONE_TEST_H
 
-
-
 #endif //ONE_TEST_H

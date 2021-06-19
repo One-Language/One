@@ -287,10 +287,9 @@ Token* lexer_scan()
 
 		case '!': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_BANG : TOKEN_OPERATOR_BANG);
 
-		case '&': return token_make(token_match('&') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_AND: TOKEN_OPERATOR_AND) : (token_match('=') ? TOKEN_OPERATOR_EQUAL_BITWISE_AND : TOKEN_OPERATOR_BITWISE_AND));
+		case '&': return token_make(token_match('&') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_AND : TOKEN_OPERATOR_AND) : (token_match('=') ? TOKEN_OPERATOR_EQUAL_BITWISE_AND : TOKEN_OPERATOR_BITWISE_AND));
 
-		case '|': return token_make(token_match('|') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_OR: TOKEN_OPERATOR_OR) : (token_match('=') ? TOKEN_OPERATOR_EQUAL_BITWISE_OR : TOKEN_OPERATOR_BITWISE_OR));
-
+		case '|': return token_make(token_match('|') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_OR : TOKEN_OPERATOR_OR) : (token_match('=') ? TOKEN_OPERATOR_EQUAL_BITWISE_OR : TOKEN_OPERATOR_BITWISE_OR));
 
 		case '.': return token_make(token_match('.') ? (token_match('.') ? TOKEN_OPERATOR_DOTDOTDOT : TOKEN_OPERATOR_DOTDOT) : TOKEN_OPERATOR_DOT);
 

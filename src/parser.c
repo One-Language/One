@@ -609,7 +609,7 @@ AstExpression *parser_parse_expression_factor()
 	}
 	else if (PARSER_CURRENT->type == TOKEN_OPERATOR_MINUS || PARSER_CURRENT->type == TOKEN_OPERATOR_PLUS || PARSER_CURRENT->type == TOKEN_OPERATOR_BANG)
 	{
-		TokenType  op = PARSER_CURRENT->type;
+		TokenType op = PARSER_CURRENT->type;
 		parser_next();
 		expr = ast_make_expression_unary(op, parser_parse_expression_primary());
 	}

@@ -176,13 +176,16 @@ void tree_show_expression(FILE* f, AstExpression* expr)
 		print_tree(f, BOLDBLUE TREE_PREFIX "Expression %s\n" RESET, token_name(expr->operator));
 
 		ident++;
-		if(expr->left != NULL && expr->right == NULL) {
+		if (expr->left != NULL && expr->right == NULL)
+		{
 			tree_show_ident();
 			print_tree(f, BOLDBLUE TREE_PREFIX "Expression Single\n" RESET);
 			ident++;
 			tree_show_expression(f, expr->left);
 			ident--;
-		} else {
+		}
+		else
+		{
 			if (expr->left != NULL)
 			{
 				tree_show_ident();
