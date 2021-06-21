@@ -116,5 +116,5 @@ add_executable(One ${PROJECT_SOURCES} ${PROJECT_HEADERS})
 target_link_libraries(One ${llvm_libs})
 
 target_link_libraries(One
-        LLVM-11
+        LLVM-12
         )
