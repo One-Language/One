@@ -30,6 +30,8 @@
 [Español](README_ES.md)
 &nbsp;
 [Türkçe](README_TR.md)
+&nbsp;
+[فارسی](README_FA.md)
 
 </div>
 
