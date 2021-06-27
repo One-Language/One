@@ -33,16 +33,45 @@ void test_lexer_log()
 	}
 }
 
+bool test_lexer_item(LexerTest test)
+{
+	TEST(test.source);
+
+	// test_lexer_log();
+
+	for (int i = 0; i < parser.tokens_count; i++)
+	{
+		if (test.tokens[i] == NULL) {
+			// printf("11111\n");
+			return false;
+		}
+		else if (test.tokens[i]->type == parser.tokens[i]->type) {
+			// printf("2222\n");
+			continue;
+		}
+		else {
+			// printf("3333\n");
+			return false;
+		}
+	}
+
+	return true; // for example if `parser.tokens_count` is 0 or loop finished without an error!
+}
+
 bool test_lexer()
 {
+	bool res_final = true;
 	for (unsigned i = 0; i < lexer_tests_count; i++)
 	{
-		printf("==>%d\n", i);
+		printf("Test case %d\n", i+1);
+		bool res = test_lexer_item(lexer_tests[i]);
+		if (res == false)
+		{
+			res_final = false;
+		}
 	}
-	TEST("main{}");
-	test_lexer_log();
 
-	return false;
+	return res_final;
 }
 int main()
 {
