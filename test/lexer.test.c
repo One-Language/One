@@ -15,14 +15,25 @@
 	parser_init();      \
 	parser_scan();
 
-bool lexer_test1()
+bool test_lexer1()
 {
 	TEST("main{}");
 	return false;
 }
 
+bool test_lexer()
+{
+	return test_lexer1();
+	return false;
+}
 int main()
 {
 	printf("Hello to Lexer test!\n");
-	return 0;
+	bool res = test_lexer();
+	if(res == true) {
+		printf("All tests passed.\n");
+		return 0;
+	}
+	printf("Test(s) failed!\n");
+	return 1;
 }

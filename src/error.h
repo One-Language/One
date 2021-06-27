@@ -43,6 +43,7 @@ typedef enum
 
 //#define check(format, args...)
 
+#ifndef _ONE_TEST_
 #define debug(format, args...) \
 	printf(WHITE "Debug: " format "\n" RESET, ##args);
 
@@ -53,7 +54,7 @@ typedef enum
 	printf(CYAN "Lexer Debug: " format "\n" RESET, ##args);
 
 //#define debug_tree(format, args...) \
-//	printf(BLUE "Tree INFO: " format "\n" RESET, ##args);
+	//	printf(BLUE "Tree INFO: " format "\n" RESET, ##args);
 
 #define debug_tree(format, args...)
 
@@ -75,7 +76,30 @@ typedef enum
 #define info_parser(format, args...) \
 	printf(BOLDGREEN "Parser INFO: " format "\n" RESET, ##args);
 
-//#define debug(format, args...)
+#else
+#define debug(format, args...)
+
+#define debug_token(format, args...)
+
+#define debug_lexer(format, args...)
+
+#define debug_tree(format, args...)
+
+#define debug_tree(format, args...)
+
+#define debug_parser(format, args...)
+
+#define info(format, args...)
+
+#define info_token(format, args...)
+
+#define info_tree(format, args...)
+
+#define info_lexer(format, args...)
+
+#define info_parser(format, args...)
+
+#endif
 
 void error(ErrorType type, const char* format, ...);
 
