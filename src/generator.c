@@ -258,8 +258,9 @@ bool generateFunctionBody(AstFunction* ast, LLVMModuleRef module, LLVMDIBuilderR
 
 	LLVMBuildRetVoid(builder);
 
-	printf("-->%d\n", ret);
-	printf("-->%d\n", error);
+	printf("generator ret: %s\n", ret == true ? "TRUE" : "FALSE");
+	printf("generator error: %s\n", error == true ? "TRUE" : "FALSE");
+
 	return true; // TODO: it's fake ret!
 	return ret && !error;
 }

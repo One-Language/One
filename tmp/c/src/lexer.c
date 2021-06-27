@@ -27,9 +27,9 @@ Lexer *lexer_init(char *filename, char *input)
 	lex->location.c = 0;
 
 #ifdef DEBUG
-	printf("-->%s\n", lex->s);
-	printf("-->%s\n", lex->f);
-	printf("\n");
+	// printf("-->%s\n", lex->s);
+	// printf("-->%s\n", lex->f);
+	// printf("\n");
 #endif
 
 	return lex;
