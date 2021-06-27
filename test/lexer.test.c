@@ -41,15 +41,18 @@ bool test_lexer_item(LexerTest test)
 
 	for (int i = 0; i < parser.tokens_count; i++)
 	{
-		if (test.tokens[i] == NULL) {
+		if (test.tokens[i] == NULL)
+		{
 			// printf("11111\n");
 			return false;
 		}
-		else if (test.tokens[i]->type == parser.tokens[i]->type) {
+		else if (test.tokens[i]->type == parser.tokens[i]->type)
+		{
 			// printf("2222\n");
 			continue;
 		}
-		else {
+		else
+		{
 			// printf("3333\n");
 			return false;
 		}
@@ -63,7 +66,7 @@ bool test_lexer()
 	bool res_final = true;
 	for (unsigned i = 0; i < lexer_tests_count; i++)
 	{
-		printf("Test case %d\n", i+1);
+		printf("Test case %d\n", i + 1);
 		bool res = test_lexer_item(lexer_tests[i]);
 		if (res == false)
 		{
@@ -73,6 +76,7 @@ bool test_lexer()
 
 	return res_final;
 }
+
 int main()
 {
 	printf("Hello to Lexer test!\n");
