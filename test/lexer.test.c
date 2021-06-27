@@ -58,7 +58,12 @@ bool test_lexer_item(LexerTest test)
 		}
 	}
 
-	return true; // for example if `parser.tokens_count` is 0 or loop finished without an error!
+	if (parser.tokens_count == 0)
+	{ //  if `parser.tokens_count` is 0
+		return false;
+	}
+
+	return true; // if loop finished without an error!
 }
 
 bool test_lexer()
