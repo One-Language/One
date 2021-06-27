@@ -10,9 +10,10 @@
 
 #include "test.h"
 
-#define TEST(source)	lexer_init(source); \
-	 parser_init(); \
-	 parser_scan();
+#define TEST(source)    \
+	lexer_init(source); \
+	parser_init();      \
+	parser_scan();
 
 bool lexer_test1()
 {
