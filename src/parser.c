@@ -48,11 +48,13 @@ void parser_init()
 	parser.tokens = NULL;
 	parser.tokens_count = 0;
 	array_init(&tokens);
+	// array_init((Array*) parser.tokens);
 }
 
 void parser_push(Token *t)
 {
 	array_push(&tokens, t);
+	// array_push((Array*) parser.tokens, t);
 }
 
 Precedence precedence_get(TokenType type)
@@ -181,12 +183,16 @@ void parser_scan()
 	}
 }
 
+void parser_preapre()
+{
+	parser.tokens = (Token **)tokens.data;
+	parser.tokens_count = tokens.count;
+}
 void parser_start()
 {
 	debug_parser("parser_start");
 
-	parser.tokens = (Token **)tokens.data;
-	parser.tokens_count = tokens.count;
+	parser_preapre();
 
 	parser_tokens_log();
 

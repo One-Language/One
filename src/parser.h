@@ -103,4 +103,6 @@ typedef struct
 
 AstExpression* parser_parse_expression_primary();
 
+void parser_preapre();
+
 #endif //ONE_PARSER_H

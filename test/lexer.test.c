@@ -13,11 +13,20 @@
 #define TEST(source)    \
 	lexer_init(source); \
 	parser_init();      \
-	parser_scan();
+	parser_scan();      \
+	parser_preapre();
+
+void test_lexer_log()
+{
+	for(int i=0;i<parser.tokens_count;i++) {
+		printf("[%d]\n", i);
+	}
+}
 
 bool test_lexer1()
 {
 	TEST("main{}");
+	test_lexer_log();
 	return false;
 }
 
@@ -30,7 +39,8 @@ int main()
 {
 	printf("Hello to Lexer test!\n");
 	bool res = test_lexer();
-	if(res == true) {
+	if (res == true)
+	{
 		printf("All tests passed.\n");
 		return 0;
 	}
