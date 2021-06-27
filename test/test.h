@@ -11,7 +11,7 @@
 #ifndef ONE_TEST_H
 #define ONE_TEST_H
 
-#define _ONE_TEST_
+// You have to define a macro at CLANG or c compiler: #define _ONE_TEST_
 
 #include <stdio.h>
 #include <stdlib.h>
