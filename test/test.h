@@ -11,4 +11,22 @@
 #ifndef ONE_TEST_H
 #define ONE_TEST_H
 
+#define _ONE_TEST_
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+
+#include "../src/array.h"
+#include "../src/lexer.h"
+#include "../src/token.h"
+#include "../src/ast.h"
+#include "../src/parser.h"
+#include "../src/error.h"
+#include "../src/generator.h"
+
+extern Parser parser;
+extern Array tokens;
+
 #endif //ONE_TEST_H

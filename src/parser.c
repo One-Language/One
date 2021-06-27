@@ -113,6 +113,7 @@ Precedence precedence_get(TokenType type)
 		 type == TOKEN_OPERATOR_EQUAL_BITWISE_AND || type == TOKEN_OPERATOR_EQUAL_REMAINDER)
 		return 30;
 	// cpp: 170
+	return -1;
 }
 
 /*

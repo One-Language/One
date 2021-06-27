@@ -58,7 +58,7 @@ LLVMModuleRef generator_init(AstRoot* root)
 		if (LLVMGetTargetFromTriple(triple, &target, &error_msg))
 		{
 			printf("==============> Error:");
-			printf(error_msg);
+			printf("%s", error_msg);
 			LLVMDisposeMessage(error_msg);
 			return NULL;
 		}
@@ -206,6 +206,7 @@ LLVMValueRef generateValueInFunction(AstStatement* ast, LLVMDIBuilderRef dibuild
 	{
 		return NULL;
 	}
+	return NULL;
 }
 
 LLVMValueRef generateValueCodeBlock(AstBlock* ast, LLVMDIBuilderRef dibuilder, LLVMBuilderRef builder)

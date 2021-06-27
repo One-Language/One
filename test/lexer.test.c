@@ -10,7 +10,18 @@
 
 #include "test.h"
 
+#define TEST(source)	lexer_init(source); \
+	 parser_init(); \
+	 parser_scan();
+
+bool lexer_test1()
+{
+	TEST("main{}");
+	return false;
+}
+
 int main()
 {
+	printf("Hello to Lexer test!\n");
 	return 0;
 }

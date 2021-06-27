@@ -19,6 +19,7 @@
 
 #include "one.h"
 
+#ifndef _ONE_TEST_
 int main(int argc, char **argv, char **env)
 {
 	debug("main");
@@ -35,3 +36,4 @@ int main(int argc, char **argv, char **env)
 
 	return ret;
 }
+#endif
