@@ -32,7 +32,7 @@ char* file_reads(const char* path)
 	debug("file_reads: fileSize is %zu", fileSize);
 	rewind(file);
 
-	char* buffer = (char*) malloc(fileSize + 1);
+	char* buffer = (char*)malloc(fileSize + 1);
 	if (buffer == NULL)
 	{
 		error_panic("Not enough memory to read \"%s\".", path);

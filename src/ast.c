@@ -113,7 +113,7 @@ char* ast_value_name(AstValueType type)
 
 AstType* ast_make_type(int type, bool hasArray)
 {
-	AstType* ast = (AstType*) malloc(sizeof(AstType));
+	AstType* ast = (AstType*)malloc(sizeof(AstType));
 	ast->type = type;
 	ast->hasArray = hasArray;
 	return ast;
@@ -121,14 +121,14 @@ AstType* ast_make_type(int type, bool hasArray)
 
 AstBlock* ast_make_block(AstStatements stmts)
 {
-	AstBlock* ast = (AstBlock*) malloc(sizeof(AstBlock));
+	AstBlock* ast = (AstBlock*)malloc(sizeof(AstBlock));
 	ast->statements = stmts;
 	return ast;
 }
 
 AstExpression* ast_make_expression_3(TokenType op, int value, AstExpression* left, AstExpression* right, AstExpression* third)
 {
-	AstExpression* ast = (AstExpression*) malloc(sizeof(AstExpression));
+	AstExpression* ast = (AstExpression*)malloc(sizeof(AstExpression));
 	ast->operator= op;
 
 	ast->vint = value;
@@ -145,7 +145,7 @@ AstExpression* ast_make_expression_3(TokenType op, int value, AstExpression* lef
 
 AstExpression* ast_make_expression_unary(TokenType op, AstExpression* value)
 {
-	AstExpression* ast = (AstExpression*) malloc(sizeof(AstExpression));
+	AstExpression* ast = (AstExpression*)malloc(sizeof(AstExpression));
 	ast->operator= op;
 
 	ast->vint = 0;
@@ -158,7 +158,7 @@ AstExpression* ast_make_expression_unary(TokenType op, AstExpression* value)
 }
 AstExpression* ast_make_expression_2(TokenType op, int value, AstExpression* left, AstExpression* right)
 {
-	AstExpression* ast = (AstExpression*) malloc(sizeof(AstExpression));
+	AstExpression* ast = (AstExpression*)malloc(sizeof(AstExpression));
 	ast->operator= op;
 
 	ast->vint = value;
@@ -172,7 +172,7 @@ AstExpression* ast_make_expression_2(TokenType op, int value, AstExpression* lef
 
 AstArgument* ast_make_argument(char* name, AstType* type)
 {
-	AstArgument* ast = (AstArgument*) malloc(sizeof(AstArgument));
+	AstArgument* ast = (AstArgument*)malloc(sizeof(AstArgument));
 	ast->name = name;
 	ast->type = type;
 	return ast;
@@ -180,7 +180,7 @@ AstArgument* ast_make_argument(char* name, AstType* type)
 
 AstFunction* ast_make_function(char* name, AstArguments args, AstBlock* block)
 {
-	AstFunction* ast = (AstFunction*) malloc(sizeof(AstFunction));
+	AstFunction* ast = (AstFunction*)malloc(sizeof(AstFunction));
 	ast->name = name;
 	ast->arguments = args;
 	ast->block = block;
@@ -189,7 +189,7 @@ AstFunction* ast_make_function(char* name, AstArguments args, AstBlock* block)
 
 AstRoot* ast_make_root(char* package, AstFunctions funcs)
 {
-	AstRoot* ast = (AstRoot*) malloc(sizeof(AstRoot));
+	AstRoot* ast = (AstRoot*)malloc(sizeof(AstRoot));
 	ast->package = package;
 	ast->functions = funcs;
 	return ast;
@@ -197,7 +197,7 @@ AstRoot* ast_make_root(char* package, AstFunctions funcs)
 
 AstStatement* ast_make_statement(AstStatementType type)
 {
-	AstStatement* ast = (AstStatement*) malloc(sizeof(AstStatement));
+	AstStatement* ast = (AstStatement*)malloc(sizeof(AstStatement));
 	ast->type = type;
 	return ast;
 }

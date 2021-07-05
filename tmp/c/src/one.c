@@ -38,7 +38,7 @@ char *file_read(char *filename)
 	fseek(onefile, 0L, SEEK_END);
 	size_t onefilesize = ftell(onefile);
 	rewind(onefile);
-	char *onebuffer = (char *) malloc(onefilesize + 1);
+	char *onebuffer = (char *)malloc(onefilesize + 1);
 	if (onebuffer == NULL)
 	{
 		error("error malloc onebuffer\n");

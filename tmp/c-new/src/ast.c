@@ -97,7 +97,7 @@ char* astOperatorName(TokenType type)
 
 AstType* astType(int type, bool hasArray)
 {
-	AstType* ast = (AstType*) malloc(sizeof(AstType));
+	AstType* ast = (AstType*)malloc(sizeof(AstType));
 	ast->type = type;
 	ast->hasArray = hasArray;
 	return ast;
@@ -105,14 +105,14 @@ AstType* astType(int type, bool hasArray)
 
 AstBlock* astBlock(AstStatements* stmts)
 {
-	AstBlock* ast = (AstBlock*) malloc(sizeof(AstBlock));
+	AstBlock* ast = (AstBlock*)malloc(sizeof(AstBlock));
 	ast->statements = stmts;
 	return ast;
 }
 
 AstExpression* astExpression3(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right, AstExpression* third)
 {
-	AstExpression* ast = (AstExpression*) malloc(sizeof(AstExpression));
+	AstExpression* ast = (AstExpression*)malloc(sizeof(AstExpression));
 	ast->operator= op;
 
 	ast->vint = vi;
@@ -128,7 +128,7 @@ AstExpression* astExpression3(TokenType op, int vi, float vf, char* vs, bool vb,
 }
 AstExpression* astExpression(TokenType op, int vi, float vf, char* vs, bool vb, AstExpression* left, AstExpression* right)
 {
-	AstExpression* ast = (AstExpression*) malloc(sizeof(AstExpression));
+	AstExpression* ast = (AstExpression*)malloc(sizeof(AstExpression));
 	ast->operator= op;
 
 	ast->vint = vi;
@@ -144,7 +144,7 @@ AstExpression* astExpression(TokenType op, int vi, float vf, char* vs, bool vb, 
 
 AstArgument* astArgument(char* name, AstType* type)
 {
-	AstArgument* ast = (AstArgument*) malloc(sizeof(AstArgument));
+	AstArgument* ast = (AstArgument*)malloc(sizeof(AstArgument));
 	ast->name = name;
 	ast->type = type;
 	return ast;
@@ -152,7 +152,7 @@ AstArgument* astArgument(char* name, AstType* type)
 
 AstFunction* astFunction(char* name, AstArguments* args, AstBlock* block)
 {
-	AstFunction* ast = (AstFunction*) malloc(sizeof(AstFunction));
+	AstFunction* ast = (AstFunction*)malloc(sizeof(AstFunction));
 	ast->name = name;
 	ast->arguments = args;
 	ast->block = block;
@@ -167,7 +167,7 @@ AstRoot* astRoot(char* package, AstFunctions* funcs)
 	}
 	 */
 
-	AstRoot* ast = (AstRoot*) malloc(sizeof(AstRoot));
+	AstRoot* ast = (AstRoot*)malloc(sizeof(AstRoot));
 	ast->package = package;
 	ast->functions = funcs;
 	return ast;
@@ -175,7 +175,7 @@ AstRoot* astRoot(char* package, AstFunctions* funcs)
 
 AstStatement* astStatement(AstStatementType type)
 {
-	AstStatement* ast = (AstStatement*) malloc(sizeof(AstStatement));
+	AstStatement* ast = (AstStatement*)malloc(sizeof(AstStatement));
 	ast->type = type;
 	return ast;
 }

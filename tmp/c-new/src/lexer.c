@@ -15,7 +15,7 @@
 
 Lexer *lexerInit(char *filename, char *input, ErrorsContainer *errors)
 {
-	Lexer *lex = (Lexer*) malloc(sizeof(Lexer));
+	Lexer *lex = (Lexer *)malloc(sizeof(Lexer));
 	lex->tokens = NULL;
 	lex->token_count = 0;
 	lex->filename = filename;
@@ -79,7 +79,7 @@ int lexerCheck(Lexer *lex, ErrorsContainer *errors)
 									  tokens.count > 0 && ((Token *)tokens.data[tokens.count - 1])->type != TOKEN_EOF) // otherwise, if tokens list is not empty and at last item of tokens we not have a EOF token...
 		)
 		{
-			Token *t_eof = (Token*) malloc(sizeof(Token)); // create a token value just for adding EOF token.
+			Token *t_eof = (Token *)malloc(sizeof(Token)); // create a token value just for adding EOF token.
 			t_eof->type = TOKEN_EOF; // set type of new token as TOKEN_EOF
 			arrayPush(&tokens, t_eof); // push and add t-eof token at list of token!
 			// free(t_eof); // free t_eof from memory!

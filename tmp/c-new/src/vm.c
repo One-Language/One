@@ -13,8 +13,8 @@
 
 void vmInit(AstRoot* root)
 {
-	root->functions = (Array*) malloc(sizeof(Array));
-	root->package = (char*) malloc(sizeof(char) * 1024);
+	root->functions = (Array*)malloc(sizeof(Array));
+	root->package = (char*)malloc(sizeof(char) * 1024);
 	//	strcpy(root->package,"max");
 	//	printf("-->%s\n", root->package);
 }

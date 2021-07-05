@@ -140,7 +140,7 @@ Token* lexer_number()
 {
 	debug_lexer("lexer_number");
 
-	char* tmp_str = (char*) malloc(60 * sizeof(char) + 1);
+	char* tmp_str = (char*)malloc(60 * sizeof(char) + 1);
 	size_t i = 0;
 
 	char c = token_peek();
@@ -181,7 +181,7 @@ Token* lexer_char()
 {
 	debug_lexer("lexer_char");
 	//	char tmp_str[1024] = {};
-	char* tmp_str = (char*) malloc(1024 * sizeof(char) + 1);
+	char* tmp_str = (char*)malloc(1024 * sizeof(char) + 1);
 	size_t i = 0;
 
 	token_match('\'');
@@ -208,7 +208,7 @@ Token* lexer_string()
 	debug_lexer("lexer_string");
 
 	//	char tmp_str[1024] = {};
-	char* tmp_str = (char*) malloc(1024 * sizeof(char) + 1);
+	char* tmp_str = (char*)malloc(1024 * sizeof(char) + 1);
 	size_t i = 0;
 
 	token_match('"');
@@ -230,7 +230,7 @@ Token* lexer_identifier()
 	debug_lexer("lexer_identifier");
 
 	//	char tmp_str[1024] = {};
-	char* tmp_str = (char*) malloc(1024 * sizeof(char) + 1);
+	char* tmp_str = (char*)malloc(1024 * sizeof(char) + 1);
 	size_t ident_length = 0;
 
 	tmp_str[ident_length++] = token_advance();
@@ -325,7 +325,7 @@ Token* lexer_scan()
 
 	debug_lexer("lexer_scan: last bad character is %c'", *lexer.current);
 
-	char* msg = (char*) malloc(50 * sizeof(char));
+	char* msg = (char*)malloc(50 * sizeof(char));
 	sprintf(msg, "Unexpected '%c' character!", *lexer.current);
 	return token_error(msg);
 }

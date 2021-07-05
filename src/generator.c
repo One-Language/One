@@ -187,7 +187,7 @@ bool generateFunctionShell(AstFunction* ast, char* file, LLVMModuleRef module, L
 
 	return_type = LLVMVoidType();
 
-	LLVMTypeRef* parameter_types = (LLVMTypeRef*) malloc(sizeof(LLVMTypeRef) * 1);
+	LLVMTypeRef* parameter_types = (LLVMTypeRef*)malloc(sizeof(LLVMTypeRef) * 1);
 
 	LLVMTypeRef function_type = LLVMFunctionType(return_type, parameter_types, 0, false);
 	LLVMValueRef function = LLVMAddFunction(module, ast->name, function_type);
