@@ -18,7 +18,7 @@
 
 Parser *parserInit(Lexer *lex, ErrorsContainer *errors)
 {
-	Parser *pars = malloc(sizeof(Parser));
+	Parser *pars = (Parser*) malloc(sizeof(Parser));
 	pars->lex = lex;
 	return pars;
 }
@@ -105,7 +105,7 @@ AstStatements *parseArguments(Parser *pars, ErrorsContainer *errors)
 {
 	AstType *type;
 	AstArgument *arg;
-	Array *args = malloc(sizeof(Array));
+	Array *args = (Array*) malloc(sizeof(Array));
 
 	arrayInit(args);
 
@@ -527,7 +527,7 @@ AstExpression *parseExpression(Parser *pars, ErrorsContainer *errors)
 AstExpressions *parseExpressions(Parser *pars, ErrorsContainer *errors)
 {
 	AstExpression *expr;
-	Array *exprs = malloc(sizeof(Array));
+	Array *exprs = (Array*) malloc(sizeof(Array));
 	arrayInit(exprs);
 
 	printf("---------- parseExpressions\n");
@@ -630,7 +630,7 @@ AstStatement *parseStatement(Parser *pars, ErrorsContainer *errors)
 AstBlock *parseBlock(Parser *pars, ErrorsContainer *errors)
 {
 	AstBlock *block;
-	Array *stmts = malloc(sizeof(Array));
+	Array *stmts = (Array*) malloc(sizeof(Array));
 	arrayInit(stmts);
 
 	parserExceptTokenGo(pars, TOKEN_SECTION_OPEN, errors);
@@ -712,7 +712,7 @@ int parserCheck(Parser *pars, ErrorsContainer *errors)
 {
 	bool hasPackageName = false;
 	AstFunction *func;
-	AstRoot *root = malloc(sizeof(AstRoot));
+	AstRoot *root = (AstRoot*) malloc(sizeof(AstRoot));
 	vmInit(root);
 	arrayInit(root->functions);
 

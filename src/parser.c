@@ -221,7 +221,7 @@ AstRoot *parser_check()
 	debug_parser("parser_check");
 
 	Token *t;
-	AstRoot *root = malloc(sizeof(AstRoot));
+	AstRoot *root = (AstRoot*) malloc(sizeof(AstRoot));
 	AstGlobalStatenent *stmt;
 	AstFunctions fns;
 
@@ -316,7 +316,7 @@ AstGlobalStatenent *parser_parse()
 {
 	debug_parser("parser_parse");
 
-	AstGlobalStatenent *stmt = malloc(sizeof(AstGlobalStatenent));
+	AstGlobalStatenent *stmt = (AstGlobalStatenent*) malloc(sizeof(AstGlobalStatenent));
 	AstFunction *fn;
 
 	size_t i = parser.tokens_index;
@@ -355,7 +355,7 @@ AstFunction *parser_parse_fn()
 {
 	debug_parser("parser_parse_fn");
 
-	AstFunction *fn; // = malloc(sizeof(AstFunction));
+	AstFunction *fn; // = (AstFunction*) malloc(sizeof(AstFunction));
 	AstBlock *block;
 	Token *ident;
 
@@ -570,7 +570,7 @@ AstExpression *parser_parse_expression_primary()
 	debug_parser("parser_parse_expression_primary");
 
 	AstType t;
-	AstExpression *expr = malloc(sizeof(AstExpression));
+	AstExpression *expr = (AstExpression*) malloc(sizeof(AstExpression));
 
 	//	printf("1/at expr parser====::::: current token is %s - %s\n", token_name(PARSER_CURRENT->type), PARSER_CURRENT->value);
 

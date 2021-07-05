@@ -124,7 +124,7 @@ void tokenPrevChar(Lexer *lex)
 
 Token *tokenNext(Lexer *lex)
 {
-	Token *t = malloc(sizeof(Token));
+	Token *t = (Token*) malloc(sizeof(Token));
 	t->vstring = NULL;
 
 	// skip the free space
@@ -204,7 +204,7 @@ Token *tokenNext(Lexer *lex)
 	else if (token_is_alpha(*lex->source) ==
 		 true)
 	{ // check if current char is a-z or A-Z or `_`, if it's so it's a user defined identifier or a compiler registered IDENTIFIER
-		t->vstring = malloc(sizeof(char) * 200 +
+		t->vstring = (char*) malloc(sizeof(char) * 200 +
 			 1); // malloc and create a string, since we need to store and save identifier name at token struct.
 
 		size_t length = 0;
@@ -295,7 +295,7 @@ Token *tokenNext(Lexer *lex)
 		size_t i = 0;
 
 		// maximum length of a number is 100, i think it's enough for our work!
-		t->vstring = malloc(sizeof(char) * 100 + 1);
+		t->vstring = (char*) malloc(sizeof(char) * 100 + 1);
 
 		if (*lex->source == '.')
 		{ // it's dot character
@@ -645,7 +645,7 @@ Token *tokenNext(Lexer *lex)
 	{ // it's first character of string block-value
 		tokenNextChar(lex); // go to next char of the source
 		size_t i = 0;
-		t->vstring = malloc(
+		t->vstring = (char*) malloc(
 			 sizeof(char) * 1024); // TODO: we set max 1024 size, but we have to realloc this size at next steps!
 		while (
 			 token_is_eof(*lex
@@ -675,7 +675,7 @@ Token *tokenNext(Lexer *lex)
 	{ // it's first character of string block-value
 		tokenNextChar(lex); // go to next char of the source
 		size_t i = 0;
-		t->vstring = malloc(
+		t->vstring = (char*) malloc(
 			 sizeof(char) * 1024); // TODO: we set max 1024 size, but we have to realloc this size at next steps!
 		while (
 			 token_is_eof(*lex
