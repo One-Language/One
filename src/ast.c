@@ -172,7 +172,7 @@ AstExpression* ast_make_expression_2(TokenType op, int value, AstExpression* lef
 
 AstArgument* ast_make_argument(char* name, AstType* type)
 {
-	AstArgument* ast = (AstArgument*)malloc(sizeof(AstArgument));
+	AstArgument* ast = (AstArgument*) malloc(sizeof(AstArgument));
 	ast->name = name;
 	ast->type = type;
 	return ast;
