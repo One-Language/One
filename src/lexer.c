@@ -143,13 +143,22 @@ Token* lexer_number()
 	char* tmp_str = malloc(60 * sizeof(char) + 1);
 	size_t i = 0;
 
-	while (token_is_digit(token_peek()))
+	char c = token_peek();
+	while (token_is_digit(c) || c == '_')
 	{
 		//		char c1= token_peek();
 		//		char c2 = token_advance();
 		//		printf(">>>> %c, %c\n", c1, c2);
 		//		printf(">>>> %c, %c\n", token_peek(), token_advance());
-		tmp_str[i++] = token_advance();
+		if (c == '_')
+		{
+			token_advance();
+		}
+		else
+		{
+			tmp_str[i++] = token_advance();
+		}
+		c = token_peek();
 	}
 
 	if (token_peek() == '.' && token_is_digit(token_peek_next()))
