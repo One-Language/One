@@ -92,7 +92,7 @@ Token *token_next(Lexer *lex)
 	//   printf("[token_next] %c\n", *lex->s);
 	// #endif
 
-	Token *t = malloc(sizeof(Token));
+	Token *t = (Token*) malloc(sizeof(Token));
 
 	if (*lex->s == '\0')
 	{
