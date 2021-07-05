@@ -136,6 +136,26 @@ typedef struct _ast_function
 	AstBlock* block;
 } AstFunction;
 
+typedef struct _ast_import
+{
+	char* target;
+	char** wants;
+	char** ass; // Note: it's AS not ASS
+} AstImport;
+
+typedef struct _ast_struct
+{
+	char* name;
+	char** values; // name of values
+	// TODO: need data type for each vealues!
+} AstStruct;
+
+typedef struct _ast_type_def
+{
+	char* name;
+	// TODO: need alias/value for that new type.
+} AstTypeDef;
+
 typedef struct _ast_root
 {
 	char* package;

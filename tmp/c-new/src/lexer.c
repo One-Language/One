@@ -34,7 +34,7 @@ void lexerLog(Lexer *lex)
 	{
 		t = lex->tokens[i];
 
-		printf("==>%s", tokenName(t->type));
+		printf("LexerLog==>%s", tokenName(t->type));
 		if (t->type == TOKEN_VALUE_IDENTIFIER || t->type == TOKEN_VALUE_STRING || t->type == TOKEN_VALUE_NUMBER)
 			printf(" (%s)", t->vstring);
 		printf("\n");

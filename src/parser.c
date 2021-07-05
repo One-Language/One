@@ -332,6 +332,22 @@ AstGlobalStatenent *parser_parse()
 		parser_parse_package();
 		return NULL;
 	}
+	else if (PARSER_CURRENT->type == TOKEN_IMPORT)
+	{
+		parser_parse_import();
+		return NULL;
+	}
+	else if (PARSER_CURRENT->type == TOKEN_TYPE)
+	{
+		parser_parse_type();
+		return NULL;
+	}
+	else if (PARSER_CURRENT->type == TOKEN_STRUCT)
+	{
+		parser_parse_struct();
+		return NULL;
+	}
+
 	else if (PARSER_CURRENT->type == TOKEN_FN)
 	{
 		fn = parser_parse_fn();
@@ -349,6 +365,47 @@ AstGlobalStatenent *parser_parse()
 	}
 
 	return stmt;
+}
+
+AstImport *parser_parse_import()
+{
+	debug_parser("parser_parse_import");
+
+	Token *ident;
+
+	parser_expect(TOKEN_IMPORT);
+	ident = PARSER_CURRENT;
+	parser_expect(TOKEN_VALUE_IDENTIFIER);
+
+	return NULL;
+}
+
+AstTypeDef *parser_parse_type()
+{
+	debug_parser("parser_parse_type");
+
+	parser_expect(TOKEN_TYPE);
+	return NULL;
+}
+
+AstStruct *parser_parse_struct()
+{
+	debug_parser("parser_parse_struct");
+
+	Token *ident;
+
+	parser_expect(TOKEN_STRUCT);
+	ident = PARSER_CURRENT;
+	parser_expect(TOKEN_VALUE_IDENTIFIER);
+
+	while (PARSER_CURRENT->type != TOKEN_OPERATOR_BRACKET_CURLY_RIGHT)
+	{
+		parser_next();
+	}
+
+	parser_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
+
+	return NULL;
 }
 
 AstFunction *parser_parse_fn()

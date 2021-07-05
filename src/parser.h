@@ -105,4 +105,10 @@ AstExpression* parser_parse_expression_primary();
 
 void parser_preapre();
 
+AstImport* parser_parse_import();
+
+AstStruct* parser_parse_struct();
+
+AstTypeDef* parser_parse_type();
+
 #endif //ONE_PARSER_H
