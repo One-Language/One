@@ -150,6 +150,11 @@ typedef enum _token_type
 	TOKEN_IS, // is
 	TOKEN_AS, // as
 
+	TOKEN_ASSRT,
+	TOKEN_STRUCT,
+	TOKEN_TYPE,
+	TOKEN_INTERFACE,
+
 	TOKEN_SWITCH, // switch
 	TOKEN_CASE, // case
 	TOKEN_BREAK, // break
@@ -205,6 +210,11 @@ static Keyword keywords[] = {
 	 {"is", 2, TOKEN_IS, false},
 
 	 {"ret", 3, TOKEN_RET, false},
+
+	 {"assert", 6, TOKEN_ASSRT, false},
+	 {"struct", 6, TOKEN_STRUCT, false},
+	 {"type", 4, TOKEN_TYPE, false},
+	 {"interface", 9, TOKEN_INTERFACE, false},
 
 	 {"static", 6, TOKEN_STATIC, false},
 	 {"final", 5, TOKEN_FINAL, false},

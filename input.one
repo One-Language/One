@@ -1,4 +1,21 @@
 package max
+import math
+
+struct Cat {
+	breed string
+}
+
+struct User {
+	id   int
+	name string
+}
+
+struct Post {
+	id   int
+	user_id int
+	title string
+	body string
+}
 
 fn main {
     _ 1

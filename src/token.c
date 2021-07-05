@@ -370,6 +370,15 @@ char* token_name(TokenType type)
 		case TOKEN_OPERATOR_EQUAL_THREE:
 			return "<=>";
 
+		case TOKEN_ASSRT:
+			return "assert";
+		case TOKEN_STRUCT:
+			return "struct";
+		case TOKEN_TYPE:
+			return "type";
+		case TOKEN_INTERFACE:
+			return "interface";
+
 		case TOKEN_SEMICOLON:
 			return "SEMICOLON";
 		default:
