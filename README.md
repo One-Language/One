@@ -170,7 +170,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr/>
+<hr>
 
 **Another draft:**
 
@@ -259,12 +259,12 @@ int customName:
 end
 ```
 
-<hr/>
+<hr>
 
 ### Old GUI Development: (Web, Software)
 
-This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
-Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
+This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br>
+Mobile structures are not yet complete and require more thought and attention.<br><br>Example to demonstrate working of the language:
 
 ```css
 title "Name - Main"
@@ -380,13 +380,13 @@ To ask a question or open a discussion, create an issue or join the <a href ="ht
 If you are not familiar with how to make a pull request on GitHub then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
 If you have decided to contribute, please first read the guidelines [here](CONTRIBUTING.md).
-<br/>You can also help in the development of `One` by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
+<br>You can also help in the development of `One` by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Thanks to all the <a href ="https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
 
 If you would like to contribute in the development of this project, you can mail us at: <maxbasecode@gmail.com>
 
-<br/>Created By Max Base @ 2019
+<br>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="license">➤ License</h2>
