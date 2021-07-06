@@ -264,7 +264,7 @@ end
 ### Old GUI Development: (Web, Software)
 
 This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br>
-Mobile structures are not yet complete and require more thought and attention.<br><br>Example to demonstrate working of the language:
+Mobile structures are not yet complete and require more attention and thought.<br><br>Example to demonstrate working of the language:
 
 ```css
 title "Name - Main"
