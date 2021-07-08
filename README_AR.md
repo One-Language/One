@@ -30,9 +30,9 @@
 &nbsp;
 [Español](README_ES.md)
 &nbsp;
-[Türkçe](README_TR.md)
-&nbsp;
 [فارسی](README_FA.md)
+&nbsp;
+[Türkçe](README_TR.md)
 
 </div>
 
@@ -179,7 +179,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr/>
+<hr>
 
 <div dir="rtl">
 
@@ -280,14 +280,14 @@ int customName:
 end
 ```
 
-<hr/>
+<hr>
 
 <div dir="rtl">
 
 ### تطوير واجهة المستخدم الرسومية القديمة: (الويب ، البرامج)
 
-تم تصميم هذه البنية فقط لمواقع الويب والبرامج الأصلية. في المستقبل ، سيكون متاحًا أيضًا لتطبيقات الأجهزة المحمولة (الأصلية). (native).<br/>
-الهياكل المتنقلة لم تكتمل بعد وتتطلب المزيد من التفكير والاهتمام. <br/><br/>مثال لإثبات عمل اللغة:
+تم تصميم هذه البنية فقط لمواقع الويب والبرامج الأصلية. في المستقبل ، سيكون متاحًا أيضًا لتطبيقات الأجهزة المحمولة (الأصلية). (native).<br>
+الهياكل المتنقلة لم تكتمل بعد وتتطلب المزيد من التفكير والاهتمام. <br><br>مثال لإثبات عمل اللغة:
 
 </div>
 
@@ -415,13 +415,13 @@ header {
 إذا لم تكن على دراية بكيفية تقديم طلب سحب على GitHub ، فيرجى قراءة هذا . [الدليل](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
 إذا كنت قد قررت المساهمة ، يرجى قراءة الإرشادات هنا أولاً. [هنا](CONTRIBUTING.md).
-<br/>يمكنك أيضًا المساعدة في تطوير `One` من خلال تقديم بعض التبرعات على [:heart: Patreon](https://www.patreon.com/onelanguage).
+<br>يمكنك أيضًا المساعدة في تطوير `One` من خلال تقديم بعض التبرعات على [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 شكرا لجميع <a href ="https://github.com/One-Language/One/graphs/contributors">المساهمين</a>!!
 
 إذا كنت ترغب في المساهمة في تطوير هذا المشروع, يمكنك مراسلتنا على: <maxbasecode@gmail.com>
 
-<br/>تم إنشاؤه بواسطة Max Base @ 2019
+<br>تم إنشاؤه بواسطة Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="license">➤ الرخصة</h2>

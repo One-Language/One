@@ -28,9 +28,9 @@
 &nbsp;
 [Español](README_ES.md)
 &nbsp;
-[Türkçe](README_TR.md)
-&nbsp;
 [فارسی](README_FA.md)
+&nbsp;
+[Türkçe](README_TR.md)
 
 </div>
 
@@ -50,18 +50,18 @@ Está siendo desarrollado por <a href="https://github.com/BaseMax">Max</a>, <a h
 <h2 id="table-of-contents">Tabla de Contenidos</h2>
 <details open="open">
   <ol>
-    <li><a href="#Características de">Características de <b>One</b></a></li>
-    <li><a href="#Hoja de Ruta">Hoja de Ruta</a></li>
-    <li><a href="#ejemplos del código">Ejemplos del código</a></li>
-    <li><a href="#Primeros pasos">Primeros Pasos</a></li>
-    <li><a href="#Involucrarse">Involucrarse</a></li>
-    <li><a href="#Licencia">Licencia</a></li>
+    <li><a href="#features-of-one">Características de <b>One</b></a></li>
+    <li><a href="#roadmap">Hoja de Ruta</a></li>
+    <li><a href="#code-examples">Ejemplos del código</a></li>
+    <li><a href="#getting-started">Primeros Pasos</a></li>
+    <li><a href="#get-involved">Involucrarse</a></li>
+    <li><a href="#license">Licencia</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Características de One">➤ Características de One</h2>
+<h2 id="features-of-one">➤ Características de One</h2>
 
 - Simplicidad
 - Compilador
@@ -97,7 +97,7 @@ La gramática del lenguaje `One` está disponible [aquí](grammar.BNF).
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Ejemplos del código">➤ Ejemplos del código</h2>
+<h2 id="code-examples">➤ Ejemplos del código</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -163,7 +163,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr/>
+<hr>
 
 **Otro ejemplo:**
 
@@ -252,12 +252,12 @@ int customName:
 end
 ```
 
-<hr/>
+<hr>
 
 ### Desarrollo anterior de la GUI: (Web, Software)
 
-Esta arquitectura está diseñada solo para sitios web y software nativo. En el futuro, también estará disponible para aplicaciones móviles. (native).<br/>
-Las estructuras móviles aún no están completas y aún requieren de atención y dedicación.<br/><br/>El siguiente es un ejemplo de como funciona el lenguaje:
+Esta arquitectura está diseñada solo para sitios web y software nativo. En el futuro, también estará disponible para aplicaciones móviles. (native).<br>
+Las estructuras móviles aún no están completas y aún requieren de atención y dedicación.<br><br>El siguiente es un ejemplo de como funciona el lenguaje:
 
 ```css
 title "Name - Main"
@@ -340,7 +340,7 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Primeros Pasos">➤ Primeros Pasos</h2>
+<h2 id="getting-started">➤ Primeros Pasos</h2>
 
 Puedes revisar [este link](https://github.com/ET-Lang/ET/wiki) para comenzar a aprender el lenguaje.
 
@@ -373,13 +373,13 @@ Para hacer una pregunta o iniciar una conversación, create an issue o únete al
 Si no estás familiarizado con el procedimiento para hacer un pull request en GitHub puedes revisar esta [guía](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
 Si has decidido contribuir, por favor revisa los lineamientos [aquí](CONTRIBUTING.md).
-<br/>También puedes ayudar al desarrollo de `One` a través de donaciones en [:heart: Patreon](https://www.patreon.com/onelanguage).
+<br>También puedes ayudar al desarrollo de `One` a través de donaciones en [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Gracias a todos los <a href ="https://github.com/One-Language/One/graphs/contributors">colaboradores</a>!!
 
 Si te gustaría contribuir al desarrollo de este proyecto, puedes esctibirnos a: <maxbasecode@gmail.com>
 
-<br/>Created By Max Base @ 2019
+<br>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="license">➤ Licencia</h2>
