@@ -1,7 +1,4 @@
-import io
-
 fn main {
 	_ "Hello, World!\n"
 	__ "Hello, World!"
-	// io.print("Hello, World!\n")
 }
