@@ -133,9 +133,9 @@ typedef enum _token_type
 	TOKEN_IF, // if
 	TOKEN_ELSE, // else
 
-//	TOKEN_WHILE, // while
+	//	TOKEN_WHILE, // while
 	TOKEN_FOR, // for
-//	TOKEN_DO, // do
+	//	TOKEN_DO, // do
 	TOKEN_MATCH, // match
 
 	TOKEN_RETURN, // ret
@@ -200,8 +200,8 @@ static Keyword keywords[] = {
 	 {"if", 2, TOKEN_IF, false},
 	 {"else", 4, TOKEN_ELSE, false},
 
-//	 {"do", 2, TOKEN_DO, false},
-//	 {"while", 5, TOKEN_WHILE, false},
+	 //	 {"do", 2, TOKEN_DO, false},
+	 //	 {"while", 5, TOKEN_WHILE, false},
 	 {"for", 3, TOKEN_FOR, false},
 	 {"match", 5, TOKEN_MATCH, false},
 
@@ -210,7 +210,7 @@ static Keyword keywords[] = {
 	 {"is", 2, TOKEN_IS, false},
 
 	 {"ret", 3, TOKEN_RETURN, false},
-//	 {"return", 6, TOKEN_RETURN, false},
+	 //	 {"return", 6, TOKEN_RETURN, false},
 
 	 {"assert", 6, TOKEN_ASSERT, false},
 	 {"struct", 6, TOKEN_STRUCT, false},
