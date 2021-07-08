@@ -1,0 +1,6 @@
+fn main int {
+	for {
+		_ "Repeat...\n"
+	}
+	ret 1
+}
