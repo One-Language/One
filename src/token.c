@@ -305,8 +305,8 @@ char* token_name(TokenType type)
 		case TOKEN_DO:
 			return "do";
 
-		case TOKEN_RET:
-			return "RET";
+		case TOKEN_RETURN:
+			return "RETURN";
 		case TOKEN_FN:
 			return "FN";
 
