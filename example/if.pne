@@ -1,0 +1,8 @@
+fn main {
+	if 5 > 3 {
+		_ "yes"
+	} else {
+		_ "no"
+	}
+	ret 1
+}

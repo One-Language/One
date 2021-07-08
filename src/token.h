@@ -209,8 +209,8 @@ static Keyword keywords[] = {
 	 {"as", 2, TOKEN_AS, false},
 	 {"is", 2, TOKEN_IS, false},
 
-//	 {"ret", 3, TOKEN_RET, false},
-	 {"return", 6, TOKEN_RETURN, false},
+	 {"ret", 3, TOKEN_RETURN, false},
+//	 {"return", 6, TOKEN_RETURN, false},
 
 	 {"assert", 6, TOKEN_ASSRT, false},
 	 {"struct", 6, TOKEN_STRUCT, false},
@@ -227,9 +227,15 @@ static Keyword keywords[] = {
 	 // data types
 	 {"i8", 2, TOKEN_TYPE_I8, false},
 	 {"i16", 3, TOKEN_TYPE_I16, false},
+
 	 {"i32", 3, TOKEN_TYPE_I32, false},
+	 {"int", 3, TOKEN_TYPE_I32, false},
+
 	 {"i64", 3, TOKEN_TYPE_I64, false},
+
 	 {"f32", 3, TOKEN_TYPE_F32, false},
+	 {"float", 5, TOKEN_TYPE_F32, false},
+
 	 {"f64", 3, TOKEN_TYPE_F64, false},
 
 	 //	 {"!_", 2, TOKEN_PRINTDB, false},
