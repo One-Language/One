@@ -483,12 +483,12 @@ AstStatement *parser_parse_statement()
 	else if (PARSER_CURRENT->type == TOKEN_IF)
 	{
 	}
-	else if (PARSER_CURRENT->type == TOKEN_WHILE)
-	{
-	}
-	else if (PARSER_CURRENT->type == TOKEN_DO)
-	{
-	}
+//	else if (PARSER_CURRENT->type == TOKEN_WHILE)
+//	{
+//	}
+//	else if (PARSER_CURRENT->type == TOKEN_DO)
+//	{
+//	}
 	else if (PARSER_CURRENT->type == TOKEN_MATCH)
 	{
 	}

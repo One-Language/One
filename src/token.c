@@ -296,14 +296,14 @@ char* token_name(TokenType type)
 		case TOKEN_ELSE:
 			return "ELSE";
 
-		case TOKEN_WHILE:
-			return "WHILE";
+//		case TOKEN_WHILE:
+//			return "WHILE";
 		case TOKEN_MATCH:
 			return "MATCH";
 		case TOKEN_FOR:
 			return "FOR";
-		case TOKEN_DO:
-			return "do";
+//		case TOKEN_DO:
+//			return "do";
 
 		case TOKEN_RETURN:
 			return "RETURN";
@@ -370,7 +370,7 @@ char* token_name(TokenType type)
 		case TOKEN_OPERATOR_EQUAL_THREE:
 			return "<=>";
 
-		case TOKEN_ASSRT:
+		case TOKEN_ASSERT:
 			return "assert";
 		case TOKEN_STRUCT:
 			return "struct";
