@@ -482,13 +482,15 @@ AstStatement *parser_parse_statement()
 	}
 	else if (PARSER_CURRENT->type == TOKEN_IF)
 	{
+		stmt = parser_parse_statement_if();
+		return stmt;
 	}
-//	else if (PARSER_CURRENT->type == TOKEN_WHILE)
-//	{
-//	}
-//	else if (PARSER_CURRENT->type == TOKEN_DO)
-//	{
-//	}
+	//	else if (PARSER_CURRENT->type == TOKEN_WHILE)
+	//	{
+	//	}
+	//	else if (PARSER_CURRENT->type == TOKEN_DO)
+	//	{
+	//	}
 	else if (PARSER_CURRENT->type == TOKEN_MATCH)
 	{
 	}
@@ -501,6 +503,20 @@ AstStatement *parser_parse_statement()
 		return NULL;
 	}
 	return NULL;
+}
+
+AstStatement *parser_parse_statement_if()
+{
+	debug_parser("parser_parse_statement_if");
+
+	AstStatement *stmt = ast_make_statement(AST_STATEMENT_IF);
+
+	parser_expect(TOKEN_IF);
+
+	stmt->expression = parser_parse_expression();
+
+	parser_parse_block();
+	return stmt;
 }
 
 AstStatement *parser_parse_statement_prints()

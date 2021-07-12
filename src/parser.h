@@ -111,4 +111,6 @@ AstStruct* parser_parse_struct();
 
 AstTypeDef* parser_parse_type();
 
+AstStatement *parser_parse_statement_if();
+
 #endif //ONE_PARSER_H
