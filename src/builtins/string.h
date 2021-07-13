@@ -13,12 +13,13 @@
 
 #define STRING_SIZE_INIT 16
 
-typedef struct {
-	char * str;  // a null terminated C string
-	char * end;  // a pointer to the null byte, to be able to repeatedly append
-				 // without using strlen() every time.
-	size_t size; // currently allocated size for *str, so we know when we 
-				 // need to grow.
+typedef struct
+{
+	char* str; // a null terminated C string
+	char* end; // a pointer to the null byte, to be able to repeatedly append
+		 // without using strlen() every time.
+	size_t size; // currently allocated size for *str, so we know when we
+		 // need to grow.
 } string;
 
 /*
@@ -33,10 +34,9 @@ string* string_new();
 /*
  * @function: string_append
  * @description: Append to a string string, growing the allocated memory if needed
- * on error, will return the longest string possible, which may truncate the 
+ * on error, will return the longest string possible, which may truncate the
  * suffix.
  * @arguments: string target, char* value want to be added
  * @return: void
  */
 void string_append(string* ss, char* suffix);
-
