@@ -60,6 +60,15 @@ TokenType lexer_check_keyword(int start, int length, const char* rest, TokenType
 TokenType lexer_identifier_type();
 
 /*
+ * @function: lexer_identifier
+ * @description: Parse current character since it's a identifier.
+         Only we have to check it's a user-defined variable or a registered Keyword refer to `keywords` variable
+ * @arguments: nothing
+ * @return: Always a pointer of Token struct (TOKEN_VALUE_IDENTIFIER or other TokenType refer to `keywords` table)
+ */
+Token* lexer_identifier();
+
+/*
  * @function: lexer_skip_comment_inline
  * @description: Check if current character is //, so it's a inline-comment and we have to skip it!
  * @arguments: nothing
@@ -111,15 +120,6 @@ Token* lexer_char();
  * @return: Always a pointer of Token struct (TOKEN_VALUE_STRING)
  */
 Token* lexer_string();
-
-/*
- * @function: lexer_identifier
- * @description: Parse current character since it's a identifier.
- 				 Only we have to check it's a user-defined variable or a registered Keyword refer to `keywords` variable
- * @arguments: nothing
- * @return: Always a pointer of Token struct (TOKEN_VALUE_IDENTIFIER or other TokenType refer to `keywords` table)
- */
-Token* lexer_identifier();
 
 /*
  * @function: lexer_scan

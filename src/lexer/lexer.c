@@ -44,7 +44,7 @@ void lexer_init(char* source)
  * @return: TokenType
  */
 TokenType lexer_check_keyword(int start, int length, const char* rest, TokenType type)
-{
+{ // This function not used in productions, so we used `lexer_identifier` right now.
 	debug_lexer("lexer_check_keyword");
 
 	if (lexer.current - lexer.start == start + length &&
@@ -64,15 +64,58 @@ TokenType lexer_check_keyword(int start, int length, const char* rest, TokenType
  * @return: TokenType
  */
 TokenType lexer_identifier_type()
-{
+{ // This function not used in productions, so we used `lexer_identifier` right now.
 	debug_lexer("lexer_identifier_type");
 
 	switch (lexer.start[0])
 	{
 		case 'i':
 			return lexer_check_keyword(1, 1, "f", TOKEN_IF);
+			// TODO
 	}
 	return TOKEN_VALUE_IDENTIFIER;
+}
+
+/*
+ * @function: lexer_identifier
+ * @description: Parse current character since it's a identifier.
+ 				 Only we have to check it's a user-defined variable or a registered Keyword refer to `keywords` variable
+ * @arguments: nothing
+ * @return: Always a pointer of Token struct (TOKEN_VALUE_IDENTIFIER or other TokenType refer to `keywords` table)
+ */
+Token* lexer_identifier()
+{
+	debug_lexer("lexer_identifier");
+
+	//	char tmp_str[1024] = {};
+	char* tmp_str = (char*)malloc(1024 * sizeof(char) + 1);
+	size_t ident_length = 0;
+
+	tmp_str[ident_length++] = token_advance();
+	while (token_is_ident(token_peek()) && !token_is_end())
+	{
+		tmp_str[ident_length++] = token_advance();
+	}
+	tmp_str[ident_length] = '\0';
+
+	debug_lexer("lexer_identifier: print identifier %s", tmp_str);
+	debug_lexer("lexer_identifier: identifier length is %zu", ident_length);
+
+	for (size_t j = 0;; j++)
+	{
+		if (keywords[j].type == TOKEN_VALUE_IDENTIFIER) // it's end of the Keyword list/table
+		{
+			return token_make_value(TOKEN_VALUE_IDENTIFIER, tmp_str);
+			break;
+		}
+		else if (keywords[j].length == ident_length // fast search performance
+			 && strncmp(keywords[j].identifier, tmp_str, keywords[j].length) == 0)
+		{
+			return token_make(keywords[j].type);
+			break;
+		}
+	}
+	//	return token_make(TOKEN_VALUE_IDENTIFIER);
 }
 
 /*
@@ -283,48 +326,6 @@ Token* lexer_string()
 
 	//	return token_make(TOKEN_VALUE_STRING);
 	return token_make_value(TOKEN_VALUE_STRING, tmp_str);
-}
-
-/*
- * @function: lexer_identifier
- * @description: Parse current character since it's a identifier.
- 				 Only we have to check it's a user-defined variable or a registered Keyword refer to `keywords` variable
- * @arguments: nothing
- * @return: Always a pointer of Token struct (TOKEN_VALUE_IDENTIFIER or other TokenType refer to `keywords` table)
- */
-Token* lexer_identifier()
-{
-	debug_lexer("lexer_identifier");
-
-	//	char tmp_str[1024] = {};
-	char* tmp_str = (char*)malloc(1024 * sizeof(char) + 1);
-	size_t ident_length = 0;
-
-	tmp_str[ident_length++] = token_advance();
-	while (token_is_ident(token_peek()) && !token_is_end())
-	{
-		tmp_str[ident_length++] = token_advance();
-	}
-	tmp_str[ident_length] = '\0';
-
-	debug_lexer("lexer_identifier: print identifier %s", tmp_str);
-	debug_lexer("lexer_identifier: identifier length is %zu", ident_length);
-
-	for (size_t j = 0;; j++)
-	{
-		if (keywords[j].type == TOKEN_VALUE_IDENTIFIER) // it's end of the Keyword list/table
-		{
-			return token_make_value(TOKEN_VALUE_IDENTIFIER, tmp_str);
-			break;
-		}
-		else if (keywords[j].length == ident_length // fast search performance
-			 && strncmp(keywords[j].identifier, tmp_str, keywords[j].length) == 0)
-		{
-			return token_make(keywords[j].type);
-			break;
-		}
-	}
-	//	return token_make(TOKEN_VALUE_IDENTIFIER);
 }
 
 /*
