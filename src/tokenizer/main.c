@@ -12,7 +12,8 @@
 
 int main(int argc, char** argv)
 {
-	if(argc < 3 || argc > 3) {
+	if (argc < 3 || argc > 3)
+	{
 		printf("Error: pass the arguments correcly!\n");
 		printf("./tokenizer input.one output.tokens");
 		return 1;
@@ -24,7 +25,7 @@ int main(int argc, char** argv)
 	printf("Input file is: %s\n", input_file);
 	printf("Output file is: %s\n", output_file);
 
-	Token *tokens = tokenizerFile(input_file);
-	
+	Token* tokens = tokenizerFile(input_file);
+
 	return 0;
 }

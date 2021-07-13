@@ -9,22 +9,23 @@
  **/
 
 /*
- @function: tokenizerString
- @inputs: string of a one' pathfile
- @return: Array of Token
+ * @function: tokenizer_file
+ * @description: Create a array of tokens from a filepath
+ * @inputs: char* of a one' pathfile
+ * @return: Array of Token
  */
-Token* tokenizerFile(char *filepath)
+Token* tokenizer_file(char* filepath)
 {
 	char* data = fileReads(filepath);
-	return tokenizerString(data);
+	return tokenizer_string(data);
 }
 
 /*
- @function: tokenizerString
- @inputs: string of a One program source-code
- @return: Array of Token
+ * @function: tokenizer_string
+ * @description: Create a array of tokens from a one program source-code char*
+ * @inputs: char* of a One program source-code
+ * @return: Array of Token
  */
-Token* tokenizerString(char *data)
+Token* tokenizer_string(char* data)
 {
-	
 }

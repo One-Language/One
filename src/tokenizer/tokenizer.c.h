@@ -8,16 +8,27 @@
 
  **/
 
-/*
- @function: tokenizerString
- @inputs: string of a one' pathfile
- @return: Array of Token
- */
-Token* tokenizerFile(char *filepath);
+#ifndef _ONE_TOKENIZER_TOKENIZER_H_
+#define _ONE_TOKENIZER_TOKENIZER_H_
+
+#include "../builtins/string.h"
+
+#include "token.h"
 
 /*
- @function: tokenizerString
- @inputs: string of a One program source-code
- @return: Array of Token
+ * @function: tokenizer_file
+ * @description: Create a array of tokens from a filepath
+ * @inputs: char* of a one' pathfile
+ * @return: Array of Token
  */
-Token* tokenizerString(char *data);
+Token* tokenizer_file(char* filepath);
+
+/*
+ * @function: tokenizer_string
+ * @description: Create a array of tokens from a one program source-code char*
+ * @inputs: char* of a One program source-code
+ * @return: Array of Token
+ */
+Token* tokenizer_string(char* data);
+
+#endif // _ONE_TOKENIZER_TOKENIZER_H_
