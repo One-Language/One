@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 
 typedef enum
 {
@@ -145,10 +146,6 @@ typedef enum
 
 #endif
 
-void error(ErrorType type, const char* format, ...);
-
-char* error_name(ErrorType type);
-
 #define error_warning(format, ...) error(ERROR_WARNING, format, ##args)
 
 #define error_panic(format, args...) error(ERROR_PANIC, format, ##args)
@@ -164,5 +161,21 @@ char* error_name(ErrorType type);
 #define error_tree(format, args...) error(ERROR_TREE, format, ##args)
 
 #define error_builtins(format, args...) error(ERROR_PARSER, format, ##args)
+
+/*
+ * @function: error
+ * @description: Occur a error/warning at the runtime, If that was not a warning so we will exit the program immediately
+ * @arguments: ErrorType, const char* format varg...
+ * @return: void; nothing
+ */
+void error(ErrorType type, const char* format, ...);
+
+/*
+ * @function: error_name
+ * @description: Convert a ErrorType value to char*, mapping to its name
+ * @arguments: ErrorType
+ * @return: char*
+ */
+char* error_name(ErrorType type);
 
 #endif // _ONE_BUILTINS_ERROR_H_
