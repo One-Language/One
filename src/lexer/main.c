@@ -48,7 +48,15 @@ int main(int argc, char** argv)
 
 		while (tokens != NULL && *tokens != NULL)
 		{
-			fprintf(file_out, "%s\n", token_name((*tokens)->type));
+			Token* t = *tokens;
+			if (t->value != NULL)
+			{
+				fprintf(file_out, "%s: \"%s\"\n", token_name(t->type), t->value);
+			}
+			else
+			{
+				fprintf(file_out, "%s\n", token_name(t->type));
+			}
 			tokens++;
 		}
 
