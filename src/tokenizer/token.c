@@ -190,14 +190,14 @@ Token* token_make_value(TokenType type, char* value)
 }
 
 /*
- * @function: token_error
+ * @function: token_make_error
  * @description: create a pointer to a Error Token struct with a error message
  * @arguments: char* error message
  * @return: A pointer to Token struct
  */
-Token* token_error(char* message)
+Token* token_make_error(char* message)
 {
-	debug_token("token_error");
+	debug_token("token_make_error");
 
 	return token_make_value(TOKEN_ERROR, message);
 }

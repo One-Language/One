@@ -17,14 +17,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct _location
-{
-	size_t t; // index of current token
-	size_t i; // file source index' character
-	size_t l; // line number: default is 1
-	size_t c; // column number: default is 0
-} Location;
-
 typedef enum _token_type
 {
 	TOKEN_EOF,
@@ -170,6 +162,14 @@ typedef enum _token_type
 	//	TOKEN_SUPER, // super
 
 } TokenType;
+
+typedef struct _location
+{
+	size_t t; // index of current token: default is 0
+	size_t i; // file source index' character: default is 0
+	size_t l; // line number: default is 1
+	size_t c; // column number: default is 0
+} Location;
 
 typedef struct _token
 {
@@ -348,12 +348,12 @@ Token* token_make(TokenType type);
 Token* token_make_value(TokenType type, char* value);
 
 /*
- * @function: token_error
+ * @function: token_make_error
  * @description: create a pointer to a Error Token struct with a error message
  * @arguments: char* error message
  * @return: A pointer to Token struct
  */
-Token* token_error(char* message);
+Token* token_make_error(char* message);
 
 /*
  * @function: token_name
