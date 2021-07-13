@@ -101,10 +101,24 @@ typedef struct _ast_block
 	AstStatements statements;
 } AstBlock;
 
+typedef struct _ast_value
+{
+	int64_t vint;
+	u_int64_t vuint;
+
+	float vf32;
+	double vf64;
+
+	char* vstring;
+	int vbool;
+} AstValue;
+
 typedef struct _ast_type
 {
 	AstValueType type;
 	bool hasArray;
+	size_t length;
+	size_t cap;
 } AstType;
 
 typedef struct _ast_expression
@@ -113,10 +127,7 @@ typedef struct _ast_expression
 	TokenType operator;
 	AstType type;
 
-	int vint;
-	float vfloat;
-	char* vstring;
-	bool vbool;
+	AstValue* value;
 
 	AstExpression* left;
 	AstExpression* right;

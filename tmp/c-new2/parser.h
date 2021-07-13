@@ -92,6 +92,7 @@ typedef int Precedence;
 } Precedence;
 */
 
+/*
 char* precedence_name(Precedence type);
 
 typedef struct
@@ -100,6 +101,7 @@ typedef struct
 	ParseFn infix;
 	Precedence precedence;
 } ParseRule;
+*/
 
 AstExpression* parser_parse_expression_primary();
 
