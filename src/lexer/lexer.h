@@ -11,6 +11,10 @@
 #ifndef _ONE_LEXER_LEXER_H_
 #define _ONE_LEXER_LEXER_H_
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "../builtins/error.h"
 
 #include "tokenizer/tokenizer.h"

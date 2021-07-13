@@ -11,6 +11,4 @@
 #ifndef _ONE_PARSER_PARSER_H_
 #define _ONE_PARSER_PARSER_H_
 
-
-
 #endif // _ONE_PARSER_PARSER_H_

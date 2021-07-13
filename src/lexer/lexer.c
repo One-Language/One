@@ -8,10 +8,6 @@
 
  **/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "lexer.h"
 
 // Global variable(s)
@@ -388,7 +384,7 @@ Token* lexer_scan()
 		// !__
 		// !_
 		// !
-		case '!': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_BANG : (token_match('_') ? TOKEN_PRINTDB :(token_match('_') ? TOKEN_PRINTDBNL : TOKEN_OPERATOR_BANG)));
+		case '!': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_BANG : (token_match('_') ? TOKEN_PRINTDB : (token_match('_') ? TOKEN_PRINTDBNL : TOKEN_OPERATOR_BANG)));
 
 		// &&=
 		// &&
@@ -455,7 +451,8 @@ Token* lexer_scan()
 		case ';': token_match(';'); return lexer_scan();
 
 		default:
-			if (token_is_alpha(c)) { // _ [a-z] [A-Z]
+			if (token_is_alpha(c))
+			{ // _ [a-z] [A-Z]
 				token_recede(); // go to prev token (so after that current token will be IS_ALPHA)
 				return lexer_identifier(); // now this functions will reads the identifier characters!
 			}
@@ -481,6 +478,8 @@ Token* lexer_scan()
  */
 void lexer_free()
 {
-	//	free(lexer.start);
-	//	free(lexer.current);
+	debug_lexer("lexer_free");
+
+	// free(lexer.start);
+	// free(lexer.current);
 }

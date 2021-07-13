@@ -39,6 +39,7 @@ char* file_reads(const char* filepath)
 		error_panic("Not enough memory to read \"%s\".", filepath);
 		exit(74);
 	}
+
 	size_t bytesRead = fread(buffer, sizeof(char), fileSize, file);
 	debug("file_reads: bytesRead is %zu", bytesRead);
 	if (bytesRead < fileSize)
