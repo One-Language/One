@@ -331,14 +331,44 @@ char token_peek_prev();
  */
 bool token_match(char expected);
 
+/*
+ * @function: token_make
+ * @description: create a pointer to Token struct without value
+ * @arguments: TokenType
+ * @return: A pointer to Token struct
+ */
 Token* token_make(TokenType type);
 
+/*
+ * @function: token_make_value
+ * @description: create a pointer to Token struct with a value
+ * @arguments: TokenType and a char* value
+ * @return: A pointer to Token struct
+ */
 Token* token_make_value(TokenType type, char* value);
 
+/*
+ * @function: token_error
+ * @description: create a pointer to a Error Token struct with a error message
+ * @arguments: char* error message
+ * @return: A pointer to Token struct
+ */
 Token* token_error(char* message);
 
+/*
+ * @function: token_name
+ * @description: convert TokenType to token name as char*
+ * @arguments: TokenType type
+ * @return: char*: token name
+ */
 char* token_name(TokenType type);
 
+/*
+ * @function: token_utf8_string_length
+ * @description: strlen while counting the character in utf8 mode not asci mode
+ * @arguments: char* s
+ * @return: size_t: number it will be >= 0
+ */
 size_t token_utf8_string_length(char* s);
 
 #endif // _ONE_TOKENIZER_TOKEN_H_

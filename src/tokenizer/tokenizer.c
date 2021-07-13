@@ -40,7 +40,7 @@ Token** tokenizer_string(char* data)
 	array_init(&tokens);
 
 	while(*data != '\0') {
-		Token* t = token_make();
+		Token* t = token_make_value(TOKEN_VALUE_IDENTIFIER, (char*){data});
 		array_push(&tokens, t);
 	}
 
