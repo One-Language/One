@@ -8,3 +8,23 @@
 
  **/
 
+/*
+ @function: tokenizerString
+ @inputs: string of a one' pathfile
+ @return: Array of Token
+ */
+Token* tokenizerFile(char *filepath)
+{
+	char* data = fileReads(filepath);
+	return tokenizerString(data);
+}
+
+/*
+ @function: tokenizerString
+ @inputs: string of a One program source-code
+ @return: Array of Token
+ */
+Token* tokenizerString(char *data)
+{
+	
+}
