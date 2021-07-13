@@ -10,6 +10,11 @@
 
 #include "token.h"
 
+#include "../lexer/lexer.h"
+
+// Global variable(s)
+extern Lexer lexer;
+
 /*
  * @function: token_is_alpha
  * @description: check a char is a-z or A-Z or _
@@ -64,8 +69,7 @@ bool token_is_end()
 {
 	debug_token("token_is_end");
 
-	return false;
-	// return *lexer.current == '\0';
+	return *lexer.current == '\0';
 }
 
 /*
@@ -78,9 +82,8 @@ char token_recede()
 {
 	debug_token("token_recede");
 
-	return false;
-	// lexer.current--;
-	// return lexer.current[-1];
+	lexer.current--;
+	return lexer.current[-1];
 }
 
 /*
@@ -93,9 +96,8 @@ char token_advance()
 {
 	debug_token("token_advance");
 
-	return 'a';
-	// lexer.current++;
-	// return lexer.current[-1];
+	lexer.current++;
+	return lexer.current[-1];
 }
 
 /*
@@ -108,8 +110,7 @@ char token_peek()
 {
 	debug_token("token_peek");
 
-	return 'a';
-	// return *lexer.current;
+	return *lexer.current;
 }
 
 /*
@@ -123,8 +124,7 @@ char token_peek_next()
 	debug_token("token_peek_next");
 
 	if (token_is_end()) return '\0';
-	return 'a';
-	// return lexer.current[1];
+	return lexer.current[1];
 }
 
 /*
@@ -137,8 +137,7 @@ char token_peek_prev()
 {
 	debug_token("token_peek_prev");
 
-	return 'x';
-	// return lexer.current[-1]; // TODO: Review
+	return lexer.current[-1]; // TODO: Review
 }
 
 /*
@@ -152,8 +151,8 @@ bool token_match(char expected)
 	debug_token("token_match");
 
 	if (token_is_end()) return false;
-	// if (*lexer.current != expected) return false;
-	// lexer.current++;
+	if (*lexer.current != expected) return false;
+	lexer.current++;
 	return true;
 }
 

@@ -11,12 +11,20 @@
 #ifndef _ONE_BUILTINS_ERROR_H_
 #define _ONE_BUILTINS_ERROR_H_
 
+#include <stdio.h>
+#include <stdlib.h>
+
 typedef enum
 {
 	ERROR_WARNING,
 	ERROR_PANIC,
+
+	ERROR_BUILTIN,
+
 	ERROR_TOKEN,
+	ERROR_LEXER,
 	ERROR_PARSER,
+	ERROR_AST,
 	ERROR_TREE,
 } ErrorType; // TODO
 
@@ -44,60 +52,96 @@ typedef enum
 //#define check(format, args...)
 
 #ifndef _ONE_TEST_
-#define debug(format, args...) \
-	printf(WHITE "Debug: " format "\n" RESET, ##args);
 
-#define debug_token(format, args...) \
-	printf(YELLOW "Token Debug: " format "\n" RESET, ##args);
+	#define debug(format, args...) \
+		printf(WHITE "Debug: " format "\n" RESET, ##args);
+	// #define debug(format, args...)
 
-#define debug_lexer(format, args...) \
-	printf(CYAN "Lexer Debug: " format "\n" RESET, ##args);
+	#define debug_token(format, args...) \
+		printf(YELLOW "Token Debug: " format "\n" RESET, ##args);
+	// #define debug_token(format, args...)
 
-//#define debug_tree(format, args...) \
-	//	printf(BLUE "Tree INFO: " format "\n" RESET, ##args);
+	#define debug_lexer(format, args...) \
+		printf(CYAN "Lexer Debug: " format "\n" RESET, ##args);
+	// #define debug_lexer(format, args...)
 
-#define debug_tree(format, args...)
+	#define debug_parser(format, args...) \
+		printf(BLUE "Parser INFO: " format "\n" RESET, ##args);
+	// #define debug_parser(format, args...)
 
-#define debug_parser(format, args...) \
-	printf(GREEN "Parser Debug: " format "\n" RESET, ##args);
+	#define debug_ast(format, args...) \
+		printf(BLUE "Ast INFO: " format "\n" RESET, ##args);
+	// #define debug_ast(format, args...)
 
-#define info(format, args...) \
-	printf(BOLDWHITE "INFO: " format "\n" RESET, ##args);
+	#define debug_tree(format, args...) \
+		printf(BLUE "Tree INFO: " format "\n" RESET, ##args);
+	// #define debug_tree(format, args...)
 
-#define info_token(format, args...) \
-	printf(BOLDYELLOW "Token INFO: " format "\n" RESET, ##args);
+	#define debug_builtins(format, args...) \
+		printf(GREEN "Builtins Debug: " format "\n" RESET, ##args);
+	// #define debug_builtins(format, args...)
 
-#define info_tree(format, args...) \
-	printf(BOLDBLUE "Tree INFO: " format "\n" RESET, ##args);
+	//////////////////
 
-#define info_lexer(format, args...) \
-	printf(BOLDCYAN "Lexer INFO: " format "\n" RESET, ##args);
+	#define info(format, args...) \
+		printf(BOLDWHITE "INFO: " format "\n" RESET, ##args);
+	// #define info(format, args...)
 
-#define info_parser(format, args...) \
-	printf(BOLDGREEN "Parser INFO: " format "\n" RESET, ##args);
+	#define info_token(format, args...) \
+		printf(BOLDYELLOW "Token INFO: " format "\n" RESET, ##args);
+	// #define info(info_token, args...)
+
+	#define info_lexer(format, args...) \
+		printf(BOLDCYAN "Lexer INFO: " format "\n" RESET, ##args);
+	// #define info_lexer(info_token, args...)
+
+	#define info_parser(format, args...) \
+		printf(BOLDGREEN "Parser INFO: " format "\n" RESET, ##args);
+	// #define info_parser(info_token, args...)
+
+	#define info_ast(format, args...) \
+		printf(BOLDBLUE "Ast INFO: " format "\n" RESET, ##args);
+	// #define info_ast(info_token, args...)
+
+	#define info_tree(format, args...) \
+		printf(BOLDBLUE "Tree INFO: " format "\n" RESET, ##args);
+	// #define info_tree(info_token, args...)
+
+	#define info_builtins(format, args...) \
+		printf(GREEN "Builtins INFO: " format "\n" RESET, ##args);
+	// #define info_builtins(format, args...)
 
 #else
-#define debug(format, args...)
 
-#define debug_token(format, args...)
+	#define debug(format, args...)
 
-#define debug_lexer(format, args...)
+	#define debug_token(format, args...)
 
-#define debug_tree(format, args...)
+	#define debug_lexer(format, args...)
 
-#define debug_tree(format, args...)
+	#define debug_parser(format, args...)
 
-#define debug_parser(format, args...)
+	#define debug_ast(format, args...)
 
-#define info(format, args...)
+	#define debug_tree(format, args...)
 
-#define info_token(format, args...)
+	#define debug_builtins(format, args...)
 
-#define info_tree(format, args...)
+	/////////
 
-#define info_lexer(format, args...)
+	#define info(format, args...)
 
-#define info_parser(format, args...)
+	#define info_token(format, args...)
+
+	#define info_lexer(format, args...)
+
+	#define info_parser(format, args...)
+
+	#define info_ast(format, args...)
+
+	#define info_tree(format, args...)
+
+	#define info_builtins(format, args...)
 
 #endif
 
@@ -105,26 +149,20 @@ void error(ErrorType type, const char* format, ...);
 
 char* error_name(ErrorType type);
 
-#define error_tree(format, args...) error(ERROR_TREE, format, ##args)
+#define error_warning(format, ...) error(ERROR_WARNING, format, ##args)
 
 #define error_panic(format, args...) error(ERROR_PANIC, format, ##args)
 
-#define error_warning(format, ...) error(ERROR_WARNING, format, ##args)
-
 #define error_token(format, args...) error(ERROR_TOKEN, format, ##args)
+
+#define error_lexer(format, args...) error(ERROR_TOKEN, format, ##args)
 
 #define error_parser(format, args...) error(ERROR_PARSER, format, ##args)
 
+#define error_ast(format, args...) error(ERROR_TREE, format, ##args)
+
+#define error_tree(format, args...) error(ERROR_TREE, format, ##args)
+
 #define error_builtins(format, args...) error(ERROR_PARSER, format, ##args)
-
-#define info_builtins(format, args...) error(ERROR_PARSER, format, ##args)
-
-#define debug_builtins(format, args...) error(ERROR_PARSER, format, ##args)
-
-#define error_tokenizer(format, args...) error(ERROR_PARSER, format, ##args)
-
-#define info_tokenizer(format, args...) error(ERROR_PARSER, format, ##args)
-
-#define debug_tokenizer(format, args...) error(ERROR_PARSER, format, ##args)
 
 #endif // _ONE_BUILTINS_ERROR_H_

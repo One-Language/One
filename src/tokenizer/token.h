@@ -166,10 +166,10 @@ typedef enum _token_type
 
 typedef struct _location
 {
-	size_t t; // index of current token: default is 0
-	size_t i; // file source index' character: default is 0
-	size_t l; // line number: default is 1
-	size_t c; // column number: default is 0
+	size_t tokens; // index of current token: default is 0
+	size_t index; // file source index' character: default is 0
+	size_t line; // line number: default is 1
+	size_t column; // column number: default is 0
 } Location;
 
 typedef struct _token

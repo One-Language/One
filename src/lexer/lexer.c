@@ -30,7 +30,10 @@ void lexer_init(char* source)
 
 	lexer.start = source;
 	lexer.current = source;
-	lexer.loc.line = 1;
+
+	lexer.loc.tokens = 0;
+	lexer.loc.index = 0;
+	lexer.loc.line = 0;
 	lexer.loc.column = 0;
 }
 
@@ -385,7 +388,7 @@ Token* lexer_scan()
 		// !__
 		// !_
 		// !
-		case '!': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_BANG : (token_match('_') ? TOKEN_PRINTDB :(token_match('_') ? TOKEN_PRINTDBNL)));
+		case '!': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_BANG : (token_match('_') ? TOKEN_PRINTDB :(token_match('_') ? TOKEN_PRINTDBNL : TOKEN_OPERATOR_BANG)));
 
 		// &&=
 		// &&
@@ -452,19 +455,21 @@ Token* lexer_scan()
 		case ';': token_match(';'); return lexer_scan();
 
 		default:
-			if (token_is_alpha(c))
-			{ // _ [a-z] [A-Z]
-				token_recede();
-				return lexer_identifier();
+			if (token_is_alpha(c)) { // _ [a-z] [A-Z]
+				token_recede(); // go to prev token (so after that current token will be IS_ALPHA)
+				return lexer_identifier(); // now this functions will reads the identifier characters!
 			}
-			break;
+			break; // if it's not a alpha character so break the switch cases!
 	}
 
+	// if you are here, so probably it's a error/bad token and we unable to parse this token!
+	// for example we cannot handle 'ش' as a token!
+	// remember: we can handle اتاتیبتنلتنیابلتنیلب as string if you put a " at first and end of that identifier!
 	debug_lexer("lexer_scan: last bad character is %c'", *lexer.current);
 
 	char* msg = (char*)malloc(50 * sizeof(char));
 	sprintf(msg, "Unexpected '%c' character!", *lexer.current);
-	return token_make_error(msg);
+	return token_make_error(msg); // return a error token!
 }
 
 /*
