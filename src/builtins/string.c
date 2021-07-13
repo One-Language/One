@@ -13,7 +13,7 @@
 /*
  * @function: string_new
  * @desctipion: Creates a new string,
- * if there is not enough memory, will return a null pointer instead.
+ 				if there is not enough memory, will return a null pointer instead.
  * @arguments: nothing
  * @return: mallocated string
  */
@@ -43,8 +43,7 @@ string_new_fail:
 /*
  * @function: string_append
  * @description: Append to a string string, growing the allocated memory if needed
- * on error, will return the longest string possible, which may truncate the
- * suffix.
+ 				 on error, will return the longest string possible, which may truncate the suffix.
  * @arguments: string target, char* value want to be added
  * @return: void
  */
