@@ -1,0 +1,7 @@
+FN
+value_identifier
+{
+RETURN
+value_number
+}
+EOF

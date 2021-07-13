@@ -38,6 +38,21 @@ int main(int argc, char** argv)
 		printf("Output file is: %s\n", output_file);
 
 		tokens = tokenizer_file(input_file);
+
+		FILE* file_out = fopen(output_file, "wa+");
+		if (!file_out)
+		{
+			fprintf(stderr, "Error: it's unable to write output to %s file!\n", output_file);
+			exit(1);
+		}
+
+		while (tokens != NULL && *tokens != NULL)
+		{
+			fprintf(file_out, "%s\n", token_name((*tokens)->type));
+			tokens++;
+		}
+
+		fclose(file_out);
 	}
 	else
 	{
