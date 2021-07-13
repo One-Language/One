@@ -15,9 +15,9 @@
 
 #include "../tokenizer/tokenizer.h"
 
-typedef struct _token Token;
-typedef enum _token_type TokenType;
-typedef struct _location Location;
+// typedef struct _token Token;
+// typedef enum _token_type TokenType;
+// typedef struct _location Location;
 
 typedef struct
 {
@@ -36,8 +36,8 @@ void lexer_init(char* source);
 
 /*
  * @function: lexer_check_keyword
- * @description: [..... start-th ................. length-th]
-                        ^..........................^
+ * @description: [0 ..... start-th ................. length-th]
+                          ^..........................^
                             if was equal to rest,
                             so return type as Token,
                             otherwise return TOKEN_VALUE_IDENTIFIER

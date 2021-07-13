@@ -118,6 +118,7 @@ typedef enum _token_type
 
 	TOKEN_OPERATOR_EQUAL, // =
 	TOKEN_OPERATOR_EQUAL_EQUAL, // ==
+	TOKEN_OPERATOR_EQUAL_EQUAL_EQUAL, // ===
 
 	TOKEN_SEMICOLON, // ;
 
