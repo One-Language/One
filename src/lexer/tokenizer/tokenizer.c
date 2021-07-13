@@ -9,6 +9,7 @@
  **/
 
 #include "tokenizer.h"
+#include "../lexer.h"
 
 /*
  * @function: tokenizer_file
@@ -39,14 +40,29 @@ Token** tokenizer_string(char* data)
 	debug_token("tokenizer_string: %s", data);
 
 	Array tokens;
-	array_init(&tokens);
+	lexer_init(data);
 
-	while (*data != '\0')
+	Token* t;
+	for (;;)
 	{
-		Token* t = token_make_value(TOKEN_VALUE_IDENTIFIER, (char*){data});
+		t = lexer_scan();
 		array_push(&tokens, t);
-		data++;
+		debug_parser("parser_scan: print_token %s", token_name(t->type));
+		if (t->type == TOKEN_ERROR)
+		{
+			printf("Error: %s\n", t->value);
+			break;
+		}
+		else if (t->type == TOKEN_EOF)
+			break;
 	}
+
+	// while (*data != '\0')
+	// {
+	// 	Token* t = token_make_value(TOKEN_VALUE_IDENTIFIER, (char*){data});
+	// 	array_push(&tokens, t);
+	// 	data++;
+	// }
 
 	return (Token**)tokens.data;
 }

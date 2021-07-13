@@ -24,7 +24,7 @@ extern Lexer lexer;
  * @arguments: ErrorType, const char* format varg...
  * @return: void; nothing
  */
-void error(ErrorType type, const char* format, ...)
+void error(ErrorType type, int line, const char* file, const char* function, const char* format, ...)
 {
 	debug("error");
 
@@ -37,6 +37,8 @@ void error(ErrorType type, const char* format, ...)
 
 	Location loc;
 	char* path = NULL;
+
+	// fprintf(stderr, "[at %s line %d in %s]", file, line, function);
 
 #ifdef _ONE_PARSER_
 	Token* current_token = (*parser.tokens);
