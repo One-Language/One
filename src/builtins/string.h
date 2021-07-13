@@ -8,6 +8,9 @@
 
  **/
 
+#ifndef _ONE_BUILTINS_STRING_H_
+#define _ONE_BUILTINS_STRING_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -40,3 +43,5 @@ string* string_new();
  * @return: void
  */
 void string_append(string* ss, char* suffix);
+
+#endif // _ONE_BUILTINS_STRING_H_

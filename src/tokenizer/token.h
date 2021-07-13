@@ -11,6 +11,8 @@
 #ifndef _ONE_TOKENIZER_TOKEN_H_
 #define _ONE_TOKENIZER_TOKEN_H_
 
+#include "../builtins/error.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -248,5 +250,95 @@ static Keyword keywords[] = {
 
 	 {NULL, 0, TOKEN_VALUE_IDENTIFIER, false} // Sentinel to mark the end of the array.
 };
+
+/*
+ * @function: token_is_alpha
+ * @description: check a char is a-z or A-Z or _
+ * @arguments: char c is a character input
+ * @return: bool, true or false
+ */
+bool token_is_alpha(char c);
+
+/*
+ * @function: token_is_ident
+ * @description: check a char is a-z or A-Z or _ or 0-9
+ * @arguments: char c is a character input
+ * @return: bool, true or false
+ */
+bool token_is_ident(char c);
+
+/*
+ * @function: token_is_digit
+ * @description: check a char is 0-9 (Not - +)
+ * @arguments: char c is a character input
+ * @return: bool, true or false
+ */
+bool token_is_digit(char c);
+
+/*
+ * @function: token_is_end
+ * @description: check a char is \0 EOF
+ * @arguments: char c is a character input
+ * @return: bool, true or false
+ */
+bool token_is_end();
+
+/*
+ * @function: token_recede
+ * @description: return -1th character of current source code
+ * @arguments: nothing
+ * @return: char, if not exists will be ... (TODO)
+ */
+char token_recede();
+
+/*
+ * @function: token_advance
+ * @description: return current character and go to next position of the source code
+ * @arguments: nothing
+ * @return: char
+ */
+char token_advance();
+
+/*
+ * @function: token_peek
+ * @description: return current character of current source code
+ * @arguments: nothing
+ * @return: char
+ */
+char token_peek();
+
+/*
+ * @function: token_peek_next
+ * @description: return next character of current source code
+ * @arguments: nothing
+ * @return: char
+ */
+char token_peek_next();
+
+/*
+ * @function: token_peek_prev
+ * @description: return prev character of current source code
+ * @arguments: nothing
+ * @return: char
+ */
+char token_peek_prev();
+
+/*
+ * @function: token_match
+ * @description: check current character of lexer is equal to `expected`, it's yes or no
+ * @arguments: char expected
+ * @return: bool, true or false
+ */
+bool token_match(char expected);
+
+Token* token_make(TokenType type);
+
+Token* token_make_value(TokenType type, char* value);
+
+Token* token_error(char* message);
+
+char* token_name(TokenType type);
+
+size_t token_utf8_string_length(char* s);
 
 #endif // _ONE_TOKENIZER_TOKEN_H_

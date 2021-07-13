@@ -9,6 +9,7 @@
  **/
 
 #include <stdio.h>
+#include "tokenizer.h"
 
 int main(int argc, char** argv)
 {
@@ -25,7 +26,7 @@ int main(int argc, char** argv)
 	printf("Input file is: %s\n", input_file);
 	printf("Output file is: %s\n", output_file);
 
-	Token* tokens = tokenizerFile(input_file);
+	Token** tokens = tokenizer_file(input_file);
 
 	return 0;
 }

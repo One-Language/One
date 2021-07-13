@@ -11,6 +11,11 @@
 #ifndef _ONE_BUILTINS_FILE_H_
 #define _ONE_BUILTINS_FILE_H_
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "error.h"
+
 /*
  * @function: file_reads
  * @description: read whole of a filepath

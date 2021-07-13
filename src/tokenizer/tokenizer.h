@@ -11,7 +11,8 @@
 #ifndef _ONE_TOKENIZER_TOKENIZER_H_
 #define _ONE_TOKENIZER_TOKENIZER_H_
 
-#include "../builtins/string.h"
+#include "../builtins/array.h"
+#include "../builtins/file.h"
 
 #include "token.h"
 
@@ -21,7 +22,7 @@
  * @inputs: char* of a one' pathfile
  * @return: Array of Token
  */
-Token* tokenizer_file(char* filepath);
+Token** tokenizer_file(char* filepath);
 
 /*
  * @function: tokenizer_string
@@ -29,6 +30,6 @@ Token* tokenizer_file(char* filepath);
  * @inputs: char* of a One program source-code
  * @return: Array of Token
  */
-Token* tokenizer_string(char* data);
+Token** tokenizer_string(char* data);
 
 #endif // _ONE_TOKENIZER_TOKENIZER_H_

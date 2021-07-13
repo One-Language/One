@@ -11,6 +11,11 @@
 #ifndef _ONE_BUILTINS_ARRAY_H_
 #define _ONE_BUILTINS_ARRAY_H_
 
+#include <stdlib.h>
+#include <stddef.h>
+
+#include "error.h"
+
 typedef struct
 {
 	int count;
