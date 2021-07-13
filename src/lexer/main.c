@@ -21,14 +21,16 @@ int main(int argc, char** argv)
 	char* output_file;
 	Token** tokens;
 
-	if (argc == 2) {
-		// printf("Error: pass the arguments correcly!\n");
+	if (argc == 2)
+	{
+		// printf("Error: pass the arguments correctly!\n");
 		// printf("./lexer input.one output.tokens");
 		// return 1;
 
 		tokens = tokenizer_string(argv[1]);
 	}
-	else if(argc == 3) {
+	else if (argc == 3)
+	{
 		input_file = argv[1];
 		output_file = argv[2];
 
@@ -37,7 +39,8 @@ int main(int argc, char** argv)
 
 		tokens = tokenizer_file(input_file);
 	}
-	else {
+	else
+	{
 		printf("Error: arguments are not correct!\n");
 		printf("./lexer input.one output.tokens\n");
 		printf("./lexer \"your input here as string\"\n");

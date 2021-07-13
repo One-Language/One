@@ -35,7 +35,7 @@ void array_push(Array *list, void *item)
 {
 	debug_builtins("array_push");
 
-	if(list->count == list->size)
+	if (list->count == list->size)
 	{
 		// Set size of new array to 4, and double size if it's next...
 		list->size = list->size == 0 ? 4 : 2 * list->size;

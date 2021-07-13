@@ -20,7 +20,7 @@ typedef struct
 {
 	int count;
 	int size;
-	void **data;
+	void** data;
 } Array;
 
 /*

@@ -344,6 +344,7 @@ Token* lexer_scan()
 	if (t != NULL)
 		return t;
 
+	// it's EOF, so return and stop recursice calling!
 	if (token_is_end()) return token_make(TOKEN_EOF);
 
 	char c = token_advance();

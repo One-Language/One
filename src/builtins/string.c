@@ -14,7 +14,7 @@
  * @function: string_new
  * @desctipion: Creates a new string,
  * if there is not enough memory, will return a null pointer instead.
- * @arguments: nothin
+ * @arguments: nothing
  * @return: mallocated string
  */
 string* string_new()

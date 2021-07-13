@@ -39,10 +39,11 @@ Token** tokenizer_string(char* data)
 	Array tokens;
 	array_init(&tokens);
 
-	while(*data != '\0') {
+	while (*data != '\0')
+	{
 		Token* t = token_make_value(TOKEN_VALUE_IDENTIFIER, (char*){data});
 		array_push(&tokens, t);
 	}
 
-	return (Token **)tokens.data;
+	return (Token**)tokens.data;
 }
