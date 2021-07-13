@@ -274,7 +274,7 @@ typedef enum
 /*
  * @function: error
  * @description: Occur a error/warning at the runtime, If that was not a warning so we will exit the program immediately
- * @arguments: ErrorType, const char* format varg...
+ * @arguments: ErrorType, int line, const char* file, const char* function, const char* format varg...
  * @return: void; nothing
  */
 void error(ErrorType type, int line, const char* file, const char* function, const char* format, ...);

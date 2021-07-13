@@ -39,13 +39,16 @@ Token** tokenizer_string(char* data)
 	debug_token("tokenizer_string");
 	debug_token("tokenizer_string: %s", data);
 
-	Array tokens;
 	lexer_init(data);
+
+	Array tokens;
+	array_init(&tokens);
 
 	Token* t;
 	for (;;)
 	{
 		t = lexer_scan();
+		printf("==>%s\n", token_name(t->type));
 		array_push(&tokens, t);
 		debug_parser("parser_scan: print_token %s", token_name(t->type));
 		if (t->type == TOKEN_ERROR)
