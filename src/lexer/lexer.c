@@ -125,6 +125,13 @@ Token* lexer_skip_comment_multiline()
 	return NULL;
 }
 
+/*
+ * @function: lexer_skip_whitespace
+ * @description: Check if current characters are whitespace \t \r \n space and also inline-comment or multi-line-comment
+ 				 so skip all of them in a infinity loop!
+ * @arguments: nothing
+ * @return: Always NULL
+ */
 Token* lexer_skip_whitespace()
 {
 	debug_lexer("lexer_skip_whitespace");
@@ -168,6 +175,14 @@ Token* lexer_skip_whitespace()
 	}
 }
 
+/*
+ * @function: lexer_number
+ * @description: Parse current character since it's a number, so we skip that number and return TOKEN_VALUE_NUMBER with value
+                 [0-9]+
+                 [0-9]+_[0-9]+...
+ * @arguments: nothing
+ * @return: Always a pointer of Token struct (TOKEN_VALUE_NUMBER)
+ */
 Token* lexer_number()
 {
 	debug_lexer("lexer_number");
@@ -209,6 +224,13 @@ Token* lexer_number()
 	return token_make_value(TOKEN_VALUE_NUMBER, tmp_str);
 }
 
+/*
+ * @function: lexer_char
+ * @description: Parse current character since it's a character, we only want a single character.
+ 				 maybe it's a asci char or maybe it's a single UTF8 character
+ * @arguments: nothing
+ * @return: Always a pointer of Token struct (TOKEN_VALUE_CHAR)
+ */
 Token* lexer_char()
 {
 	debug_lexer("lexer_char");
@@ -235,6 +257,13 @@ Token* lexer_char()
 	return token_make_value(TOKEN_VALUE_CHAR, tmp_str);
 }
 
+/*
+ * @function: lexer_char
+ * @description: Parse current character since it's a string, we only want skip all character of that string.
+ 				 so we except " at first and a " at end.
+ * @arguments: nothing
+ * @return: Always a pointer of Token struct (TOKEN_VALUE_STRING)
+ */
 Token* lexer_string()
 {
 	debug_lexer("lexer_string");
@@ -257,6 +286,13 @@ Token* lexer_string()
 	return token_make_value(TOKEN_VALUE_STRING, tmp_str);
 }
 
+/*
+ * @function: lexer_identifier
+ * @description: Parse current character since it's a identifier.
+ 				 Only we have to check it's a user-defined variable or a registered Keyword refer to `keywords` variable
+ * @arguments: nothing
+ * @return: Always a pointer of Token struct (TOKEN_VALUE_IDENTIFIER or other TokenType refer to `keywords` table)
+ */
 Token* lexer_identifier()
 {
 	debug_lexer("lexer_identifier");
@@ -292,6 +328,12 @@ Token* lexer_identifier()
 	//	return token_make(TOKEN_VALUE_IDENTIFIER);
 }
 
+/*
+ * @function: lexer_scan
+ * @description: Start to check characters. it's entry point of lexer stage.
+ * @arguments: nothing
+ * @return: Always a pointer of Token struct
+ */
 Token* lexer_scan()
 {
 	debug_lexer("lexer_scan");
@@ -362,6 +404,13 @@ Token* lexer_scan()
 	return token_make_error(msg);
 }
 
+/*
+ * @function: lexer_free
+ * @description: Free allocated memory for the lexer stage! TODO
+ 				 Only we have to check it's a user-defined variable or a registered Keyword refer to `keywords` variable
+ * @arguments: nothing
+ * @return: nothing, void
+ */
 void lexer_free()
 {
 	//	free(lexer.start);
