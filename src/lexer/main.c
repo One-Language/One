@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../tokenizer/tokenizer.h"
+#include "tokenizer/tokenizer.h"
 
 #include "lexer.h"
 

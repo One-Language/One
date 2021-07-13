@@ -13,7 +13,7 @@
 
 #include "../builtins/error.h"
 
-#include "../tokenizer/tokenizer.h"
+#include "tokenizer/tokenizer.h"
 
 // typedef struct _token Token;
 // typedef enum _token_type TokenType;
