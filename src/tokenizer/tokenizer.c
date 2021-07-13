@@ -18,15 +18,11 @@
  */
 Token** tokenizer_file(char* filepath)
 {
-	printf("3\n");
 	debug_token("tokenizer_file");
 	debug_token("tokenizer_file: %s", filepath);
 
-	printf("3.\n");
 	char* data = file_reads(filepath);
-	printf("4\n");
 	Token** tokens = tokenizer_string(data);
-	printf("5\n");
 	// TODO: free(data);
 	return tokens;
 }
@@ -49,6 +45,7 @@ Token** tokenizer_string(char* data)
 	{
 		Token* t = token_make_value(TOKEN_VALUE_IDENTIFIER, (char*){data});
 		array_push(&tokens, t);
+		data++;
 	}
 
 	return (Token**)tokens.data;

@@ -37,9 +37,7 @@ int main(int argc, char** argv)
 		printf("Input file is: %s\n", input_file);
 		printf("Output file is: %s\n", output_file);
 
-		printf("1\n");
 		tokens = tokenizer_file(input_file);
-		printf("2\n");
 	}
 	else
 	{
