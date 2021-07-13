@@ -25,5 +25,6 @@ int main(int argc, char** argv)
 	printf("Output file is: %s\n", output_file);
 
 	Token *tokens = tokenizerFile(input_file);
+	
 	return 0;
 }
