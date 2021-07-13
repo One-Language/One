@@ -8,8 +8,8 @@
 
  **/
 
-#ifndef ONE_BUILTINS_ARRAY_H
-#define ONE_BUILTINS_ARRAY_H
+#ifndef _ONE_BUILTINS_ARRAY_H_
+#define _ONE_BUILTINS_ARRAY_H_
 
 typedef struct
 {
@@ -50,4 +50,4 @@ void* array_pop(Array* list);
  */
 void array_free(Array* list);
 
-#endif // ONE_BUILTINS_ARRAY_H
+#endif // _ONE_BUILTINS_ARRAY_H_

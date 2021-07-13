@@ -8,9 +8,9 @@
 
  **/
 
-#ifndef ONE_BUILTINS_ERROR_H
-#define ONE_BUILTINS_ERROR_H
+#ifndef _ONE_BUILTINS_ERROR_H_
+#define _ONE_BUILTINS_ERROR_H_
 
 #define debug_builtins(msg_log)
 
-#endif // ONE_BUILTINS_ERROR_H
+#endif // _ONE_BUILTINS_ERROR_H_
