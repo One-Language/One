@@ -39,7 +39,8 @@ int main(int argc, char** argv)
 
 		tokens = tokenizer_file(input_file);
 
-		FILE* file_out = fopen(output_file, "wa+");
+		FILE* file_out = fopen(output_file, "wa+"); // W: clear the file after open,
+			 // a+: Append mode, so if we call `fprintf` some time we can append to the file!
 		if (!file_out)
 		{
 			fprintf(stderr, "Error: it's unable to write output to %s file!\n", output_file);
@@ -49,13 +50,14 @@ int main(int argc, char** argv)
 		while (tokens != NULL && *tokens != NULL)
 		{
 			Token* t = *tokens;
+			char* t_name = token_name(t->type);
 			if (t->value != NULL)
 			{
-				fprintf(file_out, "%s: \"%s\"\n", token_name(t->type), t->value);
+				fprintf(file_out, "%s: \"%s\"\n", t_name, t->value);
 			}
 			else
 			{
-				fprintf(file_out, "%s\n", token_name(t->type));
+				fprintf(file_out, "%s\n", t_name);
 			}
 			tokens++;
 		}
