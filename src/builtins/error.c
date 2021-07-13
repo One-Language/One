@@ -35,10 +35,10 @@ void error(ErrorType type, int line, const char* file, const char* function, con
 	vfprintf(stderr, format, args);
 	va_end(args);
 
+	// fprintf(stderr, "[at %s line %d in %s]", file, line, function);
+
 	Location loc;
 	char* path = NULL;
-
-	// fprintf(stderr, "[at %s line %d in %s]", file, line, function);
 
 #ifdef _ONE_PARSER_
 	Token* current_token = (*parser.tokens);
