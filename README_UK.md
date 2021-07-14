@@ -38,7 +38,6 @@
 &nbsp;
 [Українська](README_UK.md)
 
-
 </div>
 
 Ласкаво просимо до <a href="https://onelang.org">One</a>!</br>
@@ -73,7 +72,7 @@
 - Простота
 - Компілятор
 - Можливість створення вихідного файлу (x86_64, i386)
-- Системна мова програмування 
+- Системна мова програмування
 - Середній рівень
 - Мережеве і API програмування
 - Підтримує веб-програмування (в майбутньому)
@@ -93,12 +92,12 @@
 Граматика мови `One` доступна [тут](grammar.BNF).
 
 - [x] Lexer/Parser (здебільшого)
-- [x] Дерево AST 
+- [x] Дерево AST
 - [x] VM
 - [ ] Генератор коду (на основі LLVM-C)
 - [ ] Розробіть бібліотеку часу виконання і додайте характеристики
 - [ ] Створіть веб-фреймворк для мови
-- [ ] Перепишіть компілятор мовою `One` 
+- [ ] Перепишіть компілятор мовою `One`
 
 <!--Include to a section about steps of installation-->
 
@@ -225,7 +224,7 @@ error {
 
 ---
 
-### Розробка старого CLI  
+### Розробка старого CLI
 
 ```
 main:
@@ -403,4 +402,3 @@ header {
 [discordurl]: https://discord.gg/sFCE2HcMCa
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
-

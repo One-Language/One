@@ -40,7 +40,6 @@
 &nbsp;
 [Українська](README_UK.md)
 
-
 </div>
 
 اهلا وسهلا بك في <a href="https://onelang.org">One</a>!</br>

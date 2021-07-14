@@ -39,7 +39,6 @@
 &nbsp;
 [Українська](README_UK.md)
 
-
 </div>
 
 به <a href="https://onelang.org">وان</a> خوش آمدید!</br>

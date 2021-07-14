@@ -38,7 +38,6 @@
 &nbsp;
 [Українська](README_UK.md)
 
-
 </div>
 
 Добро пожаловать в <a href="https://onelang.org">One</a>!</br>
@@ -379,7 +378,7 @@ header {
 
 Если вы не знакомы с тем, как создать Pull-запрос в GitHub, прочитайте, пожалуйста, это [справочник](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Если вы решили сделать свой вклад, прочитайте, пожалуйста, сначала наставления  [здесь](CONTRIBUTING.md).
+Если вы решили сделать свой вклад, прочитайте, пожалуйста, сначала наставления [здесь](CONTRIBUTING.md).
 <br>Также у вас есть возможность помочь в разработке `One`, делая пожертвования на [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Спасибо всем <a href ="https://github.com/One-Language/One/graphs/contributors">людям, делающим свои вклады</a>!!
@@ -403,7 +402,3 @@ header {
 [discordurl]: https://discord.gg/sFCE2HcMCa
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
-
-
-
-

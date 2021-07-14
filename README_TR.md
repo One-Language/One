@@ -38,7 +38,6 @@
 &nbsp;
 [Українська](README_UK.md)
 
-
 </div>
 
 <a href="https://onelang.org">One</a>'a hoşgeldiniz!</br>
