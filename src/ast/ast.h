@@ -11,4 +11,183 @@
 #ifndef _ONE_AST_AST_H_
 #define _ONE_AST_AST_H_
 
+typedef Array AstArguments;
+typedef Array AstStatements;
+typedef Array AstFunctions;
+typedef Array AstStructs;
+typedef Array AstEnums;
+typedef Array AstConsts;
+typedef Array AstTypes;
+typedef Array AstExpressions;
+
+typedef struct _ast_expression AstExpression;
+typedef enum _token_type TokenType;
+
+typedef enum
+{
+	AST_TYPE_I8,
+	AST_TYPE_I16,
+	AST_TYPE_I32,
+	AST_TYPE_I64,
+	AST_TYPE_I128,
+
+	AST_TYPE_U8,
+	AST_TYPE_U16,
+	AST_TYPE_U32,
+	AST_TYPE_U64,
+	AST_TYPE_U128,
+
+	AST_TYPE_F32,
+	AST_TYPE_F64,
+
+	AST_TYPE_STRING,
+	AST_TYPE_CHAR,
+	AST_TYPE_BOOL,
+} AstValueType;
+
+typedef enum
+{
+	AST_GLOBAL_STATEMENT_FN,
+	AST_GLOBAL_STATEMENT_VAR,
+	AST_GLOBAL_STATEMENT_ENUM,
+	AST_GLOBAL_STATEMENT_STRUCT,
+	AST_GLOBAL_STATEMENT_TYPE,
+
+	AST_STATEMENT_PRINT,
+	AST_STATEMENT_PRINTNL,
+	AST_STATEMENT_PRINTDB,
+	AST_STATEMENT_PRINTDBNL,
+
+	AST_STATEMENT_RET,
+
+	AST_STATEMENT_WHILE,
+	AST_STATEMENT_FOR,
+	AST_STATEMENT_DO,
+	AST_STATEMENT_MATCH,
+
+	AST_STATEMENT_EXPRESSION,
+
+	AST_STATEMENT_IF,
+
+	AST_STATEMENT_VARIABLE,
+} AstStatementType;
+
+/*
+typedef enum
+{
+	AST_OPERATOR_DIRECT, // without an operator!
+
+	AST_OPERATOR_PLUS,
+	AST_OPERATOR_MINUS,
+	AST_OPERATOR_MUL,
+	AST_OPERATOR_DIV,
+	AST_OPERATOR_POW,
+
+	TOKEN_OPERATOR_IF, // ? :
+	TOKEN_OPERATOR_IFIF, // ??
+	// TODO: adding more operators!
+} AstOperatorType;
+ */
+
+typedef struct _ast_statement
+{
+	AstStatementType type;
+	AstExpressions expressions;
+	AstExpression* expression;
+} AstStatement;
+
+typedef struct _ast_block
+{
+	AstStatements statements;
+} AstBlock;
+
+typedef struct _ast_value
+{
+	int64_t vint;
+	u_int64_t vuint;
+
+	float vf32;
+	double vf64;
+
+	char* vstring;
+	int vbool;
+} AstValue;
+
+typedef struct _ast_type
+{
+	AstValueType type;
+	bool hasArray;
+	size_t length;
+	size_t cap;
+} AstType;
+
+typedef struct _ast_expression
+{
+	//	AstOperatorType operator;
+	TokenType operator;
+	AstType type;
+
+	AstValue* value;
+
+	AstExpression* left;
+	AstExpression* right;
+	AstExpression* third;
+} AstExpression;
+
+typedef struct _ast_argument
+{
+	char* name;
+	AstType* type;
+} AstArgument;
+
+typedef struct _ast_function
+{
+	char* name;
+	AstArguments arguments;
+	AstBlock* block;
+} AstFunction;
+
+typedef struct _ast_import
+{
+	char* target;
+	char** wants;
+	char** ass; // Note: it's AS not ASS
+} AstImport;
+
+typedef struct _ast_struct
+{
+	char* name;
+	char** values; // name of values
+	// TODO: need data type for each vealues!
+} AstStruct;
+
+typedef struct _ast_type_def
+{
+	char* name;
+	// TODO: need alias/value for that new type.
+} AstTypeDef;
+
+typedef struct _ast_root
+{
+	char* package;
+
+	AstFunctions functions;
+
+	Array* vars;
+	Array* types;
+	Array* strucs;
+	Array* enums;
+} AstRoot;
+
+typedef struct _ast_global_statement
+{
+	AstStatementType type;
+
+	AstFunction* fn;
+} AstGlobalStatenent;
+
+char* ast_statement_name(AstStatementType type);
+
+char* ast_value_name(AstValueType type);
+
 #endif // _ONE_AST_AST_H_

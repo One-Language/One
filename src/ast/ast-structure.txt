@@ -1,0 +1,114 @@
+File:
+	char* package
+	Array<Import> imports
+	Array<Block> blocks
+
+Import:
+	Array names = [math], [parentLib, childLib], [file]
+	Array as = [pc, cr]
+	Array symbols = [sin], [sin, cos], [create]
+```
+import math // math.sin(), math.cos()
+import math { sin } // sin()
+import math { sin, cos } // sin(), cos()
+import parentLib.childLib // childLib.functionName()
+import parentLib.childLib as pc // pc.functionName()
+import parentLib {childLib.functionName as a_fn} // a_fn()
+import file // file.create()
+import file { create } // create()
+import file { create as cr } // cr()
+```
+
+Block:
+	Function
+	DefineStruct
+	DefineType
+	Statement
+
+DefineType:
+	char* name = Name, Number
+	Array<Type> types = [string], [int, float]
+	bool is_public
+```
+type Name = string
+type Number = int | float
+type Func = fn (int) float
+type Funcs = fn (int) float | fn (float) int
+```
+
+Type:
+	char* name // If it's a custom data-type, otherwise NULL
+	TypeType type
+	Array<Type> argumentTypes
+	Type return
+```
+string
+int
+float
+fn (int) float
+fn (float) int
+fn (string) string
+fn (string) Name
+fn (string) Number
+```
+
+DataType:
+	TYPE_I8
+	TYPE_U8
+	TYPE_I16
+	TYPE_U16
+	TYPE_I32
+	TYPE_U32
+	TYPE_I64
+	TYPE_U64
+	TYPE_I128
+	TYPE_U128
+	TYPE_POINTER_VOID,
+	...
+	TYPE_FUNC
+
+DefineStruct:
+	char* name
+	Array<Argument> fields
+	bool is_public
+```
+struct Programmer {
+	github string
+	name   string
+}
+struct Designer {
+	dribbble string
+	name     string
+}
+```
+
+Argument:
+	char* name
+	Type type
+	bool is_mut
+	bool is_variable
+```
+github string
+name   string
+own    Number
+func   fn (string) string
+mut index int
+numbers ...int
+```
+
+Function:
+	char* name
+	Array<Identifier> generics
+	Array<Argument> arguments
+	Type return
+	bool has_error = true, false, false, ...
+	Array<Statement> statements
+```
+fn request(url string) ?string { }
+fn simple_equal(x int, y int) bool { }
+fn equal<X>(x X, y X) bool { }
+fn equal<X, Y>(x X, y Y) bool { }
+```
+
+Statement:
+	
