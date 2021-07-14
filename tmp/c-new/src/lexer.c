@@ -4,7 +4,7 @@
  File: lexer.c
   _        _
  / \ |\ | |_    Max Base
- \_/ | \| |_    Copyright 2021
+ \_/ | \| |_    Copyright 2021; One Language Contributors
 
  **/
 
@@ -15,7 +15,7 @@
 
 Lexer *lexerInit(char *filename, char *input, ErrorsContainer *errors)
 {
-	Lexer *lex = malloc(sizeof(Lexer));
+	Lexer *lex = (Lexer *)malloc(sizeof(Lexer));
 	lex->tokens = NULL;
 	lex->token_count = 0;
 	lex->filename = filename;
@@ -34,7 +34,7 @@ void lexerLog(Lexer *lex)
 	{
 		t = lex->tokens[i];
 
-		printf("==>%s", tokenName(t->type));
+		printf("LexerLog==>%s", tokenName(t->type));
 		if (t->type == TOKEN_VALUE_IDENTIFIER || t->type == TOKEN_VALUE_STRING || t->type == TOKEN_VALUE_NUMBER)
 			printf(" (%s)", t->vstring);
 		printf("\n");
@@ -79,7 +79,7 @@ int lexerCheck(Lexer *lex, ErrorsContainer *errors)
 									  tokens.count > 0 && ((Token *)tokens.data[tokens.count - 1])->type != TOKEN_EOF) // otherwise, if tokens list is not empty and at last item of tokens we not have a EOF token...
 		)
 		{
-			Token *t_eof = malloc(sizeof(Token)); // create a token value just for adding EOF token.
+			Token *t_eof = (Token *)malloc(sizeof(Token)); // create a token value just for adding EOF token.
 			t_eof->type = TOKEN_EOF; // set type of new token as TOKEN_EOF
 			arrayPush(&tokens, t_eof); // push and add t-eof token at list of token!
 			// free(t_eof); // free t_eof from memory!

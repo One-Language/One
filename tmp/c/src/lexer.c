@@ -2,7 +2,7 @@
  File: lexer.c
   _        _
  / \ |\ | |_    Author: Max Base
- \_/ | \| |_    Copyright 2021
+ \_/ | \| |_    Copyright 2021; One Language Contributors
 
  **/
 
@@ -17,7 +17,7 @@ Lexer *lexer_init(char *filename, char *input)
 	printf("[lexer_init]\n");
 #endif
 
-	Lexer *lex = malloc(sizeof(Lexer));
+	Lexer *lex = (Lexer *)malloc(sizeof(Lexer));
 	lex->f = filename;
 	lex->s = input;
 	lex->tokens = vector_create();
@@ -27,9 +27,9 @@ Lexer *lexer_init(char *filename, char *input)
 	lex->location.c = 0;
 
 #ifdef DEBUG
-	printf("-->%s\n", lex->s);
-	printf("-->%s\n", lex->f);
-	printf("\n");
+	// printf("-->%s\n", lex->s);
+	// printf("-->%s\n", lex->f);
+	// printf("\n");
 #endif
 
 	return lex;

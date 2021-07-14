@@ -1,3 +1,4 @@
+<div dir="rtl">
 <div align="center">
 
 <p>
@@ -9,7 +10,7 @@
 # زبان برنامه نویسی وان💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.ir](https://onelang.ir) |
-[Help wanted](https://github.com/One-Language/One/issues/new)
+[کمک خواست](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
@@ -21,12 +22,6 @@
 [![Patreon][patreonbadge]][patreonurl]
 [![Discord][discordbadge]][discordurl]
 [![Twitter][twitterurl]][twitterbadge]
-
-<!-- prettier-ignore-start -->
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-<!-- prettier-ignore-end -->
 
 [English](README.md)
 &nbsp;
@@ -65,18 +60,18 @@
 <h2 id="table-of-contents">فهرست</h2>
 <details open="open">
   <ol>
-    <li><a href="#Features-of-one">ویژگی های <b>زبان وان</b></a></li>
-    <li><a href="#RoadMap">نقشه و مسیر پروژه</a></li>
-    <li><a href="#Code-Examples">نمونه کد ها</a></li>
-    <li><a href="#Getting-started">طریقه شروع</a></li>
-    <li><a href="#Get-Involved">مشارکت کردن</a></li>
+    <li><a href="#features-of-one">ویژگی های <b>زبان وان</b></a></li>
+    <li><a href="#roadmap">نقشه و مسیر پروژه</a></li>
+    <li><a href="#code-examples">نمونه کد ها</a></li>
+    <li><a href="#getting-started">طریقه شروع</a></li>
+    <li><a href="#get-involved">مشارکت کردن</a></li>
     <li><a href="#license">مجوز و لایسنس</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Features-of-one">➤ ویژگی های زبان وان</h2>
+<h2 id="features-of-one">➤ ویژگی های زبان وان</h2>
 
 - سادگی
 - کامپایلری
@@ -90,15 +85,17 @@
   - امکان خودکار کوتاه کردن نتیجه های وب سایت (minify)
 - عملکرد و سرعت بالا
 - پشتیبانی از دستورات خطی اسمبلی در لابه لای برنامه (در آینده)
-- Does not require specific libraries and tools on the user system in normal mode (in the future)
+- عدم نیاز به ابزارها و کتابخانه های مخصوص بر روی سیستم کاربر در حالت معمول (در آینده)
 - به کتابخانه زمان اجرای جانبی دیگری نیاز ندارد (در آینده)
 - به کامپایلر خارجی دیگری برای کامپایل احتیاج ندارد (در آینده)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="RoadMap">➤ نقشه و مسیر پروژه</h2>
+<h2 id="roadmap">➤ نقشه و مسیر پروژه</h2>
 
 نحو و گرامر زبان `وان` نیز در [اینجا](grammar.BNF) در دسترس است.
+
+</div>
 
 - [x] Lexer/Parser (Mostly)
 - [x] AST Tree
@@ -108,12 +105,16 @@
 - [ ] Design web framework for the language
 - [ ] Rewrite compiler in the `One` language
 
+<div dir="rtl">
+
 <!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Code-Examples">➤ نمونه کد ها</h2>
+<h2 id="code-examples">➤ نمونه کد ها</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
+
+</div>
 
 ```c
 main {
@@ -121,7 +122,11 @@ main {
 }
 ```
 
+<div dir="rtl">
+
 **تبدیل به زبان سی C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -141,7 +146,11 @@ i32 main {
 }
 ```
 
+<div dir="rtl">
+
 **تبدیل به زبان سی C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -163,7 +172,11 @@ main {
 }
 ```
 
+<div dir="rtl">
+
 **تبدیل به زبان سی C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -178,9 +191,13 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr/>
+<hr>
+
+<div dir="rtl">
 
 **چک نویس دیگر:**
+
+</div>
 
 ```c
 import web
@@ -207,7 +224,11 @@ main {
 
 ---
 
+<div dir="rtl">
+
 **نمونه دیگر:**
+
+</div>
 
 ```c
 error {
@@ -233,7 +254,11 @@ error {
 
 ---
 
+<div dir="rtl">
+
 ### رابط طراحی کنسولی قبلی
+
+</div>
 
 ```
 main:
@@ -267,12 +292,15 @@ int customName:
 end
 ```
 
-<hr/>
+<hr>
+
+<div dir="rtl">
 
 ### توسعه نرم افزار گرافیکی و سایت
 
-This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
-Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
+این معماری برای وبسایت ها و نرم افزار های محلی در حال طراحی است. در آینده، برای اپ های موبایل هم در دسترس خواهد بود. معماری موبایل هنوز تکمیل نشده و نیازمند فکر و توجه بیشتر است.<br><br>مثال برای نشان دادن کارکرد زبان:
+
+</div>
 
 ```css
 title "Name - Main"
@@ -314,7 +342,11 @@ header {
 }
 ```
 
+<div dir="rtl">
+
 **تبدیل خودکار به CSS/HTML/JS:**
+
+</div>
 
 ```html
 <html>
@@ -355,7 +387,13 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Getting-started">➤ Getting Started</h2>
+<div dir="rtl">
+
+<h2 id="getting-started">➤ شروع کنید</h2>
+
+</div>
+
+<div dir="rtl">
 
 می توانید برای یادگیری بیشتر نحو این زبان به [این صفحه](https://github.com/ET-Lang/ET/wiki) راهنما مراجعه کنید.
 
@@ -364,6 +402,8 @@ header {
 <!--Prerequisites-->
 
 #### پلتفرم و محیط های پشتیبانی شده
+
+</div>
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
@@ -379,27 +419,44 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+<div dir="rtl">
+
 <!--Get Involved-->
-<h2 id="Get-Involved">➤ مشارکت کردن</h2>
+<h2 id="get-involved">➤ مشارکت کردن</h2>
 
-We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
-To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
+</div>
 
-If you are not familiar with how to make a pull request on GitHub then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+<div dir="rtl">
+ما از انواع مشارکت ها، از جمله گزارش اشکال، درخواست ویژگی، بهبود اسناد و غیره استقبال می کنیم.
 
-If you have decided to contribute, please first read the guidelines [here](CONTRIBUTING.md).
-<br/>You can also help in the development of `One` by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
+برای پرسیدن سوال یا باز کردن بحث، یک موضوع بسازید یا به <a href ="https://discord.gg/sFCE2HcMCa"><b>وان</b> سرور دیسکورد</a> بپیوندید.
 
-Thanks to all the <a href ="https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
+اگر شما با نحوه ساختن درخواست pull در گیت هاب آشنا نیستید لطفا این [راهنما](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) را بخوانید.
 
-If you would like to contribute in the development of this project, you can mail us at: <maxbasecode@gmail.com>
+اگر تصمیم به مشارکت گرفتید، لطفا ابتدا رهنمودها را از [اینجا](CONTRIBUTING.md) بخوانید.
 
-<br/>Created By Max Base @ 2019
+شما همچنین میتوانید با کمک های مالی به توسعه `وان` کمک کنید [:heart: Patreon](https://www.patreon.com/onelanguage).
+
+تشکر از تمامی <a href ="https://github.com/One-Language/One/graphs/contributors">مشارکت کننده ها</a>!!
+
+اگر شما تمایل به مشارکت در توسعه این پروژه دارید، میتوانید به ما ایمیل بزنید: <maxbasecode@gmail.com>
+
+<br> ساخته شده توسط Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+</div>
+
+<div dir="rtl">
 
 <h2 id="license">➤ مجوز و لایسنس</h2>
 
-`One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
+</div>
+
+<div dir="rtl">
+
+`وان` تحت لایسنس GNU General Public License v3.0 انتشار یافته. لطفا به شرایط در فایل <a href="https://github.com/One-Language/One/blob/master/LICENSE">لایسنس</a> موجود در مخزن مراجعه کنید.
+
+</div>
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
@@ -411,37 +468,3 @@ If you would like to contribute in the development of this project, you can mail
 [discordurl]: https://discord.gg/sFCE2HcMCa
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
-
-## مشارکت کنندگان ✨
-
-با تشکر از تمامی افرادی که در این مسیر با ما همراه هستند ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://maxbase.org/"><img src="https://avatars.githubusercontent.com/u/2658040?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Max Base</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=BaseMax" title="Code">💻</a> <a href="https://github.com/One-Language/One/issues?q=author%3ABaseMax" title="Bug reports">🐛</a> <a href="#business-BaseMax" title="Business development">💼</a> <a href="#content-BaseMax" title="Content">🖋</a> <a href="https://github.com/One-Language/One/commits?author=BaseMax" title="Documentation">📖</a> <a href="#example-BaseMax" title="Examples">💡</a> <a href="#ideas-BaseMax" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-BaseMax" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-BaseMax" title="Maintenance">🚧</a> <a href="#mentoring-BaseMax" title="Mentoring">🧑‍🏫</a> <a href="#projectManagement-BaseMax" title="Project Management">📆</a> <a href="#question-BaseMax" title="Answering Questions">💬</a> <a href="https://github.com/One-Language/One/pulls?q=is%3Apr+reviewed-by%3ABaseMax" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/One-Language/One/commits?author=BaseMax" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/jbampton"><img src="https://avatars.githubusercontent.com/u/418747?v=4?s=100" width="100px;" alt=""/><br /><sub><b>John Bampton</b></sub></a><br /><a href="#projectManagement-jbampton" title="Project Management">📆</a> <a href="#business-jbampton" title="Business development">💼</a> <a href="https://github.com/One-Language/One/commits?author=jbampton" title="Code">💻</a> <a href="https://github.com/One-Language/One/commits?author=jbampton" title="Documentation">📖</a> <a href="#eventOrganizing-jbampton" title="Event Organizing">📋</a> <a href="#financial-jbampton" title="Financial">💵</a> <a href="#fundingFinding-jbampton" title="Funding Finding">🔍</a> <a href="#ideas-jbampton" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-jbampton" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-jbampton" title="Maintenance">🚧</a> <a href="#mentoring-jbampton" title="Mentoring">🧑‍🏫</a> <a href="https://github.com/One-Language/One/pulls?q=is%3Apr+reviewed-by%3Ajbampton" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/One-Language/One/commits?author=jbampton" title="Tests">⚠️</a> <a href="#tutorial-jbampton" title="Tutorials">✅</a> <a href="#talk-jbampton" title="Talks">📢</a></td>
-    <td align="center"><a href="https://github.com/basalumutgazi"><img src="https://avatars.githubusercontent.com/u/81925269?v=4?s=100" width="100px;" alt=""/><br /><sub><b>basalumutgazi</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=basalumutgazi" title="Documentation">📖</a> <a href="#translation-basalumutgazi" title="Translation">🌍</a> <a href="#projectManagement-basalumutgazi" title="Project Management">📆</a> <a href="#mentoring-basalumutgazi" title="Mentoring">🧑‍🏫</a></td>
-    <td align="center"><a href="https://github.com/n4i9kita"><img src="https://avatars.githubusercontent.com/u/60391776?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nikita Sharma</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=n4i9kita" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://aaronmeese.com"><img src="https://avatars.githubusercontent.com/u/17814535?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aaron Meese</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=ajmeese7" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/tHe-AK"><img src="https://avatars.githubusercontent.com/u/19654243?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akshay Kapoor</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=tHe-AK" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://allcontributors.org"><img src="https://avatars.githubusercontent.com/u/46410174?v=4?s=100" width="100px;" alt=""/><br /><sub><b>All Contributors</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=all-contributors" title="Documentation">📖</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/features/security"><img src="https://avatars.githubusercontent.com/u/27347476?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dependabot</b></sub></a><br /><a href="#maintenance-dependabot" title="Maintenance">🚧</a> <a href="#security-dependabot" title="Security">🛡️</a></td>
-    <td align="center"><a href="https://kotbiabderrahmane.web.app/"><img src="https://avatars.githubusercontent.com/u/37270435?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kotbi Abderrahmane</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=abdorah" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/jassab"><img src="https://avatars.githubusercontent.com/u/41446786?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jas</b></sub></a><br /><a href="#design-jassab" title="Design">🎨</a></td>
-    <td align="center"><a href="https://www.upwork.com/freelancers/~013dd1f9db3380689d"><img src="https://avatars.githubusercontent.com/u/81928799?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mujahid Al-Majali</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=Majalian" title="Documentation">📖</a> <a href="#projectManagement-Majalian" title="Project Management">📆</a></td>
-    <td align="center"><a href="https://github.com/Anderson-Garcia"><img src="https://avatars.githubusercontent.com/u/68165804?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anderson García</b></sub></a><br /><a href="#translation-Anderson-Garcia" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://rayhanadev.vercel.app/"><img src="https://avatars.githubusercontent.com/u/72509475?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ray Arayilakath</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=RayhanADev" title="Documentation">📖</a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome! 🩱 🕐 1️⃣ 🔂

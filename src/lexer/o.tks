@@ -1,0 +1,7 @@
+FN
+value_identifier: "main"
+{
+RETURN
+value_number: "1"
+}
+EOF

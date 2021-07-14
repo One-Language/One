@@ -4,7 +4,7 @@
  File: vm.c
   _        _
  / \ |\ | |_    Max Base
- \_/ | \| |_    Copyright 2021
+ \_/ | \| |_    Copyright 2021; One Language Contributors
 
  **/
 
@@ -13,8 +13,8 @@
 
 void vmInit(AstRoot* root)
 {
-	root->functions = malloc(sizeof(Array));
-	root->package = malloc(sizeof(char) * 1024);
+	root->functions = (Array*)malloc(sizeof(Array));
+	root->package = (char*)malloc(sizeof(char) * 1024);
 	//	strcpy(root->package,"max");
 	//	printf("-->%s\n", root->package);
 }

@@ -24,7 +24,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
@@ -63,18 +63,18 @@ It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="
 <h2 id="table-of-contents">Table of Contents</h2>
 <details open="open">
   <ol>
-    <li><a href="#Features-of-one">Features of <b>One</b></a></li>
-    <li><a href="#RoadMap">RoadMap</a></li>
-    <li><a href="#Code-Examples">Code Examples</a></li>
-    <li><a href="#Getting-started">Getting Started</a></li>
-    <li><a href="#Get-Involved">Get Involved</a></li>
+    <li><a href="#features-of-one">Features of <b>One</b></a></li>
+    <li><a href="#roadmap">RoadMap</a></li>
+    <li><a href="#code-examples">Code Examples</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#get-involved">Get Involved</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Features-of-one">➤ Features of One</h2>
+<h2 id="features-of-one">➤ Features of One</h2>
 
 - Simplicity
 - Compiler
@@ -94,7 +94,7 @@ It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="RoadMap">➤ RoadMap</h2>
+<h2 id="roadmap">➤ RoadMap</h2>
 
 Grammar of the `One` language is available [here](grammar.BNF).
 
@@ -110,7 +110,7 @@ Grammar of the `One` language is available [here](grammar.BNF).
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Code-Examples">➤ Code Examples</h2>
+<h2 id="code-examples">➤ Code Examples</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -176,7 +176,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr/>
+<hr>
 
 **Another draft:**
 
@@ -265,12 +265,12 @@ int customName:
 end
 ```
 
-<hr/>
+<hr>
 
 ### Old GUI Development: (Web, Software)
 
-This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br/>
-Mobile structures are not yet complete and require more thought and attention.<br/><br/>Example to demonstrate working of the language:
+This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br>
+Mobile structures are not yet complete and require more attention and thought.<br><br>Example to demonstrate working of the language:
 
 ```css
 title "Name - Main"
@@ -353,7 +353,7 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Getting-started">➤ Getting Started</h2>
+<h2 id="getting-started">➤ Getting Started</h2>
 
 Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
 
@@ -378,7 +378,7 @@ Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the l
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="Get-Involved">➤ Get Involved</h2>
+<h2 id="get-involved">➤ Get Involved</h2>
 
 We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
 To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
@@ -386,13 +386,13 @@ To ask a question or open a discussion, create an issue or join the <a href ="ht
 If you are not familiar with how to make a pull request on GitHub then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
 If you have decided to contribute, please first read the guidelines [here](CONTRIBUTING.md).
-<br/>You can also help in the development of `One` by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
+<br>You can also help in the development of `One` by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Thanks to all the <a href ="https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
 
 If you would like to contribute in the development of this project, you can mail us at: <maxbasecode@gmail.com>
 
-<br/>Created By Max Base @ 2019
+<br>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="license">➤ License</h2>
@@ -434,6 +434,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://www.upwork.com/freelancers/~013dd1f9db3380689d"><img src="https://avatars.githubusercontent.com/u/81928799?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mujahid Al-Majali</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=Majalian" title="Documentation">📖</a> <a href="#projectManagement-Majalian" title="Project Management">📆</a></td>
     <td align="center"><a href="https://github.com/Anderson-Garcia"><img src="https://avatars.githubusercontent.com/u/68165804?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anderson García</b></sub></a><br /><a href="#translation-Anderson-Garcia" title="Translation">🌍</a></td>
     <td align="center"><a href="https://rayhanadev.vercel.app/"><img src="https://avatars.githubusercontent.com/u/72509475?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ray Arayilakath</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=RayhanADev" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://bandism.net/"><img src="https://avatars.githubusercontent.com/u/22633385?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ikko Ashimine</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=eltociear" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/murataka"><img src="https://avatars.githubusercontent.com/u/5358438?v=4?s=100" width="100px;" alt=""/><br /><sub><b>murat aka</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=murataka" title="Code">💻</a></td>
+    <td align="center"><a href="http://amir-shiati.github.io/"><img src="https://avatars.githubusercontent.com/u/47950086?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Amir</b></sub></a><br /><a href="#translation-amir-shiati" title="Translation">🌍</a></td>
   </tr>
 </table>
 
