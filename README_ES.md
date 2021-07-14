@@ -30,7 +30,14 @@
 &nbsp;
 [فارسی](README_FA.md)
 &nbsp;
+[Filipino](README_FIL.md)
+&nbsp;
+[русский](README_RU.md)
+&nbsp;
 [Türkçe](README_TR.md)
+&nbsp;
+[Українська](README_UK.md)
+
 
 </div>
 

@@ -1,17 +1,15 @@
-<div dir="rtl">
-
 <div align="center">
 
 <p>
-    <a href="https://onelang.org/" alt="The One لغة برمجة">
+    <a href="https://onelang.org/" alt="The One Programming Language">
         <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
     </a>
 </p>
 
-# The One لغة برمجة 💚 💙 🧡 🤍 💖 🖤
+# Ang Isang Programang Lengguwahe 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[للمساعدة](https://github.com/One-Language/One/issues/new)
+[Tulong](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
@@ -43,11 +41,11 @@
 
 </div>
 
-اهلا وسهلا بك في <a href="https://onelang.org">One</a>!</br>
-إنها لغة برمجة نظام مفتوحة المصدر ، مستضافة ذاتيًا ، مما يجعل من السهل إنشاء برامج موثوقة وفعالة.
-يتم تطويره من قبل <a href="https://github.com/BaseMax">ماكس</a>, <a href="https://github.com/jbampton">جون</a> ومساهمين آخرين من المصادر المفتوحة.
+Maligayang pagdating sa <a href="https://onelang.org">One</a>!</br>
+Ito ay isang open source, self-hosted, bootstrapping <b>programang lengguwahe</b> upang madaling makabuo ng maaasahan at mahusay na software.
+Ito ay dinebelop ng <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> at ng iba pang may akda
 
-### سيصدر المترجم للغة الواحدة "ONE" في غضون أشهر قليلة
+### Ang mga may akda ng Isang Lengguwahe ay mailalabas sa loob ng ilang buwan
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -55,61 +53,59 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<!-- جدول المحتويات -->
-<h2 id="table-of-contents">جدول المحتويات</h2>
+<!-- TALAAN NG NILALAMAN -->
+<h2 id="table-of-contents">Talaan ng Nilalaman</h2>
 <details open="open">
   <ol>
-    <li><a href="#features-of-one">ميزات <b>One</b></a></li>
-    <li><a href="#roadmap">خريطة الطريق</a></li>
-    <li><a href="#code-examples">أمثلة التعليمات البرمجية</a></li>
-    <li><a href="#getting-started">البدء</a></li>
-    <li><a href="#get-involved">شارك</a></li>
-    <li><a href="#license">الرخصة</a></li>
+    <li><a href="#features-of-one">Katangian ng <b>One</b></a></li>
+    <li><a href="#roadmap">Daan ng Mapa</a></li>
+    <li><a href="#code-examples">Halimbawa ng Code</a></li>
+    <li><a href="#getting-started">Panimula</a></li>
+    <li><a href="#get-involved">Pakikisalamuha</a></li>
+    <li><a href="#license">Lisensya</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="features-of-one">➤ مميزات لغة البرمجة One</h2>
+<h2 id="features-of-one">➤ Katangian ng One</h2>
 
-- البساطة
-- مترجم
-- القدرة على إنشاء ملف الإخراج (x86_64, i386)
-- لغة برمجة النظام
-- المستوى المتوسط
-- برمجة الشبكات و API
-- يدعم برمجة الويب (في المستقبل)
-  - الإنشاء التلقائي للرمز المقابل لكل من CSS و HTML. لذلك لن تضطر إلى تعلم أكثر من لغة واحدة لتطوير موقع ويب
-  - يستخدم المتغيرات في CSS ، حتى نتمكن من الحصول على الألوان أو الأحجام من قاعدة البيانات
-  - تصغير نتائج الصفحة تلقائيًا
-- أداء وسرعة عالية
-- يدعم رمز التجميع المضمن (في المستقبل)
-- لا يتطلب مكتبات وأدوات محددة على نظام المستخدم في الوضع العادي (في المستقبل)
-- لا يتطلب مكتبات وقت تشغيل خارجية في الوضع العادي (في المستقبل)
-- لا يتطلب من المترجمين الخارجيين القيام بالتجميع (في المستقبل)
+- Simple
+- Tagatala
+- Kakayahang makagawa ng output file (x86_64, i386)
+- Sistema ng Programang Lengguwahe
+- Kalagitnaang lebel
+- Pagprograma ng network at API
+- Suporta sa Programang Web (sa hinaharap)
+  - Awtomatikong pagbuo ng naaayon na code para sa CSS at HTML. Para hindi ka na mag-aral ng higit sa "One" lengguwahe upang makabuo ng website.
+  - Gumagamit ng variables sa CSS, upang makakuha ng kulay at sukat galing sa database
+  - Awtomatik na pagliit ng resultang pahina
+- Pagsasagawa at mabilis
+- Suporta sa inline Assembly code (sa hinaharap)
+- Hindi nangangailangan ng tiyak na aklatan at kagamitan sa sistema ng gumagamit sa normal mode (sa hinaharap)
+- Hindi nangangailangan ng panlabas na runtime aklatan sa normal mode (sa hinaharap)
+- Hindi nangangailangan ng panlabas na tagatalang aklatan sa normal mode (sa hinaharap)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="roadmap">➤ خارطة الطريق</h2>
+<h2 id="roadmap">➤ RoadMap</h2>
 
-قواعد اللغة الواحدة متوفرة . [هنا](grammar.BNF).
+Magagamit ang `One` grammar [dito](grammar.BNF).
 
-- [x] المعجم / المحلل اللغوي (في الغالب)
-- [x] شجرة AST
+- [x] Lexer/Parser (Karamihan)
+- [x] Arbol AST
 - [x] VM
-- [ ] مولد الشفرة (استلهم من LLVM-C)
-- [ ] قم بتطوير مكتبة وقت التشغيل وإضافة ميزات
-- [ ] تصميم إطار عمل للغة
-- [ ] أعد كتابة المترجم بلغة ONE
+- [ ] Gumagawa ng Code (inspirasyon ng LLVM-C)
+- [ ] Bumuo ng isang runtime aklata at magdagdag ng katangian
+- [ ] Mag-disenyo ng arkitektura sa web para sa lengguwahe
+- [ ] Isulat muli ang tagatala sa `One` lengguwahe
 
 <!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="code-examples">➤ أمثلة التعليمات البرمجية</h2>
+<h2 id="code-examples">➤ Halimbawa ng Code</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
-
-</div>
 
 ```c
 main {
@@ -117,11 +113,7 @@ main {
 }
 ```
 
-<div dir="rtl">
-
-**التحويل الى C:**
-
-</div>
+**Convertir a C:**
 
 ```c
 #include <stdio.h>
@@ -141,11 +133,7 @@ i32 main {
 }
 ```
 
-<div dir="rtl">
-
-**التحويل الى C:**
-
-</div>
+**Convertir a C:**
 
 ```c
 #include <stdio.h>
@@ -167,11 +155,7 @@ main {
 }
 ```
 
-<div dir="rtl">
-
-**التحويل الى C:**
-
-</div>
+**Convertir a C:**
 
 ```c
 #include <stdio.h>
@@ -188,11 +172,7 @@ int main(int argc, char *argv[]) {
 
 <hr>
 
-<div dir="rtl">
-
-**مسودة أخرى:**
-
-</div>
+**Isa pang halimbawa:**
 
 ```c
 import web
@@ -219,11 +199,7 @@ main {
 
 ---
 
-<div dir="rtl">
-
-**مسودة أخرى:**
-
-</div>
+**Isa pang halimbawa:**
 
 ```c
 error {
@@ -249,11 +225,7 @@ error {
 
 ---
 
-<div dir="rtl">
-
-### تطوير CLI القديم
-
-</div>
+### Nakaraang pag-unlad ng CLI
 
 ```
 main:
@@ -289,14 +261,10 @@ end
 
 <hr>
 
-<div dir="rtl">
+### Nakaraang pag-unlad ng GUI: (Web, Software)
 
-### تطوير واجهة المستخدم الرسومية القديمة: (الويب ، البرامج)
-
-تم تصميم هذه البنية فقط لمواقع الويب والبرامج الأصلية. في المستقبل ، سيكون متاحًا أيضًا لتطبيقات الأجهزة المحمولة (الأصلية). (native).<br>
-الهياكل المتنقلة لم تكتمل بعد وتتطلب المزيد من التفكير والاهتمام. <br><br>مثال لإثبات عمل اللغة:
-
-</div>
+Ang arkitekturang ito ay dinisenyo para sa katutubong software at mga website lamang. Sa hinaharap, magagamit din ito para sa mga mobile application. (katutubo).<br>
+Ang mga estraktura na ito ay hindi pa nakukumpleto at nangangailangan pa rin ng pansin at dedikasyon.<br><br>Ang sumusunod ay isang halimbawa kung paano gumagana ang lengguwahe:
 
 ```css
 title "Name - Main"
@@ -338,11 +306,7 @@ header {
 }
 ```
 
-<div dir="rtl">
-
-**التحويل إلى قاعدة CSS / HTML / JS:**
-
-</div>
+**I-convert ang base CSS/HTML/JS:**
 
 ```html
 <html>
@@ -383,57 +347,51 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<div dir="rtl">
+<h2 id="getting-started">➤Mga Unang Hakbang</h2>
 
-<h2 id="getting-started">➤ البدء</h2>
+Maaari mong suriin ang [link na ito](https://github.com/ET-Lang/ET/wiki) upang simulang matuto ng wika.
 
-الرجوع الى [هذا الرابط](https://github.com/ET-Lang/ET/wiki) لبدء تعلم اللغة.
+<!--Mga hakbang para sa pag-install-->
 
-<!--Installation Steps-->
+<!--Mga Pangangailangan-->
 
-<!--Prerequisites-->
-
-#### البيئات المدعومة
-
-</div>
+#### Mga sinusuportahang kapaligiran
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
-- [ ] macOS (Not complete)
+- [ ] macOS (Hindi kumpleto)
 - [ ] BSD
 
-<div dir="rtl">
-
-<!--Write more about the compiler-->
-<!--Steps-->
-<!--Building One from Source-->
-<!--Hello World in One-->
-<!--Tips to understand the language better-->
-<!--Filename extensions: `.one`-->
+<!--Sumulat ng higit pa tungkol sa tagatala-->
+<!--Mga Hakbang-->
+<!--Isang Bituin mule sa Pinagmulan-->
+<!--Kamusta Mundo sa Isa-->
+<!--Mga tip upang mas maunawaan ang wika-->
+<!--Pangalan ng mga extension: `.one`-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="get-involved">➤ شارك</h2>
+<h2 id="get-involved">➤ Pakikiugnay</h2>
 
-نرحب بجميع أنواع المساهمات ، بما في ذلك تقارير الأخطاء وطلبات الميزات وتحسينات الوثائق وما إلى ذلك.
-لطرح سؤال أو فتح مناقشة أو إنشاء مشكلة أو الانضمام إلى . <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
+Tumatanggap kami ng anumang uri ng mga kontribusyon, kabilang ang ulat ng mga bug, paghiling ng tampok, pagpapahusay ng dokumentasyon, atbp.
+Upang magtanong o magsimula ng isang Pag-uusap, gumawa ng isang isyu o sumali sa <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Servidor de Discord</a>.
 
-إذا لم تكن على دراية بكيفية تقديم طلب سحب على GitHub ، فيرجى قراءة هذا . [الدليل](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+Kung hindi ka pamilyar sa proseduring upang gumawa ng isang kahilingan sa paghila sa GitHub maaari mong suriin ang [gabay] na ito (https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-إذا كنت قد قررت المساهمة ، يرجى قراءة الإرشادات هنا أولاً. [هنا](CONTRIBUTING.md).
-<br>يمكنك أيضًا المساعدة في تطوير `One` من خلال تقديم بعض التبرعات على [:heart: Patreon](https://www.patreon.com/onelanguage).
+Kung nagpasya kang mag-ambag, mangyaring suriin ang mga alituntunin [dito](CONTRIBUTING.md).
+<br>Maaari mo ring tulungan ang pagbuo ng `One` sa pamamagitan ng mga donasyon sa [:heart: Patreon](https://www.patreon.com/onelanguage).
 
-شكرا لجميع <a href ="https://github.com/One-Language/One/graphs/contributors">المساهمين</a>!!
+Salamat sa lahat ng <a href ="https://github.com/One-Language/One/graphs/contributors">mga nag-ambag</a>!!
 
-إذا كنت ترغب في المساهمة في تطوير هذا المشروع, يمكنك مراسلتنا على: <maxbasecode@gmail.com>
+Kung nais mong magbigay ng kontribusyon sa pag-unlad ng proyektong ito, maaari kang sumulat sa amin sa: <maxbasecode@gmail.com>
 
-<br>تم إنشاؤه بواسطة Max Base @ 2019
+<br>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ الرخصة</h2>
+<h2 id="license">➤ Lisensya</h2>
 
-`One` تم إصدارها بموجب رخصة جنو العمومية العامة v3.0. يرجى الرجوع إلى المصطلحات الموجودة في ملف الترخيص المتضمن في المستودع.
+Ang `One` ay inilabas sa ilalim ng GNU General Public License v3.0. Para sa pabor na suriin ang mga tuntunin sa file na <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENCIA</a> incluido en el repositorio.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
@@ -445,5 +403,3 @@ header {
 [discordurl]: https://discord.gg/sFCE2HcMCa
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
-
-</div>
