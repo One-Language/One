@@ -20,10 +20,17 @@ import file { create as cr } // cr()
 ```
 
 Block:
-	Function
-	DefineStruct
-	DefineType
-	Statement
+	BlockType type
+	Function function
+	DefineStruct define_struct
+	DefineType define_type
+	Statement statement
+
+BlockType:
+	BLOCK_FUNCTION
+	BLOCK_STRUCT
+	BLOCK_TYPE
+	BLOCK_STATEMENT
 
 DefineType:
 	char* name = Name, Number
@@ -34,6 +41,7 @@ type Name = string
 type Number = int | float
 type Func = fn (int) float
 type Funcs = fn (int) float | fn (float) int
+pub type AnyString = string
 ```
 
 Type:
@@ -80,6 +88,10 @@ struct Designer {
 	dribbble string
 	name     string
 }
+pub struct Designer {
+	dribbble string
+	name     string
+}
 ```
 
 Argument:
@@ -103,12 +115,23 @@ Function:
 	Type return
 	bool has_error = true, false, false, ...
 	Array<Statement> statements
+	bool is_public
 ```
 fn request(url string) ?string { }
 fn simple_equal(x int, y int) bool { }
 fn equal<X>(x X, y X) bool { }
 fn equal<X, Y>(x X, y Y) bool { }
+pub fn sum(a int, b int) int {}
 ```
 
 Statement:
-	
+	StatementType type
+
+StatementType:
+	STATEMENT_EXPRESSION
+	STATEMENT_IF
+	STATEMENT_FOR
+	STATEMENT_MATCH
+	STATEMENT_RET
+	STATEMENT_DEFER
+	STATEMENT_
