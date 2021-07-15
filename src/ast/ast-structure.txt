@@ -77,8 +77,13 @@ DataType:
 
 DefineStruct:
 	char* name
-	Array<Argument> fields
+	Array<Argument> mut_fields
+	Array<Argument> imut_fields
+	Array<Argument> pub_mut_fields
+	Array<Argument> pub_imut_fields
 	bool is_public
+	bool is_mut
+	bool is_global
 ```
 struct Programmer {
 	github string
