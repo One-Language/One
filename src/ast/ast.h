@@ -140,10 +140,19 @@ i128, u128
 f32, f64
 bool
 char, string
+pubName.publicTypeName
 */
 typedef struct {
-	Array names; // char*
+	Location pos;
+
+	Array names; // AstParamDataItem
 } AstParamData;
+
+typedef struct {
+	Location pos;
+
+	char* name; // char*
+} AstParamDataItem;
 
 // typedef enum {
 // 	TYPE_STRUCT,
@@ -151,8 +160,29 @@ typedef struct {
 // } AstParamDataType;
 
 typedef struct {
+	Location pos;
 
+	bool is_public;
+	char* name;
+	Array fields; // AstStructField
 } AstStruct;
+
+typedef struct {
+	Location pos;
+	Location pos_type;
+	Location pos_name;
+
+	bool is_mut;
+	bool is_public;
+	bool is_global;
+
+	bool has_default;
+
+	AstParamData type;
+	char* name;
+
+	// TODO: attributes
+} AstStructField;
 
 typedef struct {
 
