@@ -43,12 +43,38 @@ import file { create } // create()
 import file { create as cr } // cr()
 */
 typedef struct {
-	Array names;
-	Array as;
-	Array symbols;
+	// IMPORT ****.****.*** { *** } AS ***
+	// ^ pos
+	//        ^ pos_names
+	//                      ^ pos_symbols
+	//                              ^ pos_alias
+	Location pos;
+	Location pos_names;
+	Location pos_symbols;
+	Location pos_alias;
+
+	Array names; // AstImportName
+	Array symbols; // AstImportSymbol
+	char* alias;
 } AstImport;
 
 typedef struct {
+	Location pos;
+
+	char* name;
+} AstImportName;
+
+typedef struct {
+	Location pos; // aka pos_names
+	Location pos_alias;
+
+	Array names;
+	char* alias;
+} AstImportSymbol;
+
+typedef struct {
+	Location pos;
+
 	AstBlockType type;
 	union {
 		AstFunction function;
@@ -66,7 +92,7 @@ typedef enum {
 } AstBlockType;
 
 typedef enum {
-
+	
 } AstFunction;
 
 typedef enum {
