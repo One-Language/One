@@ -65,7 +65,7 @@ typedef struct {
 } AstImportName;
 
 typedef struct {
-	Location pos; // aka pos_names
+	Location pos_names;
 	Location pos_alias;
 
 	Array names;
@@ -91,19 +91,74 @@ typedef enum {
 	BLOCK_STATEMENT,
 } AstBlockType;
 
-typedef enum {
-	
+typedef struct {
+	// [main] FN ( mut name type ) fn_name () type { }
+	// ^ pos_attribute
+	//        ^ pos_function
+	//           ^ pos_reciver
+	//                             ^ pos_name
+	//                                      ^ pos_param
+	//                                        ^ pos_return
+	//                                             ^ pos_body
+	Location pos_attribute;
+	Location pos_function;
+	Location pos_reciver;
+	Location pos_name;
+	Location pos_param;
+	Location pos_return;
+	Location pos_body;
+
+	bool is_main;
+	bool is_noreturn;
+	bool is_public;
+	bool is_depracted;
+
+	bool has_return;
+
+	AstParam reciver;
+	Array params; // AstParam
+	Array statements; // AstBlock
 } AstFunction;
 
-typedef enum {
+typedef struct {
+	Location pos_type;
+	Location pos_name;
+
+	bool is_mut;
+	char* name;
+
+	AstParamData type;
+	char* name;
+} AstParam;
+
+/*
+i8, u8
+i16, u16
+i32, u32
+i64, u64
+i128, u128
+f32, f64
+bool
+char, string
+*/
+typedef struct {
+	Array names; // char*
+} AstParamData;
+
+// typedef enum {
+// 	TYPE_STRUCT,
+// 	TYPE_SUMTYPE,
+// } AstParamDataType;
+
+typedef struct {
 
 } AstStruct;
 
-typedef enum {
+typedef struct {
 
 } AstType;
 
-typedef enum {
+typedef struct {
 
 } AstStatement;
 
