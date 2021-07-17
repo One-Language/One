@@ -162,9 +162,13 @@ typedef struct {
 typedef struct {
 	Location pos;
 
-	bool is_public;
 	char* name;
-	Array fields; // AstStructField
+
+	Array global; // AstStructField
+	Array pub_mut; // AstStructField
+	Array pub; // AstStructField
+	Array mut; // AstStructField
+	Array imut; // AstStructField
 } AstStruct;
 
 typedef struct {
