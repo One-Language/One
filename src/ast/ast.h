@@ -13,22 +13,24 @@
 
 typedef enum _token_type TokenType;
 
-//// File:
-//// 	char* package
-//// 	Array<Import> imports
-//// 	Array<Block> blocks
+/*
+package main
+package test
+package firstName.subName
+*/
 typedef struct {
-	char* package;
-	Array imports;
-	Array blocks;
-} AstFile;
-// typedef Array ArrayImport;
-// typedef Array ArrayBlock;
+	char* name;
+} AstModule;
 
-//// Import:
-//// 	Array names = [math], [parentLib, childLib], [file]
-//// 	Array as = [pc, cr]
-//// 	Array symbols = [sin], [sin, cos], [create]
+typedef struct {
+	AstModule module;
+	Array imports; // AstImport
+	Array blocks; // AstBlock
+
+	char* path;
+	char* path_base;
+} AstFile;
+
 /*
 import math // math.sin(), math.cos()
 import math { sin } // sin()
@@ -46,18 +48,38 @@ typedef struct {
 	Array symbols;
 } AstImport;
 
-Block:
-	BlockType type
-	Function function
-	DefineStruct define_struct
-	DefineType define_type
-	Statement statement
+typedef struct {
+	AstBlockType type;
+	union {
+		AstFunction function;
+		AstStruct structure;
+		AstType type;
+		AstStatement statement;
+	} value;
+} AstBlock;
 
-BlockType:
-	BLOCK_FUNCTION
-	BLOCK_STRUCT
-	BLOCK_TYPE
-	BLOCK_STATEMENT
+typedef enum {
+	BLOCK_FUNCTION,
+	BLOCK_STRUCT,
+	BLOCK_TYPE,
+	BLOCK_STATEMENT,
+} AstBlockType;
+
+typedef enum {
+
+} AstFunction;
+
+typedef enum {
+
+} AstStruct;
+
+typedef enum {
+
+} AstType;
+
+typedef enum {
+
+} AstStatement;
 
 
 // char* ast_statement_name(AstStatementType type);
