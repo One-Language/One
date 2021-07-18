@@ -131,14 +131,19 @@ typedef struct
 
 typedef struct
 {
-	Location pos_type;
+	// fn (mut t MyTime) century() int {}
+	//	   mut t MyTime
+	//	   ^ pos_mut
+	//	       ^ pos_name
+	//	         ^ pos_type
+	Location pos_mut;
 	Location pos_name;
+	Location pos_type;
 
 	bool is_mut;
-	char* name;
 
-	AstParamData type;
 	char* name;
+	AstParamData type;
 } AstParam;
 
 /*
