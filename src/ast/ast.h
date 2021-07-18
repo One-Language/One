@@ -26,8 +26,8 @@ typedef struct
 typedef struct
 {
 	AstModule module;
-	Array imports; // AstImport
-	Array blocks; // AstBlock
+	Array imports; // AstImportDeclaration
+	Array blocks; // AstBlockDeclaration
 
 	char* path;
 	char* path_base;
@@ -59,7 +59,7 @@ typedef struct
 	Array names; // AstImportName
 	Array symbols; // AstImportSymbol
 	char* alias;
-} AstImport;
+} AstImportDeclaration;
 
 typedef struct
 {
@@ -73,6 +73,8 @@ typedef struct
 	Location pos_names;
 	Location pos_alias;
 
+	bool has_alias;
+
 	Array names;
 	char* alias;
 } AstImportSymbol;
@@ -84,12 +86,12 @@ typedef struct
 	AstBlockType type;
 	union
 	{
-		AstFunction function;
-		AstStruct structure;
-		AstType type;
-		AstStatement statement;
+		AstFunctionDeclaration function;
+		AstStructDeclaration structure;
+		AstTypeDeclaration type;
+		AstStatementDeclaration statement;
 	} value;
-} AstBlock;
+} AstBlockDeclaration;
 
 typedef enum
 {
@@ -109,6 +111,7 @@ typedef struct
 	//                                      ^ pos_param
 	//                                        ^ pos_return
 	//                                             ^ pos_body
+	Location pos;
 	Location pos_attribute;
 	Location pos_function;
 	Location pos_reciver;
@@ -126,8 +129,8 @@ typedef struct
 
 	AstParam reciver;
 	Array params; // AstParam
-	Array statements; // AstBlock
-} AstFunction;
+	Array statements; // AstBlockDeclaration
+} AstFunctionDeclaration;
 
 typedef struct
 {
@@ -136,6 +139,7 @@ typedef struct
 	//	   ^ pos_mut
 	//	       ^ pos_name
 	//	         ^ pos_type
+	Location pos;
 	Location pos_mut;
 	Location pos_name;
 	Location pos_type;
@@ -143,7 +147,7 @@ typedef struct
 	bool is_mut;
 
 	char* name;
-	AstParamData type;
+	AstData type;
 } AstParam;
 
 /*
@@ -168,6 +172,7 @@ typedef struct
 	// ^ pos_address or maybe nil
 	// ^ pos_name
 	//     ^ pos_generic
+	Location pos;
 	Location pos_address;
 	Location pos_name;
 	Location pos_generic;
@@ -175,25 +180,22 @@ typedef struct
 	bool has_address;
 	bool has_generic;
 
-	Array names; // AstParamDataItem
+	Array names; // AstDataItem
 	Array generics; // char*
-} AstParamData;
+} AstData;
 
 typedef struct
 {
 	Location pos;
 
 	char* name; // char*
-} AstParamDataItem;
-
-// typedef enum {
-// 	TYPE_STRUCT,
-// 	TYPE_SUMTYPE,
-// } AstParamDataType;
+} AstDataItem;
 
 typedef struct
 {
 	Location pos;
+	Location pos_name;
+	Location pos_body;
 
 	char* name;
 
@@ -202,7 +204,7 @@ typedef struct
 	Array pub; // AstStructField
 	Array mut; // AstStructField
 	Array imut; // AstStructField
-} AstStruct;
+} AstStructDeclaration;
 
 typedef struct
 {
@@ -215,20 +217,116 @@ typedef struct
 	bool is_global;
 
 	bool has_default;
+	AstExpr value;
 
-	AstParamData type;
+	AstData type;
 	char* name;
-
 	// TODO: attributes
 } AstStructField;
 
 typedef struct
 {
-} AstType;
+} AstExpr;
+
+/*
+struct Point {
+	x int
+	y int
+}
+struct Line {
+	p1 Point
+	p2 Point
+}
+type ObjectSumType = Line | Point
+
+struct Moon {}
+struct Mars {}
+struct Venus {}
+type World = Mars | Moon | Venus
+
+type Filter = fn (string) string
+*/
+typedef struct
+{
+	Location pos;
+	Location pos_public;
+	Location pos_name;
+
+	AstTypeDeclarationType type;
+
+	bool is_public;
+
+	char* name;
+
+	enum
+	{
+		AstTypeFunctionDeclaration function;
+		AstTypeAliasDeclaration alias;
+		AstTypeSumDeclaration sum;
+	}
+	value;
+} AstTypeDeclaration;
+
+typedef enum
+{
+	STATEMENT_TYPE_SUM,
+	STATEMENT_TYPE_ALIAS,
+	STATEMENT_TYPE_FUNCTION,
+} AstTypeDeclarationType;
 
 typedef struct
 {
-} AstStatement;
+	Location pos;
+	Location pos_public;
+	Location pos_name;
+	Location pos_type;
+
+	bool is_public;
+
+	char* name;
+	AstData data; // TODO: AstData can store a function type?
+} AstTypeFunctionDeclaration;
+
+typedef struct
+{
+	Location pos;
+	Location pos_public;
+	Location pos_name;
+	Location pos_type;
+
+	bool is_public;
+
+	char* name;
+	AstData data;
+} AstTypeAliasDeclaration;
+
+typedef struct
+{
+	Location pos;
+	Location pos_public;
+	Location pos_name;
+	Location pos_name;
+
+	bool is_public;
+
+	char* name;
+	Array data; // AstTypeSumItem
+} AstTypeSumDeclaration;
+
+typedef struct
+{
+	Location pos;
+	AstData data;
+} AstTypeSumItem;
+
+// typedef enum {
+// 	TYPE_STRUCT,
+// 	TYPE_SUMTYPE,
+// } AstParamDataType;
+
+typedef struct
+{
+} AstStatementDeclaration;
 
 // char* ast_statement_name(AstStatementType type);
 
