@@ -217,6 +217,7 @@ typedef struct
 typedef struct
 {
 	Location pos;
+	Location pos_attribute;
 	Location pos_name;
 	Location pos_body;
 
@@ -227,6 +228,7 @@ typedef struct
 	// Array pub; // AstStructField
 	// Array mut; // AstStructField
 	// Array imut; // AstStructField
+
 	Array fields; // AstStructField
 	Array attributes; // AstAttributeDeclaration
 } AstStructDeclaration;
@@ -234,6 +236,7 @@ typedef struct
 typedef struct
 {
 	Location pos;
+	Location pos_attribute;
 	Location pos_type;
 	Location pos_name;
 	Location pos_value;
@@ -253,6 +256,7 @@ typedef struct
 typedef struct
 {
 	Location pos;
+	Location pos_attribute;
 	Location pos_name;
 	Location pos_body;
 
@@ -264,6 +268,7 @@ typedef struct
 typedef struct
 {
 	Location pos;
+	Location pos_attribute;
 	Location pos_name;
 	Location pos_value;
 
