@@ -376,7 +376,7 @@ Maaari mong suriin ang [link na ito](https://github.com/ET-Lang/ET/wiki) upang s
 Tumatanggap kami ng anumang uri ng mga kontribusyon, kabilang ang ulat ng mga bug, paghiling ng tampok, pagpapahusay ng dokumentasyon, atbp.
 Upang magtanong o magsimula ng isang Pag-uusap, gumawa ng isang isyu o sumali sa <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Servidor de Discord</a>.
 
-Kung hindi ka pamilyar sa proseduring upang gumawa ng isang kahilingan sa paghila sa GitHub maaari mong suriin ang [gabay] na ito (https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+Kung hindi ka pamilyar sa proseduring upang gumawa ng isang kahilingan sa paghila sa GitHub maaari mong suriin ang na ito [gabay](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
 Kung nagpasya kang mag-ambag, mangyaring suriin ang mga alituntunin [dito](CONTRIBUTING.md).
 <br>Maaari mo ring tulungan ang pagbuo ng `One` sa pamamagitan ng mga donasyon sa [:heart: Patreon](https://www.patreon.com/onelanguage).
