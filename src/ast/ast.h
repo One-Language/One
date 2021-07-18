@@ -89,6 +89,7 @@ typedef struct
 	{
 		AstFunctionDeclaration function;
 		AstStructDeclaration structure;
+		AstEnumDeclaration enumerate;
 		AstTypeDeclaration type;
 		AstStatementDeclaration statement;
 	} value;
@@ -98,6 +99,7 @@ typedef enum
 {
 	AST_BLOCK_FUNCTION,
 	AST_BLOCK_STRUCT,
+	AST_BLOCK_ENUM,
 	AST_BLOCK_TYPE,
 	AST_BLOCK_STATEMENT,
 } AstBlockType;
