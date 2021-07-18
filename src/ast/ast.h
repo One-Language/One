@@ -84,6 +84,7 @@ typedef struct
 	Location pos;
 
 	AstBlockType type;
+
 	union
 	{
 		AstFunctionDeclaration function;
@@ -220,7 +221,7 @@ typedef struct
 	bool is_global;
 
 	bool has_default;
-	AstExpr value;
+	AstExprDeclaration value;
 
 	AstData type;
 	char* name;
@@ -245,7 +246,7 @@ typedef struct
 	Location pos_value;
 
 	bool has_default;
-	AstExpr value;
+	AstExprDeclaration value;
 
 	char* name;
 	// TODO: attributes
@@ -253,7 +254,107 @@ typedef struct
 
 typedef struct
 {
-} AstExpr;
+	Location pos;
+
+	AstExprType type;
+	AstOperatorType op;
+
+	AstExprDeclaration left;
+	AstExprDeclaration right;
+
+	enum
+	{
+		char i8;
+		unsigned char u8;
+
+		short i16;
+		unsigned short u16;
+
+		int i32;
+		unsigned int u32;
+
+		int64_t i64;
+		uint64_t u64;
+
+		float f32;
+		double f64;
+
+		bool bool;
+
+		char * string;
+		char * ch;
+	}
+	value;
+} AstExprDeclaration;
+
+typedef enum
+{
+	AST_OPERATOR_PLUS, // -
+	AST_OPERATOR_PLUS_PLUS, // --
+
+	AST_OPERATOR_MINUS, // -
+	AST_OPERATOR_MINUS_MINUS, // --
+
+	AST_OPERATOR_STAR, // *
+	AST_OPERATOR_STAR_STAR, // **
+
+	AST_OPERATOR_SLASH, // /
+	AST_OPERATOR_SLASH_INT, // //
+
+	AST_OPERATOR_SHIFT_LEFT, // >>
+	AST_OPERATOR_SHIFT_RIGHT, // <<
+
+	AST_OPERATOR_AND, // &&
+	AST_OPERATOR_AND_BIT, // &
+
+	AST_OPERATOR_OR, // ||
+	AST_OPERATOR_OR_BIT, // |
+
+	AST_OPERATOR_NOT, // !
+	AST_OPERATOR_NOT_EQUAL, // !=
+	AST_OPERATOR_NOT_EQUAL_EQUAL, // !==
+
+	AST_OPERATOR_EQUAL, // =
+	AST_OPERATOR_EQUAL_EQUAL, // ==
+	AST_OPERATOR_EQUAL_EQUAL, // ===
+
+	// Relational Operators
+	AST_OPERATOR_GREATER, // >
+	AST_OPERATOR_GREATER_EQUAL, // >=
+	AST_OPERATOR_LESS, // <
+	AST_OPERATOR_LESS_EQUAL, // <=
+
+	AST_OPERATOR_DOT, // parent.sub
+	AST_OPERATOR_DOT_DOT, // [1..4]
+	AST_OPERATOR_DOT_DOT_DOT, // {...objects}
+} AstOperatorType;
+
+typedef enum
+{
+	AST_EXPRESSION_TYPE_OPERATOR,
+
+	AST_EXPRESSION_TYPE_I8,
+	AST_EXPRESSION_TYPE_U8,
+
+	AST_EXPRESSION_TYPE_I16,
+	AST_EXPRESSION_TYPE_U16,
+
+	AST_EXPRESSION_TYPE_I32,
+	AST_EXPRESSION_TYPE_U32,
+
+	AST_EXPRESSION_TYPE_I64,
+	AST_EXPRESSION_TYPE_U64,
+
+	AST_EXPRESSION_TYPE_I128,
+	AST_EXPRESSION_TYPE_U128,
+
+	AST_EXPRESSION_TYPE_F32,
+	AST_EXPRESSION_TYPE_F64,
+
+	AST_EXPRESSION_TYPE_BOOL,
+	AST_EXPRESSION_TYPE_STRING,
+	AST_EXPRESSION_TYPE_CHAR,
+} AstExprType;
 
 /*
 struct Point {
@@ -285,20 +386,19 @@ typedef struct
 
 	char* name;
 
-	enum
+	union
 	{
 		AstTypeFunctionDeclaration function;
 		AstTypeAliasDeclaration alias;
 		AstTypeSumDeclaration sum;
-	}
-	value;
+	} value;
 } AstTypeDeclaration;
 
 typedef enum
 {
-	STATEMENT_TYPE_SUM,
-	STATEMENT_TYPE_ALIAS,
-	STATEMENT_TYPE_FUNCTION,
+	AST_TYPE_SUM,
+	AST_TYPE_ALIAS,
+	AST_TYPE_FUNCTION,
 } AstTypeDeclarationType;
 
 typedef struct
