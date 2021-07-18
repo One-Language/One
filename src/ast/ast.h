@@ -133,8 +133,28 @@ typedef struct
 	AstParam reciver;
 	Array params; // AstParam
 	Array statements; // AstBlockDeclaration
+	Array attributes; //AstAttributeDeclaration
 } AstFunctionDeclaration;
 
+typedef struct
+{
+	Location pos;
+	Location pos_name;
+	Location pos_value;
+
+	AstAttributeType type;
+
+	bool has_value;
+
+	char* name;
+	char* value;
+} AstAttributeDeclaration;
+
+typedef enum
+{
+	AST_ATTRIBUTE_IDENTIFIER,
+	AST_ATTRIBUTE_KEY,
+} AstAttributeType;
 typedef struct
 {
 	// fn (mut t MyTime) century() int {}
@@ -208,7 +228,7 @@ typedef struct
 	// Array mut; // AstStructField
 	// Array imut; // AstStructField
 	Array fields; // AstStructField
-	// TODO: attributes
+	Array attributes; // AstAttributeDeclaration
 } AstStructDeclaration;
 
 typedef struct
@@ -227,7 +247,7 @@ typedef struct
 
 	AstData type;
 	char* name;
-	// TODO: attributes
+	Array attributes; // AstAttributeDeclaration
 } AstStructField;
 
 typedef struct
@@ -238,7 +258,7 @@ typedef struct
 
 	char* name;
 	Array fields; // AstEnumField
-	// TODO: attributes
+	Array attributes; // AstAttributeDeclaration
 } AstEnumDeclaration;
 
 typedef struct
@@ -251,7 +271,7 @@ typedef struct
 	AstExprDeclaration value;
 
 	char* name;
-	// TODO: attributes
+	Array attributes; // AstAttributeDeclaration
 } AstEnumField;
 
 typedef struct
