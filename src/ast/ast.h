@@ -18,11 +18,13 @@ package main
 package test
 package firstName.subName
 */
-typedef struct {
+typedef struct
+{
 	char* name;
 } AstModule;
 
-typedef struct {
+typedef struct
+{
 	AstModule module;
 	Array imports; // AstImport
 	Array blocks; // AstBlock
@@ -42,7 +44,8 @@ import file // file.create()
 import file { create } // create()
 import file { create as cr } // cr()
 */
-typedef struct {
+typedef struct
+{
 	// IMPORT ****.****.*** { *** } AS ***
 	// ^ pos
 	//        ^ pos_names
@@ -58,13 +61,15 @@ typedef struct {
 	char* alias;
 } AstImport;
 
-typedef struct {
+typedef struct
+{
 	Location pos;
 
 	char* name;
 } AstImportName;
 
-typedef struct {
+typedef struct
+{
 	Location pos_names;
 	Location pos_alias;
 
@@ -72,11 +77,13 @@ typedef struct {
 	char* alias;
 } AstImportSymbol;
 
-typedef struct {
+typedef struct
+{
 	Location pos;
 
 	AstBlockType type;
-	union {
+	union
+	{
 		AstFunction function;
 		AstStruct structure;
 		AstType type;
@@ -84,14 +91,16 @@ typedef struct {
 	} value;
 } AstBlock;
 
-typedef enum {
+typedef enum
+{
 	BLOCK_FUNCTION,
 	BLOCK_STRUCT,
 	BLOCK_TYPE,
 	BLOCK_STATEMENT,
 } AstBlockType;
 
-typedef struct {
+typedef struct
+{
 	// [main] FN ( mut name type ) fn_name () type { }
 	// ^ pos_attribute
 	//        ^ pos_function
@@ -120,7 +129,8 @@ typedef struct {
 	Array statements; // AstBlock
 } AstFunction;
 
-typedef struct {
+typedef struct
+{
 	Location pos_type;
 	Location pos_name;
 
@@ -142,13 +152,30 @@ bool
 char, string
 pubName.publicTypeName
 */
-typedef struct {
-	Location pos;
+typedef struct
+{
+	// &Node<T>
+	// ^ pos_address
+	//  ^ pos_name
+	//      ^ pos_generic
+
+	// Node<T>
+	// ^ pos_address or maybe nil
+	// ^ pos_name
+	//     ^ pos_generic
+	Location pos_address;
+	Location pos_name;
+	Location pos_generic;
+
+	bool has_address;
+	bool has_generic;
 
 	Array names; // AstParamDataItem
+	Array generics; // char*
 } AstParamData;
 
-typedef struct {
+typedef struct
+{
 	Location pos;
 
 	char* name; // char*
@@ -159,7 +186,8 @@ typedef struct {
 // 	TYPE_SUMTYPE,
 // } AstParamDataType;
 
-typedef struct {
+typedef struct
+{
 	Location pos;
 
 	char* name;
@@ -171,7 +199,8 @@ typedef struct {
 	Array imut; // AstStructField
 } AstStruct;
 
-typedef struct {
+typedef struct
+{
 	Location pos;
 	Location pos_type;
 	Location pos_name;
@@ -188,14 +217,13 @@ typedef struct {
 	// TODO: attributes
 } AstStructField;
 
-typedef struct {
-
+typedef struct
+{
 } AstType;
 
-typedef struct {
-
+typedef struct
+{
 } AstStatement;
-
 
 // char* ast_statement_name(AstStatementType type);
 
