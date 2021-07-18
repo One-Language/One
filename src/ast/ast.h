@@ -282,6 +282,10 @@ typedef struct
 typedef struct
 {
 	Location pos;
+	Location pos_op;
+	Location pos_left;
+	Location pos_right;
+	Location pos_value;
 
 	AstExprType type;
 	AstOperatorType op;
@@ -291,25 +295,25 @@ typedef struct
 
 	enum
 	{
-		char i8;
-		unsigned char u8;
+		char vi8;
+		unsigned char vu8;
 
-		short i16;
-		unsigned short u16;
+		short vi16;
+		unsigned short vu16;
 
-		int i32;
-		unsigned int u32;
+		int vi32;
+		unsigned int vu32;
 
-		int64_t i64;
-		uint64_t u64;
+		int64_t vi64;
+		uint64_t vu64;
 
-		float f32;
-		double f64;
+		float vf32;
+		double vf64;
 
-		bool bool;
+		bool vbool;
 
-		char * string;
-		char * ch;
+		char * vstring;
+		char * vchar;
 	}
 	value;
 } AstExprDeclaration;
@@ -325,25 +329,30 @@ typedef enum
 	AST_OPERATOR_STAR, // *
 	AST_OPERATOR_STAR_STAR, // **
 
+	AST_OPERATOR_MOD, // %
+
 	AST_OPERATOR_SLASH, // /
 	AST_OPERATOR_SLASH_INT, // //
 
 	AST_OPERATOR_SHIFT_LEFT, // >>
 	AST_OPERATOR_SHIFT_RIGHT, // <<
 
-	AST_OPERATOR_AND, // &&
-	AST_OPERATOR_AND_BIT, // &
+	AST_OPERATOR_BIT_AND, // &
+	AST_OPERATOR_BIT_OR, // |
+	AST_OPERATOR_BIT_XOR, // ^
+	AST_OPERATOR_BIT_NOT, // ~
 
+	AST_OPERATOR_AND, // &&
 	AST_OPERATOR_OR, // ||
-	AST_OPERATOR_OR_BIT, // |
 
 	AST_OPERATOR_NOT, // !
 	AST_OPERATOR_NOT_EQUAL, // !=
-	AST_OPERATOR_NOT_EQUAL_EQUAL, // !==
+	// AST_OPERATOR_NOT_EQUAL_EQUAL, // !==
 
 	AST_OPERATOR_EQUAL, // =
+	AST_OPERATOR_EQUAL_ASSIGN, // :=
 	AST_OPERATOR_EQUAL_EQUAL, // ==
-	AST_OPERATOR_EQUAL_EQUAL, // ===
+	// AST_OPERATOR_EQUAL_EQUAL, // ===
 
 	// Relational Operators
 	AST_OPERATOR_GREATER, // >
@@ -354,6 +363,19 @@ typedef enum
 	AST_OPERATOR_DOT, // parent.sub
 	AST_OPERATOR_DOT_DOT, // [1..4]
 	AST_OPERATOR_DOT_DOT_DOT, // {...objects}
+
+	// Assignment Operators
+	AST_OPERATOR_EQUAL_PLUS, // +=
+	AST_OPERATOR_EQUAL_MINUS, // -=
+	AST_OPERATOR_EQUAL_MINUS, // *=
+	AST_OPERATOR_EQUAL_SLASH, // /=
+	AST_OPERATOR_EQUAL_MOD, // %=
+	AST_OPERATOR_EQUAL_BIT_AND, // &=
+	AST_OPERATOR_EQUAL_BIT_OR, // |=
+	AST_OPERATOR_EQUAL_BIT_NOT, // ^=
+	AST_OPERATOR_EQUAL_SHIFT_LEFT, // >>=
+	AST_OPERATOR_EQUAL_SHIFT_RIGHT, // <<=
+
 } AstOperatorType;
 
 typedef enum
