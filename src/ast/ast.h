@@ -96,10 +96,10 @@ typedef struct
 
 typedef enum
 {
-	BLOCK_FUNCTION,
-	BLOCK_STRUCT,
-	BLOCK_TYPE,
-	BLOCK_STATEMENT,
+	AST_BLOCK_FUNCTION,
+	AST_BLOCK_STRUCT,
+	AST_BLOCK_TYPE,
+	AST_BLOCK_STATEMENT,
 } AstBlockType;
 
 typedef struct
