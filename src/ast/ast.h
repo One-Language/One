@@ -199,11 +199,13 @@ typedef struct
 
 	char* name;
 
-	Array global; // AstStructField
-	Array pub_mut; // AstStructField
-	Array pub; // AstStructField
-	Array mut; // AstStructField
-	Array imut; // AstStructField
+	// Array global; // AstStructField
+	// Array pub_mut; // AstStructField
+	// Array pub; // AstStructField
+	// Array mut; // AstStructField
+	// Array imut; // AstStructField
+	Array fields; // AstStructField
+	// TODO: attributes
 } AstStructDeclaration;
 
 typedef struct
@@ -211,6 +213,7 @@ typedef struct
 	Location pos;
 	Location pos_type;
 	Location pos_name;
+	Location pos_value;
 
 	bool is_mut;
 	bool is_public;
@@ -223,6 +226,30 @@ typedef struct
 	char* name;
 	// TODO: attributes
 } AstStructField;
+
+typedef struct
+{
+	Location pos;
+	Location pos_name;
+	Location pos_body;
+
+	char* name;
+	Array fields; // AstEnumField
+	// TODO: attributes
+} AstEnumDeclaration;
+
+typedef struct
+{
+	Location pos;
+	Location pos_name;
+	Location pos_value;
+
+	bool has_default;
+	AstExpr value;
+
+	char* name;
+	// TODO: attributes
+} AstEnumField;
 
 typedef struct
 {
