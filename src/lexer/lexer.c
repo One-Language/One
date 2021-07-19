@@ -27,10 +27,15 @@ void lexer_init(char* source)
 	lexer.start = source;
 	lexer.current = source;
 
-	lexer.loc.tokens = 0;
-	lexer.loc.index = 0;
-	lexer.loc.line = 0;
-	lexer.loc.column = 0;
+	lexer.pos.tokens = 0;
+	lexer.pos.index = 0;
+	lexer.pos.line = 0;
+	lexer.pos.column = 0;
+
+	lexer.pos_end.tokens = 0;
+	lexer.pos_end.index = 0;
+	lexer.pos_end.line = 0;
+	lexer.pos_end.column = 0;
 }
 
 /*
@@ -194,7 +199,7 @@ Token* lexer_skip_whitespace()
 				token_advance();
 				break;
 			case '\n':
-				// lexer.loc.line++;
+				// lexer.pos.line++;
 				token_advance();
 				break;
 			case '/':
@@ -347,6 +352,7 @@ Token* lexer_scan()
 		return t;
 
 	lexer.start = lexer.current;
+	lexer.pos = lexer.pos_end;
 
 	// printf("X:First ==>%c\n", *lexer.current);
 	// printf("X:Second ==>%c\n", *lexer.start);

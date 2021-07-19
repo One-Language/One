@@ -42,7 +42,7 @@ void error(ErrorType type, int line, const char* file, const char* function, con
 
 #ifdef _ONE_PARSER_
 	Token* current_token = (*parser.tokens);
-	loc = current_token->loc;
+	loc = current_token->pos;
 	path = parser.path;
 #elif defined _ONE_LEXER_
 	loc = lexer.loc;

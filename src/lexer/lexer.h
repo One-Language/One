@@ -25,9 +25,11 @@
 
 typedef struct
 {
-	const char* start;
-	const char* current;
-	Location loc;
+	Location pos;
+  Location pos_end;
+
+  const char* start;
+  const char* current;
 } Lexer;
 
 /*

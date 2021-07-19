@@ -51,7 +51,7 @@ int main(int argc, char** argv)
 		{
 			Token* t = *tokens;
 			char* t_name = token_name(t->type);
-			fprintf(file_out, "[%d] [%d:%d-%d] %s", t->loc.tokens, t->loc.line, t->loc.column, t->length, t_name);
+			fprintf(file_out, "[%d:%d] [%d:%d - %d:%d] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
 			if (t->value != NULL)
 			{
 				fprintf(file_out, ": \"%s\"", t->value);

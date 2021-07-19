@@ -183,7 +183,8 @@ typedef struct _token
 
 	const char* value;
 	size_t length;
-	Location loc;
+	Location pos;
+	Location pos_end;
 } Token;
 
 typedef struct _keyword

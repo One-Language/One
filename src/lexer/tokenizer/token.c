@@ -99,12 +99,12 @@ char token_advance()
 	lexer.current++;
 	if (lexer.current[0] == '\n')
 	{
-		lexer.loc.column = 0;
-		lexer.loc.line++;
+		lexer.pos_end.column = 0;
+		lexer.pos_end.line++;
 	}
 	else
 	{
-		lexer.loc.column++;
+		lexer.pos_end.column++;
 	}
 	return lexer.current[-1];
 }
@@ -193,9 +193,10 @@ Token* token_make_value(TokenType type, char* value)
 	t->type = type;
 	t->length = (int)(lexer.current - lexer.start);
 	printf("CREATE TOKEN %s with %d length\n", token_name(t->type), t->length);
-	t->loc.tokens = lexer.loc.tokens++;
-	t->loc.line = lexer.loc.line;
-	t->loc.column = lexer.loc.column;
+	t->pos = lexer.pos;
+	t->pos_end.tokens = lexer.pos_end.tokens++;
+	t->pos_end.line = lexer.pos_end.line;
+	t->pos_end.column = lexer.pos_end.column;
 	return t;
 }
 
