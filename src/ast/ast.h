@@ -40,7 +40,7 @@ typedef Array AstEnumFieldArray; // AstEnumField
 typedef Array AstTypeSumItemArray; // AstTypeSumItem
 typedef Array AstStatementAssignConstItemArray; // AstStatementAssignConstItem
 
-typedef struct
+typedef struct _ast_file
 {
 	AstModule module;
 	AstImportDeclarationArray imports; // AstImportDeclaration
@@ -61,7 +61,7 @@ import file // file.create()
 import file { create } // create()
 import file { create as cr } // cr()
 */
-typedef struct
+typedef struct _ast_import_declaration
 {
 	// IMPORT ****.****.*** { *** } AS ***
 	// ^ pos
@@ -78,14 +78,14 @@ typedef struct
 	char* alias;
 } AstImportDeclaration;
 
-typedef struct
+typedef struct _ast_import_name
 {
 	Location pos;
 
 	char* name;
 } AstImportName;
 
-typedef struct
+typedef struct _ast_import_symbol
 {
 	Location pos_names;
 	Location pos_alias;
@@ -96,7 +96,7 @@ typedef struct
 	char* alias;
 } AstImportSymbol;
 
-typedef struct
+typedef struct _ast_block_declaration
 {
 	Location pos;
 
@@ -112,7 +112,7 @@ typedef struct
 	} value;
 } AstBlockDeclaration;
 
-typedef enum
+typedef enum _ast_block_type
 {
 	AST_BLOCK_FUNCTION,
 	AST_BLOCK_STRUCT,
@@ -121,7 +121,7 @@ typedef enum
 	AST_BLOCK_STATEMENT,
 } AstBlockType;
 
-typedef struct
+typedef struct _ast_function_declaration
 {
 	// [main] FN ( mut name type ) fn_name () type { }
 	// ^ pos_attribute
@@ -153,13 +153,13 @@ typedef struct
 	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
 } AstFunctionDeclaration;
 
-typedef enum
+typedef enum _ast_attribute_type
 {
 	AST_ATTRIBUTE_IDENTIFIER,
 	AST_ATTRIBUTE_KEY,
 } AstAttributeType;
 
-typedef struct
+typedef struct _ast_attribute_declaration
 {
 	Location pos;
 	Location pos_name;
@@ -173,7 +173,7 @@ typedef struct
 	char* value;
 } AstAttributeDeclaration;
 
-typedef struct
+typedef struct _ast_param
 {
 	// fn (mut t MyTime) century() int {}
 	//	   mut t MyTime
@@ -202,7 +202,7 @@ bool
 char, string
 pubName.publicTypeName
 */
-typedef struct
+typedef struct _ast_data
 {
 	// &Node<T>
 	// ^ pos_address
@@ -225,14 +225,14 @@ typedef struct
 	StringArray generics; // char*
 } AstData;
 
-typedef struct
+typedef struct _ast_data_item
 {
 	Location pos;
 
 	char* name; // char*
 } AstDataItem;
 
-typedef struct
+typedef struct _ast_struct_declaration
 {
 	Location pos;
 	Location pos_attribute;
@@ -251,7 +251,7 @@ typedef struct
 	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
 } AstStructDeclaration;
 
-typedef struct
+typedef struct _ast_struct_field
 {
 	Location pos;
 	Location pos_attribute;
@@ -271,7 +271,7 @@ typedef struct
 	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
 } AstStructField;
 
-typedef struct
+typedef struct _ast_enum_declaration
 {
 	Location pos;
 	Location pos_attribute;
@@ -283,7 +283,7 @@ typedef struct
 	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
 } AstEnumDeclaration;
 
-typedef struct
+typedef struct _ast_enum_field
 {
 	Location pos;
 	Location pos_attribute;
@@ -297,7 +297,7 @@ typedef struct
 	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
 } AstEnumField;
 
-typedef struct
+typedef struct _ast_expr_declaration
 {
 	Location pos;
 	Location pos_op;
@@ -336,7 +336,7 @@ typedef struct
 	value;
 } AstExprDeclaration;
 
-typedef enum
+typedef enum _ast_operator_type
 {
 	AST_OPERATOR_NONE, // emit data
 
@@ -399,7 +399,7 @@ typedef enum
 
 } AstOperatorType;
 
-typedef enum
+typedef enum _ast_expr_type
 {
 	AST_EXPRESSION_TYPE_I8,
 	AST_EXPRESSION_TYPE_U8,
@@ -442,7 +442,7 @@ type World = Mars | Moon | Venus
 
 type Filter = fn (string) string
 */
-typedef struct
+typedef struct _ast_type_declaration
 {
 	Location pos;
 	Location pos_public;
@@ -462,14 +462,14 @@ typedef struct
 	} value;
 } AstTypeDeclaration;
 
-typedef enum
+typedef enum _ast_type_declaration_type
 {
 	AST_TYPE_SUM,
 	AST_TYPE_ALIAS,
 	AST_TYPE_FUNCTION,
 } AstTypeDeclarationType;
 
-typedef struct
+typedef struct _ast_type_function_declaration
 {
 	Location pos;
 	Location pos_public;
@@ -482,7 +482,7 @@ typedef struct
 	AstData data; // TODO: AstData can store a function type?
 } AstTypeFunctionDeclaration;
 
-typedef struct
+typedef struct _ast_type_alias_declaration
 {
 	Location pos;
 	Location pos_public;
@@ -495,7 +495,7 @@ typedef struct
 	AstData data;
 } AstTypeAliasDeclaration;
 
-typedef struct
+typedef struct _ast_type_sum_declaration
 {
 	Location pos;
 	Location pos_public;
@@ -508,7 +508,7 @@ typedef struct
 	AstTypeSumItemArray data; // AstTypeSumItem
 } AstTypeSumDeclaration;
 
-typedef struct
+typedef struct _ast_type_sum_item
 {
 	Location pos;
 	AstData data;
@@ -519,7 +519,7 @@ typedef struct
 // 	TYPE_SUMTYPE,
 // } AstParamDataType;
 
-typedef struct
+typedef struct _ast_statement_declaration
 {
 	Location pos;
 
@@ -538,7 +538,7 @@ typedef struct
 	} value;
 } AstStatementDeclaration;
 
-typedef enum
+typedef enum _ast_statement_type
 {
 	AST_STATEMENT_IF,
 	AST_STATEMENT_FOR,
@@ -550,7 +550,7 @@ typedef enum
 	AST_STATEMENT_EXPRESSION,
 } AstStatementType;
 
-typedef struct
+typedef struct _ast_statement_if
 {
 	// if <expr> {} else ...
 	Location pos;
@@ -565,7 +565,7 @@ typedef struct
 	AstStatementIf otherwise;
 } AstStatementIf;
 
-typedef struct
+typedef struct _ast_statement_for
 {
 	Location pos;
 	AstStatementForType type;
@@ -578,7 +578,7 @@ typedef struct
 	} value;
 } AstStatementFor;
 
-typedef enum
+typedef enum _ast_statement_for_type
 {
 	AST_STATEMENT_FOR_C,
 	AST_STATEMENT_FOR_EACH,
@@ -586,7 +586,7 @@ typedef enum
 	AST_STATEMENT_FOR_LOOP,
 } AstStatementForType;
 
-typedef struct
+typedef struct _ast_statement_for_c
 {
 	// for i:=i;
 	Location pos;
@@ -606,7 +606,7 @@ typedef struct
 	Array body; // AstBlockDeclaration
 } AstStatementForC;
 
-typedef struct
+typedef struct _ast_statement_for_each
 {
 	// names := ['Max', 'Ali', 'Javad', 'John']
 	// for i, name in names {}
@@ -620,14 +620,14 @@ typedef struct
 	// TODO
 } AstStatementForEach;
 
-typedef struct
+typedef struct _ast_statement_for_map
 {
 	Location pos;
 
 	// TODO
 } AstStatementForMap;
 
-typedef struct
+typedef struct _ast_statement_for_loop
 {
 	// mut sum := 0
 	// mut i := 0
@@ -640,7 +640,7 @@ typedef struct
 	// TODO
 } AstStatementForLoop;
 
-typedef struct
+typedef struct _ast_statement_match
 {
 	// match ... { }
 	Location pos;
@@ -648,7 +648,7 @@ typedef struct
 	// TODO
 } AstStatementMatch;
 
-typedef struct
+typedef struct _ast_statement_ret
 {
 	// return <expr>
 	// ^ pos
@@ -662,7 +662,7 @@ typedef struct
 	AstExprDeclaration expr;
 } AstStatementRet;
 
-typedef struct
+typedef struct _ast_statement_assign
 {
 	// const <name> := <value>
 	Location pos;
@@ -674,7 +674,7 @@ typedef struct
 	AstExprDeclaration value;
 } AstStatementAssign;
 
-typedef struct
+typedef struct _ast_statement_assign_const
 {
 	// const (
 	// 	  pi    = 3.14
@@ -692,7 +692,7 @@ typedef struct
 	// Array value; // AstExprDeclaration
 } AstStatementAssignConst;
 
-typedef struct
+typedef struct _ast_statement_const_item
 {
 	Location pos_name;
 	Location pos_op;
@@ -702,7 +702,7 @@ typedef struct
 	AstExprDeclaration value;
 } AstStatementAssignConstItem;
 
-typedef struct
+typedef struct _ast_statement_variable
 {
 	// varName = 5
 	// varName += 7
@@ -720,7 +720,7 @@ typedef struct
 	AstExprDeclaration right;
 } AstStatementVariable;
 
-typedef struct
+typedef struct _ast_statement_expr
 {
 	// <expr>
 	// ^ pos
