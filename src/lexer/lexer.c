@@ -29,12 +29,12 @@ void lexer_init(char* source)
 
 	lexer.pos.tokens = 0;
 	lexer.pos.index = 0;
-	lexer.pos.line = 0;
+	lexer.pos.line = 1;
 	lexer.pos.column = 0;
 
 	lexer.pos_end.tokens = 0;
 	lexer.pos_end.index = 0;
-	lexer.pos_end.line = 0;
+	lexer.pos_end.line = 1;
 	lexer.pos_end.column = 0;
 }
 

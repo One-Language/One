@@ -30,6 +30,8 @@ typedef struct
 
   const char* start;
   const char* current;
+
+  int temp_column;
 } Lexer;
 
 /*
