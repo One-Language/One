@@ -11,6 +11,8 @@
 #ifndef _ONE_AST_AST_H_
 #define _ONE_AST_AST_H_
 
+#include <inttypes.h>
+
 #include "../builtins/array.h"
 #include "../lexer/tokenizer/token.h"
 
@@ -473,8 +475,8 @@ typedef struct _ast_expr_declaration
 	AstExprType type;
 	AstOperatorType op;
 
-	AstExprDeclaration left;
-	AstExprDeclaration right;
+	AstExprDeclaration *left;
+	AstExprDeclaration *right;
 
 	union
 	{
@@ -497,8 +499,7 @@ typedef struct _ast_expr_declaration
 
 		char * vstring;
 		char * vchar;
-	}
-	value;
+	} value;
 } AstExprDeclaration;
 
 typedef struct _ast_statement_for_c
@@ -644,25 +645,6 @@ typedef struct _ast_statement_expr
 	AstExprDeclaration expr;
 } AstStatementExpr;
 
-typedef struct _ast_statement_declaration
-{
-	Location pos;
-
-	AstStatementType type;
-
-	union
-	{
-		AstStatementIf clauses;
-		AstStatementFor foreach;
-		AstStatementMatch match;
-		AstStatementRet ret;
-		AstStatementAssign assign;
-		AstStatementAssignConst assign_const;
-		AstStatementVariable variable;
-		AstStatementExpr expr;
-	} value;
-} AstStatementDeclaration;
-
 typedef enum _ast_statement_type
 {
 	AST_STATEMENT_IF,
@@ -687,8 +669,16 @@ typedef struct _ast_statement_if
 
 	AstExprDeclaration expr;
 	AstBlockDeclarationArray body; // AstBlockDeclaration
-	AstStatementIf otherwise;
+	AstStatementIf *otherwise;
 } AstStatementIf;
+
+typedef enum _ast_statement_for_type
+{
+	AST_STATEMENT_FOR_C,
+	AST_STATEMENT_FOR_EACH,
+	AST_STATEMENT_FOR_MAP,
+	AST_STATEMENT_FOR_LOOP,
+} AstStatementForType;
 
 typedef struct _ast_statement_for
 {
@@ -703,13 +693,24 @@ typedef struct _ast_statement_for
 	} value;
 } AstStatementFor;
 
-typedef enum _ast_statement_for_type
+typedef struct _ast_statement_declaration
 {
-	AST_STATEMENT_FOR_C,
-	AST_STATEMENT_FOR_EACH,
-	AST_STATEMENT_FOR_MAP,
-	AST_STATEMENT_FOR_LOOP,
-} AstStatementForType;
+	Location pos;
+
+	AstStatementType type;
+
+	union
+	{
+		AstStatementIf clauses;
+		AstStatementFor foreach;
+		AstStatementMatch match;
+		AstStatementRet ret;
+		AstStatementAssign assign;
+		AstStatementAssignConst assign_const;
+		AstStatementVariable variable;
+		AstStatementExpr expr;
+	} value;
+} AstStatementDeclaration;
 
 typedef struct _ast_block_declaration
 {
