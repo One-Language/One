@@ -369,7 +369,8 @@ typedef enum
 	// Assignment Operators
 	AST_OPERATOR_EQUAL_PLUS, // +=
 	AST_OPERATOR_EQUAL_MINUS, // -=
-	AST_OPERATOR_EQUAL_MINUS, // *=
+	AST_OPERATOR_EQUAL_STAR, // *=
+	AST_OPERATOR_EQUAL_STAR_STAR, // **=
 	AST_OPERATOR_EQUAL_SLASH, // /=
 	AST_OPERATOR_EQUAL_MOD, // %=
 	AST_OPERATOR_EQUAL_BIT_AND, // &=
@@ -542,16 +543,16 @@ typedef struct {
 
 	AstExprDeclaration expr;
 	Array body; // AstBlockDeclaration
-
 	AstStatementIf otherwise;
 } AstStatementIf;
 
 typedef struct {
-
+	// TODO
 } AstStatementFor;
 
 typedef struct {
 	// match ... { }
+	// TODO
 } AstStatementMatch;
 
 typedef struct {
@@ -605,7 +606,20 @@ typedef struct {
 } AstStatementAssignConstItem;
 
 typedef struct {
+	// varName = 5
+	// varName += 7
+	// varStructName.fieldName = 7
+	// varStructName.fieldName *= 7
+	Location pos;
+	Location pos_left;
+	Location pos_op;
+	Location pos_right;
 
+	// Assignment Operators
+	AstOperatorType op;
+
+	AstExprDeclaration left;
+	AstExprDeclaration right;
 } AstStatementVariable;
 
 typedef struct {
