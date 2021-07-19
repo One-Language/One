@@ -97,10 +97,13 @@ char token_advance()
 	debug_token("token_advance");
 
 	lexer.current++;
-	if(lexer.current[0] == '\n') {
-		lexer.loc.column=0;
+	if (lexer.current[0] == '\n')
+	{
+		lexer.loc.column = 0;
 		lexer.loc.line++;
-	} else {
+	}
+	else
+	{
 		lexer.loc.column++;
 	}
 	return lexer.current[-1];
@@ -463,6 +466,15 @@ char* token_name(TokenType type)
 			return "type";
 		case TOKEN_INTERFACE:
 			return "interface";
+
+		case TOKEN_SKIP_WHITESPACE:
+			return "skip_whitespace";
+		case TOKEN_SKIP_WHITESPACE_LINE:
+			return "skip_whitespace_line";
+		case TOKEN_SKIP_COMMENT_SINGLE:
+			return "skip_comment_inline";
+		case TOKEN_SKIP_COMMENT_MULTI:
+			return "skip_comment_multi";
 
 		case TOKEN_SEMICOLON:
 			return "SEMICOLON";
