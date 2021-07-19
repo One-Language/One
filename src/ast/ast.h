@@ -25,20 +25,13 @@ typedef struct
 
 typedef AstImportDeclarationArray Array; // AstImportDeclaration
 typedef AstBlockDeclarationArray Array; // AstBlockDeclaration
-typedef StringArray char*;
+typedef StringArray char*; // char
 typedef AstParamArray Array; // AstParam
-typedef AstBlockDeclarationArray Array; // AstBlockDeclaration
 typedef AstAttributeDeclarationArray Array; // AstAttributeDeclaration
 typedef AstDataItemArray Array; // AstDataItem
-typedef StringArray Array; // char*
 typedef AstStructFieldArray Array; // AstStructField
-typedef AstAttributeDeclarationArray Array; // AstAttributeDeclaration
-typedef AstAttributeDeclarationArray Array; // AstAttributeDeclaration
 typedef AstEnumFieldArray Array; // AstEnumField
-typedef AstAttributeDeclarationArray Array; // AstAttributeDeclaration
-typedef AstAttributeDeclaration Array; // AstAttributeDeclaration
 typedef AstTypeSumItemArray Array; // AstTypeSumItem
-typedef AstBlockDeclarationArray Array; // AstBlockDeclaration
 typedef AstStatementAssignConstItemArray Array; // AstStatementAssignConstItem
 
 typedef struct
@@ -294,7 +287,7 @@ typedef struct
 	AstExprDeclaration value;
 
 	char* name;
-	AstAttributeDeclaration attributes; // AstAttributeDeclaration
+	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
 } AstEnumField;
 
 typedef struct
