@@ -565,19 +565,60 @@ typedef enum {
 } AstStatementForType;
 
 typedef struct {
+	// for i:=i;
+	Location pos;
+	Location pos_init;
+	Location pos_clauses;
+	Location pos_action;
+	Location pos_body;
+
+	bool has_init;
+	bool has_clauses;
+	bool has_action;
+
+	AstExprDeclaration init;
+	AstExprDeclaration clauses;
+	AstExprDeclaration action;
+
+	Array body; // AstBlockDeclaration
 } AstStatementForC;
 
 typedef struct {
-} AstStatementForArray;
+	// names := ['Max', 'Ali', 'Javad', 'John']
+	// for i, name in names {}
+
+	// mut numbers := [0, 1, 2]
+	// for mut num in numbers {
+	// 	num++
+	// }
+	Location pos;
+
+	// TODO
+}
+ AstStatementForArray;
 
 typedef struct {
+	Location pos;
+
+	// TODO
 } AstStatementForMap;
 
 typedef struct {
+	// mut sum := 0
+	// mut i := 0
+	// for i <= 100 {
+	// 	sum += i
+	// 	i++
+	// }
+	Location pos;
+
+	// TODO
 } AstStatementForLoop;
 
 typedef struct {
 	// match ... { }
+	Location pos;
+
 	// TODO
 } AstStatementMatch;
 
