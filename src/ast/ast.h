@@ -88,9 +88,9 @@ typedef Array AstStatementAssignConstItemArray; // AstStatementAssignConstItem
 
 typedef struct _ast_file
 {
-	AstModule module;
-	AstImportDeclarationArray imports; // AstImportDeclaration
-	AstBlockDeclarationArray blocks; // AstBlockDeclaration
+	AstModule* module;
+	AstImportDeclarationArray* imports; // AstImportDeclaration
+	AstBlockDeclarationArray* blocks; // AstBlockDeclaration
 
 	char* path;
 	char* path_base;
@@ -119,8 +119,8 @@ typedef struct _ast_import_declaration
 	Location pos_symbols;
 	Location pos_alias;
 
-	AstImportNameArray names; // AstImportName
-	AstImportSymbolArray symbols; // AstImportSymbol
+	AstImportNameArray* names; // AstImportName
+	AstImportSymbolArray* symbols; // AstImportSymbol
 	char* alias;
 } AstImportDeclaration;
 
@@ -138,7 +138,7 @@ typedef struct _ast_import_symbol
 
 	bool has_alias;
 
-	StringArray names; // char*
+	StringArray* names; // char*
 	char* alias;
 } AstImportSymbol;
 
@@ -181,8 +181,8 @@ typedef struct _ast_data
 	bool has_address;
 	bool has_generic;
 
-	AstDataItemArray names; // AstDataItem
-	StringArray generics; // char*
+	AstDataItemArray* names; // AstDataItem
+	StringArray* generics; // char*
 } AstData;
 
 typedef struct _ast_data_item
@@ -207,7 +207,7 @@ typedef struct _ast_param
 	bool is_mut;
 
 	char* name;
-	AstData type;
+	AstData* type;
 } AstParam;
 
 typedef struct _ast_function_declaration
@@ -236,10 +236,10 @@ typedef struct _ast_function_declaration
 
 	bool has_return;
 
-	AstParam reciver;
-	AstParamArray params; // AstParam
-	AstBlockDeclarationArray statements; // AstBlockDeclaration
-	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
+	AstParam* reciver;
+	AstParamArray* params; // AstParam
+	AstBlockDeclarationArray* statements; // AstBlockDeclaration
+	AstAttributeDeclarationArray* attributes; // AstAttributeDeclaration
 } AstFunctionDeclaration;
 
 typedef enum _ast_attribute_type
@@ -277,8 +277,8 @@ typedef struct _ast_struct_declaration
 	// Array mut; // AstStructField
 	// Array imut; // AstStructField
 
-	AstStructFieldArray fields; // AstStructField
-	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
+	AstStructFieldArray* fields; // AstStructField
+	AstAttributeDeclarationArray* attributes; // AstAttributeDeclaration
 } AstStructDeclaration;
 
 typedef struct _ast_enum_declaration
@@ -289,8 +289,8 @@ typedef struct _ast_enum_declaration
 	Location pos_body;
 
 	char* name;
-	AstEnumFieldArray fields; // AstEnumField
-	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
+	AstEnumFieldArray* fields; // AstEnumField
+	AstAttributeDeclarationArray* attributes; // AstAttributeDeclaration
 } AstEnumDeclaration;
 
 typedef enum _ast_type_declaration_type
@@ -310,7 +310,7 @@ typedef struct _ast_type_function_declaration
 	bool is_public;
 
 	char* name;
-	AstData data; // TODO: AstData can store a function type?
+	AstData* data; // TODO: AstData can store a function type?
 } AstTypeFunctionDeclaration;
 
 typedef struct _ast_type_alias_declaration
@@ -323,7 +323,7 @@ typedef struct _ast_type_alias_declaration
 	bool is_public;
 
 	char* name;
-	AstData data;
+	AstData* data;
 } AstTypeAliasDeclaration;
 
 typedef struct _ast_type_sum_declaration
@@ -335,7 +335,7 @@ typedef struct _ast_type_sum_declaration
 	bool is_public;
 
 	char* name;
-	AstTypeSumItemArray data; // AstTypeSumItem
+	AstTypeSumItemArray* data; // AstTypeSumItem
 } AstTypeSumDeclaration;
 
 /*
@@ -370,9 +370,9 @@ typedef struct _ast_type_declaration
 
 	union
 	{
-		AstTypeFunctionDeclaration function;
-		AstTypeAliasDeclaration alias;
-		AstTypeSumDeclaration sum;
+		AstTypeFunctionDeclaration* function;
+		AstTypeAliasDeclaration* alias;
+		AstTypeSumDeclaration* sum;
 	} value;
 } AstTypeDeclaration;
 
@@ -515,11 +515,11 @@ typedef struct _ast_statement_for_c
 	bool has_clauses;
 	bool has_action;
 
-	AstExprDeclaration init;
-	AstExprDeclaration clauses;
-	AstExprDeclaration action;
+	AstExprDeclaration* init;
+	AstExprDeclaration* clauses;
+	AstExprDeclaration* action;
 
-	Array body; // AstBlockDeclaration
+	AstBlockDeclarationArray* body; // AstBlockDeclaration
 } AstStatementForC;
 
 typedef struct _ast_statement_for_each
@@ -575,7 +575,7 @@ typedef struct _ast_statement_ret
 	Location pos_expr;
 
 	bool has_expr;
-	AstExprDeclaration expr;
+	AstExprDeclaration* expr;
 } AstStatementRet;
 
 typedef struct _ast_statement_assign
@@ -587,7 +587,7 @@ typedef struct _ast_statement_assign
 	Location pos_value;
 
 	char* name;
-	AstExprDeclaration value;
+	AstExprDeclaration* value;
 } AstStatementAssign;
 
 typedef struct _ast_statement_assign_const
@@ -603,7 +603,7 @@ typedef struct _ast_statement_assign_const
 
 	bool is_multi;
 
-	AstStatementAssignConstItemArray fields; // AstStatementAssignConstItem
+	AstStatementAssignConstItemArray* fields; // AstStatementAssignConstItem
 	// Array name; // char*
 	// Array value; // AstExprDeclaration
 } AstStatementAssignConst;
@@ -615,7 +615,7 @@ typedef struct _ast_statement_const_item
 	Location pos_value;
 
 	char* name;
-	AstExprDeclaration value;
+	AstExprDeclaration* value;
 } AstStatementAssignConstItem;
 
 typedef struct _ast_statement_variable
@@ -632,8 +632,8 @@ typedef struct _ast_statement_variable
 	// Assignment Operators
 	AstOperatorType op;
 
-	AstExprDeclaration left;
-	AstExprDeclaration right;
+	AstExprDeclaration* left;
+	AstExprDeclaration* right;
 } AstStatementVariable;
 
 typedef struct _ast_statement_expr
@@ -642,7 +642,7 @@ typedef struct _ast_statement_expr
 	// ^ pos
 	Location pos;
 
-	AstExprDeclaration expr;
+	AstExprDeclaration* expr;
 } AstStatementExpr;
 
 typedef enum _ast_statement_type
@@ -667,8 +667,8 @@ typedef struct _ast_statement_if
 
 	bool has_else;
 
-	AstExprDeclaration expr;
-	AstBlockDeclarationArray body; // AstBlockDeclaration
+	AstExprDeclaration* expr;
+	AstBlockDeclarationArray* body; // AstBlockDeclaration
 	AstStatementIf* otherwise;
 } AstStatementIf;
 
@@ -720,11 +720,11 @@ typedef struct _ast_block_declaration
 
 	union
 	{
-		AstFunctionDeclaration function;
-		AstStructDeclaration structure;
-		AstEnumDeclaration enumerate;
-		AstTypeDeclaration type;
-		AstStatementDeclaration statement;
+		AstFunctionDeclaration* function;
+		AstStructDeclaration* structure;
+		AstEnumDeclaration* enumerate;
+		AstTypeDeclaration* type;
+		AstStatementDeclaration* statement;
 	} value;
 } AstBlockDeclaration;
 
@@ -741,11 +741,11 @@ typedef struct _ast_struct_field
 	bool is_global;
 
 	bool has_default;
-	AstExprDeclaration value;
+	AstExprDeclaration* value;
 
-	AstData type;
+	AstData* type;
 	char* name;
-	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
+	AstAttributeDeclarationArray* attributes; // AstAttributeDeclaration
 } AstStructField;
 
 typedef struct _ast_enum_field
@@ -756,16 +756,16 @@ typedef struct _ast_enum_field
 	Location pos_value;
 
 	bool has_default;
-	AstExprDeclaration value;
+	AstExprDeclaration* value;
 
 	char* name;
-	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
+	AstAttributeDeclarationArray* attributes; // AstAttributeDeclaration
 } AstEnumField;
 
 typedef struct _ast_type_sum_item
 {
 	Location pos;
-	AstData data;
+	AstData* data;
 } AstTypeSumItem;
 
 // char* ast_statement_name(AstStatementType type);
