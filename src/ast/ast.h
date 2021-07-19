@@ -476,7 +476,7 @@ typedef struct _ast_expr_declaration
 	AstExprDeclaration left;
 	AstExprDeclaration right;
 
-	enum
+	union
 	{
 		char vi8;
 		unsigned char vu8;
