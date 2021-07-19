@@ -23,16 +23,16 @@ typedef struct
 	char* name;
 } AstModule;
 
-typedef AstImportDeclarationArray Array; // AstImportDeclaration
-typedef AstBlockDeclarationArray Array; // AstBlockDeclaration
-typedef StringArray char*; // char
-typedef AstParamArray Array; // AstParam
-typedef AstAttributeDeclarationArray Array; // AstAttributeDeclaration
-typedef AstDataItemArray Array; // AstDataItem
-typedef AstStructFieldArray Array; // AstStructField
-typedef AstEnumFieldArray Array; // AstEnumField
-typedef AstTypeSumItemArray Array; // AstTypeSumItem
-typedef AstStatementAssignConstItemArray Array; // AstStatementAssignConstItem
+typedef Array AstImportDeclarationArray; // AstImportDeclaration
+typedef Array AstBlockDeclarationArray; // AstBlockDeclaration
+typedef char* StringArray; // char
+typedef Array AstParamArray; // AstParam
+typedef Array AstAttributeDeclarationArray; // AstAttributeDeclaration
+typedef Array AstDataItemArray; // AstDataItem
+typedef Array AstStructFieldArray; // AstStructField
+typedef Array AstEnumFieldArray; // AstEnumField
+typedef Array AstTypeSumItemArray; // AstTypeSumItem
+typedef Array AstStatementAssignConstItemArray; // AstStatementAssignConstItem
 
 typedef struct
 {
