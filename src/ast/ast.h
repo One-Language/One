@@ -27,6 +27,50 @@ typedef struct
 	char* name;
 } AstModule;
 
+// typedefs
+typedef struct _ast_file AstFile;
+typedef struct _ast_import_declaration AstImportDeclaration;
+typedef struct _ast_import_name AstImportName;
+typedef struct _ast_import_symbol AstImportSymbol;
+typedef struct _ast_block_declaration AstBlockDeclaration;
+typedef enum _ast_block_type AstBlockType;
+typedef struct _ast_function_declaration AstFunctionDeclaration;
+typedef enum _ast_attribute_type AstAttributeType;
+typedef struct _ast_attribute_declaration AstAttributeDeclaration;
+typedef struct _ast_param AstParam;
+typedef struct _ast_data AstData;
+typedef struct _ast_data_item AstDataItem;
+typedef struct _ast_struct_declaration AstStructDeclaration;
+typedef struct _ast_struct_field AstStructField;
+typedef struct _ast_enum_declaration AstEnumDeclaration;
+typedef struct _ast_enum_field AstEnumField;
+typedef struct _ast_expr_declaration AstExprDeclaration;
+typedef enum _ast_operator_type AstOperatorType;
+typedef enum _ast_expr_type AstExprType;
+typedef struct _ast_type_declaration AstTypeDeclaration;
+typedef enum _ast_type_declaration_type AstTypeDeclarationType;
+typedef struct _ast_type_function_declaration AstTypeFunctionDeclaration;
+typedef struct _ast_type_alias_declaration AstTypeAliasDeclaration;
+typedef struct _ast_type_sum_declaration AstTypeSumDeclaration;
+typedef struct _ast_type_sum_item  AstTypeSumItem;
+typedef struct _ast_statement_declaration AstStatementDeclaration;
+typedef enum _ast_statement_type AstStatementType;
+typedef struct _ast_statement_if AstStatementIf;
+typedef struct _ast_statement_for AstStatementFor;
+typedef enum _ast_statement_for_type AstStatementForType;
+typedef struct _ast_statement_for_c AstStatementForC;
+typedef struct _ast_statement_for_each AstStatementForEach;
+typedef struct _ast_statement_for_map AstStatementForMap;
+typedef struct _ast_statement_for_loop AstStatementForLoop;
+typedef struct _ast_statement_match AstStatementMatch;
+typedef struct _ast_statement_ret AstStatementRet;
+typedef struct _ast_statement_assign AstStatementAssign;
+typedef struct _ast_statement_assign_const AstStatementAssignConst;
+typedef struct _ast_statement_const_item AstStatementAssignConstItem;
+typedef struct _ast_statement_variable AstStatementVariable;
+typedef struct _ast_statement_expr AstStatementExpr;
+
+// Array
 typedef Array AstImportSymbolArray; // AstImportSymbol
 typedef Array AstImportNameArray; // AstImportName
 typedef Array AstImportDeclarationArray; // AstImportDeclaration
