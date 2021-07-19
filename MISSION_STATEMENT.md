@@ -1,27 +1,29 @@
-# THE MISSION STATEMENT of _The One Language_
+# MISSION STATEMENT
 
-## One Language for all
+## “One offers a unique design experience for programmers around the world, by providing creative, ingenious, and innovative solutions, it’s time for One programming language for all!”
 
-In today’s world, there are so many programming languages, and each of them is used for different purposes. If you need executable programs, scripts, and websites for your project, to be able to do all these operations, you need more than 3 different languages.
+# VISION STATEMENT
 
-_The One Language_ will be a game-changer because it is not focused on any specific area, it’s a multi-purpose language. It will serve all your needs, and become your only need.
+## “Compile and Unite with One Language”
 
-### OUR AIM
+# ONE
 
-_The One Language_ project aims at reducing the time needed for writing, developing, or maintaining programs.
+The best cost-efficient, fast and reliable language did not exist until now, with One language it is undeniable that you will reduce the cost of building software creatively and innovatively!
+How? With One, which compiles plenty of languages in just one, the amount of work and the process of hiring multiple programmers specialized in different languages will be reduced drastically, your only need will be a One Language expert to carry on your work!
+A game-changer and a revolution in the world of programming has emerged, with this multi-purpose language, the amount of time, money, manpower, and maintenance is set to a limit under your budget, guaranteed!
 
-During the process of writing codes, every programmer faces some common problems, but they do not think of solving these problems, but they try to get used to them. We, **_The One Language developing team_**, want to put an end to this. Our aim is **to solve all these problems and to present you a smooth developing experience**.
 
-_The One Language_ aims to provide you **a new tool to write programs in an easier and better way**.
+### PURPOSE
 
-Developing **a brand-new solution to the design and creation processes of websites**, without the need of learning different languages is one of our intentions.
+The One Language aims to introduce the ultimate solution to your time and cost barriers to achieve your goals faster efficiently and creatively.
 
-In short, the main purpose of One Language is **to provide programmers a single language for all of their needs and also making their lives easier.**
+Coding can be challenging when faced with issues that are often called “unsolvable” and it became common practice to overlook these issues and carry on working as if they were part of the coding process, which most programmers fall for and never try to fix.
+With ONE, the developing team has solved the unsolvable and carried on without leaving any issues behind. With new tools that can enable coding to become easier and more reliable than before.
+
 
 ### DESIGN AND DEVELOPMENT GOALS
 
-_The One Language_ development team is planning to reach the aims of the project by achieving these goals:
-
+The One Language development team is on its way to achieving the following:
 - Clean and easy syntax
 - Multi-purpose language
 - Useful functionality and runtime-library
@@ -30,7 +32,7 @@ _The One Language_ development team is planning to reach the aims of the project
 - Cross-platform compatibility
 - Support for different architectures and OSs
 - An internal web-development framework
-- Easier debugging: Programmers mostly spend their time on reading and debugging their code and not on writing ([you can see a discussion about this subject here](https://www.quora.com/It-is-true-that-developers-spend-most-of-their-time-reading-code-than-writing-code))
+- Easier debugging: Programmers mostly spend their time on reading and debugging their code, which is a time wasted at the expense of writing the actual codes  ([you can see a discussion about this subject here](https://www.quora.com/It-is-true-that-developers-spend-most-of-their-time-reading-code-than-writing-code))
 - Easier maintenance
 - Static-type language (but it can auto-detect the type of your variables and values)
 - Faster performance
@@ -40,7 +42,7 @@ _The One Language_ development team is planning to reach the aims of the project
 
 ### FEATURES OF THE LANGUAGE
 
-**The project is still in Alpha. TO BE UPDATED.**
+**The project is still in the Alpha phase. And to be updated **
 
 ### DESIGN DECISIONS
 
@@ -49,10 +51,10 @@ _The One Language_ development team is planning to reach the aims of the project
 
 ### RUN-TIME SYSTEM CHOICE
 
-At runtime, _One_ doesn’t have NULL, and the language supports null safety. So you can make sure everything works at runtime, as you have already passed so many errors at compiling step.
+At runtime, ONE doesn’t NULL, and the language supports null safety. So, you can make sure everything works at runtime, as you have already passed so many errors in compiling step.
+Currently, Glibc is being used, and programmers are allowed to be used and linked since all libraries need Glibc. (pthread, libcurl, libopenssl, mysql/mariadb database, etc.) Yet, we are also planning to be able to generate executable files without the need for a C library (Glibc).
 
-Currently, we use Glibc, and programmers are allowed to use and link it, because all the libraries need Glibc. (pthread, libcurl, libopenssl, mysql/mariadb database, etc.) Yet, we are also planning to be able to generate executable files without the need for C library (Glibc). We tried this before, and we were able to do it.
-We generated C-intermediate code and used a C compiler to generate an executable file at the background of the compiler, but for the time being, at these first steps of the project, we use LLVM for the back-end of the compiler. So, we can generate object-file and executable files for every OS and architecture. In the future, we will have our own runtime library. Furthermore, programs compiled by _One_ are mostly optimized with great performance.
+We generated C-intermediate code and used a C compiler to generate an executable file at the background of the compiler, but for the time being, at its early steps, we use LLVM for the back-end of the compiler. So, we can generate object-file and executable files for every OS and architecture. In the future, we will have our runtime library. Furthermore, programs compiled by One are mostly optimized with great performance.
 
 ### LIBRARY
 
