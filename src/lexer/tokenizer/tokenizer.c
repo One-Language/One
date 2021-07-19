@@ -44,10 +44,12 @@ Token** tokenizer_string(char* data)
 	Array tokens;
 	array_init(&tokens);
 
+	size_t i;
 	Token* t;
 	for (;;)
 	{
 		t = lexer_scan();
+		t->loc.tokens = i++;
 		printf("==>%s\n", token_name(t->type));
 		array_push(&tokens, t);
 		debug_parser("parser_scan: print_token %s", token_name(t->type));

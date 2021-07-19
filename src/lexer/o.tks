@@ -1,7 +1,7 @@
-FN
-value_identifier: "main"
-{
-RETURN
-value_number: "1"
-}
-EOF
+[0] [0:0-0] FN
+[1] [0:0-0] value_identifier: "main"
+[2] [0:0-0] {
+[3] [1:0-0] RETURN
+[4] [1:0-0] value_number: "1"
+[5] [2:0-0] }
+[6] [3:0-0] EOF
