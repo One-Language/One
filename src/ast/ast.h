@@ -547,8 +547,34 @@ typedef struct {
 } AstStatementIf;
 
 typedef struct {
-	// TODO
+	Location pos;
+	AstStatementForType type;
+	union {
+		AstStatementForC c;
+		AstStatementForArray array;
+		AstStatementForMap map;
+		AstStatementForLoop loop;
+	} value;
 } AstStatementFor;
+
+typedef enum {
+	AST_STATEMENT_FOR_C,
+	AST_STATEMENT_FOR_ARRAY,
+	AST_STATEMENT_FOR_MAP,
+	AST_STATEMENT_FOR_LOOP,
+} AstStatementForType;
+
+typedef struct {
+} AstStatementForC;
+
+typedef struct {
+} AstStatementForArray;
+
+typedef struct {
+} AstStatementForMap;
+
+typedef struct {
+} AstStatementForLoop;
 
 typedef struct {
 	// match ... { }
