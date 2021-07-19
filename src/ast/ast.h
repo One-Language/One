@@ -374,6 +374,133 @@ typedef struct _ast_type_declaration
 	} value;
 } AstTypeDeclaration;
 
+typedef enum _ast_operator_type
+{
+	AST_OPERATOR_NONE, // emit data
+
+	AST_OPERATOR_PLUS, // -
+	AST_OPERATOR_PLUS_PLUS, // --
+
+	AST_OPERATOR_MINUS, // -
+	AST_OPERATOR_MINUS_MINUS, // --
+
+	AST_OPERATOR_STAR, // *
+	AST_OPERATOR_STAR_STAR, // **
+
+	AST_OPERATOR_MOD, // %
+
+	AST_OPERATOR_SLASH, // /
+	AST_OPERATOR_SLASH_INT, // //
+
+	AST_OPERATOR_SHIFT_LEFT, // >>
+	AST_OPERATOR_SHIFT_RIGHT, // <<
+
+	AST_OPERATOR_BIT_AND, // &
+	AST_OPERATOR_BIT_OR, // |
+	AST_OPERATOR_BIT_XOR, // ^
+	AST_OPERATOR_BIT_NOT, // ~
+
+	AST_OPERATOR_AND, // &&
+	AST_OPERATOR_OR, // ||
+
+	AST_OPERATOR_NOT, // !
+	AST_OPERATOR_NOT_EQUAL, // !=
+	// AST_OPERATOR_NOT_EQUAL_EQUAL, // !==
+
+	AST_OPERATOR_EQUAL, // =
+	AST_OPERATOR_EQUAL_ASSIGN, // :=
+	AST_OPERATOR_EQUAL_EQUAL, // ==
+	// AST_OPERATOR_EQUAL_EQUAL, // ===
+
+	// Relational Operators
+	AST_OPERATOR_GREATER, // >
+	AST_OPERATOR_GREATER_EQUAL, // >=
+	AST_OPERATOR_LESS, // <
+	AST_OPERATOR_LESS_EQUAL, // <=
+
+	AST_OPERATOR_DOT, // parent.sub
+	AST_OPERATOR_DOT_DOT, // [1..4]
+	AST_OPERATOR_DOT_DOT_DOT, // {...objects}
+
+	// Assignment Operators
+	AST_OPERATOR_EQUAL_PLUS, // +=
+	AST_OPERATOR_EQUAL_MINUS, // -=
+	AST_OPERATOR_EQUAL_STAR, // *=
+	AST_OPERATOR_EQUAL_STAR_STAR, // **=
+	AST_OPERATOR_EQUAL_SLASH, // /=
+	AST_OPERATOR_EQUAL_MOD, // %=
+	AST_OPERATOR_EQUAL_BIT_AND, // &=
+	AST_OPERATOR_EQUAL_BIT_OR, // |=
+	AST_OPERATOR_EQUAL_BIT_NOT, // ^=
+	AST_OPERATOR_EQUAL_SHIFT_LEFT, // >>=
+	AST_OPERATOR_EQUAL_SHIFT_RIGHT, // <<=
+
+} AstOperatorType;
+
+typedef enum _ast_expr_type
+{
+	AST_EXPRESSION_TYPE_I8,
+	AST_EXPRESSION_TYPE_U8,
+
+	AST_EXPRESSION_TYPE_I16,
+	AST_EXPRESSION_TYPE_U16,
+
+	AST_EXPRESSION_TYPE_I32,
+	AST_EXPRESSION_TYPE_U32,
+
+	AST_EXPRESSION_TYPE_I64,
+	AST_EXPRESSION_TYPE_U64,
+
+	AST_EXPRESSION_TYPE_I128,
+	AST_EXPRESSION_TYPE_U128,
+
+	AST_EXPRESSION_TYPE_F32,
+	AST_EXPRESSION_TYPE_F64,
+
+	AST_EXPRESSION_TYPE_BOOL,
+	AST_EXPRESSION_TYPE_STRING,
+	AST_EXPRESSION_TYPE_CHAR,
+} AstExprType;
+
+typedef struct _ast_expr_declaration
+{
+	Location pos;
+	Location pos_op;
+	Location pos_left;
+	Location pos_right;
+	Location pos_value;
+
+	AstExprType type;
+	AstOperatorType op;
+
+	AstExprDeclaration left;
+	AstExprDeclaration right;
+
+	enum
+	{
+		char vi8;
+		unsigned char vu8;
+
+		short vi16;
+		unsigned short vu16;
+
+		int vi32;
+		unsigned int vu32;
+
+		int64_t vi64;
+		uint64_t vu64;
+
+		float vf32;
+		double vf64;
+
+		bool vbool;
+
+		char * vstring;
+		char * vchar;
+	}
+	value;
+} AstExprDeclaration;
+
 typedef struct _ast_statement_for_c
 {
 	// for i:=i;
@@ -633,133 +760,6 @@ typedef struct _ast_enum_field
 	char* name;
 	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
 } AstEnumField;
-
-typedef struct _ast_expr_declaration
-{
-	Location pos;
-	Location pos_op;
-	Location pos_left;
-	Location pos_right;
-	Location pos_value;
-
-	AstExprType type;
-	AstOperatorType op;
-
-	AstExprDeclaration left;
-	AstExprDeclaration right;
-
-	enum
-	{
-		char vi8;
-		unsigned char vu8;
-
-		short vi16;
-		unsigned short vu16;
-
-		int vi32;
-		unsigned int vu32;
-
-		int64_t vi64;
-		uint64_t vu64;
-
-		float vf32;
-		double vf64;
-
-		bool vbool;
-
-		char * vstring;
-		char * vchar;
-	}
-	value;
-} AstExprDeclaration;
-
-typedef enum _ast_operator_type
-{
-	AST_OPERATOR_NONE, // emit data
-
-	AST_OPERATOR_PLUS, // -
-	AST_OPERATOR_PLUS_PLUS, // --
-
-	AST_OPERATOR_MINUS, // -
-	AST_OPERATOR_MINUS_MINUS, // --
-
-	AST_OPERATOR_STAR, // *
-	AST_OPERATOR_STAR_STAR, // **
-
-	AST_OPERATOR_MOD, // %
-
-	AST_OPERATOR_SLASH, // /
-	AST_OPERATOR_SLASH_INT, // //
-
-	AST_OPERATOR_SHIFT_LEFT, // >>
-	AST_OPERATOR_SHIFT_RIGHT, // <<
-
-	AST_OPERATOR_BIT_AND, // &
-	AST_OPERATOR_BIT_OR, // |
-	AST_OPERATOR_BIT_XOR, // ^
-	AST_OPERATOR_BIT_NOT, // ~
-
-	AST_OPERATOR_AND, // &&
-	AST_OPERATOR_OR, // ||
-
-	AST_OPERATOR_NOT, // !
-	AST_OPERATOR_NOT_EQUAL, // !=
-	// AST_OPERATOR_NOT_EQUAL_EQUAL, // !==
-
-	AST_OPERATOR_EQUAL, // =
-	AST_OPERATOR_EQUAL_ASSIGN, // :=
-	AST_OPERATOR_EQUAL_EQUAL, // ==
-	// AST_OPERATOR_EQUAL_EQUAL, // ===
-
-	// Relational Operators
-	AST_OPERATOR_GREATER, // >
-	AST_OPERATOR_GREATER_EQUAL, // >=
-	AST_OPERATOR_LESS, // <
-	AST_OPERATOR_LESS_EQUAL, // <=
-
-	AST_OPERATOR_DOT, // parent.sub
-	AST_OPERATOR_DOT_DOT, // [1..4]
-	AST_OPERATOR_DOT_DOT_DOT, // {...objects}
-
-	// Assignment Operators
-	AST_OPERATOR_EQUAL_PLUS, // +=
-	AST_OPERATOR_EQUAL_MINUS, // -=
-	AST_OPERATOR_EQUAL_STAR, // *=
-	AST_OPERATOR_EQUAL_STAR_STAR, // **=
-	AST_OPERATOR_EQUAL_SLASH, // /=
-	AST_OPERATOR_EQUAL_MOD, // %=
-	AST_OPERATOR_EQUAL_BIT_AND, // &=
-	AST_OPERATOR_EQUAL_BIT_OR, // |=
-	AST_OPERATOR_EQUAL_BIT_NOT, // ^=
-	AST_OPERATOR_EQUAL_SHIFT_LEFT, // >>=
-	AST_OPERATOR_EQUAL_SHIFT_RIGHT, // <<=
-
-} AstOperatorType;
-
-typedef enum _ast_expr_type
-{
-	AST_EXPRESSION_TYPE_I8,
-	AST_EXPRESSION_TYPE_U8,
-
-	AST_EXPRESSION_TYPE_I16,
-	AST_EXPRESSION_TYPE_U16,
-
-	AST_EXPRESSION_TYPE_I32,
-	AST_EXPRESSION_TYPE_U32,
-
-	AST_EXPRESSION_TYPE_I64,
-	AST_EXPRESSION_TYPE_U64,
-
-	AST_EXPRESSION_TYPE_I128,
-	AST_EXPRESSION_TYPE_U128,
-
-	AST_EXPRESSION_TYPE_F32,
-	AST_EXPRESSION_TYPE_F64,
-
-	AST_EXPRESSION_TYPE_BOOL,
-	AST_EXPRESSION_TYPE_STRING,
-	AST_EXPRESSION_TYPE_CHAR,
-} AstExprType;
 
 typedef struct _ast_type_sum_item
 {
