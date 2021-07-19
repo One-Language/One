@@ -54,7 +54,7 @@ typedef enum _ast_type_declaration_type AstTypeDeclarationType;
 typedef struct _ast_type_function_declaration AstTypeFunctionDeclaration;
 typedef struct _ast_type_alias_declaration AstTypeAliasDeclaration;
 typedef struct _ast_type_sum_declaration AstTypeSumDeclaration;
-typedef struct _ast_type_sum_item  AstTypeSumItem;
+typedef struct _ast_type_sum_item AstTypeSumItem;
 typedef struct _ast_statement_declaration AstStatementDeclaration;
 typedef enum _ast_statement_type AstStatementType;
 typedef struct _ast_statement_if AstStatementIf;
@@ -475,8 +475,8 @@ typedef struct _ast_expr_declaration
 	AstExprType type;
 	AstOperatorType op;
 
-	AstExprDeclaration *left;
-	AstExprDeclaration *right;
+	AstExprDeclaration* left;
+	AstExprDeclaration* right;
 
 	union
 	{
@@ -497,8 +497,8 @@ typedef struct _ast_expr_declaration
 
 		bool vbool;
 
-		char * vstring;
-		char * vchar;
+		char* vstring;
+		char* vchar;
 	} value;
 } AstExprDeclaration;
 
@@ -669,7 +669,7 @@ typedef struct _ast_statement_if
 
 	AstExprDeclaration expr;
 	AstBlockDeclarationArray body; // AstBlockDeclaration
-	AstStatementIf *otherwise;
+	AstStatementIf* otherwise;
 } AstStatementIf;
 
 typedef enum _ast_statement_for_type
@@ -686,10 +686,10 @@ typedef struct _ast_statement_for
 	AstStatementForType type;
 	union
 	{
-		AstStatementForC c;
-		AstStatementForEach each;
-		AstStatementForMap map;
-		AstStatementForLoop loop;
+		AstStatementForC* c;
+		AstStatementForEach* each;
+		AstStatementForMap* map;
+		AstStatementForLoop* loop;
 	} value;
 } AstStatementFor;
 
@@ -701,14 +701,14 @@ typedef struct _ast_statement_declaration
 
 	union
 	{
-		AstStatementIf clauses;
-		AstStatementFor foreach;
-		AstStatementMatch match;
-		AstStatementRet ret;
-		AstStatementAssign assign;
-		AstStatementAssignConst assign_const;
-		AstStatementVariable variable;
-		AstStatementExpr expr;
+		AstStatementIf* clauses;
+		AstStatementFor* foreach;
+		AstStatementMatch* match;
+		AstStatementRet* ret;
+		AstStatementAssign* assign;
+		AstStatementAssignConst* assign_const;
+		AstStatementVariable* variable;
+		AstStatementExpr* expr;
 	} value;
 } AstStatementDeclaration;
 
