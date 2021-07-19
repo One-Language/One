@@ -23,8 +23,23 @@ typedef struct
 	char* name;
 } AstModule;
 
-AstImportDeclarationArray imports; // AstImportDeclaration
-AstBlockDeclarationArray blocks; // AstBlockDeclaration
+typedef AstImportDeclarationArray Array; // AstImportDeclaration
+typedef AstBlockDeclarationArray Array; // AstBlockDeclaration
+typedef StringArray char*;
+typedef AstParamArray Array; // AstParam
+typedef AstBlockDeclarationArray Array; // AstBlockDeclaration
+typedef AstAttributeDeclarationArray Array; // AstAttributeDeclaration
+typedef AstDataItemArray Array; // AstDataItem
+typedef StringArray Array; // char*
+typedef AstStructFieldArray Array; // AstStructField
+typedef AstAttributeDeclarationArray Array; // AstAttributeDeclaration
+typedef AstAttributeDeclarationArray Array; // AstAttributeDeclaration
+typedef AstEnumFieldArray Array; // AstEnumField
+typedef AstAttributeDeclarationArray Array; // AstAttributeDeclaration
+typedef AstAttributeDeclaration Array; // AstAttributeDeclaration
+typedef AstTypeSumItemArray Array; // AstTypeSumItem
+typedef AstBlockDeclarationArray Array; // AstBlockDeclaration
+typedef AstStatementAssignConstItemArray Array; // AstStatementAssignConstItem
 
 typedef struct
 {
@@ -523,7 +538,7 @@ typedef struct
 	} value;
 } AstStatementDeclaration;
 
-typedef enum 
+typedef enum
 {
 	AST_STATEMENT_IF,
 	AST_STATEMENT_FOR,
@@ -535,7 +550,8 @@ typedef enum
 	AST_STATEMENT_EXPRESSION,
 } AstStatementType;
 
-typedef struct {
+typedef struct
+{
 	// if <expr> {} else ...
 	Location pos;
 	Location pos_expr;
@@ -549,10 +565,12 @@ typedef struct {
 	AstStatementIf otherwise;
 } AstStatementIf;
 
-typedef struct {
+typedef struct
+{
 	Location pos;
 	AstStatementForType type;
-	union {
+	union
+	{
 		AstStatementForC c;
 		AstStatementForEach each;
 		AstStatementForMap map;
@@ -560,14 +578,16 @@ typedef struct {
 	} value;
 } AstStatementFor;
 
-typedef enum {
+typedef enum
+{
 	AST_STATEMENT_FOR_C,
 	AST_STATEMENT_FOR_EACH,
 	AST_STATEMENT_FOR_MAP,
 	AST_STATEMENT_FOR_LOOP,
 } AstStatementForType;
 
-typedef struct {
+typedef struct
+{
 	// for i:=i;
 	Location pos;
 	Location pos_init;
@@ -586,7 +606,8 @@ typedef struct {
 	Array body; // AstBlockDeclaration
 } AstStatementForC;
 
-typedef struct {
+typedef struct
+{
 	// names := ['Max', 'Ali', 'Javad', 'John']
 	// for i, name in names {}
 
@@ -599,13 +620,15 @@ typedef struct {
 	// TODO
 } AstStatementForEach;
 
-typedef struct {
+typedef struct
+{
 	Location pos;
 
 	// TODO
 } AstStatementForMap;
 
-typedef struct {
+typedef struct
+{
 	// mut sum := 0
 	// mut i := 0
 	// for i <= 100 {
@@ -617,14 +640,16 @@ typedef struct {
 	// TODO
 } AstStatementForLoop;
 
-typedef struct {
+typedef struct
+{
 	// match ... { }
 	Location pos;
 
 	// TODO
 } AstStatementMatch;
 
-typedef struct {
+typedef struct
+{
 	// return <expr>
 	// ^ pos
 	//        ^pos_expr
@@ -637,7 +662,8 @@ typedef struct {
 	AstExprDeclaration expr;
 } AstStatementRet;
 
-typedef struct {
+typedef struct
+{
 	// const <name> := <value>
 	Location pos;
 	Location pos_name;
@@ -648,7 +674,8 @@ typedef struct {
 	AstExprDeclaration value;
 } AstStatementAssign;
 
-typedef struct {
+typedef struct
+{
 	// const (
 	// 	  pi    = 3.14
 	// 	  world = '世界'
@@ -660,12 +687,13 @@ typedef struct {
 
 	bool is_multi;
 
-	AstStatementAssignConstItemArray fields;// AstStatementAssignConstItem
+	AstStatementAssignConstItemArray fields; // AstStatementAssignConstItem
 	// Array name; // char*
 	// Array value; // AstExprDeclaration
 } AstStatementAssignConst;
 
-typedef struct {
+typedef struct
+{
 	Location pos_name;
 	Location pos_op;
 	Location pos_value;
@@ -674,7 +702,8 @@ typedef struct {
 	AstExprDeclaration value;
 } AstStatementAssignConstItem;
 
-typedef struct {
+typedef struct
+{
 	// varName = 5
 	// varName += 7
 	// varStructName.fieldName = 7
@@ -691,14 +720,14 @@ typedef struct {
 	AstExprDeclaration right;
 } AstStatementVariable;
 
-typedef struct {
+typedef struct
+{
 	// <expr>
 	// ^ pos
 	Location pos;
 
 	AstExprDeclaration expr;
 } AstStatementExpr;
-
 
 // char* ast_statement_name(AstStatementType type);
 
