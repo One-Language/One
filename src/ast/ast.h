@@ -140,6 +140,15 @@ typedef struct _ast_import_symbol
 	char* alias;
 } AstImportSymbol;
 
+typedef enum _ast_block_type
+{
+	AST_BLOCK_FUNCTION,
+	AST_BLOCK_STRUCT,
+	AST_BLOCK_ENUM,
+	AST_BLOCK_TYPE,
+	AST_BLOCK_STATEMENT,
+} AstBlockType;
+
 typedef struct _ast_block_declaration
 {
 	Location pos;
@@ -155,15 +164,6 @@ typedef struct _ast_block_declaration
 		AstStatementDeclaration statement;
 	} value;
 } AstBlockDeclaration;
-
-typedef enum _ast_block_type
-{
-	AST_BLOCK_FUNCTION,
-	AST_BLOCK_STRUCT,
-	AST_BLOCK_ENUM,
-	AST_BLOCK_TYPE,
-	AST_BLOCK_STATEMENT,
-} AstBlockType;
 
 typedef struct _ast_function_declaration
 {
