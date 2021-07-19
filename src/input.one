@@ -1,3 +1,5 @@
-fn main {
-	ret 1
-}
+  fn
+  			main
+						  {
+	ret
+				1 }
