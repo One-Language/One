@@ -87,8 +87,8 @@ Token* lexer_identifier()
 {
 	debug_lexer("lexer_identifier");
 
-	printf("First ==>%c\n", *lexer.current);
-	printf("Second ==>%c\n", *lexer.start);
+	// printf("First ==>%c\n", *lexer.current);
+	// printf("Second ==>%c\n", *lexer.start);
 
 	//	char tmp_str[1024] = {};
 	char* tmp_str = (char*)malloc(1024 * sizeof(char) + 1);

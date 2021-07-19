@@ -193,6 +193,7 @@ Token* token_make_value(TokenType type, char* value)
 	t->type = type;
 	t->length = (int)(lexer.current - lexer.start);
 	printf("CREATE TOKEN %s with %d length\n", token_name(t->type), t->length);
+	t->loc.tokens = lexer.loc.tokens++;
 	t->loc.line = lexer.loc.line;
 	t->loc.column = lexer.loc.column;
 	return t;
