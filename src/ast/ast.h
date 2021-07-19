@@ -260,22 +260,6 @@ typedef struct _ast_attribute_declaration
 	char* value;
 } AstAttributeDeclaration;
 
-typedef struct _ast_block_declaration
-{
-	Location pos;
-
-	AstBlockType type;
-
-	union
-	{
-		AstFunctionDeclaration function;
-		AstStructDeclaration structure;
-		AstEnumDeclaration enumerate;
-		AstTypeDeclaration type;
-		AstStatementDeclaration statement;
-	} value;
-} AstBlockDeclaration;
-
 typedef struct _ast_struct_declaration
 {
 	Location pos;
@@ -295,26 +279,6 @@ typedef struct _ast_struct_declaration
 	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
 } AstStructDeclaration;
 
-typedef struct _ast_struct_field
-{
-	Location pos;
-	Location pos_attribute;
-	Location pos_type;
-	Location pos_name;
-	Location pos_value;
-
-	bool is_mut;
-	bool is_public;
-	bool is_global;
-
-	bool has_default;
-	AstExprDeclaration value;
-
-	AstData type;
-	char* name;
-	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
-} AstStructField;
-
 typedef struct _ast_enum_declaration
 {
 	Location pos;
@@ -327,153 +291,44 @@ typedef struct _ast_enum_declaration
 	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
 } AstEnumDeclaration;
 
-typedef struct _ast_enum_field
+typedef enum _ast_type_declaration_type
+{
+	AST_TYPE_SUM,
+	AST_TYPE_ALIAS,
+	AST_TYPE_FUNCTION,
+} AstTypeDeclarationType;
+
+typedef struct _ast_type_function_declaration
 {
 	Location pos;
-	Location pos_attribute;
+	Location pos_public;
 	Location pos_name;
-	Location pos_value;
+	Location pos_type;
 
-	bool has_default;
-	AstExprDeclaration value;
+	bool is_public;
 
 	char* name;
-	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
-} AstEnumField;
+	AstData data; // TODO: AstData can store a function type?
+} AstTypeFunctionDeclaration;
 
-typedef struct _ast_expr_declaration
+typedef struct _ast_type_alias_declaration
 {
 	Location pos;
-	Location pos_op;
-	Location pos_left;
-	Location pos_right;
-	Location pos_value;
+	Location pos_public;
+	Location pos_name;
+	Location pos_type;
 
-	AstExprType type;
-	AstOperatorType op;
+	bool is_public;
 
-	AstExprDeclaration left;
-	AstExprDeclaration right;
-
-	enum
-	{
-		char vi8;
-		unsigned char vu8;
-
-		short vi16;
-		unsigned short vu16;
-
-		int vi32;
-		unsigned int vu32;
-
-		int64_t vi64;
-		uint64_t vu64;
-
-		float vf32;
-		double vf64;
-
-		bool vbool;
-
-		char * vstring;
-		char * vchar;
-	}
-	value;
-} AstExprDeclaration;
-
-typedef enum _ast_operator_type
-{
-	AST_OPERATOR_NONE, // emit data
-
-	AST_OPERATOR_PLUS, // -
-	AST_OPERATOR_PLUS_PLUS, // --
-
-	AST_OPERATOR_MINUS, // -
-	AST_OPERATOR_MINUS_MINUS, // --
-
-	AST_OPERATOR_STAR, // *
-	AST_OPERATOR_STAR_STAR, // **
-
-	AST_OPERATOR_MOD, // %
-
-	AST_OPERATOR_SLASH, // /
-	AST_OPERATOR_SLASH_INT, // //
-
-	AST_OPERATOR_SHIFT_LEFT, // >>
-	AST_OPERATOR_SHIFT_RIGHT, // <<
-
-	AST_OPERATOR_BIT_AND, // &
-	AST_OPERATOR_BIT_OR, // |
-	AST_OPERATOR_BIT_XOR, // ^
-	AST_OPERATOR_BIT_NOT, // ~
-
-	AST_OPERATOR_AND, // &&
-	AST_OPERATOR_OR, // ||
-
-	AST_OPERATOR_NOT, // !
-	AST_OPERATOR_NOT_EQUAL, // !=
-	// AST_OPERATOR_NOT_EQUAL_EQUAL, // !==
-
-	AST_OPERATOR_EQUAL, // =
-	AST_OPERATOR_EQUAL_ASSIGN, // :=
-	AST_OPERATOR_EQUAL_EQUAL, // ==
-	// AST_OPERATOR_EQUAL_EQUAL, // ===
-
-	// Relational Operators
-	AST_OPERATOR_GREATER, // >
-	AST_OPERATOR_GREATER_EQUAL, // >=
-	AST_OPERATOR_LESS, // <
-	AST_OPERATOR_LESS_EQUAL, // <=
-
-	AST_OPERATOR_DOT, // parent.sub
-	AST_OPERATOR_DOT_DOT, // [1..4]
-	AST_OPERATOR_DOT_DOT_DOT, // {...objects}
-
-	// Assignment Operators
-	AST_OPERATOR_EQUAL_PLUS, // +=
-	AST_OPERATOR_EQUAL_MINUS, // -=
-	AST_OPERATOR_EQUAL_STAR, // *=
-	AST_OPERATOR_EQUAL_STAR_STAR, // **=
-	AST_OPERATOR_EQUAL_SLASH, // /=
-	AST_OPERATOR_EQUAL_MOD, // %=
-	AST_OPERATOR_EQUAL_BIT_AND, // &=
-	AST_OPERATOR_EQUAL_BIT_OR, // |=
-	AST_OPERATOR_EQUAL_BIT_NOT, // ^=
-	AST_OPERATOR_EQUAL_SHIFT_LEFT, // >>=
-	AST_OPERATOR_EQUAL_SHIFT_RIGHT, // <<=
-
-} AstOperatorType;
-
-typedef enum _ast_expr_type
-{
-	AST_EXPRESSION_TYPE_I8,
-	AST_EXPRESSION_TYPE_U8,
-
-	AST_EXPRESSION_TYPE_I16,
-	AST_EXPRESSION_TYPE_U16,
-
-	AST_EXPRESSION_TYPE_I32,
-	AST_EXPRESSION_TYPE_U32,
-
-	AST_EXPRESSION_TYPE_I64,
-	AST_EXPRESSION_TYPE_U64,
-
-	AST_EXPRESSION_TYPE_I128,
-	AST_EXPRESSION_TYPE_U128,
-
-	AST_EXPRESSION_TYPE_F32,
-	AST_EXPRESSION_TYPE_F64,
-
-	AST_EXPRESSION_TYPE_BOOL,
-	AST_EXPRESSION_TYPE_STRING,
-	AST_EXPRESSION_TYPE_CHAR,
-} AstExprType;
+	char* name;
+	AstData data;
+} AstTypeAliasDeclaration;
 
 typedef struct _ast_type_sum_declaration
 {
 	Location pos;
 	Location pos_public;
-	Location pos_name;
-	Location pos_name;
+	Location pos_names;
 
 	bool is_public;
 
@@ -518,117 +373,6 @@ typedef struct _ast_type_declaration
 		AstTypeSumDeclaration sum;
 	} value;
 } AstTypeDeclaration;
-
-typedef enum _ast_type_declaration_type
-{
-	AST_TYPE_SUM,
-	AST_TYPE_ALIAS,
-	AST_TYPE_FUNCTION,
-} AstTypeDeclarationType;
-
-typedef struct _ast_type_function_declaration
-{
-	Location pos;
-	Location pos_public;
-	Location pos_name;
-	Location pos_type;
-
-	bool is_public;
-
-	char* name;
-	AstData data; // TODO: AstData can store a function type?
-} AstTypeFunctionDeclaration;
-
-typedef struct _ast_type_alias_declaration
-{
-	Location pos;
-	Location pos_public;
-	Location pos_name;
-	Location pos_type;
-
-	bool is_public;
-
-	char* name;
-	AstData data;
-} AstTypeAliasDeclaration;
-
-typedef struct _ast_type_sum_item
-{
-	Location pos;
-	AstData data;
-} AstTypeSumItem;
-
-// typedef enum {
-// 	TYPE_STRUCT,
-// 	TYPE_SUMTYPE,
-// } AstParamDataType;
-
-typedef struct _ast_statement_declaration
-{
-	Location pos;
-
-	AstStatementType type;
-
-	union
-	{
-		AstStatementIf clauses;
-		AstStatementFor foreach;
-		AstStatementMatch match;
-		AstStatementRet ret;
-		AstStatementAssign assign;
-		AstStatementAssignConst assign_const;
-		AstStatementVariable variable;
-		AstStatementExpr expr;
-	} value;
-} AstStatementDeclaration;
-
-typedef enum _ast_statement_type
-{
-	AST_STATEMENT_IF,
-	AST_STATEMENT_FOR,
-	AST_STATEMENT_MATCH,
-	AST_STATEMENT_RET,
-	AST_STATEMENT_ASSIGN,
-	AST_STATEMENT_ASSIGN_CONST,
-	AST_STATEMENT_VARIABLE,
-	AST_STATEMENT_EXPRESSION,
-} AstStatementType;
-
-typedef struct _ast_statement_if
-{
-	// if <expr> {} else ...
-	Location pos;
-	Location pos_expr;
-	Location pos_body;
-	Location pos_else;
-
-	bool has_else;
-
-	AstExprDeclaration expr;
-	AstBlockDeclarationArray body; // AstBlockDeclaration
-	AstStatementIf otherwise;
-} AstStatementIf;
-
-typedef struct _ast_statement_for
-{
-	Location pos;
-	AstStatementForType type;
-	union
-	{
-		AstStatementForC c;
-		AstStatementForEach each;
-		AstStatementForMap map;
-		AstStatementForLoop loop;
-	} value;
-} AstStatementFor;
-
-typedef enum _ast_statement_for_type
-{
-	AST_STATEMENT_FOR_C,
-	AST_STATEMENT_FOR_EACH,
-	AST_STATEMENT_FOR_MAP,
-	AST_STATEMENT_FOR_LOOP,
-} AstStatementForType;
 
 typedef struct _ast_statement_for_c
 {
@@ -772,6 +516,256 @@ typedef struct _ast_statement_expr
 
 	AstExprDeclaration expr;
 } AstStatementExpr;
+
+typedef struct _ast_statement_declaration
+{
+	Location pos;
+
+	AstStatementType type;
+
+	union
+	{
+		AstStatementIf clauses;
+		AstStatementFor foreach;
+		AstStatementMatch match;
+		AstStatementRet ret;
+		AstStatementAssign assign;
+		AstStatementAssignConst assign_const;
+		AstStatementVariable variable;
+		AstStatementExpr expr;
+	} value;
+} AstStatementDeclaration;
+
+typedef enum _ast_statement_type
+{
+	AST_STATEMENT_IF,
+	AST_STATEMENT_FOR,
+	AST_STATEMENT_MATCH,
+	AST_STATEMENT_RET,
+	AST_STATEMENT_ASSIGN,
+	AST_STATEMENT_ASSIGN_CONST,
+	AST_STATEMENT_VARIABLE,
+	AST_STATEMENT_EXPRESSION,
+} AstStatementType;
+
+typedef struct _ast_statement_if
+{
+	// if <expr> {} else ...
+	Location pos;
+	Location pos_expr;
+	Location pos_body;
+	Location pos_else;
+
+	bool has_else;
+
+	AstExprDeclaration expr;
+	AstBlockDeclarationArray body; // AstBlockDeclaration
+	AstStatementIf otherwise;
+} AstStatementIf;
+
+typedef struct _ast_statement_for
+{
+	Location pos;
+	AstStatementForType type;
+	union
+	{
+		AstStatementForC c;
+		AstStatementForEach each;
+		AstStatementForMap map;
+		AstStatementForLoop loop;
+	} value;
+} AstStatementFor;
+
+typedef enum _ast_statement_for_type
+{
+	AST_STATEMENT_FOR_C,
+	AST_STATEMENT_FOR_EACH,
+	AST_STATEMENT_FOR_MAP,
+	AST_STATEMENT_FOR_LOOP,
+} AstStatementForType;
+
+typedef struct _ast_block_declaration
+{
+	Location pos;
+
+	AstBlockType type;
+
+	union
+	{
+		AstFunctionDeclaration function;
+		AstStructDeclaration structure;
+		AstEnumDeclaration enumerate;
+		AstTypeDeclaration type;
+		AstStatementDeclaration statement;
+	} value;
+} AstBlockDeclaration;
+
+typedef struct _ast_struct_field
+{
+	Location pos;
+	Location pos_attribute;
+	Location pos_type;
+	Location pos_name;
+	Location pos_value;
+
+	bool is_mut;
+	bool is_public;
+	bool is_global;
+
+	bool has_default;
+	AstExprDeclaration value;
+
+	AstData type;
+	char* name;
+	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
+} AstStructField;
+
+typedef struct _ast_enum_field
+{
+	Location pos;
+	Location pos_attribute;
+	Location pos_name;
+	Location pos_value;
+
+	bool has_default;
+	AstExprDeclaration value;
+
+	char* name;
+	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
+} AstEnumField;
+
+typedef struct _ast_expr_declaration
+{
+	Location pos;
+	Location pos_op;
+	Location pos_left;
+	Location pos_right;
+	Location pos_value;
+
+	AstExprType type;
+	AstOperatorType op;
+
+	AstExprDeclaration left;
+	AstExprDeclaration right;
+
+	enum
+	{
+		char vi8;
+		unsigned char vu8;
+
+		short vi16;
+		unsigned short vu16;
+
+		int vi32;
+		unsigned int vu32;
+
+		int64_t vi64;
+		uint64_t vu64;
+
+		float vf32;
+		double vf64;
+
+		bool vbool;
+
+		char * vstring;
+		char * vchar;
+	}
+	value;
+} AstExprDeclaration;
+
+typedef enum _ast_operator_type
+{
+	AST_OPERATOR_NONE, // emit data
+
+	AST_OPERATOR_PLUS, // -
+	AST_OPERATOR_PLUS_PLUS, // --
+
+	AST_OPERATOR_MINUS, // -
+	AST_OPERATOR_MINUS_MINUS, // --
+
+	AST_OPERATOR_STAR, // *
+	AST_OPERATOR_STAR_STAR, // **
+
+	AST_OPERATOR_MOD, // %
+
+	AST_OPERATOR_SLASH, // /
+	AST_OPERATOR_SLASH_INT, // //
+
+	AST_OPERATOR_SHIFT_LEFT, // >>
+	AST_OPERATOR_SHIFT_RIGHT, // <<
+
+	AST_OPERATOR_BIT_AND, // &
+	AST_OPERATOR_BIT_OR, // |
+	AST_OPERATOR_BIT_XOR, // ^
+	AST_OPERATOR_BIT_NOT, // ~
+
+	AST_OPERATOR_AND, // &&
+	AST_OPERATOR_OR, // ||
+
+	AST_OPERATOR_NOT, // !
+	AST_OPERATOR_NOT_EQUAL, // !=
+	// AST_OPERATOR_NOT_EQUAL_EQUAL, // !==
+
+	AST_OPERATOR_EQUAL, // =
+	AST_OPERATOR_EQUAL_ASSIGN, // :=
+	AST_OPERATOR_EQUAL_EQUAL, // ==
+	// AST_OPERATOR_EQUAL_EQUAL, // ===
+
+	// Relational Operators
+	AST_OPERATOR_GREATER, // >
+	AST_OPERATOR_GREATER_EQUAL, // >=
+	AST_OPERATOR_LESS, // <
+	AST_OPERATOR_LESS_EQUAL, // <=
+
+	AST_OPERATOR_DOT, // parent.sub
+	AST_OPERATOR_DOT_DOT, // [1..4]
+	AST_OPERATOR_DOT_DOT_DOT, // {...objects}
+
+	// Assignment Operators
+	AST_OPERATOR_EQUAL_PLUS, // +=
+	AST_OPERATOR_EQUAL_MINUS, // -=
+	AST_OPERATOR_EQUAL_STAR, // *=
+	AST_OPERATOR_EQUAL_STAR_STAR, // **=
+	AST_OPERATOR_EQUAL_SLASH, // /=
+	AST_OPERATOR_EQUAL_MOD, // %=
+	AST_OPERATOR_EQUAL_BIT_AND, // &=
+	AST_OPERATOR_EQUAL_BIT_OR, // |=
+	AST_OPERATOR_EQUAL_BIT_NOT, // ^=
+	AST_OPERATOR_EQUAL_SHIFT_LEFT, // >>=
+	AST_OPERATOR_EQUAL_SHIFT_RIGHT, // <<=
+
+} AstOperatorType;
+
+typedef enum _ast_expr_type
+{
+	AST_EXPRESSION_TYPE_I8,
+	AST_EXPRESSION_TYPE_U8,
+
+	AST_EXPRESSION_TYPE_I16,
+	AST_EXPRESSION_TYPE_U16,
+
+	AST_EXPRESSION_TYPE_I32,
+	AST_EXPRESSION_TYPE_U32,
+
+	AST_EXPRESSION_TYPE_I64,
+	AST_EXPRESSION_TYPE_U64,
+
+	AST_EXPRESSION_TYPE_I128,
+	AST_EXPRESSION_TYPE_U128,
+
+	AST_EXPRESSION_TYPE_F32,
+	AST_EXPRESSION_TYPE_F64,
+
+	AST_EXPRESSION_TYPE_BOOL,
+	AST_EXPRESSION_TYPE_STRING,
+	AST_EXPRESSION_TYPE_CHAR,
+} AstExprType;
+
+typedef struct _ast_type_sum_item
+{
+	Location pos;
+	AstData data;
+} AstTypeSumItem;
 
 // char* ast_statement_name(AstStatementType type);
 
