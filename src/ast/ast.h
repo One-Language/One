@@ -11,7 +11,11 @@
 #ifndef _ONE_AST_AST_H_
 #define _ONE_AST_AST_H_
 
+#include "../builtins/array.h"
+#include "../lexer/tokenizer/token.h"
+
 typedef enum _token_type TokenType;
+typedef struct _location Location;
 
 /*
 package main
@@ -23,6 +27,8 @@ typedef struct
 	char* name;
 } AstModule;
 
+typedef Array AstImportSymbolArray; // AstImportSymbol
+typedef Array AstImportNameArray; // AstImportName
 typedef Array AstImportDeclarationArray; // AstImportDeclaration
 typedef Array AstBlockDeclarationArray; // AstBlockDeclaration
 typedef char* StringArray; // char
@@ -147,6 +153,12 @@ typedef struct
 	AstAttributeDeclarationArray attributes; // AstAttributeDeclaration
 } AstFunctionDeclaration;
 
+typedef enum
+{
+	AST_ATTRIBUTE_IDENTIFIER,
+	AST_ATTRIBUTE_KEY,
+} AstAttributeType;
+
 typedef struct
 {
 	Location pos;
@@ -161,11 +173,6 @@ typedef struct
 	char* value;
 } AstAttributeDeclaration;
 
-typedef enum
-{
-	AST_ATTRIBUTE_IDENTIFIER,
-	AST_ATTRIBUTE_KEY,
-} AstAttributeType;
 typedef struct
 {
 	// fn (mut t MyTime) century() int {}
