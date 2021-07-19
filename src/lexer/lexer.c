@@ -87,6 +87,9 @@ Token* lexer_identifier()
 {
 	debug_lexer("lexer_identifier");
 
+	printf("First ==>%c\n", *lexer.current);
+	printf("Second ==>%c\n", *lexer.start);
+
 	//	char tmp_str[1024] = {};
 	char* tmp_str = (char*)malloc(1024 * sizeof(char) + 1);
 	size_t ident_length = 0;
@@ -191,7 +194,7 @@ Token* lexer_skip_whitespace()
 				token_advance();
 				break;
 			case '\n':
-				lexer.loc.line++;
+				// lexer.loc.line++;
 				token_advance();
 				break;
 			case '/':
@@ -215,6 +218,7 @@ Token* lexer_skip_whitespace()
 				return NULL;
 		}
 	}
+	return NULL; // default return-value
 }
 
 /*
@@ -338,11 +342,14 @@ Token* lexer_scan()
 {
 	debug_lexer("lexer_scan");
 
-	lexer.start = lexer.current;
-
 	Token* t = lexer_skip_whitespace();
 	if (t != NULL)
 		return t;
+
+	lexer.start = lexer.current;
+
+	// printf("X:First ==>%c\n", *lexer.current);
+	// printf("X:Second ==>%c\n", *lexer.start);
 
 	// it's EOF, so return and stop recursice calling!
 	if (token_is_end()) return token_make(TOKEN_EOF);

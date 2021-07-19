@@ -135,7 +135,7 @@ typedef enum _token_type
 	//	TOKEN_DO, // do
 	TOKEN_MATCH, // match
 
-	TOKEN_RETURN, // ret
+	TOKEN_RET, // ret
 	TOKEN_FN, // fn
 	TOKEN_CONST, // const
 	TOKEN_FINAL, // final
@@ -214,7 +214,7 @@ static Keyword keywords[] = {
 	 {"as", 2, TOKEN_AS, false},
 	 {"is", 2, TOKEN_IS, false},
 
-	 {"ret", 3, TOKEN_RETURN, false},
+	 {"ret", 3, TOKEN_RET, false},
 	 //	 {"return", 6, TOKEN_RETURN, false},
 
 	 {"assert", 6, TOKEN_ASSERT, false},

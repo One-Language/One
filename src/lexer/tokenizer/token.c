@@ -97,6 +97,12 @@ char token_advance()
 	debug_token("token_advance");
 
 	lexer.current++;
+	if(lexer.current[0] == '\n') {
+		lexer.loc.column=0;
+		lexer.loc.line++;
+	} else {
+		lexer.loc.column++;
+	}
 	return lexer.current[-1];
 }
 
@@ -183,6 +189,7 @@ Token* token_make_value(TokenType type, char* value)
 	t->value = value;
 	t->type = type;
 	t->length = (int)(lexer.current - lexer.start);
+	printf("CREATE TOKEN %s with %d length\n", token_name(t->type), t->length);
 	t->loc.line = lexer.loc.line;
 	t->loc.column = lexer.loc.column;
 	return t;
@@ -383,8 +390,8 @@ char* token_name(TokenType type)
 			//		case TOKEN_DO:
 			//			return "do";
 
-		case TOKEN_RETURN:
-			return "RETURN";
+		case TOKEN_RET:
+			return "RET";
 		case TOKEN_FN:
 			return "FN";
 
