@@ -149,21 +149,64 @@ typedef enum _ast_block_type
 	AST_BLOCK_STATEMENT,
 } AstBlockType;
 
-typedef struct _ast_block_declaration
+/*
+i8, u8
+i16, u16
+i32, u32
+i64, u64
+i128, u128
+f32, f64
+bool
+char, string
+pubName.publicTypeName
+*/
+typedef struct _ast_data
+{
+	// &Node<T>
+	// ^ pos_address
+	//  ^ pos_name
+	//      ^ pos_generic
+
+	// Node<T>
+	// ^ pos_address or maybe nil
+	// ^ pos_name
+	//     ^ pos_generic
+	Location pos;
+	Location pos_address;
+	Location pos_name;
+	Location pos_generic;
+
+	bool has_address;
+	bool has_generic;
+
+	AstDataItemArray names; // AstDataItem
+	StringArray generics; // char*
+} AstData;
+
+typedef struct _ast_data_item
 {
 	Location pos;
 
-	AstBlockType type;
+	char* name; // char*
+} AstDataItem;
 
-	union
-	{
-		AstFunctionDeclaration function;
-		AstStructDeclaration structure;
-		AstEnumDeclaration enumerate;
-		AstTypeDeclaration type;
-		AstStatementDeclaration statement;
-	} value;
-} AstBlockDeclaration;
+typedef struct _ast_param
+{
+	// fn (mut t MyTime) century() int {}
+	//	   mut t MyTime
+	//	   ^ pos_mut
+	//	       ^ pos_name
+	//	         ^ pos_type
+	Location pos;
+	Location pos_mut;
+	Location pos_name;
+	Location pos_type;
+
+	bool is_mut;
+
+	char* name;
+	AstData type;
+} AstParam;
 
 typedef struct _ast_function_declaration
 {
@@ -217,64 +260,21 @@ typedef struct _ast_attribute_declaration
 	char* value;
 } AstAttributeDeclaration;
 
-typedef struct _ast_param
-{
-	// fn (mut t MyTime) century() int {}
-	//	   mut t MyTime
-	//	   ^ pos_mut
-	//	       ^ pos_name
-	//	         ^ pos_type
-	Location pos;
-	Location pos_mut;
-	Location pos_name;
-	Location pos_type;
-
-	bool is_mut;
-
-	char* name;
-	AstData type;
-} AstParam;
-
-/*
-i8, u8
-i16, u16
-i32, u32
-i64, u64
-i128, u128
-f32, f64
-bool
-char, string
-pubName.publicTypeName
-*/
-typedef struct _ast_data
-{
-	// &Node<T>
-	// ^ pos_address
-	//  ^ pos_name
-	//      ^ pos_generic
-
-	// Node<T>
-	// ^ pos_address or maybe nil
-	// ^ pos_name
-	//     ^ pos_generic
-	Location pos;
-	Location pos_address;
-	Location pos_name;
-	Location pos_generic;
-
-	bool has_address;
-	bool has_generic;
-
-	AstDataItemArray names; // AstDataItem
-	StringArray generics; // char*
-} AstData;
-
-typedef struct _ast_data_item
+typedef struct _ast_block_declaration
 {
 	Location pos;
 
-	char* name; // char*
-} AstDataItem;
+	AstBlockType type;
+
+	union
+	{
+		AstFunctionDeclaration function;
+		AstStructDeclaration structure;
+		AstEnumDeclaration enumerate;
+		AstTypeDeclaration type;
+		AstStatementDeclaration statement;
+	} value;
+} AstBlockDeclaration;
 
 typedef struct _ast_struct_declaration
 {
@@ -468,6 +468,19 @@ typedef enum _ast_expr_type
 	AST_EXPRESSION_TYPE_CHAR,
 } AstExprType;
 
+typedef struct _ast_type_sum_declaration
+{
+	Location pos;
+	Location pos_public;
+	Location pos_name;
+	Location pos_name;
+
+	bool is_public;
+
+	char* name;
+	AstTypeSumItemArray data; // AstTypeSumItem
+} AstTypeSumDeclaration;
+
 /*
 struct Point {
 	x int
@@ -538,19 +551,6 @@ typedef struct _ast_type_alias_declaration
 	char* name;
 	AstData data;
 } AstTypeAliasDeclaration;
-
-typedef struct _ast_type_sum_declaration
-{
-	Location pos;
-	Location pos_public;
-	Location pos_name;
-	Location pos_name;
-
-	bool is_public;
-
-	char* name;
-	AstTypeSumItemArray data; // AstTypeSumItem
-} AstTypeSumDeclaration;
 
 typedef struct _ast_type_sum_item
 {
