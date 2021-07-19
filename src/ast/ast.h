@@ -545,26 +545,75 @@ typedef struct {
 
 	AstStatementIf otherwise;
 } AstStatementIf;
+
 typedef struct {
 
 } AstStatementFor;
-typedef struct {
 
+typedef struct {
+	// match ... { }
 } AstStatementMatch;
-typedef struct {
 
+typedef struct {
+	// return <expr>
+	// ^ pos
+	//        ^pos_expr
+	// return
+	// ^ pos
+	Location pos;
+	Location pos_expr;
+
+	bool has_expr;
+	AstExprDeclaration expr;
 } AstStatementRet;
-typedef struct {
 
+typedef struct {
+	// const <name> := <value>
+	Location pos;
+	Location pos_name;
+	Location pos_op;
+	Location pos_value;
+
+	char* name;
+	AstExprDeclaration value;
 } AstStatementAssign;
-typedef struct {
 
+typedef struct {
+	// const (
+	// 	  pi    = 3.14
+	// 	  world = '世界'
+	// )
+	// const <name> = <value>
+	Location pos;
+	Location pos_open;
+	Location pos_close;
+
+	bool is_multi;
+
+	Array fields;// AstStatementAssignConstItem
+	// Array name; // char*
+	// Array value; // AstExprDeclaration
 } AstStatementAssignConst;
+
+typedef struct {
+	Location pos_name;
+	Location pos_op;
+	Location pos_value;
+
+	char* name;
+	AstExprDeclaration value;
+} AstStatementAssignConstItem;
+
 typedef struct {
 
 } AstStatementVariable;
-typedef struct {
 
+typedef struct {
+	// <expr>
+	// ^ pos
+	Location pos;
+
+	AstExprDeclaration expr;
 } AstStatementExpr;
 
 
