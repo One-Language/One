@@ -320,6 +320,8 @@ typedef struct
 
 typedef enum
 {
+	AST_OPERATOR_NONE, // emit data
+
 	AST_OPERATOR_PLUS, // -
 	AST_OPERATOR_PLUS_PLUS, // --
 
@@ -380,8 +382,6 @@ typedef enum
 
 typedef enum
 {
-	AST_EXPRESSION_TYPE_OPERATOR,
-
 	AST_EXPRESSION_TYPE_I8,
 	AST_EXPRESSION_TYPE_U8,
 
@@ -502,7 +502,71 @@ typedef struct
 
 typedef struct
 {
+	Location pos;
+
+	AstStatementType type;
+
+	union
+	{
+		AstStatementIf clauses;
+		AstStatementFor foreach;
+		AstStatementMatch match;
+		AstStatementRet ret;
+		AstStatementAssign assign;
+		AstStatementAssignConst assign_const;
+		AstStatementVariable variable;
+		AstStatementExpr expr;
+	} value;
 } AstStatementDeclaration;
+
+typedef enum 
+{
+	AST_STATEMENT_IF,
+	AST_STATEMENT_FOR,
+	AST_STATEMENT_MATCH,
+	AST_STATEMENT_RET,
+	AST_STATEMENT_ASSIGN,
+	AST_STATEMENT_ASSIGN_CONST,
+	AST_STATEMENT_VARIABLE,
+	AST_STATEMENT_EXPRESSION,
+} AstStatementType;
+
+typedef struct {
+	// if <expr> {} else ...
+	Location pos;
+	Location pos_expr;
+	Location pos_body;
+	Location pos_else;
+
+	bool has_else;
+
+	AstExprDeclaration expr;
+	Array body; // AstBlockDeclaration
+
+	AstStatementIf otherwise;
+} AstStatementIf;
+typedef struct {
+
+} AstStatementFor;
+typedef struct {
+
+} AstStatementMatch;
+typedef struct {
+
+} AstStatementRet;
+typedef struct {
+
+} AstStatementAssign;
+typedef struct {
+
+} AstStatementAssignConst;
+typedef struct {
+
+} AstStatementVariable;
+typedef struct {
+
+} AstStatementExpr;
+
 
 // char* ast_statement_name(AstStatementType type);
 
