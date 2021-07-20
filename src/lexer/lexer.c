@@ -248,6 +248,7 @@ Token* lexer_number()
 		//		char c2 = token_advance();
 		//		printf(">>>> %c, %c\n", c1, c2);
 		//		printf(">>>> %c, %c\n", token_peek(), token_advance());
+		printf("LOOP: Currently token is: '%c'\n", token_peek());
 		if (c == '_')
 		{
 			token_advance();
@@ -259,13 +260,16 @@ Token* lexer_number()
 		c = token_peek();
 	}
 
-	if (token_peek() == '.' && token_is_digit(token_peek_next()))
-	{
-		tmp_str[i++] = token_advance();
-		while (token_is_digit(token_peek()))
-		{
-			tmp_str[i++] = token_advance();
-		}
+	printf("Currently token is: '%c'\n", token_peek());
+
+	if (token_match('.')) {
+		if(token_is_digit(token_peek())) {
+			tmp_str[i++] = '.';
+			while (token_is_digit(token_peek()))
+			{
+				tmp_str[i++] = token_advance();
+			}
+		} else {}
 	}
 	tmp_str[i] = '\0';
 
@@ -347,12 +351,18 @@ Token* lexer_scan()
 {
 	debug_lexer("lexer_scan");
 
+	printf("Start: %d %d\n", lexer.pos.line, lexer.pos.column);
+
+	lexer.start = lexer.current;
+
 	Token* t = lexer_skip_whitespace();
 	if (t != NULL)
 		return t;
 
 	lexer.start = lexer.current;
 	lexer.pos = lexer.pos_end;
+
+	printf("Start: %d %d\n", lexer.pos.line, lexer.pos.column);
 
 	// printf("X:First ==>%c\n", *lexer.current);
 	// printf("X:Second ==>%c\n", *lexer.start);

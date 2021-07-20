@@ -107,6 +107,7 @@ char token_advance()
 	{
 		lexer.pos_end.column++;
 	}
+	lexer.pos_end.index++;
 	return lexer.current[-1];
 }
 
@@ -204,8 +205,8 @@ Token* token_make_value(TokenType type, char* value)
 	t->pos_end.column = lexer.pos_end.column;
 	if(lexer.pos_end.column == 0) {
 		printf("--->lexer.temp_column is %d\n", lexer.temp_column);
-		t->pos_end.column = lexer.temp_column;
-		t->pos_end.line--;
+		// t->pos_end.column = lexer.temp_column;
+		// t->pos_end.line--;
 	} else {
 		// t->pos_end.column--;
 	}
