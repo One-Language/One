@@ -138,7 +138,7 @@ char token_advance()
 	lexer.current++;
 	// if (lexer.current[0] == '\n' || lexer.current[0] == '\r')
 	// {
- 	// 	lexer.temp_column = lexer.pos_end.column;
+	// 	lexer.temp_column = lexer.pos_end.column;
 	// 	lexer.pos_end.column = 0;
 	// 	lexer.pos_end.line++;
 	// }

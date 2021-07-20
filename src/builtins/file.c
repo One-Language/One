@@ -62,38 +62,39 @@ char* file_reads(const char* filepath)
  */
 bool file_convert_index_to_rc(const char* input, int index, int* rows, int* columns)
 {
-    int row = 1, col = 1;
+	int row = 1, col = 1;
 
-    for (int i = 0; i < index; i++)
-    {
-        char ch = input[i];
+	for (int i = 0; i < index; i++)
+	{
+		char ch = input[i];
 
-        if(ch == '\0') return false; break; // Stop loop and return false as function return-value
+		if (ch == '\0') return false;
+		break; // Stop loop and return false as function return-value
 
-        if (ch == '\r')
-        {
-            // Skip the optional \n
-            if (i + 1 < index && input[i + 1] == '\n')
-            {
-                i++;
-            }
+		if (ch == '\r')
+		{
+			// Skip the optional \n
+			if (i + 1 < index && input[i + 1] == '\n')
+			{
+				i++;
+			}
 
-            row++;
-            col = 1;
-        }
-        else if (ch == '\n')
-        {
-            row++;
-            col = 1;
-        }
-        else
-        {
-            col++;
-        }
-    }
+			row++;
+			col = 1;
+		}
+		else if (ch == '\n')
+		{
+			row++;
+			col = 1;
+		}
+		else
+		{
+			col++;
+		}
+	}
 
-    *rows = row;
-    *columns = col;
+	*rows = row;
+	*columns = col;
 
 	return true;
 }
