@@ -67,9 +67,9 @@ bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t
 	for (int i = 0; i < index; i++)
 	{
 		char ch = input[i];
+		printf("-->%d,'%c'\n", i, ch);
 
-		if (ch == '\0') return false;
-		break; // Stop loop and return false as function return-value
+		if (ch == '\0') return false; // Stop loop and return false as function return-value
 
 		if (ch == '\r')
 		{
@@ -80,12 +80,12 @@ bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t
 			}
 
 			row++;
-			col = 1;
+			col = 0;
 		}
 		else if (ch == '\n')
 		{
 			row++;
-			col = 1;
+			col = 0;
 		}
 		else
 		{

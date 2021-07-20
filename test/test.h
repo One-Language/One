@@ -18,15 +18,9 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "../src/array.h"
-#include "../src/lexer.h"
-#include "../src/token.h"
-#include "../src/ast.h"
-#include "../src/parser.h"
-#include "../src/error.h"
-#include "../src/generator.h"
+#include "../src/builtins/array.h"
+#include "../src/builtins/error.h"
 
-extern Parser parser;
-extern Array tokens;
+#include "../src/builtins/file.h"
 
 #endif //ONE_TEST_H
