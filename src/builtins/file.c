@@ -57,10 +57,43 @@ char* file_reads(const char* filepath)
 /*
  * @function: file_convert_index_to_rc
  * @description: We get index of a position and point in string and looking to find its rows and column number and we will pass new value throw argument
- * @arguments: const char* input, int index, int* rows, int* column
+ * @arguments: const char* input, int index, int* rows, int* colums
  * @return: bool / True or False; does that index exists or no. maybe current index is out of the file and filelength is less that `index` value!
  */
-bool file_convert_index_to_rc(const char* input, int index, int* rows, int* column)
+bool file_convert_index_to_rc(const char* input, int index, int* rows, int* colums)
 {
-	return false;
+    int row = 1, col = 1;
+
+    for (int i = 0; i < index; i++)
+    {
+        char ch = input[i];
+
+        if(ch == '\0') return false; break; // Stop loop and return false as function return-value
+
+        if (ch == '\r')
+        {
+            // Skip the optional \n
+            if (i + 1 < index && input[i + 1] == '\n')
+            {
+                i++;
+            }
+
+            row++;
+            col = 1;
+        }
+        else if (ch == '\n')
+        {
+            row++;
+            col = 1;
+        }
+        else
+        {
+            col++;
+        }
+    }
+
+    *rows = row;
+    *colums = col;
+
+	return true;
 }
