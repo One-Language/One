@@ -323,9 +323,6 @@ Token* lexer_number()
 				tmp_str[i++] = token_advance();
 			}
 		}
-		else
-		{
-		}
 	}
 	tmp_str[i] = '\0';
 
