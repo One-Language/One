@@ -74,7 +74,7 @@ bool token_is_end()
 
 /*
  * @function: token_recede
- * @description: return -1th character of current source code
+ * @description: go to back char and return -1th character of current source code
  * @arguments: nothing
  * @return: char, if not exists will be ... (TODO)
  */
@@ -83,7 +83,46 @@ char token_recede()
 	debug_token("token_recede");
 
 	lexer.current--;
+	// if (lexer.current[0] == '\n' || lexer.current[0] == '\r')
+	// {
+	// 	lexer.pos_end.line--;
+	// 	// TODO: column
+	// }
+	// else {
+	// 	lexer.pos_end.column--;
+	// }
+	lexer.pos_end.index--;
 	return lexer.current[-1];
+}
+
+/*
+ * @function: token_recede_next
+ * @description: go to back character of current source code and return it
+ * @arguments: nothing
+ * @return: char, if not exists will be ... (TODO)
+ */
+char token_recede_next()
+{
+	debug_token("token_recede_next");
+
+	token_recede();
+
+	return lexer.current[0];
+}
+
+/*
+ * @function: token_recede_next_next
+ * @description: return current character of current source code and go to back
+ * @arguments: nothing
+ * @return: char, if not exists will be ... (TODO)
+ */
+char token_recede_next_next()
+{
+	debug_token("token_recede_next_next");
+
+	lexer.current--;
+	lexer.pos_end.index--;
+	return lexer.current[1];
 }
 
 /*
@@ -112,16 +151,16 @@ char token_advance()
 	debug_token("token_advance");
 
 	lexer.current++;
-	if (lexer.current[0] == '\n')
-	{
-		lexer.temp_column = lexer.pos_end.column;
-		lexer.pos_end.column = 0;
-		lexer.pos_end.line++;
-	}
-	else
-	{
-		lexer.pos_end.column++;
-	}
+	// if (lexer.current[0] == '\n' || lexer.current[0] == '\r')
+	// {
+ 	// 	lexer.temp_column = lexer.pos_end.column;
+	// 	lexer.pos_end.column = 0;
+	// 	lexer.pos_end.line++;
+	// }
+	// else
+	// {
+	// 	lexer.pos_end.column++;
+	// }
 	lexer.pos_end.index++;
 	return lexer.current[-1];
 }

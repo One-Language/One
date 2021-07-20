@@ -186,6 +186,8 @@ Token* lexer_skip_comment_multiline()
  */
 Token* lexer_skip_whitespace()
 {
+	debug_lexer("lexer_skip_whitespace");
+
 	char c = token_peek();
 	bool hasComment = false;
 	bool hasLine = false;
@@ -408,7 +410,7 @@ Token* lexer_scan()
 
 	lexer.start = lexer.current;
 
-	Token* t = lexer_skip_whitespace();
+	Token* t = lexer_skip_space();
 	if (t != NULL)
 		return t;
 
