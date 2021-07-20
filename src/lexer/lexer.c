@@ -297,11 +297,11 @@ Token* lexer_number()
 	char c = token_peek();
 	while (token_is_digit(c) || c == '_')
 	{
-		//		char c1= token_peek();
-		//		char c2 = token_advance();
-		//		printf(">>>> %c, %c\n", c1, c2);
-		//		printf(">>>> %c, %c\n", token_peek(), token_advance());
-		printf("LOOP: Currently token is: '%c'\n", token_peek());
+		// char c1= token_peek();
+		// char c2 = token_advance();
+		// printf(">>>> %c, %c\n", c1, c2);
+		// printf(">>>> %c, %c\n", token_peek(), token_advance());
+		// printf("LOOP: Currently token is: '%c'\n", token_peek());
 		if (c == '_')
 		{
 			token_advance();
@@ -313,7 +313,7 @@ Token* lexer_number()
 		c = token_peek();
 	}
 
-	printf("Currently token is: '%c'\n", token_peek());
+	// printf("Currently token is: '%c'\n", token_peek());
 
 	if (token_match('.'))
 	{
