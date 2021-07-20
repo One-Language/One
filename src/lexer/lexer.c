@@ -130,7 +130,7 @@ Token* lexer_identifier()
  * @function: lexer_skip_comment_inline
  * @description: Check if current character is //, so it's a inline-comment and we have to skip it!
  * @arguments: nothing
- * @return: Always NULL
+ * @return: Maybe NULL
  */
 Token* lexer_skip_comment_inline()
 {
@@ -140,7 +140,9 @@ Token* lexer_skip_comment_inline()
 	{
 		while (token_peek() != '\n' && !token_is_end()) token_advance();
 	}
-	return NULL;
+
+	return token_make(TOKEN_SKIP_COMMENT_SINGLE);
+	// return NULL;
 }
 
 /*
@@ -172,7 +174,8 @@ Token* lexer_skip_comment_multiline()
 	//	if(!token_match('/'))
 	//		return token_make_error("You have to close multi-line comment correctly!");
 
-	return NULL;
+	return token_make(TOKEN_SKIP_COMMENT_MULTI);
+	// return NULL;
 }
 
 /*
@@ -187,15 +190,18 @@ Token* lexer_skip_whitespace()
 	bool hasComment = false;
 	bool hasLine = false;
 
-	while(c == '\r' || c == '\n' || c == '\t' || c == ' ') {
+	while (c == '\r' || c == '\n' || c == '\t' || c == ' ')
+	{
 		hasComment = true;
-		if(hasLine == false && c == '\n') {
+		if (hasLine == false && c == '\n')
+		{
 			hasLine = true;
 		}
 		c = token_advance_next();
 	}
 
-	if(hasComment == true) {
+	if (hasComment == true)
+	{
 		return token_make(hasLine ? TOKEN_SKIP_WHITESPACE_LINE : TOKEN_SKIP_WHITESPACE);
 	}
 
@@ -214,15 +220,19 @@ Token* lexer_skip_space()
 	debug_lexer("lexer_skip_space");
 
 	Token* t = lexer_skip_whitespace();
-	if(t != NULL) return t;
+	if (t != NULL) return t;
 
 	// lex comments
-	if(token_peek() == '/') {
+	if (token_peek() == '/')
+	{
 		// single inline-comment
-		if(token_peek_next() == '/') {
+		if (token_peek_next() == '/')
+		{
 			t = lexer_skip_comment_inline();
 			if (t != NULL) return t;
-		} else if(token_peek_next() == '*') { // multi-line comment
+		}
+		else if (token_peek_next() == '*')
+		{ // multi-line comment
 			t = lexer_skip_comment_multiline();
 			if (t != NULL) return t;
 		}
@@ -303,14 +313,19 @@ Token* lexer_number()
 
 	printf("Currently token is: '%c'\n", token_peek());
 
-	if (token_match('.')) {
-		if(token_is_digit(token_peek())) {
+	if (token_match('.'))
+	{
+		if (token_is_digit(token_peek()))
+		{
 			tmp_str[i++] = '.';
 			while (token_is_digit(token_peek()))
 			{
 				tmp_str[i++] = token_advance();
 			}
-		} else {}
+		}
+		else
+		{
+		}
 	}
 	tmp_str[i] = '\0';
 

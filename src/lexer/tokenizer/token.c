@@ -213,16 +213,19 @@ Token* token_make_value(TokenType type, char* value)
 	printf("CREATE TOKEN %s with %d length\n", token_name(t->type), t->length);
 
 	t->pos = lexer.pos;
-	t->pos.column = lexer.pos.column > 0 ? lexer.pos.column -1 : lexer.pos.column;
+	t->pos.column = lexer.pos.column > 0 ? lexer.pos.column - 1 : lexer.pos.column;
 
 	t->pos_end.tokens = lexer.pos_end.tokens++;
 	t->pos_end.line = lexer.pos_end.line;
 	t->pos_end.column = lexer.pos_end.column;
-	if(lexer.pos_end.column == 0) {
+	if (lexer.pos_end.column == 0)
+	{
 		printf("--->lexer.temp_column is %d\n", lexer.temp_column);
 		// t->pos_end.column = lexer.temp_column;
 		// t->pos_end.line--;
-	} else {
+	}
+	else
+	{
 		// t->pos_end.column--;
 	}
 

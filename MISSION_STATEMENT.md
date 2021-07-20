@@ -12,7 +12,6 @@ The best cost-efficient, fast and reliable language did not exist until now, wit
 How? With One, which compiles plenty of languages in just one, the amount of work and the process of hiring multiple programmers specialized in different languages will be reduced drastically, your only need will be a One Language expert to carry on your work!
 A game-changer and a revolution in the world of programming has emerged, with this multi-purpose language, the amount of time, money, manpower, and maintenance is set to a limit under your budget, guaranteed!
 
-
 ### PURPOSE
 
 The One Language aims to introduce the ultimate solution to your time and cost barriers to achieve your goals faster efficiently and creatively.
@@ -20,10 +19,10 @@ The One Language aims to introduce the ultimate solution to your time and cost b
 Coding can be challenging when faced with issues that are often called “unsolvable” and it became common practice to overlook these issues and carry on working as if they were part of the coding process, which most programmers fall for and never try to fix.
 With ONE, the developing team has solved the unsolvable and carried on without leaving any issues behind. With new tools that can enable coding to become easier and more reliable than before.
 
-
 ### DESIGN AND DEVELOPMENT GOALS
 
 The One Language development team is on its way to achieving the following:
+
 - Clean and easy syntax
 - Multi-purpose language
 - Useful functionality and runtime-library
@@ -32,7 +31,7 @@ The One Language development team is on its way to achieving the following:
 - Cross-platform compatibility
 - Support for different architectures and OSs
 - An internal web-development framework
-- Easier debugging: Programmers mostly spend their time on reading and debugging their code, which is a time wasted at the expense of writing the actual codes  ([you can see a discussion about this subject here](https://www.quora.com/It-is-true-that-developers-spend-most-of-their-time-reading-code-than-writing-code))
+- Easier debugging: Programmers mostly spend their time on reading and debugging their code, which is a time wasted at the expense of writing the actual codes ([you can see a discussion about this subject here](https://www.quora.com/It-is-true-that-developers-spend-most-of-their-time-reading-code-than-writing-code))
 - Easier maintenance
 - Static-type language (but it can auto-detect the type of your variables and values)
 - Faster performance
