@@ -255,8 +255,10 @@ Token* token_make_value(TokenType type, char* value)
 	t->pos.column = lexer.pos.column > 0 ? lexer.pos.column - 1 : lexer.pos.column;
 
 	t->pos_end.tokens = lexer.pos_end.tokens++;
-	t->pos_end.line = lexer.pos_end.line;
-	t->pos_end.column = lexer.pos_end.column;
+	t->pos_end.index = lexer.pos_end.index;
+	// t->pos_end.line = 1;
+	// t->pos_end.column = 0;
+
 	if (lexer.pos_end.column == 0)
 	{
 		printf("--->lexer.temp_column is %d\n", lexer.temp_column);

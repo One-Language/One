@@ -62,12 +62,12 @@ char* file_reads(const char* filepath)
  */
 bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t* columns)
 {
-	int row = 1, col = 1;
+	int row = 1, col = 0;
 
 	for (int i = 0; i < index; i++)
 	{
 		char ch = input[i];
-		printf("-->%d,'%c'\n", i, ch);
+		// printf("-->%d,'%c'\n", i, ch);
 
 		if (ch == '\0') return false; // Stop loop and return false as function return-value
 

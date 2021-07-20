@@ -410,12 +410,18 @@ Token* lexer_scan()
 
 	lexer.start = lexer.current;
 
+
 	Token* t = lexer_skip_space();
-	if (t != NULL)
+	if (t != NULL) {
 		return t;
+	}
 
 	lexer.start = lexer.current;
-	lexer.pos = lexer.pos_end;
+	lexer.pos.index = lexer.pos_end.index;
+
+	printf("-----------> current start point is: %d\n", lexer.pos_end.index);
+
+	return token_make(TOKEN_EOF);
 
 	// printf("Start: %d %d\n", lexer.pos.line, lexer.pos.column);
 

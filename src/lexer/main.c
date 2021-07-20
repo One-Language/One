@@ -52,13 +52,18 @@ int main(int argc, char** argv)
 		{
 			Token* t = *tokens;
 			char* t_name = token_name(t->type);
-			bool has = file_convert_index_to_rc(data, t->pos.index, &t->pos.line, &t->pos.column);
-			printf("==>%s\n", token_name(t->type));
-			printf("==>index: %d, length: %d\n", t->pos.index, t->length);
-			// printf("==>%d\n", has == true ? 1 : 0);
-			printf("==>line:col %d:%d\n", t->pos.line, t->pos.column);
+			bool has1 = file_convert_index_to_rc(data, t->pos.index, &t->pos.line, &t->pos.column);
+			bool has2 = file_convert_index_to_rc(data, t->pos_end.index, &t->pos_end.line, &t->pos_end.column);
+
 			printf("\n");
+			printf("%s\n", token_name(t->type));
+			printf("\tindex: %d, length: %d\n", t->pos_end.index, t->length);
+			// printf("==>%d\n", has == true ? 1 : 0);
+			printf("\tline:col [%d:%d] - [%d:%d]\n", t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column);
+			printf("\n");
+
 			fprintf(file_out, "[%d:%d] [%d:%d - %d:%d] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
+
 			if (t->value != NULL)
 			{
 				fprintf(file_out, ": \"%s\"", t->value);
