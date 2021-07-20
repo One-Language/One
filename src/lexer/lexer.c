@@ -406,143 +406,132 @@ Token* lexer_scan()
 {
 	debug_lexer("lexer_scan");
 
-	// printf("Start: %d %d\n", lexer.pos.line, lexer.pos.column);
-
 	lexer.start = lexer.current;
-
+	lexer.pos.index = lexer.pos_end.index;
 
 	Token* t = lexer_skip_space();
 	if (t != NULL) {
 		return t;
 	}
 
-	lexer.start = lexer.current;
+	// Again update the position of start...
 	lexer.pos.index = lexer.pos_end.index;
 
-	printf("-----------> current start point is: %d\n", lexer.pos_end.index);
+	// it's EOF, so return and stop recursice calling!
+	if (token_is_end()) return token_make(TOKEN_EOF);
 
-	return token_make(TOKEN_EOF);
+	char c = token_advance();
+	if (token_is_digit(c))
+	{
+		token_recede();
+		return lexer_number();
+	}
+	if (c == '"') return lexer_string();
+	if (c == '\'') return lexer_char();
 
-	// printf("Start: %d %d\n", lexer.pos.line, lexer.pos.column);
+	switch (c)
+	{
+		// (
+		case '(': return token_make(TOKEN_OPERATOR_BRACKET_ROUND_LEFT);
+		// )
+		case ')': return token_make(TOKEN_OPERATOR_BRACKET_ROUND_RIGHT);
+		// [
+		case '[': return token_make(TOKEN_OPERATOR_BRACKET_SQUARE_LEFT);
+		// ]
+		case ']': return token_make(TOKEN_OPERATOR_BRACKET_SQUARE_RIGHT);
+		// {
+		case '{': return token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT);
+		// }
+		case '}': return token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
 
-	// // printf("X:First ==>%c\n", *lexer.current);
-	// // printf("X:Second ==>%c\n", *lexer.start);
+		// ,
+		case ',': return token_make(TOKEN_OPERATOR_COMMA);
 
-	// // it's EOF, so return and stop recursice calling!
-	// if (token_is_end()) return token_make(TOKEN_EOF);
+		// ?
+		case '?': return token_make(TOKEN_OPERATOR_QUESTION);
 
-	// char c = token_advance();
-	// if (token_is_digit(c))
-	// {
-	// 	token_recede();
-	// 	return lexer_number();
-	// }
-	// if (c == '"') return lexer_string();
-	// if (c == '\'') return lexer_char();
+		// ::
+		// :
+		case ':': return token_make(token_match(':') ? TOKEN_OPERATOR_COLONCOLON : TOKEN_OPERATOR_COLON);
 
-	// switch (c)
-	// {
-	// 	// (
-	// 	case '(': return token_make(TOKEN_OPERATOR_BRACKET_ROUND_LEFT);
-	// 	// )
-	// 	case ')': return token_make(TOKEN_OPERATOR_BRACKET_ROUND_RIGHT);
-	// 	// [
-	// 	case '[': return token_make(TOKEN_OPERATOR_BRACKET_SQUARE_LEFT);
-	// 	// ]
-	// 	case ']': return token_make(TOKEN_OPERATOR_BRACKET_SQUARE_RIGHT);
-	// 	// {
-	// 	case '{': return token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT);
-	// 	// }
-	// 	case '}': return token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
+		// !=
+		// !__
+		// !_
+		// !
+		case '!': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_BANG : (token_match('_') ? TOKEN_PRINTDB : (token_match('_') ? TOKEN_PRINTDBNL : TOKEN_OPERATOR_BANG)));
 
-	// 	// ,
-	// 	case ',': return token_make(TOKEN_OPERATOR_COMMA);
+		// &&=
+		// &&
+		// &=
+		// &
+		case '&': return token_make(token_match('&') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_AND : TOKEN_OPERATOR_AND) : (token_match('=') ? TOKEN_OPERATOR_EQUAL_BITWISE_AND : TOKEN_OPERATOR_BITWISE_AND));
 
-	// 	// ?
-	// 	case '?': return token_make(TOKEN_OPERATOR_QUESTION);
+		// ||=
+		// |=
+		// ||
+		// |
+		case '|': return token_make(token_match('|') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_OR : TOKEN_OPERATOR_OR) : (token_match('=') ? TOKEN_OPERATOR_EQUAL_BITWISE_OR : TOKEN_OPERATOR_BITWISE_OR));
 
-	// 	// ::
-	// 	// :
-	// 	case ':': return token_make(token_match(':') ? TOKEN_OPERATOR_COLONCOLON : TOKEN_OPERATOR_COLON);
+		// ...
+		// ..
+		// .
+		case '.': return token_make(token_match('.') ? (token_match('.') ? TOKEN_OPERATOR_DOTDOTDOT : TOKEN_OPERATOR_DOTDOT) : TOKEN_OPERATOR_DOT);
 
-	// 	// !=
-	// 	// !__
-	// 	// !_
-	// 	// !
-	// 	case '!': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_BANG : (token_match('_') ? TOKEN_PRINTDB : (token_match('_') ? TOKEN_PRINTDBNL : TOKEN_OPERATOR_BANG)));
+		// +=
+		// ++
+		// +
+		case '+': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_PLUS : (token_match('+') ? TOKEN_OPERATOR_PLUSPLUS : TOKEN_OPERATOR_PLUS));
 
-	// 	// &&=
-	// 	// &&
-	// 	// &=
-	// 	// &
-	// 	case '&': return token_make(token_match('&') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_AND : TOKEN_OPERATOR_AND) : (token_match('=') ? TOKEN_OPERATOR_EQUAL_BITWISE_AND : TOKEN_OPERATOR_BITWISE_AND));
+		// -=
+		// --
+		// -
+		case '-': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_MINUS : (token_match('-') ? TOKEN_OPERATOR_MINUSMINUS : TOKEN_OPERATOR_MINUS));
 
-	// 	// ||=
-	// 	// |=
-	// 	// ||
-	// 	// |
-	// 	case '|': return token_make(token_match('|') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_OR : TOKEN_OPERATOR_OR) : (token_match('=') ? TOKEN_OPERATOR_EQUAL_BITWISE_OR : TOKEN_OPERATOR_BITWISE_OR));
+		// *=
+		// **
+		// *
+		case '*': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_STAR : (token_match('*') ? TOKEN_OPERATOR_POWER : TOKEN_OPERATOR_STAR));
 
-	// 	// ...
-	// 	// ..
-	// 	// .
-	// 	case '.': return token_make(token_match('.') ? (token_match('.') ? TOKEN_OPERATOR_DOTDOTDOT : TOKEN_OPERATOR_DOTDOT) : TOKEN_OPERATOR_DOT);
+		// /=
+		// /=
+		// //=
+		// //
+		// /
+		case '/': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_SLASH : (token_match('/') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SLASH_INT : TOKEN_OPERATOR_SLASH_INT) : TOKEN_OPERATOR_SLASH));
 
-	// 	// +=
-	// 	// ++
-	// 	// +
-	// 	case '+': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_PLUS : (token_match('+') ? TOKEN_OPERATOR_PLUSPLUS : TOKEN_OPERATOR_PLUS));
+		// >=
+		// >>=
+		// >>
+		// >
+		case '>': return token_make(token_match('=') ? TOKEN_OPERATOR_GREATER_EQUAL : (token_match('>') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT : TOKEN_OPERATOR_SHIFT_RIGHT) : TOKEN_OPERATOR_GREATER));
 
-	// 	// -=
-	// 	// --
-	// 	// -
-	// 	case '-': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_MINUS : (token_match('-') ? TOKEN_OPERATOR_MINUSMINUS : TOKEN_OPERATOR_MINUS));
+		// <=>
+		// <=
+		// <<=
+		// <<
+		// <
+		case '<': return token_make(token_match('=') ? (token_match('>') ? TOKEN_OPERATOR_EQUAL_THREE : TOKEN_OPERATOR_LESS_EQUAL) : (token_match('<') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_LEFT : TOKEN_OPERATOR_SHIFT_LEFT) : TOKEN_OPERATOR_LESS));
 
-	// 	// *=
-	// 	// **
-	// 	// *
-	// 	case '*': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_STAR : (token_match('*') ? TOKEN_OPERATOR_POWER : TOKEN_OPERATOR_STAR));
+		// ===
+		// ==
+		// =
+		case '=': return token_make(token_match('=') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_EQUAL_EQUAL : TOKEN_OPERATOR_EQUAL_EQUAL) : TOKEN_OPERATOR_EQUAL);
 
-	// 	// /=
-	// 	// /=
-	// 	// //=
-	// 	// //
-	// 	// /
-	// 	case '/': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_SLASH : (token_match('/') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SLASH_INT : TOKEN_OPERATOR_SLASH_INT) : TOKEN_OPERATOR_SLASH));
+		// %=
+		// %
+		case '%': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_REMAINDER : TOKEN_OPERATOR_REMAINDER);
 
-	// 	// >=
-	// 	// >>=
-	// 	// >>
-	// 	// >
-	// 	case '>': return token_make(token_match('=') ? TOKEN_OPERATOR_GREATER_EQUAL : (token_match('>') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT : TOKEN_OPERATOR_SHIFT_RIGHT) : TOKEN_OPERATOR_GREATER));
+		// ;
+		case ';': token_match(';'); return lexer_scan();
 
-	// 	// <=>
-	// 	// <=
-	// 	// <<=
-	// 	// <<
-	// 	// <
-	// 	case '<': return token_make(token_match('=') ? (token_match('>') ? TOKEN_OPERATOR_EQUAL_THREE : TOKEN_OPERATOR_LESS_EQUAL) : (token_match('<') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_SHIFT_LEFT : TOKEN_OPERATOR_SHIFT_LEFT) : TOKEN_OPERATOR_LESS));
-
-	// 	// ===
-	// 	// ==
-	// 	// =
-	// 	case '=': return token_make(token_match('=') ? (token_match('=') ? TOKEN_OPERATOR_EQUAL_EQUAL_EQUAL : TOKEN_OPERATOR_EQUAL_EQUAL) : TOKEN_OPERATOR_EQUAL);
-
-	// 	// %=
-	// 	// %
-	// 	case '%': return token_make(token_match('=') ? TOKEN_OPERATOR_EQUAL_REMAINDER : TOKEN_OPERATOR_REMAINDER);
-
-	// 	// ;
-	// 	case ';': token_match(';'); return lexer_scan();
-
-	// 	default:
-	// 		if (token_is_alpha(c))
-	// 		{ // _ [a-z] [A-Z]
-	// 			token_recede(); // go to prev token (so after that current token will be IS_ALPHA)
-	// 			return lexer_identifier(); // now this functions will reads the identifier characters!
-	// 		}
-	// 		break; // if it's not a alpha character so break the switch cases!
-	// }
+		default:
+			if (token_is_alpha(c))
+			{ // _ [a-z] [A-Z]
+				token_recede(); // go to prev token (so after that current token will be IS_ALPHA)
+				return lexer_identifier(); // now this functions will reads the identifier characters!
+			}
+			break; // if it's not a alpha character so break the switch cases!
+	}
 
 	// if you are here, so probably it's a error/bad token and we unable to parse this token!
 	// for example we cannot handle 'ش' as a token!

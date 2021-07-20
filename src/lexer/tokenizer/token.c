@@ -250,6 +250,7 @@ Token* token_make_value(TokenType type, char* value)
 	t->length = (int)(lexer.current - lexer.start);
 
 	t->pos = lexer.pos;
+	t->pos.tokens = lexer.pos.tokens++;
 	t->pos.column = lexer.pos.column > 0 ? lexer.pos.column - 1 : lexer.pos.column;
 
 	t->pos_end.tokens = lexer.pos_end.tokens++;
