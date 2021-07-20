@@ -90,12 +90,20 @@ Token* lexer_skip_comment_multiline();
 
 /*
  * @function: lexer_skip_whitespace
+ * @description: Check if current characters are whitespace \t \r \n space
+ * @arguments: nothing
+ * @return: Maybe NULL
+ */
+Token* lexer_skip_whitespace();
+
+/*
+ * @function: lexer_skip_space
  * @description: Check if current characters are whitespace \t \r \n space and also inline-comment or multi-line-comment
  				 so skip all of them in a infinity loop!
  * @arguments: nothing
  * @return: Always NULL
  */
-Token* lexer_skip_whitespace();
+Token* lexer_skip_space();
 
 /*
  * @function: lexer_number

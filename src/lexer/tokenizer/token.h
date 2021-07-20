@@ -299,6 +299,14 @@ bool token_is_end();
 char token_recede();
 
 /*
+ * @function: token_advance_next
+ * @description: go to next position of the source code and return it
+ * @arguments: nothing
+ * @return: char
+ */
+char token_advance_next();
+
+/*
  * @function: token_advance
  * @description: return current character and go to next position of the source code
  * @arguments: nothing
