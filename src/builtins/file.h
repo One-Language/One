@@ -32,6 +32,6 @@ char* file_reads(const char* filepath);
  * @arguments: const char* input, int index, int* rows, int* columns
  * @return: bool / True or False; does that index exists or no. maybe current index is out of the file and filelength is less that `index` value!
  */
-bool file_convert_index_to_rc(const char* input, int index, int* rows, int* columns);
+bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t* columns);
 
 #endif // _ONE_BUILTINS_FILE_H_

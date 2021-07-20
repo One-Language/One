@@ -37,7 +37,8 @@ int main(int argc, char** argv)
 		printf("Input file is: %s\n", input_file);
 		printf("Output file is: %s\n", output_file);
 
-		tokens = tokenizer_file(input_file);
+		char* data = file_reads(input_file);
+		tokens = tokenizer_string(data);
 
 		FILE* file_out = fopen(output_file, "wa+"); // W: clear the file after open,
 			 // a+: Append mode, so if we call `fprintf` some time we can append to the file!
@@ -51,6 +52,12 @@ int main(int argc, char** argv)
 		{
 			Token* t = *tokens;
 			char* t_name = token_name(t->type);
+			bool has = file_convert_index_to_rc(data, t->pos.index, &t->pos.line, &t->pos.column);
+			printf("==>%s\n", token_name(t->type));
+			printf("==>index: %d, length: %d\n", t->pos.index, t->length);
+			// printf("==>%d\n", has == true ? 1 : 0);
+			printf("==>line:col %d:%d\n", t->pos.line, t->pos.column);
+			printf("\n");
 			fprintf(file_out, "[%d:%d] [%d:%d - %d:%d] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
 			if (t->value != NULL)
 			{
