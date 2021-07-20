@@ -120,24 +120,9 @@ char token_recede_next_next()
 {
 	debug_token("token_recede_next_next");
 
-	lexer.current--;
-	lexer.pos_end.index--;
+	token_recede();
+
 	return lexer.current[1];
-}
-
-/*
- * @function: token_advance_next
- * @description: go to next position of the source code and return it
- * @arguments: nothing
- * @return: char
- */
-char token_advance_next()
-{
-	debug_token("token_advance_next");
-
-	token_advance();
-
-	return lexer.current[0];
 }
 
 /*
@@ -163,6 +148,21 @@ char token_advance()
 	// }
 	lexer.pos_end.index++;
 	return lexer.current[-1];
+}
+
+/*
+ * @function: token_advance_next
+ * @description: go to next position of the source code and return it
+ * @arguments: nothing
+ * @return: char
+ */
+char token_advance_next()
+{
+	debug_token("token_advance_next");
+
+	token_advance();
+
+	return lexer.current[0];
 }
 
 /*

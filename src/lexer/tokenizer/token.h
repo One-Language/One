@@ -299,12 +299,20 @@ bool token_is_end();
 char token_recede();
 
 /*
- * @function: token_advance_next
- * @description: go to next position of the source code and return it
+ * @function: token_recede_next
+ * @description: go to back character of current source code and return it
  * @arguments: nothing
- * @return: char
+ * @return: char, if not exists will be ... (TODO)
  */
-char token_advance_next();
+char token_recede_next();
+
+/*
+ * @function: token_recede_next_next
+ * @description: return current character of current source code and go to back
+ * @arguments: nothing
+ * @return: char, if not exists will be ... (TODO)
+ */
+char token_recede_next_next();
 
 /*
  * @function: token_advance
@@ -313,6 +321,14 @@ char token_advance_next();
  * @return: char
  */
 char token_advance();
+
+/*
+ * @function: token_advance_next
+ * @description: go to next position of the source code and return it
+ * @arguments: nothing
+ * @return: char
+ */
+char token_advance_next();
 
 /*
  * @function: token_peek
