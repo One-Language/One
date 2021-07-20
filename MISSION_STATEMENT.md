@@ -41,7 +41,7 @@ The One Language development team is on its way to achieving the following:
 
 ### FEATURES OF THE LANGUAGE
 
-**The project is still in the Alpha phase. And to be updated **
+**The project is still in the Alpha phase.** **And to be updated**
 
 ### DESIGN DECISIONS
 
