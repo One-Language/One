@@ -20,9 +20,9 @@ int main(int argc, char** argv)
 
 	if (argc == 2)
 	{
-		// printf("Error: pass the arguments correctly!\n");
-		// printf("./parser input.one output");
-		// return 1;
+		printf("Error: pass the arguments correctly!\n");
+		printf("./parser input.one output\n");
+		return 1;
 	}
 	else if (argc == 3)
 	{

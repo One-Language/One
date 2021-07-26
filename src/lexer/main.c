@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 	if (argc == 2)
 	{
 		// printf("Error: pass the arguments correctly!\n");
-		// printf("./lexer input.one output.tokens");
+		// printf("./lexer input.one output.tokens\n");
 		// return 1;
 
 		tokens = tokenizer_string(argv[1]);
