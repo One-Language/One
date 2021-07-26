@@ -13,7 +13,7 @@
 
 #include "../lexer/lexer.h"
 
-// typedef struct _token Token;
+#include "../ast/ast.h"
 
 typedef struct
 {
@@ -30,6 +30,14 @@ typedef struct
  * @return: void; nothing
  */
 void parser_init(char* input, Token** tokens);
+
+/*
+ * @function: parser_scan
+ * @description: Start to check tokens. it's entry point of parser stage.
+ * @arguments: nothing
+ * @return: Always a pointer of AST (AstFile) struct
+ */
+AstFile* parser_scan();
 
 /*
  * @function: parser_free

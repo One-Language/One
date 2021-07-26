@@ -27,6 +27,20 @@ void parser_init(char* input, Token** tokens)
 }
 
 /*
+ * @function: parser_scan
+ * @description: Start to check tokens. it's entry point of parser stage.
+ * @arguments: nothing
+ * @return: Always a pointer of AST (AstFile) struct
+ */
+AstFile* parser_scan()
+{
+	debug_parser("parser_scan");
+
+	AstFile* ast = malloc(sizeof(AstFile));
+	return ast;
+}
+
+/*
  * @function: parser_free
  * @description: Free allocated memory for the parser stage! TODO
  * @arguments: nothing
