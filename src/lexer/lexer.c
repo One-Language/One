@@ -410,7 +410,8 @@ Token* lexer_scan()
 	lexer.pos.index = lexer.pos_end.index;
 
 	Token* t = lexer_skip_space();
-	if (t != NULL) {
+	if (t != NULL)
+	{
 		return t;
 	}
 

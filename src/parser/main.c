@@ -48,7 +48,8 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
-	if(tokens != NULL) {
+	if (tokens != NULL)
+	{
 		parser_init(input_file, tokens);
 		parser_free();
 
