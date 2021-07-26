@@ -150,4 +150,12 @@ Token* lexer_scan();
  */
 void lexer_free();
 
+/*
+ * @function: lexer_trace
+ * @description: Log and trace items of tokens
+ * @arguments: FILE* file_out, char* data, Token** tokens
+ * @return: nothing, void
+ */
+void lexer_trace(FILE* file_out, char* data, Token** tokens);
+
 #endif // _ONE_LEXER_LEXER_H_

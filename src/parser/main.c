@@ -15,14 +15,19 @@
 
 int main(int argc, char** argv)
 {
+	char* data;
 	char* input_file;
 	char* output_file;
+	Token** tokens = NULL;
 
 	if (argc == 2)
 	{
-		printf("Error: pass the arguments correctly!\n");
-		printf("./parser input.one output\n");
-		return 1;
+		// printf("Error: pass the arguments correctly!\n");
+		// printf("./parser input.one output\n");
+		// return 1;
+		input_file = "input";
+		data = argv[1];
+		tokens = tokenizer_string(data);
 	}
 	else if (argc == 3)
 	{
@@ -31,6 +36,9 @@ int main(int argc, char** argv)
 
 		printf("Input file is: %s\n", input_file);
 		printf("Output file is: %s\n", output_file);
+
+		data = file_reads(input_file);
+		tokens = tokenizer_string(data);
 	}
 	else
 	{
@@ -38,6 +46,13 @@ int main(int argc, char** argv)
 		printf("./parser input.one output\n");
 		printf("./parser \"your input here as string\"\n");
 		return 1;
+	}
+
+	if(tokens != NULL) {
+		parser_init(input_file, tokens);
+		parser_free();
+
+		lexer_trace(stdout, data, tokens);
 	}
 
 	return 0;

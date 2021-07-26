@@ -546,7 +546,6 @@ Token* lexer_scan()
 /*
  * @function: lexer_free
  * @description: Free allocated memory for the lexer stage! TODO
- 				 Only we have to check it's a user-defined variable or a registered Keyword refer to `keywords` variable
  * @arguments: nothing
  * @return: nothing, void
  */
@@ -556,4 +555,32 @@ void lexer_free()
 
 	// free(lexer.start);
 	// free(lexer.current);
+}
+
+/*
+ * @function: lexer_trace
+ * @description: Log and trace items of tokens
+ * @arguments: FILE* file_out, char* data, Token** tokens
+ * @return: nothing, void
+ */
+void lexer_trace(FILE* file_out, char* data, Token** tokens)
+{
+	debug_lexer("lexer_trace");
+
+	while (tokens != NULL && *tokens != NULL)
+	{
+		Token* t = *tokens;
+		char* t_name = token_name(t->type);
+		bool has1 = file_convert_index_to_rc(data, t->pos.index, &t->pos.line, &t->pos.column);
+		bool has2 = file_convert_index_to_rc(data, t->pos_end.index, &t->pos_end.line, &t->pos_end.column);
+
+		fprintf(file_out, "[%d:%d] [%d:%d - %d:%d] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
+
+		if (t->value != NULL)
+		{
+			fprintf(file_out, ": \"%s\"", t->value);
+		}
+		fprintf(file_out, "\n");
+		tokens++;
+	}
 }
