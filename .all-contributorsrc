@@ -180,6 +180,24 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "Ubersetzerin",
+      "name": "Ubersetzerin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82717753?v=4",
+      "profile": "https://github.com/Ubersetzerin",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "mafedeocampo",
+      "name": "mafedeocampo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85558716?v=4",
+      "profile": "https://github.com/mafedeocampo",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
