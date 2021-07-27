@@ -54,11 +54,27 @@ Token* parser_token_previous();
 Token* parser_token_get();
 
 /*
+ * @function: parser_token_get_type
+ * @description: get type of current token and return its type
+ * @arguments: nothing
+ * @return: TokenType
+ */
+TokenType parser_token_get_type();
+
+/*
  * @function: parser_token_at
  * @description: get the Token* at `index`th and return its
  * @arguments: nothing
  * @return: Token*
  */
 Token* parser_token_at(size_t index);
+
+/*
+ * @function: parser_token_at_type
+ * @description: get type of Token* at `index`th and return its type
+ * @arguments: nothing
+ * @return: Token*
+ */
+Token* parser_token_at_type(size_t index);
 
 #endif // _ONE_PARSER_PARSER_TOKEN_H_

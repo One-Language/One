@@ -21,8 +21,9 @@ extern Parser parser;
  */
 Token* parser_token_skip()
 {
-	while (token_is_skip((*parser.tokens)->type))
+	while (token_is_skip(parser_token_get()->type))
 	{
+		parser_token_next();
 		parser.tokens++;
 	}
 	return *parser.tokens;
@@ -69,11 +70,31 @@ Token* parser_token_get()
 }
 
 /*
+ * @function: parser_token_get_type
+ * @description: get type of current token and return its type
+ * @arguments: nothing
+ * @return: TokenType
+ */
+TokenType parser_token_get_type()
+{
+}
+
+/*
  * @function: parser_token_at
  * @description: get the Token* at `index`th and return its
  * @arguments: nothing
  * @return: Token*
  */
 Token* parser_token_at(size_t index)
+{
+}
+
+/*
+ * @function: parser_token_at_type
+ * @description: get type of Token* at `index`th and return its type
+ * @arguments: nothing
+ * @return: Token*
+ */
+Token* parser_token_at_type(size_t index)
 {
 }

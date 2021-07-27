@@ -17,13 +17,15 @@
 
 typedef struct
 {
-	// const char* package;
 	AstFile* ast;
 
 	const char* path;
 
 	const char* data;
+
+	// tokens
 	Token** tokens;
+	size_t index;
 } Parser;
 
 /*
