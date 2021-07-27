@@ -50,10 +50,15 @@ int main(int argc, char** argv)
 
 	if (tokens != NULL)
 	{
-		parser_init(input_file, tokens);
-		parser_free();
-
 		lexer_trace(stdout, data, tokens);
+
+		parser_init(input_file, data, tokens);
+
+		AstFile* ast = parser_scan();
+
+		parser_trace(stdout, data, tokens, ast);
+
+		parser_free();
 	}
 
 	return 0;

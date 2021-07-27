@@ -17,19 +17,22 @@
 
 typedef struct
 {
-	const char* package;
+	// const char* package;
+	AstFile* ast;
+
 	const char* path;
 
+	const char* data;
 	Token** tokens;
 } Parser;
 
 /*
  * @function: parser_init
  * @description: Set default value for the global `parser` variable
- * @arguments: char* input, Token** tokens
+ * @arguments: char* filepath, char* input, Token** tokens
  * @return: void; nothing
  */
-void parser_init(char* input, Token** tokens);
+void parser_init(char* filepath, char* input, Token** tokens);
 
 /*
  * @function: parser_scan
@@ -38,6 +41,14 @@ void parser_init(char* input, Token** tokens);
  * @return: Always a pointer of AST (AstFile) struct
  */
 AstFile* parser_scan();
+
+/*
+ * @function: parser_trace
+ * @description: Log and trace items of tokens
+ * @arguments: FILE* file_out, char* data, Token** tokens, AstFile* ast
+ * @return: nothing, void
+ */
+void parser_trace(FILE* file_out, char* data, Token** tokens, AstFile* ast);
 
 /*
  * @function: parser_free
