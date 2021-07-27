@@ -27,7 +27,7 @@ package firstName.subName
 typedef struct
 {
 	char* name;
-} AstModule;
+} AstPackage;
 
 // typedefs
 typedef struct _ast_file AstFile;
@@ -88,7 +88,7 @@ typedef Array AstStatementAssignConstItemArray; // AstStatementAssignConstItem
 
 typedef struct _ast_file
 {
-	AstModule* module;
+	AstPackage* module;
 	AstImportDeclarationArray* imports; // AstImportDeclaration
 	AstBlockDeclarationArray* blocks; // AstBlockDeclaration
 

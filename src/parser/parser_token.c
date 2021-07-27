@@ -42,6 +42,7 @@ bool parser_token_expect(TokenType type)
 		parser_token_next();
 		return true;
 	}
+	error_parser("We expect %s but found %s!", token_name(type), token_name(t->type));
 	return false;
 }
 

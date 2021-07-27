@@ -28,10 +28,10 @@ void parser_init(char* filepath, char* input, Token** tokens)
 	parser.tokens = tokens;
 }
 
-AstModule* parser_scan_package()
+AstPackage* parser_scan_package()
 {
-	AstModule* ast = malloc(sizeof(AstModule));
-
+	AstPackage* ast = malloc(sizeof(AstPackage));
+	parser_token_expect(TOKEN_PACKAGE);
 	return ast;
 }
 
