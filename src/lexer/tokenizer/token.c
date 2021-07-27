@@ -567,9 +567,8 @@ size_t token_utf8_string_length(char* s)
 bool token_is_skip(TokenType type)
 {
 	return (
-		type == TOKEN_SKIP_WHITESPACE ||
-		type == TOKEN_SKIP_WHITESPACE_LINE ||
-		type == TOKEN_SKIP_COMMENT_SINGLE ||
-		type == TOKEN_SKIP_COMMENT_MULTI
-	);
+		 type == TOKEN_SKIP_WHITESPACE ||
+		 type == TOKEN_SKIP_WHITESPACE_LINE ||
+		 type == TOKEN_SKIP_COMMENT_SINGLE ||
+		 type == TOKEN_SKIP_COMMENT_MULTI);
 }
