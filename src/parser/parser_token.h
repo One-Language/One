@@ -15,11 +15,19 @@
 
 /*
  * @function: parser_token_skip
+ * @description: skip current tokens if these are token_is_skip we will skip from all of these.
+ * @arguments: nothing
+ * @return: nothing
+ */
+void parser_token_skip();
+
+/*
+ * @function: parser_token_skip_get
  * @description: skip current tokens if these are token_is_skip we will skip from all of these and return next token.
  * @arguments: nothing
  * @return: Token*
  */
-Token* parser_token_skip();
+Token* parser_token_skip_get();
 
 /*
  * @function: parser_token_expect

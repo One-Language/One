@@ -33,7 +33,12 @@ AstPackage* parser_scan_package()
 	debug_parser("parser_scan_package");
 
 	AstPackage* ast = malloc(sizeof(AstPackage));
+
 	parser_token_expect(TOKEN_PACKAGE);
+
+	parser_token_skip();
+
+	info_parser("parser_scan_package: current token is %s", token_name(parser_token_get_type()));
 	return ast;
 }
 
@@ -48,6 +53,8 @@ AstFile* parser_scan()
 	debug_parser("parser_scan");
 
 	AstFile* ast = malloc(sizeof(AstFile));
+
+	parser_token_skip();
 
 	if (parser_token_get_type() == TOKEN_PACKAGE)
 	{

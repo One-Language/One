@@ -15,13 +15,29 @@ extern Parser parser;
 
 /*
  * @function: parser_token_skip
+ * @description: skip current tokens if these are token_is_skip we will skip from all of these.
+ * @arguments: nothing
+ * @return: nothing
+ */
+void parser_token_skip()
+{
+	debug_parser("parser_token_skip");
+
+	while (token_is_skip(parser_token_get_type()))
+	{
+		parser_token_next();
+	}
+}
+
+/*
+ * @function: parser_token_skip_get
  * @description: skip current tokens if these are token_is_skip we will skip from all of these and return next token.
  * @arguments: nothing
  * @return: Token*
  */
-Token* parser_token_skip()
+Token* parser_token_skip_get()
 {
-	debug_parser("parser_token_skip");
+	debug_parser("parser_token_skip_get");
 
 	while (token_is_skip(parser_token_get_type()))
 	{
