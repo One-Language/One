@@ -15,6 +15,8 @@
 
 #include "../ast/ast.h"
 
+#include "parser_token.h"
+
 typedef struct
 {
 	AstFile* ast;

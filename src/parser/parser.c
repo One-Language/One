@@ -47,7 +47,7 @@ AstFile* parser_scan()
 
 	AstFile* ast = malloc(sizeof(AstFile));
 
-	if ((*parser.tokens)->type == TOKEN_PACKAGE)
+	if (parser_token_get_type() == TOKEN_PACKAGE)
 	{
 		ast->module = parser_scan_package();
 	}

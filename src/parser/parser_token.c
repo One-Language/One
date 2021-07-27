@@ -21,12 +21,11 @@ extern Parser parser;
  */
 Token* parser_token_skip()
 {
-	while (token_is_skip(parser_token_get()->type))
+	while (token_is_skip(parser_token_get_type()))
 	{
 		parser_token_next();
-		parser.tokens++;
 	}
-	return *parser.tokens;
+	return parser_token_get();
 }
 
 /*
