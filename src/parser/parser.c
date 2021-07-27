@@ -57,24 +57,6 @@ AstFile* parser_scan()
 		ast->module = parser_scan_package();
 	}
 
-	// while (tokens != NULL && *tokens != NULL)
-	// {
-	// 	Token* t = *tokens;
-	// 	char* t_name = token_name(t->type);
-
-	// 	bool has1 = file_convert_index_to_rc(parser.data, t->pos.index, &t->pos.line, &t->pos.column);
-	// 	bool has2 = file_convert_index_to_rc(parser.data, t->pos_end.index, &t->pos_end.line, &t->pos_end.column);
-
-	// 	printf("[%d:%d] [%d:%d - %d:%d] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
-	// 	if (t->value != NULL)
-	// 	{
-	// 		printf(": \"%s\"", t->value);
-	// 	}
-	// 	printf("\n");
-
-	// 	tokens++;
-	// }
-
 	return ast;
 }
 

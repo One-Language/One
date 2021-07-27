@@ -8,12 +8,37 @@
 
  **/
 
-// Global variable(s)
-extern Lexer lexer;
-
 #include "parser_token.h"
 
-void parser_token_skip()
+// Global variable(s)
+extern Parser parser;
+
+Token* parser_token_skip()
+{
+
+}
+
+Token* parser_token_expect(TokenType t)
+{
+
+}
+
+Token* parser_token_next()
+{
+
+}
+
+Token* parser_token_previous()
+{
+
+}
+
+Token* parser_token_get()
+{
+
+}
+
+Token* parser_token_at(size_t index)
 {
 
 }
