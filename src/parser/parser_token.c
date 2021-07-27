@@ -21,6 +21,8 @@ extern Parser parser;
  */
 Token* parser_token_skip()
 {
+	debug_parser("parser_token_skip");
+
 	while (token_is_skip(parser_token_get_type()))
 	{
 		parser_token_next();
@@ -36,6 +38,8 @@ Token* parser_token_skip()
  */
 bool parser_token_expect(TokenType type)
 {
+	debug_parser("parser_token_expect");
+
 	Token* t = parser.tokens[parser.index];
 	if (t->type == type)
 	{
@@ -54,6 +58,8 @@ bool parser_token_expect(TokenType type)
  */
 Token* parser_token_next()
 {
+	debug_parser("parser_token_next");
+
 	parser.index++;
 	return parser.tokens[parser.index];
 }
@@ -66,6 +72,8 @@ Token* parser_token_next()
  */
 Token* parser_token_previous()
 {
+	debug_parser("parser_token_previous");
+
 	parser.index--;
 	return parser.tokens[parser.index];
 }
@@ -78,6 +86,8 @@ Token* parser_token_previous()
  */
 Token* parser_token_get()
 {
+	debug_parser("parser_token_get");
+
 	return parser.tokens[parser.index];
 }
 
@@ -89,6 +99,8 @@ Token* parser_token_get()
  */
 TokenType parser_token_get_type()
 {
+	debug_parser("parser_token_get_type");
+
 	Token* t = parser.tokens[parser.index];
 	return t->type;
 }
@@ -101,6 +113,8 @@ TokenType parser_token_get_type()
  */
 Token* parser_token_at(size_t index)
 {
+	debug_parser("parser_token_at");
+
 	return parser.tokens[index];
 }
 
@@ -112,6 +126,8 @@ Token* parser_token_at(size_t index)
  */
 TokenType parser_token_at_type(size_t index)
 {
+	debug_parser("parser_token_at_type");
+
 	Token* t = parser.tokens[index];
 	return t->type;
 }
