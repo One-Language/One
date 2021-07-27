@@ -557,3 +557,19 @@ size_t token_utf8_string_length(char* s)
 		if ((*s & 0xC0) != 0x80) ++len;
 	return len;
 }
+
+/*
+ * @function: token_is_skip
+ * @description: check this tokentype is whitespace, comment-inline and multiline comment etc.
+ * @arguments: TokenType
+ * @return: bool: 0 or 1, true or false
+ */
+bool token_is_skip(TokenType type)
+{
+	return (
+		type == TOKEN_SKIP_WHITESPACE ||
+		type == TOKEN_SKIP_WHITESPACE_LINE ||
+		type == TOKEN_SKIP_COMMENT_SINGLE ||
+		type == TOKEN_SKIP_COMMENT_MULTI
+	);
+}

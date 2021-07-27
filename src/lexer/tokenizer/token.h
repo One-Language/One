@@ -402,4 +402,12 @@ char* token_name(TokenType type);
  */
 size_t token_utf8_string_length(char* s);
 
+/*
+ * @function: token_is_skip
+ * @description: check this tokentype is whitespace, comment-inline and multiline comment etc.
+ * @arguments: TokenType
+ * @return: bool: 0 or 1, true or false
+ */
+bool token_is_skip(TokenType type);
+
 #endif // _ONE_TOKENIZER_TOKEN_H_

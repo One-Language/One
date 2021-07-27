@@ -24,6 +24,7 @@ void parser_init(char* filepath, char* input, Token** tokens)
 	debug_parser("parser_init");
 
 	parser.path = filepath;
+	parser.data = input;
 	parser.tokens = tokens;
 }
 
@@ -36,15 +37,30 @@ void parser_init(char* filepath, char* input, Token** tokens)
 AstFile* parser_scan()
 {
 	debug_parser("parser_scan");
+
 	AstFile* ast = malloc(sizeof(AstFile));
 	Token** tokens = parser.tokens;
 
 	while (tokens != NULL && *tokens != NULL)
 	{
 		Token* t = *tokens;
+		if(t->type == 	TOKEN_SKIP_WHITESPACE,
+	TOKEN_SKIP_WHITESPACE_LINE,
+	TOKEN_SKIP_COMMENT_SINGLE,
+	TOKEN_SKIP_COMMENT_MULTI,
+)
 		char* t_name = token_name(t->type);
+
+		bool has1 = file_convert_index_to_rc(parser.data, t->pos.index, &t->pos.line, &t->pos.column);
+		bool has2 = file_convert_index_to_rc(parser.data, t->pos_end.index, &t->pos_end.line, &t->pos_end.column);
+
 		printf("[%d:%d] [%d:%d - %d:%d] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
+		if (t->value != NULL)
+		{
+			printf(": \"%s\"", t->value);
+		}
 		printf("\n");
+
 		tokens++;
 	}
 
