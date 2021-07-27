@@ -48,11 +48,29 @@ Token* parser_token_skip_get()
 
 /*
  * @function: parser_token_expect
- * @description: if type of current token is equal to `t` we will skip it and return next token, otherwise we will return true bool and we find whatever we expected.
+ * @description: if type of current token is equal to `t` we will skip it.
+ * @arguments: TokenType t
+ * @return: void
+ */
+void parser_token_expect(TokenType type)
+{
+	debug_parser("parser_token_expect");
+
+	Token* t = parser.tokens[parser.index];
+	if (t->type == type)
+	{
+		parser_token_next();
+	}
+	error_parser("We expect %s but found %s!", token_name(type), token_name(t->type));
+}
+
+/*
+ * @function: parser_token_expect
+ * @description: if type of current token is equal to `t` we will skip it and return true, otherwise we will return false.
  * @arguments: TokenType t
  * @return: bool
  */
-bool parser_token_expect(TokenType type)
+bool parser_token_is(TokenType type)
 {
 	debug_parser("parser_token_expect");
 
@@ -62,7 +80,6 @@ bool parser_token_expect(TokenType type)
 		parser_token_next();
 		return true;
 	}
-	error_parser("We expect %s but found %s!", token_name(type), token_name(t->type));
 	return false;
 }
 
