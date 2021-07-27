@@ -90,9 +90,9 @@ typedef enum
 	// 	 __FUNCTION__);
 	 // #define debug_lexer(format, args...)
 
-#define debug_parser(format, args...)  \
-	printf(BLUE "Parser INFO: " format \
-				"\n" RESET,            \
+#define debug_parser(format, args...)   \
+	printf(WHITE "Parser INFO: " format \
+				 "\n" RESET,            \
 		 ##args);
 	 // printf(BLUE "Parser INFO: " format " at %d on %s in %s" \
 	// 			"\n" RESET,                                 \
@@ -177,7 +177,7 @@ typedef enum
 	 // #define info_lexer(info_token, args...)
 
 #define info_parser(format, args...)                             \
-	printf(BOLDGREEN "Parser INFO: " format " at %d on %s in %s" \
+	printf(BOLDWHITE "Parser INFO: " format " at %d on %s in %s" \
 					 "\n" RESET,                                 \
 		 ##args,                                                 \
 		 __LINE__,                                               \
