@@ -23,11 +23,11 @@ Token* parser_token_skip();
 
 /*
  * @function: parser_token_expect
- * @description: if type of current token is equal to `t` we will skip it and return next token, otherwise we will return current token.
+ * @description: if type of current token is equal to `t` we will skip it and return next token, otherwise we will return true bool and we find whatever we expected.
  * @arguments: TokenType t
- * @return: Token*
+ * @return: bool
  */
-Token* parser_token_expect(TokenType t);
+bool parser_token_expect(TokenType type);
 
 /*
  * @function: parser_token_next
@@ -73,8 +73,8 @@ Token* parser_token_at(size_t index);
  * @function: parser_token_at_type
  * @description: get type of Token* at `index`th and return its type
  * @arguments: nothing
- * @return: Token*
+ * @return: TokenType
  */
-Token* parser_token_at_type(size_t index);
+TokenType parser_token_at_type(size_t index);
 
 #endif // _ONE_PARSER_PARSER_TOKEN_H_
