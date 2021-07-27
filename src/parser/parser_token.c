@@ -17,7 +17,7 @@ extern Parser parser;
  * @function: parser_token_skip
  * @description: skip current tokens if these are token_is_skip we will skip from all of these.
  * @arguments: nothing
- * @return: bool, true mean we skiped some whitespace, false mean nothing to skip!
+ * @return: bool, true mean we skipped some whitespace, false mean nothing to skip!
  */
 bool parser_token_skip()
 {
@@ -42,10 +42,8 @@ Token* parser_token_skip_get()
 {
 	debug_parser("parser_token_skip_get");
 
-	while (token_is_skip(parser_token_get_type()))
-	{
-		parser_token_next();
-	}
+	parser_token_skip();
+
 	return parser_token_get();
 }
 
@@ -64,7 +62,10 @@ void parser_token_expect(TokenType type)
 	{
 		parser_token_next();
 	}
-	error_parser("We expect %s but found %s!", token_name(type), token_name(t->type));
+	else
+	{
+		error_parser("We expect %s but found %s!", token_name(type), token_name(t->type));
+	}
 }
 
 /*

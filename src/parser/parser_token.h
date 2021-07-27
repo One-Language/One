@@ -17,7 +17,7 @@
  * @function: parser_token_skip
  * @description: skip current tokens if these are token_is_skip we will skip from all of these.
  * @arguments: nothing
- * @return: bool, true mean we skiped some whitespace, false mean nothing to skip!
+ * @return: bool, true mean we skipped some whitespace, false mean nothing to skip!
  */
 bool parser_token_skip();
 
