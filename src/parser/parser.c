@@ -28,10 +28,48 @@ void parser_init(char* filepath, char* input, Token** tokens)
 	parser.tokens = tokens;
 }
 
+/*
+ * @function: parser_scan_import
+ * @description: scan import statement
+ * @arguments: nothing
+ * @return: AstImportDeclaration
+ */
+AstImportDeclaration* parser_scan_import()
+{
+	debug_parser("parser_scan_import");
+
+	// IMPORT <skip> <names> (| { <symbols> } )
+	AstImportDeclaration* ast = malloc(sizeof(AstImportDeclaration));
+
+	parser_token_expect(TOKEN_IMPORT);
+
+	parser_token_skip();
+
+	Token* value = parser_token_get();
+	debug_parser("parser_scan_import: current token is %s", token_name(parser_token_get_type()));
+	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+	info_parser("parser_scan_import: %s", value->value);
+
+	ast->names = malloc(sizeof(AstImportNameArray));
+	array_init(ast->names);
+
+	ast->symbols = malloc(sizeof(AstImportSymbolArray));
+	array_init(ast->symbols);
+
+	return ast;
+}
+
+/*
+ * @function: parser_scan_package
+ * @description: scan package statement
+ * @arguments: nothing
+ * @return: AstPackage
+ */
 AstPackage* parser_scan_package()
 {
 	debug_parser("parser_scan_package");
 
+	// PACKAGE <skip> <name>
 	AstPackage* ast = malloc(sizeof(AstPackage));
 
 	parser_token_expect(TOKEN_PACKAGE);
@@ -68,6 +106,23 @@ AstFile* parser_scan()
 	if (parser_token_get_type() == TOKEN_PACKAGE)
 	{
 		ast->module = parser_scan_package();
+	}
+
+	parser_token_skip();
+
+	TokenType type = parser_token_get_type();
+
+	while (type != TOKEN_EOF && type != TOKEN_ERROR)
+	{
+		if (type == TOKEN_IMPORT)
+		{
+			parser_scan_import();
+		}
+		else
+		{
+			error_parser("%s is unknown statement in the file!", token_name(type));
+		}
+		type = parser_token_get_type();
 	}
 
 	return ast;
