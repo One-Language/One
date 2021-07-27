@@ -38,7 +38,16 @@ AstPackage* parser_scan_package()
 
 	parser_token_skip();
 
-	info_parser("parser_scan_package: current token is %s", token_name(parser_token_get_type()));
+	Token* value = parser_token_get();
+	debug_parser("parser_scan_package: current token is %s", token_name(parser_token_get_type()));
+	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+	info_parser("parser_scan_package: %s", value->value);
+
+	ast->name = strdup(value->value);
+
+	free(value);
+	// printf("==>%s\n", ast->name);
+
 	return ast;
 }
 
