@@ -17,9 +17,9 @@
  * @function: parser_token_skip
  * @description: skip current tokens if these are token_is_skip we will skip from all of these.
  * @arguments: nothing
- * @return: nothing
+ * @return: bool, true mean we skiped some whitespace, false mean nothing to skip!
  */
-void parser_token_skip();
+bool parser_token_skip();
 
 /*
  * @function: parser_token_skip_get
@@ -39,7 +39,7 @@ void parser_token_expect(TokenType type);
 
 /*
  * @function: parser_token_expect
- * @description: if type of current token is equal to `t` we will skip it and return true, otherwise we will return false.
+ * @description: if type of current token is equal to `t` return true, otherwise we will return false.
  * @arguments: TokenType t
  * @return: bool
  */

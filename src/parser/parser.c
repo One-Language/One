@@ -56,7 +56,7 @@ AstImportDeclaration* parser_scan_import()
 	ast->symbols = malloc(sizeof(AstImportSymbolArray));
 	array_init(ast->symbols);
 
-	if (parser_token_get_type(TOKEN_AS))
+	if (parser_token_is(TOKEN_AS))
 	{
 	}
 	return ast;
