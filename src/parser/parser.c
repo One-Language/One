@@ -84,6 +84,11 @@ AstImportDeclaration* parser_scan_import()
 
 		parser_token_skip();
 
+		if (parser_token_has(TOKEN_AS))
+		{
+			parser_token_skip();
+		}
+
 		parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
 	}
 
@@ -112,6 +117,8 @@ AstFunctionDeclaration* parser_scan_fn()
 	ast->name = strdup(name->value);
 	free(name);
 	info_parser("parser_scan_fn: name is %s", ast->name);
+
+	exit(0); // TODO
 
 	return ast;
 }
