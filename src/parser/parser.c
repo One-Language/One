@@ -82,14 +82,20 @@ AstImportDeclaration* parser_scan_import()
  */
 AstFunctionDeclaration* parser_scan_fn()
 {
-	debug_parser("parser_scan_package");
+	debug_parser("parser_scan_fn");
 
-	// FN <skip>
+	// FN <skip> IDENTIFIER
 	AstFunctionDeclaration* ast = malloc(sizeof(AstFunctionDeclaration));
 
 	parser_token_expect(TOKEN_FN);
 
 	parser_token_skip();
+
+	Token* name = parser_token_get();
+	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+	ast->name = strdup(name->value);
+	free(name);
+	info_parser("parser_scan_fn: name is %s", ast->name);
 
 	return ast;
 }

@@ -236,6 +236,7 @@ typedef struct _ast_function_declaration
 
 	bool has_return;
 
+	char* name;
 	AstParam* reciver;
 	AstParamArray* params; // AstParam
 	AstBlockDeclarationArray* statements; // AstBlockDeclaration
