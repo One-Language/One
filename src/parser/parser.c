@@ -28,9 +28,127 @@ void parser_init(char* filepath, char* input, Token** tokens)
 	parser.tokens = tokens;
 }
 
-AstModule* parser_scan_package()
+/*
+ * @function: parser_scan_import
+ * @description: scan import statement
+ * @arguments: nothing
+ * @return: AstImportDeclaration
+ */
+AstImportDeclaration* parser_scan_import()
 {
-	AstModule* ast = malloc(sizeof(AstModule));
+	debug_parser("parser_scan_import");
+
+	// IMPORT <skip> <names> (| { <symbols> } )
+	AstImportDeclaration* ast = malloc(sizeof(AstImportDeclaration));
+
+	ast->names = malloc(sizeof(AstImportNameArray));
+	array_init(ast->names);
+
+	ast->symbols = malloc(sizeof(AstImportSymbolArray));
+	array_init(ast->symbols);
+
+	parser_token_expect(TOKEN_IMPORT);
+
+	parser_token_skip();
+
+	Token* value = parser_token_get();
+	debug_parser("parser_scan_import: current token is %s", token_name(value->type));
+	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+	info_parser("parser_scan_import: %s", value->value);
+
+	parser_token_skip();
+
+	// AS <skip> IDENTIFIER
+	if (parser_token_has(TOKEN_AS))
+	{
+		parser_token_skip();
+
+		Token* alias = parser_token_get();
+		debug_parser("parser_scan_import: alias current token is %s", token_name(alias->type));
+
+		parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+		ast->alias = strdup(alias->value);
+		free(alias);
+		info_parser("parser_scan_import: set alias as %s", ast->alias);
+	}
+
+	parser_token_skip();
+
+	// { <skip> [[<names> <skip> AS <skip> IDENTIFIER ]]  }
+	if (parser_token_has(TOKEN_OPERATOR_BRACKET_CURLY_LEFT))
+	{
+		parser_token_skip();
+
+		Token* name = parser_token_get();
+		parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+
+		parser_token_skip();
+
+		if (parser_token_has(TOKEN_AS))
+		{
+			parser_token_skip();
+		}
+
+		parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
+	}
+
+	return ast;
+}
+
+/*
+ * @function: parser_scan_fn
+ * @description: scan fn statement
+ * @arguments: nothing
+ * @return: AstFunctionDeclaration
+ */
+AstFunctionDeclaration* parser_scan_fn()
+{
+	debug_parser("parser_scan_fn");
+
+	// FN <skip> IDENTIFIER
+	AstFunctionDeclaration* ast = malloc(sizeof(AstFunctionDeclaration));
+
+	parser_token_expect(TOKEN_FN);
+
+	parser_token_skip();
+
+	Token* name = parser_token_get();
+	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+	ast->name = strdup(name->value);
+	free(name);
+	info_parser("parser_scan_fn: name is %s", ast->name);
+
+	exit(0); // TODO
+
+	return ast;
+}
+
+/*
+ * @function: parser_scan_package
+ * @description: scan package statement
+ * @arguments: nothing
+ * @return: AstPackage
+ */
+AstPackage* parser_scan_package()
+{
+	debug_parser("parser_scan_package");
+
+	// PACKAGE <skip> <name>
+	AstPackage* ast = malloc(sizeof(AstPackage));
+
+	parser_token_expect(TOKEN_PACKAGE);
+
+	parser_token_skip();
+
+	Token* value = parser_token_get();
+	debug_parser("parser_scan_package: current token is %s", token_name(parser_token_get_type()));
+	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+	info_parser("parser_scan_package: %s", value->value);
+
+	ast->name = strdup(value->value);
+
+	free(value);
+	// printf("==>%s\n", ast->name);
 
 	return ast;
 }
@@ -47,33 +165,36 @@ AstFile* parser_scan()
 
 	AstFile* ast = malloc(sizeof(AstFile));
 
-	while (token_is_skip((*parser.tokens)->type))
-	{
-		parser.tokens++;
-	}
+	parser_token_skip();
 
-	if ((*parser.tokens)->type == TOKEN_PACKAGE)
+	if (parser_token_get_type() == TOKEN_PACKAGE)
 	{
 		ast->module = parser_scan_package();
 	}
 
-	// while (tokens != NULL && *tokens != NULL)
-	// {
-	// 	Token* t = *tokens;
-	// 	char* t_name = token_name(t->type);
+	TokenType type = parser_token_get_type();
 
-	// 	bool has1 = file_convert_index_to_rc(parser.data, t->pos.index, &t->pos.line, &t->pos.column);
-	// 	bool has2 = file_convert_index_to_rc(parser.data, t->pos_end.index, &t->pos_end.line, &t->pos_end.column);
+	while (type != TOKEN_EOF && type != TOKEN_ERROR)
+	{
+		if (parser_token_skip())
+		{
+			type = parser_token_get_type();
+		}
 
-	// 	printf("[%d:%d] [%d:%d - %d:%d] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
-	// 	if (t->value != NULL)
-	// 	{
-	// 		printf(": \"%s\"", t->value);
-	// 	}
-	// 	printf("\n");
-
-	// 	tokens++;
-	// }
+		if (type == TOKEN_IMPORT)
+		{
+			parser_scan_import();
+		}
+		else if (type == TOKEN_FN)
+		{
+			parser_scan_fn();
+		}
+		else
+		{
+			error_parser("%s is unknown statement in the file!", token_name(type));
+		}
+		type = parser_token_get_type();
+	}
 
 	return ast;
 }

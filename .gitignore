@@ -5,3 +5,5 @@ one
 out/*
 *.o
 .idea
+src/lexer/lexer
+src/parser/parser

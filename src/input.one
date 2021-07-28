@@ -1,3 +1,9 @@
+package main
+
+
+import p1
+import p2 as m
+import p3 { sin as s }
 
 	 fn
   			main 			{

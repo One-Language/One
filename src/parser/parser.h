@@ -15,15 +15,21 @@
 
 #include "../ast/ast.h"
 
+#include "parser_token.h"
+
+#include "../builtins/array.h"
+
 typedef struct
 {
-	// const char* package;
 	AstFile* ast;
 
 	const char* path;
 
 	const char* data;
+
+	// tokens
 	Token** tokens;
+	size_t index;
 } Parser;
 
 /*
