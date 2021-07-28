@@ -773,4 +773,10 @@ typedef struct _ast_type_sum_item
 
 // char* ast_value_name(AstValueType type);
 
+void ast_init(const char* input_file, const char* data, Token** tokens, AstFile* ast);
+
+void ast_trace(FILE* f);
+
+void ast_free();
+
 #endif // _ONE_AST_AST_H_
