@@ -38,19 +38,14 @@ COPY src/ ./src/
 COPY test/ ./test/
 
 # Building
-RUN cd src/parser
-RUN ./build.sh
-RUN cd ..
+WORKDIR /One/src
 
-RUN cd lexer/tokenizer
-RUN ./build.sh
-RUN cd ..
+RUN cd parser && chmod +x build.sh && ./build.sh
 
-RUN ./build.sh
-RUN ./test.sh
-RUN cd ..
+RUN cd lexer && chmod +x build.sh && ./build.sh
+
+RUN cd lexer && chmod +x test.sh && ./test.sh
 
 # Testing
-RUN cd ..
-RUN cd test
-CMD ["./build.sh"]
+WORKDIR /One/test
+RUN chmod +x build.sh && ./build.sh

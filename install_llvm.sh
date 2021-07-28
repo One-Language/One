@@ -1,6 +1,6 @@
 LLVM_VERSION=$1
 
-wget "https://github.com/llvm/llvm-project/archive/llvmorg-12.0.1.tar.gz" || { echo 'Error downloading LLVM version ${LLVM_VERSION}' ; exit 1; }
+wget "https://github.com/llvm/llvm-project/archive/llvmorg-${LLVM_VERSION}.tar.gz" || { echo 'Error downloading LLVM version ${LLVM_VERSION}' ; exit 1; }
 tar zxf llvmorg-${LLVM_VERSION}.tar.gz && rm llvmorg-${LLVM_VERSION}.tar.gz
 
 cd llvm-project-llvmorg-${LLVM_VERSION}
