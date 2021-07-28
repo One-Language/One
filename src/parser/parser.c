@@ -115,14 +115,9 @@ AstImportDeclaration* parser_scan_import()
 
 			array_push(ast->symbols, symbol);
 
-			if (parser_token_has(TOKEN_OPERATOR_COMMA))
-			{
-				parser_token_skip();
-			}
-			else
-			{
-				break;
-			}
+			parser_token_has(TOKEN_OPERATOR_COMMA); // optional token
+
+			parser_token_skip();
 		}
 		parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
 
