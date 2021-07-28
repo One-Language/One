@@ -79,14 +79,26 @@ AstImportDeclaration* parser_scan_import()
 	{
 		parser_token_skip();
 
-		Token* name = parser_token_get();
+		AstImportSymbol* symbol = malloc(sizeof(AstImportSymbol));
+
+		Token* symbol_name = parser_token_get();
 		parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+
+		symbol->names = malloc(sizeof(StringArray));
+
+		array_init(symbol->names);
+		array_push(symbol->names, strdup(symbol_name->value));
+		free(symbol_name);
 
 		parser_token_skip();
 
 		if (parser_token_has(TOKEN_AS))
 		{
 			parser_token_skip();
+			Token* symbol_alias = parser_token_get();
+			parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+			symbol->alias = strdup(symbol_alias->value);
+			free(symbol_alias);
 		}
 
 		parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
