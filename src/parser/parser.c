@@ -88,18 +88,23 @@ AstImportDeclaration* parser_scan_import()
 
 		array_init(symbol->names);
 		array_push(symbol->names, strdup(symbol_name->value));
+		info_parser("parser_scan_import: symbol name: %s", symbol_name->value);
 		free(symbol_name);
 
 		parser_token_skip();
 
 		if (parser_token_has(TOKEN_AS))
 		{
-			symbol->has_alias = true;
 			parser_token_skip();
+
+			symbol->has_alias = true;
 			Token* symbol_alias = parser_token_get();
 			parser_token_expect(TOKEN_VALUE_IDENTIFIER);
 			symbol->alias = strdup(symbol_alias->value);
+			info_parser("parser_scan_import: symbol alias as: %s", symbol_alias->value);
 			free(symbol_alias);
+
+			parser_token_skip();
 		}
 		else
 		{
@@ -107,7 +112,10 @@ AstImportDeclaration* parser_scan_import()
 		}
 
 		parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
+
+		array_push(ast->symbols, symbol);
 	}
+
 
 	return ast;
 }
