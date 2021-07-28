@@ -125,6 +125,8 @@ AstImportDeclaration* parser_scan_import()
 			}
 		}
 		parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
+
+		info_parser("parser_scan_import: count of symbols is %d", ast->symbols->count);
 	}
 
 	return ast;
