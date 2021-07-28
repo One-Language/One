@@ -1,10 +1,17 @@
 build
+
 cmake-build-debug
 node_modules
 one
 out/*
 *.o
 .idea
+
 src/lexer/lexer
+src/lexer/log
+
 src/parser/parser
+src/parser/log
+
 src/ast/ast
+src/ast/log
