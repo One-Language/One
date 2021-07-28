@@ -106,7 +106,7 @@ void ast_init(const char* input_file, const char* data, Token** tokens, AstFile*
 {
 }
 
-void ast_trace(FILE* f)
+void ast_trace(FILE* f, AstFile* ast)
 {
 }
 

@@ -62,7 +62,7 @@ int main(int argc, char** argv)
 
 		ast_init(input_file, data, tokens, ast);
 
-		ast_trace(stdout);
+		ast_trace(stdout, ast);
 
 		ast_free();
 
