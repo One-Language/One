@@ -58,6 +58,7 @@ AstImportDeclaration* parser_scan_import()
 
 	parser_token_skip();
 
+	// AS <skip> IDENTIFIER
 	if (parser_token_has(TOKEN_AS))
 	{
 		parser_token_skip();
@@ -69,6 +70,21 @@ AstImportDeclaration* parser_scan_import()
 		ast->alias = strdup(alias->value);
 		free(alias);
 		info_parser("parser_scan_import: set alias as %s", ast->alias);
+	}
+
+	parser_token_skip();
+
+	// { <skip> [[<names> <skip> AS <skip> IDENTIFIER ]]  }
+	if (parser_token_has(TOKEN_OPERATOR_BRACKET_CURLY_LEFT))
+	{
+		parser_token_skip();
+
+		Token* name = parser_token_get();
+		parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+
+		parser_token_skip();
+
+		parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
 	}
 
 	return ast;
