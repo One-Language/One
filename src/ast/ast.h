@@ -77,7 +77,7 @@ typedef Array AstImportSymbolArray; // AstImportSymbol
 typedef Array AstImportNameArray; // AstImportName
 typedef Array AstImportDeclarationArray; // AstImportDeclaration
 typedef Array AstBlockDeclarationArray; // AstBlockDeclaration
-typedef char* StringArray; // char
+typedef Array StringArray; // char
 typedef Array AstParamArray; // AstParam
 typedef Array AstAttributeDeclarationArray; // AstAttributeDeclaration
 typedef Array AstDataItemArray; // AstDataItem

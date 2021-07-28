@@ -94,11 +94,16 @@ AstImportDeclaration* parser_scan_import()
 
 		if (parser_token_has(TOKEN_AS))
 		{
+			symbol->has_alias = true;
 			parser_token_skip();
 			Token* symbol_alias = parser_token_get();
 			parser_token_expect(TOKEN_VALUE_IDENTIFIER);
 			symbol->alias = strdup(symbol_alias->value);
 			free(symbol_alias);
+		}
+		else
+		{
+			symbol->has_alias = false;
 		}
 
 		parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
