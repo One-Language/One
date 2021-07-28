@@ -63,3 +63,4 @@ RUN cd lexer && chmod +x test.sh && ./test.sh
 # Testing
 WORKDIR /One/test
 RUN chmod +x build.sh && ./build.sh
+
