@@ -36,7 +36,7 @@ repos:
         entry: codespell --ignore-words=codespell.txt
         exclude: ^README_TR\.md$|^README_ES\.md$|^README_AR\.md$
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.27.1
+    rev: v0.28.1
     hooks:
       - id: markdownlint
         name: Run markdownlint

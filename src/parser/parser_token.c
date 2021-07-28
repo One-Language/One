@@ -15,5 +15,4 @@ extern Lexer lexer;
 
 void parser_token_skip()
 {
-
 }
