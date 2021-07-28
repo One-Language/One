@@ -34,7 +34,7 @@ RUN cmake ../llvm \
     -DLLVM_ENABLE_PROJECTS="clang;lld" \
     -DCMAKE_BUILD_TYPE=MinSizeRel \
     || { echo 'Error running CMake for LLVM' ; exit 1; }
-    
+
 RUN make -j$(nproc) || { echo 'Error building LLVM' ; exit 1; }
 RUN make install || { echo 'Error installing LLVM' ; exit 1; }
 RUN cd ../.. && rm -rf llvm-project-llvmorg-${LLVM_VERSION}
@@ -46,10 +46,8 @@ ENV CC=clang
 RUN pip install pre-commit
 
 # Work directory setup
+COPY . /One
 WORKDIR /One
-
-COPY src/ ./src/
-COPY test/ ./test/
 
 # Building
 WORKDIR /One/src
@@ -63,4 +61,3 @@ RUN cd lexer && chmod +x test.sh && ./test.sh
 # Testing
 WORKDIR /One/test
 RUN chmod +x build.sh && ./build.sh
-
