@@ -63,6 +63,26 @@ AstImportDeclaration* parser_scan_import()
 }
 
 /*
+ * @function: parser_scan_fn
+ * @description: scan fn statement
+ * @arguments: nothing
+ * @return: AstFunctionDeclaration
+ */
+AstFunctionDeclaration* parser_scan_fn()
+{
+	debug_parser("parser_scan_package");
+
+	// FN <skip>
+	AstFunctionDeclaration* ast = malloc(sizeof(AstFunctionDeclaration));
+
+	parser_token_expect(TOKEN_FN);
+
+	parser_token_skip();
+
+	return ast;
+}
+
+/*
  * @function: parser_scan_package
  * @description: scan package statement
  * @arguments: nothing
@@ -111,15 +131,22 @@ AstFile* parser_scan()
 		ast->module = parser_scan_package();
 	}
 
-	parser_token_skip();
-
 	TokenType type = parser_token_get_type();
 
 	while (type != TOKEN_EOF && type != TOKEN_ERROR)
 	{
+		if (parser_token_skip())
+		{
+			type = parser_token_get_type();
+		}
+
 		if (type == TOKEN_IMPORT)
 		{
 			parser_scan_import();
+		}
+		if (type == TOKEN_FN)
+		{
+			parser_scan_fn();
 		}
 		else
 		{
