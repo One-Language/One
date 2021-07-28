@@ -1,9 +1,15 @@
 package main
 
-
 import p1
 import p2 as m
 import p3 { sin as s }
+import p4 { sin as s, cos as c }
+import p5 { sin as s, cos as c ,}
+import p6 {
+	sin as s
+	cos as c
+}
+import p7 { sin as s cos as c }
 
 	 fn
   			main 			{

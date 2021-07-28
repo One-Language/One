@@ -77,7 +77,7 @@ typedef Array AstImportSymbolArray; // AstImportSymbol
 typedef Array AstImportNameArray; // AstImportName
 typedef Array AstImportDeclarationArray; // AstImportDeclaration
 typedef Array AstBlockDeclarationArray; // AstBlockDeclaration
-typedef char* StringArray; // char
+typedef Array StringArray; // char
 typedef Array AstParamArray; // AstParam
 typedef Array AstAttributeDeclarationArray; // AstAttributeDeclaration
 typedef Array AstDataItemArray; // AstDataItem
@@ -772,5 +772,11 @@ typedef struct _ast_type_sum_item
 // char* ast_statement_name(AstStatementType type);
 
 // char* ast_value_name(AstValueType type);
+
+void ast_init(const char* input_file, const char* data, Token** tokens, AstFile* ast);
+
+void ast_trace(FILE* f, AstFile* ast);
+
+void ast_free();
 
 #endif // _ONE_AST_AST_H_
