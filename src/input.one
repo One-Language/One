@@ -2,6 +2,8 @@ package main
 
 
 import math
+import math as m
+// import math { sin }
 
 	 fn
   			main 			{

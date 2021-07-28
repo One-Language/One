@@ -69,14 +69,34 @@ void parser_token_expect(TokenType type)
 }
 
 /*
- * @function: parser_token_expect
+ * @function: parser_token_has
+ * @description: if type of current token is equal to `t` we will skip it and return true, otherwise we return false.
+ * @arguments: TokenType t
+ * @return: bool, true or false
+ */
+bool parser_token_has(TokenType type)
+{
+	debug_parser("parser_token_has");
+
+	Token* t = parser.tokens[parser.index];
+	if (t->type == type)
+	{
+		parser_token_next();
+		return true;
+	}
+
+	return false;
+}
+
+/*
+ * @function: parser_token_is
  * @description: if type of current token is equal to `t` return true, otherwise we will return false.
  * @arguments: TokenType t
  * @return: bool
  */
 bool parser_token_is(TokenType type)
 {
-	debug_parser("parser_token_expect");
+	debug_parser("parser_token_is");
 
 	Token* t = parser.tokens[parser.index];
 	if (t->type == type)

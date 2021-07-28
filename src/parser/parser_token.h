@@ -38,7 +38,15 @@ Token* parser_token_skip_get();
 void parser_token_expect(TokenType type);
 
 /*
- * @function: parser_token_expect
+ * @function: parser_token_has
+ * @description: if type of current token is equal to `t` we will skip it and return true, otherwise we return false.
+ * @arguments: TokenType t
+ * @return: bool, true or false
+ */
+bool parser_token_has(TokenType type);
+
+/*
+ * @function: parser_token_is
  * @description: if type of current token is equal to `t` return true, otherwise we will return false.
  * @arguments: TokenType t
  * @return: bool

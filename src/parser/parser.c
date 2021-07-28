@@ -41,24 +41,36 @@ AstImportDeclaration* parser_scan_import()
 	// IMPORT <skip> <names> (| { <symbols> } )
 	AstImportDeclaration* ast = malloc(sizeof(AstImportDeclaration));
 
-	parser_token_expect(TOKEN_IMPORT);
-
-	parser_token_skip();
-
-	Token* value = parser_token_get();
-	debug_parser("parser_scan_import: current token is %s", token_name(parser_token_get_type()));
-	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
-	info_parser("parser_scan_import: %s", value->value);
-
 	ast->names = malloc(sizeof(AstImportNameArray));
 	array_init(ast->names);
 
 	ast->symbols = malloc(sizeof(AstImportSymbolArray));
 	array_init(ast->symbols);
 
-	if (parser_token_is(TOKEN_AS))
+	parser_token_expect(TOKEN_IMPORT);
+
+	parser_token_skip();
+
+	Token* value = parser_token_get();
+	debug_parser("parser_scan_import: current token is %s", token_name(value->type));
+	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+	info_parser("parser_scan_import: %s", value->value);
+
+	parser_token_skip();
+
+	if (parser_token_has(TOKEN_AS))
 	{
+		parser_token_skip();
+
+		Token* alias = parser_token_get();
+		debug_parser("parser_scan_import: alias current token is %s", token_name(alias->type));
+
+		parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+		ast->alias = strdup(alias->value);
+		free(alias);
+		info_parser("parser_scan_import: set alias as %s", ast->alias);
 	}
+
 	return ast;
 }
 
@@ -144,7 +156,7 @@ AstFile* parser_scan()
 		{
 			parser_scan_import();
 		}
-		if (type == TOKEN_FN)
+		else if (type == TOKEN_FN)
 		{
 			parser_scan_fn();
 		}
