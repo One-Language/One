@@ -50,14 +50,11 @@ COPY . /One
 WORKDIR /One
 
 # Building
-WORKDIR /One/src
+RUN cd src/parser && chmod +x build.sh && ./build.sh
 
-RUN cd parser && chmod +x build.sh && ./build.sh
+RUN cd src/lexer && chmod +x build.sh && ./build.sh
 
-RUN cd lexer && chmod +x build.sh && ./build.sh
-
-RUN cd lexer && chmod +x test.sh && ./test.sh
+RUN cd src/lexer && chmod +x test.sh && ./test.sh
 
 # Testing
-WORKDIR /One/test
-RUN chmod +x build.sh && ./build.sh
+RUN cd src/lexer && chmod +x build.sh && ./build.sh
