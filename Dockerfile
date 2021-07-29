@@ -20,10 +20,24 @@ RUN apk --no-cache add \
 	python3 py3-pip \
     git
 
-# LLVM installation
-COPY install_llvm.sh /
-RUN chmod +x install_llvm.sh
-RUN ./install_llvm.sh ${LLVM_VERSION} && rm install_llvm.sh
+# Build and install LLVM
+RUN wget "https://github.com/llvm/llvm-project/archive/llvmorg-${LLVM_VERSION}.tar.gz" || { echo 'Error downloading LLVM version ${LLVM_VERSION}' ; exit 1; }
+
+RUN tar zxf llvmorg-${LLVM_VERSION}.tar.gz && rm llvmorg-${LLVM_VERSION}.tar.gz
+
+RUN cd llvm-project-llvmorg-${LLVM_VERSION} && mkdir build
+
+WORKDIR  /llvm-project-llvmorg-${LLVM_VERSION}/build
+
+RUN cmake ../llvm \
+    -G "Unix Makefiles" -DLLVM_TARGETS_TO_BUILD="X86" \
+    -DLLVM_ENABLE_PROJECTS="clang;lld" \
+    -DCMAKE_BUILD_TYPE=MinSizeRel \
+    || { echo 'Error running CMake for LLVM' ; exit 1; }
+
+RUN make -j$(nproc) || { echo 'Error building LLVM' ; exit 1; }
+RUN make install || { echo 'Error installing LLVM' ; exit 1; }
+RUN cd ../.. && rm -rf llvm-project-llvmorg-${LLVM_VERSION}
 
 ENV CXX=clang++
 ENV CC=clang
@@ -32,25 +46,15 @@ ENV CC=clang
 RUN pip install pre-commit
 
 # Work directory setup
+COPY . /One
 WORKDIR /One
 
-COPY src/ ./src/
-COPY test/ ./test/
-
 # Building
-RUN cd src/parser
-RUN ./build.sh
-RUN cd ..
+RUN cd src/parser && chmod +x build.sh && ./build.sh
 
-RUN cd lexer/tokenizer
-RUN ./build.sh
-RUN cd ..
+RUN cd src/lexer && chmod +x build.sh && ./build.sh
 
-RUN ./build.sh
-RUN ./test.sh
-RUN cd ..
+RUN cd src/lexer && chmod +x test.sh && ./test.sh
 
 # Testing
-RUN cd ..
-RUN cd test
-CMD ["./build.sh"]
+RUN cd src/lexer && chmod +x build.sh && ./build.sh
