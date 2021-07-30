@@ -41,6 +41,38 @@ typedef struct
 void parser_init(char* filepath, char* input, Token** tokens);
 
 /*
+ * @function: parser_scan_import
+ * @description: scan import statement
+ * @arguments: nothing
+ * @return: AstImportDeclaration
+ */
+AstImportDeclaration* parser_scan_import();
+
+/*
+ * @function: parser_scan_fn
+ * @description: scan fn statement
+ * @arguments: nothing
+ * @return: AstFunctionDeclaration
+ */
+AstFunctionDeclaration* parser_scan_fn();
+
+/*
+ * @function: parser_scan_block
+ * @description: scan block
+ * @arguments: nothing
+ * @return: AstBlockDeclaration
+ */
+AstBlockDeclaration* parser_scan_block();
+
+/*
+ * @function: parser_scan_package
+ * @description: scan package statement
+ * @arguments: nothing
+ * @return: AstPackage
+ */
+AstPackage* parser_scan_package();
+
+/*
  * @function: parser_scan
  * @description: Start to check tokens. it's entry point of parser stage.
  * @arguments: nothing
