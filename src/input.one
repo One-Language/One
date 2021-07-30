@@ -13,5 +13,4 @@ import p7 { sin as s cos as c }
 
 	 fn
   			main 			{
-						  4	ret
-1 }
+ }

@@ -150,7 +150,33 @@ AstFunctionDeclaration* parser_scan_fn()
 	free(name);
 	info_parser("parser_scan_fn: name is %s", ast->name);
 
-	exit(0); // TODO
+	parser_token_skip();
+
+	parser_scan_block();
+
+	return ast;
+}
+
+/*
+ * @function: parser_scan_block
+ * @description: scan block
+ * @arguments: nothing
+ * @return: AstBlockDeclaration
+ */
+AstBlockDeclaration* parser_scan_block()
+{
+	debug_parser("parser_scan_block");
+
+	// { <stmts> }
+	AstBlockDeclaration* ast = malloc(sizeof(AstBlockDeclaration));
+
+	parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_LEFT);
+
+	parser_token_skip();
+
+	parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
+
+	parser_token_skip();
 
 	return ast;
 }
