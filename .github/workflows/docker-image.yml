@@ -7,11 +7,9 @@ on:
     branches: [master]
 
 jobs:
-
   build-deploy:
     name: Build and Publish Docker image
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -29,4 +27,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: onelang/one:latest
+          tags: onelangorg/one:latest
