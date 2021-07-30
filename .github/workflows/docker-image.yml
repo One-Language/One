@@ -10,7 +10,6 @@ jobs:
   build-deploy:
     name: Build and Publish Docker image
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
