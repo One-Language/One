@@ -158,6 +158,22 @@ AstFunctionDeclaration* parser_scan_fn()
 }
 
 /*
+ * @function: parser_scan_block_statement
+ * @description: scan statenent
+ * @arguments: nothing
+ * @return: AstStatementDeclaration
+ */
+AstStatementDeclaration* parser_scan_block_statement()
+{
+	debug_parser("parser_scan_block_statement");
+
+	// { <stmts> }
+	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
+
+	return ast;
+}
+
+/*
  * @function: parser_scan_block
  * @description: scan block
  * @arguments: nothing
@@ -174,7 +190,11 @@ AstBlockDeclaration* parser_scan_block()
 
 	parser_token_skip();
 
-	parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT);
+	while (parser_token_has(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT) == false)
+	{
+		parser_scan_block_statement();
+		parser_token_next();
+	}
 
 	parser_token_skip();
 
