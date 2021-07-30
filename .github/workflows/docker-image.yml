@@ -7,7 +7,6 @@ on:
     branches: [master]
 
 jobs:
-
   build-deploy:
     name: Build and Publish Docker image
     runs-on: ubuntu-latest
