@@ -203,22 +203,22 @@ AstStatementDeclaration* parser_scan_block_statement()
 	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
 
 	TokenType t = parser_token_get_type();
-	if (t == = TOKEN_FOR)
+	if (t == TOKEN_FOR)
 	{
 		ast->type = AST_STATEMENT_FOR;
 		parser_scan_block_for();
 	}
-	else if (t == = TOKEN_IF)
+	else if (t == TOKEN_IF)
 	{
 		ast->type = AST_STATEMENT_IF;
 		parser_scan_block_if();
 	}
-	else if (t == = TOKEN_RET)
+	else if (t == TOKEN_RET)
 	{
 		ast->type = AST_STATEMENT_RET;
 		parser_scan_block_ret();
 	}
-	else if (t == = TOKEN_MATCH)
+	else if (t == TOKEN_MATCH)
 	{
 		ast->type = AST_STATEMENT_MATCH;
 		parser_scan_block_match();
