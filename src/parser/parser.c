@@ -214,6 +214,29 @@ AstStatementDeclaration* parser_scan_block_for()
 }
 
 /*
+ * @function: parser_scan_block_ret
+ * @description: scan ret statement
+ * @arguments: nothing
+ * @return: AstStatementDeclaration*
+ */
+AstStatementDeclaration* parser_scan_block_ret()
+{
+	debug_parser("parser_scan_block_ret");
+
+	// RET <skip> <expr> <skip>
+	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
+	ast->type = AST_STATEMENT_RET;
+
+	ast->value.ret = malloc(sizeof(AstStatementRet));
+
+	parser_token_expect(TOKEN_RET);
+
+	parser_token_skip();
+
+	return ast;
+}
+
+/*
  * @function: parser_scan_block_match
  * @description: scan match statement
  * @arguments: nothing
