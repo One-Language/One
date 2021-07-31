@@ -205,23 +205,19 @@ AstStatementDeclaration* parser_scan_block_statement()
 	TokenType t = parser_token_get_type();
 	if (t == TOKEN_FOR)
 	{
-		ast->type = AST_STATEMENT_FOR;
-		parser_scan_block_for();
+		ast = parser_scan_block_for();
 	}
 	else if (t == TOKEN_IF)
 	{
-		ast->type = AST_STATEMENT_IF;
-		parser_scan_block_if();
+		ast = parser_scan_block_if();
 	}
 	else if (t == TOKEN_RET)
 	{
-		ast->type = AST_STATEMENT_RET;
-		parser_scan_block_ret();
+		ast = parser_scan_block_ret();
 	}
 	else if (t == TOKEN_MATCH)
 	{
-		ast->type = AST_STATEMENT_MATCH;
-		parser_scan_block_match();
+		ast = parser_scan_block_match();
 	}
 	else
 	{
