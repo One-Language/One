@@ -165,6 +165,18 @@ AstExprDeclaration* parser_scan_expression()
 	{
 		parser_token_next();
 	}
+	else if (parser_token_has(TOKEN_VALUE_NUMBER) == true)
+	{
+		parser_token_next();
+	}
+	else if (parser_token_has(TOKEN_VALUE_STRING) == true)
+	{
+		parser_token_next();
+	}
+	else if (parser_token_has(TOKEN_VALUE_CHAR) == true)
+	{
+		parser_token_next();
+	}
 
 	return ast;
 }
