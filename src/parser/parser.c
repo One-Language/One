@@ -149,6 +149,44 @@ AstFunctionDeclaration* parser_scan_fn()
 	return ast;
 }
 
+
+/*
+ * @function: parser_scan_expression
+ * @description: scan expression statement
+ * @arguments: nothing
+ * @return: void
+ */
+void parser_scan_expression() // TODO
+{
+}
+
+/*
+ * @function: parser_scan_if
+ * @description: scan if statement
+ * @arguments: nothing
+ * @return: AstFunctionDeclaration
+ */
+AstStatementDeclaration* parser_scan_if()
+{
+	debug_parser("parser_scan_if");
+
+	// IF <skip> <expr> <skip> <BLOCK>
+	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
+	ast->type = AST_STATEMENT_IF;
+
+	ast->value.clauses = malloc(sizeof(AstStatementIf));
+
+	parser_token_expect(TOKEN_IF);
+
+	parser_token_skip();
+
+	parser_scan_expression();
+
+	parser_scan_block();
+
+	return ast;
+}
+
 /*
  * @function: parser_scan_block_statement
  * @description: scan statenent
