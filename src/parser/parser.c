@@ -161,7 +161,7 @@ AstExprDeclaration* parser_scan_expression()
 
 	AstExprDeclaration* ast = malloc(sizeof(AstExprDeclaration));
 
-	if(parser_token_has(TOKEN_VALUE_IDENTIFIER) == true)
+	if (parser_token_has(TOKEN_VALUE_IDENTIFIER) == true)
 	{
 		parser_token_next();
 	}
