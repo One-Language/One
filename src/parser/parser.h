@@ -57,6 +57,54 @@ AstImportDeclaration* parser_scan_import();
 AstFunctionDeclaration* parser_scan_fn();
 
 /*
+ * @function: parser_scan_expression
+ * @description: scan expression statement
+ * @arguments: nothing
+ * @return: AstExprDeclaration*
+ */
+AstExprDeclaration* parser_scan_expression();
+
+/*
+ * @function: parser_scan_if
+ * @description: scan if statement
+ * @arguments: nothing
+ * @return: AstFunctionDeclaration*
+ */
+AstStatementDeclaration* parser_scan_block_if();
+
+/*
+ * @function: parser_scan_block_for
+ * @description: scan for statement
+ * @arguments: nothing
+ * @return: AstStatementDeclaration*
+ */
+AstStatementDeclaration* parser_scan_block_for();
+
+/*
+ * @function: parser_scan_block_ret
+ * @description: scan ret statement
+ * @arguments: nothing
+ * @return: AstStatementDeclaration*
+ */
+AstStatementDeclaration* parser_scan_block_ret();
+
+/*
+ * @function: parser_scan_block_match
+ * @description: scan match statement
+ * @arguments: nothing
+ * @return: AstStatementDeclaration*
+ */
+AstStatementDeclaration* parser_scan_block_match();
+
+/*
+ * @function: parser_scan_block_statement
+ * @description: scan statenent
+ * @arguments: nothing
+ * @return: AstStatementDeclaration
+ */
+AstStatementDeclaration* parser_scan_block_statement();
+
+/*
  * @function: parser_scan_block
  * @description: scan block
  * @arguments: nothing
