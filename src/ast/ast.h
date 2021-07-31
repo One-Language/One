@@ -76,7 +76,7 @@ typedef struct _ast_statement_expr AstStatementExpr;
 typedef Array AstImportSymbolArray; // AstImportSymbol
 typedef Array AstImportNameArray; // AstImportName
 typedef Array AstImportDeclarationArray; // AstImportDeclaration
-typedef Array AstBlockDeclarationArray; // AstBlockDeclaration
+// typedef Array AstBlockDeclarationArray; // AstBlockDeclaration
 typedef Array StringArray; // char
 typedef Array AstParamArray; // AstParam
 typedef Array AstAttributeDeclarationArray; // AstAttributeDeclaration
@@ -90,7 +90,7 @@ typedef struct _ast_file
 {
 	AstPackage* module;
 	AstImportDeclarationArray* imports; // AstImportDeclaration
-	AstBlockDeclarationArray* blocks; // AstBlockDeclaration
+	AstBlockDeclaration* blocks;
 
 	char* path;
 	char* path_base;
@@ -239,7 +239,7 @@ typedef struct _ast_function_declaration
 	char* name;
 	AstParam* reciver;
 	AstParamArray* params; // AstParam
-	AstBlockDeclarationArray* statements; // AstBlockDeclaration
+	AstBlockDeclaration* statements;
 	AstAttributeDeclarationArray* attributes; // AstAttributeDeclaration
 } AstFunctionDeclaration;
 
@@ -520,7 +520,7 @@ typedef struct _ast_statement_for_c
 	AstExprDeclaration* clauses;
 	AstExprDeclaration* action;
 
-	AstBlockDeclarationArray* body; // AstBlockDeclaration
+	AstBlockDeclaration* body;
 } AstStatementForC;
 
 typedef struct _ast_statement_for_each
@@ -669,7 +669,7 @@ typedef struct _ast_statement_if
 	bool has_else;
 
 	AstExprDeclaration* expr;
-	AstBlockDeclarationArray* body; // AstBlockDeclaration
+	AstBlockDeclaration* body;
 	AstStatementIf* otherwise;
 } AstStatementIf;
 
@@ -716,17 +716,13 @@ typedef struct _ast_statement_declaration
 typedef struct _ast_block_declaration
 {
 	Location pos;
+	// AstBlockType type;
 
-	AstBlockType type;
-
-	union
-	{
-		AstFunctionDeclaration* function;
-		AstStructDeclaration* structure;
-		AstEnumDeclaration* enumerate;
-		AstTypeDeclaration* type;
-		AstStatementDeclaration* statement;
-	} value;
+	AstFunctionDeclarationArray* functions;
+	AstStructDeclarationArray* structures;
+	AstEnumDeclarationArray* enumerates;
+	AstTypeDeclarationArray* types;
+	AstStatementDeclarationArray* statements;
 } AstBlockDeclaration;
 
 typedef struct _ast_struct_field

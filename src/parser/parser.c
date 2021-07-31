@@ -161,6 +161,12 @@ AstStatementDeclaration* parser_scan_block_statement()
 
 	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
 
+	TokenType t = parser_token_get_type();
+	if(t === TOKEN_FOR) {
+		ast->type = AST_STATEMENT_FOR;
+		parser_scan_block_for();
+	}
+
 	return ast;
 }
 
@@ -184,7 +190,6 @@ AstBlockDeclaration* parser_scan_block()
 	while (parser_token_has(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT) == false)
 	{
 		parser_scan_block_statement();
-		parser_token_next();
 	}
 
 	parser_token_skip();
