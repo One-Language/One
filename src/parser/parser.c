@@ -149,15 +149,18 @@ AstFunctionDeclaration* parser_scan_fn()
 	return ast;
 }
 
-
 /*
  * @function: parser_scan_expression
  * @description: scan expression statement
  * @arguments: nothing
- * @return: void
+ * @return: AstExprDeclaration*
  */
-void parser_scan_expression() // TODO
+AstExprDeclaration* parser_scan_expression()
 {
+	debug_parser("parser_scan_expression");
+
+	AstExprDeclaration* ast = malloc(sizeof(AstExprDeclaration));
+	return ast;
 }
 
 /*
@@ -180,9 +183,9 @@ AstStatementDeclaration* parser_scan_if()
 
 	parser_token_skip();
 
-	parser_scan_expression();
+	ast->value.clauses->expr = parser_scan_expression();
 
-	parser_scan_block();
+	ast->value.clauses->body = parser_scan_block();
 
 	return ast;
 }
