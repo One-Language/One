@@ -167,7 +167,7 @@ AstExprDeclaration* parser_scan_expression()
  * @function: parser_scan_if
  * @description: scan if statement
  * @arguments: nothing
- * @return: AstFunctionDeclaration
+ * @return: AstFunctionDeclaration*
  */
 AstStatementDeclaration* parser_scan_block_if()
 {
