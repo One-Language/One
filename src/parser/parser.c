@@ -51,9 +51,7 @@ AstImportDeclaration* parser_scan_import()
 
 	parser_token_skip();
 
-	Token* value = parser_token_get();
-	debug_parser("parser_scan_import: current token is %s", token_name(value->type));
-	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+	Token* value = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
 	info_parser("parser_scan_import: %s", value->value);
 
 	parser_token_skip();
@@ -63,13 +61,10 @@ AstImportDeclaration* parser_scan_import()
 	{
 		parser_token_skip();
 
-		Token* alias = parser_token_get();
-		debug_parser("parser_scan_import: alias current token is %s", token_name(alias->type));
-
-		parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+		Token* alias = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
+		info_parser("parser_scan_import: set alias as %s", ast->alias);
 		ast->alias = strdup(alias->value);
 		free(alias);
-		info_parser("parser_scan_import: set alias as %s", ast->alias);
 	}
 
 	parser_token_skip();
@@ -83,8 +78,7 @@ AstImportDeclaration* parser_scan_import()
 		{
 			AstImportSymbol* symbol = malloc(sizeof(AstImportSymbol));
 
-			Token* symbol_name = parser_token_get();
-			parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+			Token* symbol_name = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
 
 			symbol->names = malloc(sizeof(StringArray));
 
@@ -100,8 +94,7 @@ AstImportDeclaration* parser_scan_import()
 				parser_token_skip();
 
 				symbol->has_alias = true;
-				Token* symbol_alias = parser_token_get();
-				parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+				Token* symbol_alias = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
 				symbol->alias = strdup(symbol_alias->value);
 				info_parser("parser_scan_import: symbol alias as: %s", symbol_alias->value);
 				free(symbol_alias);
@@ -144,8 +137,7 @@ AstFunctionDeclaration* parser_scan_fn()
 
 	parser_token_skip();
 
-	Token* name = parser_token_get();
-	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+	Token* name = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
 	ast->name = strdup(name->value);
 	free(name);
 	info_parser("parser_scan_fn: name is %s", ast->name);
@@ -217,9 +209,7 @@ AstPackage* parser_scan_package()
 
 	parser_token_skip();
 
-	Token* value = parser_token_get();
-	debug_parser("parser_scan_package: current token is %s", token_name(parser_token_get_type()));
-	parser_token_expect(TOKEN_VALUE_IDENTIFIER);
+	Token* value = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
 	info_parser("parser_scan_package: %s", value->value);
 
 	ast->name = strdup(value->value);
