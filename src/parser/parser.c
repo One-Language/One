@@ -160,6 +160,12 @@ AstExprDeclaration* parser_scan_expression()
 	debug_parser("parser_scan_expression");
 
 	AstExprDeclaration* ast = malloc(sizeof(AstExprDeclaration));
+
+	if(parser_token_has(TOKEN_VALUE_IDENTIFIER) == true)
+	{
+		parser_token_next();
+	}
+
 	return ast;
 }
 
@@ -184,6 +190,8 @@ AstStatementDeclaration* parser_scan_block_if()
 	parser_token_skip();
 
 	ast->value.clauses->expr = parser_scan_expression();
+
+	parser_token_skip();
 
 	ast->value.clauses->body = parser_scan_block();
 
