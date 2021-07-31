@@ -41,7 +41,7 @@ void parser_token_expect(TokenType type);
  * @function: parser_token_expect_get
  * @description: if type of current token is equal to `t` we will return it and skip.
  * @arguments: TokenType t
- * @return: void
+ * @return: Token*
  */
 Token* parser_token_expect_get(TokenType type);
 
