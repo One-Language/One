@@ -194,7 +194,7 @@ AstStatementDeclaration* parser_scan_block_if()
  * @function: parser_scan_block_for
  * @description: scan for statement
  * @arguments: nothing
- * @return: AstFunctionDeclaration
+ * @return: AstStatementDeclaration*
  */
 AstStatementDeclaration* parser_scan_block_for()
 {
@@ -207,6 +207,29 @@ AstStatementDeclaration* parser_scan_block_for()
 	ast->value.foreach = malloc(sizeof(AstStatementFor));
 
 	parser_token_expect(TOKEN_FOR);
+
+	parser_token_skip();
+
+	return ast;
+}
+
+/*
+ * @function: parser_scan_block_match
+ * @description: scan match statement
+ * @arguments: nothing
+ * @return: AstStatementDeclaration*
+ */
+AstStatementDeclaration* parser_scan_block_match()
+{
+	debug_parser("parser_scan_block_match");
+
+	// FOR <skip> <expr> <skip> <BLOCK> // TODO
+	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
+	ast->type = AST_STATEMENT_MATCH;
+
+	ast->value.match = malloc(sizeof(AstStatementMatch));
+
+	parser_token_expect(TOKEN_MATCH);
 
 	parser_token_skip();
 
