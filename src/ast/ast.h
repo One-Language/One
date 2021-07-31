@@ -73,6 +73,12 @@ typedef struct _ast_statement_variable AstStatementVariable;
 typedef struct _ast_statement_expr AstStatementExpr;
 
 // Array
+typedef Array AstFunctionDeclarationArray; // AstFunctionDeclaration
+typedef Array AstStructDeclarationArray; // AstStructDeclaration
+typedef Array AstEnumDeclarationArray; // AstEnumDeclaration
+typedef Array AstTypeDeclarationArray; // AstTypeDeclaration
+typedef Array AstStatementDeclarationArray; // AstStatementDeclaration
+
 typedef Array AstImportSymbolArray; // AstImportSymbol
 typedef Array AstImportNameArray; // AstImportName
 typedef Array AstImportDeclarationArray; // AstImportDeclaration
