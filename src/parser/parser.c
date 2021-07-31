@@ -167,7 +167,6 @@ AstStatementDeclaration* parser_scan_block_statement()
 {
 	debug_parser("parser_scan_block_statement");
 
-	// { <stmts> }
 	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
 
 	return ast;
