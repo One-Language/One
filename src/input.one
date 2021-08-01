@@ -14,4 +14,8 @@ import p7 { sin as s cos as c }
 	 fn
   			main 			{
   		if aaa {}
+  		if aaa {}
+  		if aaa {  		if aaa {  		if aaa {}
+}
+}
  }

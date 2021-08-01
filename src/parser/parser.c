@@ -359,25 +359,25 @@ AstBlockDeclaration* parser_scan_block()
 	while (parser_token_has(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT) == false)
 	{
 		AstBlockItem* item = parser_scan_block_statement();
-		if(item != NULL)
+		if (item != NULL)
 		{
-			if(item->type == AST_BLOCK_FUNCTION)
+			if (item->type == AST_BLOCK_FUNCTION)
 			{
 				array_push(ast->functions, item->value.function);
 			}
-			else if(item->type == AST_BLOCK_STRUCT)
+			else if (item->type == AST_BLOCK_STRUCT)
 			{
 				array_push(ast->structures, item->value.structure);
 			}
-			else if(item->type == AST_BLOCK_ENUM)
+			else if (item->type == AST_BLOCK_ENUM)
 			{
 				array_push(ast->enumerates, item->value.enumerate);
 			}
-			else if(item->type == AST_BLOCK_TYPE)
+			else if (item->type == AST_BLOCK_TYPE)
 			{
 				array_push(ast->types, item->value.type);
 			}
-			else if(item->type == AST_BLOCK_STATEMENT)
+			else if (item->type == AST_BLOCK_STATEMENT)
 			{
 				array_push(ast->statements, item->value.statement);
 			}
