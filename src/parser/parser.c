@@ -340,6 +340,12 @@ AstBlockDeclaration* parser_scan_block()
 	// { <stmts> }
 	AstBlockDeclaration* ast = malloc(sizeof(AstBlockDeclaration));
 
+	ast->functions = malloc(sizeof(AstFunctionDeclarationArray));
+	ast->structures = malloc(sizeof(AstStructDeclarationArray));
+	ast->enumerates = malloc(sizeof(AstEnumDeclarationArray));
+	ast->types = malloc(sizeof(AstTypeDeclarationArray));
+	ast->statements = malloc(sizeof(AstStatementDeclarationArray));
+
 	array_init(ast->functions);
 	array_init(ast->structures);
 	array_init(ast->enumerates);
