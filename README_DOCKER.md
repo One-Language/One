@@ -111,23 +111,23 @@ docker exec -it <container ID> sh -c 'cd src/lexer && chmod +x build.sh && ./bui
 
 1. run the container
 
-   <img width="100%" src="https://user-images.githubusercontent.com/37270435/127685518-84d90537-6c1e-4e25-be4c-ffbc4123e35c.png">
+   <img width="100%" src="https://user-images.githubusercontent.com/37270435/127685518-84d90537-6c1e-4e25-be4c-ffbc4123e35c.png" alt="Run the container">
 
 2. connect to the container
 
-   <img width="100%" src="https://user-images.githubusercontent.com/37270435/127685616-0237494b-8cb6-48e8-9aec-764e25a70577.png">
+   <img width="100%" src="https://user-images.githubusercontent.com/37270435/127685616-0237494b-8cb6-48e8-9aec-764e25a70577.png" alt="Connect to the container">
 
 3. Now you can work from within the docker container and the previous step will open this new VSCode window
 
-   <img width="100%" src="https://user-images.githubusercontent.com/37270435/127685983-3fcb3c3f-15c0-4f64-9376-40e8fb176518.png">
+   <img width="100%" src="https://user-images.githubusercontent.com/37270435/127685983-3fcb3c3f-15c0-4f64-9376-40e8fb176518.png" alt="Vscode remote container window">
 
 4. Choose `One` directory
 
-   <img width="100%" src="https://user-images.githubusercontent.com/37270435/127686121-9e04d137-0cbb-45c8-815c-f339a21bc623.png">
+   <img width="100%" src="https://user-images.githubusercontent.com/37270435/127686121-9e04d137-0cbb-45c8-815c-f339a21bc623.png" alt="One directory">
 
 5. finally here you go!
 
-   <img width="100%" src="https://user-images.githubusercontent.com/37270435/127686195-47d8cae2-9703-4da0-849e-dfc604d31598.png">
+   <img width="100%" src="https://user-images.githubusercontent.com/37270435/127686195-47d8cae2-9703-4da0-849e-dfc604d31598.png" alt="One remote container workspace">
 
 - To remove the container:
 
