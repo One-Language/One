@@ -340,14 +340,45 @@ AstBlockDeclaration* parser_scan_block()
 	// { <stmts> }
 	AstBlockDeclaration* ast = malloc(sizeof(AstBlockDeclaration));
 
+	array_init(ast->functions);
+	array_init(ast->structures);
+	array_init(ast->enumerates);
+	array_init(ast->types);
+	array_init(ast->statements);
+
 	parser_token_expect(TOKEN_OPERATOR_BRACKET_CURLY_LEFT);
 
 	parser_token_skip();
 
 	while (parser_token_has(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT) == false)
 	{
-		parser_scan_block_statement();
+		AstBlockItem* item = parser_scan_block_statement();
+		if(item != NULL)
+		{
+			if(item->type == AST_BLOCK_FUNCTION)
+			{
+				array_push(ast->functions, item->value.function);
+			}
+			else if(item->type == AST_BLOCK_STRUCT)
+			{
+				array_push(ast->structures, item->value.structure);
+			}
+			else if(item->type == AST_BLOCK_ENUM)
+			{
+				array_push(ast->enumerates, item->value.enumerate);
+			}
+			else if(item->type == AST_BLOCK_TYPE)
+			{
+				array_push(ast->types, item->value.type);
+			}
+			else if(item->type == AST_BLOCK_STATEMENT)
+			{
+				array_push(ast->statements, item->value.statement);
+			}
+		}
 	}
+
+	printf("--->count stmt: %d\n", ast->statements->count);
 
 	parser_token_skip();
 
