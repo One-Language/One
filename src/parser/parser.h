@@ -52,9 +52,9 @@ AstImportDeclaration* parser_scan_import();
  * @function: parser_scan_fn
  * @description: scan fn statement
  * @arguments: nothing
- * @return: AstFunctionDeclaration
+ * @return: AstBlockItem
  */
-AstFunctionDeclaration* parser_scan_fn();
+AstBlockItem* parser_scan_fn();
 
 /*
  * @function: parser_scan_expression
@@ -68,41 +68,41 @@ AstExprDeclaration* parser_scan_expression();
  * @function: parser_scan_if
  * @description: scan if statement
  * @arguments: nothing
- * @return: AstFunctionDeclaration*
+ * @return: AstBlockItem*
  */
-AstStatementDeclaration* parser_scan_block_if();
+AstBlockItem* parser_scan_block_if();
 
 /*
  * @function: parser_scan_block_for
  * @description: scan for statement
  * @arguments: nothing
- * @return: AstStatementDeclaration*
+ * @return: AstBlockItem*
  */
-AstStatementDeclaration* parser_scan_block_for();
+AstBlockItem* parser_scan_block_for();
 
 /*
  * @function: parser_scan_block_ret
  * @description: scan ret statement
  * @arguments: nothing
- * @return: AstStatementDeclaration*
+ * @return: AstBlockItem*
  */
-AstStatementDeclaration* parser_scan_block_ret();
+AstBlockItem* parser_scan_block_ret();
 
 /*
  * @function: parser_scan_block_match
  * @description: scan match statement
  * @arguments: nothing
- * @return: AstStatementDeclaration*
+ * @return: AstBlockItem*
  */
-AstStatementDeclaration* parser_scan_block_match();
+AstBlockItem* parser_scan_block_match();
 
 /*
  * @function: parser_scan_block_statement
  * @description: scan statenent
  * @arguments: nothing
- * @return: AstStatementDeclaration
+ * @return: AstBlockItem*
  */
-AstStatementDeclaration* parser_scan_block_statement();
+AstBlockItem* parser_scan_block_statement();
 
 /*
  * @function: parser_scan_block

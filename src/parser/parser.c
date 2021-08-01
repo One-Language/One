@@ -124,23 +124,26 @@ AstImportDeclaration* parser_scan_import()
  * @function: parser_scan_fn
  * @description: scan fn statement
  * @arguments: nothing
- * @return: AstFunctionDeclaration
+ * @return: AstBlockItem
  */
-AstFunctionDeclaration* parser_scan_fn()
+AstBlockItem* parser_scan_fn()
 {
 	debug_parser("parser_scan_fn");
 
 	// FN <skip> IDENTIFIER
-	AstFunctionDeclaration* ast = malloc(sizeof(AstFunctionDeclaration));
+	AstBlockItem* ast = malloc(sizeof(AstBlockItem));
+	ast->type = AST_BLOCK_FUNCTION;
+
+	ast->value.function = malloc(sizeof(AstFunctionDeclaration));
 
 	parser_token_expect(TOKEN_FN);
 
 	parser_token_skip();
 
 	Token* name = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
-	ast->name = strdup(name->value);
+	ast->value.function->name = strdup(name->value);
 	free(name);
-	info_parser("parser_scan_fn: name is %s", ast->name);
+	info_parser("parser_scan_fn: name is %s", ast->value.function->name);
 
 	parser_token_skip();
 
@@ -185,27 +188,29 @@ AstExprDeclaration* parser_scan_expression()
  * @function: parser_scan_if
  * @description: scan if statement
  * @arguments: nothing
- * @return: AstFunctionDeclaration*
+ * @return: AstBlockItem
  */
-AstStatementDeclaration* parser_scan_block_if()
+AstBlockItem* parser_scan_block_if()
 {
 	debug_parser("parser_scan_block_if");
 
 	// IF <skip> <expr> <skip> <BLOCK>
-	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
-	ast->type = AST_STATEMENT_IF;
+	AstBlockItem* ast = malloc(sizeof(AstBlockItem));
+	ast->type = AST_BLOCK_STATEMENT;
+	ast->value.statement = malloc(sizeof(AstStatementDeclaration));
+	ast->value.statement->type = AST_STATEMENT_IF;
 
-	ast->value.clauses = malloc(sizeof(AstStatementIf));
+	ast->value.statement->value.clauses = malloc(sizeof(AstStatementIf));
 
 	parser_token_expect(TOKEN_IF);
 
 	parser_token_skip();
 
-	ast->value.clauses->expr = parser_scan_expression();
+	ast->value.statement->value.clauses->expr = parser_scan_expression();
 
 	parser_token_skip();
 
-	ast->value.clauses->body = parser_scan_block();
+	ast->value.statement->value.clauses->body = parser_scan_block();
 
 	return ast;
 }
@@ -214,17 +219,19 @@ AstStatementDeclaration* parser_scan_block_if()
  * @function: parser_scan_block_for
  * @description: scan for statement
  * @arguments: nothing
- * @return: AstStatementDeclaration*
+ * @return: AstBlockItem
  */
-AstStatementDeclaration* parser_scan_block_for()
+AstBlockItem* parser_scan_block_for()
 {
 	debug_parser("parser_scan_block_for");
 
 	// FOR <skip> <expr> <skip> <BLOCK> // TODO
-	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
-	ast->type = AST_STATEMENT_FOR;
+	AstBlockItem* ast = malloc(sizeof(AstBlockItem));
+	ast->type = AST_BLOCK_STATEMENT;
+	ast->value.statement = malloc(sizeof(AstStatementDeclaration));
+	ast->value.statement->type = AST_STATEMENT_FOR;
 
-	ast->value.foreach = malloc(sizeof(AstStatementFor));
+	ast->value.statement->value.foreach = malloc(sizeof(AstStatementFor));
 
 	parser_token_expect(TOKEN_FOR);
 
@@ -237,17 +244,19 @@ AstStatementDeclaration* parser_scan_block_for()
  * @function: parser_scan_block_ret
  * @description: scan ret statement
  * @arguments: nothing
- * @return: AstStatementDeclaration*
+ * @return: AstBlockItem*
  */
-AstStatementDeclaration* parser_scan_block_ret()
+AstBlockItem* parser_scan_block_ret()
 {
 	debug_parser("parser_scan_block_ret");
 
 	// RET <skip> <expr> <skip>
-	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
-	ast->type = AST_STATEMENT_RET;
+	AstBlockItem* ast = malloc(sizeof(AstBlockItem));
+	ast->type = AST_BLOCK_STATEMENT;
+	ast->value.statement = malloc(sizeof(AstStatementDeclaration));
+	ast->value.statement->type = AST_STATEMENT_RET;
 
-	ast->value.ret = malloc(sizeof(AstStatementRet));
+	ast->value.statement->value.ret = malloc(sizeof(AstStatementRet));
 
 	parser_token_expect(TOKEN_RET);
 
@@ -260,17 +269,18 @@ AstStatementDeclaration* parser_scan_block_ret()
  * @function: parser_scan_block_match
  * @description: scan match statement
  * @arguments: nothing
- * @return: AstStatementDeclaration*
+ * @return: AstBlockItem*
  */
-AstStatementDeclaration* parser_scan_block_match()
+AstBlockItem* parser_scan_block_match()
 {
 	debug_parser("parser_scan_block_match");
 
 	// FOR <skip> <expr> <skip> <BLOCK> // TODO
-	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
-	ast->type = AST_STATEMENT_MATCH;
-
-	ast->value.match = malloc(sizeof(AstStatementMatch));
+	AstBlockItem* ast = malloc(sizeof(AstBlockItem));
+	ast->type = AST_BLOCK_STATEMENT;
+	ast->value.statement = malloc(sizeof(AstStatementDeclaration));
+	ast->value.statement->type = AST_STATEMENT_MATCH;
+	ast->value.statement->value.match = malloc(sizeof(AstStatementMatch));
 
 	parser_token_expect(TOKEN_MATCH);
 
@@ -283,13 +293,13 @@ AstStatementDeclaration* parser_scan_block_match()
  * @function: parser_scan_block_statement
  * @description: scan statenent
  * @arguments: nothing
- * @return: AstStatementDeclaration
+ * @return: AstBlockItem*
  */
-AstStatementDeclaration* parser_scan_block_statement()
+AstBlockItem* parser_scan_block_statement()
 {
 	debug_parser("parser_scan_block_statement");
 
-	AstStatementDeclaration* ast = malloc(sizeof(AstStatementDeclaration));
+	AstBlockItem* ast = malloc(sizeof(AstBlockItem));
 
 	TokenType t = parser_token_get_type();
 	if (t == TOKEN_FOR)

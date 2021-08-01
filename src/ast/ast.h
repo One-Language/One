@@ -719,10 +719,26 @@ typedef struct _ast_statement_declaration
 	} value;
 } AstStatementDeclaration;
 
+typedef struct _ast_block_item
+{
+	Location pos;
+
+	AstBlockType type;
+
+	union
+	{
+		AstFunctionDeclaration* function;
+		AstStructDeclaration* structure;
+		AstEnumDeclaration* enumerate;
+		AstTypeDeclaration* type;
+		AstStatementDeclaration* statement;
+	} value;
+
+} AstBlockItem;
+
 typedef struct _ast_block_declaration
 {
 	Location pos;
-	// AstBlockType type;
 
 	AstFunctionDeclarationArray* functions;
 	AstStructDeclarationArray* structures;
