@@ -19,7 +19,7 @@ typedef struct
 LexerTest lexer_tests[1024];
 unsigned int lexer_tests_count = 0;
 
-#define MY_TEST(source)    \
+#define MY_TEST(source) \
 	tokens = tokenizer_string(source);
 
 void test_lexer_log(const char* source, Token** tokens)
@@ -34,7 +34,7 @@ bool test_lexer_item(LexerTest test)
 	test_lexer_log((const char*)test.source, tokens);
 
 	size_t count = sizeof(tokens) / sizeof(Token*);
-	for(size_t i = 0; i < count; i++)
+	for (size_t i = 0; i < count; i++)
 	{
 		if (tokens[i] == NULL)
 		{
