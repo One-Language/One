@@ -1,3 +1,6 @@
+# compile argument(s)
+
+# compile lexer
 clang lexer.test.c -o lexer \
  ../src/builtins/array.c \
  ../src/builtins/error.c \
@@ -8,4 +11,13 @@ clang lexer.test.c -o lexer \
  ../src/lexer/lexer.c ../src/lexer/tokenizer/token.c ../src/lexer/tokenizer/tokenizer.c \
  -lLLVM-12 \
  -D_ONE_TEST_
+
+# compile parser
+
+# compiler ast
+
+# run
+# ./arguments
 ./lexer
+# ./parser
+# ./ast

@@ -22,7 +22,9 @@ bool test_lexer_item(LexerTest test)
 {
 	Token** tokens = tokenizer_string(test.source);
 
-	// test_lexer_log((const char*)test.source, tokens);
+#ifndef _ONE_TEST_
+	test_lexer_log((const char*)test.source, tokens);
+#endif
 
 	if (tokens == NULL && test.token_count == 0)
 	{
@@ -53,14 +55,15 @@ bool test_lexer()
 	bool res_final = true;
 	for (unsigned i = 0; i < lexer_tests_count; i++)
 	{
-		printf("Test case %d", i + 1);
 		bool res = test_lexer_item(lexer_tests[i]);
+		printf(res == true ? GREEN : RED);
+		printf("Test case %d", i + 1);
 		if (res == false)
 		{
 			printf(": Failed!");
 			res_final = false;
 		}
-		printf("\n");
+		printf("\n" RESET);
 	}
 
 	return res_final;
@@ -70,13 +73,26 @@ int main()
 {
 	printf("Hello to Lexer test!\n");
 
+	// whitespaces
+	lexer_tests[lexer_tests_count++] = (LexerTest){"", {token_make(TOKEN_EOF)}, 1};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"    ", {token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_EOF)}, 2};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 2};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"   \r\n", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 2};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n    ", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 2};
-	lexer_tests[lexer_tests_count++] = (LexerTest){"", {token_make(TOKEN_EOF)}, 1};
-	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}", {token_make(TOKEN_VALUE_IDENTIFIER), token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT), token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT), token_make(TOKEN_EOF)}, 4};
+	// digits
+	lexer_tests[lexer_tests_count++] = (LexerTest){"110", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 2};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"3.14", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 2};
+	// whitespaces + digit
+	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n 4   ", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 3};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n    2", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 4};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n    2\n3\n4", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 7};
+	// operators
+	lexer_tests[lexer_tests_count++] = (LexerTest){"5+5", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_OPERATOR_PLUS), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 4};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"5 -5", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_OPERATOR_MINUS), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 5};
+	// import
 	lexer_tests[lexer_tests_count++] = (LexerTest){"import math", {token_make(TOKEN_IMPORT), token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_VALUE_IDENTIFIER), token_make(TOKEN_EOF)}, 4};
+	// functions
+	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}", {token_make(TOKEN_VALUE_IDENTIFIER), token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT), token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT), token_make(TOKEN_EOF)}, 4};
 
 	bool res = test_lexer();
 	if (lexer_tests_count == 0)
