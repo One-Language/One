@@ -575,7 +575,7 @@ void lexer_trace(FILE* file_out, char* data, Token** tokens)
 		bool has1 = file_convert_index_to_rc(data, t->pos.index, &t->pos.line, &t->pos.column);
 		bool has2 = file_convert_index_to_rc(data, t->pos_end.index, &t->pos_end.line, &t->pos_end.column);
 
-		fprintf(file_out, "[%d:%d] [%d:%d - %d:%d] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
+		fprintf(file_out, "[%zu:%zu] [%zu:%zu - %zu:%zu] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
 
 		if (t->value != NULL)
 		{
