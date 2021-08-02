@@ -20,31 +20,27 @@ LexerTest lexer_tests[1024];
 unsigned int lexer_tests_count = 0;
 
 #define MY_TEST(source)    \
-	tokens = tokenizer_string(source]);
+	tokens = tokenizer_string(source);
 
-void test_lexer_log()
+void test_lexer_log(const char* source, Token** tokens)
 {
-	for (int i = 0; i < parser.tokens_count; i++)
-	{
-		printf("[%d] %s\n", i, token_name(parser.tokens[i]->type));
-	}
+	lexer_trace(stdout, source, tokens);
 }
 
 bool test_lexer_item(LexerTest test)
 {
 	Token** tokens = MY_TEST(test.source);
 
-	// test_lexer_log();
+	test_lexer_log((const char*)test.source, tokens);
 
-	while (tokens != NULL && *tokens != NULL)
+	size_t count = sizeof(tokens) / sizeof(Token*);
+	for(size_t i = 0; i < count; i++)
 	{
-		Token* t = *tokens;
-		Token* t_want = *(test.tokens);
-		if (t == NULL)
+		if (tokens[i] == NULL)
 		{
 			return false;
 		}
-		else if (t_want->type == t->type)
+		else if (test.tokens[i]->type == tokens[i]->type)
 		{
 			continue;
 		}
@@ -52,8 +48,6 @@ bool test_lexer_item(LexerTest test)
 		{
 			return false;
 		}
-		tokens++;
-		test.tokens++;
 	}
 
 	if (tokens != NULL)

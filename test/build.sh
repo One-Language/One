@@ -1,4 +1,7 @@
 clang lexer.test.c -o lexer \
+ ../src/builtins/array.c \
+ ../src/builtins/error.c \
+ ../src/builtins/file.c \
  ../src/ast/ast.c \
  ../src/parser/parser.c \
  ../src/parser/parser_token.c \

@@ -564,7 +564,7 @@ void lexer_free()
  * @arguments: FILE* file_out, char* data, Token** tokens
  * @return: nothing, void
  */
-void lexer_trace(FILE* file_out, char* data, Token** tokens)
+void lexer_trace(FILE* file_out, const char* data, Token** tokens)
 {
 	debug_lexer("lexer_trace");
 
