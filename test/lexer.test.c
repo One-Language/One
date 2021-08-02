@@ -31,7 +31,7 @@ bool test_lexer_item(LexerTest test)
 
 	// test_lexer_log((const char*)test.source, tokens);
 
-	if(tokens == NULL && test.token_count == 0)
+	if (tokens == NULL && test.token_count == 0)
 	{
 		return true;
 	}
@@ -75,12 +75,7 @@ int main()
 {
 	printf("Hello to Lexer test!\n");
 
-	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}", {
-																token_make(TOKEN_VALUE_IDENTIFIER),
-																token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT),
-																token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT),
-																token_make(TOKEN_EOF)
-															 }, 4};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}", {token_make(TOKEN_VALUE_IDENTIFIER), token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT), token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT), token_make(TOKEN_EOF)}, 4};
 	bool res = test_lexer();
 	if (lexer_tests_count == 0 || res == true)
 	{
