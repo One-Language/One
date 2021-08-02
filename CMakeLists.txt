@@ -91,20 +91,23 @@ set(PARSER_MAIN
         src/parser/main.c
 )
 
-set(TEST_HEADERS
-        test/test.h
-)
+# set(TESTS_HEADERS
+#         test/test.h
 
-set(TESTS
-        test/argument.test.c
+#         test/parser.test.c
 
-        test/lexer.test.c
+#         test/argument.test.c
+# )
 
-        test/parser.test.c
-)
+# set(LEXER_TEST
+#         test/lexer.test.c
+# )
 
 add_executable(lexer ${LEXER_MAIN} ${LEXER_SOURCE} ${LEXER_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS} ${CFLAGS} ${LIBS})
 add_executable(ast  ${AST_MAIN} ${AST_SOURCE} ${AST_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS} ${PARSER_SOURCE} ${PARSER_HEADERS} ${CFLAGS} ${LIBS})
 add_executable(parser  ${PARSER_MAIN} ${PARSER_SOURCE} ${PARSER_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${AST_SOURCE} ${AST_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS}  ${CFLAGS} ${LIBS})
 # add_executable(lexer_test ${TESTS} ${TEST_HEADERS} ${PARSER_SOURCE} ${PARSER_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${AST_SOURCE} ${AST_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS}  ${CFLAGS} ${LIBS})
-add_test(test lexer ../src/input.one log)
+add_test(lexer_test lexer ../src/input.one log)
+
+add_executable(parser_tst  test/parser.test.c)
+add_test(NAME parser WORKING_DIRECTORY ../test COMMAND parser_tst)
