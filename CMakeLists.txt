@@ -29,8 +29,6 @@ set(LEXER_SOURCE
         src/lexer/tokenizer/tokenizer.c
 
         src/lexer/lexer.c
-
-        src/lexer/main.c
 )
 
 set(LEXER_HEADERS
@@ -43,8 +41,6 @@ set(LEXER_HEADERS
 
 set(AST_SOURCE
         src/ast/ast.c
-
-        src/ast/main.c
 )
 
 set(BUILTINS_SOURCE
@@ -61,8 +57,6 @@ set(PARSER_SOURCE
         src/parser/parser_token.c
 
         src/parser/parser.c
-
-        src/parser/main.c
 )
 
 set(AST_HEADERS
@@ -85,19 +79,32 @@ set(PARSER_HEADERS
         src/parser/parser.h
 )
 
-# set(TEST_HEADERS
-#         test/test.h
-# )
+set(LEXER_MAIN
+        src/lexer/main.c
+)
 
-# set(TESTS
-#         test/argument.test.c
+set(AST_MAIN
+        src/ast/main.c
+)
 
-#         test/lexer.test.c
+set(PARSER_MAIN
+        src/parser/main.c
+)
 
-#         test/parser.test.c
-# )
+set(TEST_HEADERS
+        test/test.h
+)
 
-add_executable(lexer ${LEXER_SOURCE} ${LEXER_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS} ${CFLAGS} ${LIBS})
-# add_executable(ast ${AST_SOURCE} ${AST_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS} ${CFLAGS} ${LIBS})
-# add_executable(parser ${PARSER_SOURCE} ${PARSER_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${AST_SOURCE} ${AST_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS}  ${CFLAGS} ${LIBS})
-add_test(lexer_test lexer ../src/input.one log)
+set(TESTS
+        test/argument.test.c
+
+        test/lexer.test.c
+
+        test/parser.test.c
+)
+
+add_executable(lexer ${LEXER_MAIN} ${LEXER_SOURCE} ${LEXER_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS} ${CFLAGS} ${LIBS})
+add_executable(ast  ${AST_MAIN} ${AST_SOURCE} ${AST_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS} ${PARSER_SOURCE} ${PARSER_HEADERS} ${CFLAGS} ${LIBS})
+add_executable(parser  ${PARSER_MAIN} ${PARSER_SOURCE} ${PARSER_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${AST_SOURCE} ${AST_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS}  ${CFLAGS} ${LIBS})
+# add_executable(lexer_test ${TESTS} ${TEST_HEADERS} ${PARSER_SOURCE} ${PARSER_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${AST_SOURCE} ${AST_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS}  ${CFLAGS} ${LIBS})
+add_test(test lexer ../src/input.one log)
