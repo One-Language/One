@@ -61,6 +61,9 @@ Token** tokenizer_string(char* data)
 			break;
 	}
 
+	debug_token("count of tokens is %d\n", tokens.count);
+	debug_token("size of tokens is %d\n", tokens.size);
+
 	// while (*data != '\0')
 	// {
 	// 	Token* t = token_make_value(TOKEN_VALUE_IDENTIFIER, (char*){data});

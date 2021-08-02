@@ -10,13 +10,6 @@
 
 #include "test.h"
 
-typedef struct
-{
-	char* source;
-	Token* tokens[1024];
-	size_t token_count;
-} LexerTest;
-
 LexerTest lexer_tests[1024];
 unsigned int lexer_tests_count = 0;
 
@@ -29,7 +22,7 @@ bool test_lexer_item(LexerTest test)
 {
 	Token** tokens = tokenizer_string(test.source);
 
-	// test_lexer_log((const char*)test.source, tokens);
+	test_lexer_log((const char*)test.source, tokens);
 
 	if (tokens == NULL && test.token_count == 0)
 	{
@@ -75,9 +68,21 @@ int main()
 {
 	printf("Hello to Lexer test!\n");
 
-	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}", {token_make(TOKEN_VALUE_IDENTIFIER), token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT), token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT), token_make(TOKEN_EOF)}, 4};
+	lexer_tests[lexer_tests_count++]
+		= (LexerTest){"main{}\0", {
+			token_make(TOKEN_VALUE_IDENTIFIER),
+			token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT),
+			token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT),
+			token_make(TOKEN_EOF)
+		}, 4}
+	;
 	bool res = test_lexer();
-	if (lexer_tests_count == 0 || res == true)
+	if (lexer_tests_count == 0)
+	{
+		printf("No tests.\n");
+		return 0;
+	}
+	else if (res == true)
 	{
 		printf("All tests passed.\n");
 		return 0;

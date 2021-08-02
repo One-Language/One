@@ -19,7 +19,7 @@
 
 typedef enum _token_type
 {
-	TOKEN_EOF,
+	TOKEN_EOF = 0,
 	TOKEN_ERROR,
 
 	TOKEN_SKIP_WHITESPACE,

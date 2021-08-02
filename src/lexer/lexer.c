@@ -571,9 +571,9 @@ void lexer_trace(FILE* file_out, const char* data, Token** tokens)
 	while (tokens != NULL && *tokens != NULL)
 	{
 		Token* t = *tokens;
+		printf("sizeof(t) = %zu\n", sizeof t);
 		printf("-->1\n");
 		printf("-->%s\n", t == NULL ? "y" : "n");
-		printf("-->%d\n", t->type);
 		char* t_name = token_name(t->type);
 		printf("-->2\n");
 		bool has1 = file_convert_index_to_rc(data, t->pos.index, &t->pos.line, &t->pos.column);

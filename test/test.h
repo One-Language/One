@@ -26,4 +26,22 @@
 #include "../src/lexer/lexer.h"
 #include "../src/parser/parser.h"
 
+typedef struct
+{
+	char* source;
+	Token* tokens[1024];
+	size_t token_count;
+} LexerTest;
+
+// Argument(s)
+
+// Lexer
+void test_lexer_log(const char* source, Token** tokens);
+bool test_lexer_item(LexerTest test);
+bool test_lexer();
+
+// Parser
+
+// Ast
+
 #endif //ONE_TEST_H
