@@ -23,4 +23,7 @@
 
 #include "../src/builtins/file.h"
 
+#include "../src/lexer/lexer.h"
+#include "../src/parser/parser.h"
+
 #endif //ONE_TEST_H

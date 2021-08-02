@@ -19,11 +19,8 @@ typedef struct
 LexerTest lexer_tests[1024];
 unsigned int lexer_tests_count = 0;
 
-#define TEST(source)    \
-	lexer_init(source); \
-	parser_init();      \
-	parser_scan();      \
-	parser_preapre();
+#define MY_TEST(source)    \
+	tokens = tokenizer_string(source]);
 
 void test_lexer_log()
 {
@@ -35,34 +32,34 @@ void test_lexer_log()
 
 bool test_lexer_item(LexerTest test)
 {
-	TEST(test.source);
+	Token** tokens = MY_TEST(test.source);
 
 	// test_lexer_log();
 
-	for (int i = 0; i < parser.tokens_count; i++)
+	while (tokens != NULL && *tokens != NULL)
 	{
-		if (test.tokens[i] == NULL)
+		Token* t = *tokens;
+		Token* t_want = *(test.tokens);
+		if (t == NULL)
 		{
-			// printf("11111\n");
 			return false;
 		}
-		else if (test.tokens[i]->type == parser.tokens[i]->type)
+		else if (t_want->type == t->type)
 		{
-			// printf("2222\n");
 			continue;
 		}
 		else
 		{
-			// printf("3333\n");
 			return false;
 		}
+		tokens++;
+		test.tokens++;
 	}
 
-	if (parser.tokens_count == 0)
+	if (tokens != NULL)
 	{ //  if `parser.tokens_count` is 0
 		return false;
 	}
-
 	return true; // if loop finished without an error!
 }
 

@@ -147,7 +147,7 @@ Token* lexer_skip_comment_inline()
 
 /*
  * @function: lexer_skip_comment_multiline
- * @description: Check if current character is /*, so it's a multi-line-comment and we have to skip it!
+ * @description: Check if current character is `/` `*`, so it's a multi-line-comment and we have to skip it!
  * @arguments: nothing
  * @return: Always NULL
  */
