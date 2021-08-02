@@ -15,7 +15,7 @@ unsigned int lexer_tests_count = 0;
 
 void test_lexer_log(const char* source, Token** tokens)
 {
-	// lexer_trace(stdout, source, tokens);
+	lexer_trace(stdout, source, tokens);
 }
 
 bool test_lexer_item(LexerTest test)
@@ -23,7 +23,6 @@ bool test_lexer_item(LexerTest test)
 	Token** tokens = tokenizer_string(test.source);
 
 	// test_lexer_log((const char*)test.source, tokens);
-	lexer_trace(stdout, test.source, tokens);
 
 	if (tokens == NULL && test.token_count == 0)
 	{
@@ -54,12 +53,14 @@ bool test_lexer()
 	bool res_final = true;
 	for (unsigned i = 0; i < lexer_tests_count; i++)
 	{
-		printf("Test case %d\n", i + 1);
+		printf("Test case %d", i + 1);
 		bool res = test_lexer_item(lexer_tests[i]);
 		if (res == false)
 		{
+			printf(": Failed!");
 			res_final = false;
 		}
+		printf("\n");
 	}
 
 	return res_final;
@@ -69,7 +70,14 @@ int main()
 {
 	printf("Hello to Lexer test!\n");
 
-	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}\0", {token_make(TOKEN_VALUE_IDENTIFIER), token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT), token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT), token_make(TOKEN_EOF)}, 4};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"    ", {token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_EOF)}, 2};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 2};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"   \r\n", {token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 3};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n    ", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_EOF)}, 3};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n", {token_make(TOKEN_EOF)}, 1};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"", {token_make(TOKEN_EOF)}, 1};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}", {token_make(TOKEN_VALUE_IDENTIFIER), token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT), token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT), token_make(TOKEN_EOF)}, 4};
+
 	bool res = test_lexer();
 	if (lexer_tests_count == 0)
 	{
