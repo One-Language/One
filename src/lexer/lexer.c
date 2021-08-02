@@ -568,7 +568,7 @@ void lexer_trace(FILE* file_out, const char* data, Token** tokens)
 {
 	debug_lexer("lexer_trace");
 
-	if(tokens == NULL) return;
+	if (tokens == NULL) return;
 
 	while (*tokens != NULL)
 	{
@@ -591,7 +591,7 @@ void lexer_trace(FILE* file_out, const char* data, Token** tokens)
 			fprintf(file_out, ": \"%s\"", t->value);
 		}
 		fprintf(file_out, "\n");
-		if(t->type == TOKEN_EOF) break;
+		if (t->type == TOKEN_EOF) break;
 		tokens++;
 	}
 }
