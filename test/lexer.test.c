@@ -14,13 +14,11 @@ typedef struct
 {
 	char* source;
 	Token* tokens[1024];
+	size_t token_count;
 } LexerTest;
 
 LexerTest lexer_tests[1024];
 unsigned int lexer_tests_count = 0;
-
-#define MY_TEST(source) \
-	tokens = tokenizer_string(source);
 
 void test_lexer_log(const char* source, Token** tokens)
 {
@@ -29,12 +27,16 @@ void test_lexer_log(const char* source, Token** tokens)
 
 bool test_lexer_item(LexerTest test)
 {
-	Token** tokens = MY_TEST(test.source);
+	Token** tokens = tokenizer_string(test.source);
 
-	test_lexer_log((const char*)test.source, tokens);
+	// test_lexer_log((const char*)test.source, tokens);
 
-	size_t count = sizeof(tokens) / sizeof(Token*);
-	for (size_t i = 0; i < count; i++)
+	if(tokens == NULL && test.token_count == 0)
+	{
+		return true;
+	}
+
+	for (size_t i = 0; i < test.token_count; i++)
 	{
 		if (tokens[i] == NULL)
 		{
@@ -50,10 +52,6 @@ bool test_lexer_item(LexerTest test)
 		}
 	}
 
-	if (tokens != NULL)
-	{ //  if `parser.tokens_count` is 0
-		return false;
-	}
 	return true; // if loop finished without an error!
 }
 
@@ -78,11 +76,11 @@ int main()
 	printf("Hello to Lexer test!\n");
 
 	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}", {
-																  token_make(TOKEN_VALUE_IDENTIFIER),
-																  token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT),
-																  token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT),
-																  token_make(TOKEN_EOF),
-															 }};
+																token_make(TOKEN_VALUE_IDENTIFIER),
+																token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT),
+																token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT),
+																token_make(TOKEN_EOF)
+															 }, 4};
 	bool res = test_lexer();
 	if (lexer_tests_count == 0 || res == true)
 	{
