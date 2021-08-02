@@ -49,7 +49,7 @@ void error(ErrorType type, int line, const char* file, const char* function, con
 #endif
 
 	path = (path == NULL) ? "REPL" : path;
-	fprintf(stderr, " at %s:%d:%d", path, loc.line, loc.column);
+	fprintf(stderr, " at %s:%zu:%zu", path, loc.line, loc.column);
 	fputs("\n", stderr);
 
 	if (type != ERROR_WARNING)

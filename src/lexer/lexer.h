@@ -82,7 +82,7 @@ Token* lexer_skip_comment_inline();
 
 /*
  * @function: lexer_skip_comment_multiline
- * @description: Check if current character is /*, so it's a multi-line-comment and we have to skip it!
+ * @description: Check if current character is `/` `*`, so it's a multi-line-comment and we have to skip it!
  * @arguments: nothing
  * @return: Always NULL
  */
@@ -156,6 +156,6 @@ void lexer_free();
  * @arguments: FILE* file_out, char* data, Token** tokens
  * @return: nothing, void
  */
-void lexer_trace(FILE* file_out, char* data, Token** tokens);
+void lexer_trace(FILE* file_out, const char* data, Token** tokens);
 
 #endif // _ONE_LEXER_LEXER_H_

@@ -147,7 +147,7 @@ Token* lexer_skip_comment_inline()
 
 /*
  * @function: lexer_skip_comment_multiline
- * @description: Check if current character is /*, so it's a multi-line-comment and we have to skip it!
+ * @description: Check if current character is `/` `*`, so it's a multi-line-comment and we have to skip it!
  * @arguments: nothing
  * @return: Always NULL
  */
@@ -564,24 +564,28 @@ void lexer_free()
  * @arguments: FILE* file_out, char* data, Token** tokens
  * @return: nothing, void
  */
-void lexer_trace(FILE* file_out, char* data, Token** tokens)
+void lexer_trace(FILE* file_out, const char* data, Token** tokens)
 {
 	debug_lexer("lexer_trace");
 
-	while (tokens != NULL && *tokens != NULL)
+	if (tokens == NULL) return;
+
+	while (*tokens != NULL)
 	{
 		Token* t = *tokens;
 		char* t_name = token_name(t->type);
+
 		bool has1 = file_convert_index_to_rc(data, t->pos.index, &t->pos.line, &t->pos.column);
 		bool has2 = file_convert_index_to_rc(data, t->pos_end.index, &t->pos_end.line, &t->pos_end.column);
 
-		fprintf(file_out, "[%d:%d] [%d:%d - %d:%d] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
+		fprintf(file_out, "[%zu:%zu] [%zu:%zu - %zu:%zu] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
 
 		if (t->value != NULL)
 		{
 			fprintf(file_out, ": \"%s\"", t->value);
 		}
 		fprintf(file_out, "\n");
+		if (t->type == TOKEN_EOF) break;
 		tokens++;
 	}
 }

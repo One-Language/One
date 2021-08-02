@@ -1,5 +1,4 @@
-build
-
+# general
 cmake-build-debug
 node_modules
 one
@@ -7,11 +6,23 @@ out/*
 *.o
 .idea
 
+# build
+build
+
+# lexer
 src/lexer/lexer
 src/lexer/log
 
+# parser
 src/parser/parser
 src/parser/log
 
+# ast
 src/ast/ast
 src/ast/log
+
+# test
+test/lexer
+test/parser
+test/argument
+test/ast

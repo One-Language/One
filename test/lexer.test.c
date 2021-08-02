@@ -10,57 +10,39 @@
 
 #include "test.h"
 
-typedef struct
-{
-	char* source;
-	Token* tokens[1024];
-} LexerTest;
-
 LexerTest lexer_tests[1024];
 unsigned int lexer_tests_count = 0;
 
-#define TEST(source)    \
-	lexer_init(source); \
-	parser_init();      \
-	parser_scan();      \
-	parser_preapre();
-
-void test_lexer_log()
+void test_lexer_log(const char* source, Token** tokens)
 {
-	for (int i = 0; i < parser.tokens_count; i++)
-	{
-		printf("[%d] %s\n", i, token_name(parser.tokens[i]->type));
-	}
+	lexer_trace(stdout, source, tokens);
 }
 
 bool test_lexer_item(LexerTest test)
 {
-	TEST(test.source);
+	Token** tokens = tokenizer_string(test.source);
 
-	// test_lexer_log();
+	// test_lexer_log((const char*)test.source, tokens);
 
-	for (int i = 0; i < parser.tokens_count; i++)
+	if (tokens == NULL && test.token_count == 0)
 	{
-		if (test.tokens[i] == NULL)
+		return true;
+	}
+
+	for (size_t i = 0; i < test.token_count; i++)
+	{
+		if (tokens[i] == NULL)
 		{
-			// printf("11111\n");
 			return false;
 		}
-		else if (test.tokens[i]->type == parser.tokens[i]->type)
+		else if (test.tokens[i]->type == tokens[i]->type)
 		{
-			// printf("2222\n");
 			continue;
 		}
 		else
 		{
-			// printf("3333\n");
 			return false;
 		}
-	}
-
-	if (parser.tokens_count == 0)
-	{ //  if `parser.tokens_count` is 0
-		return false;
 	}
 
 	return true; // if loop finished without an error!
@@ -71,12 +53,14 @@ bool test_lexer()
 	bool res_final = true;
 	for (unsigned i = 0; i < lexer_tests_count; i++)
 	{
-		printf("Test case %d\n", i + 1);
+		printf("Test case %d", i + 1);
 		bool res = test_lexer_item(lexer_tests[i]);
 		if (res == false)
 		{
+			printf(": Failed!");
 			res_final = false;
 		}
+		printf("\n");
 	}
 
 	return res_final;
@@ -86,14 +70,21 @@ int main()
 {
 	printf("Hello to Lexer test!\n");
 
-	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}", {
-																  token_make(TOKEN_VALUE_IDENTIFIER),
-																  token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT),
-																  token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT),
-																  token_make(TOKEN_EOF),
-															 }};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"    ", {token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_EOF)}, 2};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 2};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"   \r\n", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 2};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n    ", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 2};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"", {token_make(TOKEN_EOF)}, 1};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}", {token_make(TOKEN_VALUE_IDENTIFIER), token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT), token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT), token_make(TOKEN_EOF)}, 4};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"import math", {token_make(TOKEN_IMPORT), token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_VALUE_IDENTIFIER), token_make(TOKEN_EOF)}, 4};
+
 	bool res = test_lexer();
-	if (lexer_tests_count == 0 || res == true)
+	if (lexer_tests_count == 0)
+	{
+		printf("No tests.\n");
+		return 0;
+	}
+	else if (res == true)
 	{
 		printf("All tests passed.\n");
 		return 0;

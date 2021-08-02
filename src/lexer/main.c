@@ -28,6 +28,7 @@ int main(int argc, char** argv)
 		// return 1;
 
 		tokens = tokenizer_string(argv[1]);
+		lexer_trace(stdout, argv[1], tokens);
 	}
 	else if (argc == 3)
 	{
