@@ -55,14 +55,15 @@ bool test_lexer()
 	bool res_final = true;
 	for (unsigned i = 0; i < lexer_tests_count; i++)
 	{
-		printf("Test case %d", i + 1);
 		bool res = test_lexer_item(lexer_tests[i]);
+		printf(res == true ? GREEN : RED);
+		printf("Test case %d", i + 1);
 		if (res == false)
 		{
 			printf(": Failed!");
 			res_final = false;
 		}
-		printf("\n");
+		printf("\n" RESET);
 	}
 
 	return res_final;
@@ -82,7 +83,7 @@ int main()
 	lexer_tests[lexer_tests_count++] = (LexerTest){"110", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 2};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"3.14", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 2};
 	// whitespaces + digit
-	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n    ", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 3};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n 4   ", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 3};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n    2", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 4};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n    2\n3\n4", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 7};
 	// operators
