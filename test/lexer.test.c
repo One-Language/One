@@ -22,7 +22,9 @@ bool test_lexer_item(LexerTest test)
 {
 	Token** tokens = tokenizer_string(test.source);
 
-	// test_lexer_log((const char*)test.source, tokens);
+	#ifndef _ONE_TEST_
+	test_lexer_log((const char*)test.source, tokens);
+	#endif
 
 	if (tokens == NULL && test.token_count == 0)
 	{
