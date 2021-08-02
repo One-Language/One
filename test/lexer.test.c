@@ -15,14 +15,15 @@ unsigned int lexer_tests_count = 0;
 
 void test_lexer_log(const char* source, Token** tokens)
 {
-	lexer_trace(stdout, source, tokens);
+	// lexer_trace(stdout, source, tokens);
 }
 
 bool test_lexer_item(LexerTest test)
 {
 	Token** tokens = tokenizer_string(test.source);
 
-	test_lexer_log((const char*)test.source, tokens);
+	// test_lexer_log((const char*)test.source, tokens);
+	lexer_trace(stdout, test.source, tokens);
 
 	if (tokens == NULL && test.token_count == 0)
 	{
