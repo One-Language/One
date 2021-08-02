@@ -61,8 +61,8 @@ Token** tokenizer_string(char* data)
 			break;
 	}
 
-	debug_token("tokenizer_string: count of tokens is %d\n", tokens.count);
-	debug_token("tokenizer_string: size of tokens is %d\n", tokens.size);
+	debug_token("tokenizer_string: count of tokens is %d", tokens.count);
+	debug_token("tokenizer_string: size of tokens is %d", tokens.size);
 
 	// while (*data != '\0')
 	// {

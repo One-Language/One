@@ -72,8 +72,8 @@ int main()
 
 	lexer_tests[lexer_tests_count++] = (LexerTest){"    ", {token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_EOF)}, 2};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 2};
-	lexer_tests[lexer_tests_count++] = (LexerTest){"   \r\n", {token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 3};
-	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n    ", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_SKIP_WHITESPACE), token_make(TOKEN_EOF)}, 3};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"   \r\n", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 3};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n    ", {token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 3};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"\r\n", {token_make(TOKEN_EOF)}, 1};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"", {token_make(TOKEN_EOF)}, 1};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"main{}", {token_make(TOKEN_VALUE_IDENTIFIER), token_make(TOKEN_OPERATOR_BRACKET_CURLY_LEFT), token_make(TOKEN_OPERATOR_BRACKET_CURLY_RIGHT), token_make(TOKEN_EOF)}, 4};
