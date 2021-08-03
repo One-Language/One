@@ -28,3 +28,5 @@ jobs:
           context: .
           push: true
           tags: onelangorg/one:latest
+          cache-from: type=registry,ref=onelangorg/one:latest
+          cache-to: type=inline
