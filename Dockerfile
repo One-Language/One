@@ -50,11 +50,17 @@ COPY . /One
 WORKDIR /One
 
 # Building
-RUN cd src/parser && chmod +x build.sh && ./build.sh
+RUN cmake --build ./build --config Debug --target all -j 6 --
 
-RUN cd src/lexer && chmod +x build.sh && ./build.sh
+# Change directory to build
+WORKDIR /One/build
 
-RUN cd src/lexer && chmod +x test.sh && ./test.sh
+# Running & Testing
+RUN ./lexer
+RUN ./ast
+RUN ./parser
+RUN ./lexer_test
+RUN ./parser_test
 
-# Testing
-RUN cd src/lexer && chmod +x build.sh && ./build.sh
+# Tests Dashboard
+RUN ctest --output-on-failure
