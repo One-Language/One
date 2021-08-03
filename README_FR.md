@@ -47,7 +47,7 @@
 </div>
 
 Bienvenue à <a href="https://onelang.org">One</a>!</br>
-Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source libre,et auto-hébergé, qui facilite la création de logiciels fiables et efficaces. Il est développé par <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a>, et d'autres contributeurs en open-source.
+Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source libre, et auto-hébergé, qui facilite la création de logiciels fiables et efficaces. Il est développé par <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a>, et d'autres contributeurs en open-source.
 
 ### Le compilateur pour le langage One sera publié dans quelques mois
 
@@ -80,15 +80,15 @@ Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source 
 - Langage de programmation système
 - Niveau intermédiaire
 - Programmation réseau et API
-- Prend en charge la programmation Web (à l'avenir)
+- Pris en charge de la programmation Web (prochainement)
   - Génération automatique du code correspondant pour CSS et HTML. Vous n'aurez donc pas besoin d'apprendre plus que le langage `One` pour développer un site web
   - Utilise des variables en CSS, afin que nous puissions obtenir les couleurs ou les tailles de la base de données
   - Minification automatique des résultats de la page
 - Performances et vitesse élevée
-- Prend en charge le code d'assemblage en ligne (à l'avenir)
-- Ne nécessite pas de bibliothèques et d'outils spécifiques sur le système utilisateur en mode normal (à l'avenir)
-- Ne nécessite pas de bibliothèques d'exécution externes en mode normal (à l'avenir)
-- Ne nécessite pas de compilateurs externes pour effectuer la compilation (à l'avenir)
+- Pris en charge du code d'assemblage en ligne (prochainement)
+- Ne nécessite pas de bibliothèques et d'outils spécifiques sur le système utilisateur en mode normal (prochainement)
+- Ne nécessite pas de bibliothèques d'exécution externes en mode normal (prochainement)
+- Ne nécessite pas de compilateurs externes pour effectuer la compilation (prochainement)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
@@ -267,7 +267,7 @@ end
 
 ### Développement de l'ancienne interface graphique : (Web, logiciel)
 
-Cette architecture est conçue uniquement pour les sites Web et les logiciels natifs. À l'avenir, il sera également disponible pour les applications mobiles (natives).<br>
+Cette architecture est conçue uniquement pour les sites Web et les logiciels natifs. Prochainement, il sera également disponible pour les applications mobiles (natives).<br>
 Les structures mobiles ne sont pas encore terminées et nécessitent plus d'attention et de réflexion.<br><br>Exemple pour démontrer le fonctionnement de la langue :
 
 ```css
