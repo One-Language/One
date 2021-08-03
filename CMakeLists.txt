@@ -103,7 +103,9 @@ add_executable(lexer ${LEXER_MAIN} ${LEXER_SOURCE} ${LEXER_HEADERS} ${BUILTINS_S
 add_executable(ast  ${AST_MAIN} ${AST_SOURCE} ${AST_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS} ${PARSER_SOURCE} ${PARSER_HEADERS} ${CFLAGS} ${LIBS})
 add_executable(parser  ${PARSER_MAIN} ${PARSER_SOURCE} ${PARSER_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${AST_SOURCE} ${AST_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS}  ${CFLAGS} ${LIBS})
 
+
 add_executable(lexer_test ${LEXER_TEST} ${TEST_HEADERS} ${PARSER_SOURCE} ${PARSER_HEADERS} ${LEXER_SOURCE} ${LEXER_HEADERS} ${AST_SOURCE} ${AST_HEADERS} ${BUILTINS_SOURCE} ${BUILTINS_HEADERS} ${CFLAGS} ${LIBS})
+target_compile_options(lexer_test PUBLIC "-D_ONE_TEST_")
 add_test(lexer_test lexer_test)
 
 add_executable(parser_test  test/parser.test.c)
