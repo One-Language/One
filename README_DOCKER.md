@@ -87,24 +87,35 @@ The main goal of this image is to serve as a development environment where to ru
 docker run -it  onelangorg/one:latest
 ```
 
-- To get the container ID:
+- To get the container ID and the container NAME:
 
 ```
 docker ps
 ```
 
-- To build the code:
+- To run the code using `*.sh` files:
 
 ```
+# SRC
 docker exec -it <container ID> sh -c 'cd src/parser && chmod +x build.sh && ./build.sh'
 docker exec -it <container ID> sh -c 'cd src/lexer && chmod +x build.sh && ./build.sh'
 docker exec -it <container ID> sh -c 'cd src/lexer && chmod +x test.sh && ./test.sh'
-```
-
-- To run tests:
-
-```
+# TESTS
 docker exec -it <container ID> sh -c 'cd src/lexer && chmod +x build.sh && ./build.sh'
+```
+
+- To run the code using executable (pre-built with CMake) files:
+
+```
+# SRC
+docker exec -it <container ID> sh -c 'cd build && ./lexer input.one'
+docker exec -it <container ID> sh -c 'cd build && ./parser input.one'
+docker exec -it <container ID> sh -c 'cd build && ./ast input.one'
+# TESTS
+docker exec -it <container ID> sh -c 'cd build && ./lexer_test'
+docker exec -it <container ID> sh -c 'cd build && ./parser_test'
+docker exec -it <container ID> sh -c 'cd build && ./argument_test'
+docker exec -it <container ID> sh -c 'cd build && ./ast_test'
 ```
 
 - If you use VSCode for development, you can use this container remotely. To do so, you will need [Visual Studio Code Remote Development](https://github.com/Microsoft/vscode-remote-release). After running your container, you can work from within the container:
