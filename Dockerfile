@@ -49,18 +49,22 @@ RUN pip install pre-commit
 COPY . /One
 WORKDIR /One
 
-# Building
+# CMake configuration & building
+RUN mkdir build
+RUN cmake --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++ -H/One -B/One/build -G "Unix Makefiles"
 RUN cmake --build ./build --config Debug --target all -j 6 --
 
 # Change directory to build
 WORKDIR /One/build
 
-# Running & Testing
-RUN ./lexer
-RUN ./ast
-RUN ./parser
+# Running example input.one
+RUN ./lexer ../src/input.one log
+RUN cat log
+
+# Running tests
 RUN ./lexer_test
 RUN ./parser_test
+RUN ./argument_test
 
 # Tests Dashboard
-RUN ctest --output-on-failure
+CMD ctest --output-on-failure
