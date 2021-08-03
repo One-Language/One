@@ -83,7 +83,7 @@ int main()
 	lexer_tests[lexer_tests_count++] = (LexerTest){"110", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 2};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"3.14", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 2};
 	// whitespaces + digit
-	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n 4   ", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 3};
+	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_EOF)}, 3};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n    2", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 4};
 	lexer_tests[lexer_tests_count++] = (LexerTest){"1\r\n    2\n3\n4", {token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_SKIP_WHITESPACE_LINE), token_make(TOKEN_VALUE_NUMBER), token_make(TOKEN_EOF)}, 7};
 	// operators
