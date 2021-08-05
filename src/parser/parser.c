@@ -19,11 +19,12 @@ Parser parser;
  * @arguments: char* filepath, char* input, Token** tokens
  * @return: void; nothing
  */
-void parser_init(char* filepath, char* input, Token** tokens)
+void parser_init(char* path, char* input, Token** tokens)
 {
 	debug_parser("parser_init");
 
-	parser.path = filepath;
+	parser.path = path;
+	parser.path_base = (const char*)file_get_parent(path);
 	parser.data = input;
 	parser.tokens = tokens;
 }
@@ -432,7 +433,7 @@ AstFile* parser_scan()
 	AstFile* ast = malloc(sizeof(AstFile));
 
 	ast->path = parser.path;
-	ast->path_base = (const char*)file_get_parent(parser.path);
+	ast->path_base = parser.path_base;
 
 	parser_token_skip();
 

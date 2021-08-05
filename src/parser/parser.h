@@ -24,6 +24,7 @@ typedef struct
 	AstFile* ast;
 
 	const char* path;
+	const char* path_base;
 
 	const char* data;
 
