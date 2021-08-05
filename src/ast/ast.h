@@ -98,8 +98,8 @@ typedef struct _ast_file
 	AstImportDeclarationArray* imports; // AstImportDeclaration
 	AstBlockDeclaration* blocks;
 
-	char* path;
-	char* path_base;
+	const char* path;
+	const char* path_base;
 } AstFile;
 
 /*

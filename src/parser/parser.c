@@ -431,6 +431,9 @@ AstFile* parser_scan()
 
 	AstFile* ast = malloc(sizeof(AstFile));
 
+	ast->path = parser.path;
+	ast->path_base = parser.path;
+
 	parser_token_skip();
 
 	if (parser_token_get_type() == TOKEN_PACKAGE)
