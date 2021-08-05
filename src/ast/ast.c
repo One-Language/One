@@ -106,8 +106,9 @@ void ast_init(const char* input_file, const char* data, Token** tokens, AstFile*
 {
 }
 
-void ast_trace(FILE* f, AstFile* ast)
+void ast_trace(FILE* file_out, AstFile* ast)
 {
+	fprintf(file_out, "Program %s (%s)\n", ast->path, ast->path_base);
 }
 
 void ast_free()
