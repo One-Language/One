@@ -102,15 +102,15 @@ bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t
 // TODO
 char* file_get_parent(const char* path)
 {
-    int parentLen;
+	int parentLen;
 	char* parent = malloc(sizeof(path));
-    char* last = strrchr(path, '/');
+	char* last = strrchr(path, '/'); // TODO: What about if users use \\ or that is windows OS?
 
-    if (last != NULL) {
+	if (last != NULL)
+	{
+		parentLen = strlen(path) - strlen(last + 1);
+		strncpy(parent, path, parentLen);
+	}
 
-        parentLen = strlen(path) - strlen(last + 1);
-        strncpy(parent, path, parentLen);
-    }
-
-    return parent;
+	return parent;
 }

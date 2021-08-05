@@ -34,7 +34,7 @@ repos:
         name: Run codespell
         description: Check spelling with codespell
         entry: codespell --ignore-words=codespell.txt
-        exclude: ^README_TR\.md$|^README_ES\.md$|^README_AR\.md$
+        exclude: ^README_TR\.md$|^README_ES\.md$|^README_AR\.md$|^README_FR\.md$
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.28.1
     hooks:

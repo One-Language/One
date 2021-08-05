@@ -432,7 +432,7 @@ AstFile* parser_scan()
 	AstFile* ast = malloc(sizeof(AstFile));
 
 	ast->path = parser.path;
-	ast->path_base = (const char*) file_get_parent(parser.path);
+	ast->path_base = (const char*)file_get_parent(parser.path);
 
 	parser_token_skip();
 
