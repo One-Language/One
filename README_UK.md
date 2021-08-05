@@ -32,6 +32,8 @@
 &nbsp;
 [Filipino](README_FIL.md)
 &nbsp;
+[Français](README_FR.md)
+&nbsp;
 [русский](README_RU.md)
 &nbsp;
 [Türkçe](README_TR.md)

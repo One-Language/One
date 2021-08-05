@@ -1,15 +1,15 @@
 <div align="center">
 
 <p>
-    <a href="https://onelang.org/" alt="The One Programming Language">
-        <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
+    <a href="https://onelang.org/" alt="Langage de Programmation One">
+        <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="Langage de Programmation One">
     </a>
 </p>
 
-# The One Programming Language 💚 💙 🧡 🤍 💖 🖤
+# Langage de Programmation One 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Help wanted](https://github.com/One-Language/One/issues/new)
+[Demande d'aide](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
@@ -48,12 +48,10 @@
 
 </div>
 
-Welcome to <a href="https://onelang.org">One</a>!</br>
-It is an open source, self-hosted, bootstrapping <b>system programming language</b> which makes it easy to
-build reliable and efficient software.
-It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> and other open-source contributors.
+Bienvenue à <a href="https://onelang.org">One</a>!</br>
+Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source libre, et auto-hébergé, qui facilite la création de logiciels fiables et efficaces. Il est développé par <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a>, et d'autres contributeurs en open-source.
 
-### Compiler for the One Language will be released in a few months
+### Le compilateur pour le langage One sera publié dans quelques mois
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -62,57 +60,57 @@ It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!-- TABLE OF CONTENTS -->
-<h2 id="table-of-contents">Table of Contents</h2>
+<h2 id="table-of-contents">Table des matières</h2>
 <details open="open">
   <ol>
-    <li><a href="#features-of-one">Features of <b>One</b></a></li>
-    <li><a href="#roadmap">RoadMap</a></li>
-    <li><a href="#code-examples">Code Examples</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#get-involved">Get Involved</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#fonctionnalités-de-one">Fonctionnalités de <b>One</b></a></li>
+    <li><a href="#carte">Carte</a></li>
+    <li><a href="#exemples-de-code">Exemples de code</a></li>
+    <li><a href="#pour-commencer">Pour commencer</a></li>
+    <li><a href="#pour-s-impliquer">Pour s'impliquer</a></li>
+    <li><a href="#licence">Licence</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="features-of-one">➤ Features of One</h2>
+<h2 id="fonctionnalités-de-one">➤ Fonctionnalités de One</h2>
 
-- Simplicity
-- Compiler
-- Ability to create output file (x86_64, i386)
-- System Programming Language
-- Intermediate level
-- Network and API programming
-- Supports Web Programming (in the future)
-  - Automatic generation of corresponding code for both CSS and HTML. So you won't have to learn more than `One` language to develop a website
-  - Uses variables in CSS, so that we can obtain the colors or sizes from the database
-  - Auto minify the page results
-- Performance and high speed
-- Supports inline Assembly code (in the future)
-- Does not require specific libraries and tools on the user system in normal mode (in the future)
-- Does not require external runtime libraries in normal mode (in the future)
-- Does not require external compilers to do the compilation (in the future)
+- Simplicité
+- Compilateur
+- Possibilité de créer un fichier de sortie (x86_64, i386)
+- Langage de programmation système
+- Niveau intermédiaire
+- Programmation réseau et API
+- Pris en charge de la programmation Web (prochainement)
+  - Génération automatique du code correspondant pour CSS et HTML. Vous n'aurez donc pas besoin d'apprendre plus que le langage `One` pour développer un site web
+  - Utilise des variables en CSS, afin que nous puissions obtenir les couleurs ou les tailles de la base de données
+  - Minification automatique des résultats de la page
+- Performances et vitesse élevée
+- Pris en charge du code d'assemblage en ligne (prochainement)
+- Ne nécessite pas de bibliothèques et d'outils spécifiques sur le système utilisateur en mode normal (prochainement)
+- Ne nécessite pas de bibliothèques d'exécution externes en mode normal (prochainement)
+- Ne nécessite pas de compilateurs externes pour effectuer la compilation (prochainement)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="roadmap">➤ RoadMap</h2>
+<h2 id="carte">➤ Carte</h2>
 
-Grammar of the `One` language is available [here](grammar.BNF).
+La grammaire du langage `One` est disponible [ici](grammar.BNF).
 
-- [x] Lexer/Parser (Mostly)
-- [x] AST Tree
-- [x] VM
-- [ ] Code Generator (get inspired from LLVM-C)
-- [ ] Develop a runtime library and add features
-- [ ] Design web framework for the language
-- [ ] Rewrite compiler in the `One` language
+- [x] Lexer/Parser (principalement)
+- [x] Arbre AST
+- [x] MV
+- [ ] Générateur de code (inspirez-vous de LLVM-C)
+- [ ] Développer une bibliothèque d'exécution et ajouter des fonctionnalités
+- [ ] Concevoir un framework web pour le langage
+- [ ] Réécrire le compilateur par le langage `One`
 
 <!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="code-examples">➤ Code Examples</h2>
+<h2 id="exemples-de-code">➤ Exemples de code</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -121,7 +119,7 @@ main {
 }
 ```
 
-**Convert to C:**
+**Équivalant en C :**
 
 ```c
 #include <stdio.h>
@@ -141,7 +139,7 @@ i32 main {
 }
 ```
 
-**Convert to C:**
+**Équivalant en C :**
 
 ```c
 #include <stdio.h>
@@ -163,7 +161,7 @@ main {
 }
 ```
 
-**Convert to C:**
+**Équivalant en C :**
 
 ```c
 #include <stdio.h>
@@ -180,7 +178,7 @@ int main(int argc, char *argv[]) {
 
 <hr>
 
-**Another draft:**
+**Brouillon**
 
 ```c
 import web
@@ -207,7 +205,7 @@ main {
 
 ---
 
-**Another draft:**
+**Brouillon**
 
 ```c
 error {
@@ -233,7 +231,7 @@ error {
 
 ---
 
-### Old CLI Development
+### Développement de l'ancienne CLI
 
 ```
 main:
@@ -269,16 +267,16 @@ end
 
 <hr>
 
-### Old GUI Development: (Web, Software)
+### Développement de l'ancienne interface graphique : (Web, logiciel)
 
-This architecture is being designed only for websites and native software. In the future, it will also be available for mobile apps (native).<br>
-Mobile structures are not yet complete and require more attention and thought.<br><br>Example to demonstrate working of the language:
+Cette architecture est conçue uniquement pour les sites Web et les logiciels natifs. Prochainement, il sera également disponible pour les applications mobiles (natives).<br>
+Les structures mobiles ne sont pas encore terminées et nécessitent plus d'attention et de réflexion.<br><br>Exemple pour démontrer le fonctionnement de la langue :
 
 ```css
 title "Name - Main"
 description "Descriptions"
 /*
-Keyword tag not used in the software, only on the web.
+Balise de mot-clé non utilisée dans le logiciel, uniquement sur le web.
 */
 keyword "keywords"
 style {
@@ -314,7 +312,7 @@ header {
 }
 ```
 
-**Convert to CSS/HTML/JS base:**
+**Équivalant en CSS/HTML/JS :**
 
 ```html
 <html>
@@ -355,15 +353,15 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="getting-started">➤ Getting Started</h2>
+<h2 id="pour-commencer">➤ Pour commencer</h2>
 
-Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
+Référez-vous à [ce lien](https://github.com/ET-Lang/ET/wiki) pour commencer à apprendre la langue.
 
 <!--Installation Steps-->
 
 <!--Prerequisites-->
 
-#### Supported Environments
+#### Environnements pris en charge
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
@@ -380,26 +378,25 @@ Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the l
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="get-involved">➤ Get Involved</h2>
+<h2 id="pour-s-impliquer">➤ Pour s'impliquer</h2>
 
-We welcome all kinds of contributions, including bug reports, feature requests, documentation improvements etc.
-To ask a question or open a discussion, create an issue or join the <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
+Nous accueillons toutes sortes de contributions, y compris les rapports de bogues, les demandes de fonctionnalités, les améliorations de la documentation, etc. Pour poser une question ou ouvrir une discussion, créer un problème ou rejoindre le <a href ="https://discord.gg/sFCE2HcMCa">Serveur Discord<b>One</b></a>.
 
-If you are not familiar with how to make a pull request on GitHub then please read this [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+Si vous ne savez pas comment faire une pull request sur GitHub, veuillez lire ce [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-If you have decided to contribute, please first read the guidelines [here](CONTRIBUTING.md).
-<br>You can also help in the development of `One` by making some donations on [:heart: Patreon](https://www.patreon.com/onelanguage).
+Si vous avez décidé de contribuer, veuillez d'abord lire les directives[here](CONTRIBUTING.md).
+<br>Vous pouvez également aider au développement de `One` en faisant des dons sur [:heart: Patreon](https://www.patreon.com/onelanguage).
 
-Thanks to all the <a href ="https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
+Merci à tous les <a href ="https://github.com/One-Language/One/graphs/contributors">contributeurs</a>!!
 
-If you would like to contribute in the development of this project, you can mail us at: <maxbasecode@gmail.com>
+Si vous souhaitez contribuer au développement de ce projet, vous pouvez nous envoyer un mail à : <maxbasecode@gmail.com>
 
-<br>Created By Max Base @ 2019
+<br>Créé par Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ License</h2>
+<h2 id="licence">➤ Licence</h2>
 
-`One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
+`One` est publié sous la licence publique générale GNU v3.0. Veuillez vous référer aux termes du fichier <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENCE</a> inclus dans le repository.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
@@ -412,9 +409,9 @@ If you would like to contribute in the development of this project, you can mail
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
 
-## Contributors ✨
+## Contributeurs ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Merci à ces personnes merveilleuses ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -451,4 +448,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome! 🩱 🕐 1️⃣ 🔂
+Ce projet suit la spécification de [all-contributors](https://github.com/all-contributors/all-contributors). Les contributions de toute nature sont les bienvenues ! 🩱 🕐 1️⃣ 🔂
