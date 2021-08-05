@@ -98,3 +98,19 @@ bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t
 
 	return true;
 }
+
+// TODO
+char* file_get_parent(const char* path)
+{
+    int parentLen;
+	char* parent = malloc(sizeof(path));
+    char* last = strrchr(path, '/');
+
+    if (last != NULL) {
+
+        parentLen = strlen(path) - strlen(last + 1);
+        strncpy(parent, path, parentLen);
+    }
+
+    return parent;
+}

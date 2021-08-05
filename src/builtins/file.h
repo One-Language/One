@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <stdbool.h>
 
@@ -33,5 +34,8 @@ char* file_reads(const char* filepath);
  * @return: bool / True or False; does that index exists or no. maybe current index is out of the file and filelength is less that `index` value!
  */
 bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t* columns);
+
+// TODO
+char* file_get_parent(const char* path);
 
 #endif // _ONE_BUILTINS_FILE_H_
