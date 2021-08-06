@@ -25,6 +25,7 @@ void parser_init(char* path, char* input, Token** tokens)
 
 	parser.path = path;
 	parser.path_base = (const char*)file_get_parent(path);
+
 	parser.data = input;
 	parser.tokens = tokens;
 }
