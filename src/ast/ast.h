@@ -73,6 +73,7 @@ typedef struct _ast_statement_variable AstStatementVariable;
 typedef struct _ast_statement_expr AstStatementExpr;
 
 // Array
+typedef Array AstBlockDeclarationArray; // AstBlockDeclaration
 typedef Array AstFunctionDeclarationArray; // AstFunctionDeclaration
 typedef Array AstStructDeclarationArray; // AstStructDeclaration
 typedef Array AstEnumDeclarationArray; // AstEnumDeclaration
@@ -96,7 +97,7 @@ typedef struct _ast_file
 {
 	AstPackage* module;
 	AstImportDeclarationArray* imports; // AstImportDeclaration
-	AstBlockDeclaration* blocks;
+	AstBlockDeclarationArray* blocks; // AstBlockDeclaration
 
 	const char* path;
 	const char* path_base;

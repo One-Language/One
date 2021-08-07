@@ -109,6 +109,13 @@ void ast_init(const char* input_file, const char* data, Token** tokens, AstFile*
 void ast_trace(FILE* file_out, AstFile* ast)
 {
 	fprintf(file_out, "Program %s (%s)\n", ast->path, ast->path_base);
+	fprintf(file_out, "Module %s\n", (ast->module->name != NULL) ? ast->module->name : "none");
+	AstImportDeclaration* item;
+	fprintf(file_out, "Imports (%d)\n", ast->imports->count);
+	for(int i=0; i< ast->imports->count; i++) {
+		item = (AstImportDeclaration*) ast->imports->data[i];
+		printf("-->import\n");
+	}
 }
 
 void ast_free()

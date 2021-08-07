@@ -436,10 +436,20 @@ AstFile* parser_scan()
 	ast->path = parser.path;
 	ast->path_base = parser.path_base;
 
+	ast->module = malloc(sizeof(AstPackage));
+	ast->module->name = NULL;
+
+	ast->imports = malloc(sizeof(AstImportDeclarationArray));
+	array_init(ast->imports);
+
+	ast->blocks = malloc(sizeof(AstBlockDeclarationArray));
+	array_init(ast->blocks);
+
 	parser_token_skip();
 
 	if (parser_token_get_type() == TOKEN_PACKAGE)
 	{
+		free(ast->module);
 		ast->module = parser_scan_package();
 	}
 
