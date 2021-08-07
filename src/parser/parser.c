@@ -464,7 +464,11 @@ AstFile* parser_scan()
 
 		if (type == TOKEN_IMPORT)
 		{
-			parser_scan_import();
+			AstImportDeclaration* import = parser_scan_import();
+			if(import != NULL)
+			{
+				array_push(ast->imports, import);
+			}
 		}
 		else if (type == TOKEN_FN)
 		{
