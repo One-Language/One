@@ -1,5 +1,6 @@
 package main
 
+import one.two.three
 import p1
 import p2 as m
 import p3 { sin as s }

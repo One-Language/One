@@ -110,12 +110,29 @@ void ast_trace(FILE* file_out, AstFile* ast)
 {
 	fprintf(file_out, "Program %s (%s)\n", ast->path, ast->path_base);
 	fprintf(file_out, "Module %s\n", (ast->module->name != NULL) ? ast->module->name : "none");
-	AstImportDeclaration* item;
 	fprintf(file_out, "Imports (%d)\n", ast->imports->count);
+
+	AstImportDeclaration* item;
+	AstImportName* name;
+	AstImportNameArray* names;
+
 	for (int i = 0; i < ast->imports->count; i++)
 	{
 		item = (AstImportDeclaration*)ast->imports->data[i];
-		printf("-->import\n");
+		fprintf(file_out, "\tImport {\n");
+		fprintf(file_out, "\t\tNames = ");
+
+		names = item->names;
+		for(int i =0; i < names->count; i++) {
+			name = (AstImportName*) names->data[i];
+			fprintf(file_out, "%s", name->name);
+			if(i+1 != names->count)
+			{
+			fprintf(file_out, ", ");
+			}
+		}
+		fprintf(file_out, "\n");
+		fprintf(file_out, "\t}\n");
 	}
 }
 

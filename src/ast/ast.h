@@ -135,7 +135,7 @@ typedef struct _ast_import_name
 {
 	Location pos;
 
-	char* name;
+	const char* name;
 } AstImportName;
 
 typedef struct _ast_import_symbol

@@ -56,6 +56,11 @@ AstImportDeclaration* parser_scan_import()
 	Token* value = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
 	info_parser("parser_scan_import: %s", value->value);
 
+	AstImportName* name = malloc(sizeof(AstImportName));
+	name->name = value->value;
+
+	array_push(ast->names, name);
+
 	parser_token_skip();
 
 	// AS <skip> IDENTIFIER
@@ -472,7 +477,11 @@ AstFile* parser_scan()
 		}
 		else if (type == TOKEN_FN)
 		{
-			parser_scan_fn();
+			AstBlockItem* func = parser_scan_fn();
+			if(func != NULL)
+			{
+				array_push(ast->blocks, func);
+			}
 		}
 		else
 		{
