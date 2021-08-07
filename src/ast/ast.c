@@ -143,7 +143,7 @@ void ast_trace(FILE* file_out, AstFile* ast)
 
 		symbols = name_item->symbols;
 		fprintf(file_out, "\t\tSymbols = [");
-		if(symbols->count == 0)
+		if (symbols->count == 0)
 		{
 			fprintf(file_out, " ]\n");
 		}
@@ -169,7 +169,7 @@ void ast_trace(FILE* file_out, AstFile* ast)
 
 				fprintf(file_out, " ], ");
 
-				if(symbol->has_alias)
+				if (symbol->has_alias)
 				{
 					fprintf(file_out, "Alias = %s", symbol->alias);
 				}

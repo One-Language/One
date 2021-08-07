@@ -107,7 +107,6 @@ AstImportDeclaration* parser_scan_import()
 				parser_token_skip();
 			} while (parser_token_has(TOKEN_OPERATOR_DOT));
 
-
 			if (parser_token_has(TOKEN_AS))
 			{
 				parser_token_skip();
