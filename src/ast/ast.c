@@ -173,24 +173,10 @@ void ast_trace_import_names(FILE* file_out, AstImportNameArray* names)
 	fprintf(file_out, " ]\n");
 }
 
-void ast_trace_import(FILE* file_out, AstImportDeclaration* import)
+void ast_trace_import_symbols(FILE* file_out, AstImportSymbolArray* symbols)
 {
-	AstImportSymbol* symbol;
-
 	AstImportNameArray* names;
-	AstImportSymbolArray* symbols;
-
-	ast_trace_ident(file_out);
-	fprintf(file_out, "\tImport {\n");
-	ast_trace_ident_next();
-
-	names = import->names;
-	ast_trace_import_names(file_out, names);
-
-	ast_trace_ident(file_out);
-	fprintf(file_out, "Alias = %s\n", import->alias == NULL ? "none" : import->alias);
-
-	symbols = import->symbols;
+	AstImportSymbol* symbol;
 
 	ast_trace_ident(file_out);
 	fprintf(file_out, "Symbols = (%d) [", symbols->count);
@@ -207,6 +193,25 @@ void ast_trace_import(FILE* file_out, AstImportDeclaration* import)
 		fprintf(file_out, " }\n");
 	}
 	fprintf(file_out, "\t\t]\n");
+}
+
+void ast_trace_import(FILE* file_out, AstImportDeclaration* import)
+{
+	AstImportNameArray* names;
+	AstImportSymbolArray* symbols;
+
+	ast_trace_ident(file_out);
+	fprintf(file_out, "\tImport {\n");
+	ast_trace_ident_next();
+
+	names = import->names;
+	ast_trace_import_names(file_out, names);
+
+	ast_trace_ident(file_out);
+	fprintf(file_out, "Alias = %s\n", import->alias == NULL ? "None" : import->alias);
+
+	symbols = import->symbols;
+	ast_trace_import_symbols(file_out, symbols);
 
 	fprintf(file_out, "\t}\n");
 }
@@ -214,7 +219,7 @@ void ast_trace_import(FILE* file_out, AstImportDeclaration* import)
 void ast_trace(FILE* file_out, AstFile* ast)
 {
 	fprintf(file_out, "Program %s (%s)\n", ast->path, ast->path_base);
-	fprintf(file_out, "Module %s\n", (ast->module->name != NULL) ? ast->module->name : "none");
+	fprintf(file_out, "Module %s\n", ast->module->name == NULL ? "None" : ast->module->name);
 
 	ast_trace_imports(file_out, ast->imports);
 }
