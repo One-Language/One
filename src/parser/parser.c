@@ -53,15 +53,21 @@ AstImportDeclaration* parser_scan_import()
 
 	parser_token_skip();
 
-	Token* value = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
-	info_parser("parser_scan_import: %s", value->value);
+	Token* value;
+	AstImportName* name;
+	do
+	{
+		value = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
+		info_parser("parser_scan_import: %s", value->value);
 
-	AstImportName* name = malloc(sizeof(AstImportName));
-	name->name = value->value;
+		name = malloc(sizeof(AstImportName));
+		name->name = value->value;
 
-	array_push(ast->names, name);
+		array_push(ast->names, name);
 
-	parser_token_skip();
+		parser_token_skip();
+	}
+	while(parser_token_has(TOKEN_OPERATOR_DOT));
 
 	// AS <skip> IDENTIFIER
 	if (parser_token_has(TOKEN_AS))
