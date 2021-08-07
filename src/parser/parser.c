@@ -103,7 +103,11 @@ AstImportDeclaration* parser_scan_import()
 
 				symbol_name = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
 				// printf("-----> SYMBOL NAME: %s\n", symbol_name->value);
-				array_push(symbol->names, strdup(symbol_name->value));
+
+				name = malloc(sizeof(AstImportName));
+				name->name = strdup(symbol_name->value);
+
+				array_push(symbol->names, name);
 				// printf("-----> NAMES COUNT: %d\n", symbol->names->count);
 				info_parser("parser_scan_import: symbol name: %s", symbol_name->value);
 				free(symbol_name);

@@ -160,7 +160,7 @@ void ast_trace(FILE* file_out, AstFile* ast)
 				for (int i = 0; i < names->count; i++)
 				{
 					name = (AstImportName*)names->data[i];
-					fprintf(file_out, "%s", name);
+					fprintf(file_out, "%s", name->name);
 					if (i + 1 != names->count)
 					{
 						fprintf(file_out, ", ");
