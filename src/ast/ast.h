@@ -145,7 +145,7 @@ typedef struct _ast_import_symbol
 
 	bool has_alias;
 
-	StringArray* names; // char*
+	AstImportNameArray* names; // char*
 	char* alias;
 } AstImportSymbol;
 

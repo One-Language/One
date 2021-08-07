@@ -110,31 +110,80 @@ void ast_trace(FILE* file_out, AstFile* ast)
 {
 	fprintf(file_out, "Program %s (%s)\n", ast->path, ast->path_base);
 	fprintf(file_out, "Module %s\n", (ast->module->name != NULL) ? ast->module->name : "none");
-	fprintf(file_out, "Imports (%d)\n", ast->imports->count);
 
-	AstImportDeclaration* item;
+	AstImportDeclaration* name_item;
+	AstImportSymbol* symbol_item;
+
 	AstImportName* name;
-	AstImportNameArray* names;
+	AstImportSymbol* symbol;
 
+	AstImportNameArray* names;
+	AstImportSymbolArray* symbols;
+
+	fprintf(file_out, "Imports (%d) [\n", ast->imports->count);
 	for (int i = 0; i < ast->imports->count; i++)
 	{
-		item = (AstImportDeclaration*)ast->imports->data[i];
+		name_item = (AstImportDeclaration*)ast->imports->data[i];
 		fprintf(file_out, "\tImport {\n");
-		fprintf(file_out, "\t\tNames = ");
 
-		names = item->names;
+		names = name_item->names;
+		fprintf(file_out, "\t\tNames = [ ");
 		for (int i = 0; i < names->count; i++)
 		{
 			name = (AstImportName*)names->data[i];
 			fprintf(file_out, "%s", name->name);
 			if (i + 1 != names->count)
 			{
-				fprintf(file_out, ", ");
+				fprintf(file_out, "->");
 			}
 		}
-		fprintf(file_out, "\n");
+		fprintf(file_out, " ]\n");
+
+		fprintf(file_out, "\t\tAlias = %s\n", name_item->alias == NULL ? "none" : name_item->alias);
+
+		symbols = name_item->symbols;
+		fprintf(file_out, "\t\tSymbols = [");
+		if(symbols->count == 0)
+		{
+			fprintf(file_out, " ]\n");
+		}
+		else
+		{
+			fprintf(file_out, "\n");
+			for (int i = 0; i < symbols->count; i++)
+			{
+				symbol = (AstImportSymbol*)symbols->data[i];
+
+				names = symbol->names;
+				fprintf(file_out, "\t\t\t\t{ ");
+				fprintf(file_out, "Names = ");
+				for (int i = 0; i < names->count; i++)
+				{
+					name = (AstImportName*)names->data[i];
+					fprintf(file_out, "%s", name->name);
+					if (i + 1 != names->count)
+					{
+						fprintf(file_out, "->");
+					}
+				}
+
+				fprintf(file_out, ", ");
+
+				if(symbol->has_alias)
+				{
+					fprintf(file_out, "Alias = %s", symbol->alias);
+				}
+				else
+				{
+					fprintf(file_out, "Alias = None");
+				}
+				fprintf(file_out, " }\n");
+			}
+			fprintf(file_out, "\t\t]\n");
+		}
 		fprintf(file_out, "\t}\n");
 	}
+	fprintf(file_out, "]\n");
 }
 
 void ast_free()
