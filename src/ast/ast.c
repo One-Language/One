@@ -156,18 +156,18 @@ void ast_trace(FILE* file_out, AstFile* ast)
 
 				names = symbol->names;
 				fprintf(file_out, "\t\t\t\t{ ");
-				fprintf(file_out, "Names = ");
+				fprintf(file_out, "Names = [ ");
 				for (int i = 0; i < names->count; i++)
 				{
 					name = (AstImportName*)names->data[i];
 					fprintf(file_out, "%s", name->name);
 					if (i + 1 != names->count)
 					{
-						fprintf(file_out, "->");
+						fprintf(file_out, ", ");
 					}
 				}
 
-				fprintf(file_out, ", ");
+				fprintf(file_out, " ], ");
 
 				if(symbol->has_alias)
 				{

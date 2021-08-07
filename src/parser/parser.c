@@ -51,12 +51,12 @@ AstImportDeclaration* parser_scan_import()
 
 	parser_token_expect(TOKEN_IMPORT);
 
-	parser_token_skip();
-
 	Token* value;
 	AstImportName* name;
 	do
 	{
+		parser_token_skip();
+
 		value = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
 		info_parser("parser_scan_import: %s", value->value);
 
@@ -90,16 +90,23 @@ AstImportDeclaration* parser_scan_import()
 		{
 			AstImportSymbol* symbol = malloc(sizeof(AstImportSymbol));
 
-			Token* symbol_name = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
-
+			Token* symbol_name;
 			symbol->names = malloc(sizeof(StringArray));
-
 			array_init(symbol->names);
-			array_push(symbol->names, strdup(symbol_name->value));
-			info_parser("parser_scan_import: symbol name: %s", symbol_name->value);
-			free(symbol_name);
 
-			parser_token_skip();
+			do
+			{
+				parser_token_skip();
+
+				symbol_name = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
+
+				array_push(symbol->names, strdup(symbol_name->value));
+				info_parser("parser_scan_import: symbol name: %s", symbol_name->value);
+				free(symbol_name);
+
+				parser_token_skip();
+			} while (parser_token_has(TOKEN_OPERATOR_DOT));
+
 
 			if (parser_token_has(TOKEN_AS))
 			{
