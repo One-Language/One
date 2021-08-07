@@ -12,7 +12,7 @@ import p6 {
 	cos as c
 }
 import p7 { sin as s cos as c }
-import p8 { sin.test}
+import p8 { one.two.three }
 
 	 fn
   			main 			{

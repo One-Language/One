@@ -86,12 +86,15 @@ AstImportDeclaration* parser_scan_import()
 	{
 		parser_token_skip();
 
+		AstImportSymbol* symbol;
+		Token* symbol_name;
+		Token* symbol_alias;
+
 		while (parser_token_get_type() == TOKEN_VALUE_IDENTIFIER)
 		{
-			AstImportSymbol* symbol = malloc(sizeof(AstImportSymbol));
+			symbol = malloc(sizeof(AstImportSymbol));
 
-			Token* symbol_name;
-			symbol->names = malloc(sizeof(StringArray));
+			symbol->names = malloc(sizeof(AstImportNameArray));
 			array_init(symbol->names);
 
 			do
@@ -112,7 +115,7 @@ AstImportDeclaration* parser_scan_import()
 				parser_token_skip();
 
 				symbol->has_alias = true;
-				Token* symbol_alias = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
+				symbol_alias = parser_token_expect_get(TOKEN_VALUE_IDENTIFIER);
 				symbol->alias = strdup(symbol_alias->value);
 				info_parser("parser_scan_import: symbol alias as: %s", symbol_alias->value);
 				free(symbol_alias);
@@ -134,6 +137,8 @@ AstImportDeclaration* parser_scan_import()
 
 		info_parser("parser_scan_import: count of symbols is %d", ast->symbols->count);
 	}
+
+	parser_token_skip();
 
 	return ast;
 }
