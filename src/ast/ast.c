@@ -175,9 +175,6 @@ void ast_trace_import_names(FILE* file_out, AstImportNameArray* names)
 
 void ast_trace_import(FILE* file_out, AstImportDeclaration* import)
 {
-	AstImportSymbol* symbol_item;
-
-	AstImportName* name;
 	AstImportSymbol* symbol;
 
 	AstImportNameArray* names;
