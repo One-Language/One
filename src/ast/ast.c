@@ -10,6 +10,8 @@
 
 #include "ast.h"
 
+int ident;
+
 // char* ast_statement_name(AstStatementType type)
 // {
 // 	switch (type)
@@ -104,6 +106,28 @@
 
 void ast_init(const char* input_file, const char* data, Token** tokens, AstFile* ast)
 {
+	ident = 0;
+}
+
+void ast_trace_ident(FILE* file_out)
+{
+	if(ident == 0) return;
+	char* idents = malloc(sizeof(char)*(ident*2)+1);
+
+	for(int i=0; i< ident*2; i++)
+		idents[i] = ' ';
+
+	fprintf(file_out, idents);
+}
+
+void ast_trace_ident_next()
+{
+	ident++;
+}
+
+void ast_trace_ident_prev()
+{
+	ident--;
 }
 
 void ast_trace_imports(FILE* file_out, AstImportDeclarationArray* imports)
@@ -111,24 +135,36 @@ void ast_trace_imports(FILE* file_out, AstImportDeclarationArray* imports)
 
 	AstImportDeclaration* name_item;
 
+	ast_trace_ident(file_out);
 	fprintf(file_out, "Imports (%d) [\n", imports->count);
+
+	ast_trace_ident_next();
+
 	for (int i = 0; i < imports->count; i++)
 	{
 		name_item = (AstImportDeclaration*)imports->data[i];
 		ast_trace_import(file_out, name_item);
 	}
+
+	ast_trace_ident_prev();
 	fprintf(file_out, "]\n");
+}
+
+void ast_trace_import_name(FILE* file_out, AstImportName* name)
+{
+	fprintf(file_out, "%s", name->name);
 }
 
 void ast_trace_import_names(FILE* file_out, AstImportNameArray* names)
 {
 	AstImportName* name;
 
-	fprintf(file_out, "\t\tNames = (%d) [ ", names->count);
+	ast_trace_ident(file_out);
+	fprintf(file_out, "Names = (%d) [ ", names->count);
 	for (int i = 0; i < names->count; i++)
 	{
 		name = (AstImportName*)names->data[i];
-		fprintf(file_out, "%s", name->name);
+		ast_trace_import_name(file_out, name);
 		if (i + 1 != names->count)
 		{
 			fprintf(file_out, "->");
@@ -147,53 +183,34 @@ void ast_trace_import(FILE* file_out, AstImportDeclaration* import)
 	AstImportNameArray* names;
 	AstImportSymbolArray* symbols;
 
+	ast_trace_ident(file_out);
 	fprintf(file_out, "\tImport {\n");
+	ast_trace_ident_next();
 
 	names = import->names;
 	ast_trace_import_names(file_out, names);
 
-	fprintf(file_out, "\t\tAlias = %s\n", import->alias == NULL ? "none" : import->alias);
+	ast_trace_ident(file_out);
+	fprintf(file_out, "Alias = %s\n", import->alias == NULL ? "none" : import->alias);
 
 	symbols = import->symbols;
-	fprintf(file_out, "\t\tSymbols = (%d) [", symbols->count);
-	if (symbols->count == 0)
+
+	ast_trace_ident(file_out);
+	fprintf(file_out, "Symbols = (%d) [", symbols->count);
+
+	fprintf(file_out, "\n");
+	for (int i = 0; i < symbols->count; i++)
 	{
-		fprintf(file_out, " ]\n");
+		symbol = (AstImportSymbol*)symbols->data[i];
+
+		names = (AstImportNameArray*)symbol->names;
+		ast_trace_import_names(file_out, names);
+
+		fprintf(file_out, "Alias = %s", symbol->has_alias ? symbol->alias : "None");
+		fprintf(file_out, " }\n");
 	}
-	else
-	{
-		fprintf(file_out, "\n");
-		for (int i = 0; i < symbols->count; i++)
-		{
-			symbol = (AstImportSymbol*)symbols->data[i];
+	fprintf(file_out, "\t\t]\n");
 
-			names = (AstImportNameArray*)symbol->names;
-			fprintf(file_out, "\t\t\t{ ");
-			fprintf(file_out, "Names = (%d) [ ", names->count);
-			for (int i = 0; i < names->count; i++)
-			{
-				name = (AstImportName*)names->data[i];
-				fprintf(file_out, "%s", name->name);
-				if (i + 1 != names->count)
-				{
-					fprintf(file_out, ", ");
-				}
-			}
-
-			fprintf(file_out, " ], ");
-
-			if (symbol->has_alias)
-			{
-				fprintf(file_out, "Alias = %s", symbol->alias);
-			}
-			else
-			{
-				fprintf(file_out, "Alias = None");
-			}
-			fprintf(file_out, " }\n");
-		}
-		fprintf(file_out, "\t\t]\n");
-	}
 	fprintf(file_out, "\t}\n");
 }
 
