@@ -800,6 +800,10 @@ void ast_trace_ident_next();
 
 void ast_trace_ident_prev();
 
+void ast_trace_blocks(FILE* file_out, AstBlockDeclarationArray* blocks);
+
+void ast_trace_block(FILE* file_out, AstBlockDeclaration* block);
+
 void ast_trace_imports(FILE* file_out, AstImportDeclarationArray* imports);
 
 void ast_trace_import(FILE* file_out, AstImportDeclaration* import);

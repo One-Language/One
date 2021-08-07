@@ -132,7 +132,6 @@ void ast_trace_ident_prev()
 
 void ast_trace_imports(FILE* file_out, AstImportDeclarationArray* imports)
 {
-
 	AstImportDeclaration* name_item;
 
 	ast_trace_ident(file_out);
@@ -214,12 +213,36 @@ void ast_trace_import(FILE* file_out, AstImportDeclaration* import)
 	fprintf(file_out, "\t}\n");
 }
 
+void ast_trace_blocks(FILE* file_out, AstBlockDeclarationArray* blocks)
+{
+	AstBlockDeclaration* item;
+
+	ast_trace_ident(file_out);
+	fprintf(file_out, "Blocks (%d) [\n", blocks->count);
+
+	ast_trace_ident_next();
+
+	for (int i = 0; i < blocks->count; i++)
+	{
+		item = (AstBlockDeclaration*)blocks->data[i];
+		ast_trace_block(file_out, item);
+	}
+
+	ast_trace_ident_prev();
+	fprintf(file_out, "]\n");
+}
+
+void ast_trace_block(FILE* file_out, AstBlockDeclaration* block)
+{
+}
+
 void ast_trace(FILE* file_out, AstFile* ast)
 {
 	fprintf(file_out, "Program %s (%s)\n", ast->path, ast->path_base);
 	fprintf(file_out, "Module %s\n", ast->module->name == NULL ? "None" : ast->module->name);
 
 	ast_trace_imports(file_out, ast->imports);
+	ast_trace_blocks(file_out, ast->blocks);
 }
 
 void ast_free()
