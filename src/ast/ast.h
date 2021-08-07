@@ -794,6 +794,10 @@ typedef struct _ast_type_sum_item
 
 void ast_init(const char* input_file, const char* data, Token** tokens, AstFile* ast);
 
+void ast_trace_imports(FILE* file_out, AstImportDeclarationArray* imports);
+
+void ast_trace_import(FILE* file_out, AstImportDeclaration* import);
+
 void ast_trace(FILE* file_out, AstFile* ast);
 
 void ast_free();

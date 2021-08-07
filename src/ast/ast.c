@@ -106,12 +106,22 @@ void ast_init(const char* input_file, const char* data, Token** tokens, AstFile*
 {
 }
 
-void ast_trace(FILE* file_out, AstFile* ast)
+void ast_trace_imports(FILE* file_out, AstImportDeclarationArray* imports)
 {
-	fprintf(file_out, "Program %s (%s)\n", ast->path, ast->path_base);
-	fprintf(file_out, "Module %s\n", (ast->module->name != NULL) ? ast->module->name : "none");
 
 	AstImportDeclaration* name_item;
+
+	fprintf(file_out, "Imports (%d) [\n", imports->count);
+	for (int i = 0; i < imports->count; i++)
+	{
+		name_item = (AstImportDeclaration*)imports->data[i];
+		ast_trace_import(file_out, name_item);
+	}
+	fprintf(file_out, "]\n");
+}
+
+void ast_trace_import(FILE* file_out, AstImportDeclaration* import)
+{
 	AstImportSymbol* symbol_item;
 
 	AstImportName* name;
@@ -120,70 +130,72 @@ void ast_trace(FILE* file_out, AstFile* ast)
 	AstImportNameArray* names;
 	AstImportSymbolArray* symbols;
 
-	fprintf(file_out, "Imports (%d) [\n", ast->imports->count);
-	for (int i = 0; i < ast->imports->count; i++)
+	fprintf(file_out, "\tImport {\n");
+
+	names = import->names;
+	fprintf(file_out, "\t\tNames = [ ");
+	for (int i = 0; i < names->count; i++)
 	{
-		name_item = (AstImportDeclaration*)ast->imports->data[i];
-		fprintf(file_out, "\tImport {\n");
-
-		names = name_item->names;
-		fprintf(file_out, "\t\tNames = [ ");
-		for (int i = 0; i < names->count; i++)
+		name = (AstImportName*)names->data[i];
+		fprintf(file_out, "%s", name->name);
+		if (i + 1 != names->count)
 		{
-			name = (AstImportName*)names->data[i];
-			fprintf(file_out, "%s", name->name);
-			if (i + 1 != names->count)
-			{
-				fprintf(file_out, "->");
-			}
+			fprintf(file_out, "->");
 		}
-		fprintf(file_out, " ]\n");
-
-		fprintf(file_out, "\t\tAlias = %s\n", name_item->alias == NULL ? "none" : name_item->alias);
-
-		symbols = name_item->symbols;
-		fprintf(file_out, "\t\tSymbols = (%d) [", symbols->count);
-		if (symbols->count == 0)
-		{
-			fprintf(file_out, " ]\n");
-		}
-		else
-		{
-			fprintf(file_out, "\n");
-			for (int i = 0; i < symbols->count; i++)
-			{
-				symbol = (AstImportSymbol*)symbols->data[i];
-
-				names = (AstImportNameArray*)symbol->names;
-				fprintf(file_out, "\t\t\t{ ");
-				fprintf(file_out, "Names = (%d) [ ", names->count);
-				for (int i = 0; i < names->count; i++)
-				{
-					name = (AstImportName*)names->data[i];
-					fprintf(file_out, "%s", name->name);
-					if (i + 1 != names->count)
-					{
-						fprintf(file_out, ", ");
-					}
-				}
-
-				fprintf(file_out, " ], ");
-
-				if (symbol->has_alias)
-				{
-					fprintf(file_out, "Alias = %s", symbol->alias);
-				}
-				else
-				{
-					fprintf(file_out, "Alias = None");
-				}
-				fprintf(file_out, " }\n");
-			}
-			fprintf(file_out, "\t\t]\n");
-		}
-		fprintf(file_out, "\t}\n");
 	}
-	fprintf(file_out, "]\n");
+	fprintf(file_out, " ]\n");
+
+	fprintf(file_out, "\t\tAlias = %s\n", import->alias == NULL ? "none" : import->alias);
+
+	symbols = import->symbols;
+	fprintf(file_out, "\t\tSymbols = (%d) [", symbols->count);
+	if (symbols->count == 0)
+	{
+		fprintf(file_out, " ]\n");
+	}
+	else
+	{
+		fprintf(file_out, "\n");
+		for (int i = 0; i < symbols->count; i++)
+		{
+			symbol = (AstImportSymbol*)symbols->data[i];
+
+			names = (AstImportNameArray*)symbol->names;
+			fprintf(file_out, "\t\t\t{ ");
+			fprintf(file_out, "Names = (%d) [ ", names->count);
+			for (int i = 0; i < names->count; i++)
+			{
+				name = (AstImportName*)names->data[i];
+				fprintf(file_out, "%s", name->name);
+				if (i + 1 != names->count)
+				{
+					fprintf(file_out, ", ");
+				}
+			}
+
+			fprintf(file_out, " ], ");
+
+			if (symbol->has_alias)
+			{
+				fprintf(file_out, "Alias = %s", symbol->alias);
+			}
+			else
+			{
+				fprintf(file_out, "Alias = None");
+			}
+			fprintf(file_out, " }\n");
+		}
+		fprintf(file_out, "\t\t]\n");
+	}
+	fprintf(file_out, "\t}\n");
+}
+
+void ast_trace(FILE* file_out, AstFile* ast)
+{
+	fprintf(file_out, "Program %s (%s)\n", ast->path, ast->path_base);
+	fprintf(file_out, "Module %s\n", (ast->module->name != NULL) ? ast->module->name : "none");
+
+	ast_trace_imports(file_out, ast->imports);
 }
 
 void ast_free()
