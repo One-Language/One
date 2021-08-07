@@ -112,8 +112,9 @@ void ast_trace(FILE* file_out, AstFile* ast)
 	fprintf(file_out, "Module %s\n", (ast->module->name != NULL) ? ast->module->name : "none");
 	AstImportDeclaration* item;
 	fprintf(file_out, "Imports (%d)\n", ast->imports->count);
-	for(int i=0; i< ast->imports->count; i++) {
-		item = (AstImportDeclaration*) ast->imports->data[i];
+	for (int i = 0; i < ast->imports->count; i++)
+	{
+		item = (AstImportDeclaration*)ast->imports->data[i];
 		printf("-->import\n");
 	}
 }
