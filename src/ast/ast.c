@@ -123,12 +123,13 @@ void ast_trace(FILE* file_out, AstFile* ast)
 		fprintf(file_out, "\t\tNames = ");
 
 		names = item->names;
-		for(int i =0; i < names->count; i++) {
-			name = (AstImportName*) names->data[i];
+		for (int i = 0; i < names->count; i++)
+		{
+			name = (AstImportName*)names->data[i];
 			fprintf(file_out, "%s", name->name);
-			if(i+1 != names->count)
+			if (i + 1 != names->count)
 			{
-			fprintf(file_out, ", ");
+				fprintf(file_out, ", ");
 			}
 		}
 		fprintf(file_out, "\n");

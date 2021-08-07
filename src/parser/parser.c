@@ -66,8 +66,7 @@ AstImportDeclaration* parser_scan_import()
 		array_push(ast->names, name);
 
 		parser_token_skip();
-	}
-	while(parser_token_has(TOKEN_OPERATOR_DOT));
+	} while (parser_token_has(TOKEN_OPERATOR_DOT));
 
 	// AS <skip> IDENTIFIER
 	if (parser_token_has(TOKEN_AS))
@@ -476,7 +475,7 @@ AstFile* parser_scan()
 		if (type == TOKEN_IMPORT)
 		{
 			AstImportDeclaration* import = parser_scan_import();
-			if(import != NULL)
+			if (import != NULL)
 			{
 				array_push(ast->imports, import);
 			}
@@ -484,7 +483,7 @@ AstFile* parser_scan()
 		else if (type == TOKEN_FN)
 		{
 			AstBlockItem* func = parser_scan_fn();
-			if(func != NULL)
+			if (func != NULL)
 			{
 				array_push(ast->blocks, func);
 			}
