@@ -175,7 +175,6 @@ void ast_trace_import_names(FILE* file_out, AstImportNameArray* names)
 
 void ast_trace_import_symbols(FILE* file_out, AstImportSymbolArray* symbols)
 {
-	AstImportNameArray* names;
 	AstImportSymbol* symbol;
 
 	ast_trace_ident(file_out);
@@ -186,8 +185,7 @@ void ast_trace_import_symbols(FILE* file_out, AstImportSymbolArray* symbols)
 	{
 		symbol = (AstImportSymbol*)symbols->data[i];
 
-		names = (AstImportNameArray*)symbol->names;
-		ast_trace_import_names(file_out, names);
+		ast_trace_import_names(file_out, symbol->names);
 
 		fprintf(file_out, "Alias = %s", symbol->has_alias ? symbol->alias : "None");
 		fprintf(file_out, " }\n");
@@ -197,21 +195,16 @@ void ast_trace_import_symbols(FILE* file_out, AstImportSymbolArray* symbols)
 
 void ast_trace_import(FILE* file_out, AstImportDeclaration* import)
 {
-	AstImportNameArray* names;
-	AstImportSymbolArray* symbols;
-
 	ast_trace_ident(file_out);
 	fprintf(file_out, "\tImport {\n");
 	ast_trace_ident_next();
 
-	names = import->names;
-	ast_trace_import_names(file_out, names);
+	ast_trace_import_names(file_out, import->names);
 
 	ast_trace_ident(file_out);
 	fprintf(file_out, "Alias = %s\n", import->alias == NULL ? "None" : import->alias);
 
-	symbols = import->symbols;
-	ast_trace_import_symbols(file_out, symbols);
+	ast_trace_import_symbols(file_out, import->symbols);
 
 	fprintf(file_out, "\t}\n");
 }

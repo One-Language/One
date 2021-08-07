@@ -804,6 +804,8 @@ void ast_trace_imports(FILE* file_out, AstImportDeclarationArray* imports);
 
 void ast_trace_import(FILE* file_out, AstImportDeclaration* import);
 
+void ast_trace_import_symbols(FILE* file_out, AstImportSymbolArray* symbols);
+
 void ast_trace_import_names(FILE* file_out, AstImportNameArray* names);
 
 void ast_trace(FILE* file_out, AstFile* ast);
