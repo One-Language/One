@@ -119,7 +119,7 @@ main {
 }
 ```
 
-**Équivalant en C :**
+### Équivalant en C :
 
 ```c
 #include <stdio.h>
@@ -139,7 +139,7 @@ i32 main {
 }
 ```
 
-**Équivalant en C :**
+### Équivalant en C :
 
 ```c
 #include <stdio.h>
@@ -161,7 +161,7 @@ main {
 }
 ```
 
-**Équivalant en C :**
+### Équivalant en C :
 
 ```c
 #include <stdio.h>
@@ -178,7 +178,7 @@ int main(int argc, char *argv[]) {
 
 <hr>
 
-**Brouillon**
+### Brouillon
 
 ```c
 import web
@@ -205,7 +205,7 @@ main {
 
 ---
 
-**Brouillon**
+### Brouillon
 
 ```c
 error {
@@ -312,7 +312,7 @@ header {
 }
 ```
 
-**Équivalant en CSS/HTML/JS :**
+### Équivalant en CSS/HTML/JS :
 
 ```html
 <html>
