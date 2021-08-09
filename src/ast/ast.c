@@ -111,10 +111,10 @@ void ast_init(const char* input_file, const char* data, Token** tokens, AstFile*
 
 void ast_trace_ident(FILE* file_out)
 {
-	if(ident == 0) return;
-	char* idents = malloc(sizeof(char)*(ident*2)+1);
+	if (ident == 0) return;
+	char* idents = malloc(sizeof(char) * (ident * 2) + 1);
 
-	for(int i=0; i< ident*2; i++)
+	for (int i = 0; i < ident * 2; i++)
 		idents[i] = ' ';
 
 	fprintf(file_out, idents);
