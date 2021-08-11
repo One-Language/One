@@ -50,7 +50,7 @@ repos:
       - id: prettier
         name: Format files with prettier
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.26.1
+    rev: v1.26.2
     hooks:
       - id: yamllint
         name: Check YAML files with yamllint
