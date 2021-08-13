@@ -415,7 +415,6 @@ If you would like to contribute in the development of this project, you can mail
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
 
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
