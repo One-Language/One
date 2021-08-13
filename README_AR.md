@@ -25,6 +25,7 @@
 [![Twitter][twitterurl]][twitterbadge]
 [![Instagram][instagrambadge]][instagramurl]
 [![License][licensebadge]][licenseurl]
+[![Facebook][facebookbadge]][facebookurl]
 
 [English](README.md)
 &nbsp;
@@ -447,10 +448,12 @@ header {
 [twitterbadge]: https://twitter.com/onelangteam
 [instagrambadge]: https://img.shields.io/badge/Instagram-Up-brightgreen
 [licensebadge]: https://img.shields.io/github/license/One-Language/One
+[facebookbadge]: https://img.shields.io/badge/Facebook-Up-brightgreen
 [discordurl]: https://discord.gg/sFCE2HcMCa
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
 [instagramurl]: https://www.instagram.com/one.lang
 [licenseurl]: https://github.com/One-Language/One/blob/master/LICENSE
+[facebookurl]: https://www.facebook.com/onelangteam
 
 </div>
