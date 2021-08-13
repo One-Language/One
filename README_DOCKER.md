@@ -21,6 +21,8 @@
 [![Patreon][patreonbadge]][patreonurl]
 [![Discord][discordbadge]][discordurl]
 [![Twitter][twitterurl]][twitterbadge]
+[![Instagram][instagrambadge]][instagramurl]
+[![License][licensebadge]][licenseurl]
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
@@ -175,6 +177,10 @@ If you would like to contribute to the development of this project, you can mail
 [patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
 [sponsorbadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
 [twitterbadge]: https://twitter.com/onelangteam
+[instagrambadge]: https://img.shields.io/badge/Instagram-Up-brightgreen
+[licensebadge]: https://img.shields.io/github/license/One-Language/One
 [discordurl]: https://discord.gg/sFCE2HcMCa
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
+[instagramurl]: https://www.instagram.com/one.lang
+[licenseurl]: https://github.com/One-Language/One/blob/master/LICENSE
