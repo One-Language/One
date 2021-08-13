@@ -21,6 +21,7 @@
 [![Patreon][patreonbadge]][patreonurl]
 [![Discord][discordbadge]][discordurl]
 [![Twitter][twitterurl]][twitterbadge]
+[![License][licensebadge]][licenseurl]
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
@@ -405,12 +406,15 @@ If you would like to contribute in the development of this project, you can mail
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
 
 [discordbadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
+[licensebadge]: https://img.shields.io/github/license/One-Language/One
 [patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
 [sponsorbadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
 [twitterbadge]: https://twitter.com/onelangteam
 [discordurl]: https://discord.gg/sFCE2HcMCa
+[licenseurl]: https://github.com/One-Language/One/blob/master/LICENSE
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
+
 
 ## Contributors ✨
 
