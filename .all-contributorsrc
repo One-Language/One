@@ -209,6 +209,15 @@
         "doc",
         "code"
       ]
+    },
+    {
+      "login": "pedramcvx1",
+      "name": "Pedram Lotfi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/87372623?v=4",
+      "profile": "https://github.com/pedramcvx1",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
