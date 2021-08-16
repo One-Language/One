@@ -369,13 +369,15 @@ extern void UNITY_OUTPUT_FLUSH_HEADER_DECLARATION;
 
 #ifndef UNITY_EXEC_TIME_START
 #define UNITY_EXEC_TIME_START() \
-	do {                        \
+	do                          \
+	{                           \
 	} while (0)
 #endif
 
 #ifndef UNITY_EXEC_TIME_STOP
 #define UNITY_EXEC_TIME_STOP() \
-	do {                       \
+	do                         \
+	{                          \
 	} while (0)
 #endif
 
@@ -385,7 +387,8 @@ extern void UNITY_OUTPUT_FLUSH_HEADER_DECLARATION;
 
 #ifndef UNITY_PRINT_EXEC_TIME
 #define UNITY_PRINT_EXEC_TIME() \
-	do {                        \
+	do                          \
+	{                           \
 	} while (0)
 #endif
 
@@ -808,7 +811,8 @@ int UnityTestMatches(void);
  *-------------------------------------------------------*/
 
 #define UNITY_TEST_ASSERT(condition, line, message)              \
-	do {                                                         \
+	do                                                           \
+	{                                                            \
 		if (condition) {}                                        \
 		else                                                     \
 		{                                                        \

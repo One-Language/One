@@ -517,7 +517,8 @@ int sdsll2str(char *s, long long value)
    * an reversed string. */
 	v = (value < 0) ? -value : value;
 	p = s;
-	do {
+	do
+	{
 		*p++ = '0' + (v % 10);
 		v /= 10;
 	} while (v);
@@ -550,7 +551,8 @@ int sdsull2str(char *s, unsigned long long v)
 	/* Generate the string representation, this method produces
    * an reversed string. */
 	p = s;
-	do {
+	do
+	{
 		*p++ = '0' + (v % 10);
 		v /= 10;
 	} while (v);

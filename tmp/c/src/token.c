@@ -260,7 +260,8 @@ Token *token_next(Lexer *lex)
 	// Skip less than a single-line comments
 	if (*lex->s == '#')
 	{
-		do {
+		do
+		{
 			token_nextchar(lex); // eat '#' at first and other chars at next...
 		} while (*lex->s != EOF && *lex->s != '\0' && *lex->s != '\n' &&
 			 *lex->s != '\r' && *lex->s != '#');
@@ -284,7 +285,8 @@ Token *token_next(Lexer *lex)
 		// Skip single-line comments
 		if (*lex->s == '/')
 		{
-			do {
+			do
+			{
 				token_nextchar(lex); // eat '/' at first and other chars at next...
 			} while (*lex->s != EOF && *lex->s != '\0' && *lex->s != '\n' &&
 				 *lex->s != '\r');

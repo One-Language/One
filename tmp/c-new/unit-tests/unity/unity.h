@@ -112,7 +112,8 @@ extern "C"
  * This method allows you to abort a test immediately with a PASS state, ignoring the remainder of the test. */
 #define TEST_PASS() TEST_ABORT()
 #define TEST_PASS_MESSAGE(message)         \
-	do {                                   \
+	do                                     \
+	{                                      \
 		UnityMessage((message), __LINE__); \
 		TEST_ABORT();                      \
 	} while (0)

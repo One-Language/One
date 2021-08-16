@@ -607,7 +607,8 @@ AstExpressions parser_parse_expressions()
 
 	bool is_first = true;
 
-	do {
+	do
+	{
 		if (is_first == false) parser_expect(TOKEN_OPERATOR_COMMA);
 		//		printf("1/at exprs parser ====::::: current token is %s - %s\n", token_name(PARSER_CURRENT->type), PARSER_CURRENT->value);
 		expr = parser_parse_expression();
