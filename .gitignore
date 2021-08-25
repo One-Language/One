@@ -2,8 +2,8 @@
 cmake-build-debug
 node_modules
 one
-out/*
 *.o
+out/*
 .idea
 
 # build
