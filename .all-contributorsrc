@@ -218,6 +218,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "jdrprod",
+      "name": "Arthur Correnson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16467095?v=4",
+      "profile": "https://jdrprod.github.io/",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
