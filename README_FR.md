@@ -80,24 +80,24 @@ Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source 
 <h2 id="fonctionnalités-de-one">➤ Fonctionnalités de One</h2>
 
 - Simplicité
-- Compilateur
+- Compilé
 - Possibilité de créer un fichier de sortie (x86_64, i386)
 - Langage de programmation système
 - Niveau intermédiaire
 - Programmation réseau et API
-- Pris en charge de la programmation Web (prochainement)
+- Prise en charge de la programmation Web (prochainement)
   - Génération automatique du code correspondant pour CSS et HTML. Vous n'aurez donc pas besoin d'apprendre plus que le langage `One` pour développer un site web
-  - Utilise des variables en CSS, afin que nous puissions obtenir les couleurs ou les tailles de la base de données
+  - Variables CSS pour l'utilisatino de couleurs ou de tailles prédéfinies
   - Minification automatique des résultats de la page
 - Performances et vitesse élevée
-- Pris en charge du code d'assemblage en ligne (prochainement)
+- Prise en charge des fragments de code assembleur (prochainement)
 - Ne nécessite pas de bibliothèques et d'outils spécifiques sur le système utilisateur en mode normal (prochainement)
 - Ne nécessite pas de bibliothèques d'exécution externes en mode normal (prochainement)
 - Ne nécessite pas de compilateurs externes pour effectuer la compilation (prochainement)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="carte">➤ Carte</h2>
+<h2 id="carte">➤ Feuille de route</h2>
 
 La grammaire du langage `One` est disponible [ici](grammar.BNF).
 
@@ -142,7 +142,7 @@ i32 main {
 }
 ```
 
-### Équivalant en C :
+### Équivalent en C :
 
 ```c
 #include <stdio.h>
@@ -164,7 +164,7 @@ main {
 }
 ```
 
-### Équivalant en C :
+### Équivalent en C :
 
 ```c
 #include <stdio.h>
@@ -420,7 +420,7 @@ Si vous souhaitez contribuer au développement de ce projet, vous pouvez nous en
 
 ## Contributeurs ✨
 
-Merci à ces personnes merveilleuses ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Merci à ces merveilleuses personnes ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
