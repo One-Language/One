@@ -18,12 +18,10 @@
 [![Build Status][WorkflowBadge]][WorkflowUrl]
 -->
 
-[![Patreon][patreonbadge]][patreonurl]
-[![Discord][discordbadge]][discordurl]
+[![Patreon][patreonbadge]][patreonurl] [![Discord][discordbadge]][discordurl]
 [![Twitter][twitterurl]][twitterbadge]
 [![Instagram][instagrambadge]][instagramurl]
-[![License][licensebadge]][licenseurl]
-[![Facebook][facebookbadge]][facebookurl]
+[![License][licensebadge]][licenseurl] [![Facebook][facebookbadge]][facebookurl]
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
@@ -31,28 +29,19 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
-[English](README.md)
-&nbsp;
-[عربي](README_AR.md)
-&nbsp;
-[Español](README_ES.md)
-&nbsp;
-[فارسی](README_FA.md)
-&nbsp;
-[Filipino](README_FIL.md)
-&nbsp;
-[Français](README_FR.md)
-&nbsp;
-[русский](README_RU.md)
-&nbsp;
-[Türkçe](README_TR.md)
-&nbsp;
-[Українська](README_UK.md)
+[English](README.md) &nbsp; [عربي](README_AR.md) &nbsp; [Español](README_ES.md)
+&nbsp; [فارسی](README_FA.md) &nbsp; [Filipino](README_FIL.md) &nbsp;
+[Français](README_FR.md) &nbsp; [русский](README_RU.md) &nbsp;
+[Türkçe](README_TR.md) &nbsp; [Українська](README_UK.md)
 
 </div>
 
-Bienvenue à <a href="https://onelang.org">One</a>!</br>
-Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source libre, et auto-hébergé, qui facilite la création de logiciels fiables et efficaces. Il est développé par <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a>, et d'autres contributeurs en open-source.
+Bienvenue à <a href="https://onelang.org">One</a>!</br> Il s'agit d'un langage
+de <b>programmation système</b>, d'amorçage, à source libre, et auto-hébergé,
+qui facilite la création de logiciels fiables et efficaces. Il est développé par
+<a href="https://github.com/BaseMax">Max</a>,
+<a href="https://github.com/jbampton">John</a>, et d'autres contributeurs en
+open-source.
 
 ### Le compilateur pour le langage One sera publié dans quelques mois
 
@@ -86,14 +75,19 @@ Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source 
 - Niveau intermédiaire
 - Programmation réseau et API
 - Prise en charge de la programmation Web (prochainement)
-  - Génération automatique du code correspondant pour CSS et HTML. Vous n'aurez donc pas besoin d'apprendre plus que le langage `One` pour développer un site web
+  - Génération automatique du code correspondant pour CSS et HTML. Vous n'aurez
+    donc pas besoin d'apprendre plus que le langage `One` pour développer un
+    site web
   - Variables CSS pour l'utilisatino de couleurs ou de tailles prédéfinies
   - Minification automatique des résultats de la page
 - Performances et vitesse élevée
 - Prise en charge des fragments de code assembleur (prochainement)
-- Ne nécessite pas de bibliothèques et d'outils spécifiques sur le système utilisateur en mode normal (prochainement)
-- Ne nécessite pas de bibliothèques d'exécution externes en mode normal (prochainement)
-- Ne nécessite pas de compilateurs externes pour effectuer la compilation (prochainement)
+- Ne nécessite pas de bibliothèques et d'outils spécifiques sur le système
+  utilisateur en mode normal (prochainement)
+- Ne nécessite pas de bibliothèques d'exécution externes en mode normal
+  (prochainement)
+- Ne nécessite pas de compilateurs externes pour effectuer la compilation
+  (prochainement)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
@@ -272,8 +266,11 @@ end
 
 ### Développement de l'ancienne interface graphique : (Web, logiciel)
 
-Cette architecture est conçue uniquement pour les sites Web et les logiciels natifs. Prochainement, il sera également disponible pour les applications mobiles (natives).<br>
-Les structures mobiles ne sont pas encore terminées et nécessitent plus d'attention et de réflexion.<br><br>Exemple pour démontrer le fonctionnement de la langue :
+Cette architecture est conçue uniquement pour les sites Web et les logiciels
+natifs. Prochainement, il sera également disponible pour les applications
+mobiles (natives).<br> Les structures mobiles ne sont pas encore terminées et
+nécessitent plus d'attention et de réflexion.<br><br>Exemple pour démontrer le
+fonctionnement de la langue :
 
 ```css
 title "Name - Main"
@@ -358,7 +355,8 @@ header {
 
 <h2 id="pour-commencer">➤ Pour commencer</h2>
 
-Référez-vous à [ce lien](https://github.com/ET-Lang/ET/wiki) pour commencer à apprendre la langue.
+Référez-vous à [ce lien](https://github.com/ET-Lang/ET/wiki) pour commencer à
+apprendre la langue.
 
 <!--Installation Steps-->
 
@@ -383,44 +381,61 @@ Référez-vous à [ce lien](https://github.com/ET-Lang/ET/wiki) pour commencer �
 <!--Get Involved-->
 <h2 id="pour-s-impliquer">➤ Pour s'impliquer</h2>
 
-Nous accueillons toutes sortes de contributions, y compris les rapports de bogues, les demandes de fonctionnalités, les améliorations de la documentation, etc. Pour poser une question ou ouvrir une discussion, créer un problème ou rejoindre le <a href ="https://discord.gg/sFCE2HcMCa">Serveur Discord<b>One</b></a>.
+Nous accueillons toutes sortes de contributions, y compris les rapports de
+bogues, les demandes de fonctionnalités, les améliorations de la documentation,
+etc. Pour poser une question ou ouvrir une discussion, créer un problème ou
+rejoindre le <a href ="https://discord.gg/sFCE2HcMCa">Serveur
+Discord<b>One</b></a>.
 
-Si vous ne savez pas comment faire une pull request sur GitHub, veuillez lire ce [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+Si vous ne savez pas comment faire une pull request sur GitHub, veuillez lire ce
+[guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Si vous avez décidé de contribuer, veuillez d'abord lire les directives[here](CONTRIBUTING.md).
-<br>Vous pouvez également aider au développement de `One` en faisant des dons sur [:heart: Patreon](https://www.patreon.com/onelanguage).
+Si vous avez décidé de contribuer, veuillez d'abord lire les
+directives[here](CONTRIBUTING.md). <br>Vous pouvez également aider au
+développement de `One` en faisant des dons sur
+[:heart: Patreon](https://www.patreon.com/onelanguage).
 
-Merci à tous les <a href ="https://github.com/One-Language/One/graphs/contributors">contributeurs</a>!!
+Merci à tous les
+<a href ="https://github.com/One-Language/One/graphs/contributors">contributeurs</a>!!
 
-Si vous souhaitez contribuer au développement de ce projet, vous pouvez nous envoyer un mail à : <maxbasecode@gmail.com>
+Si vous souhaitez contribuer au développement de ce projet, vous pouvez nous
+envoyer un mail à : <maxbasecode@gmail.com>
 
 <br>Créé par Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="licence">➤ Licence</h2>
 
-`One` est publié sous la licence publique générale GNU v3.0. Veuillez vous référer aux termes du fichier <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENCE</a> inclus dans le repository.
+`One` est publié sous la licence publique générale GNU v3.0. Veuillez vous
+référer aux termes du fichier
+<a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENCE</a>
+inclus dans le repository.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
 
-[discordbadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
-[patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
-[sponsorbadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
+[discordbadge]:
+  https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
+[patreonbadge]:
+  https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
+[sponsorbadge]:
+  https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
 [twitterbadge]: https://twitter.com/onelangteam
 [instagrambadge]: https://img.shields.io/badge/Instagram-Up-brightgreen
 [licensebadge]: https://img.shields.io/github/license/One-Language/One
 [facebookbadge]: https://img.shields.io/badge/Facebook-Up-brightgreen
 [discordurl]: https://discord.gg/sFCE2HcMCa
 [patreonurl]: https://patreon.com/onelanguage
-[twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
+[twitterurl]:
+  https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
 [instagramurl]: https://www.instagram.com/one.lang
 [licenseurl]: https://github.com/One-Language/One/blob/master/LICENSE
 [facebookurl]: https://www.facebook.com/onelangteam
 
 ## Contributeurs ✨
 
-Merci à ces merveilleuses personnes ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Merci à ces merveilleuses personnes
+([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -457,4 +472,6 @@ Merci à ces merveilleuses personnes ([emoji key](https://allcontributors.org/do
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-Ce projet suit la spécification de [all-contributors](https://github.com/all-contributors/all-contributors). Les contributions de toute nature sont les bienvenues ! 🩱 🕐 1️⃣ 🔂
+Ce projet suit la spécification de
+[all-contributors](https://github.com/all-contributors/all-contributors). Les
+contributions de toute nature sont les bienvenues ! 🩱 🕐 1️⃣ 🔂
