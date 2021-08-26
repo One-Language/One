@@ -27,7 +27,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
@@ -454,6 +454,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/mafedeocampo"><img src="https://avatars.githubusercontent.com/u/85558716?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mafedeocampo</b></sub></a><br /><a href="#translation-mafedeocampo" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/mohitsaxenaknoldus"><img src="https://avatars.githubusercontent.com/u/76725454?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mohit Saxena</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=mohitsaxenaknoldus" title="Documentation">📖</a> <a href="https://github.com/One-Language/One/commits?author=mohitsaxenaknoldus" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/pedramcvx1"><img src="https://avatars.githubusercontent.com/u/87372623?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pedram Lotfi</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=pedramcvx1" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://jdrprod.github.io/"><img src="https://avatars.githubusercontent.com/u/16467095?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arthur Correnson</b></sub></a><br /><a href="#translation-jdrprod" title="Translation">🌍</a></td>
   </tr>
 </table>
 
