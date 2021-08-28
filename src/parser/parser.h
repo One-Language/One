@@ -21,16 +21,16 @@
 
 typedef struct
 {
-    AstFile* ast;
+	AstFile* ast;
 
-    const char* path;
-    const char* path_base;
+	const char* path;
+	const char* path_base;
 
-    const char* data;
+	const char* data;
 
-    // tokens
-    Token** tokens;
-    size_t index;
+	// tokens
+	Token** tokens;
+	size_t index;
 } Parser;
 
 /*

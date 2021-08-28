@@ -23,36 +23,36 @@ extern Lexer lexer;
  */
 void error(ErrorType type, int line, const char* file, const char* function, const char* format, ...)
 {
-    debug("error");
+	debug("error");
 
-    va_list args;
-    va_start(args, format);
-    // TODO: Show error type with another custom color!
-    fprintf(stderr, "%s: ", error_name(type));
-    vfprintf(stderr, format, args);
-    va_end(args);
+	va_list args;
+	va_start(args, format);
+	// TODO: Show error type with another custom color!
+	fprintf(stderr, "%s: ", error_name(type));
+	vfprintf(stderr, format, args);
+	va_end(args);
 
-    // fprintf(stderr, "[at %s line %d in %s]", file, line, function);
+	// fprintf(stderr, "[at %s line %d in %s]", file, line, function);
 
-    Location loc;
-    char* path = NULL;
+	Location loc;
+	char* path = NULL;
 
 #ifdef _ONE_PARSER_
-    Token* current_token = (*parser.tokens);
-    loc = current_token->pos;
-    path = parser.path;
+	Token* current_token = (*parser.tokens);
+	loc = current_token->pos;
+	path = parser.path;
 #elif defined _ONE_LEXER_
-    loc = lexer.loc;
+	loc = lexer.loc;
 #endif
 
-    path = (path == NULL) ? "REPL" : path;
-    fprintf(stderr, " at %s:%zu:%zu", path, loc.line, loc.column);
-    fputs("\n", stderr);
+	path = (path == NULL) ? "REPL" : path;
+	fprintf(stderr, " at %s:%zu:%zu", path, loc.line, loc.column);
+	fputs("\n", stderr);
 
-    if (type != ERROR_WARNING)
-    {
-        exit(1);
-    }
+	if (type != ERROR_WARNING)
+	{
+		exit(1);
+	}
 }
 
 /*
@@ -63,21 +63,21 @@ void error(ErrorType type, int line, const char* file, const char* function, con
  */
 char* error_name(ErrorType type)
 {
-    debug("error_name");
+	debug("error_name");
 
-    switch (type)
-    {
-    case ERROR_TREE:
-        return "TREE";
-    case ERROR_WARNING:
-        return "WARNING";
-    case ERROR_PANIC:
-        return "ERROR";
-    case ERROR_TOKEN:
-        return "TOKEN ERROR";
-    case ERROR_PARSER:
-        return "PARSER ERROR";
-    default:
-        return "UNKNOWN ERROR";
-    }
+	switch (type)
+	{
+		case ERROR_TREE:
+			return "TREE";
+		case ERROR_WARNING:
+			return "WARNING";
+		case ERROR_PANIC:
+			return "ERROR";
+		case ERROR_TOKEN:
+			return "TOKEN ERROR";
+		case ERROR_PARSER:
+			return "PARSER ERROR";
+		default:
+			return "UNKNOWN ERROR";
+	}
 }
