@@ -11,55 +11,62 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "tokenizer/tokenizer.h"
+#include <builtins/file.h>
 
 #include "lexer.h"
+extern Token* current;
 
 int main(int argc, char** argv)
 {
 	char* input_file;
 	char* output_file;
-	Token** tokens;
+	FILE* file_out = stdout;
 
-	if (argc == 2)
-	{
-		// printf("Error: pass the arguments correctly!\n");
-		// printf("./lexer input.one output.tokens\n");
-		// return 1;
-
-		tokens = tokenizer_string(argv[1]);
-		lexer_trace(stdout, argv[1], tokens);
-	}
-	else if (argc == 3)
-	{
+	if (argc == 1) {
+		printf("Error: arguments are not correct!\n");
+		printf("./lexer input.one output.tokens\n");
+		printf("./lexer \"your input here as string\"\n");
+		return 1;
+	} else if (argc == 2) {
+		input_file = argv[1];
+	} else if (argc == 3) {
 		input_file = argv[1];
 		output_file = argv[2];
+		file_out = fopen(output_file, "wa+");
 
-		printf("Input file is: %s\n", input_file);
-		printf("Output file is: %s\n", output_file);
-
-		char* data = file_reads(input_file);
-		tokens = tokenizer_string(data);
-
-		FILE* file_out = fopen(output_file, "wa+"); // W: clear the file after open,
-			 // a+: Append mode, so if we call `fprintf` some time we can append to the file!
 		if (!file_out)
 		{
 			fprintf(stderr, "Error: it's unable to write output to %s file!\n", output_file);
 			exit(1);
 		}
-
-		lexer_trace(file_out, data, tokens);
-
-		fclose(file_out);
 	}
-	else
-	{
-		printf("Error: arguments are not correct!\n");
-		printf("./lexer input.one output.tokens\n");
-		printf("./lexer \"your input here as string\"\n");
-		return 1;
+
+	char* data = file_reads(input_file);
+	lexer_init(data);
+
+	// Lexer Tracer for debugging
+	while(!peekFor(TOKEN_EOF)) {
+		char* t_name = token_name(current->type);
+
+		bool has1 = file_convert_index_to_rc(data, current->pos.index, &current->pos.line, &current->pos.column);
+		bool has2 = file_convert_index_to_rc(data, current->pos_end.index, &current->pos_end.line, &current->pos_end.column);
+
+		fprintf(file_out, "[%zu:%zu] [%zu:%zu - %zu:%zu] %s", current->pos.tokens, current->length, current->pos.line, current->pos.column, current->pos_end.line, current->pos_end.column, t_name);
+
+		if (current->value != NULL)
+		{
+			fprintf(file_out, ": \"%s\"", current->value);
+		}
+		fprintf(file_out, "\n");
+
+		advance();
 	}
+
+	assert(current->type == TOKEN_EOF);
+	free(current);
+	lexer_free();
+	free(data);
+	if (file_out != stdout) fclose(file_out);
 
 	return 0;
 }

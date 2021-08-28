@@ -11,9 +11,6 @@
 #ifndef _ONE_TOKENIZER_TOKEN_H_
 #define _ONE_TOKENIZER_TOKEN_H_
 
-#include "../../builtins/error.h"
-
-#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 

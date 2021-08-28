@@ -11,13 +11,13 @@
 #ifndef _ONE_PARSER_PARSER_H_
 #define _ONE_PARSER_PARSER_H_
 
-#include "../lexer/lexer.h"
+#include "lexer/lexer.h"
 
 #include "../ast/ast.h"
 
 #include "parser_token.h"
 
-#include "../builtins/array.h"
+#include <builtins/array.h>
 
 typedef struct
 {

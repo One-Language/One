@@ -8,14 +8,11 @@
 
  **/
 
-#include "../lexer/tokenizer/tokenizer.h"
-#include "../lexer/lexer.h"
-#include "../parser/parser.h"
+#include <parser/lexer/lexer.h>
 
 #include "error.h"
 
 // Global variable(s)
-extern Parser parser;
 extern Lexer lexer;
 
 /*

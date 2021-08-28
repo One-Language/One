@@ -9,9 +9,29 @@
  **/
 
 #include "lexer.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <builtins/error.h>
 
-// Global variable(s)
+#ifdef _ONE_TEST_
+#define debug_lexer(format, args...)   \
+	printf(CYAN "Lexer Debug: " format \
+				"\n" RESET,            \
+		 ##args);
+	 // printf(CYAN "Lexer Debug: " format " at %d on %s in %s" \
+	// 			"\n" RESET,                                 \
+	// 	 ##args,                                            \
+	// 	 __LINE__,                                          \
+	// 	 "file",                                            \
+	// 	 __FUNCTION__);
+	 // #define debug_lexer(format, args...)
+#else
+#define debug_lexer(format,args...)
+#endif
+
 Lexer lexer;
+Token* current;
 
 /*
  * @function: lexer_init
@@ -36,6 +56,9 @@ void lexer_init(char* source)
 	lexer.pos_end.index = 0;
 	lexer.pos_end.line = 1;
 	lexer.pos_end.column = 0;
+
+	//Get the first TOKEN into current
+	advance();
 }
 
 /*
@@ -545,6 +568,20 @@ Token* lexer_scan()
 }
 
 /*
+	advance the token stream to the next token
+*/
+void advance() {
+	current = lexer_scan();
+}
+
+/*
+	Is the current token of type t
+*/
+bool peekFor(TokenType t) {
+	return (current->type == t);
+}
+
+/*
  * @function: lexer_free
  * @description: Free allocated memory for the lexer stage! TODO
  * @arguments: nothing
@@ -556,36 +593,4 @@ void lexer_free()
 
 	// free(lexer.start);
 	// free(lexer.current);
-}
-
-/*
- * @function: lexer_trace
- * @description: Log and trace items of tokens
- * @arguments: FILE* file_out, char* data, Token** tokens
- * @return: nothing, void
- */
-void lexer_trace(FILE* file_out, const char* data, Token** tokens)
-{
-	debug_lexer("lexer_trace");
-
-	if (tokens == NULL) return;
-
-	while (*tokens != NULL)
-	{
-		Token* t = *tokens;
-		char* t_name = token_name(t->type);
-
-		bool has1 = file_convert_index_to_rc(data, t->pos.index, &t->pos.line, &t->pos.column);
-		bool has2 = file_convert_index_to_rc(data, t->pos_end.index, &t->pos_end.line, &t->pos_end.column);
-
-		fprintf(file_out, "[%zu:%zu] [%zu:%zu - %zu:%zu] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
-
-		if (t->value != NULL)
-		{
-			fprintf(file_out, ": \"%s\"", t->value);
-		}
-		fprintf(file_out, "\n");
-		if (t->type == TOKEN_EOF) break;
-		tokens++;
-	}
 }
