@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <assert.h>
 
 typedef enum
 {
@@ -52,7 +53,7 @@ typedef enum
 
 //#define check(format, args...)
 
-#ifndef _ONE_TEST_
+#ifdef _ONE_TEST_
 
 #define debug(format, args...)    \
 	printf(WHITE "Debug: " format \
@@ -65,30 +66,6 @@ typedef enum
 	// 	 "file",                                       \
 	// 	 __FUNCTION__);
 	 // #define debug(format, args...)
-
-#define debug_token(format, args...)     \
-	printf(YELLOW "Token Debug: " format \
-				  "\n" RESET,            \
-		 ##args);
-	 // printf(YELLOW "Token Debug: " format " at %d on %s in %s" \
-	// 			  "\n" RESET,                                 \
-	// 	 ##args,                                              \
-	// 	 __LINE__,                                            \
-	// 	 "file",                                              \
-	// 	 __FUNCTION__);
-	 // #define debug_token(format, args...)
-
-#define debug_lexer(format, args...)   \
-	printf(CYAN "Lexer Debug: " format \
-				"\n" RESET,            \
-		 ##args);
-	 // printf(CYAN "Lexer Debug: " format " at %d on %s in %s" \
-	// 			"\n" RESET,                                 \
-	// 	 ##args,                                            \
-	// 	 __LINE__,                                          \
-	// 	 "file",                                            \
-	// 	 __FUNCTION__);
-	 // #define debug_lexer(format, args...)
 
 #define debug_parser(format, args...)   \
 	printf(WHITE "Parser INFO: " format \
@@ -224,10 +201,6 @@ typedef enum
 #else
 
 #define debug(format, args...)
-
-#define debug_token(format, args...)
-
-#define debug_lexer(format, args...)
 
 #define debug_parser(format, args...)
 
