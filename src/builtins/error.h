@@ -18,16 +18,16 @@
 
 typedef enum
 {
-	ERROR_WARNING,
-	ERROR_PANIC,
+    ERROR_WARNING,
+    ERROR_PANIC,
 
-	ERROR_BUILTIN,
+    ERROR_BUILTIN,
 
-	ERROR_TOKEN,
-	ERROR_LEXER,
-	ERROR_PARSER,
-	ERROR_AST,
-	ERROR_TREE,
+    ERROR_TOKEN,
+    ERROR_LEXER,
+    ERROR_PARSER,
+    ERROR_AST,
+    ERROR_TREE,
 } ErrorType; // TODO
 
 #define RESET "\033[0m"
@@ -59,61 +59,61 @@ typedef enum
 	printf(WHITE "Debug: " format \
 				 "\n" RESET,      \
 		 ##args);
-	 // printf(WHITE "Debug: " format " at %d on %s in %s" \
-	// 			 "\n" RESET,                           \
-	// 	 ##args,                                       \
-	// 	 __LINE__,                                     \
-	// 	 "file",                                       \
-	// 	 __FUNCTION__);
-	 // #define debug(format, args...)
+// printf(WHITE "Debug: " format " at %d on %s in %s" \
+// 			 "\n" RESET,                           \
+// 	 ##args,                                       \
+// 	 __LINE__,                                     \
+// 	 "file",                                       \
+// 	 __FUNCTION__);
+// #define debug(format, args...)
 
 #define debug_parser(format, args...)   \
 	printf(WHITE "Parser INFO: " format \
 				 "\n" RESET,            \
 		 ##args);
-	 // printf(BLUE "Parser INFO: " format " at %d on %s in %s" \
-	// 			"\n" RESET,                                 \
-	// 	 ##args,                                            \
-	// 	 __LINE__,                                          \
-	// 	 "file",                                            \
-	// 	 __FUNCTION__);
-	 // #define debug_parser(format, args...)
+// printf(BLUE "Parser INFO: " format " at %d on %s in %s" \
+// 			"\n" RESET,                                 \
+// 	 ##args,                                            \
+// 	 __LINE__,                                          \
+// 	 "file",                                            \
+// 	 __FUNCTION__);
+// #define debug_parser(format, args...)
 
 #define debug_ast(format, args...)  \
 	printf(BLUE "Ast INFO: " format \
 				"\n" RESET,         \
 		 ##args);
-	 // printf(BLUE "Ast INFO: " format " at %d on %s in %s" \
-	// 			"\n" RESET,                              \
-	// 	 ##args,                                         \
-	// 	 __LINE__,                                       \
-	// 	 "file",                                         \
-	// 	 __FUNCTION__);
-	 // #define debug_ast(format, args...)
+// printf(BLUE "Ast INFO: " format " at %d on %s in %s" \
+// 			"\n" RESET,                              \
+// 	 ##args,                                         \
+// 	 __LINE__,                                       \
+// 	 "file",                                         \
+// 	 __FUNCTION__);
+// #define debug_ast(format, args...)
 
 #define debug_tree(format, args...)  \
 	printf(BLUE "Tree INFO: " format \
 				"\n" RESET,          \
 		 ##args);
-	 // printf(BLUE "Tree INFO: " format " at %d on %s in %s" \
-	// 			"\n" RESET,                               \
-	// 	 ##args,                                          \
-	// 	 __LINE__,                                        \
-	// 	 "file",                                          \
-	// 	 __FUNCTION__);
-	 // #define debug_tree(format, args...)
+// printf(BLUE "Tree INFO: " format " at %d on %s in %s" \
+// 			"\n" RESET,                               \
+// 	 ##args,                                          \
+// 	 __LINE__,                                        \
+// 	 "file",                                          \
+// 	 __FUNCTION__);
+// #define debug_tree(format, args...)
 
 #define debug_builtins(format, args...)    \
 	printf(GREEN "Builtins Debug: " format \
 				 "\n" RESET,               \
 		 ##args);
-	 // printf(GREEN "Builtins Debug: " format " at %d on %s in %s" \
-	// 			 "\n" RESET,                                    \
-	// 	 ##args,                                                \
-	// 	 __LINE__,                                              \
-	// 	 "file",                                                \
-	// 	 __FUNCTION__);
-	 // #define debug_builtins(format, args...)
+// printf(GREEN "Builtins Debug: " format " at %d on %s in %s" \
+// 			 "\n" RESET,                                    \
+// 	 ##args,                                                \
+// 	 __LINE__,                                              \
+// 	 "file",                                                \
+// 	 __FUNCTION__);
+// #define debug_builtins(format, args...)
 
 //////////////////
 
@@ -121,37 +121,37 @@ typedef enum
 	printf(BOLDWHITE "INFO: " format \
 					 "\n" RESET,     \
 		 ##args);
-	 // printf(BOLDWHITE "INFO: " format " at %d on %s in %s" \
-	// 				 "\n" RESET,                          \
-	// 	 ##args,                                          \
-	// 	 __LINE__,                                        \
-	// 	 "file",                                          \
-	// 	 __FUNCTION__);
-	 // #define info(format, args...)
+// printf(BOLDWHITE "INFO: " format " at %d on %s in %s" \
+// 				 "\n" RESET,                          \
+// 	 ##args,                                          \
+// 	 __LINE__,                                        \
+// 	 "file",                                          \
+// 	 __FUNCTION__);
+// #define info(format, args...)
 
 #define info_token(format, args...)         \
 	printf(BOLDYELLOW "Token INFO: " format \
 					  "\n" RESET,           \
 		 ##args);
-	 // printf(BOLDYELLOW "Token INFO: " format " at %d on %s in %s" \
-	// 				  "\n" RESET,                                \
-	// 	 ##args,                                                 \
-	// 	 __LINE__,                                               \
-	// 	 "file",                                                 \
-	// 	 __FUNCTION__);
-	 // #define info(info_token, args...)
+// printf(BOLDYELLOW "Token INFO: " format " at %d on %s in %s" \
+// 				  "\n" RESET,                                \
+// 	 ##args,                                                 \
+// 	 __LINE__,                                               \
+// 	 "file",                                                 \
+// 	 __FUNCTION__);
+// #define info(info_token, args...)
 
 #define info_lexer(format, args...)       \
 	printf(BOLDCYAN "Lexer INFO: " format \
 					"\n" RESET,           \
 		 ##args);
-	 // printf(BOLDCYAN "Lexer INFO: " format " at %d on %s in %s" \
-	// 				"\n" RESET,                                \
-	// 	 ##args,                                               \
-	// 	 __LINE__,                                             \
-	// 	 "file",                                               \
-	// 	 __FUNCTION__);
-	 // #define info_lexer(info_token, args...)
+// printf(BOLDCYAN "Lexer INFO: " format " at %d on %s in %s" \
+// 				"\n" RESET,                                \
+// 	 ##args,                                               \
+// 	 __LINE__,                                             \
+// 	 "file",                                               \
+// 	 __FUNCTION__);
+// #define info_lexer(info_token, args...)
 
 #define info_parser(format, args...)                             \
 	printf(BOLDWHITE "Parser INFO: " format " at %d on %s in %s" \
@@ -160,43 +160,43 @@ typedef enum
 		 __LINE__,                                               \
 		 "file",                                                 \
 		 __FUNCTION__);
-	 // #define info_parser(info_token, args...)
+// #define info_parser(info_token, args...)
 
 #define info_ast(format, args...)       \
 	printf(BOLDBLUE "Ast INFO: " format \
 					"\n" RESET,         \
 		 ##args);
-	 // printf(BOLDBLUE "Ast INFO: " format " at %d on %s in %s" \
-	// 				"\n" RESET,                              \
-	// 	 ##args,                                             \
-	// 	 __LINE__,                                           \
-	// 	 "file",                                             \
-	// 	 __FUNCTION__);
-	 // #define info_ast(info_token, args...)
+// printf(BOLDBLUE "Ast INFO: " format " at %d on %s in %s" \
+// 				"\n" RESET,                              \
+// 	 ##args,                                             \
+// 	 __LINE__,                                           \
+// 	 "file",                                             \
+// 	 __FUNCTION__);
+// #define info_ast(info_token, args...)
 
 #define info_tree(format, args...)       \
 	printf(BOLDBLUE "Tree INFO: " format \
 					"\n" RESET,          \
 		 ##args);
-	 // printf(BOLDBLUE "Tree INFO: " format " at %d on %s in %s" \
-	// 				"\n" RESET,                               \
-	// 	 ##args,                                              \
-	// 	 __LINE__,                                            \
-	// 	 "file",                                              \
-	// 	 __FUNCTION__);
-	 // #define info_tree(info_token, args...)
+// printf(BOLDBLUE "Tree INFO: " format " at %d on %s in %s" \
+// 				"\n" RESET,                               \
+// 	 ##args,                                              \
+// 	 __LINE__,                                            \
+// 	 "file",                                              \
+// 	 __FUNCTION__);
+// #define info_tree(info_token, args...)
 
 #define info_builtins(format, args...)    \
 	printf(GREEN "Builtins INFO: " format \
 				 "\n" RESET,              \
 		 ##args);
-	 // printf(GREEN "Builtins INFO: " format " at %d on %s in %s" \
-	// 			 "\n" RESET,                                   \
-	// 	 ##args,                                               \
-	// 	 __LINE__,                                             \
-	// 	 "file",                                               \
-	// 	 __FUNCTION__);
-	 // #define info_builtins(format, args...)
+// printf(GREEN "Builtins INFO: " format " at %d on %s in %s" \
+// 			 "\n" RESET,                                   \
+// 	 ##args,                                               \
+// 	 __LINE__,                                             \
+// 	 "file",                                               \
+// 	 __FUNCTION__);
+// #define info_builtins(format, args...)
 
 #else
 

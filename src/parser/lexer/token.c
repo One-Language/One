@@ -17,13 +17,13 @@
 	printf(YELLOW "Token Debug: " format \
 				  "\n" RESET,            \
 		 ##args);
-	 // printf(YELLOW "Token Debug: " format " at %d on %s in %s" \
-	// 			  "\n" RESET,                                 \
-	// 	 ##args,                                              \
-	// 	 __LINE__,                                            \
-	// 	 "file",                                              \
-	// 	 __FUNCTION__);
-	 // #define debug_token(format, args...)
+// printf(YELLOW "Token Debug: " format " at %d on %s in %s" \
+// 			  "\n" RESET,                                 \
+// 	 ##args,                                              \
+// 	 __LINE__,                                            \
+// 	 "file",                                              \
+// 	 __FUNCTION__);
+// #define debug_token(format, args...)
 #else
 #define debug_token(format, args...)
 #endif
@@ -38,11 +38,11 @@ extern Lexer lexer;
  */
 bool token_is_alpha(char c)
 {
-	debug_token("token_is_alpha");
+    debug_token("token_is_alpha");
 
-	return (c >= 'a' && c <= 'z') ||
-		 (c >= 'A' && c <= 'Z') ||
-		 c == '_';
+    return (c >= 'a' && c <= 'z') ||
+           (c >= 'A' && c <= 'Z') ||
+           c == '_';
 }
 
 /*
@@ -53,12 +53,12 @@ bool token_is_alpha(char c)
  */
 bool token_is_ident(char c)
 {
-	debug_token("token_is_ident");
+    debug_token("token_is_ident");
 
-	return (c >= 'a' && c <= 'z') ||
-		 (c >= 'A' && c <= 'Z') ||
-		 c == '_' ||
-		 (c >= '0' && c <= '9');
+    return (c >= 'a' && c <= 'z') ||
+           (c >= 'A' && c <= 'Z') ||
+           c == '_' ||
+           (c >= '0' && c <= '9');
 }
 
 /*
@@ -69,9 +69,9 @@ bool token_is_ident(char c)
  */
 bool token_is_digit(char c)
 {
-	debug_token("token_is_digit");
+    debug_token("token_is_digit");
 
-	return c >= '0' && c <= '9';
+    return c >= '0' && c <= '9';
 }
 
 /*
@@ -82,9 +82,9 @@ bool token_is_digit(char c)
  */
 bool token_is_end()
 {
-	debug_token("token_is_end");
+    debug_token("token_is_end");
 
-	return *lexer.current == '\0';
+    return *lexer.current == '\0';
 }
 
 /*
@@ -95,19 +95,19 @@ bool token_is_end()
  */
 char token_recede()
 {
-	debug_token("token_recede");
+    debug_token("token_recede");
 
-	lexer.current--;
-	// if (lexer.current[0] == '\n' || lexer.current[0] == '\r')
-	// {
-	// 	lexer.pos_end.line--;
-	// 	// TODO: column
-	// }
-	// else {
-	// 	lexer.pos_end.column--;
-	// }
-	lexer.pos_end.index--;
-	return lexer.current[-1];
+    lexer.current--;
+    // if (lexer.current[0] == '\n' || lexer.current[0] == '\r')
+    // {
+    // 	lexer.pos_end.line--;
+    // 	// TODO: column
+    // }
+    // else {
+    // 	lexer.pos_end.column--;
+    // }
+    lexer.pos_end.index--;
+    return lexer.current[-1];
 }
 
 /*
@@ -118,11 +118,11 @@ char token_recede()
  */
 char token_recede_next()
 {
-	debug_token("token_recede_next");
+    debug_token("token_recede_next");
 
-	token_recede();
+    token_recede();
 
-	return lexer.current[0];
+    return lexer.current[0];
 }
 
 /*
@@ -133,11 +133,11 @@ char token_recede_next()
  */
 char token_recede_next_next()
 {
-	debug_token("token_recede_next_next");
+    debug_token("token_recede_next_next");
 
-	token_recede();
+    token_recede();
 
-	return lexer.current[1];
+    return lexer.current[1];
 }
 
 /*
@@ -148,21 +148,21 @@ char token_recede_next_next()
  */
 char token_advance()
 {
-	debug_token("token_advance");
+    debug_token("token_advance");
 
-	lexer.current++;
-	// if (lexer.current[0] == '\n' || lexer.current[0] == '\r')
-	// {
-	// 	lexer.temp_column = lexer.pos_end.column;
-	// 	lexer.pos_end.column = 0;
-	// 	lexer.pos_end.line++;
-	// }
-	// else
-	// {
-	// 	lexer.pos_end.column++;
-	// }
-	lexer.pos_end.index++;
-	return lexer.current[-1];
+    lexer.current++;
+    // if (lexer.current[0] == '\n' || lexer.current[0] == '\r')
+    // {
+    // 	lexer.temp_column = lexer.pos_end.column;
+    // 	lexer.pos_end.column = 0;
+    // 	lexer.pos_end.line++;
+    // }
+    // else
+    // {
+    // 	lexer.pos_end.column++;
+    // }
+    lexer.pos_end.index++;
+    return lexer.current[-1];
 }
 
 /*
@@ -173,11 +173,11 @@ char token_advance()
  */
 char token_advance_next()
 {
-	debug_token("token_advance_next");
+    debug_token("token_advance_next");
 
-	token_advance();
+    token_advance();
 
-	return lexer.current[0];
+    return lexer.current[0];
 }
 
 /*
@@ -188,9 +188,9 @@ char token_advance_next()
  */
 char token_peek()
 {
-	debug_token("token_peek");
+    debug_token("token_peek");
 
-	return *lexer.current;
+    return *lexer.current;
 }
 
 /*
@@ -201,10 +201,10 @@ char token_peek()
  */
 char token_peek_next()
 {
-	debug_token("token_peek_next");
+    debug_token("token_peek_next");
 
-	if (token_is_end()) return '\0';
-	return lexer.current[1];
+    if (token_is_end()) return '\0';
+    return lexer.current[1];
 }
 
 /*
@@ -215,9 +215,9 @@ char token_peek_next()
  */
 char token_peek_prev()
 {
-	debug_token("token_peek_prev");
+    debug_token("token_peek_prev");
 
-	return lexer.current[-1]; // TODO: Review
+    return lexer.current[-1]; // TODO: Review
 }
 
 /*
@@ -228,12 +228,12 @@ char token_peek_prev()
  */
 bool token_match(char expected)
 {
-	debug_token("token_match");
+    debug_token("token_match");
 
-	if (token_is_end()) return false;
-	if (*lexer.current != expected) return false;
-	lexer.current++;
-	return true;
+    if (token_is_end()) return false;
+    if (*lexer.current != expected) return false;
+    lexer.current++;
+    return true;
 }
 
 /*
@@ -244,9 +244,9 @@ bool token_match(char expected)
  */
 Token* token_make(TokenType type)
 {
-	debug_token("token_make");
+    debug_token("token_make");
 
-	return token_make_value(type, NULL);
+    return token_make_value(type, NULL);
 }
 
 /*
@@ -257,21 +257,21 @@ Token* token_make(TokenType type)
  */
 Token* token_make_value(TokenType type, char* value)
 {
-	debug_token("token_make_string");
+    debug_token("token_make_string");
 
-	Token* t = malloc(sizeof(Token));
-	t->value = value;
-	t->type = type;
-	t->length = (int)(lexer.current - lexer.start);
+    Token* t = malloc(sizeof(Token));
+    t->value = value;
+    t->type = type;
+    t->length = (int)(lexer.current - lexer.start);
 
-	t->pos = lexer.pos;
-	t->pos.tokens = lexer.pos.tokens++;
-	t->pos.column = lexer.pos.column > 0 ? lexer.pos.column - 1 : lexer.pos.column;
+    t->pos = lexer.pos;
+    t->pos.tokens = lexer.pos.tokens++;
+    t->pos.column = lexer.pos.column > 0 ? lexer.pos.column - 1 : lexer.pos.column;
 
-	t->pos_end.tokens = lexer.pos_end.tokens++;
-	t->pos_end.index = lexer.pos_end.index;
+    t->pos_end.tokens = lexer.pos_end.tokens++;
+    t->pos_end.index = lexer.pos_end.index;
 
-	return t;
+    return t;
 }
 
 /*
@@ -282,9 +282,9 @@ Token* token_make_value(TokenType type, char* value)
  */
 Token* token_make_error(char* message)
 {
-	debug_token("token_make_error");
+    debug_token("token_make_error");
 
-	return token_make_value(TOKEN_ERROR, message);
+    return token_make_value(TOKEN_ERROR, message);
 }
 
 /*
@@ -295,268 +295,268 @@ Token* token_make_error(char* message)
  */
 char* token_name(TokenType type)
 {
-	//	debug_token("token_name");
+    //	debug_token("token_name");
 
-	switch (type)
-	{
-		case TOKEN_EOF:
-			return "EOF";
-		case TOKEN_ERROR:
-			return "Error";
+    switch (type)
+    {
+    case TOKEN_EOF:
+        return "EOF";
+    case TOKEN_ERROR:
+        return "Error";
 
-		case TOKEN_VALUE_IDENTIFIER:
-			return "value_identifier";
+    case TOKEN_VALUE_IDENTIFIER:
+        return "value_identifier";
 
-		case TOKEN_TYPE_I8:
-			return "type_i8";
-		case TOKEN_TYPE_I16:
-			return "type_i16";
-		case TOKEN_TYPE_I32:
-			return "type_i32";
-		case TOKEN_TYPE_I64:
-			return "type_i64";
-		case TOKEN_TYPE_I128:
-			return "type_i128";
+    case TOKEN_TYPE_I8:
+        return "type_i8";
+    case TOKEN_TYPE_I16:
+        return "type_i16";
+    case TOKEN_TYPE_I32:
+        return "type_i32";
+    case TOKEN_TYPE_I64:
+        return "type_i64";
+    case TOKEN_TYPE_I128:
+        return "type_i128";
 
-		case TOKEN_TYPE_U8:
-			return "type_u8";
-		case TOKEN_TYPE_U16:
-			return "type_u16";
-		case TOKEN_TYPE_U32:
-			return "type_u32";
-		case TOKEN_TYPE_U64:
-			return "type_u64";
-		case TOKEN_TYPE_U128:
-			return "type_u128";
+    case TOKEN_TYPE_U8:
+        return "type_u8";
+    case TOKEN_TYPE_U16:
+        return "type_u16";
+    case TOKEN_TYPE_U32:
+        return "type_u32";
+    case TOKEN_TYPE_U64:
+        return "type_u64";
+    case TOKEN_TYPE_U128:
+        return "type_u128";
 
-		case TOKEN_TYPE_F32:
-			return "type_f32";
-		case TOKEN_TYPE_F64:
-			return "type_f64";
+    case TOKEN_TYPE_F32:
+        return "type_f32";
+    case TOKEN_TYPE_F64:
+        return "type_f64";
 
-		case TOKEN_TYPE_BOOL:
-			return "type_bool";
-		case TOKEN_TYPE_STRING:
-			return "type_string";
-		case TOKEN_TYPE_CHAR:
-			return "type_char";
+    case TOKEN_TYPE_BOOL:
+        return "type_bool";
+    case TOKEN_TYPE_STRING:
+        return "type_string";
+    case TOKEN_TYPE_CHAR:
+        return "type_char";
 
-		case TOKEN_VALUE_NUMBER:
-			return "value_number";
-		case TOKEN_VALUE_STRING:
-			return "value_string";
-		case TOKEN_VALUE_CHAR:
-			return "value_char";
+    case TOKEN_VALUE_NUMBER:
+        return "value_number";
+    case TOKEN_VALUE_STRING:
+        return "value_string";
+    case TOKEN_VALUE_CHAR:
+        return "value_char";
 
-		case TOKEN_VALUE_BOOL_TRUE:
-			return "value_true";
-		case TOKEN_VALUE_BOOL_FALSE:
-			return "value_false";
+    case TOKEN_VALUE_BOOL_TRUE:
+        return "value_true";
+    case TOKEN_VALUE_BOOL_FALSE:
+        return "value_false";
 
-		case TOKEN_OPERATOR_NONE:
-			return "NonOp";
+    case TOKEN_OPERATOR_NONE:
+        return "NonOp";
 
-		case TOKEN_OPERATOR_EQUAL_EQUAL:
-			return "==";
-		case TOKEN_OPERATOR_EQUAL:
-			return "=";
+    case TOKEN_OPERATOR_EQUAL_EQUAL:
+        return "==";
+    case TOKEN_OPERATOR_EQUAL:
+        return "=";
 
-		case TOKEN_OPERATOR_GREATER:
-			return ">";
-		case TOKEN_OPERATOR_GREATER_EQUAL:
-			return "<=";
-		case TOKEN_OPERATOR_LESS:
-			return "<";
-		case TOKEN_OPERATOR_LESS_EQUAL:
-			return "<=";
+    case TOKEN_OPERATOR_GREATER:
+        return ">";
+    case TOKEN_OPERATOR_GREATER_EQUAL:
+        return "<=";
+    case TOKEN_OPERATOR_LESS:
+        return "<";
+    case TOKEN_OPERATOR_LESS_EQUAL:
+        return "<=";
 
-		case TOKEN_OPERATOR_PLUS:
-			return "+";
-		case TOKEN_OPERATOR_PLUSPLUS:
-			return "++";
-		case TOKEN_OPERATOR_MINUS:
-			return "-";
-		case TOKEN_OPERATOR_MINUSMINUS:
-			return "--";
-		case TOKEN_OPERATOR_STAR:
-			return "*";
-		case TOKEN_OPERATOR_POWER:
-			return "**";
-		case TOKEN_OPERATOR_SLASH:
-			return "/";
-		case TOKEN_OPERATOR_SLASH_INT:
-			return "//";
+    case TOKEN_OPERATOR_PLUS:
+        return "+";
+    case TOKEN_OPERATOR_PLUSPLUS:
+        return "++";
+    case TOKEN_OPERATOR_MINUS:
+        return "-";
+    case TOKEN_OPERATOR_MINUSMINUS:
+        return "--";
+    case TOKEN_OPERATOR_STAR:
+        return "*";
+    case TOKEN_OPERATOR_POWER:
+        return "**";
+    case TOKEN_OPERATOR_SLASH:
+        return "/";
+    case TOKEN_OPERATOR_SLASH_INT:
+        return "//";
 
-		case TOKEN_OPERATOR_REMAINDER:
-			return "%";
+    case TOKEN_OPERATOR_REMAINDER:
+        return "%";
 
-		case TOKEN_OPERATOR_SHIFT_LEFT:
-			return "<<";
-		case TOKEN_OPERATOR_SHIFT_RIGHT:
-			return ">>";
+    case TOKEN_OPERATOR_SHIFT_LEFT:
+        return "<<";
+    case TOKEN_OPERATOR_SHIFT_RIGHT:
+        return ">>";
 
-		case TOKEN_OPERATOR_AND:
-			return "&&";
-		case TOKEN_OPERATOR_BITWISE_AND:
-			return "&";
+    case TOKEN_OPERATOR_AND:
+        return "&&";
+    case TOKEN_OPERATOR_BITWISE_AND:
+        return "&";
 
-		case TOKEN_OPERATOR_OR:
-			return "||";
-		case TOKEN_OPERATOR_BITWISE_OR:
-			return "|";
+    case TOKEN_OPERATOR_OR:
+        return "||";
+    case TOKEN_OPERATOR_BITWISE_OR:
+        return "|";
 
-		case TOKEN_OPERATOR_BITWISE_XOR:
-			return "^";
+    case TOKEN_OPERATOR_BITWISE_XOR:
+        return "^";
 
-		case TOKEN_OPERATOR_EQUAL_PLUS:
-			return "+=";
-		case TOKEN_OPERATOR_EQUAL_MINUS:
-			return "-=";
-		case TOKEN_OPERATOR_EQUAL_STAR:
-			return "*=";
-		case TOKEN_OPERATOR_EQUAL_POWER:
-			return "**=";
-		case TOKEN_OPERATOR_EQUAL_SLASH:
-			return "/=";
-		case TOKEN_OPERATOR_EQUAL_SLASH_INT:
-			return "//=";
-		case TOKEN_OPERATOR_EQUAL_SHIFT_LEFT:
-			return "<<=";
-		case TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT:
-			return ">>=";
+    case TOKEN_OPERATOR_EQUAL_PLUS:
+        return "+=";
+    case TOKEN_OPERATOR_EQUAL_MINUS:
+        return "-=";
+    case TOKEN_OPERATOR_EQUAL_STAR:
+        return "*=";
+    case TOKEN_OPERATOR_EQUAL_POWER:
+        return "**=";
+    case TOKEN_OPERATOR_EQUAL_SLASH:
+        return "/=";
+    case TOKEN_OPERATOR_EQUAL_SLASH_INT:
+        return "//=";
+    case TOKEN_OPERATOR_EQUAL_SHIFT_LEFT:
+        return "<<=";
+    case TOKEN_OPERATOR_EQUAL_SHIFT_RIGHT:
+        return ">>=";
 
-		case TOKEN_OPERATOR_BRACKET_ROUND_LEFT:
-			return "(";
-		case TOKEN_OPERATOR_BRACKET_ROUND_RIGHT:
-			return ")";
+    case TOKEN_OPERATOR_BRACKET_ROUND_LEFT:
+        return "(";
+    case TOKEN_OPERATOR_BRACKET_ROUND_RIGHT:
+        return ")";
 
-		case TOKEN_OPERATOR_BRACKET_SQUARE_LEFT:
-			return "[";
-		case TOKEN_OPERATOR_BRACKET_SQUARE_RIGHT:
-			return "]";
+    case TOKEN_OPERATOR_BRACKET_SQUARE_LEFT:
+        return "[";
+    case TOKEN_OPERATOR_BRACKET_SQUARE_RIGHT:
+        return "]";
 
-		case TOKEN_OPERATOR_BRACKET_CURLY_LEFT:
-			return "{";
-		case TOKEN_OPERATOR_BRACKET_CURLY_RIGHT:
-			return "}";
+    case TOKEN_OPERATOR_BRACKET_CURLY_LEFT:
+        return "{";
+    case TOKEN_OPERATOR_BRACKET_CURLY_RIGHT:
+        return "}";
 
-		case TOKEN_OPERATOR_COMMA:
-			return ",";
-		case TOKEN_OPERATOR_COLON:
-			return ":";
-		case TOKEN_OPERATOR_COLONCOLON:
-			return "::";
-		case TOKEN_OPERATOR_QUESTION:
-			return "?";
-		case TOKEN_OPERATOR_DOT:
-			return ".";
-		case TOKEN_OPERATOR_DOTDOT:
-			return "..";
-		case TOKEN_OPERATOR_DOTDOTDOT:
-			return "...";
+    case TOKEN_OPERATOR_COMMA:
+        return ",";
+    case TOKEN_OPERATOR_COLON:
+        return ":";
+    case TOKEN_OPERATOR_COLONCOLON:
+        return "::";
+    case TOKEN_OPERATOR_QUESTION:
+        return "?";
+    case TOKEN_OPERATOR_DOT:
+        return ".";
+    case TOKEN_OPERATOR_DOTDOT:
+        return "..";
+    case TOKEN_OPERATOR_DOTDOTDOT:
+        return "...";
 
-		case TOKEN_IF:
-			return "IF";
-		case TOKEN_ELSE:
-			return "ELSE";
+    case TOKEN_IF:
+        return "IF";
+    case TOKEN_ELSE:
+        return "ELSE";
 
-			//		case TOKEN_WHILE:
-			//			return "WHILE";
-		case TOKEN_MATCH:
-			return "MATCH";
-		case TOKEN_FOR:
-			return "FOR";
-			//		case TOKEN_DO:
-			//			return "do";
+    //		case TOKEN_WHILE:
+    //			return "WHILE";
+    case TOKEN_MATCH:
+        return "MATCH";
+    case TOKEN_FOR:
+        return "FOR";
+    //		case TOKEN_DO:
+    //			return "do";
 
-		case TOKEN_RET:
-			return "RET";
-		case TOKEN_FN:
-			return "FN";
+    case TOKEN_RET:
+        return "RET";
+    case TOKEN_FN:
+        return "FN";
 
-			//	case TOKEN_CLASS:
-			//	case TOKEN_THIS:
-			//	case TOKEN_SUPER:
+    //	case TOKEN_CLASS:
+    //	case TOKEN_THIS:
+    //	case TOKEN_SUPER:
 
-		case TOKEN_IS:
-			return "is";
-		case TOKEN_IN:
-			return "in";
-		case TOKEN_AS:
-			return "as";
-		case TOKEN_SWITCH:
-			return "switch";
-		case TOKEN_CASE:
-			return "case";
-		case TOKEN_BREAK:
-			return "break";
-		case TOKEN_CONTINUE:
-			return "continue";
-		case TOKEN_GO:
-			return "go";
+    case TOKEN_IS:
+        return "is";
+    case TOKEN_IN:
+        return "in";
+    case TOKEN_AS:
+        return "as";
+    case TOKEN_SWITCH:
+        return "switch";
+    case TOKEN_CASE:
+        return "case";
+    case TOKEN_BREAK:
+        return "break";
+    case TOKEN_CONTINUE:
+        return "continue";
+    case TOKEN_GO:
+        return "go";
 
-		case TOKEN_PRINT:
-			return "_";
-		case TOKEN_PRINTNL:
-			return "__";
-		case TOKEN_OPERATOR_BANG:
-			return "!";
-		case TOKEN_OPERATOR_EQUAL_BANG:
-			return "!=";
-		case TOKEN_PRINTDB:
-			return "!_";
-		case TOKEN_PRINTDBNL:
-			return "!__";
+    case TOKEN_PRINT:
+        return "_";
+    case TOKEN_PRINTNL:
+        return "__";
+    case TOKEN_OPERATOR_BANG:
+        return "!";
+    case TOKEN_OPERATOR_EQUAL_BANG:
+        return "!=";
+    case TOKEN_PRINTDB:
+        return "!_";
+    case TOKEN_PRINTDBNL:
+        return "!__";
 
-		case TOKEN_PACKAGE:
-			return "package";
-		case TOKEN_IMPORT:
-			return "import";
+    case TOKEN_PACKAGE:
+        return "package";
+    case TOKEN_IMPORT:
+        return "import";
 
-		case TOKEN_CONST:
-			return "CONST";
-		case TOKEN_FINAL:
-			return "FINAL";
-		case TOKEN_STATIC:
-			return "static";
+    case TOKEN_CONST:
+        return "CONST";
+    case TOKEN_FINAL:
+        return "FINAL";
+    case TOKEN_STATIC:
+        return "static";
 
-		case TOKEN_OPERATOR_EQUAL_REMAINDER:
-			return "%=";
-		case TOKEN_OPERATOR_EQUAL_AND:
-			return "&&=";
-		case TOKEN_OPERATOR_EQUAL_BITWISE_AND:
-			return "&=";
-		case TOKEN_OPERATOR_EQUAL_OR:
-			return "||=";
-		case TOKEN_OPERATOR_EQUAL_BITWISE_OR:
-			return "|=";
+    case TOKEN_OPERATOR_EQUAL_REMAINDER:
+        return "%=";
+    case TOKEN_OPERATOR_EQUAL_AND:
+        return "&&=";
+    case TOKEN_OPERATOR_EQUAL_BITWISE_AND:
+        return "&=";
+    case TOKEN_OPERATOR_EQUAL_OR:
+        return "||=";
+    case TOKEN_OPERATOR_EQUAL_BITWISE_OR:
+        return "|=";
 
-		case TOKEN_OPERATOR_EQUAL_THREE:
-			return "<=>";
+    case TOKEN_OPERATOR_EQUAL_THREE:
+        return "<=>";
 
-		case TOKEN_ASSERT:
-			return "assert";
-		case TOKEN_STRUCT:
-			return "struct";
-		case TOKEN_TYPE:
-			return "type";
-		case TOKEN_INTERFACE:
-			return "interface";
+    case TOKEN_ASSERT:
+        return "assert";
+    case TOKEN_STRUCT:
+        return "struct";
+    case TOKEN_TYPE:
+        return "type";
+    case TOKEN_INTERFACE:
+        return "interface";
 
-		case TOKEN_SKIP_WHITESPACE:
-			return "skip_whitespace";
-		case TOKEN_SKIP_WHITESPACE_LINE:
-			return "skip_whitespace_line";
-		case TOKEN_SKIP_COMMENT_SINGLE:
-			return "skip_comment_inline";
-		case TOKEN_SKIP_COMMENT_MULTI:
-			return "skip_comment_multi";
+    case TOKEN_SKIP_WHITESPACE:
+        return "skip_whitespace";
+    case TOKEN_SKIP_WHITESPACE_LINE:
+        return "skip_whitespace_line";
+    case TOKEN_SKIP_COMMENT_SINGLE:
+        return "skip_comment_inline";
+    case TOKEN_SKIP_COMMENT_MULTI:
+        return "skip_comment_multi";
 
-		case TOKEN_SEMICOLON:
-			return "SEMICOLON";
-		default:
-			return "UNKNOWN";
-	}
+    case TOKEN_SEMICOLON:
+        return "SEMICOLON";
+    default:
+        return "UNKNOWN";
+    }
 }
 
 /*
@@ -567,10 +567,10 @@ char* token_name(TokenType type)
  */
 size_t token_utf8_string_length(char* s)
 {
-	size_t len = 0;
-	for (; *s; ++s)
-		if ((*s & 0xC0) != 0x80) ++len;
-	return len;
+    size_t len = 0;
+    for (; *s; ++s)
+        if ((*s & 0xC0) != 0x80) ++len;
+    return len;
 }
 
 /*
@@ -581,9 +581,9 @@ size_t token_utf8_string_length(char* s)
  */
 bool token_is_skip(TokenType type)
 {
-	return (
-		 type == TOKEN_SKIP_WHITESPACE ||
-		 type == TOKEN_SKIP_WHITESPACE_LINE ||
-		 type == TOKEN_SKIP_COMMENT_SINGLE ||
-		 type == TOKEN_SKIP_COMMENT_MULTI);
+    return (
+               type == TOKEN_SKIP_WHITESPACE ||
+               type == TOKEN_SKIP_WHITESPACE_LINE ||
+               type == TOKEN_SKIP_COMMENT_SINGLE ||
+               type == TOKEN_SKIP_COMMENT_MULTI);
 }

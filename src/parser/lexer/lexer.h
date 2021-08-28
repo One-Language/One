@@ -19,13 +19,13 @@
 
 typedef struct
 {
-	Location pos;
-	Location pos_end;
+    Location pos;
+    Location pos_end;
 
-	const char* start;
-	const char* current;
+    const char* start;
+    const char* current;
 
-	int temp_column;
+    int temp_column;
 } Lexer;
 
 extern Lexer lexer;
