@@ -20,36 +20,23 @@
 [![Build Status][WorkflowBadge]][WorkflowUrl]
 -->
 
-[![Patreon][patreonbadge]][patreonurl]
-[![Discord][discordbadge]][discordurl]
+[![Patreon][patreonbadge]][patreonurl] [![Discord][discordbadge]][discordurl]
 [![Twitter][twitterurl]][twitterbadge]
 [![Instagram][instagrambadge]][instagramurl]
-[![License][licensebadge]][licenseurl]
-[![Facebook][facebookbadge]][facebookurl]
+[![License][licensebadge]][licenseurl] [![Facebook][facebookbadge]][facebookurl]
 
-[English](README.md)
-&nbsp;
-[عربي](README_AR.md)
-&nbsp;
-[Español](README_ES.md)
-&nbsp;
-[فارسی](README_FA.md)
-&nbsp;
-[Filipino](README_FIL.md)
-&nbsp;
-[Français](README_FR.md)
-&nbsp;
-[русский](README_RU.md)
-&nbsp;
-[Türkçe](README_TR.md)
-&nbsp;
-[Українська](README_UK.md)
+[English](README.md) &nbsp; [عربي](README_AR.md) &nbsp; [Español](README_ES.md)
+&nbsp; [فارسی](README_FA.md) &nbsp; [Filipino](README_FIL.md) &nbsp;
+[Français](README_FR.md) &nbsp; [русский](README_RU.md) &nbsp;
+[Türkçe](README_TR.md) &nbsp; [Українська](README_UK.md)
 
 </div>
 
-اهلا وسهلا بك في <a href="https://onelang.org">One</a>!</br>
-إنها لغة برمجة نظام مفتوحة المصدر ، مستضافة ذاتيًا ، مما يجعل من السهل إنشاء برامج موثوقة وفعالة.
-يتم تطويره من قبل <a href="https://github.com/BaseMax">ماكس</a>, <a href="https://github.com/jbampton">جون</a> ومساهمين آخرين من المصادر المفتوحة.
+اهلا وسهلا بك في <a href="https://onelang.org">One</a>!</br> إنها لغة برمجة نظام
+مفتوحة المصدر ، مستضافة ذاتيًا ، مما يجعل من السهل إنشاء برامج موثوقة وفعالة.
+يتم تطويره من قبل <a href="https://github.com/BaseMax">ماكس</a>,
+<a href="https://github.com/jbampton">جون</a> ومساهمين آخرين من المصادر
+المفتوحة.
 
 ### سيصدر المترجم للغة الواحدة "ONE" في غضون أشهر قليلة
 
@@ -83,8 +70,10 @@
 - المستوى المتوسط
 - برمجة الشبكات و API
 - يدعم برمجة الويب (في المستقبل)
-  - الإنشاء التلقائي للرمز المقابل لكل من CSS و HTML. لذلك لن تضطر إلى تعلم أكثر من لغة واحدة لتطوير موقع ويب
-  - يستخدم المتغيرات في CSS ، حتى نتمكن من الحصول على الألوان أو الأحجام من قاعدة البيانات
+  - الإنشاء التلقائي للرمز المقابل لكل من CSS و HTML. لذلك لن تضطر إلى تعلم أكثر
+    من لغة واحدة لتطوير موقع ويب
+  - يستخدم المتغيرات في CSS ، حتى نتمكن من الحصول على الألوان أو الأحجام من
+    قاعدة البيانات
   - تصغير نتائج الصفحة تلقائيًا
 - أداء وسرعة عالية
 - يدعم رمز التجميع المضمن (في المستقبل)
@@ -297,8 +286,9 @@ end
 
 ### تطوير واجهة المستخدم الرسومية القديمة: (الويب ، البرامج)
 
-تم تصميم هذه البنية فقط لمواقع الويب والبرامج الأصلية. في المستقبل ، سيكون متاحًا أيضًا لتطبيقات الأجهزة المحمولة (الأصلية). (native).<br>
-الهياكل المتنقلة لم تكتمل بعد وتتطلب المزيد من التفكير والاهتمام. <br><br>مثال لإثبات عمل اللغة:
+تم تصميم هذه البنية فقط لمواقع الويب والبرامج الأصلية. في المستقبل ، سيكون
+متاحًا أيضًا لتطبيقات الأجهزة المحمولة (الأصلية). (native).<br> الهياكل المتنقلة
+لم تكتمل بعد وتتطلب المزيد من التفكير والاهتمام. <br><br>مثال لإثبات عمل اللغة:
 
 </div>
 
@@ -420,38 +410,48 @@ header {
 <!--Get Involved-->
 <h2 id="get-involved">➤ شارك</h2>
 
-نرحب بجميع أنواع المساهمات ، بما في ذلك تقارير الأخطاء وطلبات الميزات وتحسينات الوثائق وما إلى ذلك.
-لطرح سؤال أو فتح مناقشة أو إنشاء مشكلة أو الانضمام إلى . <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
+نرحب بجميع أنواع المساهمات ، بما في ذلك تقارير الأخطاء وطلبات الميزات وتحسينات
+الوثائق وما إلى ذلك. لطرح سؤال أو فتح مناقشة أو إنشاء مشكلة أو الانضمام إلى .
+<a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
 
-إذا لم تكن على دراية بكيفية تقديم طلب سحب على GitHub ، فيرجى قراءة هذا . [الدليل](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+إذا لم تكن على دراية بكيفية تقديم طلب سحب على GitHub ، فيرجى قراءة هذا .
+[الدليل](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-إذا كنت قد قررت المساهمة ، يرجى قراءة الإرشادات هنا أولاً. [هنا](CONTRIBUTING.md).
-<br>يمكنك أيضًا المساعدة في تطوير `One` من خلال تقديم بعض التبرعات على [:heart: Patreon](https://www.patreon.com/onelanguage).
+إذا كنت قد قررت المساهمة ، يرجى قراءة الإرشادات هنا أولاً.
+[هنا](CONTRIBUTING.md). <br>يمكنك أيضًا المساعدة في تطوير `One` من خلال تقديم
+بعض التبرعات على [:heart: Patreon](https://www.patreon.com/onelanguage).
 
-شكرا لجميع <a href ="https://github.com/One-Language/One/graphs/contributors">المساهمين</a>!!
+شكرا لجميع
+<a href ="https://github.com/One-Language/One/graphs/contributors">المساهمين</a>!!
 
-إذا كنت ترغب في المساهمة في تطوير هذا المشروع, يمكنك مراسلتنا على: <maxbasecode@gmail.com>
+إذا كنت ترغب في المساهمة في تطوير هذا المشروع, يمكنك مراسلتنا على:
+<maxbasecode@gmail.com>
 
 <br>تم إنشاؤه بواسطة Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="license">➤ الرخصة</h2>
 
-`One` تم إصدارها بموجب رخصة جنو العمومية العامة v3.0. يرجى الرجوع إلى المصطلحات الموجودة في ملف الترخيص المتضمن في المستودع.
+`One` تم إصدارها بموجب رخصة جنو العمومية العامة v3.0. يرجى الرجوع إلى المصطلحات
+الموجودة في ملف الترخيص المتضمن في المستودع.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
 
-[discordbadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
-[patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
-[sponsorbadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
+[discordbadge]:
+  https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
+[patreonbadge]:
+  https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
+[sponsorbadge]:
+  https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
 [twitterbadge]: https://twitter.com/onelangteam
 [instagrambadge]: https://img.shields.io/badge/Instagram-Up-brightgreen
 [licensebadge]: https://img.shields.io/github/license/One-Language/One
 [facebookbadge]: https://img.shields.io/badge/Facebook-Up-brightgreen
 [discordurl]: https://discord.gg/sFCE2HcMCa
 [patreonurl]: https://patreon.com/onelanguage
-[twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
+[twitterurl]:
+  https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
 [instagramurl]: https://www.instagram.com/one.lang
 [licenseurl]: https://github.com/One-Language/One/blob/master/LICENSE
 [facebookurl]: https://www.facebook.com/onelangteam
