@@ -22,14 +22,19 @@ int main(int argc, char** argv)
 	char* output_file;
 	FILE* file_out = stdout;
 
-	if (argc == 1) {
+	if (argc == 1)
+	{
 		printf("Error: arguments are not correct!\n");
 		printf("./lexer input.one output.tokens\n");
 		printf("./lexer \"your input here as string\"\n");
 		return 1;
-	} else if (argc == 2) {
+	}
+	else if (argc == 2)
+	{
 		input_file = argv[1];
-	} else if (argc == 3) {
+	}
+	else if (argc == 3)
+	{
 		input_file = argv[1];
 		output_file = argv[2];
 		file_out = fopen(output_file, "wa+");
@@ -45,7 +50,8 @@ int main(int argc, char** argv)
 	lexer_init(data);
 
 	// Lexer Tracer for debugging
-	while(!peekFor(TOKEN_EOF)) {
+	while (!peekFor(TOKEN_EOF))
+	{
 		char* t_name = token_name(current->type);
 
 		bool has1 = file_convert_index_to_rc(data, current->pos.index, &current->pos.line, &current->pos.column);

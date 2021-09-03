@@ -17,13 +17,13 @@
 	printf(YELLOW "Token Debug: " format \
 				  "\n" RESET,            \
 		 ##args);
-	 // printf(YELLOW "Token Debug: " format " at %d on %s in %s" \
+// printf(YELLOW "Token Debug: " format " at %d on %s in %s" \
 	// 			  "\n" RESET,                                 \
 	// 	 ##args,                                              \
 	// 	 __LINE__,                                            \
 	// 	 "file",                                              \
 	// 	 __FUNCTION__);
-	 // #define debug_token(format, args...)
+// #define debug_token(format, args...)
 #else
 #define debug_token(format, args...)
 #endif

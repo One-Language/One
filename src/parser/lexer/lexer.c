@@ -19,15 +19,15 @@
 	printf(CYAN "Lexer Debug: " format \
 				"\n" RESET,            \
 		 ##args);
-	 // printf(CYAN "Lexer Debug: " format " at %d on %s in %s" \
+// printf(CYAN "Lexer Debug: " format " at %d on %s in %s" \
 	// 			"\n" RESET,                                 \
 	// 	 ##args,                                            \
 	// 	 __LINE__,                                          \
 	// 	 "file",                                            \
 	// 	 __FUNCTION__);
-	 // #define debug_lexer(format, args...)
+// #define debug_lexer(format, args...)
 #else
-#define debug_lexer(format,args...)
+#define debug_lexer(format, args...)
 #endif
 
 Lexer lexer;
@@ -570,14 +570,16 @@ Token* lexer_scan()
 /*
 	advance the token stream to the next token
 */
-void advance() {
+void advance()
+{
 	current = lexer_scan();
 }
 
 /*
 	Is the current token of type t
 */
-bool peekFor(TokenType t) {
+bool peekFor(TokenType t)
+{
 	return (current->type == t);
 }
 
