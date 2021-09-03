@@ -17,13 +17,13 @@
 	printf(YELLOW "Token Debug: " format \
 				  "\n" RESET,            \
 		 ##args);
-	 // printf(YELLOW "Token Debug: " format " at %d on %s in %s" \
-	// 			  "\n" RESET,                                 \
-	// 	 ##args,                                              \
-	// 	 __LINE__,                                            \
-	// 	 "file",                                              \
-	// 	 __FUNCTION__);
-	 // #define debug_token(format, args...)
+// printf(YELLOW "Token Debug: " format " at %d on %s in %s" \
+// 			  "\n" RESET,                                 \
+// 	 ##args,                                              \
+// 	 __LINE__,                                            \
+// 	 "file",                                              \
+// 	 __FUNCTION__);
+// #define debug_token(format, args...)
 #else
 #define debug_token(format, args...)
 #endif
@@ -460,8 +460,8 @@ char* token_name(TokenType type)
 		case TOKEN_ELSE:
 			return "ELSE";
 
-			//		case TOKEN_WHILE:
-			//			return "WHILE";
+		//		case TOKEN_WHILE:
+		//			return "WHILE";
 		case TOKEN_MATCH:
 			return "MATCH";
 		case TOKEN_FOR:
