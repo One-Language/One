@@ -35,7 +35,12 @@ char* file_reads(const char* filepath);
  */
 bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t* columns);
 
-// TODO
+/*
+ * @function: file_get_parent
+ * @description: If you want to get directory path from a full-file path, this function will be useful and can return the directory path for you.
+ * @arguments: const char* path
+ * @return: char*
+ */
 char* file_get_parent(const char* path);
 
 #endif // _ONE_BUILTINS_FILE_H_
