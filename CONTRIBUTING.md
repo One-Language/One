@@ -57,7 +57,7 @@ You can install `yamllint` using `pip` by the command:
 pip install --user yamllint
 ```
 
-- [yamllint on Github](https://github.com/adrienverge/yamllint)
+- [yamllint on GitHub](https://github.com/adrienverge/yamllint)
 - [yamllint documentation](https://yamllint.readthedocs.io/en/stable/)
 
 ### markdownlint
@@ -80,7 +80,7 @@ To run `markdownlint` run from within the `One` directory:
 markdownlint -c .github/linters/.markdown-lint.yml
 ```
 
-- [markdownlint on Github](https://github.com/DavidAnson/markdownlint)
+- [markdownlint on GitHub](https://github.com/DavidAnson/markdownlint)
 
 ### Clang Format
 
@@ -124,4 +124,4 @@ Or `docker-compose.yml`:
 docker-compose -f "docker-compose.yml" up -d --build
 ```
 
-This image was built using [`Github actions`](https://github.com/One-Language/One/blob/master/.github/workflows/docker-image.yml).
+This image was built using [`GitHub actions`](https://github.com/One-Language/One/blob/master/.github/workflows/docker-image.yml).
