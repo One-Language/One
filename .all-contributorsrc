@@ -227,6 +227,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "mikey-b",
+      "name": "Michael Brown",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1836123?v=4",
+      "profile": "https://github.com/mikey-b",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
