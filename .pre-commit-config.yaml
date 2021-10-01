@@ -36,7 +36,7 @@ repos:
         entry: codespell --ignore-words=codespell.txt
         exclude: ^README_TR\.md$|^README_ES\.md$|^README_AR\.md$|^README_FR\.md$
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.3.2
+    rev: v2.4.1
     hooks:
       - id: prettier
         name: Format files with prettier
@@ -58,7 +58,7 @@ repos:
         types: [yaml]
         files: \.(yml|yaml)$
   - repo: https://github.com/pocc/pre-commit-hooks
-    rev: v1.1.1
+    rev: v1.3.4
     hooks:
       - id: clang-format
         name: Format files with Clang Format
