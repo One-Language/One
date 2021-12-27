@@ -6,11 +6,11 @@
 
 ### **First, Discuss**
 
-`The ONE Programming Language` is a very welcoming community. We appreciate your
+The `ONE Programming Language` is a very welcoming community. We appreciate your
 ideas and your help. You need to communicate in
 [our discord server](https://discord.com/invite/sFCE2HcMCa) or pick an issue and
 share your perception of the solution you have. Don't forget to fork this
-repository and to work on your contribution.
+repository and create a feature or new branch to work on your contribution.
 
 ### **Then, make a PR**
 
@@ -32,7 +32,7 @@ You need to first install `pre-commit` and then install the `pre-commit` hooks
 with `pre-commit install`. Now `pre-commit` will run automatically on git
 commit!
 
-If you have [Python](https://www.python.org/) at your system, so you can easily
+If you have [Python](https://www.python.org/) installed on your system, you can easily
 install pre-commit via `pip install pre-commit`.
 
 It's usually a good idea to run the hooks against all the files when adding new
@@ -46,6 +46,10 @@ To update use `pre-commit autoupdate`
 - [Quick start](https://pre-commit.com/#quick-start)
 - [Usage](https://pre-commit.com/#usage)
 - [pre-commit-autoupdate](https://pre-commit.com/#pre-commit-autoupdate)
+
+Most of the Git hooks run straight after install but we are using `Clang Format`
+which will need to be installed first as a dependency. As in `pre-commit` won't
+automatically install this.
 
 ### Python
 
@@ -108,10 +112,10 @@ markdownlint -c .github/linters/.markdown-lint.yml
 
 `clang-format` is a tool to automatically format `C/C++/Objective-C` code, so
 that developers don't need to worry about style issues during code reviews. It
-is highly recommended to format your changed C++ code before opening pull
+is highly recommended to format your changed C code before opening pull
 requests, which will save you and the reviewers' time.
 
-- [Clang 13 documentation CLANGFORMAT](https://clang.llvm.org/docs/ClangFormat.html)
+- [Clang 13 documentation ClangFormat](https://clang.llvm.org/docs/ClangFormat.html)
 
 ### Git hooks
 
@@ -130,7 +134,7 @@ of each script. All the examples are written as `shell scripts`, with some
 `Perl` thrown in, but any properly named executable scripts will work fine – you
 can write them in `Ruby` or `Python` or whatever language you are familiar with.
 If you want to use the bundled hook scripts, you’ll have to rename them; their
-file names all end with .sample.
+file names all end with `.sample`.
 
 To enable a hook script, put a file in the hooks subdirectory of your `.git`
 directory that is named appropriately (without any extension) and is executable.
