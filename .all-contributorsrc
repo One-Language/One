@@ -236,6 +236,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "xahmd",
+      "name": "Ahmed.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/79005095?v=4",
+      "profile": "https://xahmed.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
