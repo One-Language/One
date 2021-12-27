@@ -11,10 +11,10 @@ struct User {
 }
 
 struct Post {
-	id   int
+	id      int
 	user_id int
-	title string
-	body string
+	title   string
+	body    string
 }
 
 fn main {
