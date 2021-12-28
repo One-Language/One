@@ -49,7 +49,10 @@ To update use `pre-commit autoupdate`
 
 Most of the Git hooks run straight after install but we are using `Clang Format`
 which will need to be installed first as a dependency. As in `pre-commit` won't
-automatically install this.
+automatically install this.  
+
+On macOS you can install `Clang Format` with the Homebrew package manager as
+seen [here](https://formulae.brew.sh/formula/clang-format).
 
 ### Python
 
