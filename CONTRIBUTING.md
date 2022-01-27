@@ -14,7 +14,7 @@ repository and create a feature or new branch to work on your contribution.
 
 ### **Then, make a PR**
 
-Now that you finished the work, don't forget again to run pre-commit. Create the
+Now that you finished the work, don't forget again to run `pre-commit`. Create the
 pull request and use the description to provide context and motivation, as you
 did in the issue. Otherwise, you can mention your PR in the issue that you tried
 to solve. Once a pull request is created, we will verify the code and accept
@@ -22,10 +22,10 @@ your PR.
 
 ## Contribution Tools
 
-### Pre-commit
+### pre-commit
 
 A framework for managing and maintaining multi-language `pre-commit` hooks.
-Pre-commit can be [installed](https://pre-commit.com/#installation) with `pip`,
+`pre-commit` can be [installed](https://pre-commit.com/#installation) with `pip`,
 `curl`, `brew` or `conda`.
 
 You need to first install `pre-commit` and then install the `pre-commit` hooks
