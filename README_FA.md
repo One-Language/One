@@ -2,7 +2,7 @@
 <div align="center">
 
 <p>
-    <a href="https://onelang.org/" alt="The One Programming Language">
+    <a href="https://onelang.org/">
         <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
     </a>
 </p>
