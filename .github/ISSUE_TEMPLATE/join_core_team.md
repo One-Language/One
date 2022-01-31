@@ -33,7 +33,7 @@ List of languages with experience level:
 - **Python**: Just for fun to write 3-5 scripts without professional experience
 - **Batch/Bash**: Just for personal needs
 
-## Operation Systems
+## Operating Systems
 <!-- Why we ask about OS, Because maybe we need a test on a special OS target and we can easily mention you for that. Thank you for your following. -->
 
 List of Operating system with your experience level:
