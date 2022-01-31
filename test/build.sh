@@ -5,13 +5,13 @@ FILES="../src/builtins/array.c ../src/builtins/error.c ../src/builtins/file.c ..
 CC="clang"
 
 # compile argument
-$CC argument.test.c $FLAGS argument $FILES
+"$CC" argument.test.c "$FLAGS" argument "$FILES"
 # compile lexer
-$CC lexer.test.c $FLAGS lexer $FILES
+"$CC" lexer.test.c "$FLAGS" lexer "$FILES"
 # compile parser
-$CC parser.test.c $FLAGS parser $FILES
+"$CC" parser.test.c "$FLAGS" parser "$FILES"
 # compiler ast
-$CC ast.test.c $FLAGS ast $FILES
+"$CC" ast.test.c "$FLAGS" ast "$FILES"
 
 # run
 ./arguments
