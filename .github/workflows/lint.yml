@@ -7,7 +7,7 @@ jobs:
     name: Check Spelling Misspell All Files In Commit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install
         run: wget -O - -q https://git.io/misspell | sh -s -- -b .
       - name: Misspell
@@ -16,7 +16,7 @@ jobs:
     name: Run pre-commit  # https://pre-commit.com/
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v3  # https://www.python.org/
         with:
           python-version: '3.x'  # Version range or exact version of a Python version to use, using SemVer's version range syntax
