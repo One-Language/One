@@ -20,10 +20,10 @@
 
 [![Patreon][patreonbadge]][patreonurl]
 [![Discord][discordbadge]][discordurl]
-[![Twitter][twitterurl]][twitterbadge]
-[![Instagram][instagrambadge]][instagramurl]
-[![License][licensebadge]][licenseurl]
 [![Facebook][facebookbadge]][facebookurl]
+[![Instagram][instagrambadge]][instagramurl]
+[![Twitter][twitterurl]][twitterbadge]
+[![License][licensebadge]][licenseurl]
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
