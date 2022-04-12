@@ -17,11 +17,14 @@ int main(int argc, char** argv)
 {
 	Lexer* lexer;
 
+	printf("%d\n", argc);
 	if(argc == 2) {
 		lexer = lexer_init("INPUT", "5+5\n3.14");
 		lexer_execute(lexer);
+
 		printf("Number of tokens: %d\n", lexer->tokens->count);
-	} else {
+	}
+	else {
 		printf("Error: arguments are not correct!\n");
 		printf("one_lexer input.one output\n");
 		printf("one_lexer \"your input here as string\"\n");
