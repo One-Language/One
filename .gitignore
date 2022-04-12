@@ -14,12 +14,12 @@ src/lexer/lexer
 src/lexer/log
 
 # parser
-src/parser/parser
-src/parser/log
+tmp/c-new3/parser/parser
+tmp/c-new3/parser/log
 
 # ast
-src/ast/ast
-src/ast/log
+tmp/c-new3/ast/ast
+tmp/c-new3/ast/log
 
 # test
 test/lexer

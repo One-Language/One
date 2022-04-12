@@ -40,23 +40,23 @@ add_definitions(
 
 # Set builtins source and headers
 set(BUILTINS_SOURCE
-        src/builtins/array.c
+        tmp/c-new3/builtins/array.c
 
-        src/builtins/error.c
+        tmp/c-new3/builtins/error.c
 
-        src/builtins/file.c
+        tmp/c-new3/builtins/file.c
 
-        src/builtins/string.c
+        tmp/c-new3/builtins/string.c
 )
 
 set(BUILTINS_HEADERS
-        src/builtins/array.h
+        tmp/c-new3/builtins/array.h
 
-        src/builtins/error.h
+        tmp/c-new3/builtins/error.h
 
-        src/builtins/file.h
+        tmp/c-new3/builtins/file.h
 
-        src/builtins/string.h
+        tmp/c-new3/builtins/string.h
 )
 
 # Set lexer source and headers
@@ -78,24 +78,24 @@ set(LEXER_HEADERS
 
 # Set AST source and headers
 set(AST_SOURCE
-        src/ast/ast.c
+        tmp/c-new3/ast/ast.c
 )
 
 set(AST_HEADERS
-        src/ast/ast.h
+        tmp/c-new3/ast/ast.h
 )
 
 # Set parser source and headers
 set(PARSER_SOURCE
-        src/parser/parser_token.c
+        tmp/c-new3/parser/parser_token.c
 
-        src/parser/parser.c
+        tmp/c-new3/parser/parser.c
 )
 
 set(PARSER_HEADERS
-        src/parser/parser_token.h
+        tmp/c-new3/parser/parser_token.h
 
-        src/parser/parser.h
+        tmp/c-new3/parser/parser.h
 )
 
 # Set Main executables for lexer, ast, and parser
@@ -104,11 +104,11 @@ set(LEXER_MAIN
 )
 
 set(AST_MAIN
-        src/ast/main.c
+        tmp/c-new3/ast/main.c
 )
 
 set(PARSER_MAIN
-        src/parser/main.c
+        tmp/c-new3/parser/main.c
 )
 
 # Set Tests
