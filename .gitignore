@@ -10,8 +10,8 @@ out/*
 build
 
 # lexer
-src/lexer/lexer
-src/lexer/log
+src/stages/lexer/lexer
+src/stages/lexer/log
 
 # parser
 tmp/c-new3/parser/parser
@@ -26,3 +26,8 @@ test/lexer
 test/parser
 test/argument
 test/ast
+
+src/one
+src/stages/lexer/one_lexer
+src/stages/parser/one_parser
+
