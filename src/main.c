@@ -31,8 +31,8 @@ int main(int argc, char** argv)
 	else
 	{
 		printf("Error: arguments are not correct!\n");
-		printf("./parser input.one output\n");
-		printf("./parser \"your input here as string\"\n");
+		printf("one input.one output\n");
+		printf("one \"your input here as string\"\n");
 		return 1;
 	}
 
