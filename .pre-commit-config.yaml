@@ -83,3 +83,10 @@ repos:
         language: docker_image
         types: ['dockerfile']
         entry: ghcr.io/hadolint/hadolint:v2.10.0 hadolint
+        files: ^Dockerfile$
+      - id: shellcheck
+        name: Lint Shell scripts
+        description: Check Shell scripts for correct syntax
+        language: docker_image
+        entry: koalaman/shellcheck:v0.8.0 -a
+        files: \.bash$|\.sh$
