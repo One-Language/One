@@ -82,7 +82,7 @@ pip install --user yamllint
 ### markdownlint
 
 A `Node.js` style checker and lint tool for
-`[Markdown](https://en.wikipedia.org/wiki/Markdown)/[CommonMark](https://commonmark.org/)`
+[Markdown](https://en.wikipedia.org/wiki/Markdown) / [CommonMark](https://commonmark.org/)
 files.
 
 The `Markdown` markup language is designed to be easy to read, write, and
