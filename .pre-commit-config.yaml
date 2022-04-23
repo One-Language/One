@@ -49,6 +49,15 @@ repos:
       - id: prettier
         name: Run prettier
         description: Format files with prettier
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.10.0
+    hooks:
+      - id: hadolint-docker
+        name: Lint Dockerfiles
+        description: Runs hadolint Docker image to lint Dockerfiles
+        language: docker_image
+        types: ['dockerfile']
+        entry: ghcr.io/hadolint/hadolint:v2.10.0 hadolint
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.31.1
     hooks:
