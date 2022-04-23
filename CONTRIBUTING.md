@@ -43,6 +43,9 @@ To run a single hook use `pre-commit run --all-files <hook_id>`
 
 To update use `pre-commit autoupdate`
 
+Some of our hooks use Docker images, so you will need to have Docker installed and
+running in order to run all the hooks successfully.
+
 - [Quick start](https://pre-commit.com/#quick-start)
 - [Usage](https://pre-commit.com/#usage)
 - [pre-commit-autoupdate](https://pre-commit.com/#pre-commit-autoupdate)
@@ -68,8 +71,8 @@ As I mentioned before you can use `pip` to install `pre-commit` on your system.
 
 A linter for `YAML` files.
 
-`yamllint` does not only check for syntax validity, but for weirdnesses like key
-repetition and cosmetic problems such as lines length, trailing spaces,
+`yamllint` does not only check for syntax validity, but for weirdness like key
+repetition and cosmetic problems such as line length, trailing spaces,
 indentation, etc. You can install `yamllint` using `pip` by the command:
 
 ```
