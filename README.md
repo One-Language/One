@@ -27,7 +27,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-25-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
@@ -460,6 +460,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/mikey-b"><img src="https://avatars.githubusercontent.com/u/1836123?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Brown</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=mikey-b" title="Code">💻</a></td>
     <td align="center"><a href="https://xahmed.com/"><img src="https://avatars.githubusercontent.com/u/79005095?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ahmed.</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=xahmd" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/parsa011"><img src="https://avatars.githubusercontent.com/u/43126637?v=4?s=100" width="100px;" alt=""/><br /><sub><b>parsa mahmoudy</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=parsa011" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://restyled.io"><img src="https://avatars.githubusercontent.com/u/65077583?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Restyled Commits</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=restyled-commits" title="Code">💻</a></td>
   </tr>
 </table>
 
