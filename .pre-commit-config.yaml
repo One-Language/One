@@ -90,3 +90,10 @@ repos:
         language: docker_image
         entry: koalaman/shellcheck:v0.8.0 -a
         files: \.bash$|\.sh$
+      - id: sort-and-uniquify-codespell-wordlist
+        name: Sort unique codespell.txt
+        description: Sort alphabetically and uniquify codespell.txt
+        entry: ./scripts/ci/pre-commit/sort-and-uniquify-codespell-wordlist.sh
+        language: system
+        files: ^codespell\.txt$
+        require_serial: true
