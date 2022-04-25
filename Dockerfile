@@ -1,5 +1,5 @@
 FROM alpine:latest
-LABEL The One Programming Language
+LABEL name="The One Programming Language"
 
 # LLVM version
 ARG LLVM_VERSION=12.0.1
@@ -27,7 +27,7 @@ RUN tar zxf llvmorg-${LLVM_VERSION}.tar.gz && rm llvmorg-${LLVM_VERSION}.tar.gz
 
 RUN cd llvm-project-llvmorg-${LLVM_VERSION} && mkdir build
 
-WORKDIR  /llvm-project-llvmorg-${LLVM_VERSION}/build
+WORKDIR /llvm-project-llvmorg-${LLVM_VERSION}/build
 
 RUN cmake ../llvm \
     -G "Unix Makefiles" -DLLVM_TARGETS_TO_BUILD="X86" \
