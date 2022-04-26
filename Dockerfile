@@ -43,7 +43,7 @@ ENV CXX=clang++
 ENV CC=clang
 
 # pre-commit installation
-RUN pip install pre-commit
+RUN pip install --no-cache-dir pre-commit
 
 # Work directory setup
 COPY . /One
