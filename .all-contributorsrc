@@ -272,6 +272,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "ihasidul",
+      "name": "Hasidul Islam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32800356?v=4",
+      "profile": "https://github.com/ihasidul",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
