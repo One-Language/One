@@ -4,7 +4,7 @@ default_stages: [commit, push]
 default_language_version:
   # force all unspecified Python hooks to run python3
   python: python3
-minimum_pre_commit_version: '1.20.0'
+minimum_pre_commit_version: '2.18.1'
 repos:
   - repo: meta
     hooks:
@@ -90,6 +90,7 @@ repos:
         language: docker_image
         entry: koalaman/shellcheck:v0.8.0 -a
         files: \.bash$|\.sh$
+        require_serial: true
       - id: sort-and-uniquify-codespell-wordlist
         name: Sort unique codespell.txt
         description: Sort alphabetically and uniquify codespell.txt
