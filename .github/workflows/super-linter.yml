@@ -7,9 +7,14 @@ jobs:
     name: Super-Linter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
       - uses: github/super-linter@v4.9.5
         env:
           ERROR_ON_MISSING_EXEC_BIT: true
           VALIDATE_EDITORCONFIG: true
+          VALIDATE_ALL_CODEBASE: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
