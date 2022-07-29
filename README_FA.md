@@ -38,6 +38,8 @@
 &nbsp;
 [Français](README_FR.md)
 &nbsp;
+[Italiano](README_IT.md)
+&nbsp;
 [русский](README_RU.md)
 &nbsp;
 [Türkçe](README_TR.md)
