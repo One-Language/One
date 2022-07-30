@@ -281,6 +281,15 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "DanyB0",
+      "name": "DanyB0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66164380?v=4",
+      "profile": "http://danyb0.me",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
