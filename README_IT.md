@@ -50,6 +50,8 @@
 [Türkçe](README_TR.md)
 &nbsp;
 [Українська](README_UK.md)
+&nbsp;
+[日本語](README_JA.md)
 
 </div>
 
