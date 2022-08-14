@@ -5,9 +5,13 @@ one
 *.o
 out/*
 .idea
+.vscode
 
 # build
 build
+src/*.exe
+src/*/*.exe
+src/*/*/*.exe
 
 # lexer
 src/lexer/lexer
