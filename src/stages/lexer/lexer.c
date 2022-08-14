@@ -8,9 +8,6 @@ File: lexer/lexer.c
 
 **/
 
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "lexer.h"
 
 Lexer* lexer_init(char* file_path, char* input)

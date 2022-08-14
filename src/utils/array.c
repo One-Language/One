@@ -73,7 +73,7 @@ void array_free(Array *list)
 	printf("array_free\n");
 
 	free(list->data); // it's void**
-	 list->count = 0;
-	 list->size = 0;
-	 list->data = NULL;
+	list->count = 0;
+	list->size = 0;
+	list->data = NULL;
 }

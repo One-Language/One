@@ -31,3 +31,6 @@ src/one
 src/stages/lexer/one_lexer
 src/stages/parser/one_parser
 
+.vscode
+src/*.exe
+src/stages/*/*.exe

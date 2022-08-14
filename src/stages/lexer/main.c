@@ -23,6 +23,10 @@ int main(int argc, char** argv)
 		lexer_execute(lexer);
 
 		printf("Number of tokens: %d\n", lexer->tokens->count);
+		for (int i = 0; i < lexer->tokens->count; i++) {
+			// Token* token = lexer->tokens->data[i];
+			printf("token\n");
+		}
 	}
 	else {
 		printf("Error: arguments are not correct!\n");

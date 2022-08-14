@@ -5,6 +5,8 @@
 #ifndef ONE_TOKEN_H
 #define ONE_TOKEN_H
 
+#include <stdio.h>
+
 typedef enum {
 	#undef TOKEN_DEFINE
 	#define TOKEN_DEFINE(ID, NAME, VALUE) ID VALUE,

@@ -11,6 +11,11 @@ File: main.c
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "utils/array.h"
+#include "utils/file.h"
+
+#include "stages/lexer/lexer.h"
+
 int main(int argc, char** argv)
 {
 	char* data;
@@ -19,6 +24,12 @@ int main(int argc, char** argv)
 
 	if (argc == 2)
 	{
+		input_file = argv[1];
+		char* data = file_read_contents(input_file);
+
+		printf("%s\n", data);
+		Lexer* lexer = lexer_init(input_file, data);
+		lexer_execute(lexer);
 	}
 	else if (argc == 3)
 	{
