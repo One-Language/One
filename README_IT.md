@@ -58,7 +58,7 @@
 Benvenuto!</br>
 <a href="https://onelang.org">One</a>
 è un <b>linguaggio di programmazione</b> open source, auto-hostato, che rende semplice creare software efficiente e affidabile.
-É sviluppato da <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> e altri collaboratori open-source.
+È sviluppato da <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> e altri collaboratori open-source.
 
 ### Il compilatore per il linguaggio One sarà rilasciato tra pochi mesi
 
@@ -97,15 +97,15 @@ Benvenuto!</br>
   - Minimizzazione automatica dei risultati della pagina
 - Performance e alta velocità
 - Supporto inline per il codice Assembly (in futuro)
-- Non richede librerie o tool specifici nel sistema dell'utente in modalità normale (in futuro)
-- Non richede librerie di runtime esterne in modalità normale (in futuro)
-- Non richede compilatori esterni per effettuare la compilazione (in futuro)
+- Non richiede librerie o tool specifici nel sistema dell'utente in modalità normale (in futuro)
+- Non richiede librerie di runtime esterne in modalità normale (in futuro)
+- Non richiede compilatori esterni per effettuare la compilazione (in futuro)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="roadmap">➤ RoadMap</h2>
 
-La sintaassi del linguaggio `One` è disponibile [qui](grammar.BNF).
+La sintassi del linguaggio `One` è disponibile [qui](grammar.BNF).
 
 - [x] Lexer/Parser (Quasi completamente)
 - [x] Albero sintattico
@@ -374,7 +374,7 @@ Fai riferimento a [questo link](https://github.com/ET-Lang/ET/wiki) per iniziare
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
-- [ ] macOS (Not complete)
+- [ ] macOS (Incompleto)
 - [ ] BSD
 
 <!--Write more about the compiler-->
