@@ -1,3 +1,4 @@
+<div dir="rtl">
 <div align="center">
 
 <p>
@@ -6,10 +7,10 @@
     </a>
 </p>
 
-# One Programlama Dili 💚 💙 🧡 🤍 💖 🖤
+# زبان برنامه نویسی وان💚 💙 🧡 🤍 💖 🖤
 
-[Onelang.org](https://onelang.org) |
-[Yardımınıza ihtiyacımız var](https://github.com/One-Language/One/issues/new)
+[Onelang.ir](https://onelang.ir) |
+[کمک خواست](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
@@ -25,7 +26,7 @@
 [![License][licensebadge]][licenseurl]
 [![Facebook][facebookbadge]][facebookurl]
 
-[English](README.md)
+[English](../README.md)
 &nbsp;
 [عربي](README_AR.md)
 &nbsp;
@@ -49,11 +50,13 @@
 
 </div>
 
-<a href="https://onelang.org">One</a>'a hoşgeldiniz!</br>
-One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri sayesinde güvenilebilir ve verimli yazılımlar yaratmayı kolaylaştıran bir <b>sistem programlama dilidir.</b>
-<a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> ve diğer katılımcılar tarafından geliştirilmektedir.
+به <a href="https://onelang.org">وان</a> خوش آمدید!</br>
 
-### One dilinin Compiler'ı birkaç ay içerisinde yayınlanacaktır
+این یک <b>زبان برنامه نویسی سیستمی</b>، خود میزبان و منبع باز هست که طراحی نرم افزار های توسعه پذیر و سریع رو راحت می کند.
+
+این زبان توسط <a href="https://github.com/BaseMax">مکس</a> و <a href="https://github.com/jbampton">جوهن</a> و دیگرتوسعه دهندگان پروژه طراحی می شود.
+
+### کامپایلر برای زبان وان در ماه هایی پیش رو آماده می شود.
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -62,58 +65,64 @@ One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri say
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!-- TABLE OF CONTENTS -->
-<h2 id="table-of-contents">İçindekiler</h2>
+<h2 id="table-of-contents">فهرست</h2>
 <details open="open">
   <ol>
-    <li><a href="#features-of-one"><b>One</b></a> dilinin özellikleri</li>
-    <li><a href="#roadmap">Yol Haritası</a></li>
-    <li><a href="#code-examples">Kod Örnekleri</a></li>
-    <li><a href="#getting-started">İlk kullanım kılavuzu</a></li>
-    <li><a href="#get-involved">Dahil olun</a></li>
-    <li><a href="#license">Lisans</a></li>
+    <li><a href="#features-of-one">ویژگی های <b>زبان وان</b></a></li>
+    <li><a href="#roadmap">نقشه و مسیر پروژه</a></li>
+    <li><a href="#code-examples">نمونه کد ها</a></li>
+    <li><a href="#getting-started">طریقه شروع</a></li>
+    <li><a href="#get-involved">مشارکت کردن</a></li>
+    <li><a href="#license">مجوز و لایسنس</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="features-of-one">➤ One Dilinin Özellikleri</h2>
+<h2 id="features-of-one">➤ ویژگی های زبان وان</h2>
 
-- Basit.
-- Compiler.
-- Çıktı dosyası oluşturabilir. (x86_64, i386)
-- Sistem Programlama Dilidir.
-- Orta Düzey.
-- Network ve API programlama yapılabilir.
-- Web programlama desteği sunar. (gelecek)
-  - Hem CSS hem de HTML'e karşılık gelen kodlar otomatik olarak üretilir. Yani, bir websitesi geliştirmek için `One` dışında herhangi bir dil öğrenmenize gerek yok.
-  - CSS'de variables kullanır, böylece veritabanından renkleri ve boyutları çekebilir.
-  - Sayfa sonuçlarını otomatik olarak küçültür.
-- Yüksek hızlı performans vaad eder.
-- İnline Assembly code destekler. (gelecek)
-- Normal modda, kullanıcının sisteminde belirli kütüphane ve araçlar olmasına ihtiyaç duymaz. (gelecek)
-- Normal modda, external runtime kütüphanelerine ihtiyaç duymaz. (gelecek)
-- Compile etmek için harici compiler'lara ihtiyaç duymaz. (gelecek)
+- سادگی
+- کامپایلری
+- امکان ایجاد فایل خروجی قابل اجرا برای معماری های مختلف (x86_64, i386)
+- زبان برنامه نویسی سیستمی
+- سطح متوسط و نحو نزدیک به انسان
+- شبکه و طراحی وبسرویس
+- سازگار برای طراحی وب (در آینده ای نزدیک)
+  - بصورت خودکار کد های زبان های دیگر را برای شما تولید می کند و برای طراحی وب سایت شما نیاز به یادگیری زبان دیگری ندارید و تنها زبان وان است که استفاده می کنید.
+  - استفاده از متغییر در استایل CSS, بنابراین حتی می توانید مشخصات ظاهری و رنگ ها را از دیتابیس نیز دریافت کنید.
+  - امکان خودکار کوتاه کردن نتیجه های وب سایت (minify)
+- عملکرد و سرعت بالا
+- پشتیبانی از دستورات خطی اسمبلی در لابه لای برنامه (در آینده)
+- عدم نیاز به ابزارها و کتابخانه های مخصوص بر روی سیستم کاربر در حالت معمول (در آینده)
+- به کتابخانه زمان اجرای جانبی دیگری نیاز ندارد (در آینده)
+- به کامپایلر خارجی دیگری برای کامپایل احتیاج ندارد (در آینده)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="roadmap">➤ Yol Haritası</h2>
+<h2 id="roadmap">➤ نقشه و مسیر پروژه</h2>
 
-`One` dilinin kurallarını [burada](grammar.BNF) bulabilirsiniz.
+نحو و گرامر زبان `وان` نیز در [اینجا](grammar.BNF) در دسترس است.
+
+</div>
 
 - [x] Lexer/Parser (Mostly)
 - [x] AST Tree
 - [x] VM
-- [ ] Code Generator (LLVM-C'den esinlenildi.)
-- [ ] Bir runtime kütüphanesi geliştmek ve yeni özellikler eklemek
-- [ ] Dil için bir web framework geliştirmek
-- [ ] Compiler'ı `One` dili içerisinde yeniden yazmak
+- [ ] Code Generator (get inspired from LLVM-C)
+- [ ] Develop a runtime library and add features
+- [ ] Design web framework for the language
+- [ ] Rewrite compiler in the `One` language
+
+<div dir="rtl">
 
 <!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="code-examples">➤ Kod Örnekleri</h2>
+<h2 id="code-examples">➤ نمونه کد ها</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
+
+</div>
 
 ```c
 main {
@@ -121,7 +130,11 @@ main {
 }
 ```
 
-**C'ye çevirelim:**
+<div dir="rtl">
+
+**تبدیل به زبان سی C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -141,7 +154,11 @@ i32 main {
 }
 ```
 
-**C'ye çevirelim:**
+<div dir="rtl">
+
+**تبدیل به زبان سی C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -163,7 +180,11 @@ main {
 }
 ```
 
-**C'ye çevirelim:**
+<div dir="rtl">
+
+**تبدیل به زبان سی C:**
+
+</div>
 
 ```c
 #include <stdio.h>
@@ -180,7 +201,11 @@ int main(int argc, char *argv[]) {
 
 <hr>
 
-**Başka bir taslak:**
+<div dir="rtl">
+
+**چک نویس دیگر:**
+
+</div>
 
 ```c
 import web
@@ -207,7 +232,11 @@ main {
 
 ---
 
-**Başka bir taslak:**
+<div dir="rtl">
+
+**نمونه دیگر:**
+
+</div>
 
 ```c
 error {
@@ -233,7 +262,11 @@ error {
 
 ---
 
-### Eski CLI Geliştirmesi
+<div dir="rtl">
+
+### رابط طراحی کنسولی قبلی
+
+</div>
 
 ```
 main:
@@ -269,10 +302,13 @@ end
 
 <hr>
 
-### Eski GUI Geliştirmesi: (Web, Yazılım)
+<div dir="rtl">
 
-Bu mimari sadece websiteler ve native yazılımlar için tasarlanmıştır. Gelecekte, mobil uygulamalar için de kullanılabilir olacaktır.(native).<br>
-Mobil yapılar henüz tamamlanmadı ve daha fazla düşünceye ve ilgilenilmeye ihtiyaçları var.<br><br>Dilin çalışma şeklini göstermek için bir örnek:
+### توسعه نرم افزار گرافیکی و سایت
+
+این معماری برای وبسایت ها و نرم افزار های محلی در حال طراحی است. در آینده، برای اپ های موبایل هم در دسترس خواهد بود. معماری موبایل هنوز تکمیل نشده و نیازمند فکر و توجه بیشتر است.<br><br>مثال برای نشان دادن کارکرد زبان:
+
+</div>
 
 ```css
 title "Name - Main"
@@ -314,7 +350,11 @@ header {
 }
 ```
 
-**CSS/HTML/JS temelli kodlara çevirelim:**
+<div dir="rtl">
+
+**تبدیل خودکار به CSS/HTML/JS:**
+
+</div>
 
 ```html
 <html>
@@ -355,15 +395,23 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="getting-started">➤ İlk Kullanım Kılavuzu</h2>
+<div dir="rtl">
 
-Dili öğrenmeye başlamak için [bu linke](https://github.com/ET-Lang/ET/wiki) göz atabilirsiniz.
+<h2 id="getting-started">➤ شروع کنید</h2>
+
+</div>
+
+<div dir="rtl">
+
+می توانید برای یادگیری بیشتر نحو این زبان به [این صفحه](https://github.com/ET-Lang/ET/wiki) راهنما مراجعه کنید.
 
 <!--Installation Steps-->
 
 <!--Prerequisites-->
 
-#### Desteklenen Ortamlar
+#### پلتفرم و محیط های پشتیبانی شده
+
+</div>
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
@@ -379,27 +427,44 @@ Dili öğrenmeye başlamak için [bu linke](https://github.com/ET-Lang/ET/wiki) 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+<div dir="rtl">
+
 <!--Get Involved-->
-<h2 id="get-involved">➤ Bize katılın</h2>
+<h2 id="get-involved">➤ مشارکت کردن</h2>
 
-Bug raporlamaları, özellik istekleri, dokümentasyon geliştirmeleri vb. dahil olmak üzere her türlü katkıyı nezaketle karşılıyoruz.
-Soru sormak ya da bir tartışma başlatmak için bir issue oluşturun ya da <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>'ına katılın.
+</div>
 
-Eğer GitHub'da nasıl pull request oluşturacağınızı bilmiyorsanız şu [rehberi](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) inceleyebilirsiniz.
+<div dir="rtl">
+ما از انواع مشارکت ها، از جمله گزارش اشکال، درخواست ویژگی، بهبود اسناد و غیره استقبال می کنیم.
 
-Eğer katkıda bulunmak istiyorsanız, lütfen ilk olarak [burada](CONTRIBUTING.md) yer alan esasları okuyunuz.
-<br>Ayrıca [:heart: Patreon](https://www.patreon.com/onelanguage) üzerinden bize maddi destek sağlayarak da bu projeye katkıda bulunabilirsiniz..
+برای پرسیدن سوال یا باز کردن بحث، یک موضوع بسازید یا به <a href ="https://discord.gg/sFCE2HcMCa"><b>وان</b> سرور دیسکورد</a> بپیوندید.
 
-<a href ="https://github.com/One-Language/One/graphs/contributors">Katkı sağlayan</a> herkese teşekkürler!
+اگر شما با نحوه ساختن درخواست pull در گیت هاب آشنا نیستید لطفا این [راهنما](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) را بخوانید.
 
-Eğer projenin geliştirilmesinde katkıda bulunmak isterseniz, bize mail atabilirsiniz: <maxbasecode@gmail.com>
+اگر تصمیم به مشارکت گرفتید، لطفا ابتدا رهنمودها را از [اینجا](CONTRIBUTING.md) بخوانید.
 
-<br> Max Base tarafından oluşturuldu! @ 2019
+شما همچنین میتوانید با کمک های مالی به توسعه `وان` کمک کنید [:heart: Patreon](https://www.patreon.com/onelanguage).
+
+تشکر از تمامی <a href ="https://github.com/One-Language/One/graphs/contributors">مشارکت کننده ها</a>!!
+
+اگر شما تمایل به مشارکت در توسعه این پروژه دارید، میتوانید به ما ایمیل بزنید: <maxbasecode@gmail.com>
+
+<br> ساخته شده توسط Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ Lisans</h2>
+</div>
 
-`One` GNU General Public License v3.0 lisansı altında yayınlanmıştır. Lütfen <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> dosyası içerisinde yer alan detaylara göre hareket ediniz.
+<div dir="rtl">
+
+<h2 id="license">➤ مجوز و لایسنس</h2>
+
+</div>
+
+<div dir="rtl">
+
+`وان` تحت لایسنس GNU General Public License v3.0 انتشار یافته. لطفا به شرایط در فایل <a href="https://github.com/One-Language/One/blob/master/LICENSE">لایسنس</a> موجود در مخزن مراجعه کنید.
+
+</div>
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->

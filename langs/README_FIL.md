@@ -6,10 +6,10 @@
     </a>
 </p>
 
-# El lenguaje de programacion ONE 💚 💙 🧡 🤍 💖 🖤
+# Ang Isang Programang Lengguwahe 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Colaboraciones](https://github.com/One-Language/One/issues/new)
+[Tulong](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
@@ -25,7 +25,7 @@
 [![License][licensebadge]][licenseurl]
 [![Facebook][facebookbadge]][facebookurl]
 
-[English](README.md)
+[English](../README.md)
 &nbsp;
 [عربي](README_AR.md)
 &nbsp;
@@ -49,11 +49,11 @@
 
 </div>
 
-Bienvenidos a <a href="https://onelang.org">One</a>!</br>
-Es un <b>lenguaje de programación</b> de código abierto, autohospedado y de arranque que facilita construir software confiable y eficiente.
-Está siendo desarrollado por <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> Y otros contribuyentes de código abierto.
+Maligayang pagdating sa <a href="https://onelang.org">One</a>!</br>
+Ito ay isang open source, self-hosted, bootstrapping <b>programang lengguwahe</b> upang madaling makabuo ng maaasahan at mahusay na software.
+Ito ay dinebelop ng <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> at ng iba pang may akda
 
-### El compilador para el lenguaje One estará disponible en los próximos meses
+### Ang mga may akda ng Isang Lengguwahe ay mailalabas sa loob ng ilang buwan
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -61,58 +61,58 @@ Está siendo desarrollado por <a href="https://github.com/BaseMax">Max</a>, <a h
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<!-- TABLA DE CONTENIDOS -->
-<h2 id="table-of-contents">Tabla de Contenidos</h2>
+<!-- TALAAN NG NILALAMAN -->
+<h2 id="table-of-contents">Talaan ng Nilalaman</h2>
 <details open="open">
   <ol>
-    <li><a href="#features-of-one">Características de <b>One</b></a></li>
-    <li><a href="#roadmap">Hoja de Ruta</a></li>
-    <li><a href="#code-examples">Ejemplos del código</a></li>
-    <li><a href="#getting-started">Primeros Pasos</a></li>
-    <li><a href="#get-involved">Involucrarse</a></li>
-    <li><a href="#license">Licencia</a></li>
+    <li><a href="#features-of-one">Katangian ng <b>One</b></a></li>
+    <li><a href="#roadmap">Daan ng Mapa</a></li>
+    <li><a href="#code-examples">Halimbawa ng Code</a></li>
+    <li><a href="#getting-started">Panimula</a></li>
+    <li><a href="#get-involved">Pakikisalamuha</a></li>
+    <li><a href="#license">Lisensya</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="features-of-one">➤ Características de One</h2>
+<h2 id="features-of-one">➤ Katangian ng One</h2>
 
-- Simplicidad
-- Compilador
-- Capacidad de crear archivo de salida (x86_64, i386)
-- Lenguaje de programación de sistema
-- Nivel intermedio
-- Programacion Network y API
-- Soporta programación Web (próximamente)
-  - Generación automática del código correspondiente para CSS y HTML. Así que no tendrás que aprender sino el lenguaje `One` para desarrollar un sitio web
-  - Emplea variables en CSS, de manera que podemos obtener los colores o tamaños de la base de datos
-  - Auto minifica los resultados de la página
-- Desempeño y alta velocidad
-- Soporta inline Assembly code (próximamente)
-- No requiere librerías y herramientas específicas en el sistema del usuario en modo normal (próximamente)
-- No requiere bibliotecas de ejecución externas en modo normal (próximamente)
-- No requiere compiladores externos para llevar a cabo la compilación (próximamente)
+- Simple
+- Tagatala
+- Kakayahang makagawa ng output file (x86_64, i386)
+- Sistema ng Programang Lengguwahe
+- Kalagitnaang lebel
+- Pagprograma ng network at API
+- Suporta sa Programang Web (sa hinaharap)
+  - Awtomatikong pagbuo ng naaayon na code para sa CSS at HTML. Para hindi ka na mag-aral ng higit sa "One" lengguwahe upang makabuo ng website.
+  - Gumagamit ng variables sa CSS, upang makakuha ng kulay at sukat galing sa database
+  - Awtomatik na pagliit ng resultang pahina
+- Pagsasagawa at mabilis
+- Suporta sa inline Assembly code (sa hinaharap)
+- Hindi nangangailangan ng tiyak na aklatan at kagamitan sa sistema ng gumagamit sa normal mode (sa hinaharap)
+- Hindi nangangailangan ng panlabas na runtime aklatan sa normal mode (sa hinaharap)
+- Hindi nangangailangan ng panlabas na tagatalang aklatan sa normal mode (sa hinaharap)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 id="roadmap">➤ RoadMap</h2>
 
-La gramática del lenguaje `One` está disponible [aquí](grammar.BNF).
+Magagamit ang `One` grammar [dito](grammar.BNF).
 
-- [x] Lexer/Parser (Mayormente)
+- [x] Lexer/Parser (Karamihan)
 - [x] Arbol AST
 - [x] VM
-- [ ] Generador de código (inspirado en LLVM-C)
-- [ ] Desarrollar una biblioteca en tiempo de ejecución y agregar funciones
-- [ ] Diseñar arquitectura (framework) web para el lenguaje
-- [ ] Reescribir el compilador en el lenguaje `One`
+- [ ] Gumagawa ng Code (inspirasyon ng LLVM-C)
+- [ ] Bumuo ng isang runtime aklata at magdagdag ng katangian
+- [ ] Mag-disenyo ng arkitektura sa web para sa lengguwahe
+- [ ] Isulat muli ang tagatala sa `One` lengguwahe
 
 <!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="code-examples">➤ Ejemplos del código</h2>
+<h2 id="code-examples">➤ Halimbawa ng Code</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -180,7 +180,7 @@ int main(int argc, char *argv[]) {
 
 <hr>
 
-**Otro ejemplo:**
+**Isa pang halimbawa:**
 
 ```c
 import web
@@ -207,7 +207,7 @@ main {
 
 ---
 
-**Otro ejemplo:**
+**Isa pang halimbawa:**
 
 ```c
 error {
@@ -233,7 +233,7 @@ error {
 
 ---
 
-### Desarrollo anterior de la CLI
+### Nakaraang pag-unlad ng CLI
 
 ```
 main:
@@ -269,10 +269,10 @@ end
 
 <hr>
 
-### Desarrollo anterior de la GUI: (Web, Software)
+### Nakaraang pag-unlad ng GUI: (Web, Software)
 
-Esta arquitectura está diseñada solo para sitios web y software nativo. En el futuro, también estará disponible para aplicaciones móviles. (native).<br>
-Las estructuras móviles aún no están completas y aún requieren de atención y dedicación.<br><br>El siguiente es un ejemplo de como funciona el lenguaje:
+Ang arkitekturang ito ay dinisenyo para sa katutubong software at mga website lamang. Sa hinaharap, magagamit din ito para sa mga mobile application. (katutubo).<br>
+Ang mga estraktura na ito ay hindi pa nakukumpleto at nangangailangan pa rin ng pansin at dedikasyon.<br><br>Ang sumusunod ay isang halimbawa kung paano gumagana ang lengguwahe:
 
 ```css
 title "Name - Main"
@@ -314,7 +314,7 @@ header {
 }
 ```
 
-**Convertir a base CSS/HTML/JS:**
+**I-convert ang base CSS/HTML/JS:**
 
 ```html
 <html>
@@ -355,51 +355,51 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="getting-started">➤ Primeros Pasos</h2>
+<h2 id="getting-started">➤Mga Unang Hakbang</h2>
 
-Puedes revisar [este link](https://github.com/ET-Lang/ET/wiki) para comenzar a aprender el lenguaje.
+Maaari mong suriin ang [link na ito](https://github.com/ET-Lang/ET/wiki) upang simulang matuto ng wika.
 
-<!--Pasos para la instalación-->
+<!--Mga hakbang para sa pag-install-->
 
-<!--Prerequisitos-->
+<!--Mga Pangangailangan-->
 
-#### Ambientes soportados
+#### Mga sinusuportahang kapaligiran
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
-- [ ] macOS (Incompleto)
+- [ ] macOS (Hindi kumpleto)
 - [ ] BSD
 
-<!--Escribir más sobre el compilador-->
-<!--Pasos-->
-<!--Building One from Source-->
-<!--Hello World en One-->
-<!--Tips para entender mejor el lenguaje-->
-<!--Nombre de las extensiones: `.one`-->
+<!--Sumulat ng higit pa tungkol sa tagatala-->
+<!--Mga Hakbang-->
+<!--Isang Bituin mule sa Pinagmulan-->
+<!--Kamusta Mundo sa Isa-->
+<!--Mga tip upang mas maunawaan ang wika-->
+<!--Pangalan ng mga extension: `.one`-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="get-involved">➤ Involucrarse</h2>
+<h2 id="get-involved">➤ Pakikiugnay</h2>
 
-Aceptamos cualquier tipo de contribuciones, incluyendo reportes de bugs, solicitud de funciones, mejoras en la documentación, etc.
-Para hacer una pregunta o iniciar una conversación, create an issue o únete al <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Servidor de Discord</a>.
+Tumatanggap kami ng anumang uri ng mga kontribusyon, kabilang ang ulat ng mga bug, paghiling ng tampok, pagpapahusay ng dokumentasyon, atbp.
+Upang magtanong o magsimula ng isang Pag-uusap, gumawa ng isang isyu o sumali sa <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Servidor de Discord</a>.
 
-Si no estás familiarizado con el procedimiento para hacer un pull request en GitHub puedes revisar esta [guía](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+Kung hindi ka pamilyar sa proseduring upang gumawa ng isang kahilingan sa paghila sa GitHub maaari mong suriin ang na ito [gabay](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Si has decidido contribuir, por favor revisa los lineamientos [aquí](CONTRIBUTING.md).
-<br>También puedes ayudar al desarrollo de `One` a través de donaciones en [:heart: Patreon](https://www.patreon.com/onelanguage).
+Kung nagpasya kang mag-ambag, mangyaring suriin ang mga alituntunin [dito](CONTRIBUTING.md).
+<br>Maaari mo ring tulungan ang pagbuo ng `One` sa pamamagitan ng mga donasyon sa [:heart: Patreon](https://www.patreon.com/onelanguage).
 
-Gracias a todos los <a href ="https://github.com/One-Language/One/graphs/contributors">colaboradores</a>!!
+Salamat sa lahat ng <a href ="https://github.com/One-Language/One/graphs/contributors">mga nag-ambag</a>!!
 
-Si te gustaría contribuir al desarrollo de este proyecto, puedes esctibirnos a: <maxbasecode@gmail.com>
+Kung nais mong magbigay ng kontribusyon sa pag-unlad ng proyektong ito, maaari kang sumulat sa amin sa: <maxbasecode@gmail.com>
 
 <br>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ Licencia</h2>
+<h2 id="license">➤ Lisensya</h2>
 
-`One` está publicado bajo la Licencia Pública General GNU v3.0. Por favor revisa los términos en el archivo <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENCIA</a> incluido en el repositorio.
+Ang `One` ay inilabas sa ilalim ng GNU General Public License v3.0. Para sa pabor na suriin ang mga tuntunin sa file na <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENCIA</a> incluido en el repositorio.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->

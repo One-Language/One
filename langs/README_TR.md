@@ -1,5 +1,3 @@
-<div dir="rtl">
-
 <div align="center">
 
 <p>
@@ -8,10 +6,10 @@
     </a>
 </p>
 
-# The One لغة برمجة 💚 💙 🧡 🤍 💖 🖤
+# One Programlama Dili 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[مركز المساعدة](https://github.com/One-Language/One/issues/new)
+[Yardımınıza ihtiyacımız var](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
@@ -27,7 +25,7 @@
 [![License][licensebadge]][licenseurl]
 [![Facebook][facebookbadge]][facebookurl]
 
-[English](README.md)
+[English](../README.md)
 &nbsp;
 [عربي](README_AR.md)
 &nbsp;
@@ -51,11 +49,11 @@
 
 </div>
 
-اهلا وسهلا بك في <a href="https://onelang.org">One</a>!</br>
-إنها لغة برمجة نظام مفتوحة المصدر ، مستضافة ذاتيًا ، مما يجعل من السهل إنشاء برامج موثوقة وفعالة.
-يتم تطويره من قبل <a href="https://github.com/BaseMax">ماكس</a>, <a href="https://github.com/jbampton">جون</a> ومساهمين آخرين من المصادر المفتوحة.
+<a href="https://onelang.org">One</a>'a hoşgeldiniz!</br>
+One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri sayesinde güvenilebilir ve verimli yazılımlar yaratmayı kolaylaştıran bir <b>sistem programlama dilidir.</b>
+<a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> ve diğer katılımcılar tarafından geliştirilmektedir.
 
-### سيصدر المترجم للغة الواحدة "ONE" في غضون أشهر قليلة
+### One dilinin Compiler'ı birkaç ay içerisinde yayınlanacaktır
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -63,61 +61,59 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<!-- جدول المحتويات -->
-<h2 id="table-of-contents">جدول المحتويات</h2>
+<!-- TABLE OF CONTENTS -->
+<h2 id="table-of-contents">İçindekiler</h2>
 <details open="open">
   <ol>
-    <li><a href="#features-of-one">ميزات <b>One</b></a></li>
-    <li><a href="#roadmap">خريطة الطريق</a></li>
-    <li><a href="#code-examples">أمثلة التعليمات البرمجية</a></li>
-    <li><a href="#getting-started">البدء</a></li>
-    <li><a href="#get-involved">مشاركة</a></li>
-    <li><a href="#license">الرخصة</a></li>
+    <li><a href="#features-of-one"><b>One</b></a> dilinin özellikleri</li>
+    <li><a href="#roadmap">Yol Haritası</a></li>
+    <li><a href="#code-examples">Kod Örnekleri</a></li>
+    <li><a href="#getting-started">İlk kullanım kılavuzu</a></li>
+    <li><a href="#get-involved">Dahil olun</a></li>
+    <li><a href="#license">Lisans</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="features-of-one">➤ مميزات لغة  One</h2>
+<h2 id="features-of-one">➤ One Dilinin Özellikleri</h2>
 
-- البساطة
-- ترجمة
-- القدرة على إنشاء ملف الإخراج (x86_64, i386)
-- برمجة الأنظمة
-- متوسطة المستوى
-- برمجة الشبكات و API
-- تدعم برمجة الويب (في المستقبل)
-  - الإنشاء التلقائي للرمز المقابل لكل من CSS و HTML. لذلك لن تضطر إلى تعلم أكثر من لغة واحدة لتطوير موقع ويب
-  - يستخدم المتغيرات في CSS ، حتى نتمكن من الحصول على الألوان أو الأحجام من قاعدة البيانات
-  - تصغير نتائج الصفحة تلقائيًا
-- أداء وسرعة عالية
-- تدعم رمز التجميع المضمن (في المستقبل)
-- لا يتطلب منك مكتبات وأدوات محددة على نظام المستخدم في الوضع العادي (في المستقبل)
-- لا يتطلب مكتبات وقت تشغيل خارجية في الوضع العادي (في المستقبل)
-- لا يتطلب من المترجمين الخارجيين القيام بالتجميع (في المستقبل)
+- Basit.
+- Compiler.
+- Çıktı dosyası oluşturabilir. (x86_64, i386)
+- Sistem Programlama Dilidir.
+- Orta Düzey.
+- Network ve API programlama yapılabilir.
+- Web programlama desteği sunar. (gelecek)
+  - Hem CSS hem de HTML'e karşılık gelen kodlar otomatik olarak üretilir. Yani, bir websitesi geliştirmek için `One` dışında herhangi bir dil öğrenmenize gerek yok.
+  - CSS'de variables kullanır, böylece veritabanından renkleri ve boyutları çekebilir.
+  - Sayfa sonuçlarını otomatik olarak küçültür.
+- Yüksek hızlı performans vaad eder.
+- İnline Assembly code destekler. (gelecek)
+- Normal modda, kullanıcının sisteminde belirli kütüphane ve araçlar olmasına ihtiyaç duymaz. (gelecek)
+- Normal modda, external runtime kütüphanelerine ihtiyaç duymaz. (gelecek)
+- Compile etmek için harici compiler'lara ihtiyaç duymaz. (gelecek)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="roadmap">➤ خارطة الطريق</h2>
+<h2 id="roadmap">➤ Yol Haritası</h2>
 
-قواعد اللغة متوفرة . [هنا](grammar.BNF).
+`One` dilinin kurallarını [burada](grammar.BNF) bulabilirsiniz.
 
-- [x] &nbsp;&nbsp; المعجم / المحلل اللغوي (في الغالب)
-- [x] &nbsp;&nbsp; شجرة AST
-- [x] &nbsp;&nbsp; VM
-- [ ] &nbsp;&nbsp; مولد الشفرة (استلهم من LLVM-C)
-- [ ] &nbsp;&nbsp; قم بتطوير مكتبة وقت التشغيل وإضافة ميزات
-- [ ] &nbsp;&nbsp; تصميم إطار عمل للغة
-- [ ] &nbsp;&nbsp; أعد كتابة المترجم بلغة ONE
+- [x] Lexer/Parser (Mostly)
+- [x] AST Tree
+- [x] VM
+- [ ] Code Generator (LLVM-C'den esinlenildi.)
+- [ ] Bir runtime kütüphanesi geliştmek ve yeni özellikler eklemek
+- [ ] Dil için bir web framework geliştirmek
+- [ ] Compiler'ı `One` dili içerisinde yeniden yazmak
 
 <!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="code-examples">➤  التعليمات البرمجية</h2>
+<h2 id="code-examples">➤ Kod Örnekleri</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
-
-</div>
 
 ```c
 main {
@@ -125,11 +121,7 @@ main {
 }
 ```
 
-<div dir="rtl">
-
-**التحويل الى C:**
-
-</div>
+**C'ye çevirelim:**
 
 ```c
 #include <stdio.h>
@@ -149,11 +141,7 @@ i32 main {
 }
 ```
 
-<div dir="rtl">
-
-**التحويل الى C:**
-
-</div>
+**C'ye çevirelim:**
 
 ```c
 #include <stdio.h>
@@ -175,11 +163,7 @@ main {
 }
 ```
 
-<div dir="rtl">
-
-**التحويل الى C:**
-
-</div>
+**C'ye çevirelim:**
 
 ```c
 #include <stdio.h>
@@ -196,11 +180,7 @@ int main(int argc, char *argv[]) {
 
 <hr>
 
-<div dir="rtl">
-
-**أمثلة أخرى:**
-
-</div>
+**Başka bir taslak:**
 
 ```c
 import web
@@ -227,11 +207,7 @@ main {
 
 ---
 
-<div dir="rtl">
-
-**أمثلة أخرى:**
-
-</div>
+**Başka bir taslak:**
 
 ```c
 error {
@@ -257,11 +233,7 @@ error {
 
 ---
 
-<div dir="rtl">
-
-### تطوير CLI القديم
-
-</div>
+### Eski CLI Geliştirmesi
 
 ```
 main:
@@ -297,14 +269,10 @@ end
 
 <hr>
 
-<div dir="rtl">
+### Eski GUI Geliştirmesi: (Web, Yazılım)
 
-### تطوير واجهة المستخدم الرسومية القديمة: (الويب ، البرامج)
-
-تم تصميم هذه البنية فقط لمواقع الويب والبرامج الأصلية. في المستقبل ، سيكون متاحًا أيضًا لتطبيقات الأجهزة المحمولة (الأصلية). (native).<br>
-الهياكل المتنقلة لم تكتمل بعد وتتطلب المزيد من التفكير والاهتمام. <br><br>مثال لإثبات عمل اللغة:
-
-</div>
+Bu mimari sadece websiteler ve native yazılımlar için tasarlanmıştır. Gelecekte, mobil uygulamalar için de kullanılabilir olacaktır.(native).<br>
+Mobil yapılar henüz tamamlanmadı ve daha fazla düşünceye ve ilgilenilmeye ihtiyaçları var.<br><br>Dilin çalışma şeklini göstermek için bir örnek:
 
 ```css
 title "Name - Main"
@@ -346,11 +314,7 @@ header {
 }
 ```
 
-<div dir="rtl">
-
-**التحويل إلى قاعدة CSS / HTML / JS:**
-
-</div>
+**CSS/HTML/JS temelli kodlara çevirelim:**
 
 ```html
 <html>
@@ -391,26 +355,20 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<div dir="rtl">
+<h2 id="getting-started">➤ İlk Kullanım Kılavuzu</h2>
 
-<h2 id="getting-started">➤ البدء</h2>
-
-الرجوع الى [هذا الرابط](https://github.com/ET-Lang/ET/wiki) لبدء تعلم أساسيات اللغة.
+Dili öğrenmeye başlamak için [bu linke](https://github.com/ET-Lang/ET/wiki) göz atabilirsiniz.
 
 <!--Installation Steps-->
 
 <!--Prerequisites-->
 
-#### البيئات المدعومة
-
-</div>
+#### Desteklenen Ortamlar
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
 - [ ] macOS (Not complete)
 - [ ] BSD
-
-<div dir="rtl">
 
 <!--Write more about the compiler-->
 <!--Steps-->
@@ -422,26 +380,26 @@ header {
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="get-involved">➤ شارك</h2>
+<h2 id="get-involved">➤ Bize katılın</h2>
 
-نرحب بجميع أنواع المساهمات ، بما في ذلك تقارير الأخطاء وطلبات الميزات وتحسينات الوثائق وما إلى ذلك.
-لطرح سؤال أو فتح مناقشة أو إنشاء مشكلة , نرجو الإنضمام إلى سيرفر الدسكورد الخاص بنا . <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
+Bug raporlamaları, özellik istekleri, dokümentasyon geliştirmeleri vb. dahil olmak üzere her türlü katkıyı nezaketle karşılıyoruz.
+Soru sormak ya da bir tartışma başlatmak için bir issue oluşturun ya da <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>'ına katılın.
 
-إذا لم تكن على دراية بكيفية تقديم طلب تعديل على GitHub ، فيرجى قراءة هذا . [الدليل](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+Eğer GitHub'da nasıl pull request oluşturacağınızı bilmiyorsanız şu [rehberi](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) inceleyebilirsiniz.
 
-إذا كنت قد قررت المساهمة ، يرجى قراءة الإرشادات هنا أولاً. [هنا](CONTRIBUTING.md).
-<br>يمكنك أيضًا المساعدة في تطوير `One` من خلال تقديم بعض التبرعات على [:heart: Patreon](https://www.patreon.com/onelanguage).
+Eğer katkıda bulunmak istiyorsanız, lütfen ilk olarak [burada](CONTRIBUTING.md) yer alan esasları okuyunuz.
+<br>Ayrıca [:heart: Patreon](https://www.patreon.com/onelanguage) üzerinden bize maddi destek sağlayarak da bu projeye katkıda bulunabilirsiniz..
 
-شكرا لجميع <a href ="https://github.com/One-Language/One/graphs/contributors">المساهمين</a>!!
+<a href ="https://github.com/One-Language/One/graphs/contributors">Katkı sağlayan</a> herkese teşekkürler!
 
-إذا كنت ترغب في المساهمة في تطوير هذا المشروع, يمكنك مراسلتنا على: <maxbasecode@gmail.com>
+Eğer projenin geliştirilmesinde katkıda bulunmak isterseniz, bize mail atabilirsiniz: <maxbasecode@gmail.com>
 
-<br>تم إنشاؤه بواسطة Max Base @ 2019
+<br> Max Base tarafından oluşturuldu! @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ الرخصة</h2>
+<h2 id="license">➤ Lisans</h2>
 
-`One` تم إصدارها بموجب رخصة جنو العمومية العامة v3.0. يرجى الرجوع إلى المصطلحات الموجودة في ملف الترخيص المتضمن في المستودع.
+`One` GNU General Public License v3.0 lisansı altında yayınlanmıştır. Lütfen <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> dosyası içerisinde yer alan detaylara göre hareket ediniz.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
@@ -459,5 +417,3 @@ header {
 [instagramurl]: https://www.instagram.com/one.lang
 [licenseurl]: https://github.com/One-Language/One/blob/master/LICENSE
 [facebookurl]: https://www.facebook.com/onelangteam
-
-</div>
