@@ -37,7 +37,7 @@ repos:
         name: Run codespell
         description: Check spelling with codespell
         entry: codespell --ignore-words=codespell.txt
-        exclude: ^README_AR\.md$|^README_ES\.md$|^README_FA\.md$|^README_FIL\.md$|^README_FR\.md$|^README_RU\.md|^README_TR\.md$|^README_UK\.md$
+        exclude: ^langs/.*$
   # - repo: https://github.com/jumanjihouse/pre-commit-hooks
   #  rev: 2.1.5
   #  hooks:
