@@ -25,7 +25,7 @@
 [![Twitter][twitterurl]][twitterbadge]
 [![License][licensebadge]][licenseurl]
 
-[English](README.md)
+[English](../README.md)
 &nbsp;
 [عربي](README_AR.md)
 &nbsp;
