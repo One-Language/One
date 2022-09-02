@@ -33,25 +33,25 @@
 
 [English](README.md)
 &nbsp;
-[عربي](README_AR.md)
+[عربي](langs/README_AR.md)
 &nbsp;
-[Español](README_ES.md)
+[Español](langs/README_ES.md)
 &nbsp;
-[فارسی](README_FA.md)
+[فارسی](langs/README_FA.md)
 &nbsp;
-[Filipino](README_FIL.md)
+[Filipino](langs/README_FIL.md)
 &nbsp;
-[Français](README_FR.md)
+[Français](langs/README_FR.md)
 &nbsp;
-[Italiano](README_IT.md)
+[Italiano](langs/README_IT.md)
 &nbsp;
-[русский](README_RU.md)
+[русский](langs/README_RU.md)
 &nbsp;
-[Türkçe](README_TR.md)
+[Türkçe](langs/README_TR.md)
 &nbsp;
-[Українська](README_UK.md)
+[Українська](langs/README_UK.md)
 &nbsp;
-[日本語](README_JA.md)
+[日本語](langs/README_JA.md)
 
 </div>
 
