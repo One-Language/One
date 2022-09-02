@@ -45,13 +45,13 @@
 &nbsp;
 [Italiano](langs/README_IT.md)
 &nbsp;
+[日本語](langs/README_JA.md)
+&nbsp;
 [русский](langs/README_RU.md)
 &nbsp;
 [Türkçe](langs/README_TR.md)
 &nbsp;
 [Українська](langs/README_UK.md)
-&nbsp;
-[日本語](langs/README_JA.md)
 
 </div>
 
