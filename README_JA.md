@@ -6,7 +6,7 @@
     </a>
 </p>
 
-# One言語 💚 💙 🧡 🤍 💖 🖤
+# One 言語 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
 [ヘルプ募集](https://github.com/One-Language/One/issues/new)
@@ -24,12 +24,6 @@
 [![Instagram][instagrambadge]][instagramurl]
 [![Twitter][twitterurl]][twitterbadge]
 [![License][licensebadge]][licenseurl]
-
-<!-- prettier-ignore-start -->
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-28-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-<!-- prettier-ignore-end -->
 
 [English](README.md)
 &nbsp;
@@ -60,7 +54,7 @@
 信頼性が高く効率的なソフトウェアを構築します。
 これは、<a href="https://github.com/BaseMax">Max</a>や<a href="https://github.com/jbampton">John</a>およびその他のオープンソースのコントリビュータによって開発されています。
 
-### One言語用のコンパイラは数か月以内にリリースされます
+### One 言語用のコンパイラは数か月以内にリリースされます
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -90,10 +84,10 @@
 - 出力ファイルを作成する機能(x86_64、i386)
 - システムプログラミング言語
 - 中間レベル
-- ネットワークおよびAPIプログラミング
-- Webプログラミングに対応（将来予定）
-  - CSSとHTMLの両方に対応したコードを自動生成します。そのため、ウェブサイトを開発するために複数の`One`言語を学ぶ必要がない
-  - CSSで変数を使用するので、データベースから色やサイズを取得することができる
+- ネットワークおよび API プログラミング
+- Web プログラミングに対応（将来予定）
+  - CSS と HTML の両方に対応したコードを自動生成します。そのため、ウェブサイトを開発するために複数の`One`言語を学ぶ必要がない
+  - CSS で変数を使用するので、データベースから色やサイズを取得することができる
   - ページの結果を自動的に最小化する
 - パフォーマンスと高速
 - インラインアセンブリコードをサポート（将来予定）
@@ -108,9 +102,9 @@
 `One`言語の文法は[こちら](grammar.BNF)。
 
 - [x] レキサー／パーサー(ほとんど)
-- [x] ASTツリー
+- [x] AST ツリー
 - [x] VM
-- [ ] コードジェネレータ(LLVM-Cからヒントを得た)
+- [ ] コードジェネレータ(LLVM-C からヒントを得た)
 - [ ] ランタイムライブラリの開発と機能追加
 - [ ] この言語のためのウェブフレームワークをデザインする
 - [ ] `One`言語でコンパイラを書き直す
@@ -128,7 +122,7 @@ main {
 }
 ```
 
-**C言語への変換:**
+**C 言語への変換:**
 
 ```c
 #include <stdio.h>
@@ -148,7 +142,7 @@ i32 main {
 }
 ```
 
-**C言語への変換:**
+**C 言語への変換:**
 
 ```c
 #include <stdio.h>
@@ -170,7 +164,7 @@ main {
 }
 ```
 
-**C言語への変換:**
+**C 言語への変換:**
 
 ```c
 #include <stdio.h>
@@ -240,7 +234,7 @@ error {
 
 ---
 
-### 古いCLIの開発
+### 古い CLI の開発
 
 ```
 main:
@@ -276,9 +270,9 @@ end
 
 <hr>
 
-### 古いGUI開発: (Web, GUI開発)
+### 古い GUI 開発: (Web, GUI 開発)
 
-このアーキテクチャは、Webサイトとネイティブソフトウェアのみを対象として設計されています。将来的には、モバイルアプリ（ネイティブ）でも利用できるようになる予定です。<br>
+このアーキテクチャは、Web サイトとネイティブソフトウェアのみを対象として設計されています。将来的には、モバイルアプリ（ネイティブ）でも利用できるようになる予定です。<br>
 モバイル構造はまだ完全ではないので、もっと注意深く考える必要があります。<br><br>言語の動作を示す例:
 
 ```css
@@ -321,7 +315,7 @@ header {
 }
 ```
 
-**CSS/HTML/JSベースへの変換:**
+**CSS/HTML/JS ベースへの変換:**
 
 ```html
 <html>
@@ -390,9 +384,9 @@ header {
 <h2 id="get-involved">➤ 参加する</h2>
 
 バグレポート、機能リクエスト、ドキュメントの改善など、あらゆる種類のコントリビュートを歓迎します。
-質問やディスカッションを行うには、issueを作成するか、<a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>に参加してください。
+質問やディスカッションを行うには、issue を作成するか、<a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>に参加してください。
 
-GitHubでのプルリクエストのやり方がよくわからないという方は、こちらの[ガイド](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)をご覧ください。
+GitHub でのプルリクエストのやり方がよくわからないという方は、こちらの[ガイド](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)をご覧ください。
 
 投稿を決意された方は、まず[こちら](CONTRIBUTING.md)のガイドラインをお読みください。
 <br>また、[:heart: Patreon](https://www.patreon.com/onelanguage)でいくらかの寄付をすることで、`One`の開発に協力することができます。
@@ -406,7 +400,7 @@ GitHubでのプルリクエストのやり方がよくわからないという�
 
 <h2 id="license">➤ ライセンス</h2>
 
-`One`はGNU General Public License v3.0の下でリリースされています。リポジトリに含まれる<a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a>ファイルに記載されている条件を参照してください。
+`One`は GNU General Public License v3.0 の下でリリースされています。リポジトリに含まれる<a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a>ファイルに記載されている条件を参照してください。
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
