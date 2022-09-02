@@ -1,3 +1,11 @@
+/**
+ The One Programming Language
+ File: stages/lexer/lexer.c
+  _        _
+ / \ |\ | |_    Max Base
+ \_/ | \| |_    Copyright 2020-2022; One Language Contributors
+ **/
+
 #include "lexer.h"
 
 Lexer* lexer_make_string(char* string)

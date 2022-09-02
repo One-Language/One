@@ -1,3 +1,11 @@
+/**
+ The One Programming Language
+ File: utilities/io.c
+  _        _
+ / \ |\ | |_    Max Base
+ \_/ | \| |_    Copyright 2020-2022; One Language Contributors
+ **/
+
 #include "io.h"
 
 char* file_reads(FILE* file)

@@ -21,4 +21,4 @@ add_executable(one_lexer
 #        ../../utilities/io.h
         lexer.c
         ../../utilities/io.c
-        main.c)
+        main.c token.c token.h)
