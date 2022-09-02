@@ -1,22 +1,5 @@
 #include "lexer.h"
 
-char* file_reads(FILE* file)
-{
-    fseek(file, 0, SEEK_END);
-    long size = ftell(file);
-    fseek(file, 0, SEEK_SET);
-
-    char* buffer = malloc(size + 1);
-    if (buffer == NULL) {
-        printf("Could not allocate memory for file buffer");
-        return NULL;
-    }
-    fread(buffer, 1, size, file);
-    buffer[size] = '\0';
-
-    return buffer;
-}
-
 Lexer* lexer_make_string(char* string)
 {
     Lexer* lexer = malloc(sizeof(Lexer));
@@ -163,17 +146,18 @@ Token** lexer_lex(Lexer* lexer)
         return NULL;
     }
 
+    printf("Lexing source: %s\n", lexer->source);
+
     lexer->tokens = malloc(sizeof(Token*) * 100);
     lexer->token_count = 0;
 
-    Token* token = lexer_next_token(lexer);
-    while (token != NULL) {
-        lexer->tokens[lexer->token_count] = token;
-        lexer->token_count++;
-        token = lexer_next_token(lexer);
-    }
-
-    printf("Lexed %d tokens", lexer->token_count);
+//    Token* token = lexer_next_token(lexer);
+//    while (token != NULL) {
+//        lexer->tokens[lexer->token_count] = token;
+//        lexer->token_count++;
+//        token = lexer_next_token(lexer);
+//    }
+//    printf("Lexed %d tokens", lexer->token_count);
 
     lexer->tokens[lexer->token_count] = NULL;
 

@@ -3,6 +3,8 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "../../utilities/io.h"
+
 typedef enum {
     TOKEN_IDENTIFIER,
 
