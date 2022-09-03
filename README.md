@@ -27,7 +27,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-30-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-31-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
@@ -472,6 +472,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/alesar1"><img src="https://avatars.githubusercontent.com/u/54070865?v=4?s=100" width="100px;" alt=""/><br /><sub><b>alesar1</b></sub></a><br /><a href="#translation-alesar1" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/Gokul2003g"><img src="https://avatars.githubusercontent.com/u/75162131?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gokul</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=Gokul2003g" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/sokratisvas"><img src="https://avatars.githubusercontent.com/u/77175483?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sokratis Vasiliou</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=sokratisvas" title="Documentation">📖</a></td>
   </tr>
 </table>
 
