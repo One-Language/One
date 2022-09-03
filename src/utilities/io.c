@@ -14,13 +14,13 @@ char* file_reads(FILE* file)
     long size = ftell(file);
     fseek(file, 0, SEEK_SET);
 
-    char* buffer = malloc(size + 1);
+    char* buffer = malloc(size);
     if (buffer == NULL) {
         printf("Could not allocate memory for file buffer");
         return NULL;
     }
-    fread(buffer, 1, size, file);
-    buffer[size] = '\0';
+    fread(buffer, 1, size-1, file);
+    buffer[size-1] = '\0';
 
     return buffer;
 }

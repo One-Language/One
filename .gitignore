@@ -13,6 +13,12 @@ src/*.exe
 src/*/*.exe
 src/*/*/*.exe
 
+# cmake
+stages/lexer/cmake-build-debug
+stages/parser/cmake-build-debug
+stages/generator/cmake-build-debug
+cmake-build-debug
+
 # lexer
 src/lexer/lexer
 src/lexer/log
