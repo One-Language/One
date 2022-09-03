@@ -30,25 +30,24 @@ Lexer* lexer_make(FILE* file)
     return lexer;
 }
 
-Token* token_make(TokenType type, char* value, Location start, Location end)
-{
-    Token* token = malloc(sizeof(Token));
-    token->type = type;
-    token->value = value;
-    token->start = start;
-    token->end = end;
-
-    return token;
-}
-
 char lexer_get_current_char(Lexer* lexer)
 {
     return lexer->source[lexer->offset];
 }
 
+void lexer_go_next_char(Lexer* lexer)
+{
+    lexer->offset++;
+}
+
+void lexer_go_prev_char(Lexer* lexer)
+{
+    lexer->offset--;
+}
+
 char lexer_get_next_char(Lexer* lexer)
 {
-    return lexer->source[lexer->offset++];
+    return lexer->source[lexer->offset + 1];
 }
 
 char lexer_get_prev_char(Lexer* lexer)
@@ -58,34 +57,14 @@ char lexer_get_prev_char(Lexer* lexer)
 
 bool lexer_is_eof(Lexer* lexer)
 {
-    return lexer->offset >= strlen(lexer->source) || lexer_get_current_char(lexer) == '\0';
-}
-
-bool lexer_is_whitespace(char ch)
-{
-    return ch == ' ' || ch == '\t' || ch == '\r' || ch == '\n' || ch == '\v' || ch == '\f';
+    return lexer->offset >= strlen(lexer->source) || lexer->source[lexer->offset] == '\0';
 }
 
 void lexer_skip_whitespace(Lexer* lexer)
 {
-    while (!lexer_is_eof(lexer) && lexer_is_whitespace(lexer_get_current_char(lexer))) {
-        lexer_get_next_char(lexer);
+    while (!lexer_is_eof(lexer) && is_whitespace(lexer_get_current_char(lexer))) {
+        lexer_go_next_char(lexer);
     }
-}
-
-bool lexer_is_identifier(char ch)
-{
-    return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch == '_';
-}
-
-bool lexer_is_digit(char ch)
-{
-    return ch >= '0' && ch <= '9';
-}
-
-bool lexer_is_alpha(char ch)
-{
-    return lexer_is_identifier(ch) || lexer_is_digit(ch);
 }
 
 Token* lexer_read_identifier(Lexer* lexer)
@@ -95,7 +74,7 @@ Token* lexer_read_identifier(Lexer* lexer)
     buffer[0] = '\0';
     int len = 0;
 
-    while (!lexer_is_eof(lexer) && lexer_is_alpha(lexer_get_current_char(lexer))) {
+    while (!lexer_is_eof(lexer) && is_alpha(lexer_get_current_char(lexer))) {
         char c = lexer_get_next_char(lexer);
         buffer = realloc(buffer, len + 2);
         buffer[len] = c;
@@ -114,35 +93,35 @@ Token* lexer_next_token(Lexer* lexer)
     if (lexer_is_eof(lexer)) {
         return token_make(TOKEN_EOF, NULL, start, lexer->location);
     }
-    else if (lexer_is_whitespace(c)) {
+    else if (c == ' ' || c == '\t' || c == '\n' || c == '\r') {
         lexer_skip_whitespace(lexer);
         return lexer_next_token(lexer);
     }
     else if (c == '(') {
-        lexer_get_next_char(lexer);
+        lexer_go_next_char(lexer);
         return token_make(TOKEN_OPERATOR_PAREN_LEFT, "(", start, lexer->location);
     }
     else if (c == ')') {
-        lexer_get_next_char(lexer);
+        lexer_go_next_char(lexer);
         return token_make(TOKEN_OPERATOR_PAREN_RIGHT, ")", start, lexer->location);
     }
     else if (c == '{') {
-        lexer_get_next_char(lexer);
+        lexer_go_next_char(lexer);
         return token_make(TOKEN_OPERATOR_BRACE_LEFT, "{", start, lexer->location);
     }
     else if (c == '}') {
-        lexer_get_next_char(lexer);
+        lexer_go_next_char(lexer);
         return token_make(TOKEN_OPERATOR_BRACE_RIGHT, "}", start, lexer->location);
     }
     else if (c == ';') {
-        lexer_get_next_char(lexer);
+        lexer_go_next_char(lexer);
         return token_make(TOKEN_OPERATOR_SEMICOLON, ";", start, lexer->location);
     }
     else if (c == ',') {
-        lexer_get_next_char(lexer);
+        lexer_go_next_char(lexer);
         return token_make(TOKEN_OPERATOR_COMMA, ",", start, lexer->location);
     }
-    else if (lexer_is_identifier(c)) {
+    else if (is_identifier(c)) {
         return lexer_read_identifier(lexer);
     }
 }
@@ -159,13 +138,13 @@ Token** lexer_lex(Lexer* lexer)
     lexer->tokens = malloc(sizeof(Token*) * 100);
     lexer->token_count = 0;
 
-//    Token* token = lexer_next_token(lexer);
+    Token* token = lexer_next_token(lexer);
 //    while (token != NULL) {
 //        lexer->tokens[lexer->token_count] = token;
 //        lexer->token_count++;
 //        token = lexer_next_token(lexer);
 //    }
-//    printf("Lexed %d tokens", lexer->token_count);
+    printf("Lexed %d tokens", lexer->token_count);
 
     lexer->tokens[lexer->token_count] = NULL;
 

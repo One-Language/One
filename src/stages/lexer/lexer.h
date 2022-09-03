@@ -11,42 +11,8 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "token.h"
 #include "../../utilities/io.h"
-
-typedef enum {
-    TOKEN_IDENTIFIER,
-
-    TOKEN_KEYWORD_IF,
-    TOKEN_KEYWORD_ELSE,
-    TOKEN_KEYWORD_WHILE,
-    TOKEN_KEYWORD_RETURN,
-    TOKEN_KEYWORD_FOR,
-    TOKEN_KEYWORD_FN,
-
-    TOKEN_OPERATOR_PAREN_LEFT,
-    TOKEN_OPERATOR_PAREN_RIGHT,
-    TOKEN_OPERATOR_BRACE_LEFT,
-    TOKEN_OPERATOR_BRACE_RIGHT,
-
-    TOKEN_OPERATOR_SEMICOLON,
-    TOKEN_OPERATOR_COMMA,
-
-    TOKEN_EOF
-} TokenType;
-
-typedef struct {
-    int line;
-    int column;
-    int offset;
-} Location;
-
-typedef struct {
-    TokenType type;
-    char* value;
-
-    Location start;
-    Location end;
-} Token;
 
 typedef struct {
     FILE* file;
@@ -59,5 +25,20 @@ typedef struct {
     Location location;
 } Lexer;
 
-Lexer* lexer_make(FILE* file);
+void lexer_go_next_char(Lexer* lexer);
+
+void lexer_go_prev_char(Lexer* lexer);
+
+char lexer_get_next_char(Lexer* lexer);
+
+char lexer_get_prev_char(Lexer* lexer);
+
+bool lexer_is_eof(Lexer* lexer);
+
+void lexer_skip_whitespace(Lexer* lexer);
+
+Token* lexer_read_identifier(Lexer* lexer);
+
+Token* lexer_next_token(Lexer* lexer);
+
 Token** lexer_lex(Lexer* lexer);
