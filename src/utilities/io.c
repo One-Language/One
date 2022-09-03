@@ -8,19 +8,31 @@
 
 #include "io.h"
 
-char* file_reads(FILE* file)
+char* file_reads(FILE* infile)
 {
-    fseek(file, 0, SEEK_END);
-    long size = ftell(file);
-    fseek(file, 0, SEEK_SET);
+    /* declare a file pointer */
+    char    *buffer;
+    long    numbytes;
 
-    char* buffer = malloc(size);
-    if (buffer == NULL) {
-        printf("Could not allocate memory for file buffer");
-        return NULL;
-    }
-    fread(buffer, 1, size-1, file);
-    buffer[size-1] = '\0';
+    /* quit if the file does not exist */
+    if(infile == NULL) return NULL;
+
+    /* Get the number of bytes */
+    fseek(infile, 0L, SEEK_END);
+    numbytes = ftell(infile);
+
+    /* reset the file position indicator to the beginning of the file */
+    fseek(infile, 0L, SEEK_SET);
+
+    /* grab sufficient memory for the buffer to hold the text */
+    buffer = (char*)calloc(numbytes, sizeof(char));
+
+    /* memory error */
+    if(buffer == NULL) return 1;
+
+    /* copy all the text into the buffer */
+    fread(buffer, sizeof(char), numbytes, infile);
+    fclose(infile);
 
     return buffer;
 }
