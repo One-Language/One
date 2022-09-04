@@ -10,6 +10,7 @@
 
 typedef struct {
     Array* statements;
+    Array* errors;
 } AstProgram;
 
 typedef struct {

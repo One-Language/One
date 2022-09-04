@@ -21,6 +21,9 @@
 
 typedef struct {
     Lexer* lexer;
+    Token** tokens;
+    size_t token_count;
+
     AstProgram* ast;
 } Parser;
 
@@ -29,5 +32,11 @@ Parser* parser_init(Lexer* lexer);
 void parser_parse(Parser* parser);
 
 char* parser_trace(Parser* parser);
+
+AstStatement* parser_statement(Parser* parser);
+
+Array* parser_statements(Parser* parser);
+
+void parser_parse(Parser* parser);
 
 #endif //ONE_LEXER_PARSER_H
