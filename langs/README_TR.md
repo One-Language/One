@@ -98,7 +98,7 @@ One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri say
 
 <h2 id="roadmap">➤ Yol Haritası</h2>
 
-`One` dilinin kurallarını [burada](grammar.BNF) bulabilirsiniz.
+`One` dilinin kurallarını [burada](https://github.com/One-Language/One/blob/main/grammar.BNF) bulabilirsiniz.
 
 - [x] Lexer/Parser (Mostly)
 - [x] AST Tree
@@ -387,7 +387,7 @@ Soru sormak ya da bir tartışma başlatmak için bir issue oluşturun ya da <a 
 
 Eğer GitHub'da nasıl pull request oluşturacağınızı bilmiyorsanız şu [rehberi](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) inceleyebilirsiniz.
 
-Eğer katkıda bulunmak istiyorsanız, lütfen ilk olarak [burada](CONTRIBUTING.md) yer alan esasları okuyunuz.
+Eğer katkıda bulunmak istiyorsanız, lütfen ilk olarak [burada](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md) yer alan esasları okuyunuz.
 <br>Ayrıca [:heart: Patreon](https://www.patreon.com/onelanguage) üzerinden bize maddi destek sağlayarak da bu projeye katkıda bulunabilirsiniz..
 
 <a href ="https://github.com/One-Language/One/graphs/contributors">Katkı sağlayan</a> herkese teşekkürler!

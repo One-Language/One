@@ -98,7 +98,7 @@ Ito ay dinebelop ng <a href="https://github.com/BaseMax">Max</a>, <a href="https
 
 <h2 id="roadmap">➤ RoadMap</h2>
 
-Magagamit ang `One` grammar [dito](grammar.BNF).
+Magagamit ang `One` grammar [dito](https://github.com/One-Language/One/blob/main/grammar.BNF).
 
 - [x] Lexer/Parser (Karamihan)
 - [x] Arbol AST
@@ -387,7 +387,7 @@ Upang magtanong o magsimula ng isang Pag-uusap, gumawa ng isang isyu o sumali sa
 
 Kung hindi ka pamilyar sa proseduring upang gumawa ng isang kahilingan sa paghila sa GitHub maaari mong suriin ang na ito [gabay](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Kung nagpasya kang mag-ambag, mangyaring suriin ang mga alituntunin [dito](CONTRIBUTING.md).
+Kung nagpasya kang mag-ambag, mangyaring suriin ang mga alituntunin [dito](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md).
 <br>Maaari mo ring tulungan ang pagbuo ng `One` sa pamamagitan ng mga donasyon sa [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Salamat sa lahat ng <a href ="https://github.com/One-Language/One/graphs/contributors">mga nag-ambag</a>!!
