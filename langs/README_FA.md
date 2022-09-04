@@ -101,7 +101,7 @@
 
 <h2 id="roadmap">➤ نقشه و مسیر پروژه</h2>
 
-نحو و گرامر زبان `وان` نیز در [اینجا](grammar.BNF) در دسترس است.
+نحو و گرامر زبان `وان` نیز در [اینجا](https://github.com/One-Language/One/blob/main/grammar.BNF) در دسترس است.
 
 </div>
 
@@ -441,7 +441,7 @@ header {
 
 اگر شما با نحوه ساختن درخواست pull در گیت هاب آشنا نیستید لطفا این [راهنما](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) را بخوانید.
 
-اگر تصمیم به مشارکت گرفتید، لطفا ابتدا رهنمودها را از [اینجا](CONTRIBUTING.md) بخوانید.
+اگر تصمیم به مشارکت گرفتید، لطفا ابتدا رهنمودها را از [اینجا](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md) بخوانید.
 
 شما همچنین میتوانید با کمک های مالی به توسعه `وان` کمک کنید [:heart: Patreon](https://www.patreon.com/onelanguage).
 
