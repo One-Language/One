@@ -39,4 +39,6 @@ Array* parser_statements(Parser* parser);
 
 void parser_parse(Parser* parser);
 
+char* ast_statement_type_name(AstStatementType type);
+
 #endif //ONE_LEXER_PARSER_H

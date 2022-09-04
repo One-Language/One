@@ -88,14 +88,45 @@ AstBlock* parse_block(Parser* parser)
     return block;
 }
 
+char* ast_statement_type_name(AstStatementType type)
+{
+    switch(type) {
+        case STATEMENT_EXPRESSION:
+            return "STATEMENT_EXPRESSION";
+        case STATEMENT_RETURN:
+            return "STATEMENT_RETURN";
+        case STATEMENT_FUNCTION:
+            return "STATEMENT_FUNCTION";
+        case STATEMENT_IF:
+            return "STATEMENT_IF";
+        case STATEMENT_WHILE:
+            return "STATEMENT_WHILE";
+        case STATEMENT_FOR:
+            return "STATEMENT_FOR";
+        default:
+            return "STATEMENT_ERROR";
+    }
+}
+
 AstStatement* parser_fn(Parser* parser)
 {
-    expect(parser, TOKEN_FN);
+    AstStatement* statement = malloc(sizeof(AstStatement));
+    statement->type = STATEMENT_FUNCTION;
+    statement->stmt.function = malloc(sizeof(AstFunction));
+    statement->stmt.function->arguments = malloc(sizeof(Array));
+    array_init(statement->stmt.function->arguments);
+
+    if (expect(parser, TOKEN_FN) == NULL) return NULL;
+
     Token* ident = expect(parser, TOKEN_IDENTIFIER);
+    if (ident == NULL) return NULL;
+
     expect(parser, TOKEN_LPAREN);
+    // TODO: arguments
     expect(parser, TOKEN_RPAREN);
 
-    AstBlock* block = parse_block(parser);
+    statement->stmt.function->block = parse_block(parser);
+    if (statement->stmt.function->block == NULL) return NULL;
 
     return statement_make("fn");
 }
@@ -153,11 +184,13 @@ char* parser_trace(Parser* parser)
     printf("parser_trace\n");
     sds temp = sdsnew("<Parser>\n");
 
+    temp = sdscatprintf(temp, "\t<Statements count=\"%d\">\n", parser->ast->statements->count);
     for (int i = 0; i < parser->ast->statements->count; i++)
     {
         AstStatement* stmt = parser->ast->statements->data[i];
-        temp = sdscatprintf(temp, "\t<Statement name=\"%s\" />\n", stmt->name);
+        temp = sdscatprintf(temp, "\t\t<Statement name=\"%s\" />\n", stmt->name);
     }
+    temp = sdscat(temp, "\t</Statements>\n");
 
     temp = sdscat(temp, "</Parser>");
 
