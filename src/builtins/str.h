@@ -5,6 +5,7 @@
 #ifndef ONE_LEXER_STR_H
 #define ONE_LEXER_STR_H
 
+
 #define SDS_MAX_PREALLOC (1024*1024)
 extern const char *SDS_NOINIT;
 
@@ -18,6 +19,9 @@ extern const char *SDS_NOINIT;
 #include <sys/types.h>
 #include <stdarg.h>
 #include <stdint.h>
+
+char *strdup(const char *s);
+char *strndup(const char *s, size_t n);
 
 typedef char *sds;
 

@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <str.h>
 
 #include "../../builtins/io.h"
@@ -32,11 +33,49 @@ typedef enum {
 
     TOKEN_IDENTIFIER,
     TOKEN_FN,
+    TOKEN_IF,
+    TOKEN_ELSE,
+    TOKEN_WHILE,
+    TOKEN_FOR,
 
     TOKEN_LPAREN,
     TOKEN_RPAREN,
     TOKEN_LBRACE,
     TOKEN_RBRACE,
+
+    TOKEN_GT,
+    TOKEN_LT,
+    TOKEN_GTE,
+    TOKEN_LTE,
+    TOKEN_NEQ,
+    TOKEN_EQ,
+    TOKEN_ADD,
+    TOKEN_SUB,
+    TOKEN_MUL,
+    TOKEN_DIV,
+    TOKEN_MOD,
+    TOKEN_POW,
+    TOKEN_NOT,
+    TOKEN_AND,
+    TOKEN_OR,
+    TOKEN_ANDAND,
+    TOKEN_OROR,
+    TOKEN_INC,
+    TOKEN_DEC,
+    TOKEN_ASSIGN,
+    TOKEN_ADD_ASSIGN,
+    TOKEN_SUB_ASSIGN,
+    TOKEN_MUL_ASSIGN,
+    TOKEN_DIV_ASSIGN,
+    TOKEN_MOD_ASSIGN,
+
+    TOKEN_DOT,
+    TOKEN_DOTDOT,
+    TOKEN_ELLIPSIS,
+    TOKEN_SEMICOLON,
+    TOKEN_COMMA,
+    TOKEN_COLON,
+    TOKEN_TILDE,
 } TokenType;
 
 typedef struct {
@@ -48,6 +87,8 @@ typedef struct {
 } Token;
 
 Lexer* lexer_init(char* source);
+
+Token* lexer_lex(Lexer* lexer);
 
 void lexer_tokenizer(Lexer* lexer);
 

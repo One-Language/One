@@ -22,13 +22,425 @@ Token* token_init(TokenType type, char* value, Location start, Location end)
     token->value = value;
     token->start = start;
     token->end = end;
-
     return token;
+}
+
+Token* lexer_lex(Lexer* lexer)
+{
+    printf("lexer_lex: %c\n", *lexer->source);
+    Location start = lexer->position;
+
+    switch (*lexer->source) {
+        case '(': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_LPAREN, "(", start, lexer->position);
+        } break;
+        case ')': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_RPAREN, ")", start, lexer->position);
+        } break;
+        case '{': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_LBRACE, "{", start, lexer->position);
+        } break;
+        case '}': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_RBRACE, "}", start, lexer->position);
+        } break;
+        case '\n': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.line++;
+            lexer->position.column = 0;
+
+            return lexer_lex(lexer);
+        } break;
+        case ' ':
+        case '\t':
+        case '\r': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return lexer_lex(lexer);
+        } break;
+        case 'a'...'z': case 'A'...'Z':
+        {
+            sds temp = sdsnew("");
+
+            // Continue until we find something that isn't a digit, or end of input.
+            while(*lexer->source != '\0') {
+                if (!isalpha(*lexer->source)) break;
+                temp = sdscatprintf(temp, "%c", *lexer->source);
+
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+            }
+
+            switch (temp[0]) {
+                case 'f': {
+                    if (strcmp(temp, "fn") == 0) {
+                        return token_init(TOKEN_FN, temp, start, lexer->position);
+                    } else if (strcmp(temp, "for") == 0) {
+                        return token_init(TOKEN_FOR, temp, start, lexer->position);
+                    }
+                } break;
+                case 'i': {
+                    if (strcmp(temp, "if") == 0) {
+                        return token_init(TOKEN_IF, temp, start, lexer->position);
+                    }
+                } break;
+                case 'e': {
+                    if (strcmp(temp, "else") == 0) {
+                        return token_init(TOKEN_ELSE, temp, start, lexer->position);
+                    }
+                } break;
+                case 'w': {
+                    if (strcmp(temp, "while") == 0) {
+                        return token_init(TOKEN_WHILE, temp, start, lexer->position);
+                    }
+                } break;
+            }
+            return token_init(TOKEN_IDENTIFIER, temp, start, lexer->position);
+        } break;
+        case '0'...'9':
+        {
+            // Save the starting position
+            char* start_pos = lexer->source;
+            // Continue until we find something that isn't a digit, or end of input.
+            while(*lexer->source != '\0') {
+                if (!isdigit(*lexer->source)) break;
+                lexer->source++;
+            }
+            return token_init(TOKEN_IDENTIFIER, strndup(start_pos, lexer->source - start_pos), start, lexer->position);
+        } break;
+        case '\0': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_EOF, "", start, lexer->position);
+        } break;
+
+            // >
+            // <
+            // >=
+            // <=
+            // <>
+            // ==
+            // !=
+            // +
+            // -
+            // *
+            // /
+            // %
+            // ^
+            // !
+            // &
+            // |
+            // &&
+            // ||
+//
+//            TOKEN_GT,
+//                    TOKEN_LT,
+//                    TOKEN_GTE,
+//                    TOKEN_LTE,
+//                    TOKEN_NEQ,
+//                    TOKEN_EQ,
+//                    TOKEN_ADD,
+//                    TOKEN_SUB,
+//                    TOKEN_MUL,
+//                    TOKEN_DIV,
+//                    TOKEN_MOD,
+//                    TOKEN_POW,
+//                    TOKEN_NOT,
+//                    TOKEN_AND,
+//                    TOKEN_OR,
+//                    TOKEN_ANDAND,
+//                    TOKEN_OROR,
+
+            // ++
+            // --
+            // +=
+            // -=
+            // *=
+            // /=
+            // %=
+//            TOKEN_INC,
+//                    TOKEN_DEC,
+//                    TOKEN_ADD_ASSIGN,
+//                    TOKEN_SUB_ASSIGN,
+//                    TOKEN_MUL_ASSIGN,
+//                    TOKEN_DIV_ASSIGN,
+//                    TOKEN_MOD_ASSIGN,
+
+        case '>': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '=') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_GTE, ">=", start, lexer->position);
+            }
+
+            return token_init(TOKEN_GT, ">", start, lexer->position);
+        } break;
+        case '<': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '=') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_LTE, "<=", start, lexer->position);
+            }
+
+            return token_init(TOKEN_LT, "<", start, lexer->position);
+        } break;
+        case '=': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '=') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_EQ, "==", start, lexer->position);
+            }
+
+            return token_init(TOKEN_ASSIGN, "=", start, lexer->position);
+        } break;
+        case '!': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '=') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_NEQ, "!=", start, lexer->position);
+            }
+
+            return token_init(TOKEN_NOT, "!", start, lexer->position);
+        } break;
+        case '+': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '+') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_INC, "++", start, lexer->position);
+            } else if (*lexer->source == '=') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_ADD_ASSIGN, "+=", start, lexer->position);
+            }
+
+            return token_init(TOKEN_ADD, "+", start, lexer->position);
+        } break;
+        case '-': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '-') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_DEC, "--", start, lexer->position);
+            } else if (*lexer->source == '=') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_SUB_ASSIGN, "-=", start, lexer->position);
+            }
+
+            return token_init(TOKEN_SUB, "-", start, lexer->position);
+        } break;
+        case '*': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '=') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_MUL_ASSIGN, "*=", start, lexer->position);
+            }
+
+            return token_init(TOKEN_MUL, "*", start, lexer->position);
+        } break;
+        case '/': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '=') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_DIV_ASSIGN, "/=", start, lexer->position);
+            }
+
+            return token_init(TOKEN_DIV, "/", start, lexer->position);
+        } break;
+        case '%': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '=') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_MOD_ASSIGN, "%=", start, lexer->position);
+            }
+
+            return token_init(TOKEN_MOD, "%", start, lexer->position);
+        } break;
+        case '^': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_POW, "^", start, lexer->position);
+        } break;
+        case '&': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '&') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_ANDAND, "&&", start, lexer->position);
+            }
+
+            return token_init(TOKEN_AND, "&", start, lexer->position);
+        } break;
+        case '|': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '|') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                return token_init(TOKEN_OROR, "||", start, lexer->position);
+            }
+
+            return token_init(TOKEN_OR, "|", start, lexer->position);
+        } break;
+        case '~': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_TILDE, "~", start, lexer->position);
+        } break;
+        case '.': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            if (*lexer->source == '.') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+
+                if (*lexer->source == '.') {
+                    lexer->source++;
+                    lexer->position.offset++;
+                    lexer->position.column++;
+
+                    return token_init(TOKEN_ELLIPSIS, "...", start, lexer->position);
+                }
+
+                return token_init(TOKEN_DOTDOT, "..", start, lexer->position);
+            }
+
+            return token_init(TOKEN_DOT, ".", start, lexer->position);
+        } break;
+        case ';': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_SEMICOLON, ";", start, lexer->position);
+        } break;
+        case ',': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_COMMA, ",", start, lexer->position);
+        } break;
+        case ':': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_COLON, ":", start, lexer->position);
+        } break;
+        default: {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_ERROR, "Unexpected character", start, lexer->position);
+        }
+    }
+    return token_init(TOKEN_EOF, "EOF", lexer->position, lexer->position);
 }
 
 void lexer_tokenizer(Lexer* lexer)
 {
-    array_push(lexer->tokens, token_init(TOKEN_EOF, "EOF", lexer->position, lexer->position));
+    Token* t = lexer_lex(lexer);
+    do {
+        array_push(lexer->tokens, t);
+        t = lexer_lex(lexer);
+    }
+    while (t != NULL && t->type != TOKEN_EOF);
 }
 
 char* location_string(Location location)
@@ -40,20 +452,91 @@ char* location_string(Location location)
 
 char* token_type_name(TokenType type)
 {
-    switch (type)
-    {
-        case TOKEN_EOF: return "EOF";
-        case TOKEN_ERROR: return "ERROR";
+    switch (type) {
+        case TOKEN_EOF:
+            return "EOF";
+        case TOKEN_ERROR:
+            return "ERROR";
+        case TOKEN_FN:
+            return "FN";
+        case TOKEN_IDENTIFIER:
+            return "IDENTIFIER";
+//        case TOKEN_NUMBER: return "NUMBER";
+//        case TOKEN_STRING: return "STRING";
+//        case TOKEN_CHAR: return "CHAR";
+        case TOKEN_ADD:
+            return "PLUS";
+        case TOKEN_SUB:
+            return "MINUS";
+        case TOKEN_MUL:
+            return "MUL";
+        case TOKEN_DIV:
+            return "DIV";
+        case TOKEN_MOD:
+            return "MOD";
+        case TOKEN_POW:
+            return "POW";
+        case TOKEN_AND:
+            return "AND";
+        case TOKEN_OR:
+            return "OR";
+        case TOKEN_TILDE:
+            return "TILDE";
+        case TOKEN_ANDAND:
+            return "ANDAND";
+        case TOKEN_OROR:
+            return "OROR";
+        case TOKEN_NOT:
+            return "NOT";
+        case TOKEN_ASSIGN:
+            return "ASSIGN";
+        case TOKEN_ADD_ASSIGN:
+            return "ADD_ASSIGN";
+        case TOKEN_SUB_ASSIGN:
+            return "SUB_ASSIGN";
+        case TOKEN_MUL_ASSIGN:
+            return "MUL_ASSIGN";
+        case TOKEN_DIV_ASSIGN:
+            return "DIV_ASSIGN";
+        case TOKEN_MOD_ASSIGN:
+            return "MOD_ASSIGN";
+//        case TOKEN_POW_ASSIGN: return "POW_ASSIGN";
+//        case TOKEN_AND_ASSIGN: return "AND_ASSIGN";
+//        case TOKEN_OR_ASSIGN: return "OR_ASSIGN";
+//        case TOKEN_TILDE_ASSIGN: return "TILDE_ASSIGN";
+//        case TOKEN_LSHIFT: return "LSHIFT";
+//        case TOKEN_RSHIFT: return "RSHIFT";
+//        case TOKEN_LSHIFT_ASSIGN: return "LSHIFT_ASSIGN";
+//        case TOKEN_RSHIFT_ASSIGN: return "RSHIFT_ASSIGN";
+        case TOKEN_EQ:
+            return "EQ";
+        case TOKEN_NEQ:
+            return "NEQ";
+        case TOKEN_LT:
+            return "LT";
+        case TOKEN_GT:
+            return "GT";
+        case TOKEN_LTE:
+            return "LTE";
+        case TOKEN_GTE:
+            return "GTE";
+        case TOKEN_DOT:
+            return "DOT";
+        case TOKEN_DOTDOT:
+            return "DOTDOT";
+        case TOKEN_ELLIPSIS:
+            return "ELLIPSIS";
+        case TOKEN_LPAREN:
+            return "LPAREN";
+        case TOKEN_RPAREN:
+            return "RPAREN";
+        case TOKEN_LBRACE:
+            return "LBRACE";
+        case TOKEN_RBRACE:
+            return "RBRACE";
 
-        case TOKEN_IDENTIFIER: return "IDENTIFIER";
-        case TOKEN_FN: return "FN";
-
-        case TOKEN_LPAREN: return "LPAREN";
-        case TOKEN_RPAREN: return "RPAREN";
-        case TOKEN_LBRACE: return "LBRACE";
-        case TOKEN_RBRACE: return "RBRACE";
-
-        default: return "UNKNOWN";
+        default:
+            return "UNKNOWN";
     }
 }
 
