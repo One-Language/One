@@ -37,6 +37,7 @@ typedef enum {
     TOKEN_ELSE,
     TOKEN_WHILE,
     TOKEN_FOR,
+    TOKEN_RET,
 
     TOKEN_LPAREN,
     TOKEN_RPAREN,

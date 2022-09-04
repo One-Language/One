@@ -98,6 +98,11 @@ Token* lexer_lex(Lexer* lexer)
                         return token_init(TOKEN_FOR, temp, start, lexer->position);
                     }
                 } break;
+                case 'r': {
+                    if (strcmp(temp, "ret") == 0) {
+                        return token_init(TOKEN_RET, temp, start, lexer->position);
+                    }
+                } break;
                 case 'i': {
                     if (strcmp(temp, "if") == 0) {
                         return token_init(TOKEN_IF, temp, start, lexer->position);
@@ -134,59 +139,6 @@ Token* lexer_lex(Lexer* lexer)
 
             return token_init(TOKEN_EOF, "", start, lexer->position);
         } break;
-
-            // >
-            // <
-            // >=
-            // <=
-            // <>
-            // ==
-            // !=
-            // +
-            // -
-            // *
-            // /
-            // %
-            // ^
-            // !
-            // &
-            // |
-            // &&
-            // ||
-//
-//            TOKEN_GT,
-//                    TOKEN_LT,
-//                    TOKEN_GTE,
-//                    TOKEN_LTE,
-//                    TOKEN_NEQ,
-//                    TOKEN_EQ,
-//                    TOKEN_ADD,
-//                    TOKEN_SUB,
-//                    TOKEN_MUL,
-//                    TOKEN_DIV,
-//                    TOKEN_MOD,
-//                    TOKEN_POW,
-//                    TOKEN_NOT,
-//                    TOKEN_AND,
-//                    TOKEN_OR,
-//                    TOKEN_ANDAND,
-//                    TOKEN_OROR,
-
-            // ++
-            // --
-            // +=
-            // -=
-            // *=
-            // /=
-            // %=
-//            TOKEN_INC,
-//                    TOKEN_DEC,
-//                    TOKEN_ADD_ASSIGN,
-//                    TOKEN_SUB_ASSIGN,
-//                    TOKEN_MUL_ASSIGN,
-//                    TOKEN_DIV_ASSIGN,
-//                    TOKEN_MOD_ASSIGN,
-
         case '>': {
             lexer->source++;
             lexer->position.offset++;
@@ -459,6 +411,17 @@ char* token_type_name(TokenType type)
             return "ERROR";
         case TOKEN_FN:
             return "FN";
+        case TOKEN_IF:
+            return "IF";
+        case TOKEN_ELSE:
+            return "ELSE";
+        case TOKEN_WHILE:
+            return "WHILE";
+        case TOKEN_FOR:
+            return "FOR";
+        case TOKEN_RET:
+            return "RET";
+
         case TOKEN_IDENTIFIER:
             return "IDENTIFIER";
 //        case TOKEN_NUMBER: return "NUMBER";
