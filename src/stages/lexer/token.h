@@ -8,10 +8,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 
 typedef enum {
+    TOKEN_UNKNOWN,
+
     TOKEN_IDENTIFIER,
+    TOKEN_VALUE_INT,
+    TOKEN_VALUE_FLOAT,
 
     TOKEN_KEYWORD_IF,
     TOKEN_KEYWORD_ELSE,
@@ -53,6 +58,8 @@ bool is_digit(char ch);
 
 bool is_alpha(char ch);
 
-char* get_token_name(Token* t);
+char* get_token_name(TokenType t);
+
+char* get_location(Location location);
 
 Token* token_make(TokenType type, char* value, Location start, Location end);

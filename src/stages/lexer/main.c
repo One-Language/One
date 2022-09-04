@@ -22,7 +22,14 @@ int main(int argc, char** argv)
     }
 
     Lexer* lexer = lexer_make(file);
-    Token** tokens = lexer_lex(lexer);
+    Token** tokens = lexer_tokenizer(lexer);
+    if (tokens == NULL) {
+        printf("Could not read source");
+        return 1;
+    }
 
+    lexer_debug(lexer);
+
+    printf("Done\n");
     return 0;
 }

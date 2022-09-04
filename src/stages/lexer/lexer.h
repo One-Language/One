@@ -25,20 +25,12 @@ typedef struct {
     Location location;
 } Lexer;
 
-void lexer_go_next_char(Lexer* lexer);
-
-void lexer_go_prev_char(Lexer* lexer);
-
-char lexer_get_next_char(Lexer* lexer);
-
-char lexer_get_prev_char(Lexer* lexer);
+Lexer* lexer_make(FILE* file);
 
 bool lexer_is_eof(Lexer* lexer);
 
-void lexer_skip_whitespace(Lexer* lexer);
+Token* lexer_lex(Lexer* lexer);
 
-Token* lexer_read_identifier(Lexer* lexer);
+void lexer_debug(Lexer* lexer);
 
-Token* lexer_next_token(Lexer* lexer);
-
-Token** lexer_lex(Lexer* lexer);
+Token** lexer_tokenizer(Lexer* lexer);

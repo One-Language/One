@@ -28,9 +28,13 @@ bool is_alpha(char ch)
     return is_identifier(ch) || is_digit(ch);
 }
 
-char* get_token_name(Token* t)
+char* get_token_name(TokenType t)
 {
-    switch(t->type) {
+    switch(t) {
+        case TOKEN_VALUE_INT:
+            return "TokenValueInt";
+        case TOKEN_VALUE_FLOAT:
+            return "TokenValueFloat";
         case TOKEN_IDENTIFIER:
             return "TokenIdentifier";
         case TOKEN_KEYWORD_IF:
@@ -69,9 +73,17 @@ Token* token_make(TokenType type, char* value, Location start, Location end)
     Token* token = malloc(sizeof(Token));
     token->type = type;
     token->value = value;
+
     token->start = start;
     token->end = end;
 
     return token;
 }
 
+char* get_location(Location location)
+{
+    // return %d:%d:%d (line:column:offset)
+    char* str = malloc(100);
+    sprintf(str, "%d:%d:%d", location.line, location.column, location.offset);
+    return str;
+}
