@@ -95,4 +95,6 @@ void lexer_tokenizer(Lexer* lexer);
 
 sds lexer_trace(Lexer* lexer);
 
+char* token_type_name(TokenType type);
+
 #endif //SRC_LEXER_H

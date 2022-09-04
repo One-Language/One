@@ -17,8 +17,11 @@
 
 #include "../lexer/lexer.h"
 
+#include "ast.h"
+
 typedef struct {
     Lexer* lexer;
+    AstProgram* ast;
 } Parser;
 
 Parser* parser_init(Lexer* lexer);
