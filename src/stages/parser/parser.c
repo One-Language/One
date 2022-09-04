@@ -40,12 +40,75 @@ void previus(Parser* parser)
     *parser->tokens--;
 }
 
+bool peekFor(Parser* parser, TokenType type)
+{
+    if ((*parser->tokens)->type == type) return true;
+    return false;
+}
+
+bool peekForNext(Parser* parser, TokenType type)
+{
+    if ((*parser->tokens + 1)->type == type) return true;
+    return false;
+}
+
+bool peekForPrevius(Parser* parser, TokenType type)
+{
+    if ((*parser->tokens - 1)->type == type) return true;
+    return false;
+}
+
+Token* expect(Parser* parser, TokenType type)
+{
+    if ((*parser->tokens)->type == type) {
+        advance(parser);
+        return *parser->tokens - 1;
+    }
+    else {
+        printf("Parser Error: Expected %s, got %s", token_type_name(type), token_type_name((*parser->tokens)->type));
+        return NULL;
+//    array_push(parser->ast->errors, error_make("Expected token type %d, but got %d", type, (*parser->tokens)->type));
+    }
+}
+
+AstBlock* parse_block(Parser* parser)
+{
+    AstBlock* block = (AstBlock*)malloc(sizeof(AstBlock));
+    block->statements = malloc(sizeof(Array));
+    array_init(block->statements);
+
+    if (expect(parser, TOKEN_LBRACE) == NULL) return NULL;
+
+    while (!peekFor(parser, TOKEN_RBRACE)) {
+        array_push(block->statements, parser_statement(parser));
+    }
+
+    if (expect(parser, TOKEN_RBRACE) == NULL) return NULL;
+
+    return block;
+}
+
+AstStatement* parser_fn(Parser* parser)
+{
+    expect(parser, TOKEN_FN);
+    Token* ident = expect(parser, TOKEN_IDENTIFIER);
+    expect(parser, TOKEN_LPAREN);
+    expect(parser, TOKEN_RPAREN);
+
+    AstBlock* block = parse_block(parser);
+
+    return statement_make("fn");
+}
+
 AstStatement* parser_statement(Parser* parser)
 {
     printf("Parser Token: %s\n", token_type_name((*parser->tokens)->type));
 
     switch ((*parser->tokens)->type)
     {
+        case TOKEN_FN: {
+            return parser_fn(parser);
+        } break;
         case TOKEN_IDENTIFIER: {
             AstStatement* stmt = statement_make((*parser->tokens)->value);
             advance(parser); // eat identifier
@@ -64,18 +127,14 @@ Array* parser_statements(Parser* parser)
     Array* statements = malloc(sizeof(Array));
     array_init(statements);
 
-    printf("loop started inside parser_statements\n");
     while ((*parser->tokens)->type != TOKEN_EOF)
     {
         AstStatement* statement = parser_statement(parser);
-        printf("parser_statement finished inside loop\n");
         if (statement != NULL)
         {
-            printf("statement != NULL\n");
             array_push(statements, statement);
         }
     }
-    printf("loop finished inside parser_statements\n");
 
     return statements;
 }

@@ -382,7 +382,6 @@ Token* lexer_lex(Lexer* lexer)
             return token_init(TOKEN_ERROR, "Unexpected character", start, lexer->position);
         }
     }
-    return token_init(TOKEN_EOF, "EOF", lexer->position, lexer->position);
 }
 
 void lexer_tokenizer(Lexer* lexer)
@@ -393,6 +392,10 @@ void lexer_tokenizer(Lexer* lexer)
         t = lexer_lex(lexer);
     }
     while (t != NULL && t->type != TOKEN_EOF);
+
+    if (t != NULL && t->type == TOKEN_EOF) {
+        array_push(lexer->tokens, t);
+    }
 }
 
 char* location_string(Location location)

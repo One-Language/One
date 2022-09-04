@@ -14,11 +14,14 @@ int main()
     Lexer* lexer = lexer_init(source);
     lexer_tokenizer(lexer);
 
-
+    sds xml = lexer_trace(lexer);
+    printf("XML:\n%s\n", xml);
+    sdsfree(xml);
+    ////////////////////////////////////
     Parser* parser = parser_init(lexer);
     parser_parse(parser);
 
-    sds xml = parser_trace(parser);
+    xml = parser_trace(parser);
     printf("XML:\n%s\n", xml);
     sdsfree(xml);
 

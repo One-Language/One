@@ -17,4 +17,8 @@ typedef struct {
     char* name;
 } AstStatement;
 
+typedef struct {
+    Array* statements;
+} AstBlock;
+
 #endif //ONE_PARSER_AST_H
