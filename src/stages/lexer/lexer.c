@@ -28,22 +28,54 @@ Token* token_init(TokenType type, char* value, Location start, Location end)
 
 void lexer_tokenizer(Lexer* lexer)
 {
-//    array_push(lexer->tokens, token_init(TOKEN_EOF, "EOF", lexer->position, lexer->position));
+    array_push(lexer->tokens, token_init(TOKEN_EOF, "EOF", lexer->position, lexer->position));
 }
 
-str* lexer_trace(Lexer* lexer)
+char* location_string(Location location)
+{
+    char* str = malloc(sizeof(char) * 100);
+    sprintf(str, "%d:%d:%d", location.offset, location.line, location.column);
+    return str;
+}
+
+char* token_type_name(TokenType type)
+{
+    switch (type)
+    {
+        case TOKEN_EOF: return "EOF";
+        case TOKEN_ERROR: return "ERROR";
+
+        case TOKEN_IDENTIFIER: return "IDENTIFIER";
+        case TOKEN_FN: return "FN";
+
+        case TOKEN_LPAREN: return "LPAREN";
+        case TOKEN_RPAREN: return "RPAREN";
+        case TOKEN_LBRACE: return "LBRACE";
+        case TOKEN_RBRACE: return "RBRACE";
+
+        default: return "UNKNOWN";
+    }
+}
+
+sds lexer_trace(Lexer* lexer)
 {
     printf("lexer_trace\n");
-    str* temp = str_init_size("<Lexer>\n", 100);
+    sds temp = sdsnew("<Lexer>\n");
+    char* ident_str1 = string_repeat(" ", 4 * 1);
+    char* ident_str2 = string_repeat(" ", 4 * 2);
 
-//    for (int i = 0; i < lexer->tokens->size; i++)
-//    {
-//        Token* token = lexer->tokens->data[i];
-//        str_append(temp, token->value);
-//        str_append(temp, " ");
-//    }
+    for (int i = 0; i < lexer->tokens->count; i++)
+    {
+        Token* token = lexer->tokens->data[i];
+        temp = sdscatprintf(temp, "%s<token id=\"%d\">\n", ident_str1, i + 1);
+            temp = sdscatfmt(temp, "%s<type>%s</type>\n", ident_str2, token_type_name(token->type));
+            temp = sdscatfmt(temp, "%s<value>%s</value>\n", ident_str2, token->value);
+            temp = sdscatfmt(temp, "%s<start>%s</start>\n", ident_str2, location_string(token->start));
+            temp = sdscatfmt(temp, "%s<end>%s</end>\n", ident_str2, location_string(token->end));
+        temp = sdscatfmt(temp, "%s</token>\n", ident_str1);
+    }
 
-    str_append(&temp, "</Lexer>");
+    temp = sdscat(temp, "</Lexer>");
 
     return temp;
 }

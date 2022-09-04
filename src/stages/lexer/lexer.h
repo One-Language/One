@@ -51,6 +51,6 @@ Lexer* lexer_init(char* source);
 
 void lexer_tokenizer(Lexer* lexer);
 
-str* lexer_trace(Lexer* lexer);
+sds lexer_trace(Lexer* lexer);
 
 #endif //SRC_LEXER_H

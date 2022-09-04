@@ -36,4 +36,7 @@ bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t
  */
 char* file_get_parent(const char* path);
 
+
+char* string_repeat(char* value, size_t repeat);
+
 #endif //ONE_LEXER_IO_H

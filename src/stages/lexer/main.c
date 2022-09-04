@@ -13,8 +13,9 @@ int main()
     Lexer* lexer = lexer_init(source);
     lexer_tokenizer(lexer);
 
-    str* xml = lexer_trace(lexer);
-    printf("XML: %s\n", xml->value);
+    sds xml = lexer_trace(lexer);
+    printf("XML:\n%s\n", xml);
+    sdsfree(xml);
 
     return 0;
 }

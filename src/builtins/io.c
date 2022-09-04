@@ -114,3 +114,17 @@ char* file_get_parent(const char* path)
     return parent;
 }
 
+char* string_repeat(char* value, size_t repeat)
+{
+    if (repeat <= 0) return "";
+
+    char* result = malloc(strlen(value) * repeat + 1);
+    strcpy(result, value);
+
+    for (size_t i = 1; i < repeat; i++)
+    {
+        strcat(result, value);
+    }
+
+    return result;
+}
