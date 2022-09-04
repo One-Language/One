@@ -1,12 +1,6 @@
-/**
- The One Programming Language
-
- File: builtins/error.h
-  _        _
- / \ |\ | |_    Max Base
- \_/ | \| |_    Copyright 2021; One Language Contributors
-
- **/
+//
+// Created by Max on 9/4/2022.
+//
 
 #ifndef _ONE_BUILTINS_ERROR_H_
 #define _ONE_BUILTINS_ERROR_H_
@@ -18,16 +12,16 @@
 
 typedef enum
 {
-	ERROR_WARNING,
-	ERROR_PANIC,
+    ERROR_WARNING,
+    ERROR_PANIC,
 
-	ERROR_BUILTIN,
+    ERROR_BUILTIN,
 
-	ERROR_TOKEN,
-	ERROR_LEXER,
-	ERROR_PARSER,
-	ERROR_AST,
-	ERROR_TREE,
+    ERROR_TOKEN,
+    ERROR_LEXER,
+    ERROR_PARSER,
+    ERROR_AST,
+    ERROR_TREE,
 } ErrorType; // TODO
 
 #define RESET "\033[0m"

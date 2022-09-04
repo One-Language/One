@@ -1,13 +1,3 @@
-/**
- The One Programming Language
-
- File: builtins/array.h
-  _        _
- / \ |\ | |_    Max Base
- \_/ | \| |_    Copyright 2021; One Language Contributors
-
- **/
-
 #ifndef _ONE_BUILTINS_ARRAY_H_
 #define _ONE_BUILTINS_ARRAY_H_
 
@@ -18,9 +8,9 @@
 
 typedef struct
 {
-	int count;
-	int size;
-	void** data;
+    int count;
+    int size;
+    void** data;
 } Array;
 
 /*

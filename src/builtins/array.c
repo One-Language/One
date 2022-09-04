@@ -1,12 +1,6 @@
-/**
- The One Programming Language
-
- File: builtins/array.c
-  _        _
- / \ |\ | |_    Max Base
- \_/ | \| |_    Copyright 2021; One Language Contributors
-
- **/
+//
+// Created by Max on 9/4/2022.
+//
 
 #include "array.h"
 
@@ -18,11 +12,11 @@
  */
 void array_init(Array *list)
 {
-	debug_builtins("array_init");
+    debug_builtins("array_init");
 
-	list->count = 0;
-	list->size = 0;
-	list->data = NULL;
+    list->count = 0;
+    list->size = 0;
+    list->data = NULL;
 }
 
 /*
@@ -33,16 +27,16 @@ void array_init(Array *list)
  */
 void array_push(Array *list, void *item)
 {
-	debug_builtins("array_push");
+    debug_builtins("array_push");
 
-	if (list->count == list->size)
-	{
-		// Set size of new array to 4, and double size if it's next...
-		list->size = list->size == 0 ? 4 : 2 * list->size;
-		list->data = (void **)realloc(list->data, list->size * sizeof(void *));
-	}
-	list->data[list->count] = item;
-	list->count++;
+    if (list->count == list->size)
+    {
+        // Set size of new array to 4, and double size if it's next...
+        list->size = list->size == 0 ? 4 : 2 * list->size;
+        list->data = (void **)realloc(list->data, list->size * sizeof(void *));
+    }
+    list->data[list->count] = item;
+    list->count++;
 }
 
 /*
@@ -53,11 +47,11 @@ void array_push(Array *list, void *item)
  */
 void *array_pop(Array *list)
 {
-	debug_builtins("array_pop");
+    debug_builtins("array_pop");
 
-	list->count--;
-	void *ret = list->data[list->count];
-	return ret;
+    list->count--;
+    void *ret = list->data[list->count];
+    return ret;
 }
 
 /*
@@ -68,10 +62,10 @@ void *array_pop(Array *list)
  */
 void array_free(Array *list)
 {
-	debug_builtins("array_free");
+    debug_builtins("array_free");
 
-	free(list->data); // it's void**
-	list->count = 0;
-	list->size = 0;
-	list->data = NULL;
+    free(list->data); // it's void**
+    list->count = 0;
+    list->size = 0;
+    list->data = NULL;
 }

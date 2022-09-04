@@ -1,20 +1,13 @@
-/**
- The One Programming Language
+//
+// Created by Max on 9/4/2022.
+//
 
- File: builtins/array.c
-  _        _
- / \ |\ | |_    Max Base
- \_/ | \| |_    Copyright 2021; One Language Contributors
-
- **/
-
-#ifndef _ONE_BUILTINS_FILE_H_
-#define _ONE_BUILTINS_FILE_H_
+#ifndef ONE_LEXER_IO_H
+#define ONE_LEXER_IO_H
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
+#include <str.h>
 #include <stdbool.h>
 
 #include "error.h"
@@ -30,7 +23,7 @@ char* file_reads(const char* filepath);
 /*
  * @function: file_convert_index_to_rc
  * @description: We get index of a position and point in string and looking to find its rows and column number and we will pass new value throw argument
- * @arguments: const char* input, int index, int* rows, int* columns
+ * @arguments: const char* input, int index, size_t* rows, size_t* columns
  * @return: bool / True or False; does that index exists or no. maybe current index is out of the file and filelength is less that `index` value!
  */
 bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t* columns);
@@ -43,4 +36,4 @@ bool file_convert_index_to_rc(const char* input, int index, size_t* rows, size_t
  */
 char* file_get_parent(const char* path);
 
-#endif // _ONE_BUILTINS_FILE_H_
+#endif //ONE_LEXER_IO_H
