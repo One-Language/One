@@ -35,13 +35,23 @@ char* parser_trace(Parser* parser);
 
 char* parser_trace_block(Parser* parser, AstBlock* block, int ident);
 
-char* parser_trace_statements(Parser* parser, AstBlock* block, int ident);
+char* parser_trace_statements(Parser* parser, AstBlock* block, Array* statements, int ident);
 
-char* parser_trace_statement(Parser* parser, AstStatement* stmt, int ident);
+AstFunctionArgument* parser_fn_argument(Parser* parser);
 
-AstStatement* parser_statement(Parser* parser);
+char* parser_type(Parser* parser);
 
-Array* parser_statements(Parser* parser);
+Array* parser_fn_arguments(Parser* parser);
+
+AstStatement* parser_fn(Parser* parser, AstBlock* block);
+
+char* parser_trace_statement(Parser* parser, AstBlock* block, AstStatement* stmt, int ident);
+
+AstStatement* parser_statement(Parser* parser, AstBlock* block);
+
+AstBlock* make_block();
+
+Array* parser_statements(Parser* parser,AstBlock* block);
 
 void parser_parse(Parser* parser);
 

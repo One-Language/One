@@ -25,6 +25,9 @@ typedef enum {
 
 typedef struct {
     Array* statements;
+    // Table
+    Array* variables;
+    Array* functions;
 } AstBlock;
 
 typedef struct {

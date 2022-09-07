@@ -74,14 +74,14 @@ Token* expect(Parser* parser, TokenType type)
 
 AstBlock* parse_block(Parser* parser)
 {
-    AstBlock* block = (AstBlock*)malloc(sizeof(AstBlock));
+    AstBlock* block = make_block();
     block->statements = malloc(sizeof(Array));
     array_init(block->statements);
 
     if (expect(parser, TOKEN_LBRACE) == NULL) return NULL;
 
     while (!peekFor(parser, TOKEN_RBRACE)) {
-        array_push(block->statements, parser_statement(parser));
+        array_push(block->statements, parser_statement(parser, block));
     }
 
     if (expect(parser, TOKEN_RBRACE) == NULL) return NULL;
@@ -154,7 +154,7 @@ Array* parser_fn_arguments(Parser* parser)
     return arguments;
 }
 
-AstStatement* parser_fn(Parser* parser)
+AstStatement* parser_fn(Parser* parser, AstBlock* block)
 {
     AstStatement* statement = malloc(sizeof(AstStatement));
     statement->type = STATEMENT_FUNCTION;
@@ -178,14 +178,14 @@ AstStatement* parser_fn(Parser* parser)
     return statement;
 }
 
-AstStatement* parser_statement(Parser* parser)
+AstStatement* parser_statement(Parser* parser, AstBlock* block)
 {
     printf("Parser Token: %s\n", token_type_name((*parser->tokens)->type));
 
     switch ((*parser->tokens)->type)
     {
         case TOKEN_FN: {
-            return parser_fn(parser);
+            return parser_fn(parser, block);
         } break;
         case TOKEN_IDENTIFIER: {
             AstStatement* stmt = statement_make((*parser->tokens)->value);
@@ -200,14 +200,14 @@ AstStatement* parser_statement(Parser* parser)
     }
 }
 
-Array* parser_statements(Parser* parser)
+Array* parser_statements(Parser* parser, AstBlock* block)
 {
     Array* statements = malloc(sizeof(Array));
     array_init(statements);
 
     while ((*parser->tokens)->type != TOKEN_EOF)
     {
-        AstStatement* statement = parser_statement(parser);
+        AstStatement* statement = parser_statement(parser, block);
         if (statement != NULL)
         {
             array_push(statements, statement);
@@ -217,16 +217,23 @@ Array* parser_statements(Parser* parser)
     return statements;
 }
 
+AstBlock* make_block()
+{
+    AstBlock* block = malloc(sizeof(AstBlock));
+    return block;
+}
+
 void parser_parse(Parser* parser)
 {
     printf("parser_parse\n");
 
-    parser->ast->statements = (Array*)parser_statements(parser);
+    AstBlock* block = make_block();
+    parser->ast->statements = (Array*)parser_statements(parser, block);
 
     printf("parser_parse finished\n");
 }
 
-char* parser_trace_statement(Parser* parser, AstStatement* stmt, int ident)
+char* parser_trace_statement(Parser* parser, AstBlock* block, AstStatement* stmt, int ident)
 {
     sds temp = sdsnew("");
     char* tab = string_repeat("\t", ident);
@@ -252,7 +259,7 @@ char* parser_trace_statement(Parser* parser, AstStatement* stmt, int ident)
                     temp = sdscatprintf(temp, "%s<FunctionBlock count=\"0\" />\n", tab2);
                 } else {
                     temp = sdscatprintf(temp, "%s<FunctionBlock count=\"%d\">\n", tab2, stmt->stmt.function->block->statements->count);
-                    // TODO: block
+                    temp = sdscat(temp, parser_trace_block(parser, stmt->stmt.function->block, ident + 2));
                     temp = sdscatprintf(temp, "%s</FunctionBlock>\n", tab2);
                 }
             }
@@ -266,10 +273,8 @@ char* parser_trace_statement(Parser* parser, AstStatement* stmt, int ident)
     return temp;
 }
 
-char* parser_trace_statements(Parser* parser, AstBlock * block, int ident)
+char* parser_trace_statements(Parser* parser, AstBlock *block, Array* statements, int ident)
 {
-    Array* statements = block->statements;
-
     sds temp = sdsnew("");
     char* tab = string_repeat("\t", ident);
 
@@ -279,7 +284,7 @@ char* parser_trace_statements(Parser* parser, AstBlock * block, int ident)
         temp = sdscatprintf(temp, "%s<Statements count=\"%d\">\n", tab, statements->count);
         for (int i = 0; i < statements->count; i++) {
             AstStatement* stmt = statements->data[i];
-            temp = sdscat(temp, parser_trace_statement(parser, stmt, ident + 1));
+            temp = sdscat(temp, parser_trace_statement(parser, block, stmt, ident + 1));
         }
         temp = sdscatprintf(temp, "%s</Statements>\n", tab);
     }
@@ -293,7 +298,7 @@ char* parser_trace_block(Parser* parser, AstBlock* block, int ident)
     char* tab = string_repeat("\t", ident);
 
     sdscatprintf(temp, "%s<Block>\n", tab);
-    sdscat(temp, parser_trace_statements(parser, block, ident + 1));
+    sdscat(temp, parser_trace_statements(parser, block, block->statements, ident + 1));
     sdscatprintf(temp, "%s</Block>\n", tab);
 
     return temp;
@@ -305,9 +310,10 @@ char* parser_trace(Parser* parser)
 
     sds temp = sdsnew("<Parser>\n");
 
-    AstBlock* block = malloc(sizeof(AstBlock));
+    // Create an empty block without any defined variables or functions!
+    AstBlock* block = make_block();
     block->statements = parser->ast->statements;
-    temp = sdscatprintf(temp, parser_trace_statements(parser, block, 1));
+    temp = sdscatprintf(temp, parser_trace_statements(parser, block, block->statements, 1));
 
     temp = sdscat(temp, "</Parser>");
 
