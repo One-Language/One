@@ -119,6 +119,7 @@ Token* lexer_lex(Lexer* lexer)
                     }
                 } break;
             }
+
             return token_init(TOKEN_IDENTIFIER, temp, start, lexer->position);
         } break;
         case '0'...'9':
@@ -407,6 +408,7 @@ char* location_string(Location location)
 
 char* token_type_name(TokenType type)
 {
+    printf("%d\n", type);
     switch (type) {
         case TOKEN_EOF:
             return "EOF";

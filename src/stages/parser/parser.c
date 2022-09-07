@@ -10,7 +10,7 @@ Parser* parser_init(Lexer* lexer)
     Parser* parser = (Parser*)malloc(sizeof(Parser));
     parser->lexer = lexer;
 
-    parser->tokens = lexer->tokens->data;
+    parser->tokens = (Token**) lexer->tokens->data;
     parser->token_count = lexer->tokens->count;
 
     parser->ast = (AstProgram*)malloc(sizeof(AstProgram));
@@ -61,8 +61,9 @@ bool peekForPrevius(Parser* parser, TokenType type)
 Token* expect(Parser* parser, TokenType type)
 {
     if ((*parser->tokens)->type == type) {
+        Token* t = *parser->tokens;
         advance(parser);
-        return *parser->tokens - 1;
+        return t;
     }
     else {
         printf("Parser Error: Expected %s, got %s", token_type_name(type), token_type_name((*parser->tokens)->type));
@@ -120,15 +121,16 @@ AstStatement* parser_fn(Parser* parser)
 
     Token* ident = expect(parser, TOKEN_IDENTIFIER);
     if (ident == NULL) return NULL;
+    statement->stmt.function->name = ident->value;
 
-    expect(parser, TOKEN_LPAREN);
+    if (expect(parser, TOKEN_LPAREN) == NULL) return NULL;
     // TODO: arguments
-    expect(parser, TOKEN_RPAREN);
+    if (expect(parser, TOKEN_RPAREN) == NULL) return NULL;
 
     statement->stmt.function->block = parse_block(parser);
     if (statement->stmt.function->block == NULL) return NULL;
 
-    return statement_make("fn");
+    return statement;
 }
 
 AstStatement* parser_statement(Parser* parser)
@@ -188,7 +190,15 @@ char* parser_trace(Parser* parser)
     for (int i = 0; i < parser->ast->statements->count; i++)
     {
         AstStatement* stmt = parser->ast->statements->data[i];
-        temp = sdscatprintf(temp, "\t\t<Statement name=\"%s\" />\n", stmt->name);
+        printf("=> %s\n", ast_statement_type_name(stmt->type));
+        switch (stmt->type) {
+            case STATEMENT_FUNCTION: {
+                temp = sdscatprintf(temp, "\t\t<Function name=\"%s\" />\n", stmt->stmt.function->name);
+            } break;
+            default: {
+                temp = sdscatprintf(temp, "\t\t<Statement name=\"%s\" />\n", stmt->name);
+            } break;
+        }
     }
     temp = sdscat(temp, "\t</Statements>\n");
 
