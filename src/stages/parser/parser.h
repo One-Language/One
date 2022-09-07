@@ -33,6 +33,12 @@ void parser_parse(Parser* parser);
 
 char* parser_trace(Parser* parser);
 
+char* parser_trace_block(Parser* parser, AstBlock* block, int ident);
+
+char* parser_trace_statements(Parser* parser, AstBlock* block, int ident);
+
+char* parser_trace_statement(Parser* parser, AstStatement* stmt, int ident);
+
 AstStatement* parser_statement(Parser* parser);
 
 Array* parser_statements(Parser* parser);

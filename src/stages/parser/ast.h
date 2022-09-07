@@ -28,10 +28,15 @@ typedef struct {
 } AstBlock;
 
 typedef struct {
-char* name;
+    char* name;
     Array* arguments;
     AstBlock* block;
 } AstFunction;
+
+typedef struct {
+    char* type;
+    char* name;
+} AstFunctionArgument;
 
 typedef struct {
     char* name;

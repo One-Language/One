@@ -109,6 +109,51 @@ char* ast_statement_type_name(AstStatementType type)
     }
 }
 
+char* parser_type(Parser* parser)
+{
+    Token* t = expect(parser, TOKEN_IDENTIFIER);
+    if (t == NULL) return NULL;
+    return t->value;
+}
+
+AstFunctionArgument* parser_fn_argument(Parser* parser)
+{
+    AstFunctionArgument* argument = (AstFunctionArgument*)malloc(sizeof(AstFunctionArgument));
+
+    char* type = parser_type(parser);
+    if (type == NULL) return NULL;
+    argument->type = type;
+
+    Token* name = expect(parser, TOKEN_IDENTIFIER);
+    if (name == NULL) return NULL;
+    argument->name = name->value;
+
+    return argument;
+}
+
+Array* parser_fn_arguments(Parser* parser)
+{
+    Array* arguments = malloc(sizeof(Array));
+    array_init(arguments);
+
+    if (expect(parser, TOKEN_LPAREN) == NULL) return NULL;
+
+    while (1) {
+        if (peekFor(parser, TOKEN_RPAREN)) break;
+
+        AstFunctionArgument* arg = parser_fn_argument(parser);
+        if (arg == NULL) return NULL;
+        array_push(arguments, arg);
+
+        if (peekFor(parser, TOKEN_RPAREN)) break;
+        if (expect(parser, TOKEN_COMMA) == NULL) return NULL;
+    }
+
+    if (expect(parser, TOKEN_RPAREN) == NULL) return NULL;
+
+    return arguments;
+}
+
 AstStatement* parser_fn(Parser* parser)
 {
     AstStatement* statement = malloc(sizeof(AstStatement));
@@ -123,9 +168,9 @@ AstStatement* parser_fn(Parser* parser)
     if (ident == NULL) return NULL;
     statement->stmt.function->name = ident->value;
 
-    if (expect(parser, TOKEN_LPAREN) == NULL) return NULL;
-    // TODO: arguments
-    if (expect(parser, TOKEN_RPAREN) == NULL) return NULL;
+    Array* args = parser_fn_arguments(parser);
+    if (args == NULL) return NULL;
+    statement->stmt.function->arguments = args;
 
     statement->stmt.function->block = parse_block(parser);
     if (statement->stmt.function->block == NULL) return NULL;
@@ -181,34 +226,88 @@ void parser_parse(Parser* parser)
     printf("parser_parse finished\n");
 }
 
+char* parser_trace_statement(Parser* parser, AstStatement* stmt, int ident)
+{
+    sds temp = sdsnew("");
+    char* tab = string_repeat("\t", ident);
+    char* tab2 = string_repeat("\t", ident + 1);
+    char* tab3 = string_repeat("\t", ident + 2);
+
+    switch (stmt->type) {
+        case STATEMENT_FUNCTION: {
+            temp = sdscatprintf(temp, "%s<Function name=\"%s\">\n", tab, stmt->stmt.function->name);
+            if (stmt->stmt.function->arguments->count == 0) {
+                temp = sdscatprintf(temp, "%s<FunctionArguments count=\"%d\" />\n", tab2, stmt->stmt.function->arguments->count);
+            } else {
+                temp = sdscatprintf(temp, "%s<FunctionArguments count=\"%d\">\n", tab2, stmt->stmt.function->arguments->count);
+                // TODO: arguments
+                for (int i = 0; i < stmt->stmt.function->arguments->count; i++)
+                {
+                    AstFunctionArgument* arg = stmt->stmt.function->arguments->data[i];
+                    temp = sdscatprintf(temp, "%s<FunctionArgument type=\"%s\" name=\"%s\" />\n", tab3, arg->type, arg->name);
+                }
+                temp = sdscatprintf(temp, "%s</FunctionArguments>\n", tab2);
+
+                if (stmt->stmt.function->block->statements->count == 0) {
+                    temp = sdscatprintf(temp, "%s<FunctionBlock count=\"0\" />\n", tab2);
+                } else {
+                    temp = sdscatprintf(temp, "%s<FunctionBlock count=\"%d\">\n", tab2, stmt->stmt.function->block->statements->count);
+                    // TODO: block
+                    temp = sdscatprintf(temp, "%s</FunctionBlock>\n", tab2);
+                }
+            }
+            temp = sdscatprintf(temp, "\t\t</Function>>\n");
+        } break;
+        default: {
+            temp = sdscatprintf(temp, "\t\t<Statement name=\"%s\" />\n", stmt->name);
+        } break;
+    }
+
+    return temp;
+}
+
+char* parser_trace_statements(Parser* parser, AstBlock * block, int ident)
+{
+    Array* statements = block->statements;
+
+    sds temp = sdsnew("");
+    char* tab = string_repeat("\t", ident);
+
+    if (statements->count == 0) {
+        temp = sdscatprintf(temp, "%s<Statements count=\"%d\" />\n", tab, statements->count);
+    } else {
+        temp = sdscatprintf(temp, "%s<Statements count=\"%d\">\n", tab, statements->count);
+        for (int i = 0; i < statements->count; i++) {
+            AstStatement* stmt = statements->data[i];
+            temp = sdscat(temp, parser_trace_statement(parser, stmt, ident + 1));
+        }
+        temp = sdscatprintf(temp, "%s</Statements>\n", tab);
+    }
+
+    return temp;
+}
+
+char* parser_trace_block(Parser* parser, AstBlock* block, int ident)
+{
+    sds temp = sdsnew("");
+    char* tab = string_repeat("\t", ident);
+
+    sdscatprintf(temp, "%s<Block>\n", tab);
+    sdscat(temp, parser_trace_statements(parser, block, ident + 1));
+    sdscatprintf(temp, "%s</Block>\n", tab);
+
+    return temp;
+}
+
 char* parser_trace(Parser* parser)
 {
     printf("parser_trace\n");
+
     sds temp = sdsnew("<Parser>\n");
 
-    temp = sdscatprintf(temp, "\t<Statements count=\"%d\">\n", parser->ast->statements->count);
-    for (int i = 0; i < parser->ast->statements->count; i++)
-    {
-        AstStatement* stmt = parser->ast->statements->data[i];
-        printf("=> %s\n", ast_statement_type_name(stmt->type));
-        switch (stmt->type) {
-            case STATEMENT_FUNCTION: {
-                temp = sdscatprintf(temp, "\t\t<Function name=\"%s\">\n", stmt->stmt.function->name);
-                if (stmt->stmt.function->arguments->count == 0) {
-                    temp = sdscatprintf(temp, "\t\t\t<FunctionArguments count=\"%d\" />\n", stmt->stmt.function->arguments->count);
-                } else {
-                    temp = sdscatprintf(temp, "\t\t\t<FunctionArguments count=\"%d\">\n", stmt->stmt.function->arguments->count);
-                    // TODO: arguments
-                    temp = sdscatprintf(temp, "\t\t\t</FunctionArguments>\n");
-                }
-                temp = sdscatprintf(temp, "\t\t</Function>>\n");
-            } break;
-            default: {
-                temp = sdscatprintf(temp, "\t\t<Statement name=\"%s\" />\n", stmt->name);
-            } break;
-        }
-    }
-    temp = sdscat(temp, "\t</Statements>\n");
+    AstBlock* block = malloc(sizeof(AstBlock));
+    block->statements = parser->ast->statements;
+    temp = sdscatprintf(temp, parser_trace_statements(parser, block, 1));
 
     temp = sdscat(temp, "</Parser>");
 

@@ -1,4 +1,2 @@
-fn main() {
-}
-fn test() {
+fn calc(int a, int b) {
 }
