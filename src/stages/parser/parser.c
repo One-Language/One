@@ -193,7 +193,15 @@ char* parser_trace(Parser* parser)
         printf("=> %s\n", ast_statement_type_name(stmt->type));
         switch (stmt->type) {
             case STATEMENT_FUNCTION: {
-                temp = sdscatprintf(temp, "\t\t<Function name=\"%s\" />\n", stmt->stmt.function->name);
+                temp = sdscatprintf(temp, "\t\t<Function name=\"%s\">\n", stmt->stmt.function->name);
+                if (stmt->stmt.function->arguments->count == 0) {
+                    temp = sdscatprintf(temp, "\t\t\t<FunctionArguments count=\"%d\" />\n", stmt->stmt.function->arguments->count);
+                } else {
+                    temp = sdscatprintf(temp, "\t\t\t<FunctionArguments count=\"%d\">\n", stmt->stmt.function->arguments->count);
+                    // TODO: arguments
+                    temp = sdscatprintf(temp, "\t\t\t</FunctionArguments>\n");
+                }
+                temp = sdscatprintf(temp, "\t\t</Function>>\n");
             } break;
             default: {
                 temp = sdscatprintf(temp, "\t\t<Statement name=\"%s\" />\n", stmt->name);
