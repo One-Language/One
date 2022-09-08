@@ -6,7 +6,7 @@
     </a>
 </p>
 
-# The One Programming Language 💚 💙 🧡 🤍 💖 🖤
+# One 프로그래밍 언어 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
 [Help wanted](https://github.com/One-Language/One/issues/new)
@@ -24,12 +24,6 @@
 [![Instagram][instagrambadge]][instagramurl]
 [![Twitter][twitterurl]][twitterbadge]
 [![License][licensebadge]][licenseurl]
-
-<!-- prettier-ignore-start -->
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-31-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-<!-- prettier-ignore-end -->
 
 [English](README.md)
 &nbsp;
@@ -60,7 +54,7 @@
 안정적이고 효율적인 소프트웨어를 구축합니다.
 <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> 및 기타 오픈 소스 기여자.
 
-### Compiler for the One Language will be released in a few months
+### Compiler for the One Language는 몇 달 안에 출시될 예정입니다.
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -68,22 +62,22 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<!-- TABLE OF CONTENTS -->
-<h2 id="table-of-contents">Table of Contents</h2>
+<!-- 목차 -->
+<h2 id="table-of-contents">목차</h2>
 <details open="open">
-  <ol>
-    <li><a href="#features-of-one">Features of <b>One</b></a></li>
-    <li><a href="#roadmap">RoadMap</a></li>
-    <li><a href="#code-examples">Code Examples</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#get-involved">Get Involved</a></li>
-    <li><a href="#license">License</a></li>
-  </ol>
+   <ol>
+     <li><a href="#features-of-one"><b>One</b></a>의 기능</li>
+     <li><a href="#roadmap">로드맵</a></li>
+     <li><a href="#code-examples">코드 예</a></li>
+     <li><a href="#getting-started">시작하기</a></li>
+     <li><a href="#get-involved">참여하기</a></li>
+     <li><a href="#license">라이선스</a></li>
+   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="features-of-one">➤ Features of One</h2>
+<h2 id="features-of-one">➤ One의 기능</h2>
 
 - 단순성
 - 컴파일러
@@ -103,7 +97,7 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="roadmap">➤ RoadMap</h2>
+<h2 id="roadmap">➤ 로드맵</h2>
 
 'One' 언어의 문법은 [여기](grammar.BNF)에서 볼 수 있습니다.
 
@@ -119,7 +113,7 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="code-examples">➤ Code Examples</h2>
+<h2 id="code-examples">➤ 코드 </h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -128,7 +122,7 @@ main {
 }
 ```
 
-**Convert to C:**
+**C로 변환:**
 
 ```c
 #include <stdio.h>
@@ -148,7 +142,7 @@ i32 main {
 }
 ```
 
-**Convert to C:**
+**C로 변환:**
 
 ```c
 #include <stdio.h>
@@ -170,7 +164,7 @@ main {
 }
 ```
 
-**Convert to C:**
+**C로 변환:**
 
 ```c
 #include <stdio.h>
@@ -187,7 +181,7 @@ int main(int argc, char *argv[]) {
 
 <hr>
 
-**Another draft:**
+**또 다른 초안:**
 
 ```c
 import web
@@ -214,7 +208,7 @@ main {
 
 ---
 
-**Another draft:**
+**또 다른 초안:**
 
 ```c
 error {
@@ -240,7 +234,7 @@ error {
 
 ---
 
-### Old CLI Development
+### 이전 CLI 개발
 
 ```
 main:
@@ -276,7 +270,7 @@ end
 
 <hr>
 
-### Old GUI Development: (Web, Software)
+###  GUI 개발: (웹, 소프트웨어)
 
 이 아키텍처는 웹 사이트 및 기본 소프트웨어용으로만 설계되었습니다. 앞으로 모바일 앱(네이티브)에서도 사용할 수 있습니다.<br>
 모바일 구조는 아직 완성되지 않았으며 더 많은 주의와 생각이 필요합니다.<br><br>언어 작동을 보여주는 예:
@@ -362,7 +356,7 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="getting-started">➤ Getting Started</h2>
+<h2 id="getting-started">➤ 시작하기</h2>
 
 언어 학습을 시작하려면 [이 링크](https://github.com/ET-Lang/ET/wiki)를 참조하세요.
 
@@ -370,7 +364,7 @@ header {
 
 <!--Prerequisites-->
 
-#### Supported Environments
+#### 지원되는 환경
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
@@ -387,7 +381,7 @@ header {
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="get-involved">➤ Get Involved</h2>
+<h2 id="get-involved">➤ 참여하기</h2>
 
 버그 보고서, 기능 요청, 문서 개선 등을 포함한 모든 종류의 기여를 환영합니다.
 질문을 하거나 토론을 열려면 문제를 만들거나 <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>에 가입하세요.
@@ -404,7 +398,7 @@ GitHub에서 pull 요청하는 방법에 익숙하지 않다면 이 [가이드](
 <br>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ License</h2>
+<h2 id="license">➤ 라이선스</h2>
 
 `One`은 GNU General Public License v3.0에 따라 출시되었습니다. 저장소에 포함된 <a href="https://github.com/One-Language/One/blob/master/LICENSE">라이센스</a> 파일의 용어를 참조하십시오.
 
@@ -424,61 +418,3 @@ GitHub에서 pull 요청하는 방법에 익숙하지 않다면 이 [가이드](
 [licenseurl]: https://github.com/One-Language/One/blob/master/LICENSE
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://maxbase.org/"><img src="https://avatars.githubusercontent.com/u/2658040?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Max Base</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=BaseMax" title="Code">💻</a> <a href="https://github.com/One-Language/One/issues?q=author%3ABaseMax" title="Bug reports">🐛</a> <a href="#business-BaseMax" title="Business development">💼</a> <a href="#content-BaseMax" title="Content">🖋</a> <a href="https://github.com/One-Language/One/commits?author=BaseMax" title="Documentation">📖</a> <a href="#example-BaseMax" title="Examples">💡</a> <a href="#ideas-BaseMax" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-BaseMax" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-BaseMax" title="Maintenance">🚧</a> <a href="#mentoring-BaseMax" title="Mentoring">🧑‍🏫</a> <a href="#projectManagement-BaseMax" title="Project Management">📆</a> <a href="#question-BaseMax" title="Answering Questions">💬</a> <a href="https://github.com/One-Language/One/pulls?q=is%3Apr+reviewed-by%3ABaseMax" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/One-Language/One/commits?author=BaseMax" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/jbampton"><img src="https://avatars.githubusercontent.com/u/418747?v=4?s=100" width="100px;" alt=""/><br /><sub><b>John Bampton</b></sub></a><br /><a href="#projectManagement-jbampton" title="Project Management">📆</a> <a href="#business-jbampton" title="Business development">💼</a> <a href="https://github.com/One-Language/One/commits?author=jbampton" title="Code">💻</a> <a href="https://github.com/One-Language/One/commits?author=jbampton" title="Documentation">📖</a> <a href="#eventOrganizing-jbampton" title="Event Organizing">📋</a> <a href="#financial-jbampton" title="Financial">💵</a> <a href="#fundingFinding-jbampton" title="Funding Finding">🔍</a> <a href="#ideas-jbampton" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-jbampton" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-jbampton" title="Maintenance">🚧</a> <a href="#mentoring-jbampton" title="Mentoring">🧑‍🏫</a> <a href="https://github.com/One-Language/One/pulls?q=is%3Apr+reviewed-by%3Ajbampton" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/One-Language/One/commits?author=jbampton" title="Tests">⚠️</a> <a href="#tutorial-jbampton" title="Tutorials">✅</a> <a href="#talk-jbampton" title="Talks">📢</a></td>
-    <td align="center"><a href="https://github.com/basalumutgazi"><img src="https://avatars.githubusercontent.com/u/81925269?v=4?s=100" width="100px;" alt=""/><br /><sub><b>basalumutgazi</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=basalumutgazi" title="Documentation">📖</a> <a href="#translation-basalumutgazi" title="Translation">🌍</a> <a href="#projectManagement-basalumutgazi" title="Project Management">📆</a> <a href="#mentoring-basalumutgazi" title="Mentoring">🧑‍🏫</a></td>
-    <td align="center"><a href="https://github.com/n4i9kita"><img src="https://avatars.githubusercontent.com/u/60391776?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nikita Sharma</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=n4i9kita" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://aaronmeese.com"><img src="https://avatars.githubusercontent.com/u/17814535?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aaron Meese</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=ajmeese7" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/tHe-AK"><img src="https://avatars.githubusercontent.com/u/19654243?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akshay Kapoor</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=tHe-AK" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://allcontributors.org"><img src="https://avatars.githubusercontent.com/u/46410174?v=4?s=100" width="100px;" alt=""/><br /><sub><b>All Contributors</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=all-contributors" title="Documentation">📖</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/features/security"><img src="https://avatars.githubusercontent.com/u/27347476?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dependabot</b></sub></a><br /><a href="#maintenance-dependabot" title="Maintenance">🚧</a> <a href="#security-dependabot" title="Security">🛡️</a></td>
-    <td align="center"><a href="https://kotbiabderrahmane.web.app/"><img src="https://avatars.githubusercontent.com/u/37270435?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kotbi Abderrahmane</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=abdorah" title="Code">💻</a> <a href="https://github.com/One-Language/One/commits?author=abdorah" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/jassab"><img src="https://avatars.githubusercontent.com/u/41446786?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jas</b></sub></a><br /><a href="#design-jassab" title="Design">🎨</a></td>
-    <td align="center"><a href="https://www.upwork.com/freelancers/~013dd1f9db3380689d"><img src="https://avatars.githubusercontent.com/u/81928799?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mujahid Al-Majali</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=Majalian" title="Documentation">📖</a> <a href="#projectManagement-Majalian" title="Project Management">📆</a></td>
-    <td align="center"><a href="https://github.com/Anderson-Garcia"><img src="https://avatars.githubusercontent.com/u/68165804?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anderson García</b></sub></a><br /><a href="#translation-Anderson-Garcia" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://rayhanadev.vercel.app/"><img src="https://avatars.githubusercontent.com/u/72509475?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ray Arayilakath</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=RayhanADev" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://bandism.net/"><img src="https://avatars.githubusercontent.com/u/22633385?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ikko Ashimine</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=eltociear" title="Documentation">📖</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/murataka"><img src="https://avatars.githubusercontent.com/u/5358438?v=4?s=100" width="100px;" alt=""/><br /><sub><b>murat aka</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=murataka" title="Code">💻</a></td>
-    <td align="center"><a href="http://amir-shiati.github.io/"><img src="https://avatars.githubusercontent.com/u/47950086?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Amir</b></sub></a><br /><a href="#translation-amir-shiati" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://github.com/Ubersetzerin"><img src="https://avatars.githubusercontent.com/u/82717753?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ubersetzerin</b></sub></a><br /><a href="#translation-Ubersetzerin" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://github.com/mafedeocampo"><img src="https://avatars.githubusercontent.com/u/85558716?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mafedeocampo</b></sub></a><br /><a href="#translation-mafedeocampo" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://github.com/mohitsaxenaknoldus"><img src="https://avatars.githubusercontent.com/u/76725454?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mohit Saxena</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=mohitsaxenaknoldus" title="Documentation">📖</a> <a href="https://github.com/One-Language/One/commits?author=mohitsaxenaknoldus" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/pedramcvx1"><img src="https://avatars.githubusercontent.com/u/87372623?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pedram Lotfi</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=pedramcvx1" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://jdrprod.github.io/"><img src="https://avatars.githubusercontent.com/u/16467095?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arthur Correnson</b></sub></a><br /><a href="#translation-jdrprod" title="Translation">🌍</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/mikey-b"><img src="https://avatars.githubusercontent.com/u/1836123?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Brown</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=mikey-b" title="Code">💻</a></td>
-    <td align="center"><a href="https://xahmed.com/"><img src="https://avatars.githubusercontent.com/u/79005095?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ahmed.</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=xahmd" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/parsa011"><img src="https://avatars.githubusercontent.com/u/43126637?v=4?s=100" width="100px;" alt=""/><br /><sub><b>parsa mahmoudy</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=parsa011" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://restyled.io"><img src="https://avatars.githubusercontent.com/u/65077583?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Restyled Commits</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=restyled-commits" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Kkkkkk58"><img src="https://avatars.githubusercontent.com/u/55288330?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Karim Khasan</b></sub></a><br /><a href="#translation-Kkkkkk58" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://github.com/ihasidul"><img src="https://avatars.githubusercontent.com/u/32800356?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hasidul Islam</b></sub></a><br /><a href="https://github.com/One-Language/One/pulls?q=is%3Apr+reviewed-by%3Aihasidul" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="http://danyb0.me"><img src="https://avatars.githubusercontent.com/u/66164380?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DanyB0</b></sub></a><br /><a href="#translation-DanyB0" title="Translation">🌍</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/alesar1"><img src="https://avatars.githubusercontent.com/u/54070865?v=4?s=100" width="100px;" alt=""/><br /><sub><b>alesar1</b></sub></a><br /><a href="#translation-alesar1" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://github.com/Gokul2003g"><img src="https://avatars.githubusercontent.com/u/75162131?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gokul</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=Gokul2003g" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/sokratisvas"><img src="https://avatars.githubusercontent.com/u/77175483?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sokratis Vasiliou</b></sub></a><br /><a href="https://github.com/One-Language/One/commits?author=sokratisvas" title="Documentation">📖</a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome! 🩱 🕐 1️⃣ 🔂
