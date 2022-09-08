@@ -315,7 +315,7 @@ header {
 }
 ```
 
-**Convert to CSS/HTML/JS base:**
+**CSS/HTML/JS 기반으로 변환:**
 
 ```html
 <html>
