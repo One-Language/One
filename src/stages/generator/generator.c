@@ -62,8 +62,8 @@ char* generator_function(Generator* generator, AstBlock* block, AstFunction* fun
     code = sdscatprintf(code, "%s", generator_block(generator, function->block, ident + 1));
     code = sdscatprintf(code, "%s}\n", tab);
 
-    free(tab);
-    free(returnType);
+//    free(tab);
+//    free(returnType);
 
     return code;
 }
