@@ -12,11 +12,6 @@ int main()
 
     Lexer* lexer = lexer_init(source);
     lexer_tokenizer(lexer);
-
-    sds xml = lexer_trace(lexer);
-    printf("XML:\n%s\n", xml);
-    sdsfree(xml);
-
     if (lexer->errors->count > 0) {
         printf("Lexer errors: %d\n", lexer->errors->count);
         for (int i = 0; i < lexer->errors->count; i++) {
@@ -25,6 +20,9 @@ int main()
         }
         return 1;
     }
+    sds xml = lexer_trace(lexer);
+    printf("XML:\n%s\n", xml);
+    sdsfree(xml);
 
     return 0;
 }
