@@ -271,6 +271,20 @@ Token* lexer_lex(Lexer* lexer)
 
             return token_init(TOKEN_MUL, "*", start, lexer->position);
         } break;
+        case '#': {
+            // comment and read until next line or EOF
+            while(*lexer->source != '\0') {
+                lexer->source++;
+                lexer->position.offset++;
+                lexer->position.column++;
+                if (*lexer->source == '\n') {
+                    lexer->position.column = 0;
+                    lexer->position.line++;
+                    break;
+                }
+            }
+            return lexer_lex(lexer);
+        } break;
         case '/': {
             lexer->source++;
             lexer->position.offset++;

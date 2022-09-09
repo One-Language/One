@@ -13,10 +13,10 @@ Generator* generator_init(Parser* parser);
 
 void generator_generate(Generator* generator);
 
-char* generator_block(Generator* generator, AstBlock* block);
+char* generator_block(Generator* generator, AstBlock* block, int ident);
 
-char* generator_statement(Generator* generator, AstBlock* block, AstStatement* stmt);
+char* generator_statement(Generator* generator, AstBlock* block, AstStatement* stmt, int ident);
 
 char* generator_type(Generator* generator, AstType* type);
 
-char* generator_function(Generator* generator, AstBlock* block, AstFunction* function);
+char* generator_function(Generator* generator, AstBlock* block, AstFunction* function, int ident);
