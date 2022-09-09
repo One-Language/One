@@ -309,8 +309,11 @@ char* parser_trace_type(Parser* parser, AstBlock* block, AstType* type, int iden
     char* tab2 = string_repeat("\t", ident + 1);
 
     code = sdscatprintf(code, "%s<Type is_pointer=\"%s\" is_array=\"%s\">\n", tab, type->isPointer ? "true" : "false", type->isArray ? "true" : "false");
-    code = sdscatprintf(code, "%s\t<Name>%s</Name>\n", tab2, type->type);
+    code = sdscatprintf(code, "%s<Name>%s</Name>\n", tab2, type->type);
     code = sdscatprintf(code, "%s</Type>\n", tab);
+
+    free(tab);
+    free(tab2);
 
     return code;
 }
@@ -318,10 +321,10 @@ char* parser_trace_type(Parser* parser, AstBlock* block, AstType* type, int iden
 char* parser_trace_statement(Parser* parser, AstBlock* block, AstStatement* stmt, int ident)
 {
     sds temp = sdsnew("");
+
     char* tab = string_repeat("\t", ident);
     char* tab2 = string_repeat("\t", ident + 1);
     char* tab3 = string_repeat("\t", ident + 2);
-    char* tab4 = string_repeat("\t", ident + 3);
 
     switch (stmt->type) {
         case STATEMENT_FUNCTION: {
@@ -354,12 +357,17 @@ char* parser_trace_statement(Parser* parser, AstBlock* block, AstStatement* stmt
         } break;
     }
 
+    free(tab);
+    free(tab2);
+    free(tab3);
+
     return temp;
 }
 
 char* parser_trace_statements(Parser* parser, AstBlock *block, Array* statements, int ident)
 {
     sds temp = sdsnew("");
+
     char* tab = string_repeat("\t", ident);
 
     if (statements->count == 0) {
@@ -373,12 +381,15 @@ char* parser_trace_statements(Parser* parser, AstBlock *block, Array* statements
         temp = sdscatprintf(temp, "%s</Statements>\n", tab);
     }
 
+    free(tab);
+
     return temp;
 }
 
 char* parser_trace_block(Parser* parser, AstBlock* block, int ident)
 {
     sds temp = sdsnew("");
+
     char* tab = string_repeat("\t", ident);
     char* tab2 = string_repeat("\t", ident + 1);
     char* tab3 = string_repeat("\t", ident + 2);
@@ -408,6 +419,10 @@ char* parser_trace_block(Parser* parser, AstBlock* block, int ident)
     temp = sdscat(temp, parser_trace_statements(parser, block, block->statements, ident + 1));
 
     temp = sdscatprintf(temp, "%s</Block>\n", tab);
+
+    free(tab);
+    free(tab2);
+    free(tab3);
 
     return temp;
 }
