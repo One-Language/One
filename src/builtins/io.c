@@ -18,7 +18,7 @@ char* file_reads(const char* filepath)
     FILE* file = fopen(filepath, "rb");
     if (file == NULL)
     {
-        error_panic("Could not open file \"%s\".", filepath);
+        error_builtins("Could not open file \"%s\".", filepath);
         exit(74);
     }
 
@@ -30,7 +30,7 @@ char* file_reads(const char* filepath)
     char* buffer = (char*)malloc(fileSize + 1);
     if (buffer == NULL)
     {
-        error_panic("Not enough memory to read \"%s\".", filepath);
+        error_builtins("Not enough memory to read \"%s\".", filepath);
         exit(74);
     }
 
@@ -38,7 +38,7 @@ char* file_reads(const char* filepath)
     debug("file_reads: bytesRead is %zu", bytesRead);
     if (bytesRead < fileSize)
     {
-        error_panic("Could not read the \"%s\".", filepath);
+        error_builtins("Could not read the \"%s\".", filepath);
         exit(74);
     }
 

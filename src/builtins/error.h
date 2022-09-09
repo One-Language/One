@@ -21,20 +21,19 @@ typedef struct {
 
 typedef enum
 {
-    ERROR_WARNING,
-    ERROR_PANIC,
-
+//    ERROR_WARNING,
+//    ERROR_PANIC,
     ERROR_BUILTIN,
-
-    ERROR_TOKEN,
+//    ERROR_TOKEN,
     ERROR_LEXER,
     ERROR_PARSER,
-    ERROR_AST,
-    ERROR_TREE,
+//    ERROR_AST,
+//    ERROR_TREE,
 } ErrorType; // TODO
 
 typedef enum {
     ERROR_LEXER_BAD_CHARACTER,
+    ERROR_PARSER_BAD_TOKEN
 } ErrorSubType;
 
 typedef struct {
@@ -248,7 +247,7 @@ Error* error_init(ErrorType type, ErrorSubType subtype, char* message, char* sou
 
 #define error_warning(format, ...) error(ERROR_WARNING, __LINE__, "file", __FUNCTION__, format, ##args)
 
-#define error_panic(format, args...) error(ERROR_PANIC, __LINE__, "file", __FUNCTION__, format, ##args)
+//#define error_panic(format, args...) error(ERROR_PANIC, __LINE__, "file", __FUNCTION__, format, ##args)
 
 #define error_token(format, args...) error(ERROR_TOKEN, __LINE__, "file", __FUNCTION__, format, ##args)
 

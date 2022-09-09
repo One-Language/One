@@ -69,9 +69,12 @@ Token* expect(Parser* parser, TokenType type)
         return t;
     }
     else {
-        printf("Parser Error: Expected %s, got %s", token_type_name(type), token_type_name((*parser->tokens)->type));
+        sds message = sdsnew("");
+        message = sdscatprintf(message, "Expected %s, but got %s", token_type_name(type), token_type_name((*parser->tokens)->type));
+
+        Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_TOKEN, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        array_push(parser->errors, error);
         return NULL;
-//    array_push(parser->ast->errors, error_make("Expected token type %d, but got %d", type, (*parser->tokens)->type));
     }
 }
 

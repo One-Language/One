@@ -54,10 +54,10 @@ void error(ErrorType type, int line, const char* file, const char* function, con
     fprintf(stderr, " at %s", path);
     fputs("\n", stderr);
 
-    if (type != ERROR_WARNING)
-    {
+//    if (type != ERROR_WARNING)
+//    {
         exit(1);
-    }
+//    }
 }
 
 /*
@@ -72,14 +72,16 @@ char* error_name(ErrorType type)
 
     switch (type)
     {
-        case ERROR_TREE:
-            return "TREE";
-        case ERROR_WARNING:
-            return "WARNING";
-        case ERROR_PANIC:
-            return "ERROR";
-        case ERROR_TOKEN:
-            return "TOKEN ERROR";
+//        case ERROR_TREE:
+//            return "TREE";
+//        case ERROR_WARNING:
+//            return "WARNING";
+//        case ERROR_PANIC:
+//            return "ERROR";
+//        case ERROR_TOKEN:
+//            return "TOKEN ERROR";
+        case ERROR_LEXER:
+            return "LEXER ERROR";
         case ERROR_PARSER:
             return "PARSER ERROR";
         default:
