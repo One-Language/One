@@ -86,7 +86,7 @@ AstBlock* parse_block(Parser* parser)
 
     if (expect(parser, TOKEN_LBRACE) == NULL) return NULL;
 
-    while (!peekFor(parser, TOKEN_RBRACE)) {
+    while (!peekFor(parser, TOKEN_RBRACE) && !peekFor(parser, TOKEN_EOF)) {
         array_push(block->statements, parser_statement(parser, block));
     }
 
@@ -225,8 +225,6 @@ AstStatement* parser_fn(Parser* parser, AstBlock* block)
 
 AstStatement* parser_statement(Parser* parser, AstBlock* block)
 {
-    printf("Parser Token: %s\n", token_type_name((*parser->tokens)->type));
-
     switch ((*parser->tokens)->type)
     {
         case TOKEN_FN: {
@@ -241,7 +239,12 @@ AstStatement* parser_statement(Parser* parser, AstBlock* block)
             return stmt;
         } break;
         default: {
-            printf("Unexpected token: %s\n", token_type_name((*parser->tokens)->type));
+            sds message = sdsnew("");
+            message = sdscatprintf(message, "Unexpected token: %s", token_type_name((*parser->tokens)->type));
+
+            Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_TOKEN, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+            array_push(parser->errors, error);
+
             advance(parser);
             return NULL;
         }
@@ -365,21 +368,12 @@ char* parser_trace_statements(Parser* parser, AstBlock *block, Array* statements
 
 char* parser_trace_block(Parser* parser, AstBlock* block, int ident)
 {
-    printf("=====\n");
     sds temp = sdsnew("");
     char* tab = string_repeat("\t", ident);
     char* tab2 = string_repeat("\t", ident + 1);
     char* tab3 = string_repeat("\t", ident + 2);
 
     temp = sdscatprintf(temp, "%s<Block>\n", tab);
-//    if (block->statements->count == 0) {
-//        temp = sdscatprintf(temp, "%s<BlockStatements count=\"%d\" />\n", tab2, block->statements->count);
-//    } else {
-//        temp = sdscatprintf(temp, "%s<BlockStatements count=\"%d\">\n", tab2, block->statements->count);
-//        temp = sdscat(temp, parser_trace_statements(parser, block, block->statements, ident + 2));
-//        temp = sdscatprintf(temp, "%s</BlockStatements>\n", tab2);
-//    }
-    temp = sdscat(temp, parser_trace_statements(parser, block, block->statements, ident + 1));
 
     if (block->variables->count == 0) {
         temp = sdscatprintf(temp, "%s<BlockVariables count=\"%d\" />\n", tab2, block->variables->count);
@@ -388,10 +382,9 @@ char* parser_trace_block(Parser* parser, AstBlock* block, int ident)
         for (int i = 0; i < block->functions->count; i++) {
             temp = sdscatprintf(temp, "%s<Variable name=\"%s\" />\n", tab3, (char*) block->variables->data[i]);
         }
-//        temp = sdscat(temp, parser_trace_statements(parser, block, block->variables, ident + 1));
         temp = sdscatprintf(temp, "%s</BlockVariables>\n", tab2);
     }
-
+    /////////////////////////////////
     if (block->statements->count == 0) {
         temp = sdscatprintf(temp, "%s<BlockFunctions count=\"%d\" />\n", tab2, block->functions->count);
     } else {
@@ -399,9 +392,10 @@ char* parser_trace_block(Parser* parser, AstBlock* block, int ident)
         for (int i = 0; i < block->functions->count; i++) {
             temp = sdscatprintf(temp, "%s<Function name=\"%s\" />\n",tab3, block->functions->data[i]);
         }
-//        temp = sdscat(temp, parser_trace_statements(parser, block, block->functions, ident + 1));
         temp = sdscatprintf(temp, "%s</BlockFunctions>\n", tab2);
     }
+    /////////////////////////////////
+    temp = sdscat(temp, parser_trace_statements(parser, block, block->statements, ident + 1));
 
     temp = sdscatprintf(temp, "%s</Block>\n", tab);
 
@@ -410,8 +404,6 @@ char* parser_trace_block(Parser* parser, AstBlock* block, int ident)
 
 char* parser_trace(Parser* parser)
 {
-    printf("parser_trace\n");
-
     sds temp = sdsnew("<Parser>\n");
 
     // Create an empty block without any defined variables or functions!
