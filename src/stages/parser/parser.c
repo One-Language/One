@@ -289,13 +289,8 @@ char* parser_trace_type(Parser* parser, AstBlock* block, AstType* type, int iden
     char* tab = string_repeat("\t", ident);
     char* tab2 = string_repeat("\t", ident + 1);
 
-    code = sdscatprintf("%s<Type", tab);
-    code = sdscatprintf(code, " is_pointer=\"%s\"", type->isPointer ? "true" : "false");
-    code = sdscatprintf(code, " is_array=\"%s\"", type->isArray ? "true" : "false");
-    code = sdscatprintf(code, ">\n");
-
+    code = sdscatprintf(code, "%s<Type is_pointer=\"%s\" is_array=\"%s\">\n", tab, type->isPointer ? "true" : "false", type->isArray ? "true" : "false");
     code = sdscatprintf(code, "%s\t<Name>%s</Name>\n", tab2, type->type);
-
     code = sdscatprintf(code, "%s</Type>\n", tab);
 
     return code;
@@ -307,6 +302,7 @@ char* parser_trace_statement(Parser* parser, AstBlock* block, AstStatement* stmt
     char* tab = string_repeat("\t", ident);
     char* tab2 = string_repeat("\t", ident + 1);
     char* tab3 = string_repeat("\t", ident + 2);
+    char* tab4 = string_repeat("\t", ident + 3);
 
     switch (stmt->type) {
         case STATEMENT_FUNCTION: {
@@ -319,13 +315,9 @@ char* parser_trace_statement(Parser* parser, AstBlock* block, AstStatement* stmt
                 for (int i = 0; i < stmt->stmt.function->arguments->count; i++)
                 {
                     AstFunctionArgument* arg = stmt->stmt.function->arguments->data[i];
-                    temp = sdscatprintf(temp, "%s<FunctionArgument name=\"%s\">\n", tab3);
-                                        tab3,
-                                        parser_trace_type(parser, block, arg->type),
-                                        arg->name,
-                                        stmt->stmt.function->returnType->isArray ? " is_array=\"true\" " : "",
-                                        stmt->stmt.function->returnType->isPointer ? " is_pointer=\"true\"" : ""
-                                        );
+                    temp = sdscatprintf(temp, "%s<FunctionArgument name=\"%s\">\n", tab3, arg->name);
+                    temp = sdscatprintf(temp, "%s", parser_trace_type(parser, block, arg->type, ident + 4));
+                    temp = sdscatprintf(temp, "%s</FunctionArgument>\n", tab3);
                 }
                 temp = sdscatprintf(temp, "%s</FunctionArguments>\n", tab2);
 
@@ -333,7 +325,9 @@ char* parser_trace_statement(Parser* parser, AstBlock* block, AstStatement* stmt
                 temp = sdscat(temp, parser_trace_block(parser, stmt->stmt.function->block, ident + 2));
                 temp = sdscatprintf(temp, "%s</FunctionBlock>\n", tab2);
             }
-            temp = sdscatprintf(temp, "%s<FunctionReturn type=\"%s\"%s%s/>\n", tab2, stmt->stmt.function->returnType->type, stmt->stmt.function->returnType->isArray ? " is_array=\"true\" " : "", stmt->stmt.function->returnType->isPointer ? " is_pointer=\"true\"" : "");
+            temp = sdscatprintf(temp, "%s<FunctionReturn>\n", tab2);
+            temp = sdscatprintf(temp, "%s", parser_trace_type(parser, block, stmt->stmt.function->returnType, ident + 2));
+            temp = sdscatprintf(temp, "%s</FunctionReturn>\n", tab2);
             temp = sdscatprintf(temp, "%s</StatementFunction>\n", tab);
         } break;
         default: {
