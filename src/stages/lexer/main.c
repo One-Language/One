@@ -17,5 +17,14 @@ int main()
     printf("XML:\n%s\n", xml);
     sdsfree(xml);
 
+    if (lexer->errors->count > 0) {
+        printf("Lexer errors: %d\n", lexer->errors->count);
+        for (int i = 0; i < lexer->errors->count; i++) {
+            Error* error = (Error*)lexer->errors->data[i];
+            printf("Error: %s\n", error->message);
+        }
+        return 1;
+    }
+    
     return 0;
 }
