@@ -31,16 +31,17 @@ typedef struct {
 } AstBlock;
 
 typedef struct {
-    char* name;
-    Array* arguments;
-    AstBlock* block;
-} AstFunction;
-
-typedef struct {
     char* type;
     bool isArray;
     bool isPointer;
 } AstType;
+
+typedef struct {
+    char* name;
+    Array* arguments;
+    AstBlock* block;
+    AstType* returnType;
+} AstFunction;
 
 typedef struct {
     AstType* type;
