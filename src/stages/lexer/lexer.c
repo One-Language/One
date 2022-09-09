@@ -551,12 +551,12 @@ sds lexer_trace(Lexer* lexer)
     for (int i = 0; i < lexer->tokens->count; i++)
     {
         Token* token = lexer->tokens->data[i];
-        temp = sdscatprintf(temp, "%s<token id=\"%d\">\n", "\t", i + 1);
-            temp = sdscatfmt(temp, "%s<type>%s</type>\n", "\t\t", token_type_name(token->type));
-            temp = sdscatfmt(temp, "%s<value>%s</value>\n", "\t\t", token->value);
-            temp = sdscatfmt(temp, "%s<start>%s</start>\n", "\t\t", location_string(token->start));
-            temp = sdscatfmt(temp, "%s<end>%s</end>\n", "\t\t", location_string(token->end));
-        temp = sdscatfmt(temp, "%s</token>\n", "\t");
+        temp = sdscatprintf(temp, "%s<Token id=\"%d\">\n", "\t", i + 1);
+            temp = sdscatfmt(temp, "%s<Type>%s</type>\n", "\t\t", token_type_name(token->type));
+            temp = sdscatfmt(temp, "%s<Value>%s</value>\n", "\t\t", token->value);
+            temp = sdscatfmt(temp, "%s<Start>%s</start>\n", "\t\t", location_string(token->start));
+            temp = sdscatfmt(temp, "%s<End>%s</end>\n", "\t\t", location_string(token->end));
+        temp = sdscatfmt(temp, "%s</Token>\n", "\t");
     }
 
     temp = sdscat(temp, "</Lexer>");
