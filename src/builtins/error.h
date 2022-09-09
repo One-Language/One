@@ -9,6 +9,15 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <assert.h>
+//#include "../stages/lexer/lexer.h"
+
+// #include "../stages/lexer/lexer.h"
+
+typedef struct {
+    int offset;
+    int line;
+    int column;
+} Location;
 
 typedef enum
 {
@@ -23,6 +32,21 @@ typedef enum
     ERROR_AST,
     ERROR_TREE,
 } ErrorType; // TODO
+
+typedef enum {
+    ERROR_LEXER_BAD_CHARACTER,
+} ErrorSubType;
+
+typedef struct {
+    ErrorType type;
+    ErrorSubType subtype;
+    char* message;
+    char* source;
+    Location start;
+    Location end;
+} Error;
+
+Error* error_init(ErrorType type, ErrorSubType subtype, char* message, char* source, Location start, Location end);
 
 #define RESET "\033[0m"
 #define BLACK "\033[30m" /* Black */

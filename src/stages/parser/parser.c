@@ -19,6 +19,9 @@ Parser* parser_init(Lexer* lexer)
     parser->ast->errors = malloc(sizeof(Array));
     array_init(parser->ast->errors);
 
+    parser->errors = malloc(sizeof(Array));
+    array_init(parser->errors);
+
     return parser;
 }
 
@@ -274,12 +277,12 @@ AstBlock* make_block()
 
 void parser_parse(Parser* parser)
 {
-    printf("parser_parse\n");
+    if (parser->lexer->errors->count > 0) {
+        return;
+    }
 
     AstBlock* block = make_block();
     parser->ast->statements = (Array*)parser_statements(parser, block);
-
-    printf("parser_parse finished\n");
 }
 
 char* parser_trace_type(Parser* parser, AstBlock* block, AstType* type, int ident)

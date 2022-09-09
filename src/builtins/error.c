@@ -7,6 +7,18 @@
 // Global variable(s)
 //extern Lexer lexer;
 
+Error* error_init(ErrorType type, ErrorSubType subtype, char* message, char* source, Location start, Location end)
+{
+    Error* error = (Error*)malloc(sizeof(Error));
+    error->type = type;
+    error->subtype = subtype;
+    error->message = message;
+    error->source = source;
+    error->start = start;
+    error->end = end;
+
+    return error;
+}
 /*
  * @function: error
  * @description: Occur a error/warning at the runtime, If that was not a warning so we will exit the program immediately

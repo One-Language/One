@@ -7,10 +7,14 @@
 Lexer* lexer_init(char* source)
 {
     Lexer* lexer = malloc(sizeof(Lexer));
+    lexer->main_source = source;
     lexer->source = source;
     lexer->position = (Location){0, 1, 0};
     lexer->tokens = malloc(sizeof(Array));
     array_init(lexer->tokens);
+
+    lexer->errors = malloc(sizeof(Array));
+    array_init(lexer->errors);
 
     return lexer;
 }
@@ -18,10 +22,12 @@ Lexer* lexer_init(char* source)
 Token* token_init(TokenType type, char* value, Location start, Location end)
 {
     Token* token = malloc(sizeof(Token));
+
     token->type = type;
     token->value = value;
     token->start = start;
     token->end = end;
+
     return token;
 }
 
@@ -408,7 +414,11 @@ Token* lexer_lex(Lexer* lexer)
             lexer->position.offset++;
             lexer->position.column++;
 
-            return token_init(TOKEN_ERROR, "Unexpected character", start, lexer->position);
+            sds message = sdsnew("Unexpected character: ");
+            message = sdscatprintf(message, "%c", *lexer->source);
+            Error* error = error_init(ERROR_LEXER, ERROR_LEXER_BAD_CHARACTER, message, lexer->main_source, start, lexer->position);
+            array_push(lexer->errors, error);
+            return token_init(TOKEN_ERROR, message, start, lexer->position);
         }
     }
 }

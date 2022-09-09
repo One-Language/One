@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <str.h>
 
 #include "../../builtins/io.h"
 #include "../../builtins/array.h"
@@ -16,15 +15,11 @@
 #include "../../builtins/error.h"
 
 typedef struct {
-    int offset;
-    int line;
-    int column;
-} Location;
-
-typedef struct {
+    char* main_source;
     char* source;
     Location position;
     Array* tokens;
+    Array* errors;
 } Lexer;
 
 typedef enum {

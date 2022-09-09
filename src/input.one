@@ -1,6 +1,9 @@
-fn sin(a float) : int {}
-fn is(has bool) : float[] {}
-fn calc(a int, b int) {
-    fn test() {}
-    # i
-}
+#fn sin(a float) : int {}
+#fn is(has bool) : float[] {}
+#fn calc(a int, b int) {
+#    fn test() {}
+#    # i
+#}
+
+fn cos()
+$$$$

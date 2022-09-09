@@ -25,6 +25,7 @@ typedef struct {
     size_t token_count;
 
     AstProgram* ast;
+    Array* errors;
 } Parser;
 
 Parser* parser_init(Lexer* lexer);
