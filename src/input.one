@@ -1,6 +1,6 @@
-fn sin(float a) : int {}
-fn is(bool has) : float[] {}
-fn calc(int a, int b) {
+fn sin(a float) : int {}
+fn is(has bool) : float[] {}
+fn calc(a int, b int) {
     fn test() {}
     # i
 }

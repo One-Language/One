@@ -141,13 +141,13 @@ AstFunctionArgument* parser_fn_argument(Parser* parser)
 {
     AstFunctionArgument* argument = (AstFunctionArgument*)malloc(sizeof(AstFunctionArgument));
 
-    AstType* type = parser_type(parser);
-    if (type == NULL) return NULL;
-    argument->type = type;
-
     Token* name = expect(parser, TOKEN_IDENTIFIER);
     if (name == NULL) return NULL;
     argument->name = name->value;
+
+    AstType* type = parser_type(parser);
+    if (type == NULL) return NULL;
+    argument->type = type;
 
     return argument;
 }
