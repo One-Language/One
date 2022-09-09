@@ -33,7 +33,6 @@ Token* token_init(TokenType type, char* value, Location start, Location end)
 
 Token* lexer_lex(Lexer* lexer)
 {
-    printf("lexer_lex: %c\n", *lexer->source);
     Location start = lexer->position;
 
     switch (*lexer->source) {
@@ -446,7 +445,6 @@ char* location_string(Location location)
 
 char* token_type_name(TokenType type)
 {
-    printf("%d\n", type);
     switch (type) {
         case TOKEN_EOF:
             return "EOF";
@@ -548,7 +546,6 @@ char* token_type_name(TokenType type)
 
 sds lexer_trace(Lexer* lexer)
 {
-    printf("lexer_trace\n");
     sds temp = sdsnew("<Lexer>\n");
 
     for (int i = 0; i < lexer->tokens->count; i++)
