@@ -7,6 +7,7 @@
 Lexer* lexer_init(char* source)
 {
     Lexer* lexer = malloc(sizeof(Lexer));
+
     lexer->main_source = source;
     lexer->source = source;
     lexer->position = (Location){0, 1, 0};

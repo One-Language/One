@@ -53,6 +53,7 @@ char* generator_function(Generator* generator, AstBlock* block, AstFunction* fun
         AstFunctionArgument* argument = function->arguments->data[i];
         char* type = generator_type(generator, argument->type);
         code = sdscatprintf(code, "%s %s", type, argument->name);
+        free(type);
         if (i != function->arguments->count - 1) {
             code = sdscatprintf(code, ", ");
         }
@@ -60,6 +61,9 @@ char* generator_function(Generator* generator, AstBlock* block, AstFunction* fun
     code = sdscatprintf(code, ") {\n");
     code = sdscatprintf(code, "%s", generator_block(generator, function->block, ident + 1));
     code = sdscatprintf(code, "%s}\n", tab);
+
+    free(tab);
+    free(returnType);
 
     return code;
 }
