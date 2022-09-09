@@ -38,6 +38,12 @@ typedef struct {
 
 typedef struct {
     char* type;
+    bool isArray;
+    bool isPointer;
+} AstType;
+
+typedef struct {
+    AstType* type;
     char* name;
 } AstFunctionArgument;
 

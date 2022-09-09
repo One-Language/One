@@ -39,7 +39,7 @@ char* parser_trace_statements(Parser* parser, AstBlock* block, Array* statements
 
 AstFunctionArgument* parser_fn_argument(Parser* parser);
 
-char* parser_type(Parser* parser);
+AstType* parser_type(Parser* parser);
 
 Array* parser_fn_arguments(Parser* parser);
 

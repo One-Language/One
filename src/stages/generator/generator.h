@@ -17,4 +17,6 @@ char* generator_block(Generator* generator, AstBlock* block);
 
 char* generator_statement(Generator* generator, AstBlock* block, AstStatement* stmt);
 
+char* generator_type(Generator* generator, AstType* type);
+
 char* generator_function(Generator* generator, AstBlock* block, AstFunction* function);

@@ -109,18 +109,39 @@ char* ast_statement_type_name(AstStatementType type)
     }
 }
 
-char* parser_type(Parser* parser)
+AstType* parser_type(Parser* parser)
 {
+    AstType* type = malloc(sizeof(AstType));
+    type->isPointer = false;
+    type->isArray = false;
+
+    if (peekFor(parser, TOKEN_MUL)) {
+        type->isPointer = true;
+        advance(parser);
+    }
+
     Token* t = expect(parser, TOKEN_IDENTIFIER);
     if (t == NULL) return NULL;
-    return t->value;
+    type->type = t->value;
+
+    // []
+    if (peekFor(parser, TOKEN_LBRACKET)) {
+        advance(parser);
+        if (expect(parser, TOKEN_RBRACKET) == NULL) {
+            // TODO: Error
+            return NULL;
+        }
+        type->isArray = true;
+    }
+
+    return type;
 }
 
 AstFunctionArgument* parser_fn_argument(Parser* parser)
 {
     AstFunctionArgument* argument = (AstFunctionArgument*)malloc(sizeof(AstFunctionArgument));
 
-    char* type = parser_type(parser);
+    AstType* type = parser_type(parser);
     if (type == NULL) return NULL;
     argument->type = type;
 

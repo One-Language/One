@@ -44,6 +44,9 @@ typedef enum {
     TOKEN_LBRACE,
     TOKEN_RBRACE,
 
+    TOKEN_LBRACKET,
+    TOKEN_RBRACKET,
+
     TOKEN_GT,
     TOKEN_LT,
     TOKEN_GTE,

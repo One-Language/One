@@ -45,6 +45,20 @@ Token* lexer_lex(Lexer* lexer)
 
             return token_init(TOKEN_RPAREN, ")", start, lexer->position);
         } break;
+        case '[': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_LBRACKET, "[", start, lexer->position);
+        } break;
+        case ']': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_RBRACKET, "]", start, lexer->position);
+        } break;
         case '{': {
             lexer->source++;
             lexer->position.offset++;

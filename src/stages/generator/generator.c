@@ -14,6 +14,21 @@ Generator* generator_init(Parser* parser)
     return generator;
 }
 
+char* generator_type(Generator* generator, AstType* type)
+{
+    sds code = sdsnew("");
+
+    if (type->isPointer) {
+        code = sdscat(code, "void*");
+    } else if (type->isArray) {
+        code = sdscat(code, "Array*");
+    } else {
+        code = sdscat(code, type->type);
+    }
+
+    return code;
+}
+
 char* generator_function(Generator* generator, AstBlock* block, AstFunction* function)
 {
     sds code = sdsnew("");
@@ -21,7 +36,8 @@ char* generator_function(Generator* generator, AstBlock* block, AstFunction* fun
     code = sdscatprintf(code, "function %s(", function->name);
     for (int i = 0; i < function->arguments->count; i++) {
         AstFunctionArgument* argument = function->arguments->data[i];
-        code = sdscatprintf(code, "%s %s", argument->type, argument->name);
+        char* type = generator_type(generator, argument->type);
+        code = sdscatprintf(code, "%s %s", type, argument->name);
         if (i != function->arguments->count - 1) {
             code = sdscatprintf(code, ", ");
         }
