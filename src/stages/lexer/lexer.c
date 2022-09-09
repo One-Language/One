@@ -566,6 +566,8 @@ sds lexer_trace(Lexer* lexer)
 
 void lexer_free(Lexer* lexer)
 {
+    if (lexer == NULL) return;
+
     // TODO
     free(lexer->source);
     free(lexer->main_source);

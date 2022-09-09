@@ -31,6 +31,8 @@ char* generator_type(Generator* generator, AstType* type)
 
 void generator_free(Generator* generator)
 {
+    if (generator == NULL) return;
+
     // TODO
     lexer_free(generator->parser->lexer);
     parser_free(generator->parser);

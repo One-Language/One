@@ -97,6 +97,8 @@ AstBlock* parse_block(Parser* parser)
 
 void parser_free(Parser* parser)
 {
+    if (parser == NULL) return;
+
     // TODO
     lexer_free(parser->lexer);
 }
