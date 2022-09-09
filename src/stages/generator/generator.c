@@ -29,6 +29,13 @@ char* generator_type(Generator* generator, AstType* type)
     return code;
 }
 
+void generator_free(Generator* generator)
+{
+    // TODO
+    lexer_free(generator->parser->lexer);
+    parser_free(generator->parser);
+}
+
 char* generator_function(Generator* generator, AstBlock* block, AstFunction* function, int ident)
 {
     sds code = sdsnew("");

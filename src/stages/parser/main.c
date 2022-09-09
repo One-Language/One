@@ -41,5 +41,8 @@ int main()
     printf("XML:\n%s\n", xml);
     sdsfree(xml);
 
+    parser_free(parser);
+    lexer_free(lexer);
+
     return 0;
 }

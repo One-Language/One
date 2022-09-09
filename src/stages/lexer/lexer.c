@@ -563,3 +563,11 @@ sds lexer_trace(Lexer* lexer)
 
     return temp;
 }
+
+void lexer_free(Lexer* lexer)
+{
+    // TODO
+    free(lexer->source);
+    free(lexer->main_source);
+}
+

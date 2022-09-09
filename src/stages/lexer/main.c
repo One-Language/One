@@ -24,5 +24,7 @@ int main()
     printf("XML:\n%s\n", xml);
     sdsfree(xml);
 
+    lexer_free(lexer);
+
     return 0;
 }

@@ -47,5 +47,9 @@ int main()
     generator_generate(generator);
     printf("Generated code:\n%s\n", generator->code);
 
+    generator_free(generator);
+    parser_free(parser);
+    lexer_free(lexer);
+
     return 0;
 }

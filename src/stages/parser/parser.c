@@ -95,6 +95,13 @@ AstBlock* parse_block(Parser* parser)
     return block;
 }
 
+void parser_free(Parser* parser)
+{
+    // TODO
+    lexer_free(parser->lexer);
+}
+
+
 char* ast_statement_type_name(AstStatementType type)
 {
     switch(type) {
