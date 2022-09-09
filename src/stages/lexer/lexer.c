@@ -569,7 +569,8 @@ void lexer_free(Lexer* lexer)
     if (lexer == NULL) return;
 
     // TODO
-    free(lexer->source);
-    free(lexer->main_source);
+//    if (lexer->source != NULL) free(lexer->source);
+//    if (lexer->main_source != NULL) free(lexer->main_source);
+//    free(lexer);
 }
 

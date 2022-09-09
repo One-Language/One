@@ -34,8 +34,9 @@ void generator_free(Generator* generator)
     if (generator == NULL) return;
 
     // TODO
-    lexer_free(generator->parser->lexer);
-    parser_free(generator->parser);
+//    if (generator->parser != NULL && generator->parser->lexer != NULL) lexer_free(generator->parser->lexer);
+//    if (generator->parser != NULL) parser_free(generator->parser);
+    free(generator);
 }
 
 char* generator_function(Generator* generator, AstBlock* block, AstFunction* function, int ident)

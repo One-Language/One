@@ -42,7 +42,6 @@ int main()
     sdsfree(xml);
 
     parser_free(parser);
-    lexer_free(lexer);
 
     return 0;
 }

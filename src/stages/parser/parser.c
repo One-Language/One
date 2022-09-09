@@ -100,7 +100,8 @@ void parser_free(Parser* parser)
     if (parser == NULL) return;
 
     // TODO
-    lexer_free(parser->lexer);
+//    lexer_free(parser->lexer);
+    free(parser);
 }
 
 
