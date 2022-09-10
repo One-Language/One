@@ -56,4 +56,95 @@ typedef struct {
     } stmt;
 } AstStatement;
 
+typedef enum {
+//    AST_VALUE,
+    AST_VALUE_BOOL,
+    AST_VALUE_INT,
+    AST_VALUE_FLOAT,
+    AST_VALUE_STRING
+} AstValueType;
+
+typedef struct {
+    AST_EXPRESSION_MEMBER,
+    AST_EXPRESSION_CONDITIONAL,
+    AST_EXPRESSION_UNARY,
+    AST_EXPRESSION_BINARY,
+    AST_EXPRESSION_CALL,
+    AST_EXPRESSION_LOGICAL,
+    AST_EXPRESSION_LITERAL,
+    AST_EXPRESSION_POSTFIX,
+    AST_EXPRESSION_TERNARY,
+    AST_EXPRESSION_PREFIX,
+} AstExpressionType;
+
+typedef struct {
+    TokenType operator;
+    AstExpression* left;
+    AstExpression* right;
+} AstBinaryExpression;
+
+typedef struct {
+    AstValueType* type;
+    enum {
+        bool boolean;
+        int integer;
+        float floating;
+        char* string;
+    } value;
+} AstLiteralExpression;
+typedef struct {
+    AstExpression* callee;
+    Array* arguments;
+} AstCallExpression;
+
+typedef struct {
+    TokenType operator;
+    AstExpression* left;
+    AstExpression* right;
+} AstBinaryExpression;
+
+typedef struct {
+    TokenType operator;
+    AstExpression* left;
+    AstExpression* right;
+} AstLogicalExpression;
+
+typedef struct {
+    TokenType operator;
+    AstExpression* argument;
+} AstUnaryExpression;
+
+typedef struct {
+    AstExpression* test;
+    AstExpression* consequent;
+    AstExpression* alternate;
+} AstConditionalExpression;
+
+typedef struct {
+    AstExpression* object;
+    AstExpression* property;
+} AstTernaryExpression;
+
+typedef struct {
+    TokenType operator;
+    AstExpression* left;
+    AstExpression* right;
+} AstAssignmentExpression;
+
+typedef struct {
+    TokenType operator;
+    AstExpression* right;
+} AstPrefixExpression;
+
+typedef struct {
+    TokenType operator;
+    AstExpression* operand;
+} AstPostfixExpression;
+
+typedef struct {
+    AstExpressionType type;
+    union {
+
+    } expr;
+} AstExpression;
 #endif //ONE_PARSER_AST_H

@@ -240,24 +240,21 @@ AstStatement* parser_statement(Parser* parser, AstBlock* block)
         case TOKEN_FN: {
             return parser_fn(parser, block);
         } break;
-        case TOKEN_IDENTIFIER: {
-            AstStatement* stmt = statement_make((*parser->tokens)->value);
-
-            advance(parser); // eat identifier
-            array_push(block->variables, stmt->name);
-
-            return stmt;
-        } break;
+//        case TOKEN_IDENTIFIER: {
+//            AstStatement* stmt = statement_make((*parser->tokens)->value);
+//
+//            advance(parser); // eat identifier
+//            array_push(block->variables, stmt->name);
+//
+//            return stmt;
+//        } break;
         default: {
-            sds message = sdsnew("");
-            message = sdscatprintf(message, "Unexpected token: %s", token_type_name((*parser->tokens)->type));
-
-            Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_TOKEN, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
-            array_push(parser->errors, error);
-
-            advance(parser);
-            return NULL;
-        }
+            AstExpression *expression = parser_expression(parser, block);
+            AstStatement* stmt = malloc(sizeof(AstStatement));
+            stmt->type = STATEMENT_EXPRESSION;
+            stmt->stmt.expression = expression;
+            return stmt;
+        };
     }
 }
 
