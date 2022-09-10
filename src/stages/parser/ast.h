@@ -56,6 +56,8 @@ typedef struct {
     } stmt;
 } AstStatement;
 
+struct AstExpression;
+
 typedef enum {
 //    AST_VALUE,
     AST_VALUE_BOOL,
@@ -64,7 +66,7 @@ typedef enum {
     AST_VALUE_STRING
 } AstValueType;
 
-typedef struct {
+typedef enum {
     AST_EXPRESSION_MEMBER,
     AST_EXPRESSION_CONDITIONAL,
     AST_EXPRESSION_UNARY,
@@ -79,8 +81,8 @@ typedef struct {
 
 typedef struct {
     TokenType operator;
-    AstExpression* left;
-    AstExpression* right;
+    struct AstExpression* left;
+    struct AstExpression* right;
 } AstBinaryExpression;
 
 typedef struct {
@@ -93,53 +95,52 @@ typedef struct {
     } value;
 } AstLiteralExpression;
 typedef struct {
-    AstExpression* callee;
+    struct AstExpression* callee;
     Array* arguments;
 } AstCallExpression;
 
 typedef struct {
     TokenType operator;
-    AstExpression* left;
-    AstExpression* right;
-} AstBinaryExpression;
-
-typedef struct {
-    TokenType operator;
-    AstExpression* left;
-    AstExpression* right;
+    struct AstExpression* left;
+    struct AstExpression* right;
 } AstLogicalExpression;
 
 typedef struct {
     TokenType operator;
-    AstExpression* argument;
+    struct AstExpression* argument;
 } AstUnaryExpression;
 
 typedef struct {
-    AstExpression* test;
-    AstExpression* consequent;
-    AstExpression* alternate;
+    struct AstExpression* test;
+    struct AstExpression* consequent;
+    struct AstExpression* alternate;
 } AstConditionalExpression;
 
 typedef struct {
-    AstExpression* object;
-    AstExpression* property;
+    struct AstExpression* condition;
+    struct AstExpression* true_value;
+    struct AstExpression* false_value;
 } AstTernaryExpression;
 
 typedef struct {
     TokenType operator;
-    AstExpression* left;
-    AstExpression* right;
+    struct AstExpression* left;
+    struct AstExpression* right;
 } AstAssignmentExpression;
 
 typedef struct {
     TokenType operator;
-    AstExpression* right;
+    struct AstExpression* right;
 } AstPrefixExpression;
 
 typedef struct {
     TokenType operator;
-    AstExpression* operand;
+    struct AstExpression* operand;
 } AstPostfixExpression;
+
+typedef struct {
+    struct AstExpression* expression;
+} AstExpressionStatement;
 
 typedef struct {
     AstExpressionType type;
