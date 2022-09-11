@@ -32,8 +32,12 @@ typedef enum
 } ErrorType; // TODO
 
 typedef enum {
+    // Lexer
     ERROR_LEXER_BAD_CHARACTER,
-    ERROR_PARSER_BAD_TOKEN
+
+    // Parser
+    ERROR_PARSER_BAD_TOKEN,
+    ERROR_PARSER_BAD_RULE,
 } ErrorSubType;
 
 typedef struct {

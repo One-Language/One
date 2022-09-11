@@ -250,7 +250,12 @@ AstStatement* parser_statement(Parser* parser, AstBlock* block)
 //        } break;
         default: {
             AstExpression *expression = parser_expression(parser, block);
-            if (expression == NULL) return NULL;
+            if (expression == NULL) {
+                sds message = sdsnew("Expected expression");
+                Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+                array_push(parser->errors, error);
+                return NULL;
+            }
 
             AstStatement* stmt = malloc(sizeof(AstStatement));
             stmt->type = STATEMENT_EXPRESSION;
@@ -349,10 +354,12 @@ char* parser_trace_statement(Parser* parser, AstBlock* block, AstStatement* stmt
                 }
                 temp = sdscatprintf(temp, "%s</FunctionArguments>\n", tab2);
 
-                temp = sdscatprintf(temp, "%s<FunctionBlock>\n", tab2);
-                temp = sdscat(temp, parser_trace_block(parser, stmt->stmt.function->block, ident + 2));
-                temp = sdscatprintf(temp, "%s</FunctionBlock>\n", tab2);
             }
+
+            temp = sdscatprintf(temp, "%s<FunctionBlock>\n", tab2);
+            temp = sdscat(temp, parser_trace_block(parser, stmt->stmt.function->block, ident + 2));
+            temp = sdscatprintf(temp, "%s</FunctionBlock>\n", tab2);
+
             temp = sdscatprintf(temp, "%s<FunctionReturn>\n", tab2);
             temp = sdscatprintf(temp, "%s", parser_trace_type(parser, block, stmt->stmt.function->returnType, ident + 2));
             temp = sdscatprintf(temp, "%s</FunctionReturn>\n", tab2);
@@ -382,7 +389,9 @@ char* parser_trace_statements(Parser* parser, AstBlock *block, Array* statements
         temp = sdscatprintf(temp, "%s<Statements count=\"%d\">\n", tab, statements->count);
         for (int i = 0; i < statements->count; i++) {
             AstStatement* stmt = statements->data[i];
-            temp = sdscat(temp, parser_trace_statement(parser, block, stmt, ident + 1));
+            if (stmt != NULL) {
+                temp = sdscat(temp, parser_trace_statement(parser, block, stmt, ident + 1));
+            }
         }
         temp = sdscatprintf(temp, "%s</Statements>\n", tab);
     }
