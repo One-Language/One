@@ -250,12 +250,21 @@ AstStatement* parser_statement(Parser* parser, AstBlock* block)
 //        } break;
         default: {
             AstExpression *expression = parser_expression(parser, block);
+            if (expression == NULL) return NULL;
+
             AstStatement* stmt = malloc(sizeof(AstStatement));
             stmt->type = STATEMENT_EXPRESSION;
             stmt->stmt.expression = expression;
             return stmt;
         };
     }
+}
+
+AstExpression* parser_expression(Parser* parser, AstBlock* block)
+{
+    advance(parser);
+    return NULL;
+//    return parser_addition(parser, block);
 }
 
 Array* parser_statements(Parser* parser, AstBlock* block)

@@ -58,6 +58,8 @@ void parser_parse(Parser* parser);
 
 char* ast_statement_type_name(AstStatementType type);
 
+AstExpression* parser_expression(Parser* parser, AstBlock* block);
+
 void parser_free(Parser* parser);
 
 #endif //ONE_LEXER_PARSER_H

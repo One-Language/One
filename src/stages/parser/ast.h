@@ -48,15 +48,16 @@ typedef struct {
     char* name;
 } AstFunctionArgument;
 
+struct AstExpression;
+
 typedef struct {
     char* name;
     AstStatementType type;
     union {
         AstFunction* function;
+        struct AstExpression* expression;
     } stmt;
 } AstStatement;
-
-struct AstExpression;
 
 typedef enum {
 //    AST_VALUE,
@@ -87,13 +88,14 @@ typedef struct {
 
 typedef struct {
     AstValueType* type;
-    enum {
+    union {
         bool boolean;
         int integer;
         float floating;
         char* string;
     } value;
 } AstLiteralExpression;
+
 typedef struct {
     struct AstExpression* callee;
     Array* arguments;

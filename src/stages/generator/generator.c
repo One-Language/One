@@ -84,7 +84,9 @@ char* generator_block(Generator* generator, AstBlock* block, int ident)
 
     for (int i = 0; i < block->statements->count; ++i) {
         AstStatement* stmt = block->statements->data[i];
-        temp = sdscat(temp, generator_statement(generator, block, stmt, ident));
+        if (stmt != NULL) {
+            temp = sdscat(temp, generator_statement(generator, block, stmt, ident));
+        }
     }
 
     return temp;
@@ -99,7 +101,9 @@ void generator_generate(Generator* generator)
 
     for (int i = 0; i < ast->statements->count; i++) {
         AstStatement* stmt = ast->statements->data[i];
-        temp = sdscat(temp, generator_statement(generator, block, stmt, 0));
+        if (stmt != NULL) {
+            temp = sdscat(temp, generator_statement(generator, block, stmt, 0));
+        }
     }
 
     generator->code = temp;
