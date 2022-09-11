@@ -36,6 +36,15 @@ Token* lexer_lex(Lexer* lexer)
 {
     Location start = lexer->position;
 
+//    TOKEN_NUMBER_INT,
+//            TOKEN_NUMBER_FLOAT,
+//            TOKEN_STRING_DOUBLE_QUOTE,
+//            TOKEN_STRING_SINGLE_QUOTE,
+//            TOKEN_BOOL_TRUE,
+//            TOKEN_BOOL_FALSE,
+//            TOKEN_NULL,
+//            TOKEN_UNDEFINED,
+
     switch (*lexer->source) {
         case '(': {
             lexer->source++;

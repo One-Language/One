@@ -267,6 +267,29 @@ AstStatement* parser_statement(Parser* parser, AstBlock* block)
 
 AstExpression* parser_expression(Parser* parser, AstBlock* block)
 {
+    AstExpression* result = malloc(sizeof(AstExpression));
+
+    if ((*parser->tokens)->type == TOKEN_IDENTIFIER ||
+            (*parser->tokens)->type == TOKEN_NUMBER_INT ||
+            (*parser->tokens)->type == TOKEN_NUMBER_FLOAT ||
+            (*parser->tokens)->type == TOKEN_STRING_DOUBLE_QUOTE ||
+            (*parser->tokens)->type == TOKEN_STRING_SINGLE_QUOTE ||
+            (*parser->tokens)->type == TOKEN_BOOL_TRUE ||
+            (*parser->tokens)->type == TOKEN_BOOL_FALSE ||
+            (*parser->tokens)->type == TOKEN_NULL ||
+            (*parser->tokens)->type == TOKEN_UNDEFINED) {
+        result = parse_expression_literal();
+    } else if ((*parser->tokens)->type === TokenType.T_PARENTHESIS_OPEN) {
+        result = this.parseSubExpression();
+    } else if (this.has(TokenType.T_OPERATOR_ADD) || this.has(TokenType.T_OPERATOR_SUBTRACT)) {
+        result = parsePrefixExpression(this.prefix_bp_lookup(ft));
+    } else {
+        sds message = sdsnew("Unexpected token ");
+        message = sdscat(message, token_type_name(ft));
+        Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        array_push(parser->errors, error);
+    }
+
     advance(parser);
     return NULL;
 //    return parser_addition(parser, block);
