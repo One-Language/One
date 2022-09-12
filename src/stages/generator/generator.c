@@ -84,8 +84,7 @@ char* generator_ret(Generator* generator, AstBlock* block, AstStatement* stmt, i
 
     char* tab = string_repeat("\t", ident);
 
-    code = sdscatprintf(code, "%sreturn ", tab);
-    code = sdscatprintf(code, "%s;\n", generator_expression(generator, block, stmt->stmt.ret->expressions, ident));
+    code = sdscatprintf(code, "%sreturn %s\n", tab, generator_expressions(generator, block, stmt->stmt.ret->expressions, ident));
 
     return code;
 }

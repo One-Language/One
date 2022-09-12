@@ -284,7 +284,17 @@ AstStatement* parser_statement(Parser* parser, AstBlock* block)
 
 AstExpression* parse_expression_literal(Parser* parser, AstBlock* block)
 {
+    AstExpression* expr = malloc(sizeof(AstExpression));
 
+    Token* value = (*parser->tokens);
+    advance(parser);
+
+    expr->type = AST_EXPRESSION_LITERAL;
+    expr->expr.literal = malloc(sizeof(AstLiteralExpression));
+    expr->expr.literal->type = AST_VALUE_STRING;
+    expr->expr.literal->value.string = value->value;
+
+    return expr;
 }
 
 AstExpression* parser_sub_expression(Parser* parser, AstBlock* block)
@@ -305,21 +315,21 @@ AstExpression* parser_binary_expression(Parser* parser, AstBlock* block, AstExpr
     Token* operator = NULL;
     if (!peekFor(parser, TOKEN_ADD) &&
         !peekFor(parser, TOKEN_SUB) &&
-            !peekFor(parser, TOKEN_MUL) &&
-            !peekFor(parser, TOKEN_DIV) &&
-//            !peekFor(parser, TOKEN_DIV_INT) &&
-            !peekFor(parser, TOKEN_DOT) &&
-            !peekFor(parser, TOKEN_AND) &&
-            !peekFor(parser, TOKEN_ANDAND) &&
-            !peekFor(parser, TOKEN_OR) &&
-            !peekFor(parser, TOKEN_OROR) &&
-            !peekFor(parser, TOKEN_ASSIGN) &&
-//            !peekFor(parser, TOKEN_NOT_EQUAL) &&
-            !peekFor(parser, TOKEN_LT) &&
-            !peekFor(parser, TOKEN_LTE) &&
-            !peekFor(parser, TOKEN_GT) &&
-            !peekFor(parser, TOKEN_GTE)
-        ) {
+        !peekFor(parser, TOKEN_MUL) &&
+        !peekFor(parser, TOKEN_DIV) &&
+        //            !peekFor(parser, TOKEN_DIV_INT) &&
+        !peekFor(parser, TOKEN_DOT) &&
+        !peekFor(parser, TOKEN_AND) &&
+        !peekFor(parser, TOKEN_ANDAND) &&
+        !peekFor(parser, TOKEN_OR) &&
+        !peekFor(parser, TOKEN_OROR) &&
+        !peekFor(parser, TOKEN_ASSIGN) &&
+        //            !peekFor(parser, TOKEN_NOT_EQUAL) &&
+        !peekFor(parser, TOKEN_LT) &&
+        !peekFor(parser, TOKEN_LTE) &&
+        !peekFor(parser, TOKEN_GT) &&
+        !peekFor(parser, TOKEN_GTE)
+            ) {
         sds message = sdsnew("Unexpected token ");
         message = sdscat(message, token_type_name((*parser->tokens)->type));
 
