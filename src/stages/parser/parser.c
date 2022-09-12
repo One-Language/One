@@ -279,14 +279,66 @@ AstExpression* parser_sub_expression(Parser* parser, AstBlock* block)
     expect(parser, TOKEN_RPAREN);
 }
 
-AstExpression* parser_binary_expression(Parser* parser, AstBlock* block)
+AstExpression* parser_binary_expression(Parser* parser, AstBlock* block, AstExpression* lhs, int min_bp)
 {
+    if (!peekFor(parser, TOKEN_ADD) &&
+        !peekFor(parser, TOKEN_SUB) &&
+            !peekFor(parser, TOKEN_MUL) &&
+            !peekFor(parser, TOKEN_DIV) &&
+//            !peekFor(parser, TOKEN_DIV_INT) &&
+            !peekFor(parser, TOKEN_DOT) &&
+            !peekFor(parser, TOKEN_AND) &&
+            !peekFor(parser, TOKEN_ANDAND) &&
+            !peekFor(parser, TOKEN_OR) &&
+            !peekFor(parser, TOKEN_OROR) &&
+            !peekFor(parser, TOKEN_ASSIGN) &&
+//            !peekFor(parser, TOKEN_NOT_EQUAL) &&
+            !peekFor(parser, TOKEN_LT) &&
+            !peekFor(parser, TOKEN_LTE) &&
+            !peekFor(parser, TOKEN_GT) &&
+            !peekFor(parser, TOKEN_GTE)
+        ) {
+        sds message = sdsnew("Unexpected token ");
+        message = sdscat(message, token_type_name((*parser->tokens)->type));
 
+        Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        array_push(parser->errors, error);
+        return NULL;
+    }
+
+    AstExpression* rhs = parser_expression(parser, block, min_bp);
+
+    AstExpression* expr = malloc(sizeof(AstExpression));
+    expr->type = AST_EXPRESSION_BINARY;
+    expr->expr.binary = malloc(sizeof(AstBinaryExpression));
+    expr->expr.binary->left = lhs;
+    expr->expr.binary->right = rhs;
+    expr->expr.binary->operator = operator->type;
+
+    return expr;
 }
 
-AstExpression* parser_prefix_expression(Parser* parser, AstBlock* block, AstExpression* expr)
+AstExpression* parser_prefix_expression(Parser* parser, AstBlock* block, int min_bp)
 {
+    Token* operator;
+    if (!peekFor(TOKEN_ADD) && !peekFor(TOKEN_SUB)) {
+        sds message = sdsnew("Unexpected token ");
+        message = sdscat(message, token_type_name((*parser->tokens)->type));
 
+        Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        array_push(parser->errors, error);
+        return NULL;
+    }
+
+    AstExpression* expression = parser_expression(parser, block, min_bp);
+
+    AstExpression* expr = malloc(sizeof(AstExpression));
+    expr->type = AST_EXPRESSION_PREFIX;
+    expr->expr.prefix = malloc(sizeof(AstPrefixExpression));
+    expr->expr.prefix->operator = operator->value;
+    expr->expr.prefix->right = expression;
+
+    return expr;
 }
 
 int parser_prefix_bp_lookup(TokenType whichOperator)
@@ -361,40 +413,61 @@ struct binding_power parser_bp_lookup(TokenType whichOperator)
 {
     struct binding_power no_binding_power = {0, 0};
 
-#define RightAssociative(priority) priority+1, priority
-#define LeftAssociative(priority) priority-1, priority
-
     switch (whichOperator) {
-        case TOKEN_LPAREN: return( { RightAssociative(997) } );
-        case TOKEN_DOT: return( { RightAssociative(999) } );
+        case TOKEN_LPAREN: return RightAssociative(997);
+        case TOKEN_DOT: return RightAssociative(999);
 
-        case TOKEN_AND: return( { LeftAssociative(300) } );
-        case TOKEN_OR: return( { LeftAssociative(400) } );
+        case TOKEN_AND: return LeftAssociative(300);
+        case TOKEN_OR: return LeftAssociative(400);
 
-        case TOKEN_ANDAND: return( { LeftAssociative(500) } );
-        case TOKEN_OROR: return( { LeftAssociative(600) } );
+        case TOKEN_ANDAND: return LeftAssociative(500);
+        case TOKEN_OROR: return LeftAssociative(600);
 
-        case TOKEN_ADD: return( { LeftAssociative(100) } );
-        case TOKEN_SUB: return( { LeftAssociative(100) } );
-        case TOKEN_MUL: return( { LeftAssociative(200) } );
-        case TOKEN_DIV: return( { LeftAssociative(200) } );
-//        case TOKEN_DIV_INT: return( { LeftAssociative(200) } );
-        case TOKEN_POW: return( { RightAssociative(99) } );
-        case TOKEN_QUESTION: return( { RightAssociative(1000) } );
+        case TOKEN_ADD: return LeftAssociative(100);
+        case TOKEN_SUB: return LeftAssociative(100);
+        case TOKEN_MUL: return LeftAssociative(200);
+        case TOKEN_DIV: return LeftAssociative(200);
+//        case TOKEN_DIV_INT: return LeftAssociative(200);
+        case TOKEN_POW: return RightAssociative(99);
+        case TOKEN_QUESTION: return RightAssociative(1000);
 
-        case TOKEN_GT: return( { LeftAssociative(50) } );
-        case TOKEN_GTE: return( { LeftAssociative(50) } );
-        case TOKEN_LT: return( { LeftAssociative(50) } );
-        case TOKEN_LTE: return( { LeftAssociative(50) } );
-        case TOKEN_ASSIGN: return( { LeftAssociative(50) } );
-//        case TOKEN_NOT_EQUAL: return( { LeftAssociative(50) } );
+        case TOKEN_GT: return LeftAssociative(50);
+        case TOKEN_GTE: return LeftAssociative(50);
+        case TOKEN_LT: return LeftAssociative(50);
+        case TOKEN_LTE: return LeftAssociative(50);
+        case TOKEN_ASSIGN: return LeftAssociative(50);
+//        case TOKEN_NOT_EQUAL: return LeftAssociative(50);
 
             // --- Postfix --- (Always Right Associative)
-        case TOKEN_NOT: return( { RightAssociative(400) } );
+        case TOKEN_NOT: return RightAssociative(400);
             // Note: Postfix operators are always RightAssociative
 
         default: return no_binding_power;
     }
+}
+
+AstExpression* parser_postfix_expression(Parser* parser, AstBlock* block)
+{
+    Token* operator;
+    if (peekFor(parser, TOKEN_ADD) || peekFor(parser, TOKEN_SUB)) {
+        operator = (*parser->tokens);
+        advance(parser);
+    } else {
+        sds message = sdsnew("Unexpected token ");
+        message = sdscat(message, token_type_name((*parser->tokens)->type));
+        Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        array_push(parser->errors, error);
+
+        return NULL;
+    }
+
+    AstExpression* expr = malloc(sizeof(AstExpression));
+    expr->type = AST_EXPRESSION_POSTFIX;
+    expr->expr.postfix = malloc(sizeof(AstPostfixExpression));
+    expr->expr.postfix->operator = operator.type;
+    expr->expr.postfix->operand = parser_expression(parser, block, 0);
+
+    return expr;
 }
 
 AstExpression* parser_expression(Parser* parser, AstBlock* block, int binding_power_to_my_right)
@@ -411,7 +484,7 @@ AstExpression* parser_expression(Parser* parser, AstBlock* block, int binding_po
         (*parser->tokens)->type == TOKEN_NULL ||
         (*parser->tokens)->type == TOKEN_UNDEFINED) {
         result = parse_expression_literal(parser, block);
-    } else if ((*parser->tokens)->type === TOKEN_LPAREN) {
+    } else if ((*parser->tokens)->type == TOKEN_LPAREN) {
         result = parser_sub_expression(parser, block);
     } else if ((*parser->tokens)->type == TOKEN_ADD || (*parser->tokens)->type == TOKEN_SUB) {
         result = parser_prefix_expression(parser, block,
@@ -421,7 +494,7 @@ AstExpression* parser_expression(Parser* parser, AstBlock* block, int binding_po
         );
     } else {
         sds message = sdsnew("Unexpected token ");
-        message = sdscat(message, token_type_name(ft));
+        message = sdscat(message, token_type_name((*parser->tokens)->type));
         Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
         array_push(parser->errors, error);
 
