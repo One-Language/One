@@ -15,7 +15,7 @@ typedef struct {
 
 typedef enum {
     STATEMENT_EXPRESSION,
-    STATEMENT_RETURN,
+    STATEMENT_RET,
     STATEMENT_FUNCTION,
     STATEMENT_IF,
     STATEMENT_WHILE,
@@ -51,11 +51,17 @@ typedef struct {
 struct AstExpression;
 
 typedef struct {
+//    struct AstExpression* expr;
+    Array* expressions;
+} AstRet;
+
+typedef struct {
     char* name;
     AstStatementType type;
     union {
         AstFunction* function;
         struct AstExpression* expression;
+        AstRet* ret;
     } stmt;
 } AstStatement;
 
@@ -78,6 +84,7 @@ typedef enum {
     AST_EXPRESSION_POSTFIX,
     AST_EXPRESSION_TERNARY,
     AST_EXPRESSION_PREFIX,
+    AST_EXPRESSION_SUB_EXPRESSION,
 } AstExpressionType;
 
 typedef struct {
@@ -145,6 +152,10 @@ typedef struct {
 } AstExpressionStatement;
 
 typedef struct {
+    struct AstExpression* expression;
+} AstSubExpression;
+
+typedef struct {
     AstExpressionType type;
     union {
         AstBinaryExpression* binary;
@@ -158,6 +169,7 @@ typedef struct {
         AstExpressionStatement* expression;
         AstConditionalExpression* conditional;
         AstTernaryExpression* ternary;
+        AstSubExpression* sub_expression;
     } expr;
 } AstExpression;
 #endif //ONE_PARSER_AST_H

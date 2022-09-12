@@ -110,8 +110,8 @@ char* ast_statement_type_name(AstStatementType type)
     switch(type) {
         case STATEMENT_EXPRESSION:
             return "STATEMENT_EXPRESSION";
-        case STATEMENT_RETURN:
-            return "STATEMENT_RETURN";
+        case STATEMENT_RET:
+            return "STATEMENT_RET";
         case STATEMENT_FUNCTION:
             return "STATEMENT_FUNCTION";
         case STATEMENT_IF:
@@ -191,6 +191,20 @@ Array* parser_fn_arguments(Parser* parser)
     return arguments;
 }
 
+AstStatement* parser_ret(Parser* parser, AstBlock* block)
+{
+    expect(parser, TOKEN_RET);
+    Array* expressions = parser_expressions(parser, block);
+//    AstExpression* expression = parser_expression(parser, block, 0);
+
+    AstStatement* statement = malloc(sizeof(AstStatement));
+    statement->type = STATEMENT_RET;
+    statement->stmt.ret = malloc(sizeof(AstRet));
+    statement->stmt.ret->expressions = expressions;
+
+    return statement;
+}
+
 AstStatement* parser_fn(Parser* parser, AstBlock* block)
 {
     AstStatement* statement = malloc(sizeof(AstStatement));
@@ -237,6 +251,9 @@ AstStatement* parser_statement(Parser* parser, AstBlock* block)
 {
     switch ((*parser->tokens)->type)
     {
+        case TOKEN_RET: {
+            return parser_ret(parser, block);
+        } break;
         case TOKEN_FN: {
             return parser_fn(parser, block);
         } break;
@@ -273,14 +290,19 @@ AstExpression* parse_expression_literal(Parser* parser, AstBlock* block)
 AstExpression* parser_sub_expression(Parser* parser, AstBlock* block)
 {
     expect(parser, TOKEN_LPAREN);
-
-    AstExpression* expr = parser_expression(parser, block, 0);
-
+    AstExpression* expression = parser_expression(parser, block, 0);
     expect(parser, TOKEN_RPAREN);
+
+    AstExpression* expr = malloc(sizeof(AstExpression));
+    expr->type = AST_EXPRESSION_SUB_EXPRESSION;
+    expr->expr.sub_expression = expression;
+
+    return expr;
 }
 
 AstExpression* parser_binary_expression(Parser* parser, AstBlock* block, AstExpression* lhs, int min_bp)
 {
+    Token* operator = NULL;
     if (!peekFor(parser, TOKEN_ADD) &&
         !peekFor(parser, TOKEN_SUB) &&
             !peekFor(parser, TOKEN_MUL) &&
@@ -304,6 +326,9 @@ AstExpression* parser_binary_expression(Parser* parser, AstBlock* block, AstExpr
         Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
         array_push(parser->errors, error);
         return NULL;
+    } else {
+        operator = (*parser->tokens);
+        advance(parser);
     }
 
     AstExpression* rhs = parser_expression(parser, block, min_bp);
@@ -321,7 +346,7 @@ AstExpression* parser_binary_expression(Parser* parser, AstBlock* block, AstExpr
 AstExpression* parser_prefix_expression(Parser* parser, AstBlock* block, int min_bp)
 {
     Token* operator;
-    if (!peekFor(TOKEN_ADD) && !peekFor(TOKEN_SUB)) {
+    if (!peekFor(parser, TOKEN_ADD) && !peekFor(parser, TOKEN_SUB)) {
         sds message = sdsnew("Unexpected token ");
         message = sdscat(message, token_type_name((*parser->tokens)->type));
 
@@ -335,7 +360,7 @@ AstExpression* parser_prefix_expression(Parser* parser, AstBlock* block, int min
     AstExpression* expr = malloc(sizeof(AstExpression));
     expr->type = AST_EXPRESSION_PREFIX;
     expr->expr.prefix = malloc(sizeof(AstPrefixExpression));
-    expr->expr.prefix->operator = operator->value;
+    expr->expr.prefix->operator = operator->type;
     expr->expr.prefix->right = expression;
 
     return expr;
@@ -355,17 +380,20 @@ Array* parser_expressions(Parser* parser, AstBlock* block)
     Array* expressions = malloc(sizeof(Array));
     array_init(expressions);
 
-    while ((*parser->tokens)->type != TOKEN_EOF) {
-        AstExpression* expr = parser_expression(parser, block, 0);
-        if (expr == NULL) return NULL;
-        array_push(expressions, expr);
+    AstExpression* lhs = parser_expression(parser, block, 0);
+    array_push(expressions, lhs);
 
-        if (peekFor(parser, TOKEN_COMMA)) {
-            advance(parser);
-        } else {
-            break;
-        }
-    }
+//    while ((*parser->tokens)->type != TOKEN_EOF) {
+//        AstExpression* expr = parser_expression(parser, block, 0);
+//        if (expr == NULL) return NULL;
+//        array_push(expressions, expr);
+//
+//        if (peekFor(parser, TOKEN_COMMA)) {
+//            advance(parser);
+//        } else {
+//            break;
+//        }
+//    }
 
     return expressions;
 }
@@ -446,7 +474,7 @@ struct binding_power parser_bp_lookup(TokenType whichOperator)
     }
 }
 
-AstExpression* parser_postfix_expression(Parser* parser, AstBlock* block)
+AstExpression* parser_postfix_expression(Parser* parser, AstBlock* block, AstExpression* lhs)
 {
     Token* operator;
     if (peekFor(parser, TOKEN_ADD) || peekFor(parser, TOKEN_SUB)) {
@@ -464,8 +492,8 @@ AstExpression* parser_postfix_expression(Parser* parser, AstBlock* block)
     AstExpression* expr = malloc(sizeof(AstExpression));
     expr->type = AST_EXPRESSION_POSTFIX;
     expr->expr.postfix = malloc(sizeof(AstPostfixExpression));
-    expr->expr.postfix->operator = operator.type;
-    expr->expr.postfix->operand = parser_expression(parser, block, 0);
+    expr->expr.postfix->operator = operator->type;
+    expr->expr.postfix->operand = lhs;
 
     return expr;
 }
@@ -524,7 +552,7 @@ AstExpression* parser_expression(Parser* parser, AstBlock* block, int binding_po
 //            result = AstCallExpression(result, args);
         } else {
             // It must be a binary expression
-            result = parser_binary_expression(result, parser_bp_lookup((*parser->tokens)->type).right_power);
+            result = parser_binary_expression(parser, block, result, parser_bp_lookup((*parser->tokens)->type).right_power);
         }
     }
 
@@ -596,6 +624,64 @@ char* parser_trace_type(Parser* parser, AstBlock* block, AstType* type, int iden
     return code;
 }
 
+char* expr_type_name(AstExpressionType type)
+{
+    switch(type) {
+        case AST_EXPRESSION_LITERAL:
+            return "EXPRESSION_LITERAL";
+        case AST_EXPRESSION_BINARY:
+            return "EXPRESSION_BINARY";
+        case AST_EXPRESSION_PREFIX:
+            return "EXPRESSION_PREFIX";
+        case AST_EXPRESSION_POSTFIX:
+            return "EXPRESSION_POSTFIX";
+        case AST_EXPRESSION_TERNARY:
+            return "EXPRESSION_TERNARY";
+        case AST_EXPRESSION_CALL:
+            return "EXPRESSION_CALL";
+        case AST_EXPRESSION_SUB_EXPRESSION:
+            return "EXPRESSION_SUB_EXPRESSION";
+        default:
+            return "UNKNOWN";
+    }
+}
+
+char* parser_trace_expression(Parser* parser, AstBlock* block, AstExpression* expr, int ident)
+{
+    sds code = sdsnew("");
+
+    char* tab = string_repeat("\t", ident);
+    char* tab2 = string_repeat("\t", ident + 1);
+
+    code = sdscatprintf(code, "%s<Expression type=\"%s\">\n", tab, expr_type_name(expr->type));
+
+    if (expr->type == AST_EXPRESSION_LITERAL) {
+    }
+
+    code = sdscatprintf(code, "%s</Expression>\n", tab);
+
+    return code;
+}
+
+char* parser_trace_expressions(Parser* parser, AstBlock* block, Array* expressions, int ident)
+{
+    sds code = sdsnew("");
+
+    char* tab = string_repeat("\t", ident);
+    char* tab2 = string_repeat("\t", ident + 1);
+
+    code = sdscatprintf(code, "%s<Expressions count=\"%d\">\n", tab, expressions->count);
+
+    for (int i = 0; i < expressions->count; i++) {
+        AstExpression* expr = (AstExpression*) expressions->data[i];
+        code = sdscat(code, parser_trace_expression(parser, block, expr, ident));
+    }
+
+    code = sdscatprintf(code, "%s</Expressions>\n", tab);
+
+    return code;
+}
+
 char* parser_trace_statement(Parser* parser, AstBlock* block, AstStatement* stmt, int ident)
 {
     sds temp = sdsnew("");
@@ -605,6 +691,11 @@ char* parser_trace_statement(Parser* parser, AstBlock* block, AstStatement* stmt
     char* tab3 = string_repeat("\t", ident + 2);
 
     switch (stmt->type) {
+        case STATEMENT_RET: {
+            temp = sdscatprintf(temp, "%s<StatementRet>\n", tab);
+            temp = sdscatprintf(temp, parser_trace_expressions(parser, block, stmt->stmt.ret->expressions, ident + 1));
+            temp = sdscatprintf(temp, "%s</StatementRet>\n", tab);
+        } break;
         case STATEMENT_FUNCTION: {
             temp = sdscatprintf(temp, "%s<StatementFunction name=\"%s\">\n", tab, stmt->stmt.function->name);
             if (stmt->stmt.function->arguments->count == 0) {

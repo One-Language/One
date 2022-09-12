@@ -58,6 +58,8 @@ void parser_parse(Parser* parser);
 
 char* ast_statement_type_name(AstStatementType type);
 
+Array* parser_expressions(Parser* parser, AstBlock* block);
+
 AstExpression* parser_expression(Parser* parser, AstBlock* block, int binding_power_to_my_right);
 
 void parser_free(Parser* parser);
