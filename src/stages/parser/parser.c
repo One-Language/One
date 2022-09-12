@@ -301,6 +301,15 @@ AstExpression* parser_sub_expression(Parser* parser, AstBlock* block)
 {
     expect(parser, TOKEN_LPAREN);
     AstExpression* expression = parser_expression(parser, block, 0);
+
+    if (expression == NULL) {
+        sds message = sdsnew("Expected expression");
+        Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        array_push(parser->errors, error);
+
+        return NULL;
+    }
+
     expect(parser, TOKEN_RPAREN);
 
     AstExpression* expr = malloc(sizeof(AstExpression));
