@@ -68,9 +68,33 @@ char* generator_function(Generator* generator, AstBlock* block, AstFunction* fun
     return code;
 }
 
+char* generator_expression(Generator* generator, AstBlock* block, AstExpression* expression, int ident)
+{
+    return "( soon )";
+}
+
+char* generator_expressions(Generator* generator, AstBlock* block, Array* expressions, int ident)
+{
+    return "( ...soon... )";
+}
+
+char* generator_ret(Generator* generator, AstBlock* block, AstStatement* stmt, int ident)
+{
+    sds code = sdsnew("");
+
+    char* tab = string_repeat("\t", ident);
+
+    code = sdscatprintf(code, "%sreturn ", tab);
+    code = sdscatprintf(code, "%s;\n", generator_expression(generator, block, stmt->stmt.ret->expressions, ident));
+
+    return code;
+}
+
 char* generator_statement(Generator* generator, AstBlock* block, AstStatement* stmt, int ident)
 {
     switch (stmt->type) {
+        case STATEMENT_RET:
+            return generator_ret(generator, block, stmt, ident);
         case STATEMENT_FUNCTION:
             return generator_function(generator, block, stmt->stmt.function, ident);
         default:
