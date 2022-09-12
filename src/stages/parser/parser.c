@@ -249,7 +249,7 @@ AstStatement* parser_statement(Parser* parser, AstBlock* block)
 //            return stmt;
 //        } break;
         default: {
-            AstExpression *expression = parser_expression(parser, block);
+            AstExpression *expression = parser_expression(parser, block, 0);
             if (expression == NULL) {
                 sds message = sdsnew("Expected expression");
                 Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
@@ -265,34 +265,205 @@ AstStatement* parser_statement(Parser* parser, AstBlock* block)
     }
 }
 
-AstExpression* parser_expression(Parser* parser, AstBlock* block)
+AstExpression* parse_expression_literal(Parser* parser, AstBlock* block)
+{
+
+}
+
+AstExpression* parser_sub_expression(Parser* parser, AstBlock* block)
+{
+    expect(parser, TOKEN_LPAREN);
+
+    AstExpression* expr = parser_expression(parser, block, 0);
+
+    expect(parser, TOKEN_RPAREN);
+}
+
+AstExpression* parser_binary_expression(Parser* parser, AstBlock* block)
+{
+
+}
+
+AstExpression* parser_prefix_expression(Parser* parser, AstBlock* block, AstExpression* expr)
+{
+
+}
+
+int parser_prefix_bp_lookup(TokenType whichOperator)
+{
+    switch (whichOperator) {
+        case TOKEN_ADD: return 300;
+        case TOKEN_SUB: return 300;
+        default: return 0;
+    }
+}
+
+Array* parser_expressions(Parser* parser, AstBlock* block)
+{
+    Array* expressions = malloc(sizeof(Array));
+    array_init(expressions);
+
+    while ((*parser->tokens)->type != TOKEN_EOF) {
+        AstExpression* expr = parser_expression(parser, block, 0);
+        if (expr == NULL) return NULL;
+        array_push(expressions, expr);
+
+        if (peekFor(parser, TOKEN_COMMA)) {
+            advance(parser);
+        } else {
+            break;
+        }
+    }
+
+    return expressions;
+}
+
+AstExpression* parser_ternary_expression(Parser* parser, AstBlock* block, AstExpression* clause)
+{
+    expect(parser, TOKEN_QUESTION);
+
+    AstExpression* consequent = parser_expression(parser, block, 0);
+
+    expect(parser, TOKEN_COLON);
+
+    AstExpression* alternate = parser_expression(parser, block, 0);
+
+    AstExpression* expr = malloc(sizeof(AstExpression));
+    expr->type = AST_EXPRESSION_TERNARY;
+    expr->expr.ternary = malloc(sizeof(AstTernaryExpression));
+    expr->expr.ternary->condition = clause;
+    expr->expr.ternary->true_value = consequent;
+    expr->expr.ternary->false_value = alternate;
+
+    return expr;
+}
+
+struct binding_power {
+    int left_power;
+    int right_power;
+};
+
+struct binding_power RightAssociative(int priority) {
+    struct binding_power bp;
+    bp.left_power = priority + 1;
+    bp.right_power = priority;
+    return bp;
+}
+
+struct binding_power LeftAssociative(int priority) {
+    struct binding_power bp;
+    bp.left_power = priority - 1;
+    bp.right_power = priority;
+    return bp;
+}
+
+struct binding_power parser_bp_lookup(TokenType whichOperator)
+{
+    struct binding_power no_binding_power = {0, 0};
+
+#define RightAssociative(priority) priority+1, priority
+#define LeftAssociative(priority) priority-1, priority
+
+    switch (whichOperator) {
+        case TOKEN_LPAREN: return( { RightAssociative(997) } );
+        case TOKEN_DOT: return( { RightAssociative(999) } );
+
+        case TOKEN_AND: return( { LeftAssociative(300) } );
+        case TOKEN_OR: return( { LeftAssociative(400) } );
+
+        case TOKEN_ANDAND: return( { LeftAssociative(500) } );
+        case TOKEN_OROR: return( { LeftAssociative(600) } );
+
+        case TOKEN_ADD: return( { LeftAssociative(100) } );
+        case TOKEN_SUB: return( { LeftAssociative(100) } );
+        case TOKEN_MUL: return( { LeftAssociative(200) } );
+        case TOKEN_DIV: return( { LeftAssociative(200) } );
+//        case TOKEN_DIV_INT: return( { LeftAssociative(200) } );
+        case TOKEN_POW: return( { RightAssociative(99) } );
+        case TOKEN_QUESTION: return( { RightAssociative(1000) } );
+
+        case TOKEN_GT: return( { LeftAssociative(50) } );
+        case TOKEN_GTE: return( { LeftAssociative(50) } );
+        case TOKEN_LT: return( { LeftAssociative(50) } );
+        case TOKEN_LTE: return( { LeftAssociative(50) } );
+        case TOKEN_ASSIGN: return( { LeftAssociative(50) } );
+//        case TOKEN_NOT_EQUAL: return( { LeftAssociative(50) } );
+
+            // --- Postfix --- (Always Right Associative)
+        case TOKEN_NOT: return( { RightAssociative(400) } );
+            // Note: Postfix operators are always RightAssociative
+
+        default: return no_binding_power;
+    }
+}
+
+AstExpression* parser_expression(Parser* parser, AstBlock* block, int binding_power_to_my_right)
 {
     AstExpression* result = malloc(sizeof(AstExpression));
 
     if ((*parser->tokens)->type == TOKEN_IDENTIFIER ||
-            (*parser->tokens)->type == TOKEN_NUMBER_INT ||
-            (*parser->tokens)->type == TOKEN_NUMBER_FLOAT ||
-            (*parser->tokens)->type == TOKEN_STRING_DOUBLE_QUOTE ||
-            (*parser->tokens)->type == TOKEN_STRING_SINGLE_QUOTE ||
-            (*parser->tokens)->type == TOKEN_BOOL_TRUE ||
-            (*parser->tokens)->type == TOKEN_BOOL_FALSE ||
-            (*parser->tokens)->type == TOKEN_NULL ||
-            (*parser->tokens)->type == TOKEN_UNDEFINED) {
-        result = parse_expression_literal();
-    } else if ((*parser->tokens)->type === TokenType.T_PARENTHESIS_OPEN) {
-        result = this.parseSubExpression();
-    } else if (this.has(TokenType.T_OPERATOR_ADD) || this.has(TokenType.T_OPERATOR_SUBTRACT)) {
-        result = parsePrefixExpression(this.prefix_bp_lookup(ft));
+        (*parser->tokens)->type == TOKEN_NUMBER_INT ||
+        (*parser->tokens)->type == TOKEN_NUMBER_FLOAT ||
+        (*parser->tokens)->type == TOKEN_STRING_DOUBLE_QUOTE ||
+        (*parser->tokens)->type == TOKEN_STRING_SINGLE_QUOTE ||
+        (*parser->tokens)->type == TOKEN_BOOL_TRUE ||
+        (*parser->tokens)->type == TOKEN_BOOL_FALSE ||
+        (*parser->tokens)->type == TOKEN_NULL ||
+        (*parser->tokens)->type == TOKEN_UNDEFINED) {
+        result = parse_expression_literal(parser, block);
+    } else if ((*parser->tokens)->type === TOKEN_LPAREN) {
+        result = parser_sub_expression(parser, block);
+    } else if ((*parser->tokens)->type == TOKEN_ADD || (*parser->tokens)->type == TOKEN_SUB) {
+        result = parser_prefix_expression(parser, block,
+                                          parser_prefix_bp_lookup(
+                                                  (*parser->tokens)->type
+                                          )
+        );
     } else {
         sds message = sdsnew("Unexpected token ");
         message = sdscat(message, token_type_name(ft));
         Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
         array_push(parser->errors, error);
+
+        return NULL;
     }
 
-    advance(parser);
-    return NULL;
-//    return parser_addition(parser, block);
+    if (result == NULL) {
+        sds message = sdsnew("We should always have either a LHS or Prefix Operator at this point.");
+        Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        array_push(parser->errors, error);
+
+        return NULL;
+    }
+
+    while (binding_power_to_my_right < parser_bp_lookup((*parser->tokens)->type).left_power) {
+        // Is it a postfix expression?
+        if ((*parser->tokens)->type == TOKEN_NOT) {
+            result = parser_postfix_expression(parser, block, result);
+        } else if ((*parser->tokens)->type == TOKEN_QUESTION) {
+            result = parser_ternary_expression(parser, block, result);
+        } else if ((*parser->tokens)->type == TOKEN_LPAREN) {
+            advance(parser);
+            Array* args = parser_expressions(parser, block);
+
+            expect(parser, TOKEN_RPAREN);
+
+//            result = AstCallExpression(result, args);
+        } else {
+            // It must be a binary expression
+            result = parser_binary_expression(result, parser_bp_lookup((*parser->tokens)->type).right_power);
+        }
+    }
+
+    if (result == NULL) {
+        sds message = sdsnew("We should always have either a LHS or Prefix Operator at this point.");
+        Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        array_push(parser->errors, error);
+
+        return NULL;
+    }
+
+    return result;
 }
 
 Array* parser_statements(Parser* parser, AstBlock* block)

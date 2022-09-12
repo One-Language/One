@@ -229,6 +229,13 @@ Token* lexer_lex(Lexer* lexer)
 
             return token_init(TOKEN_NOT, "!", start, lexer->position);
         } break;
+        case '?': {
+            lexer->source++;
+            lexer->position.offset++;
+            lexer->position.column++;
+
+            return token_init(TOKEN_QUESTION, "?", start, lexer->position);
+        } break;
         case '+': {
             lexer->source++;
             lexer->position.offset++;

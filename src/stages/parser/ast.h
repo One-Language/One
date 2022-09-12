@@ -147,7 +147,17 @@ typedef struct {
 typedef struct {
     AstExpressionType type;
     union {
-
+        AstBinaryExpression* binary;
+        AstUnaryExpression* unary;
+        AstCallExpression* call;
+        AstLogicalExpression* logical;
+        AstLiteralExpression* literal;
+        AstAssignmentExpression* assignment;
+        AstPrefixExpression* prefix;
+        AstPostfixExpression* postfix;
+        AstExpressionStatement* expression;
+        AstConditionalExpression* conditional;
+        AstTernaryExpression* ternary;
     } expr;
 } AstExpression;
 #endif //ONE_PARSER_AST_H
