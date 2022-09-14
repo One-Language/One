@@ -25,27 +25,27 @@
 [![Twitter][twitterurl]][twitterbadge]
 [![License][licensebadge]][licenseurl]
 
-[English](README.md)
+[English](../README.md)
 &nbsp;
-[عربي](langs/README_AR.md)
+[عربي](README_AR.md)
 &nbsp;
-[Español](langs/README_ES.md)
+[Español](README_ES.md)
 &nbsp;
-[فارسی](langs/README_FA.md)
+[فارسی](README_FA.md)
 &nbsp;
-[Filipino](langs/README_FIL.md)
+[Filipino](README_FIL.md)
 &nbsp;
-[Français](langs/README_FR.md)
+[Français](README_FR.md)
 &nbsp;
-[Italiano](langs/README_IT.md)
+[Italiano](README_IT.md)
 &nbsp;
-[日本語](langs/README_JA.md)
+[日本語](README_JA.md)
 &nbsp;
-[русский](langs/README_RU.md)
+[русский](README_RU.md)
 &nbsp;
-[Türkçe](langs/README_TR.md)
+[Türkçe](README_TR.md)
 &nbsp;
-[Українська](langs/README_UK.md)
+[Українська](README_UK.md)
 
 </div>
 
@@ -99,7 +99,7 @@
 
 <h2 id="roadmap">➤ 로드맵</h2>
 
-'One' 언어의 문법은 [여기](grammar.BNF)에서 볼 수 있습니다.
+'One' 언어의 문법은 [여기](../grammar.BNF)에서 볼 수 있습니다.
 
 - [x] 렉서/파서(대부분)
 - [x] AST 트리
@@ -386,9 +386,9 @@ header {
 버그 보고서, 기능 요청, 문서 개선 등을 포함한 모든 종류의 기여를 환영합니다.
 질문을 하거나 토론을 열려면 문제를 만들거나 <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>에 가입하세요.
 
-GitHub에서 pull 요청하는 방법에 익숙하지 않다면 이 [가이드](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to- pull-requests/about-pull-requests).
+GitHub에서 pull 요청하는 방법에 익숙하지 않다면 이 [가이드](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-기여하기로 결정하셨다면 먼저 [여기](CONTRIBUTING.md) 가이드라인을 읽어주세요.
+기여하기로 결정하셨다면 먼저 [여기](../CONTRIBUTING.md) 가이드라인을 읽어주세요.
 <br>[:heart: Patreon](https://www.patreon.com/onelanguage)에서 기부를 통해 'One' 개발에 도움을 줄 수도 있습니다.
 
 모든 <a href ="https://github.com/One-Language/One/graphs/contributors">기고자</a>에게 감사드립니다!!
