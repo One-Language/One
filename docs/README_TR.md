@@ -98,7 +98,7 @@ One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri say
 
 <h2 id="roadmap">➤ Yol Haritası</h2>
 
-`One` dilinin kurallarını [burada](https://github.com/One-Language/One/blob/main/grammar.BNF) bulabilirsiniz.
+`One` dilinin kurallarını [burada](../grammar.BNF) bulabilirsiniz.
 
 - [x] Lexer/Parser (Mostly)
 - [x] AST Tree
@@ -387,7 +387,7 @@ Soru sormak ya da bir tartışma başlatmak için bir issue oluşturun ya da <a 
 
 Eğer GitHub'da nasıl pull request oluşturacağınızı bilmiyorsanız şu [rehberi](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) inceleyebilirsiniz.
 
-Eğer katkıda bulunmak istiyorsanız, lütfen ilk olarak [burada](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md) yer alan esasları okuyunuz.
+Eğer katkıda bulunmak istiyorsanız, lütfen ilk olarak [burada](../CONTRIBUTING.md) yer alan esasları okuyunuz.
 <br>Ayrıca [:heart: Patreon](https://www.patreon.com/onelanguage) üzerinden bize maddi destek sağlayarak da bu projeye katkıda bulunabilirsiniz..
 
 <a href ="https://github.com/One-Language/One/graphs/contributors">Katkı sağlayan</a> herkese teşekkürler!
@@ -406,7 +406,6 @@ Eğer projenin geliştirilmesinde katkıda bulunmak isterseniz, bize mail atabil
 
 [discordbadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
 [patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
-[sponsorbadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
 [twitterbadge]: https://twitter.com/onelangteam
 [instagrambadge]: https://img.shields.io/badge/Instagram-Up-brightgreen
 [licensebadge]: https://img.shields.io/github/license/One-Language/One

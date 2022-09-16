@@ -2,14 +2,14 @@
 
 <p>
     <a href="https://onelang.org/">
-        <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="Langage de Programmation One">
+        <img width="150" src="https://avatars.githubusercontent.com/u/40718659?s=200&v=4" alt="The One Programming Language">
     </a>
 </p>
 
-# Langage de Programmation One 💚 💙 🧡 🤍 💖 🖤
+# El lenguaje de programacion ONE 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Demande d'aide](https://github.com/One-Language/One/issues/new)
+[Colaboraciones](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
@@ -49,10 +49,11 @@
 
 </div>
 
-Bienvenue à <a href="https://onelang.org">One</a>!</br>
-Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source libre, et auto-hébergé, qui facilite la création de logiciels fiables et efficaces. Il est développé par <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a>, et d'autres contributeurs en open-source.
+Bienvenidos a <a href="https://onelang.org">One</a>!</br>
+Es un <b>lenguaje de programación</b> de código abierto, autohospedado y de arranque que facilita construir software confiable y eficiente.
+Está siendo desarrollado por <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> Y otros contribuyentes de código abierto.
 
-### Le compilateur pour le langage One sera publié dans quelques mois
+### El compilador para el lenguaje One estará disponible en los próximos meses
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -60,58 +61,58 @@ Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<!-- TABLE OF CONTENTS -->
-<h2 id="table-of-contents">Table des matières</h2>
+<!-- TABLA DE CONTENIDOS -->
+<h2 id="table-of-contents">Tabla de Contenidos</h2>
 <details open="open">
   <ol>
-    <li><a href="#fonctionnalités-de-one">Fonctionnalités de <b>One</b></a></li>
-    <li><a href="#carte">Carte</a></li>
-    <li><a href="#exemples-de-code">Exemples de code</a></li>
-    <li><a href="#pour-commencer">Pour commencer</a></li>
-    <li><a href="#pour-s-impliquer">Pour s'impliquer</a></li>
-    <li><a href="#licence">Licence</a></li>
+    <li><a href="#features-of-one">Características de <b>One</b></a></li>
+    <li><a href="#roadmap">Hoja de Ruta</a></li>
+    <li><a href="#code-examples">Ejemplos del código</a></li>
+    <li><a href="#getting-started">Primeros Pasos</a></li>
+    <li><a href="#get-involved">Involucrarse</a></li>
+    <li><a href="#license">Licencia</a></li>
   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="fonctionnalités-de-one">➤ Fonctionnalités de One</h2>
+<h2 id="features-of-one">➤ Características de One</h2>
 
-- Simplicité
-- Compilé
-- Possibilité de créer un fichier de sortie (x86_64, i386)
-- Langage de programmation système
-- Niveau intermédiaire
-- Programmation réseau et API
-- Prise en charge de la programmation Web (prochainement)
-  - Génération automatique du code correspondant pour CSS et HTML. Vous n'aurez donc pas besoin d'apprendre plus que le langage `One` pour développer un site web
-  - Variables CSS pour l'utilisatino de couleurs ou de tailles prédéfinies
-  - Minification automatique des résultats de la page
-- Performances et vitesse élevée
-- Prise en charge des fragments de code assembleur (prochainement)
-- Ne nécessite pas de bibliothèques et d'outils spécifiques sur le système utilisateur en mode normal (prochainement)
-- Ne nécessite pas de bibliothèques d'exécution externes en mode normal (prochainement)
-- Ne nécessite pas de compilateurs externes pour effectuer la compilation (prochainement)
+- Simplicidad
+- Compilador
+- Capacidad de crear archivo de salida (x86_64, i386)
+- Lenguaje de programación de sistema
+- Nivel intermedio
+- Programacion Network y API
+- Soporta programación Web (próximamente)
+  - Generación automática del código correspondiente para CSS y HTML. Así que no tendrás que aprender sino el lenguaje `One` para desarrollar un sitio web
+  - Emplea variables en CSS, de manera que podemos obtener los colores o tamaños de la base de datos
+  - Auto minifica los resultados de la página
+- Desempeño y alta velocidad
+- Soporta inline Assembly code (próximamente)
+- No requiere librerías y herramientas específicas en el sistema del usuario en modo normal (próximamente)
+- No requiere bibliotecas de ejecución externas en modo normal (próximamente)
+- No requiere compiladores externos para llevar a cabo la compilación (próximamente)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="carte">➤ Feuille de route</h2>
+<h2 id="roadmap">➤ RoadMap</h2>
 
-La grammaire du langage `One` est disponible [ici](https://github.com/One-Language/One/blob/main/grammar.BNF).
+La gramática del lenguaje `One` está disponible [aquí](../grammar.BNF).
 
-- [x] Lexer/Parser (principalement)
-- [x] Arbre AST
-- [x] MV
-- [ ] Générateur de code (inspirez-vous de LLVM-C)
-- [ ] Développer une bibliothèque d'exécution et ajouter des fonctionnalités
-- [ ] Concevoir un framework web pour le langage
-- [ ] Réécrire le compilateur par le langage `One`
+- [x] Lexer/Parser (Mayormente)
+- [x] Arbol AST
+- [x] VM
+- [ ] Generador de código (inspirado en LLVM-C)
+- [ ] Desarrollar una biblioteca en tiempo de ejecución y agregar funciones
+- [ ] Diseñar arquitectura (framework) web para el lenguaje
+- [ ] Reescribir el compilador en el lenguaje `One`
 
 <!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="exemples-de-code">➤ Exemples de code</h2>
+<h2 id="code-examples">➤ Ejemplos del código</h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -120,7 +121,7 @@ main {
 }
 ```
 
-### Équivalant en C :
+**Convertir a C:**
 
 ```c
 #include <stdio.h>
@@ -140,7 +141,7 @@ i32 main {
 }
 ```
 
-### Équivalent en C :
+**Convertir a C:**
 
 ```c
 #include <stdio.h>
@@ -162,7 +163,7 @@ main {
 }
 ```
 
-### Équivalent en C :
+**Convertir a C:**
 
 ```c
 #include <stdio.h>
@@ -179,7 +180,7 @@ int main(int argc, char *argv[]) {
 
 <hr>
 
-### Brouillon
+**Otro ejemplo:**
 
 ```c
 import web
@@ -206,7 +207,7 @@ main {
 
 ---
 
-### Brouillon
+**Otro ejemplo:**
 
 ```c
 error {
@@ -232,7 +233,7 @@ error {
 
 ---
 
-### Développement de l'ancienne CLI
+### Desarrollo anterior de la CLI
 
 ```
 main:
@@ -268,16 +269,16 @@ end
 
 <hr>
 
-### Développement de l'ancienne interface graphique : (Web, logiciel)
+### Desarrollo anterior de la GUI: (Web, Software)
 
-Cette architecture est conçue uniquement pour les sites Web et les logiciels natifs. Prochainement, il sera également disponible pour les applications mobiles (natives).<br>
-Les structures mobiles ne sont pas encore terminées et nécessitent plus d'attention et de réflexion.<br><br>Exemple pour démontrer le fonctionnement de la langue :
+Esta arquitectura está diseñada solo para sitios web y software nativo. En el futuro, también estará disponible para aplicaciones móviles. (native).<br>
+Las estructuras móviles aún no están completas y aún requieren de atención y dedicación.<br><br>El siguiente es un ejemplo de como funciona el lenguaje:
 
 ```css
 title "Name - Main"
 description "Descriptions"
 /*
-Balise de mot-clé non utilisée dans le logiciel, uniquement sur le web.
+Keyword tag not used in the software, only on the web.
 */
 keyword "keywords"
 style {
@@ -313,7 +314,7 @@ header {
 }
 ```
 
-### Équivalant en CSS/HTML/JS :
+**Convertir a base CSS/HTML/JS:**
 
 ```html
 <html>
@@ -354,57 +355,57 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="pour-commencer">➤ Pour commencer</h2>
+<h2 id="getting-started">➤ Primeros Pasos</h2>
 
-Référez-vous à [ce lien](https://github.com/ET-Lang/ET/wiki) pour commencer à apprendre la langue.
+Puedes revisar [este link](https://github.com/ET-Lang/ET/wiki) para comenzar a aprender el lenguaje.
 
-<!--Installation Steps-->
+<!--Pasos para la instalación-->
 
-<!--Prerequisites-->
+<!--Prerequisitos-->
 
-#### Environnements pris en charge
+#### Ambientes soportados
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
-- [ ] macOS (Not complete)
+- [ ] macOS (Incompleto)
 - [ ] BSD
 
-<!--Write more about the compiler-->
-<!--Steps-->
+<!--Escribir más sobre el compilador-->
+<!--Pasos-->
 <!--Building One from Source-->
-<!--Hello World in One-->
-<!--Tips to understand the language better-->
-<!--Filename extensions: `.one`-->
+<!--Hello World en One-->
+<!--Tips para entender mejor el lenguaje-->
+<!--Nombre de las extensiones: `.one`-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="pour-s-impliquer">➤ Pour s'impliquer</h2>
+<h2 id="get-involved">➤ Involucrarse</h2>
 
-Nous accueillons toutes sortes de contributions, y compris les rapports de bogues, les demandes de fonctionnalités, les améliorations de la documentation, etc. Pour poser une question ou ouvrir une discussion, créer un problème ou rejoindre le <a href ="https://discord.gg/sFCE2HcMCa">Serveur Discord<b>One</b></a>.
+Aceptamos cualquier tipo de contribuciones, incluyendo reportes de bugs, solicitud de funciones, mejoras en la documentación, etc.
+Para hacer una pregunta o iniciar una conversación, create an issue o únete al <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Servidor de Discord</a>.
 
-Si vous ne savez pas comment faire une pull request sur GitHub, veuillez lire ce [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+Si no estás familiarizado con el procedimiento para hacer un pull request en GitHub puedes revisar esta [guía](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Si vous avez décidé de contribuer, veuillez d'abord lire les directives[here](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md).
-<br>Vous pouvez également aider au développement de `One` en faisant des dons sur [:heart: Patreon](https://www.patreon.com/onelanguage).
+Si has decidido contribuir, por favor revisa los lineamientos [aquí](../CONTRIBUTING.md).
+<br>También puedes ayudar al desarrollo de `One` a través de donaciones en [:heart: Patreon](https://www.patreon.com/onelanguage).
 
-Merci à tous les <a href ="https://github.com/One-Language/One/graphs/contributors">contributeurs</a>!!
+Gracias a todos los <a href ="https://github.com/One-Language/One/graphs/contributors">colaboradores</a>!!
 
-Si vous souhaitez contribuer au développement de ce projet, vous pouvez nous envoyer un mail à : <maxbasecode@gmail.com>
+Si te gustaría contribuir al desarrollo de este proyecto, puedes esctibirnos a: <maxbasecode@gmail.com>
 
-<br>Créé par Max Base @ 2019
+<br>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="licence">➤ Licence</h2>
+<h2 id="license">➤ Licencia</h2>
 
-`One` est publié sous la licence publique générale GNU v3.0. Veuillez vous référer aux termes du fichier <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENCE</a> inclus dans le repository.
+`One` está publicado bajo la Licencia Pública General GNU v3.0. Por favor revisa los términos en el archivo <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENCIA</a> incluido en el repositorio.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
 
 [discordbadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
 [patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
-[sponsorbadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
 [twitterbadge]: https://twitter.com/onelangteam
 [instagrambadge]: https://img.shields.io/badge/Instagram-Up-brightgreen
 [licensebadge]: https://img.shields.io/github/license/One-Language/One

@@ -98,7 +98,7 @@ Ito ay dinebelop ng <a href="https://github.com/BaseMax">Max</a>, <a href="https
 
 <h2 id="roadmap">➤ RoadMap</h2>
 
-Magagamit ang `One` grammar [dito](https://github.com/One-Language/One/blob/main/grammar.BNF).
+Magagamit ang `One` grammar [dito](../grammar.BNF).
 
 - [x] Lexer/Parser (Karamihan)
 - [x] Arbol AST
@@ -387,7 +387,7 @@ Upang magtanong o magsimula ng isang Pag-uusap, gumawa ng isang isyu o sumali sa
 
 Kung hindi ka pamilyar sa proseduring upang gumawa ng isang kahilingan sa paghila sa GitHub maaari mong suriin ang na ito [gabay](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Kung nagpasya kang mag-ambag, mangyaring suriin ang mga alituntunin [dito](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md).
+Kung nagpasya kang mag-ambag, mangyaring suriin ang mga alituntunin [dito](../CONTRIBUTING.md).
 <br>Maaari mo ring tulungan ang pagbuo ng `One` sa pamamagitan ng mga donasyon sa [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Salamat sa lahat ng <a href ="https://github.com/One-Language/One/graphs/contributors">mga nag-ambag</a>!!
@@ -406,7 +406,6 @@ Ang `One` ay inilabas sa ilalim ng GNU General Public License v3.0. Para sa pabo
 
 [discordbadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
 [patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
-[sponsorbadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
 [twitterbadge]: https://twitter.com/onelangteam
 [instagrambadge]: https://img.shields.io/badge/Instagram-Up-brightgreen
 [licensebadge]: https://img.shields.io/github/license/One-Language/One

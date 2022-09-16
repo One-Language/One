@@ -98,7 +98,7 @@
 
 <h2 id="roadmap">➤ RoadMap</h2>
 
-Граматика мови `One` доступна [тут](https://github.com/One-Language/One/blob/main/grammar.BNF).
+Граматика мови `One` доступна [тут](../grammar.BNF).
 
 - [x] Lexer/Parser (здебільшого)
 - [x] Дерево AST
@@ -387,7 +387,7 @@ header {
 
 Якщо ви не знайомі з тим, як створити Pull-запит у GitHub, прочитайте, будь-ласка, це - [довідник](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Якщо ви вирішили зробити свій внесок, прочитайте, будь-ласка, спочатку настанови [тут](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md).
+Якщо ви вирішили зробити свій внесок, прочитайте, будь-ласка, спочатку настанови [тут](../CONTRIBUTING.md).
 <br>Також ви можете допомогти в розробці `One`, надсилаючи пожертвування на [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Дякуємо усім <a href ="https://github.com/One-Language/One/graphs/contributors">людям, що роблять свої внески</a>!!
@@ -406,7 +406,6 @@ header {
 
 [discordbadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
 [patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
-[sponsorbadge]: https://camo.githubusercontent.com/da8bc40db5ed31e4b12660245535b5db67aa03ce/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d476974487562
 [twitterbadge]: https://twitter.com/onelangteam
 [instagrambadge]: https://img.shields.io/badge/Instagram-Up-brightgreen
 [licensebadge]: https://img.shields.io/github/license/One-Language/One
