@@ -98,7 +98,7 @@
 
 <h2 id="roadmap">➤ RoadMap</h2>
 
-Грамматика языка `One` доступна [здесь](https://github.com/One-Language/One/blob/main/grammar.BNF).
+Грамматика языка `One` доступна [здесь](../grammar.BNF).
 
 - [x] Lexer/Parser (по большей части)
 - [x] Дерево AST
@@ -387,7 +387,7 @@ header {
 
 Если вы не знаете, как создать Pull-request в GitHub, прочитайте, пожалуйста, это [руководство](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Если вы решили внести свой вклад, прочитайте, пожалуйста, сначала руководство [здесь](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md).
+Если вы решили внести свой вклад, прочитайте, пожалуйста, сначала руководство [здесь](../CONTRIBUTING.md).
 <br>Также у вас есть возможность помочь в разработке `One`, делая пожертвования на [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Спасибо всем <a href ="https://github.com/One-Language/One/graphs/contributors">людям, помогающим проекту</a>!!

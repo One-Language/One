@@ -99,7 +99,7 @@ Benvenuto!</br>
 
 <h2 id="roadmap">➤ RoadMap</h2>
 
-La sintassi del linguaggio `One` è disponibile [qui](https://github.com/One-Language/One/blob/main/grammar.BNF).
+La sintassi del linguaggio `One` è disponibile [qui](../grammar.BNF).
 
 - [x] Lexer/Parser (Quasi completamente)
 - [x] Albero sintattico
@@ -388,7 +388,7 @@ Per fare una domanda o aprire una discussione, crea un'issue o unisciti al <a hr
 
 Se non sai come fare una Pull Request su GitHub per favore leggi questa [guida](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Se vuoi contribuire, per favore leggi le linee guida [qui](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md).
+Se vuoi contribuire, per favore leggi le linee guida [qui](../CONTRIBUTING.md).
 <br>Puoi anche aiutare nello sviluppo di `One` facendo una donazione su [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Grazie a tutti i <a href ="https://github.com/One-Language/One/graphs/contributors">collaboratori</a>!!

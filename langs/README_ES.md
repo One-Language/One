@@ -98,7 +98,7 @@ Está siendo desarrollado por <a href="https://github.com/BaseMax">Max</a>, <a h
 
 <h2 id="roadmap">➤ RoadMap</h2>
 
-La gramática del lenguaje `One` está disponible [aquí](https://github.com/One-Language/One/blob/main/grammar.BNF).
+La gramática del lenguaje `One` está disponible [aquí](../grammar.BNF).
 
 - [x] Lexer/Parser (Mayormente)
 - [x] Arbol AST
@@ -387,7 +387,7 @@ Para hacer una pregunta o iniciar una conversación, create an issue o únete al
 
 Si no estás familiarizado con el procedimiento para hacer un pull request en GitHub puedes revisar esta [guía](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Si has decidido contribuir, por favor revisa los lineamientos [aquí](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md).
+Si has decidido contribuir, por favor revisa los lineamientos [aquí](../CONTRIBUTING.md).
 <br>También puedes ayudar al desarrollo de `One` a través de donaciones en [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Gracias a todos los <a href ="https://github.com/One-Language/One/graphs/contributors">colaboradores</a>!!
