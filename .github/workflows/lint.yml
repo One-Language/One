@@ -22,7 +22,7 @@ jobs:
       - name: Install
         run: wget -O - -q https://git.io/misspell | sh -s -- -b .
       - name: Misspell
-        run: git ls-files --empty-directory | grep -v langs/ | xargs ./misspell -error
+        run: git ls-files --empty-directory | grep -v docs/ | xargs ./misspell -error
   pre-commit:
     name: Run pre-commit  # https://pre-commit.com/
     runs-on: ubuntu-latest
