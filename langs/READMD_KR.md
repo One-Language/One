@@ -41,13 +41,13 @@
 &nbsp;
 [日本語](README_JA.md)
 &nbsp;
+[한국어](README_KR.md)
+&nbsp;
 [русский](README_RU.md)
 &nbsp;
 [Türkçe](README_TR.md)
 &nbsp;
 [Українська](README_UK.md)
-&nbsp;
-[한국어](README_KR.md)
 
 </div>
 
