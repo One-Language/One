@@ -99,7 +99,7 @@
 
 <h2 id="roadmap">➤ ロードマップ</h2>
 
-`One`言語の文法は[こちら](https://github.com/One-Language/One/blob/main/grammar.BNF)。
+`One`言語の文法は[こちら](../grammar.BNF)。
 
 - [x] レキサー／パーサー(ほとんど)
 - [x] AST ツリー
@@ -388,7 +388,7 @@ header {
 
 GitHub でのプルリクエストのやり方がよくわからないという方は、こちらの[ガイド](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)をご覧ください。
 
-投稿を決意された方は、まず[こちら](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md)のガイドラインをお読みください。
+投稿を決意された方は、まず[こちら](../CONTRIBUTING.md)のガイドラインをお読みください。
 <br>また、[:heart: Patreon](https://www.patreon.com/onelanguage)でいくらかの寄付をすることで、`One`の開発に協力することができます。
 
 <a href ="https://github.com/One-Language/One/graphs/contributors">コントリビュータ</a>の皆様、ありがとうございました!!

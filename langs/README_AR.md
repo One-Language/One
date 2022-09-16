@@ -100,7 +100,7 @@
 
 <h2 id="roadmap">➤ خارطة الطريق</h2>
 
-قواعد اللغة متوفرة . [هنا](https://github.com/One-Language/One/blob/main/grammar.BNF).
+قواعد اللغة متوفرة . [هنا](../grammar.BNF).
 
 - [x] &nbsp;&nbsp; المعجم / المحلل اللغوي (في الغالب)
 - [x] &nbsp;&nbsp; شجرة AST
@@ -429,7 +429,7 @@ header {
 
 إذا لم تكن على دراية بكيفية تقديم طلب تعديل على GitHub ، فيرجى قراءة هذا . [الدليل](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-إذا كنت قد قررت المساهمة ، يرجى قراءة الإرشادات هنا أولاً. [هنا](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md).
+إذا كنت قد قررت المساهمة ، يرجى قراءة الإرشادات هنا أولاً. [هنا](../CONTRIBUTING.md).
 <br>يمكنك أيضًا المساعدة في تطوير `One` من خلال تقديم بعض التبرعات على [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 شكرا لجميع <a href ="https://github.com/One-Language/One/graphs/contributors">المساهمين</a>!!

@@ -97,7 +97,7 @@ Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source 
 
 <h2 id="carte">➤ Feuille de route</h2>
 
-La grammaire du langage `One` est disponible [ici](https://github.com/One-Language/One/blob/main/grammar.BNF).
+La grammaire du langage `One` est disponible [ici](../grammar.BNF).
 
 - [x] Lexer/Parser (principalement)
 - [x] Arbre AST
@@ -385,7 +385,7 @@ Nous accueillons toutes sortes de contributions, y compris les rapports de bogue
 
 Si vous ne savez pas comment faire une pull request sur GitHub, veuillez lire ce [guide](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Si vous avez décidé de contribuer, veuillez d'abord lire les directives[here](https://github.com/One-Language/One/blob/main/CONTRIBUTING.md).
+Si vous avez décidé de contribuer, veuillez d'abord lire les directives[here](../CONTRIBUTING.md).
 <br>Vous pouvez également aider au développement de `One` en faisant des dons sur [:heart: Patreon](https://www.patreon.com/onelanguage).
 
 Merci à tous les <a href ="https://github.com/One-Language/One/graphs/contributors">contributeurs</a>!!
