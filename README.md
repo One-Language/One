@@ -47,6 +47,8 @@
 &nbsp;
 [日本語](docs/README_JA.md)
 &nbsp;
+[한국어](docs/README_KR.md)
+&nbsp;
 [русский](docs/README_RU.md)
 &nbsp;
 [Türkçe](docs/README_TR.md)

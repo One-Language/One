@@ -6,10 +6,10 @@
     </a>
 </p>
 
-# One Programlama Dili 💚 💙 🧡 🤍 💖 🖤
+# One 프로그래밍 언어 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Yardımınıza ihtiyacımız var](https://github.com/One-Language/One/issues/new)
+[Help wanted](https://github.com/One-Language/One/issues/new)
 
 </div>
 <div align="center">
@@ -20,10 +20,10 @@
 
 [![Patreon][patreonbadge]][patreonurl]
 [![Discord][discordbadge]][discordurl]
-[![Twitter][twitterurl]][twitterbadge]
-[![Instagram][instagrambadge]][instagramurl]
-[![License][licensebadge]][licenseurl]
 [![Facebook][facebookbadge]][facebookurl]
+[![Instagram][instagrambadge]][instagramurl]
+[![Twitter][twitterurl]][twitterbadge]
+[![License][licensebadge]][licenseurl]
 
 [English](../README.md)
 &nbsp;
@@ -51,11 +51,12 @@
 
 </div>
 
-<a href="https://onelang.org">One</a>'a hoşgeldiniz!</br>
-One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri sayesinde güvenilebilir ve verimli yazılımlar yaratmayı kolaylaştıran bir <b>sistem programlama dilidir.</b>
-<a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> ve diğer katılımcılar tarafından geliştirilmektedir.
+<a href="https://onelang.org">One</a>에 오신 것을 환영합니다!</br>
+오픈 소스, 자체 호스팅, 부트스트랩 <b>시스템 프로그래밍 언어</b>로
+안정적이고 효율적인 소프트웨어를 구축합니다.
+<a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> 및 기타 오픈 소스 기여자.
 
-### One dilinin Compiler'ı birkaç ay içerisinde yayınlanacaktır
+### Compiler for the One Language는 몇 달 안에 출시될 예정입니다.
 
 <!--
     WRITE PROJECT MOTIVATION HERE
@@ -63,58 +64,58 @@ One açık kaynak kodlu, kendini barındıran ve fonlayan ve bu özellikleri say
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<!-- TABLE OF CONTENTS -->
-<h2 id="table-of-contents">İçindekiler</h2>
+<!-- 목차 -->
+<h2 id="table-of-contents">목차</h2>
 <details open="open">
-  <ol>
-    <li><a href="#features-of-one"><b>One</b></a> dilinin özellikleri</li>
-    <li><a href="#roadmap">Yol Haritası</a></li>
-    <li><a href="#code-examples">Kod Örnekleri</a></li>
-    <li><a href="#getting-started">İlk kullanım kılavuzu</a></li>
-    <li><a href="#get-involved">Dahil olun</a></li>
-    <li><a href="#license">Lisans</a></li>
-  </ol>
+   <ol>
+     <li><a href="#features-of-one"><b>One</b></a>의 기능</li>
+     <li><a href="#roadmap">로드맵</a></li>
+     <li><a href="#code-examples">코드 예</a></li>
+     <li><a href="#getting-started">시작하기</a></li>
+     <li><a href="#get-involved">참여하기</a></li>
+     <li><a href="#license">라이선스</a></li>
+   </ol>
 </details>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="features-of-one">➤ One Dilinin Özellikleri</h2>
+<h2 id="features-of-one">➤ One의 기능</h2>
 
-- Basit.
-- Compiler.
-- Çıktı dosyası oluşturabilir. (x86_64, i386)
-- Sistem Programlama Dilidir.
-- Orta Düzey.
-- Network ve API programlama yapılabilir.
-- Web programlama desteği sunar. (gelecek)
-  - Hem CSS hem de HTML'e karşılık gelen kodlar otomatik olarak üretilir. Yani, bir websitesi geliştirmek için `One` dışında herhangi bir dil öğrenmenize gerek yok.
-  - CSS'de variables kullanır, böylece veritabanından renkleri ve boyutları çekebilir.
-  - Sayfa sonuçlarını otomatik olarak küçültür.
-- Yüksek hızlı performans vaad eder.
-- İnline Assembly code destekler. (gelecek)
-- Normal modda, kullanıcının sisteminde belirli kütüphane ve araçlar olmasına ihtiyaç duymaz. (gelecek)
-- Normal modda, external runtime kütüphanelerine ihtiyaç duymaz. (gelecek)
-- Compile etmek için harici compiler'lara ihtiyaç duymaz. (gelecek)
+- 단순성
+- 컴파일러
+- 출력 파일 생성 기능(x86_64, i386)
+- 시스템 프로그래밍 언어
+- 중급
+- 네트워크 및 API 프로그래밍
+- 웹 프로그래밍 지원(향후)
+   - CSS와 HTML 모두에 해당하는 코드의 자동 생성. 따라서 웹사이트를 개발하기 위해 '하나의' 언어 이상을 배울 필요가 없습니다.
+   - CSS에서 변수를 사용하여 데이터베이스에서 색상이나 크기를 얻을 수 있습니다.
+   - 페이지 결과 자동 축소
+- 성능 및 고속
+- 인라인 어셈블리 코드 지원(향후)
+- 일반 모드에서 사용자 시스템에 특정 라이브러리 및 도구가 필요하지 않음(향후)
+- 일반 모드에서 외부 런타임 라이브러리가 필요하지 않음(향후)
+- 컴파일을 위해 외부 컴파일러가 필요하지 않음(향후)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="roadmap">➤ Yol Haritası</h2>
+<h2 id="roadmap">➤ 로드맵</h2>
 
-`One` dilinin kurallarını [burada](../grammar.BNF) bulabilirsiniz.
+'One' 언어의 문법은 [여기](../grammar.BNF)에서 볼 수 있습니다.
 
-- [x] Lexer/Parser (Mostly)
-- [x] AST Tree
+- [x] 렉서/파서(대부분)
+- [x] AST 트리
 - [x] VM
-- [ ] Code Generator (LLVM-C'den esinlenildi.)
-- [ ] Bir runtime kütüphanesi geliştmek ve yeni özellikler eklemek
-- [ ] Dil için bir web framework geliştirmek
-- [ ] Compiler'ı `One` dili içerisinde yeniden yazmak
+- [ ] 코드 생성기(LLVM-C에서 영감을 얻음)
+- [ ] 런타임 라이브러리 개발 및 기능 추가
+- [ ] 언어에 대한 웹 프레임워크 설계
+- [ ] `One` 언어로 컴파일러 재작성
 
 <!--Include to a section about steps of installation-->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="code-examples">➤ Kod Örnekleri</h2>
+<h2 id="code-examples">➤ 코드 </h2>
 <!--Will have to explain how variable assignment, control flow, function declaration and call etc work in the language-->
 
 ```c
@@ -123,7 +124,7 @@ main {
 }
 ```
 
-**C'ye çevirelim:**
+**C로 변환:**
 
 ```c
 #include <stdio.h>
@@ -143,7 +144,7 @@ i32 main {
 }
 ```
 
-**C'ye çevirelim:**
+**C로 변환:**
 
 ```c
 #include <stdio.h>
@@ -165,7 +166,7 @@ main {
 }
 ```
 
-**C'ye çevirelim:**
+**C로 변환:**
 
 ```c
 #include <stdio.h>
@@ -182,7 +183,7 @@ int main(int argc, char *argv[]) {
 
 <hr>
 
-**Başka bir taslak:**
+**또 다른 초안:**
 
 ```c
 import web
@@ -209,7 +210,7 @@ main {
 
 ---
 
-**Başka bir taslak:**
+**또 다른 초안:**
 
 ```c
 error {
@@ -235,7 +236,7 @@ error {
 
 ---
 
-### Eski CLI Geliştirmesi
+### 이전 CLI 개발
 
 ```
 main:
@@ -271,10 +272,10 @@ end
 
 <hr>
 
-### Eski GUI Geliştirmesi: (Web, Yazılım)
+###  GUI 개발: (웹, 소프트웨어)
 
-Bu mimari sadece websiteler ve native yazılımlar için tasarlanmıştır. Gelecekte, mobil uygulamalar için de kullanılabilir olacaktır.(native).<br>
-Mobil yapılar henüz tamamlanmadı ve daha fazla düşünceye ve ilgilenilmeye ihtiyaçları var.<br><br>Dilin çalışma şeklini göstermek için bir örnek:
+이 아키텍처는 웹 사이트 및 기본 소프트웨어용으로만 설계되었습니다. 앞으로 모바일 앱(네이티브)에서도 사용할 수 있습니다.<br>
+모바일 구조는 아직 완성되지 않았으며 더 많은 주의와 생각이 필요합니다.<br><br>언어 작동을 보여주는 예:
 
 ```css
 title "Name - Main"
@@ -316,7 +317,7 @@ header {
 }
 ```
 
-**CSS/HTML/JS temelli kodlara çevirelim:**
+**CSS/HTML/JS 기반으로 변환:**
 
 ```html
 <html>
@@ -357,15 +358,15 @@ header {
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="getting-started">➤ İlk Kullanım Kılavuzu</h2>
+<h2 id="getting-started">➤ 시작하기</h2>
 
-Dili öğrenmeye başlamak için [bu linke](https://github.com/ET-Lang/ET/wiki) göz atabilirsiniz.
+언어 학습을 시작하려면 [이 링크](https://github.com/ET-Lang/ET/wiki)를 참조하세요.
 
 <!--Installation Steps-->
 
 <!--Prerequisites-->
 
-#### Desteklenen Ortamlar
+#### 지원되는 환경
 
 - [x] GNU / Linux <!--which Linux?-->
 - [x] Windows
@@ -382,39 +383,39 @@ Dili öğrenmeye başlamak için [bu linke](https://github.com/ET-Lang/ET/wiki) 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!--Get Involved-->
-<h2 id="get-involved">➤ Bize katılın</h2>
+<h2 id="get-involved">➤ 참여하기</h2>
 
-Bug raporlamaları, özellik istekleri, dokümentasyon geliştirmeleri vb. dahil olmak üzere her türlü katkıyı nezaketle karşılıyoruz.
-Soru sormak ya da bir tartışma başlatmak için bir issue oluşturun ya da <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>'ına katılın.
+버그 보고서, 기능 요청, 문서 개선 등을 포함한 모든 종류의 기여를 환영합니다.
+질문을 하거나 토론을 열려면 문제를 만들거나 <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>에 가입하세요.
 
-Eğer GitHub'da nasıl pull request oluşturacağınızı bilmiyorsanız şu [rehberi](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) inceleyebilirsiniz.
+GitHub에서 pull 요청하는 방법에 익숙하지 않다면 이 [가이드](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-Eğer katkıda bulunmak istiyorsanız, lütfen ilk olarak [burada](../CONTRIBUTING.md) yer alan esasları okuyunuz.
-<br>Ayrıca [:heart: Patreon](https://www.patreon.com/onelanguage) üzerinden bize maddi destek sağlayarak da bu projeye katkıda bulunabilirsiniz..
+기여하기로 결정하셨다면 먼저 [여기](../CONTRIBUTING.md) 가이드라인을 읽어주세요.
+<br>[:heart: Patreon](https://www.patreon.com/onelanguage)에서 기부를 통해 'One' 개발에 도움을 줄 수도 있습니다.
 
-<a href ="https://github.com/One-Language/One/graphs/contributors">Katkı sağlayan</a> herkese teşekkürler!
+모든 <a href ="https://github.com/One-Language/One/graphs/contributors">기고자</a>에게 감사드립니다!!
 
-Eğer projenin geliştirilmesinde katkıda bulunmak isterseniz, bize mail atabilirsiniz: <maxbasecode@gmail.com>
+이 프로젝트의 개발에 기여하고 싶다면 <maxbasecode@gmail.com>으로 메일을 보내주십시오.
 
-<br> Max Base tarafından oluşturuldu! @ 2019
+<br>Created By Max Base @ 2019
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="license">➤ Lisans</h2>
+<h2 id="license">➤ 라이선스</h2>
 
-`One` GNU General Public License v3.0 lisansı altında yayınlanmıştır. Lütfen <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> dosyası içerisinde yer alan detaylara göre hareket ediniz.
+`One`은 GNU General Public License v3.0에 따라 출시되었습니다. 저장소에 포함된 <a href="https://github.com/One-Language/One/blob/master/LICENSE">라이센스</a> 파일의 용어를 참조하십시오.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
 
 [discordbadge]: https://img.shields.io/discord/834373930692116531?label=Discord&logo=discord&logoColor=white
-[patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
-[twitterbadge]: https://twitter.com/onelangteam
+[facebookbadge]: https://img.shields.io/badge/Facebook-Up-brightgreen
 [instagrambadge]: https://img.shields.io/badge/Instagram-Up-brightgreen
 [licensebadge]: https://img.shields.io/github/license/One-Language/One
-[facebookbadge]: https://img.shields.io/badge/Facebook-Up-brightgreen
+[patreonbadge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Donelanguage%26type%3Dpledges
+[twitterbadge]: https://twitter.com/onelangteam
 [discordurl]: https://discord.gg/sFCE2HcMCa
-[patreonurl]: https://patreon.com/onelanguage
-[twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
+[facebookurl]: https://www.facebook.com/onelangteam
 [instagramurl]: https://www.instagram.com/one.lang
 [licenseurl]: https://github.com/One-Language/One/blob/master/LICENSE
-[facebookurl]: https://www.facebook.com/onelangteam
+[patreonurl]: https://patreon.com/onelanguage
+[twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
