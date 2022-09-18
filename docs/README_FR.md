@@ -179,7 +179,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr>
+---
 
 ### Brouillon
 
@@ -268,7 +268,7 @@ int customName:
 end
 ```
 
-<hr>
+---
 
 ### Développement de l'ancienne interface graphique : (Web, logiciel)
 

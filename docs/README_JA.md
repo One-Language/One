@@ -181,7 +181,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr>
+---
 
 **別のドラフト:**
 
@@ -270,7 +270,7 @@ int customName:
 end
 ```
 
-<hr>
+---
 
 ### 古い GUI 開発: (Web, GUI 開発)
 

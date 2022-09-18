@@ -201,7 +201,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr>
+---
 
 <div dir="rtl">
 
@@ -302,7 +302,7 @@ int customName:
 end
 ```
 
-<hr>
+---
 
 <div dir="rtl">
 

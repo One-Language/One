@@ -181,7 +181,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr>
+---
 
 **또 다른 초안:**
 
@@ -270,7 +270,7 @@ int customName:
 end
 ```
 
-<hr>
+---
 
 ### GUI 개발: (웹, 소프트웨어)
 

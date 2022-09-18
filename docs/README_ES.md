@@ -180,7 +180,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr>
+---
 
 **Otro ejemplo:**
 
@@ -269,7 +269,7 @@ int customName:
 end
 ```
 
-<hr>
+---
 
 ### Desarrollo anterior de la GUI: (Web, Software)
 
