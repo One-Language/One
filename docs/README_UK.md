@@ -180,7 +180,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-<hr>
+---
 
 **Інший варіант:**
 
@@ -269,7 +269,7 @@ int customName:
 end
 ```
 
-<hr>
+---
 
 ### Розробка старого GUI : (Web, Software)
 
