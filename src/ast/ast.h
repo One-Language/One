@@ -222,7 +222,7 @@ typedef struct _ast_function_declaration
 	// [main] FN ( mut name type ) fn_name () type { }
 	// ^ pos_attribute
 	//        ^ pos_function
-	//           ^ pos_reciver
+	//           ^ pos_receiver
 	//                             ^ pos_name
 	//                                      ^ pos_param
 	//                                        ^ pos_return
@@ -230,7 +230,7 @@ typedef struct _ast_function_declaration
 	Location pos;
 	Location pos_attribute;
 	Location pos_function;
-	Location pos_reciver;
+	Location pos_receiver;
 	Location pos_name;
 	Location pos_param;
 	Location pos_return;
@@ -244,7 +244,7 @@ typedef struct _ast_function_declaration
 	bool has_return;
 
 	char* name;
-	AstParam* reciver;
+	AstParam* receiver;
 	AstParamArray* params; // AstParam
 	AstBlockDeclaration* statements;
 	AstAttributeDeclarationArray* attributes; // AstAttributeDeclaration
