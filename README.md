@@ -156,7 +156,7 @@ i32 main {
 #include <stdio.h>
 #include <stdlib.h>
 int main(int argc, char *argv[]) {
-  int global_argc = argc;
+   int global_argc = argc;
    global_argv = argv;
    return (int) 10;
 }
