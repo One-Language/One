@@ -180,7 +180,7 @@ main {
 #include <string.h>
 int main(int argc, char *argv[]) {
    int global_argc = argc;
-  char * global_argv = *argv;
+   char * global_argv = *argv;
    char *in = "Hello, World!";
    printf("%s\n", in);
    return (int) strlen(in);
