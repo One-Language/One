@@ -156,7 +156,7 @@ i32 main {
 #include <stdio.h>
 #include <stdlib.h>
 int main(int argc, char *argv[]) {
-   global_argc = argc;
+  int global_argc = argc;
    global_argv = argv;
    return (int) 10;
 }
@@ -179,8 +179,8 @@ main {
 #include <stdlib.h>
 #include <string.h>
 int main(int argc, char *argv[]) {
-   global_argc = argc;
-   global_argv = argv;
+   int global_argc = argc;
+  char * global_argv = *argv;
    char *in = "Hello, World!";
    printf("%s\n", in);
    return (int) strlen(in);
