@@ -2,8 +2,14 @@ name: Lint
 
 on: [pull_request]
 
+permissions:  # added using https://github.com/step-security/secure-workflows
+  contents: read
+
 jobs:
   build:
+    permissions:
+      contents: read  # for actions/checkout to fetch code
+      statuses: write  # for github/super-linter/slim to mark status of each linter run
     name: Super-Linter
     runs-on: ubuntu-latest
     steps:
