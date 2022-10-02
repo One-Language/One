@@ -4,6 +4,9 @@ on:
   push:
     branches: [master]
 
+permissions:  # added using https://github.com/step-security/secure-workflows
+  contents: read
+
 jobs:
   build-deploy:
     name: Build and Publish Docker image
