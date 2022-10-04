@@ -18,7 +18,7 @@ jobs:
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
-      - uses: github/super-linter/slim@v4.9.6
+      - uses: github/super-linter/slim@v4.9.7
         env:
           DEFAULT_BRANCH: main
           ERROR_ON_MISSING_EXEC_BIT: true
