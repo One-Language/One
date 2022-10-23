@@ -239,7 +239,7 @@ main {
 error {
     headers.add('HTTP-Type: 404')
     headers.add('Content-Type: text/html;charset=utf-8')
-    _ `<!doctype html><html><head>title>Error 404</title><meta charset="utf-8"></head><body><h1>404></h1></body></html>`
+    _ `<!doctype html><html><head><title>Error 404</title><meta charset="utf-8"></head><body><h1>404></h1></body></html>`
 }
 
 vs
