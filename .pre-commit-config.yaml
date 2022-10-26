@@ -32,6 +32,15 @@ repos:
           - --license-filepath
           - license-templates/LICENSE.txt
           - --fuzzy-match-generates-todo
+      - id: insert-license
+        name: Add license for all Shell files
+        files: \.bash$|\.sh$
+        args:
+          - --comment-style
+          - '|#|'
+          - --license-filepath
+          - license-templates/LICENSE.txt
+          - --fuzzy-match-generates-todo
       - id: forbid-tabs
         exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
       - id: remove-tabs
