@@ -6,18 +6,18 @@ ARG LLVM_VERSION=12.0.1
 
 # LLVM dependencies
 RUN apk --no-cache add \
-	autoconf \
-	automake \
-	cmake \
-	freetype-dev \
-	g++ \
-	gcc \
-	libxml2-dev \
-	linux-headers \
-	make \
-	musl-dev \
-	ncurses-dev \
-	python3 py3-pip \
+    autoconf \
+    automake \
+    cmake \
+    freetype-dev \
+    g++ \
+    gcc \
+    libxml2-dev \
+    linux-headers \
+    make \
+    musl-dev \
+    ncurses-dev \
+    python3 py3-pip \
     git
 
 # Build and install LLVM

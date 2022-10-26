@@ -26,10 +26,13 @@ repos:
       - id: fix-byte-order-marker
       - id: mixed-line-ending
       - id: trailing-whitespace
-  # - repo: https://github.com/Lucas-C/pre-commit-hooks
-  #  rev: v1.1.10
-  #  hooks:
-  #    - id: remove-tabs
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.3.1
+    hooks:
+      - id: forbid-tabs
+        exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
+      - id: remove-tabs
+        exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.2
     hooks:
