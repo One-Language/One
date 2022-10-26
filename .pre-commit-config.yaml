@@ -10,6 +10,23 @@ repos:
     hooks:
       - id: identity
       - id: check-hooks-apply
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.3.1
+    hooks:
+      - id: insert-license
+        name: Add license for all Markdown files
+        files: \.(md|mdown|markdown)$
+        types: [markdown]
+        args:
+          - --comment-style
+          - '<!--|| -->'
+          - --license-filepath
+          - license-templates/LICENSE.txt
+          - --fuzzy-match-generates-todo
+      - id: forbid-tabs
+        exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
+      - id: remove-tabs
+        exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
@@ -26,13 +43,6 @@ repos:
       - id: fix-byte-order-marker
       - id: mixed-line-ending
       - id: trailing-whitespace
-  - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.3.1
-    hooks:
-      - id: forbid-tabs
-        exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
-      - id: remove-tabs
-        exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.2
     hooks:
