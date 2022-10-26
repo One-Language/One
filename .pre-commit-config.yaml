@@ -23,6 +23,15 @@ repos:
           - --license-filepath
           - license-templates/LICENSE.txt
           - --fuzzy-match-generates-todo
+      - id: insert-license
+        name: Add license for all JavaScript files
+        files: \.js$
+        args:
+          - --comment-style
+          - '/*!| *| */'
+          - --license-filepath
+          - license-templates/LICENSE.txt
+          - --fuzzy-match-generates-todo
       - id: forbid-tabs
         exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
       - id: remove-tabs
