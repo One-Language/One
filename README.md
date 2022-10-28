@@ -751,6 +751,7 @@ It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="
     <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#get-involved">Get Involved</a></li>
     <li><a href="#license">License</a></li>
+    <li><a href="#contributors">Contributors</a></li>
   </ol>
 </details>
 
@@ -1081,6 +1082,14 @@ If you would like to contribute in the development of this project, you can mail
 
 `One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
 
+<h2 id="contributors">➤ Contributors<h2>
+
+<a href="https://github.com/One-Language/One/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=One-Language/One" alt="The One Contributors" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
 
@@ -1096,11 +1105,3 @@ If you would like to contribute in the development of this project, you can mail
 [licenseurl]: https://github.com/One-Language/One/blob/master/LICENSE
 [patreonurl]: https://patreon.com/onelanguage
 [twitterurl]: https://img.shields.io/twitter/follow/onelangteam.svg?style=flatl&label=Follow&logo=twitter&logoColor=white&color=1da1f2
-
-## Contributors
-
-<a href="https://github.com/One-Language/One/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=One-Language/One" alt="The One Contributors" />
-</a>
-
-Made with [contrib.rocks](https://contrib.rocks).
