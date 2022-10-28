@@ -1082,7 +1082,7 @@ If you would like to contribute in the development of this project, you can mail
 
 `One` is released under the GNU General Public License v3.0. Please refer to the terms in the <a href="https://github.com/One-Language/One/blob/master/LICENSE">LICENSE</a> file included in the repository.
 
-<h2 id="contributors">➤ Contributors<h2>
+<h2 id="contributors">➤ Contributors</h2>
 
 <a href="https://github.com/One-Language/One/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=One-Language/One" alt="The One Contributors" />
