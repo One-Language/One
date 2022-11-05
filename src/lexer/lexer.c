@@ -5,11 +5,11 @@
 #include "lexer.h"
 #include "../utility/file.h"
 
-#define LEXER_CURRENT_CHAR(lexer) (lexer->input[lexer->index])
-#define LEXER_NEXT_CHAR(lexer) (lexer->input[lexer->index + 1])
+// #define LEXER_CURRENT_CHAR(lexer) (lexer->buffer[lexer->offset])
+// #define LEXER_NEXT_CHAR(lexer) (lexer->buffer[lexer->offset + 1])
 
-#define LEXER_INCREMENT_INDEX(lexer) (lexer->index++)
-#define LEXER_DECREMENT_INDEX(lexer) (lexer->index--)
+// #define LEXER_INCREMENT_INDEX(lexer) (lexer->offset++)
+// #define LEXER_DECREMENT_INDEX(lexer) (lexer->offset--)
 
 Lexer* lexer_new(char* file, char* data) {
     Lexer* lexer = malloc(sizeof(Lexer));
@@ -19,6 +19,7 @@ Lexer* lexer_new(char* file, char* data) {
 
     lexer->buffer = data != NULL ? data : file_reads(file);
     lexer->length = strlen(lexer->buffer);
+    lexer->offset = 0;
 
     lexer->tokens = malloc(sizeof(Token*));
     lexer->token_size = 0;
@@ -40,7 +41,103 @@ int lexer_run(Lexer* lexer) {
 }
 
 void lexer_next(Lexer* lexer) {
+    char c = lexer->buffer[lexer->offset];
+    printf("Current: %c\n", c);
 
+    switch (c) {
+        case ' ':
+        case '\t':
+        case '\r':
+        case '\n':
+            lexer->offset++;
+            break;
+        case '+':
+            lexer->offset++;
+            break;
+        case '-':
+            lexer->offset++;
+            break;
+        case '*':
+            lexer->offset++;
+            break;
+        case '/':
+            lexer->offset++;
+            break;
+        case '%':
+            lexer->offset++;
+            break;
+        case '^':
+            lexer->offset++;
+            break;
+        case '=':
+            lexer->offset++;
+            break;
+        case '!':
+            lexer->offset++;
+            break;
+        case '<':
+            lexer->offset++;
+            break;
+        case '>':
+            lexer->offset++;
+            break;
+        case '&':
+            lexer->offset++;
+            break;
+        case '|':
+            lexer->offset++;
+            break;
+        case '~':
+            lexer->offset++;
+            break;
+        case '(':
+            lexer->offset++;
+            break;
+        case ')':
+            lexer->offset++;
+            break;
+        case '[':
+            lexer->offset++;
+            break;
+        case ']':
+            lexer->offset++;
+            break;
+        case '{':
+            lexer->offset++;
+            break;
+        case '}':
+            lexer->offset++;
+            break;
+        case ',':
+            lexer->offset++;
+            break;
+        case '.':
+            lexer->offset++;
+            break;
+        case ':':
+            lexer->offset++;
+            break;
+        case ';':
+            lexer->offset++;
+            break;
+        case '?':
+            lexer->offset++;
+            break;
+        case '#':
+            lexer->offset++;
+            break;
+        case '\'':
+            lexer->offset++;
+            break;
+        case '"':
+            lexer->offset++;
+            break;
+        default:
+            printf("Warning: Unknown character '%c' at %d", c, lexer->offset);
+            lexer->offset++;
+            break;
+    }
+    lexer->offset++;
 }
 
 void lexer_free(Lexer* lexer) {
