@@ -37,6 +37,8 @@ typedef enum {
 } TokenType;
 
 typedef struct {
+    TokenType type;
+    char* value;
 } Token;
 
 typedef struct {
@@ -61,3 +63,7 @@ int lexer_run(Lexer* lexer);
 void lexer_next(Lexer* lexer);
 
 void lexer_free(Lexer* lexer);
+
+Token* token_make(TokenType type);
+
+Token* token_make_value(TokenType type, char* value);

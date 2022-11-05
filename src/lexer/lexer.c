@@ -56,8 +56,7 @@ Lexer* lexer_new(char* file, char* data) {
     lexer->length = strlen(lexer->buffer);
     lexer->offset = 0;
 
-    lexer->tokens = malloc(sizeof(Token*));
-    lexer->token_size = 0;
+    lexer->tokens = array_new();
 
     return lexer;
 }
@@ -75,6 +74,19 @@ int lexer_run(Lexer* lexer) {
     return 0;
 }
 
+Token* token_make_value(TokenType type, char* value) {
+    Token* t = (Token*) malloc(sizeof(Token));
+    t->type = type;
+    t->value = value;
+    return t;
+}
+
+Token* token_make(TokenType type) {
+    Token* t = (Token*) malloc(sizeof(Token));
+    t->type = type;
+    return t;
+}
+
 void lexer_next(Lexer* lexer) {
     char c = lexer->buffer[lexer->offset];
     printf("Current: %c\n", c);
@@ -85,11 +97,13 @@ void lexer_next(Lexer* lexer) {
         case '\r':
             lexer->offset++;
             lexer->column++;
+            return lexer_next(lexer);
             break;
         case '\n':
             lexer->offset++;
             lexer->line++;
             lexer->column = 0;
+            return lexer_next(lexer);
             break;
         case '+':
             lexer->offset++;
