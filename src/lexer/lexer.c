@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "lexer.h"
+#include "../utility/file.h"
 
 Lexer* lexer_new(char* file, char* data) {
     Lexer* lexer = malloc(sizeof(Lexer));
