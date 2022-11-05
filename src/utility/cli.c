@@ -48,7 +48,7 @@ int cli_parse(cli_args* arguments) {
     options->output_dir = NULL;
     options->is_debug = false;
     options->is_raw_input = false;
-    
+
     if (arguments->argc == 1) {
         cli_help(arguments);
         return 0;

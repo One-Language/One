@@ -25,6 +25,11 @@ int lexer_run(Lexer* lexer) {
     printf("Input: %s\n", lexer->input);
     printf("Input Size: %d\n", lexer->input_size);
 
+    if (lexer->input_size == 0) return 1;
+
+    while (lexer->input_size > 0) {
+        lexer_next(lexer);
+    }
     return 0;
 }
 
