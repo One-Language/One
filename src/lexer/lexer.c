@@ -21,6 +21,10 @@ Lexer* lexer_new(char* file, char* data) {
 }
 
 int lexer_run(Lexer* lexer) {
+    printf("Lexer: %s\n", lexer->file);
+    printf("Input: %s\n", lexer->input);
+    printf("Input Size: %d\n", lexer->input_size);
+
     return 0;
 }
 

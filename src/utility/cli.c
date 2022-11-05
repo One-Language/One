@@ -17,13 +17,15 @@ void cli_help(cli_args* arguments) {
 }
 
 int cli_run_file(cli_options* options) {
-    printf("Running file: %s\n", options->input);
-
     Lexer* lexer;
     if (options->is_raw_input) {
         lexer = lexer_new(NULL, options->input);
     } else {
         char* data = file_reads(options->input);
+        if (data == NULL) {
+            printf("Error: Could not read file: %s\n", options->input);
+            return 1;
+        }
         lexer = lexer_new(options->input, data);
     }
 

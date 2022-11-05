@@ -93,21 +93,33 @@ char* get_file_path_ext(char* dir, char* name, char* ext) {
     return path;
 }
 
-char* file_reads(char* file) {
-    if (file == NULL) return NULL;
+char* file_reads(char* filepath) {
+    if (filepath == NULL) return NULL;
 
-    FILE* fp = fopen(file, "r");
-    if (fp == NULL) {
-        // printf("Error: Could not open file '%s'.\n", file);
-        // exit(1);
+	FILE* file = fopen(filepath, "rb");
+	if (file == NULL) {
+		printf("Could not open file \"%s\".", filepath);
         return NULL;
-    }
-    fseek(fp, 0, SEEK_END);
-    int size = ftell(fp);
-    fseek(fp, 0, SEEK_SET);
-    char* buffer = malloc(size + 1);
-    fread(buffer, 1, size, fp);
-    buffer[size] = '\0';
-    fclose(fp);
-    return buffer;
+	}
+
+	fseek(file, 0L, SEEK_END);
+	size_t fileSize = ftell(file);
+	rewind(file);
+
+	char* buffer = (char*)malloc(fileSize + 1);
+	if (buffer == NULL) {
+		printf("Not enough memory to read \"%s\".", filepath);
+		return NULL;
+	}
+
+	size_t bytesRead = fread(buffer, sizeof(char), fileSize, file);
+	if (bytesRead < fileSize) {
+		printf("Could not read the \"%s\".", filepath);
+		return NULL;
+	}
+
+	buffer[bytesRead] = '\0';
+
+	fclose(file);
+	return buffer;
 }
