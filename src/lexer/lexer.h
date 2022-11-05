@@ -4,6 +4,38 @@
 #include <stdbool.h>
 #include <inttypes.h>
 
+typedef enum {
+    TOKEN_EOF,
+    TOKEN_PLUS,
+    TOKEN_MINUS,
+    TOKEN_STAR,
+    TOKEN_SLASH,
+    TOKEN_PERCENT,
+    TOKEN_CARET,
+    TOKEN_AMPERSAND,
+    TOKEN_PIPE,
+    TOKEN_TILDE,
+    TOKEN_EXCLAMATION,
+    TOKEN_QUESTION,
+    TOKEN_COLON,
+    TOKEN_SEMICOLON,
+    TOKEN_COMMA,
+    TOKEN_DOT,
+    TOKEN_EQUAL,
+    TOKEN_LESS,
+    TOKEN_GREATER,
+    TOKEN_LPAREN,
+    TOKEN_RPAREN,
+    TOKEN_LBRACE,
+    TOKEN_RBRACE,
+    TOKEN_LBRACKET,
+    TOKEN_RBRACKET,
+    TOKEN_IDENTIFIER,
+    TOKEN_STRING,
+    TOKEN_INTEGER,
+    TOKEN_FLOAT
+} TokenType;
+
 typedef struct {
 } Token;
 
@@ -15,8 +47,8 @@ typedef struct {
     uint32_t                    offset;         // current buffer offset (in bytes)
     // uint32_t                    position;       // current buffer position (in characters)
     uint32_t                    length;         // buffer length (in bytes)
-    uint32_t                    lineno;         // line counter
-    uint32_t                    colno;          // column counter
+    uint32_t                    line;         // line counter
+    uint32_t                    column;          // column counter
 
     Token** tokens;
     int token_size;

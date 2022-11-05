@@ -11,6 +11,41 @@
 // #define LEXER_INCREMENT_INDEX(lexer) (lexer->offset++)
 // #define LEXER_DECREMENT_INDEX(lexer) (lexer->offset--)
 
+char* token_name(TokenType type) {
+    switch(type) {
+        case TOKEN_EOF: return "EOF";
+        case TOKEN_PLUS: return "PLUS";
+        case TOKEN_MINUS: return "MINUS";
+        case TOKEN_STAR: return "STAR";
+        case TOKEN_SLASH: return "SLASH";
+        case TOKEN_PERCENT: return "PERCENT";
+        case TOKEN_CARET: return "CARET";
+        case TOKEN_AMPERSAND: return "AMPERSAND";
+        case TOKEN_PIPE: return "PIPE";
+        case TOKEN_TILDE: return "TILDE";
+        case TOKEN_EXCLAMATION: return "EXCLAMATION";
+        case TOKEN_QUESTION: return "QUESTION";
+        case TOKEN_COLON: return "COLON";
+        case TOKEN_SEMICOLON: return "SEMICOLON";
+        case TOKEN_COMMA: return "COMMA";
+        case TOKEN_DOT: return "DOT";
+        case TOKEN_EQUAL: return "EQUAL";
+        case TOKEN_LESS: return "LESS";
+        case TOKEN_GREATER: return "GREATER";
+        case TOKEN_LPAREN: return "LPAREN";
+        case TOKEN_RPAREN: return "RPAREN";
+        case TOKEN_LBRACE: return "LBRACE";
+        case TOKEN_RBRACE: return "RBRACE";
+        case TOKEN_LBRACKET: return "LBRACKET";
+        case TOKEN_RBRACKET: return "RBRACKET";
+        case TOKEN_IDENTIFIER: return "IDENTIFIER";
+        case TOKEN_STRING: return "STRING";
+        case TOKEN_INTEGER: return "INTEGER";
+        case TOKEN_FLOAT: return "FLOAT";
+        default: return "UNKNOWN";
+    }
+}
+
 Lexer* lexer_new(char* file, char* data) {
     Lexer* lexer = malloc(sizeof(Lexer));
 
@@ -48,96 +83,128 @@ void lexer_next(Lexer* lexer) {
         case ' ':
         case '\t':
         case '\r':
+            lexer->offset++;
+            lexer->column++;
+            break;
         case '\n':
             lexer->offset++;
+            lexer->line++;
+            lexer->column = 0;
             break;
         case '+':
             lexer->offset++;
+            lexer->column++;
             break;
         case '-':
             lexer->offset++;
+            lexer->column++;
             break;
         case '*':
             lexer->offset++;
+            lexer->column++;
             break;
         case '/':
             lexer->offset++;
+            lexer->column++;
             break;
         case '%':
             lexer->offset++;
+            lexer->column++;
             break;
         case '^':
             lexer->offset++;
+            lexer->column++;
             break;
         case '=':
             lexer->offset++;
+            lexer->column++;
             break;
         case '!':
             lexer->offset++;
+            lexer->column++;
             break;
         case '<':
             lexer->offset++;
+            lexer->column++;
             break;
         case '>':
             lexer->offset++;
+            lexer->column++;
             break;
         case '&':
             lexer->offset++;
+            lexer->column++;
             break;
         case '|':
             lexer->offset++;
+            lexer->column++;
             break;
         case '~':
             lexer->offset++;
+            lexer->column++;
             break;
         case '(':
             lexer->offset++;
+            lexer->column++;
             break;
         case ')':
             lexer->offset++;
+            lexer->column++;
             break;
         case '[':
             lexer->offset++;
+            lexer->column++;
             break;
         case ']':
             lexer->offset++;
+            lexer->column++;
             break;
         case '{':
             lexer->offset++;
+            lexer->column++;
             break;
         case '}':
             lexer->offset++;
+            lexer->column++;
             break;
         case ',':
             lexer->offset++;
+            lexer->column++;
             break;
         case '.':
             lexer->offset++;
+            lexer->column++;
             break;
         case ':':
             lexer->offset++;
+            lexer->column++;
             break;
         case ';':
             lexer->offset++;
+            lexer->column++;
             break;
         case '?':
             lexer->offset++;
+            lexer->column++;
             break;
         case '#':
             lexer->offset++;
+            lexer->column++;
             break;
         case '\'':
             lexer->offset++;
+            lexer->column++;
             break;
         case '"':
             lexer->offset++;
+            lexer->column++;
             break;
         default:
             printf("Warning: Unknown character '%c' at %d", c, lexer->offset);
             lexer->offset++;
+            lexer->column++;
             break;
     }
-    lexer->offset++;
 }
 
 void lexer_free(Lexer* lexer) {
