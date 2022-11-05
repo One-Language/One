@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 
 #include "cli.h"
+#include "../lexer/lexer.h"
 
 void cli_help(cli_args* arguments) {
     printf("Usage: %s [options] [file]\n", arguments->argv[0]);
@@ -65,7 +68,7 @@ int cli_parse(cli_args* arguments) {
                 options->input = arguments->argv[i + 1];
                 options->is_raw_input = true;
                 return cli_run_file(options);
-            else if (strcmp(arguments->argv[i], "-d") == 0 || strcmp(arguments->argv[i], "--debug") == 0) {
+            } else if (strcmp(arguments->argv[i], "-d") == 0 || strcmp(arguments->argv[i], "--debug") == 0) {
                 options->is_debug = true;
             } else if (strcmp(arguments->argv[i], "-i") == 0 || strcmp(arguments->argv[i], "--input") == 0) {
                 options->input = arguments->argv[i + 1];

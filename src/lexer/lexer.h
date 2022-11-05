@@ -12,5 +12,8 @@ typedef struct {
     int token_size;
 } Lexer;
 
-Lexer* lexer_new(char*);
-int lexer_run(Lexer*);
+Lexer* lexer_new(char* file, char* data);
+
+int lexer_run(Lexer* lexer);
+
+void lexer_free(Lexer* lexer);

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 bool is_file(char* path) {
     FILE* file = fopen(path, "r");
@@ -94,6 +95,7 @@ char* get_file_path_ext(char* dir, char* name, char* ext) {
 
 char* file_reads(char* file) {
     if (file == NULL) return NULL;
+
     FILE* fp = fopen(file, "r");
     if (fp == NULL) {
         // printf("Error: Could not open file '%s'.\n", file);
