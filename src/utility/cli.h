@@ -4,6 +4,8 @@ typedef struct {
 } cli_args;
 
 typedef struct {
+    char* data;
+
     char* input;
     char* input_dir;
 
@@ -11,4 +13,5 @@ typedef struct {
     char* output_dir;
 
     bool is_debug;
+    bool is_raw_input;
 } cli_options;

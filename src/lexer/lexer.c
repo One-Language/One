@@ -1,16 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "lexer.h"
 
-Lexer* lexer_new(char* file) {
+Lexer* lexer_new(char* file, char* data) {
     Lexer* lexer = malloc(sizeof(Lexer));
-    lexer->input = NULL;
-    lexer->input_size = 0;
+
     lexer->file = file;
-    lexer->file_dir = NULL;
-    lexer->tokens = NULL;
+    lexer->file_dir = get_file_dir(file);
+
+    lexer->input = data != NULL ? data : file_reads(file);
+    lexer->input_size = strlen(lexer->input);
+
+    lexer->tokens = malloc(sizeof(Token*));
     lexer->token_size = 0;
+
     return lexer;
 }
 

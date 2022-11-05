@@ -17,7 +17,14 @@ void cli_help(cli_args* arguments) {
 int cli_run_file(cli_options* options) {
     printf("Running file: %s\n", options->input);
 
-    Lexer* lexer = lexer_new(options->input);
+    Lexer* lexer;
+    if (options->is_raw_input) {
+        lexer = lexer_new(NULL, options->input);
+    } else {
+        char* data = file_reads(options->input);
+        lexer = lexer_new(options->input, data);
+    }
+
     int result = lexer_run(lexer);
 
     // Parser* parser = parser_new(lexer);
@@ -36,6 +43,7 @@ int cli_parse(cli_args* arguments) {
     options->output = NULL;
     options->output_dir = NULL;
     options->is_debug = false;
+    options->is_raw_input = false;
     
     if (arguments->argc == 1) {
         cli_help(arguments);
@@ -53,7 +61,11 @@ int cli_parse(cli_args* arguments) {
         }
     } else {
         for (int i = 1; i < arguments->argc; i++) {
-            if (strcmp(arguments->argv[i], "-d") == 0 || strcmp(arguments->argv[i], "--debug") == 0) {
+            if (strcmp(arguments->argv[i], "-r") == 0 || strcmp(arguments->argv[i], "--run") == 0) {
+                options->input = arguments->argv[i + 1];
+                options->is_raw_input = true;
+                return cli_run_file(options);
+            else if (strcmp(arguments->argv[i], "-d") == 0 || strcmp(arguments->argv[i], "--debug") == 0) {
                 options->is_debug = true;
             } else if (strcmp(arguments->argv[i], "-i") == 0 || strcmp(arguments->argv[i], "--input") == 0) {
                 options->input = arguments->argv[i + 1];
