@@ -1,3 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+#include "file.h"
+#include "../lexer/lexer.h"
+
 typedef struct {
     int argc;
     char** argv;
@@ -15,3 +22,9 @@ typedef struct {
     bool is_debug;
     bool is_raw_input;
 } cli_options;
+
+void cli_help(cli_args* arguments);
+
+int cli_run_file(cli_options* options);
+
+int cli_parse(cli_args* arguments);

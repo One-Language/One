@@ -4,7 +4,6 @@
 #include <stdbool.h>
 
 #include "cli.h"
-#include "../lexer/lexer.h"
 
 void cli_help(cli_args* arguments) {
     printf("Usage: %s [options] [file]\n", arguments->argv[0]);

@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 bool is_file(char* path);
 
 bool is_dir(char* path);
