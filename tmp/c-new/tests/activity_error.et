@@ -1,5 +1,0 @@
-void activity_error()
-{
-  //document=layout.render("here-is-custom-file-name");
-  document=layout.render();
-}
