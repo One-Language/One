@@ -58,7 +58,7 @@ Lexer* lexer_new(char* file, char* data) {
 
 int lexer_run(Lexer* lexer) {
     printf("Lexer: %s\n", lexer->file);
-    printf("Input: %s\n", lexer->buffer);
+    // printf("Input: %s\n", lexer->buffer);
     printf("Input Size: %d\n", lexer->length);
 
     if (lexer->length == 0) return 1;
@@ -79,6 +79,7 @@ Token* token_make_value(TokenType type, char* value) {
 Token* token_make(TokenType type) {
     Token* t = (Token*) malloc(sizeof(Token));
     t->type = type;
+    t->value = NULL;
     return t;
 }
 
@@ -91,7 +92,7 @@ void lexer_next(Lexer* lexer) {
             array_push(lexer->tokens, token_make(TOKEN_EOF));
             return;
         }
-        
+
         case ' ':
         case '\t':
         case '\r':
@@ -206,7 +207,11 @@ void lexer_debug(Lexer* lexer) {
     printf("Lexer: %d tokens\n", lexer->tokens->size);
     for (int i = 0; i < lexer->tokens->size; i++) {
         Token* t = lexer->tokens->data[i];
-        printf("Token: %s\n", token_name(t->type));
+        if (t->value != NULL) {
+            printf("Token: %s(%s)\n", token_name(t->type), t->value);
+        } else {
+            printf("Token: %s\n", token_name(t->type));
+        }
     }
 }
 
