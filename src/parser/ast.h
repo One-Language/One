@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../utility/array.h"
+
 typedef struct {
     array* functions;
 } Ast;
