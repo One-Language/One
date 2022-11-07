@@ -1,24 +1,3 @@
-package main
-
-import one.two.three
-import p0 as p { sin as s }
-import p1
-import p2 as m
-import p3 { sin as s }
-import p4 { sin as s, cos as c }
-import p5 { sin as s, cos as c ,}
-import p6 {
-	sin as s
-	cos as c
+fn test() {
+	ret 0;
 }
-import p7 { sin as s cos as c }
-import p8 { one.two.three }
-
-	 fn
-  			main 			{
-  		if aaa {}
-  		if aaa {}
-  		if aaa {  		if aaa {  		if aaa {}
-}
-}
- }

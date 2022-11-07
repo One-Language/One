@@ -17,15 +17,18 @@ char* token_name(TokenType type) {
 
         case TOKEN_COMMA: return "COMMA";
         case TOKEN_DOT: return "DOT";
+        case TOKEN_SEMICOLON: return "SEMICOLON";
         case TOKEN_LBRACE: return "LBRACE";
         case TOKEN_RBRACE: return "RBRACE";
+        case TOKEN_LPAREN: return "LPAREN";
+        case TOKEN_RPAREN: return "RPAREN";
 
         case TOKEN_FN: return "FN";
         case TOKEN_IF: return "IF";
         case TOKEN_ELSE: return "ELSE";
         case TOKEN_WHILE: return "WHILE";
         case TOKEN_FOR: return "FOR";
-        case TOKEN_RETURN: return "RETURN";
+        case TOKEN_RET: return "RETURN";
         case TOKEN_BREAK: return "BREAK";
         case TOKEN_CONTINUE: return "CONTINUE";
 
@@ -107,6 +110,13 @@ void lexer_next(Lexer* lexer) {
             return lexer_next(lexer);
             break;
         }
+        case ';' : {
+            lexer->offset++;
+            lexer->column++;
+            Token* t = token_make(TOKEN_SEMICOLON);
+            array_push(lexer->tokens, t);
+            break;
+        }
         case '.': {
             lexer->offset++;
             lexer->column++;
@@ -118,6 +128,20 @@ void lexer_next(Lexer* lexer) {
             lexer->offset++;
             lexer->column++;
             Token* t = token_make(TOKEN_COMMA);
+            array_push(lexer->tokens, t);
+            break;
+        }
+        case '(': {
+            lexer->offset++;
+            lexer->column++;
+            Token* t = token_make(TOKEN_LPAREN);
+            array_push(lexer->tokens, t);
+            break;
+        }
+        case ')': {
+            lexer->offset++;
+            lexer->column++;
+            Token* t = token_make(TOKEN_RPAREN);
             array_push(lexer->tokens, t);
             break;
         }
@@ -251,6 +275,8 @@ void lexer_identifier(Lexer* lexer) {
     else if (length == 3) {
         // for
         if (value[0] == 'f' && value[1] == 'o' && value[2] == 'r') type = TOKEN_FOR;
+        // ret
+        else if (value[0] == 'r' && value[1] == 'e' && value[2] == 't') type = TOKEN_RET;
     }
     else if (length == 4) {
         // else
