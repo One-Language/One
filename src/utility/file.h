@@ -1,3 +1,6 @@
+#ifndef _ONE_UTILITY_FILE_H_
+#define _ONE_UTILITY_FILE_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -19,3 +22,5 @@ char* get_file_path(char* dir, char* name);
 char* get_file_path_ext(char* dir, char* name, char* ext);
 
 char* file_reads(char* file);
+
+#endif

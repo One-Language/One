@@ -1,3 +1,6 @@
+#ifndef _ONE_UTILITY_ARRAY_H_
+#define _ONE_UTILITY_ARRAY_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -37,3 +40,5 @@ void array_reverse(array* a);
 void array_foreach(array* a, void (*callback)(void*));
 
 // void array_sort(array* a, int (*compare)(void*, void*));
+
+#endif

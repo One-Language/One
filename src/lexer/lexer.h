@@ -1,5 +1,5 @@
-#ifndef _ONE_LEXER_H_
-#define _ONE_LEXER_H_
+#ifndef _ONE_LEXER_LEXER_H_
+#define _ONE_LEXER_LEXER_H_
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,3 +1,6 @@
+#ifndef _ONE_UTILITY_CLI_H_
+#define _ONE_UTILITY_CLI_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -28,3 +31,5 @@ void cli_help(cli_args* arguments);
 int cli_run_file(cli_options* options);
 
 int cli_parse(cli_args* arguments);
+
+#endif
