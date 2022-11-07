@@ -16,6 +16,7 @@ typedef enum {
     TOKEN_STRING,
     TOKEN_IDENTIFIER,
 
+    TOKEN_FN,
     TOKEN_IF,
     TOKEN_ELSE,
     TOKEN_WHILE,
