@@ -1,12 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-<<<<<<< HEAD
 
 #include "../utility/file.h"
-=======
-#include <stdbool.h>
-#include <inttypes.h>
 
 typedef enum {
     TOKEN_EOF,
@@ -39,7 +35,6 @@ typedef enum {
     TOKEN_INTEGER,
     TOKEN_FLOAT
 } TokenType;
->>>>>>> 4bba61f59a96590c2d3c6ec13246954197f7e842
 
 typedef struct {
     TokenType type;
