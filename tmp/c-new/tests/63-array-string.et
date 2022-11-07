@@ -1,6 +1,0 @@
-void main() {
-    string[] list={"Stephin","Max","Old","New"};
-    each item in list {
-        _ "==> ",item;
-    }
-}

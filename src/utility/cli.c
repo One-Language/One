@@ -4,8 +4,11 @@
 #include <stdbool.h>
 
 #include "cli.h"
+<<<<<<< HEAD
 #include "file.h"
 #include "../lexer/lexer.h"
+=======
+>>>>>>> 4bba61f59a96590c2d3c6ec13246954197f7e842
 
 void cli_help(cli_args* arguments) {
     printf("Usage: %s [options] [file]\n", arguments->argv[0]);
@@ -19,13 +22,15 @@ void cli_help(cli_args* arguments) {
 }
 
 int cli_run_file(cli_options* options) {
-    printf("Running file: %s\n", options->input);
-
     Lexer* lexer;
     if (options->is_raw_input) {
         lexer = lexer_new(NULL, options->input);
     } else {
         char* data = file_reads(options->input);
+        if (data == NULL) {
+            printf("Error: Could not read file: %s\n", options->input);
+            return 1;
+        }
         lexer = lexer_new(options->input, data);
     }
 
@@ -48,7 +53,7 @@ int cli_parse(cli_args* arguments) {
     options->output_dir = NULL;
     options->is_debug = false;
     options->is_raw_input = false;
-    
+
     if (arguments->argc == 1) {
         cli_help(arguments);
         return 0;

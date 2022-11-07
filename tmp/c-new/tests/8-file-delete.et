@@ -1,5 +1,0 @@
-void main()
-{
-  file.delete("sample.txt");
-  int result=file.delete("sample.txt");
-}

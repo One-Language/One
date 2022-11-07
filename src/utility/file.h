@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+<<<<<<< HEAD
+=======
+#include <string.h>
+>>>>>>> 4bba61f59a96590c2d3c6ec13246954197f7e842
 #include <stdbool.h>
 
 bool is_file(char* path);

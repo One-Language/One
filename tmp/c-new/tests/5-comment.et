@@ -1,6 +1,0 @@
-//this is a comment
-/*
- * this is a multi line comment
- */
-/* Test */
-void main(){}

@@ -1,5 +1,0 @@
-void main()
-{
-  _ math.sin(90);
-  print math.sin(180);
-}

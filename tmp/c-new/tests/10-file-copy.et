@@ -1,5 +1,0 @@
-void main()
-{
-  file.copy("test.txt","../new.txt");
-  int result=file.copy("test.txt","../new.txt");
-}
