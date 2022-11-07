@@ -39,6 +39,8 @@ int cli_run_file(cli_options* options) {
     Parser* parser = parser_new(lexer);
     parser_run(parser);
 
+    parser_debug(parser);
+
     parser_free(parser);
 
     lexer_free(lexer);

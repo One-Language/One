@@ -19,4 +19,6 @@ void parser_run(Parser* parser);
 
 void parser_free(Parser* parser);
 
+void parser_debug(Parser* parser);
+
 #endif
