@@ -18,6 +18,10 @@ typedef struct {
 } AstFunction;
 
 typedef struct {
+    
+} AstExpression;
+
+typedef struct {
 
 } AstFunctionParameter;
 

@@ -59,7 +59,6 @@ typedef struct {
     uint32_t                    column;          // column counter
 
     array* tokens;
-    int token_size;
 } Lexer;
 
 Lexer* lexer_new(char* file, char* data);

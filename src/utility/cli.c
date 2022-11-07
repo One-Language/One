@@ -33,17 +33,22 @@ int cli_run_file(cli_options* options) {
     }
 
     int result = lexer_run(lexer);
-
     lexer_debug(lexer);
 
-    Parser* parser = parser_new(lexer);
-    parser_run(parser);
+    if (result == 0) {
+        Parser* parser = parser_new(lexer);
+        result = parser_run(parser);
+        parser_debug(parser);
 
-    parser_debug(parser);
+        if (result == 0) {
+            // TODO
+        }
 
-    parser_free(parser);
+        parser_free(parser);
+    }
 
     lexer_free(lexer);
+
     return result;
 }
 

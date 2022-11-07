@@ -15,7 +15,7 @@ typedef struct {
 
 Parser* parser_new(Lexer* lexer);
 
-void parser_run(Parser* parser);
+int parser_run(Parser* parser);
 
 void parser_free(Parser* parser);
 

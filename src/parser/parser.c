@@ -7,8 +7,12 @@ Parser* parser_new(Lexer* lexer) {
     return parser;
 }
 
-void parser_run(Parser* parser) {
-    
+int parser_run(Parser* parser) {
+    if (parser->lexer->tokens->size == 0) return 1;
+
+    // TODO
+
+    return 0; 
 }
 
 void parser_debug(Parser* parser) {
