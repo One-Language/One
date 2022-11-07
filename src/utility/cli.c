@@ -6,6 +6,7 @@
 #include "cli.h"
 #include "file.h"
 #include "../lexer/lexer.h"
+#include "../parser/parser.h"
 
 void cli_help(cli_args* arguments) {
     printf("Usage: %s [options] [file]\n", arguments->argv[0]);
@@ -35,10 +36,10 @@ int cli_run_file(cli_options* options) {
 
     lexer_debug(lexer);
 
-    // Parser* parser = parser_new(lexer);
-    // parser_run(parser);
+    Parser* parser = parser_new(lexer);
+    parser_run(parser);
 
-    // parser_free(parser);
+    parser_free(parser);
 
     lexer_free(lexer);
     return result;
