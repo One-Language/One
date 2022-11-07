@@ -181,25 +181,34 @@ void lexer_identifier(Lexer* lexer) {
 
     TokenType type = TOKEN_IDENTIFIER;
     // keywords
-    // if
-    if (length == 2 && value[0] == 'i' && value[1] == 'f') type = TOKEN_IF;
-    // else
-    if (length == 4 && value[0] == 'e' && value[1] == 'l' && value[2] == 's' && value[3] == 'e') type = TOKEN_ELSE;
-    // while
-    if (length == 5 && value[0] == 'w' && value[1] == 'h' && value[2] == 'i' && value[3] == 'l' && value[4] == 'e') type = TOKEN_WHILE;
-    // for
-    if (length == 4 && value[0] == 'f' && value[1] == 'o' && value[2] == 'r') type = TOKEN_FOR;
-    // fn
-    if (length == 3 && value[0] == 'f' && value[1] == 'n') type = TOKEN_FN;
-    // true
-    // if (length == 4 && value[0] == 't' && value[1] == 'r' && value[2] == 'u' && value[3] == 'e') type = TOKEN_TRUE;
-    // false
-    // if (length == 5 && value[0] == 'f' && value[1] == 'a' && value[2] == 'l' && value[3] == 's' && value[4] == 'e') type = TOKEN_FALSE;
-    // break
-    if (length == 5 && value[0] == 'b' && value[1] == 'r' && value[2] == 'e' && value[3] == 'a' && value[4] == 'k') type = TOKEN_BREAK;
-    // continue
-    if (length == 8 && value[0] == 'c' && value[1] == 'o' && value[2] == 'n' && value[3] == 't' && value[4] == 'i' && value[5] == 'n' && value[6] == 'u' && value[7] == 'e') type = TOKEN_CONTINUE;
-
+    if (length == 2) {
+        // if
+        if (value[0] == 'i' && value[1] == 'f') type = TOKEN_IF;
+        // fn
+        else if (value[0] == 'f' && value[1] == 'n') type = TOKEN_FN;
+    }
+    else if (length == 3) {
+        // for
+        if (value[0] == 'f' && value[1] == 'o' && value[2] == 'r') type = TOKEN_FOR;
+    }
+    else if (length == 4) {
+        // else
+        if (value[0] == 'e' && value[1] == 'l' && value[2] == 's' && value[3] == 'e') type = TOKEN_ELSE;
+        // true
+        // else if (value[0] == 't' && value[1] == 'r' && value[2] == 'u' && value[3] == 'e') type = TOKEN_TRUE;
+    }
+    else if (length == 5) {
+        // while
+        if (length == 5 && value[0] == 'w' && value[1] == 'h' && value[2] == 'i' && value[3] == 'l' && value[4] == 'e') type = TOKEN_WHILE;
+        // false
+        // else if (value[0] == 'f' && value[1] == 'a' && value[2] == 'l' && value[3] == 's' && value[4] == 'e') type = TOKEN_FALSE;
+        // break
+        // else if (value[0] == 'b' && value[1] == 'r' && value[2] == 'e' && value[3] == 'a' && value[4] == 'k') type = TOKEN_BREAK;
+    }
+    else if (length == 8) {
+        // continue
+        if (value[0] == 'c' && value[1] == 'o' && value[2] == 'n' && value[3] == 't' && value[4] == 'i' && value[5] == 'n' && value[6] == 'u' && value[7] == 'e') type = TOKEN_CONTINUE;
+    }
 
     array_push(lexer->tokens, token_make_value(type, value));
 }
