@@ -92,22 +92,21 @@ void lexer_next(Lexer* lexer) {
             array_push(lexer->tokens, token_make(TOKEN_EOF));
             return;
         }
-
         case ' ':
         case '\t':
-        case '\r':
+        case '\r': {
             lexer->offset++;
             lexer->column++;
             return lexer_next(lexer);
             break;
-        
-        case '\n':
+        }        
+        case '\n': {
             lexer->offset++;
             lexer->line++;
             lexer->column = 0;
             return lexer_next(lexer);
             break;
-
+        }
         case '.': {
             lexer->offset++;
             lexer->column++;
@@ -122,63 +121,70 @@ void lexer_next(Lexer* lexer) {
             array_push(lexer->tokens, t);
             break;
         }
-        case '{':
+        case '{': {
             array_push(lexer->tokens, token_make(TOKEN_LBRACE));
             lexer->offset++;
             lexer->column++;
             break;
-        case '}':
+        }
+        case '}': {
             array_push(lexer->tokens, token_make(TOKEN_RBRACE));
             lexer->offset++;
             lexer->column++;
             break;
-
-        case '+' :
+        }
+        case '+' : {
             array_push(lexer->tokens, token_make(TOKEN_PLUS));
             lexer->offset++;
             lexer->column++;
             break;
-        case '-' :
+        }
+        case '-' : {
             array_push(lexer->tokens, token_make(TOKEN_MINUS));
             lexer->offset++;
             lexer->column++;
             break;
-        case '*' :
+        }
+        case '*' : {
             array_push(lexer->tokens, token_make(TOKEN_STAR));
             lexer->offset++;
             lexer->column++;
             break;
-        case '/' :
+        }
+        case '/' : {
             array_push(lexer->tokens, token_make(TOKEN_SLASH));
             lexer->offset++;
             lexer->column++;
             break;
-        case '%' :
+        }
+        case '%' : {
             array_push(lexer->tokens, token_make(TOKEN_PERCENT));
             lexer->offset++;
             lexer->column++;
             break;
-        case '=' :
+        }
+        case '=' : {
             array_push(lexer->tokens, token_make(TOKEN_EQUAL));
             lexer->offset++;
             lexer->column++;
             break;
-        
-        case '0' ... '9' :
+        }
+        case '0' ... '9' : {
             lexer_number(lexer);
             break;
-        
+        }
         case 'a' ... 'z' :
         case 'A' ... 'Z' :
-        case '_' :
+        case '_' : {
             lexer_identifier(lexer);
             break;
-
-        default:
+        }
+        default: {
             printf("Warning: Unknown character '%c'(%d) at %d\n", c, c, lexer->offset);
             lexer->offset++;
             lexer->column++;
             break;
+        }
     }
 }
 
