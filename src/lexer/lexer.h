@@ -16,6 +16,11 @@ typedef enum {
     TOKEN_STRING,
     TOKEN_IDENTIFIER,
 
+    TOKEN_COMMA,
+    TOKEN_DOT,
+    TOKEN_LBRACE,
+    TOKEN_RBRACE,
+
     TOKEN_FN,
     TOKEN_IF,
     TOKEN_ELSE,
@@ -71,5 +76,7 @@ bool lexer_eof(Lexer* lexer);
 void lexer_identifier(Lexer* lexer);
 
 void lexer_number(Lexer* lexer);
+
+void lexer_debug(Lexer* lexer);
 
 #endif

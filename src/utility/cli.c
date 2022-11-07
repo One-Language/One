@@ -33,6 +33,8 @@ int cli_run_file(cli_options* options) {
 
     int result = lexer_run(lexer);
 
+    lexer_debug(lexer);
+
     // Parser* parser = parser_new(lexer);
     // parser_run(parser);
 

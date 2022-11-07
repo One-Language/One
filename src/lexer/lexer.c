@@ -15,6 +15,11 @@ char* token_name(TokenType type) {
         case TOKEN_STRING: return "STRING";
         case TOKEN_IDENTIFIER: return "IDENTIFIER";
 
+        case TOKEN_COMMA: return "COMMA";
+        case TOKEN_DOT: return "DOT";
+        case TOKEN_LBRACE: return "LBRACE";
+        case TOKEN_RBRACE: return "RBRACE";
+
         case TOKEN_FN: return "FN";
         case TOKEN_IF: return "IF";
         case TOKEN_ELSE: return "ELSE";
@@ -79,15 +84,52 @@ Token* token_make(TokenType type) {
 
 void lexer_next(Lexer* lexer) {
     char c = lexer->buffer[lexer->offset];
-    printf("Current: %c\n", c);
+    // printf("Current: %c\n", c);
 
     switch (c) {
+        case '\0': {
+            array_push(lexer->tokens, token_make(TOKEN_EOF));
+            return;
+        }
+        
         case ' ':
         case '\t':
         case '\r':
             lexer->offset++;
             lexer->column++;
             return lexer_next(lexer);
+            break;
+        
+        case '\n':
+            lexer->offset++;
+            lexer->line++;
+            lexer->column = 0;
+            return lexer_next(lexer);
+            break;
+
+        case '.': {
+            lexer->offset++;
+            lexer->column++;
+            Token* t = token_make(TOKEN_DOT);
+            array_push(lexer->tokens, t);
+            break;
+        }
+        case ',': {
+            lexer->offset++;
+            lexer->column++;
+            Token* t = token_make(TOKEN_COMMA);
+            array_push(lexer->tokens, t);
+            break;
+        }
+        case '{':
+            array_push(lexer->tokens, token_make(TOKEN_LBRACE));
+            lexer->offset++;
+            lexer->column++;
+            break;
+        case '}':
+            array_push(lexer->tokens, token_make(TOKEN_RBRACE));
+            lexer->offset++;
+            lexer->column++;
             break;
 
         case '+' :
@@ -132,7 +174,7 @@ void lexer_next(Lexer* lexer) {
             break;
 
         default:
-            printf("Warning: Unknown character '%c' at %d", c, lexer->offset);
+            printf("Warning: Unknown character '%c'(%d) at %d\n", c, c, lexer->offset);
             lexer->offset++;
             lexer->column++;
             break;
@@ -158,6 +200,14 @@ void lexer_number(Lexer* lexer) {
     array_push(lexer->tokens, token_make_value(TOKEN_NUMBER, value));
     lexer->offset = end;
     lexer->column = end;
+}
+
+void lexer_debug(Lexer* lexer) {
+    printf("Lexer: %d tokens\n", lexer->tokens->size);
+    for (int i = 0; i < lexer->tokens->size; i++) {
+        Token* t = lexer->tokens->data[i];
+        printf("Token: %s\n", token_name(t->type));
+    }
 }
 
 void lexer_identifier(Lexer* lexer) {
