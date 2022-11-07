@@ -60,10 +60,6 @@ Lexer* lexer_new(char* file, char* data) {
 }
 
 int lexer_run(Lexer* lexer) {
-    printf("Lexer: %s\n", lexer->file);
-    // printf("Input: %s\n", lexer->buffer);
-    printf("Input Size: %d\n", lexer->length);
-
     if (lexer->length == 0) return 1;
 
     while (!lexer_eof(lexer)) {
@@ -88,7 +84,6 @@ Token* token_make(TokenType type) {
 
 void lexer_next(Lexer* lexer) {
     char c = lexer->buffer[lexer->offset];
-    // printf("Current: %c\n", c);
 
     switch (c) {
         case '\0': {
@@ -235,6 +230,7 @@ void lexer_number(Lexer* lexer) {
 
 void lexer_debug(Lexer* lexer) {
     printf("Lexer: %d tokens\n", lexer->tokens->size);
+
     for (int i = 0; i < lexer->tokens->size; i++) {
         Token* t = lexer->tokens->data[i];
         if (t->value != NULL) {

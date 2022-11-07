@@ -8,7 +8,10 @@ Parser* parser_new(Lexer* lexer) {
 }
 
 void parser_run(Parser* parser) {
-    printf("Parser: %d tokens\n", parser->lexer->tokens->size);
+}
+
+void parser_debug(Parser* parser) {
+    printf("================= Parser (%d tokens) =================\n", parser->lexer->tokens->size);
 }
 
 void parser_free(Parser* parser) {
