@@ -7,37 +7,30 @@
 #include <inttypes.h>
 
 #include "../utility/file.h"
+#include "../utility/array.h"
 
 typedef enum {
     TOKEN_EOF,
+
+    TOKEN_NUMBER,
+    TOKEN_STRING,
+    TOKEN_IDENTIFIER,
+
+    TOKEN_IF,
+    TOKEN_ELSE,
+    TOKEN_WHILE,
+    TOKEN_FOR,
+    TOKEN_RETURN,
+    TOKEN_BREAK,
+    TOKEN_CONTINUE,
+
+    TOKEN_ASSIGN,
+    TOKEN_EQUAL,
     TOKEN_PLUS,
     TOKEN_MINUS,
     TOKEN_STAR,
     TOKEN_SLASH,
-    TOKEN_PERCENT,
-    TOKEN_CARET,
-    TOKEN_AMPERSAND,
-    TOKEN_PIPE,
-    TOKEN_TILDE,
-    TOKEN_EXCLAMATION,
-    TOKEN_QUESTION,
-    TOKEN_COLON,
-    TOKEN_SEMICOLON,
-    TOKEN_COMMA,
-    TOKEN_DOT,
-    TOKEN_EQUAL,
-    TOKEN_LESS,
-    TOKEN_GREATER,
-    TOKEN_LPAREN,
-    TOKEN_RPAREN,
-    TOKEN_LBRACE,
-    TOKEN_RBRACE,
-    TOKEN_LBRACKET,
-    TOKEN_RBRACKET,
-    TOKEN_IDENTIFIER,
-    TOKEN_STRING,
-    TOKEN_INTEGER,
-    TOKEN_FLOAT
+    TOKEN_PERCENT
 } TokenType;
 
 typedef struct {
@@ -56,7 +49,7 @@ typedef struct {
     uint32_t                    line;         // line counter
     uint32_t                    column;          // column counter
 
-    Token** tokens;
+    array* tokens;
     int token_size;
 } Lexer;
 
@@ -71,5 +64,11 @@ void lexer_free(Lexer* lexer);
 Token* token_make(TokenType type);
 
 Token* token_make_value(TokenType type, char* value);
+
+bool lexer_eof(Lexer* lexer);
+
+void lexer_identifier(Lexer* lexer);
+
+void lexer_number(Lexer* lexer);
 
 #endif
