@@ -236,7 +236,7 @@ void lexer_identifier(Lexer* lexer) {
         }
     }
 
-    char* value = malloc(length + 1);
+    char* value = malloc(sizeof(char) * length + 1);
     memcpy(value, lexer->buffer + start, length);
     value[length] = '\0';
 
