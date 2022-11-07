@@ -8,6 +8,7 @@ Parser* parser_new(Lexer* lexer) {
 }
 
 void parser_run(Parser* parser) {
+    
 }
 
 void parser_debug(Parser* parser) {
