@@ -15,3 +15,5 @@ typedef struct {
     bool is_debug;
     bool is_raw_input;
 } cli_options;
+
+int cli_parse(cli_args* arguments);

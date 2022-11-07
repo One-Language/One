@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 #include "cli.h"
+#include "file.h"
 #include "../lexer/lexer.h"
 
 void cli_help(cli_args* arguments) {

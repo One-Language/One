@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "../utility/file.h"
+
 typedef struct {
 } Token;
 

@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "lexer.h"
 
 Lexer* lexer_new(char* file, char* data) {
