@@ -1,6 +1,10 @@
+#ifndef _ONE_LEXER_H_
+#define _ONE_LEXER_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <inttypes.h>
 
 #include "../utility/file.h"
 
@@ -67,3 +71,5 @@ void lexer_free(Lexer* lexer);
 Token* token_make(TokenType type);
 
 Token* token_make_value(TokenType type, char* value);
+
+#endif
