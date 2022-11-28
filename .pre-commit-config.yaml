@@ -126,7 +126,7 @@ repos:
         description: Runs hadolint Docker image to lint Dockerfiles
         language: docker_image
         types: ['dockerfile']
-        entry: ghcr.io/hadolint/hadolint:v2.10.0 hadolint
+        entry: ghcr.io/hadolint/hadolint:v2.10.0 hadolint -c .github/linters/.hadolint.yaml
         files: ^Dockerfile$
       - id: shellcheck
         name: Lint Shell scripts
