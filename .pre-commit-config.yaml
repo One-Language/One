@@ -708,6 +708,7 @@ repos:
           - --license-filepath
           - license-templates/LICENSE.txt
           - --fuzzy-match-generates-todo
+          - --remove-header
       - id: insert-license
         name: Add license for all Shell files
         files: \.bash$|\.sh$
