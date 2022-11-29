@@ -1,17 +1,30 @@
-Documentation:
+documentation:
   - docs/**/*
+  - CONTRIBUTING.md
+  - CONTRIBUTORS.md
+  - README.md
+  - README_DOCKER.md
+
+examples:
+  - example/**/*
 
 github:
   - .github/**/*
 
+license-templates:
+  - license-templates/**/*
+
 repo:
   - ./*
+
+scripts:
+  - scripts/**/*
 
 src:
   - src/**/*
 
 tests:
-  - tests/**/*
+  - test/**/*
 
 tmp:
   - tmp/**/*
