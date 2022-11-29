@@ -350,7 +350,7 @@ header {
 
 <div dir="rtl">
 
-**التحويل إلى  CSS / HTML / JS:**
+**التحويل إلى CSS / HTML / JS:**
 
 </div>
 
