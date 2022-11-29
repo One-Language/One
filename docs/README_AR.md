@@ -54,7 +54,7 @@
 </div>
 
 اهلا وسهلا بك في <a href="https://onelang.org">One</a>!</br>
-إنها لغة برمجة نظام مفتوحة المصدر ، مستضافة ذاتيًا ، مما يجعل من السهل إنشاء برامج موثوقة وفعالة.
+إنها لغة برمجة أنظمة مفتوحة المصدر ، مستضافة ذاتيًا ، مما يجعل من السهل إنشاء برامج موثوقة وفعالة.
 يتم تطويره من قبل <a href="https://github.com/BaseMax">ماكس</a>, <a href="https://github.com/jbampton">جون</a> ومساهمين آخرين من المصادر المفتوحة.
 
 ### سيصدر المترجم للغة الواحدة "ONE" في غضون أشهر قليلة
@@ -350,7 +350,7 @@ header {
 
 <div dir="rtl">
 
-**التحويل إلى قاعدة CSS / HTML / JS:**
+**التحويل إلى  CSS / HTML / JS:**
 
 </div>
 
@@ -403,7 +403,7 @@ header {
 
 <!--Prerequisites-->
 
-#### البيئات المدعومة
+#### انظمة التشغيل المدعومة
 
 </div>
 
@@ -426,7 +426,7 @@ header {
 <!--Get Involved-->
 <h2 id="get-involved">➤ شارك</h2>
 
-نرحب بجميع أنواع المساهمات ، بما في ذلك تقارير الأخطاء وطلبات الميزات وتحسينات الوثائق وما إلى ذلك.
+نرحب بجميع أنواع المساهمات ، بما في ذلك تصحيح الأخطاء وطلبات التعديل وتحسينات الوثائق وما إلى ذلك.
 لطرح سؤال أو فتح مناقشة أو إنشاء مشكلة , نرجو الإنضمام إلى سيرفر الدسكورد الخاص بنا . <a href ="https://discord.gg/sFCE2HcMCa"><b>One</b> Discord Server</a>.
 
 إذا لم تكن على دراية بكيفية تقديم طلب تعديل على GitHub ، فيرجى قراءة هذا . [الدليل](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
@@ -443,7 +443,7 @@ header {
 
 <h2 id="license">➤ الرخصة</h2>
 
-`One` تم إصدارها بموجب رخصة جنو العمومية العامة v3.0. يرجى الرجوع إلى المصطلحات الموجودة في ملف الترخيص المتضمن في المستودع.
+`One` تم إصدارها بموجب رخصة جنو العمومية العامة v3.0. يرجى الرجوع إلى الشروط والأحكام الموجودة في ملف الترخيص المتضمن في المشروع.
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
