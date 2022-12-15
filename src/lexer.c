@@ -36,7 +36,14 @@ lexer_t* lexer_init(file_t* file)
     lex->file = file;
     lex->start = file->content;
     lex->current = file->content;
-    lex->line = 1;
+
+    lex->start_location.line = 1;
+    lex->start_location.column = 0;
+    lex->start_location.offset = 0;
+
+    lex->current_location.line = lex->start_location.line;
+    lex->current_location.column = lex->start_location.column;
+    lex->current_location.offset = lex->start_location.offset;
 
     lex->tokens = token_list_init();
 
@@ -54,9 +61,7 @@ void lexer_lex_next(lexer_t* lex)
     {
         case ' ':
         case '\t':
-            lex->current++;
-            lex->current_location.column++;
-            lex->current_location.offset++;
+            lexer_read_offset(lex, 1);
 
             lex->start = lex->current;
             lex->start_location = lex->current_location;
@@ -86,91 +91,102 @@ void lexer_lex_next(lexer_t* lex)
             break;
 
         case '(':
-            lex->current++;
-            lex->current_location.column++;
-            lex->current_location.offset++;
+            lexer_read_offset(lex, 1);
+
             lexer_add_token(lex, TOKEN_LEFT_PAREN);
             break;
         
         case ')':
-            lex->current++;
-            lex->current_location.column++;
-            lex->current_location.offset++;
+            lexer_read_offset(lex, 1);
+
             lexer_add_token(lex, TOKEN_RIGHT_PAREN);
             break;
 
         case '{':
-            lex->current++;
+            lexer_read_offset(lex, 1);
+
             lexer_add_token(lex, TOKEN_LEFT_BRACE);
             break;
         
         case '}':
-            lex->current++;
+            lexer_read_offset(lex, 1);
+
             lexer_add_token(lex, TOKEN_RIGHT_BRACE);
             break;
 
         case '[':
-            lex->current++;
+            lexer_read_offset(lex, 1);
+
             lexer_add_token(lex, TOKEN_LEFT_BRACKET);
             break;
         
         case ']':
-            lex->current++;
+            lexer_read_offset(lex, 1);
+
             lexer_add_token(lex, TOKEN_RIGHT_BRACKET);
             break;
 
         case ',':
-            lex->current++;
+            lexer_read_offset(lex, 1);
+
             lexer_add_token(lex, TOKEN_COMMA);
             break;
         
         case '.':
-            lex->current++;
+            lexer_read_offset(lex, 1);
+
             lexer_add_token(lex, TOKEN_DOT);
             break;
         
         case '-':
             if (lex->current[1] == '-') {
-                lex->current+=2;
+                lexer_read_offset(lex, 2);
+
                 lexer_add_token(lex, TOKEN_DECREMENT);
             } else {
-                lex->current++;
+                lexer_read_offset(lex, 1);
+                
                 lexer_add_token(lex, TOKEN_MINUS);
             }
             break;
         
         case '+':
             if (lex->current[1] == '+') {
-                lex->current+=2;
+                lexer_read_offset(lex, 2);
+
                 lexer_add_token(lex, TOKEN_INCREMENT);
             }
             else {
-                lex->current++;
+                lexer_read_offset(lex, 1);
+
                 lexer_add_token(lex, TOKEN_PLUS);
             }
             break;
         
         case ';':
-            lex->current++;
+            lexer_read_offset(lex, 1);
+
             lexer_add_token(lex, TOKEN_SEMICOLON);
             break;
         
         case '*':
             if (lex->current[1] == '*') {
-                lex->current+=2;
+                lexer_read_offset(lex, 2);
+
                 lexer_add_token(lex, TOKEN_EXPONENT);
             }
             else {
-                lex->current++;
+                lexer_read_offset(lex, 1);
+
                 lexer_add_token(lex, TOKEN_STAR);
             }
             break;
         
         case '!':
             if (lex->current[1] == '=') {
-                lex->current+=2;
+                lexer_read_offset(lex, 2);
+
                 lexer_add_token(lex, TOKEN_BANG_EQUAL);
-                lex->current++;
                 lex->start = lex->current;
             }
             else {
@@ -181,47 +197,58 @@ void lexer_lex_next(lexer_t* lex)
         
         case '=':
             if (lex->current[1] == '=') {
-                lex->current+=2;
+                lexer_read_offset(lex, 2);
+
                 lexer_add_token(lex, TOKEN_EQUAL_EQUAL);
             }
             else {
-                lex->current++;
+                lexer_read_offset(lex, 1);
+
                 lexer_add_token(lex, TOKEN_EQUAL);
             }
             break;
         
         case '<':
             if (lex->current[1] == '=') {
-                lex->current+=2;
+                lexer_read_offset(lex, 2);
+
                 lexer_add_token(lex, TOKEN_LESS_EQUAL);
             }
             else {
+                lexer_read_offset(lex, 1);
+
                 lexer_add_token(lex, TOKEN_LESS);
             }
             break;
         
         case '>':
             if (lex->current[1] == '=') {
-                lex->current+=2;
+                lexer_read_offset(lex, 2);
+
                 lexer_add_token(lex, TOKEN_GREATER_EQUAL);
             }
             else {
-                lex->current++;
+                lexer_read_offset(lex, 1);
+
                 lexer_add_token(lex, TOKEN_GREATER);
             }
             break;
         
         case '/':
             if (lex->current[1] == '/') {
-                lex->current+=2;
+                lexer_read_offset(lex, 2);
+
                 while (lex->current[0] != '\n' && lex->current[0] != '\0') {
-                    lex->current++;
+                    lexer_read_offset(lex, 1);
                 }
+
                 lex->start = lex->current;
+                lex->start_location = lex->current_location;
                 lexer_lex_next(lex);
             }
             else {
-                lex->current++;
+                lexer_read_offset(lex, 1);
+
                 lexer_add_token(lex, TOKEN_SLASH);
             }
             break;
@@ -231,7 +258,8 @@ void lexer_lex_next(lexer_t* lex)
             break;
 
         default:
-            lex->current++;
+            lexer_read_offset(lex, 1);
+
             lexer_add_token(lex, TOKEN_ERROR);
             break;
     }
@@ -261,7 +289,10 @@ void lexer_read_string(lexer_t* lex)
     lex->current++;
 
     while (lex->current[0] != '"' && lex->current[0] != '\0') {
-        if (lex->current[0] == '\n') lex->line++;
+        if (lex->current[0] == '\n') {
+            lex->current_location.line++;
+            lex->current_location.column = 0;
+        }
         lex->current++;
     }
 
