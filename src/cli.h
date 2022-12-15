@@ -14,6 +14,8 @@
 #include <string.h> // strcmp
 
 #include "file.h" // file_t
+#include "token.h" // token_list_t
+#include "lexer.h" // lexer_t, lexer_init, lexer_lex, lexer_free
 
 typedef enum {
     CLI_HELP,

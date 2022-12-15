@@ -58,6 +58,8 @@ char* file_read(file_t* file)
 
 	file->content[bytesRead] = '\0';
 
+    printf("===> '%s'\n", file->content);
+
 	fclose(file->file);
 
     return file->content;

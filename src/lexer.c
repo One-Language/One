@@ -33,6 +33,7 @@ lexer_t* lexer_init(file_t* file)
  */
 void lexer_lex(lexer_t* lex)
 {
+    printf("%s\n-------------------\n", lex->start);
     printf("%c\n", lex->start[0]);
 }
 
@@ -51,3 +52,14 @@ token_list_t* lexer_tokens(lexer_t* lex)
     return tokens;
 }
 
+/**
+ * @brief Free the lexer object
+ * 
+ * @param lexer_t* lexer
+ * 
+ * @return void
+ */
+void lexer_free(lexer_t* lex)
+{
+    free(lex);
+}
