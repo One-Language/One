@@ -1,4 +1,5 @@
 gcc one.c -c -o one.o
 gcc cli.c -c -o cli.o
-gcc one.o cli.o -o one.exe
+gcc file.c -c -o file.o
+gcc one.o cli.o file.o -o one.exe
 one -l input.one

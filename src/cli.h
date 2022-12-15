@@ -82,6 +82,15 @@ cli_t* cli_init(int argc, char** argv);
 cli_options_t* cli_options_init();
 
 /**
+ * @brief Parse the CLI arguments
+ * 
+ * @param cli_t* cli
+ * 
+ * @return cli_t*
+ */
+cli_t* cli_parse(cli_t* cli);
+
+/**
  * @brief Run the CLI object
  * 
  * @param cli_t* cli
@@ -89,6 +98,24 @@ cli_options_t* cli_options_init();
  * @return int 
  */
 int cli_run(cli_t* cli);
+
+/**
+ * @brief Print the version of the compiler
+ * 
+ * @param cli_t* cli
+ * 
+ * @return void
+ */
+void cli_print_version(cli_t* cli);
+
+/**
+ * @brief Print the help message
+ * 
+ * @param cli_t* cli
+ * 
+ * @return void
+ */
+void cli_print_help(cli_t* cli);
 
 /**
  * @brief Free the CLI object

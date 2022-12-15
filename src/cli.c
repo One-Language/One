@@ -40,6 +40,19 @@ cli_options_t* cli_options_init()
     options->output = NULL;
     return options;
 }
+
+/**
+ * @brief Print the version of the compiler
+ * 
+ * @param cli_t* cli
+ * 
+ * @return void
+ */
+void cli_print_version(cli_t* cli)
+{
+    printf("One Programming Language v0.0.1\n");
+}
+
 /**
  * @brief Print the help message
  * 
@@ -75,6 +88,13 @@ void cli_print_help(cli_t* cli)
     printf("\n");
 }
 
+/**
+ * @brief Parse the CLI arguments
+ * 
+ * @param cli_t* cli
+ * 
+ * @return cli_t*
+ */
 cli_t* cli_parse(cli_t* cli)
 {
     // If no argummets are passed
@@ -118,49 +138,27 @@ cli_t* cli_parse(cli_t* cli)
  */
 int cli_run(cli_t* cli)
 {
-    // if (cli->)
-    if (cli->argc <= 1) {
-        cli_print_help(cli);
-        return 0;
-    } else {
-        for (int i = 1; i < cli->argc; i++) {
-            if (strcmp(cli->argv[i], "-h") == 0 || strcmp(cli->argv[i], "--help") == 0) {
-                cli_print_help(cli);
-                return 0;
-            } else if (strcmp(cli->argv[i], "-v") == 0 || strcmp(cli->argv[i], "--version") == 0) {
-                printf("One Programming Language v0.0.1\n");
-                return 0;
-            } else if (strcmp(cli->argv[i], "-o") == 0 || strcmp(cli->argv[i], "--output") == 0) {
-                if (i + 1 < cli->argc) {
-                    i++;
-                    printf("Output file: %s\n", cli->argv[i]);
-                } else {
-                    printf("Error: No output file specified\n");
-                    return 1;
-                }
-            } else if (strcmp(cli->argv[i], "-p") == 0 || strcmp(cli->argv[i], "--parse") == 0) {
-                if (i + 1 < cli->argc) {
-                    i++;
-                    printf("Parse file: %s\n", cli->argv[i]);
-                } else {
-                    printf("Error: No parse file specified\n");
-                    return 1;
-                }
-            } else if (strcmp(cli->argv[i], "-l") == 0 || strcmp(cli->argv[i], "--lex") == 0) {
-                if (i + 1 < cli->argc) {
-                    i++;
-                    printf("Lex file: %s\n", cli->argv[i]);
-                } else {
-                    printf("Error: No lex file specified\n");
-                    return 1;
-                }
-            } else {
-                printf("Error: Unknown option: %s\n", cli->argv[i]);
-                return 1;
-            }
-        }
+    switch (cli->options->command) {
+        case CLI_HELP:
+            cli_print_help(cli);
+            break;
+        case CLI_VERSION:
+            cli_print_version(cli);
+            break;
+        case CLI_LEX:
+            printf("Lexing the source code...\n");
+            break;
+        case CLI_PARSE:
+            printf("Parsing the source code...\n");
+            break;
+        case CLI_UNKNOWN:
+            printf(cli->options->error == NULL ? "Unknown command\n" : cli->options->error);
+            break;
+        default:
+            break;
     }
 
+    // Default return value
     return 0;
 }
 
