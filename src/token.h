@@ -20,6 +20,32 @@ typedef enum {
     TOKEN_RET,
     TOKEN_NUMBER,
     TOKEN_IDENTIFIER,
+    TOKEN_STRING,
+
+    TOKEN_INCREMENT, // ++
+    TOKEN_DECREMENT, // --
+    TOKEN_EQUAL, // =
+    TOKEN_EQUAL_EQUAL, // ==
+    TOKEN_LESS_EQUAL, // <=
+    TOKEN_LESS, // <
+    TOKEN_GREATER_EQUAL, // >=
+    TOKEN_GREATER, // >
+    TOKEN_PLUS, // +
+    TOKEN_MINUS, // -
+    TOKEN_STAR, // *
+    TOKEN_EXPONENT, // **
+    TOKEN_SLASH, // /
+    TOKEN_DOT, // .
+    TOKEN_COMMA, // ,
+    TOKEN_SEMICOLON, // ;
+    TOKEN_BANG, // !
+    TOKEN_BANG_EQUAL, // !=
+    TOKEN_LEFT_PAREN, // (
+    TOKEN_RIGHT_PAREN, // )
+    TOKEN_LEFT_BRACE, // {
+    TOKEN_RIGHT_BRACE, // }
+    TOKEN_LEFT_BRACKET, // [
+    TOKEN_RIGHT_BRACKET, // ]
     TOKEN_EOF
 } token_type_t;
 

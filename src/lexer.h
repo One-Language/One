@@ -21,6 +21,7 @@ typedef struct {
     file_t* file;
     char* start;
     char* current;
+    int line;
     token_list_t* tokens;
 } lexer_t;
 
@@ -96,5 +97,14 @@ void lexer_add_token_value(lexer_t* lex, token_type_t type, char* value);
  * @return void
  */
 void lexer_read_identifier(lexer_t* lex);
+
+/**
+ * @brief Lex a double string
+ * 
+ * @param lexer_t* lexer
+ * 
+ * @return void
+ */
+void lexer_read_string(lexer_t* lex);
 
 #endif
