@@ -17,8 +17,8 @@ typedef struct {
 /**
  * @brief Initialize the CLI object
  * 
- * @param argc 
- * @param argv 
+ * @param int argc
+ * @param char** argv
  * 
  * @return cli_t* 
  */
@@ -27,7 +27,7 @@ cli_t* cli_init(int argc, char** argv);
 /**
  * @brief Run the CLI object
  * 
- * @param cli 
+ * @param cli_t* cli
  * 
  * @return int 
  */
@@ -36,7 +36,9 @@ int cli_run(cli_t* cli);
 /**
  * @brief Free the CLI object
  * 
- * @param cli 
+ * @param cli_t* cli
+ * 
+ * @return void
  */
 void cli_free(cli_t* cli);
 
