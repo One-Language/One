@@ -113,6 +113,10 @@ cli_t* cli_parse(cli_t* cli)
                 cli->options->error = malloc(sizeof(char) * 100);
                 sprintf_s(cli->options->error, 100, "Error: -o or --output option requires one argument.\n");
             }
+        } else if (strcmp(cli->argv[i], "-h") == 0 || strcmp(cli->argv[i], "--help") == 0) {
+            cli->options->command = CLI_HELP;
+        } else if (strcmp(cli->argv[i], "-v") == 0 || strcmp(cli->argv[i], "--version") == 0) {
+            cli->options->command = CLI_VERSION;
         } else if (strcmp(cli->argv[i], "-p") == 0 || strcmp(cli->argv[i], "--parse") == 0) {
             if (cli->options->command == CLI_UNKNOWN) continue;
 
@@ -122,7 +126,6 @@ cli_t* cli_parse(cli_t* cli)
 
             cli->options->command = CLI_LEX;
         } else {
-            cli->options->file = (file_t*)malloc(sizeof(file_t));
             cli->options->file = file_init(cli->argv[i]);
 
             if (file_exists(cli->options->file) == false) {

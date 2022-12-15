@@ -24,11 +24,7 @@ file_t* file_init(char* path)
     file->exists = false;
 
     file->file = fopen(file->path, "r");
-    if (file->file == NULL) {
-        file->exists = false;
-        return NULL;
-    }
-    file->exists = true;
+    file->exists = file->file == NULL ? false : true;
 
     return file;
 }
