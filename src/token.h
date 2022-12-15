@@ -19,6 +19,7 @@ typedef enum {
     TOKEN_FUNC,
     TOKEN_RET,
     TOKEN_NUMBER,
+    TOKEN_IDENTIFIER,
     TOKEN_EOF
 } token_type_t;
 
@@ -31,7 +32,9 @@ typedef struct {
 typedef struct {
     token_type_t type;
     char* value;
-    location_t* location;
+    char* start;
+    char* end;
+    // location_t* location;
 } token_t;
 
 typedef struct {
@@ -84,5 +87,28 @@ void token_list_free(token_list_t* list);
  * @return void
  */
 void token_list_print(token_list_t* list);
+
+/**
+ * @brief Initialize a token object
+ * 
+ * @param token_type_t type
+ * @param char* start
+ * @param char* end
+ * 
+ * @return token_t*
+ */
+token_t* token_init(token_type_t type, char* start, char* end);
+
+/**
+ * @brief Initialize a token object with value
+ * 
+ * @param token_type_t type
+ * @param char* start
+ * @param char* end
+ * @param char* value
+ * 
+ * @return token_t*
+ */
+token_t* token_init_value(token_type_t type, char* start, char* end, char* value);
 
 #endif

@@ -9,6 +9,42 @@
 #include "token.h"
 
 /**
+ * @brief Initialize a token object
+ * 
+ * @param token_type_t type
+ * @param char* start
+ * @param char* end
+ * 
+ * @return token_t*
+ */
+token_t* token_init(token_type_t type, char* start, char* end)
+{
+    token_t* token = (token_t*)malloc(sizeof(token_t));
+    token->type = type;
+    token->start = start;
+    token->end = end;
+    token->value = NULL;
+    return token;
+}
+
+/**
+ * @brief Initialize a token object with value
+ * 
+ * @param token_type_t type
+ * @param char* start
+ * @param char* end
+ * @param char* value
+ * 
+ * @return token_t*
+ */
+token_t* token_init_value(token_type_t type, char* start, char* end, char* value)
+{
+    token_t* token = token_init(type, start, end);
+    token->value = value;
+    return token;
+}
+
+/**
  * @brief Get the token name
  * 
  * @param type 
@@ -22,6 +58,7 @@ char* token_name(token_type_t type)
         case TOKEN_ELSE: return "else";
         case TOKEN_RET: return "ret";
         case TOKEN_NUMBER: return "number";
+        case TOKEN_IDENTIFIER: return "identifier";
         case TOKEN_EOF: return "eof";
         default: return "unknown";
     }

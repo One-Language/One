@@ -11,6 +11,8 @@
 
 #include <stdio.h> // printf
 #include <stdlib.h> // malloc, free
+#include <ctype.h> // isalpha, isdigit
+#include <string.h> // memcpy
 
 #include "file.h" // file_t
 #include "token.h" // token_t, token_list_t
@@ -57,5 +59,35 @@ token_list_t* lexer_tokens(lexer_t* lex);
  * @return void
  */
 void lexer_free(lexer_t* lex);
+
+/**
+ * @brief Add a token to the token list
+ * 
+ * @param lexer_t* lexer
+ * @param token_type_t type
+ * 
+ * @return void
+ */
+void lexer_add_token(lexer_t* lex, token_type_t type);
+
+/**
+ * @brief Add a token with value to the token list
+ * 
+ * @param lexer_t* lexer
+ * @param token_type_t type
+ * @param char* value
+ * 
+ * @return void
+ */
+void lexer_add_token_value(lexer_t* lex, token_type_t type, char* value);
+
+/**
+ * @brief Lex a identifier
+ * 
+ * @param lexer_t* lexer
+ * 
+ * @return void
+ */
+void lexer_read_identifier(lexer_t* lex);
 
 #endif

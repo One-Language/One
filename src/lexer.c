@@ -36,8 +36,72 @@ lexer_t* lexer_init(file_t* file)
  */
 void lexer_lex(lexer_t* lex)
 {
-    printf("%s\n-------------------\n", lex->start);
-    printf("%c\n", lex->start[0]);
+    // printf("%s\n-------------------\n", lex->start);
+    // printf("%c\n", lex->start[0]);
+    switch (lex->start[0])
+    {
+        case 'a'...'z':
+        case 'A'...'Z':
+        case '_':
+            lexer_read_identifier(lex);
+            break;
+        default:
+            lexer_add_token(lex, TOKEN_EOF);
+            break;
+    }
+}
+
+/**
+ * @brief Lex a identifier
+ * 
+ * @param lexer_t* lexer
+ * 
+ * @return void
+ */
+void lexer_read_identifier(lexer_t* lex)
+{
+    while (lex->current[0] != '\0' && (isalpha(lex->current[0]) || isdigit(lex->current[0]) || lex->current[0] == '_')) {
+        lex->current++;
+    }
+
+    char* value = (char*)malloc(sizeof(char) * (lex->current - lex->start + 1));
+    memcpy(value, lex->start, lex->current - lex->start);
+    value[lex->current - lex->start] = '\0';
+
+    lexer_add_token_value(lex, TOKEN_IDENTIFIER, value);
+}
+
+/**
+ * @brief Add a token to the token list
+ * 
+ * @param lexer_t* lexer
+ * @param token_type_t type
+ * 
+ * @return void
+ */
+void lexer_add_token(lexer_t* lex, token_type_t type)
+{
+    token_t* token = token_init(type, lex->start, lex->current);
+    token_list_add(lex->tokens, token);
+
+    lex->start = lex->current;
+}
+
+/**
+ * @brief Add a token with value to the token list
+ * 
+ * @param lexer_t* lexer
+ * @param token_type_t type
+ * @param char* value
+ * 
+ * @return void
+ */
+void lexer_add_token_value(lexer_t* lex, token_type_t type, char* value)
+{
+    token_t* token = token_init_value(type, lex->start, lex->current, value);
+    token_list_add(lex->tokens, token);
+
+    lex->start = lex->current;
 }
 
 /**
