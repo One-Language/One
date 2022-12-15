@@ -13,7 +13,7 @@
 #include <stdlib.h> // malloc, free
 #include <string.h> // strcmp
 
-#include "file.h" // file_t
+#include "file.h" // file_t, file_print
 #include "token.h" // token_list_t
 #include "lexer.h" // lexer_t, lexer_init, lexer_lex, lexer_free
 

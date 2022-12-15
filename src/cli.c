@@ -114,8 +114,12 @@ cli_t* cli_parse(cli_t* cli)
                 sprintf_s(cli->options->error, 100, "Error: -o or --output option requires one argument.\n");
             }
         } else if (strcmp(cli->argv[i], "-h") == 0 || strcmp(cli->argv[i], "--help") == 0) {
+            if (cli->options->command == CLI_UNKNOWN) continue;
+
             cli->options->command = CLI_HELP;
         } else if (strcmp(cli->argv[i], "-v") == 0 || strcmp(cli->argv[i], "--version") == 0) {
+            if (cli->options->command == CLI_UNKNOWN) continue;
+
             cli->options->command = CLI_VERSION;
         } else if (strcmp(cli->argv[i], "-p") == 0 || strcmp(cli->argv[i], "--parse") == 0) {
             if (cli->options->command == CLI_UNKNOWN) continue;
@@ -153,25 +157,34 @@ int cli_run(cli_t* cli)
         case CLI_HELP:
             cli_print_help(cli);
             break;
+
         case CLI_VERSION:
             cli_print_version(cli);
             break;
+
         case CLI_LEX:
-            printf("Lexing the source code...\n");
- 
+            printf("Lexing the source code...\n\n");
+
+            printf("Source code:\n");
+            file_print(cli->options->file);
+            printf("-----------------\n");
+
             lexer_t* lex = lexer_init(cli->options->file);
             lexer_lex(lex);
+
             token_list_t* tokens = lexer_tokens(lex);
             token_list_print(tokens);
+
             lexer_free(lex);
             break;
+
         case CLI_PARSE:
             printf("Parsing the source code...\n");
             break;
+
         case CLI_UNKNOWN:
-            printf(cli->options->error == NULL ? "Unknown command\n" : cli->options->error);
-            break;
         default:
+            printf(cli->options->error == NULL ? "Unknown command\n" : cli->options->error);
             break;
     }
 
