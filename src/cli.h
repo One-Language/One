@@ -39,6 +39,7 @@ typedef struct {
     file_t* file;
     char* output;
     char* error;
+    bool is_json;
     // char* target;
     // char* arch;
     // char* os;

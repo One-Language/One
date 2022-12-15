@@ -38,6 +38,7 @@ cli_options_t* cli_options_init()
     options->output = NULL;
     options->file = NULL;
     options->output = NULL;
+    options->is_json = false;
     return options;
 }
 
@@ -84,7 +85,7 @@ void cli_print_help(cli_t* cli)
     // printf("  -w, --watch\t\tWatch the source code\n");
     // printf("  -x, --execute\t\tExecute the source code\n");
     // printf("  -y, --yaml\t\tPrint the YAML of the source code\n");
-    // printf("  -j, --json\t\tPrint the JSON of the source code\n");
+    printf("  -j, --json\t\tPrint the JSON of main command\n");
     printf("\n");
 }
 
@@ -129,6 +130,8 @@ cli_t* cli_parse(cli_t* cli)
             if (cli->options->command == CLI_UNKNOWN) continue;
 
             cli->options->command = CLI_LEX;
+        } else if (strcmp(cli->argv[i], "-j") == 0 || strcmp(cli->argv[i], "--json") == 0) {
+            cli->options->is_json = true;
         } else {
             cli->options->file = file_init(cli->argv[i]);
             file_read(cli->options->file);
@@ -163,17 +166,21 @@ int cli_run(cli_t* cli)
             break;
 
         case CLI_LEX:
-            printf("Lexing the source code...\n\n");
-
-            printf("Source code:\n");
-            file_print(cli->options->file);
-            printf("-----------------\n");
-
             lexer_t* lex = lexer_init(cli->options->file);
             lexer_lex(lex);
 
             token_list_t* tokens = lexer_tokens(lex);
-            token_list_print(tokens);
+
+            if (cli->options->is_json) {
+                token_list_print_json(tokens);
+            } else {
+                printf("Lexing the source code...\n\n");
+
+                printf("Source code:\n");
+                file_print(cli->options->file);
+                printf("-----------------\n");
+                token_list_print(tokens);
+            }
 
             lexer_free(lex);
             break;

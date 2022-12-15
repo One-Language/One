@@ -173,3 +173,30 @@ void token_list_print(token_list_t* list)
         printf("\n");
     }
 }
+
+/**
+ * @brief Print the token list object in JSON format
+ * 
+ * @param token_list_t* list
+ * 
+ * @return void
+ */
+void token_list_print_json(token_list_t* list)
+{
+    printf("[");
+    for (int i = 0; i < list->size; i++) {
+        token_t* token = list->data[i];
+
+        printf("{");
+        printf("\"type\": \"%s\", ", token_name(token->type));
+        printf("\"start\": \"%.*s\", ", (int)(token->end - token->start), token->start);
+        printf("\"end\": \"%.*s\", ", (int)(token->end - token->start), token->end);
+        printf("\"start_location\": {\"line\": %d, \"column\": %d}, ", token->start_location.line, token->start_location.column);
+        printf("\"end_location\": {\"line\": %d, \"column\": %d}", token->end_location.line, token->end_location.column);
+        if (token->value != NULL) printf(", \"value\": \"%s\"", token->value);
+        printf("}");
+
+        if (i < list->size - 1) printf(", ");
+    }
+    printf("]");
+}
