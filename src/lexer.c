@@ -286,14 +286,15 @@ void lexer_lex(lexer_t* lex)
  */
 void lexer_read_string(lexer_t* lex)
 {
-    lex->current++;
+    lexer_read_offset(lex, 1);
 
     while (lex->current[0] != '"' && lex->current[0] != '\0') {
+        lexer_read_offset(lex, 1);
+
         if (lex->current[0] == '\n') {
             lex->current_location.line++;
             lex->current_location.column = 0;
         }
-        lex->current++;
     }
 
     if (lex->current[0] == '\0') {
@@ -301,7 +302,7 @@ void lexer_read_string(lexer_t* lex)
         return;
     }
 
-    lex->current++;
+    lexer_read_offset(lex, 1);
 
     char* value = (char*)malloc(lex->current - lex->start);
     memcpy(value, lex->start, lex->current - lex->start);
@@ -320,7 +321,7 @@ void lexer_read_string(lexer_t* lex)
 void lexer_read_identifier(lexer_t* lex)
 {
     while (lex->current[0] != '\0' && (isalpha(lex->current[0]) || isdigit(lex->current[0]) || lex->current[0] == '_')) {
-        lex->current++;
+        lexer_read_offset(lex, 1);
     }
 
     char* value = (char*)malloc(sizeof(char) * (lex->current - lex->start + 1));

@@ -139,9 +139,8 @@ void token_list_add(token_list_t* list, token_t* token)
  */
 void token_list_free(token_list_t* list)
 {
-    for (int i = 0; i < list->size; i++) {
-        free(list->data[i]);
-    }
+    for (int i = 0; i < list->size; i++) free(list->data[i]);
+
     free(list->data);
     free(list);
 }
@@ -159,7 +158,15 @@ void token_list_print(token_list_t* list)
     for (int i = 0; i < list->size; i++) {
         token_t* token = list->data[i];
 
-        printf("\t" "%s" "\t" "%.*s" "\t" "%d:%d" "\t" "%d:%d" "\t", token_name(token->type), (int)(token->end - token->start), token->start, token->start_location.line, token->start_location.column, token->end_location.line, token->end_location.column);
+        printf("\t" "%s" "\t" "%.*s" "\t" "%d:%d" "\t" "%d:%d" "\t",
+            token_name(token->type),
+            (int)(token->end - token->start),
+            token->start,
+            token->start_location.line,
+            token->start_location.column,
+            token->end_location.line,
+            token->end_location.column
+        );
 
         if (token->value != NULL) printf("%s", token->value);
 
