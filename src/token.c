@@ -59,6 +59,33 @@ char* token_name(token_type_t type)
         case TOKEN_RET: return "ret";
         case TOKEN_NUMBER: return "number";
         case TOKEN_IDENTIFIER: return "identifier";
+        case TOKEN_STRING: return "string";
+
+        case TOKEN_INCREMENT: return "increment";
+        case TOKEN_DECREMENT: return "decrement";
+        case TOKEN_EQUAL: return "equal";
+        case TOKEN_EQUAL_EQUAL: return "equal_equal";
+        case TOKEN_LESS_EQUAL: return "less_equal";
+        case TOKEN_LESS: return "less";
+        case TOKEN_GREATER_EQUAL: return "greater_equal";
+        case TOKEN_GREATER: return "greater";
+        case TOKEN_PLUS: return "plus";
+        case TOKEN_MINUS: return "minus";
+        case TOKEN_STAR: return "star";
+        case TOKEN_EXPONENT: return "exponent";
+        case TOKEN_SLASH: return "slash";
+        case TOKEN_DOT: return "dot";
+        case TOKEN_COMMA: return "comma";
+        case TOKEN_SEMICOLON: return "semicolon";
+        case TOKEN_BANG: return "bang";
+        case TOKEN_BANG_EQUAL: return "bang_equal";
+        case TOKEN_LEFT_PAREN: return "left_paren";
+        case TOKEN_RIGHT_PAREN: return "right_paren";
+        case TOKEN_LEFT_BRACE: return "left_brace";
+        case TOKEN_RIGHT_BRACE: return "right_brace";
+        case TOKEN_LEFT_BRACKET: return "left_bracket";
+        case TOKEN_RIGHT_BRACKET: return "right_bracket";
+
         case TOKEN_EOF: return "eof";
         default: return "unknown";
     }
