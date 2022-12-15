@@ -1,3 +1,11 @@
+/**
+ The One Programming Language
+ File: cli.c
+  _        _
+ / \ |\ | |_    Max Base <maxbasecode@gmail.com>
+ \_/ | \| |_    Copyright 2023; One Language Contributors
+ **/
+
 #include "cli.h"
 
 /**
@@ -10,7 +18,7 @@
  */
 cli_t* cli_init(int argc, char** argv)
 {
-    cli_t* cli = (cli_t*)malloc(sizeof(CLI));
+    cli_t* cli = (cli_t*)malloc(sizeof(cli_t));
     cli->argc = argc;
     cli->argv = argv;
 }

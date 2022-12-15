@@ -1,9 +1,17 @@
+/**
+ The One Programming Language
+ File: cli.h
+  _        _
+ / \ |\ | |_    Max Base <maxbasecode@gmail.com>
+ \_/ | \| |_    Copyright 2023; One Language Contributors
+ **/
+
 #ifndef _CLI_H_
 #define _CLI_H_
 
 typedef struct {
     int argc;
-    char **argv;
+    char** argv;
 } cli_t;
 
 /**
