@@ -38,6 +38,7 @@ token_list_t* token_list_init()
 {
     token_list_t* list = (token_list_t*)malloc(sizeof(token_list_t));
     list->capacity = 2;
+    list->size = 0;
     list->data = (token_t**)malloc(sizeof(token_t*) * list->capacity);
     return list;
 }
