@@ -340,7 +340,7 @@ void lexer_read_identifier(lexer_t* lex)
  */
 void lexer_add_token(lexer_t* lex, token_type_t type)
 {
-    token_t* token = token_init(type, lex->start, lex->current);
+    token_t* token = token_init(type, lex->start, lex->current, lex->start_location, lex->current_location);
     token_list_add(lex->tokens, token);
 
     lex->start = lex->current;
@@ -358,7 +358,7 @@ void lexer_add_token(lexer_t* lex, token_type_t type)
  */
 void lexer_add_token_value(lexer_t* lex, token_type_t type, char* value)
 {
-    token_t* token = token_init_value(type, lex->start, lex->current, value);
+    token_t* token = token_init_value(type, lex->start, lex->current, lex->start_location, lex->current_location, value);
     token_list_add(lex->tokens, token);
 
     lex->start = lex->current;

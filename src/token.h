@@ -61,7 +61,8 @@ typedef struct {
     char* value;
     char* start;
     char* end;
-    // location_t* location;
+    location_t start_location;
+    location_t end_location;
 } token_t;
 
 typedef struct {
@@ -121,10 +122,12 @@ void token_list_print(token_list_t* list);
  * @param token_type_t type
  * @param char* start
  * @param char* end
+ * @param location_t start_location
+ * @param location_t end_location
  * 
  * @return token_t*
  */
-token_t* token_init(token_type_t type, char* start, char* end);
+token_t* token_init(token_type_t type, char* start, char* end, location_t start_location, location_t end_location);
 
 /**
  * @brief Initialize a token object with value
@@ -132,10 +135,12 @@ token_t* token_init(token_type_t type, char* start, char* end);
  * @param token_type_t type
  * @param char* start
  * @param char* end
+ * @param location_t start_location
+ * @param location_t end_location
  * @param char* value
  * 
  * @return token_t*
  */
-token_t* token_init_value(token_type_t type, char* start, char* end, char* value);
+token_t* token_init_value(token_type_t type, char* start, char* end, location_t start_location, location_t end_location, char* value);
 
 #endif

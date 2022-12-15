@@ -14,15 +14,19 @@
  * @param token_type_t type
  * @param char* start
  * @param char* end
+ * @param location_t start_location
+ * @param location_t end_location
  * 
  * @return token_t*
  */
-token_t* token_init(token_type_t type, char* start, char* end)
+token_t* token_init(token_type_t type, char* start, char* end, location_t start_location, location_t end_location)
 {
     token_t* token = (token_t*)malloc(sizeof(token_t));
     token->type = type;
     token->start = start;
     token->end = end;
+    token->start_location = start_location;
+    token->end_location = end_location;
     token->value = NULL;
     return token;
 }
@@ -33,13 +37,15 @@ token_t* token_init(token_type_t type, char* start, char* end)
  * @param token_type_t type
  * @param char* start
  * @param char* end
+ * @param location_t start_location
+ * @param location_t end_location
  * @param char* value
  * 
  * @return token_t*
  */
-token_t* token_init_value(token_type_t type, char* start, char* end, char* value)
+token_t* token_init_value(token_type_t type, char* start, char* end, location_t start_location, location_t end_location, char* value)
 {
-    token_t* token = token_init(type, start, end);
+    token_t* token = token_init(type, start, end, start_location, end_location);
     token->value = value;
     return token;
 }
@@ -152,6 +158,11 @@ void token_list_print(token_list_t* list)
     printf("%d Tokens\n", list->size);
     for (int i = 0; i < list->size; i++) {
         token_t* token = list->data[i];
-        printf("\t%s(%s)\n", token_name(token->type), token->value == NULL ? "None" : token->value);
+
+        printf("\t" "%s" "\t" "%.*s" "\t" "%d:%d" "\t" "%d:%d" "\t", token_name(token->type), (int)(token->end - token->start), token->start, token->start_location.line, token->start_location.column, token->end_location.line, token->end_location.column);
+
+        if (token->value != NULL) printf("%s", token->value);
+
+        printf("\n");
     }
 }
