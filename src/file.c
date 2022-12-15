@@ -1,6 +1,6 @@
 /**
  The One Programming Language
- File: file.h
+ File: file.c
   _        _
  / \ |\ | |_    Max Base <maxbasecode@gmail.com>
  \_/ | \| |_    Copyright 2023; One Language Contributors
@@ -22,6 +22,14 @@ file_t* file_init(char* path)
     file->content = NULL;
     file->size = 0;
     file->exists = false;
+
+    file->file = fopen(file->path, "r");
+    if (file->file == NULL) {
+        file->exists = false;
+        return NULL;
+    }
+    file->exists = true;
+
     return file;
 }
 
@@ -34,13 +42,6 @@ file_t* file_init(char* path)
  */
 char* file_read(file_t* file)
 {
-    file->file = fopen(file->path, "r");
-    if (file->file == NULL) {
-        file->exists = false;
-        return NULL;
-    }
-    file->exists = true;
-
 	fseek(file->file, 0L, SEEK_END);
 	file->size = ftell(file->file);
 	rewind(file->file);
@@ -94,13 +95,13 @@ void file_print(file_t* file)
 }
 
 /**
- * @brief Check a file is exist or not
+ * @brief Check a file is exists or not
  * 
  * @param file_t* file
  * 
  * @return bool
  */
-bool file_exist(file_t* file)
+bool file_exists(file_t* file)
 {
     return file->exists;
 }

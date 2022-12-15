@@ -13,6 +13,8 @@
 #include <stdlib.h> // malloc, free
 #include <string.h> // strcmp
 
+#include "file.h" // file_t
+
 typedef enum {
     CLI_HELP,
     CLI_VERSION,
@@ -32,7 +34,7 @@ typedef enum {
 
 typedef struct {
     cli_command_t command;
-    char* file;
+    file_t* file;
     char* output;
     char* error;
     // char* target;

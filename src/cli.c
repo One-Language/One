@@ -122,7 +122,14 @@ cli_t* cli_parse(cli_t* cli)
 
             cli->options->command = CLI_LEX;
         } else {
-            cli->options->file = cli->argv[i];
+            cli->options->file = (file_t*)malloc(sizeof(file_t));
+            cli->options->file = file_init(cli->argv[i]);
+
+            if (file_exists(cli->options->file) == false) {
+                cli->options->command = CLI_UNKNOWN;
+                cli->options->error = malloc(sizeof(char) * 100);
+                sprintf_s(cli->options->error, 100, "Error: File '%s' does not exist.\n", cli->options->file->path);
+            }
         }
     }
 
