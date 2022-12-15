@@ -32,7 +32,7 @@ typedef struct {
 } token_t;
 
 typedef struct {
-    token_t** tokens;
+    token_t** data;
     int size;
     int capacity;
 } token_list_t;

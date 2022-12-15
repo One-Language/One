@@ -9,7 +9,11 @@
 #ifndef _ONE_LEXER_H_
 #define _ONE_LEXER_H_
 
-#include "token.h"
+#include <stdio.h> // printf
+#include <stdlib.h> // malloc, free
+
+#include "file.h" // file_t
+#include "token.h" // token_t, token_list_t
 
 typedef struct {
     file_t* file;

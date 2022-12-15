@@ -1,9 +1,9 @@
 /**
  The One Programming Language
  File: file.c
-  _        _
- / \ |\ | |_    Max Base <maxbasecode@gmail.com>
- \_/ | \| |_    Copyright 2023; One Language Contributors
+  _		_
+ / \ |\ | |_	Max Base <maxbasecode@gmail.com>
+ \_/ | \| |_	Copyright 2023; One Language Contributors
  **/
 
 #include "file.h"
@@ -17,16 +17,16 @@
  */
 file_t* file_init(char* path)
 {
-    file_t* file = (file_t*)malloc(sizeof(file_t));
-    file->path = path;
-    file->content = NULL;
-    file->size = 0;
-    file->exists = false;
+	file_t* file = (file_t*)malloc(sizeof(file_t));
+	file->path = path;
+	file->content = NULL;
+	file->size = 0;
+	file->exists = false;
 
-    file->file = fopen(file->path, "r");
-    file->exists = file->file == NULL ? false : true;
+	file->file = fopen(file->path, "r");
+	file->exists = file->file == NULL ? false : true;
 
-    return file;
+	return file;
 }
 
 /**
@@ -42,27 +42,25 @@ char* file_read(file_t* file)
 	file->size = ftell(file->file);
 	rewind(file->file);
 
-    file->content = (char*)malloc(file->size + 1);
+	file->content = (char*)malloc(file->size + 1);
 	if (file->content == NULL) {
 		printf("Not enough memory to read \"%s\".\n", file->path);
 		exit(74);
-        return NULL;
+		return NULL;
 	}
 
 	size_t bytesRead = fread(file->content, sizeof(char), file->size, file->file);
-	if (bytesRead < file->size) {
-		printf("Could not read the \"%s\".\n", file->path);
-		exit(74);
-        return NULL;
-	}
+    // if (bytesRead < file->size) {
+    //     printf("Could not read file \"%s\".\n", file->path);
+    //     exit(74);
+    //     return NULL;
+    // }
 
 	file->content[bytesRead] = '\0';
 
-    printf("===> '%s'\n", file->content);
-
 	fclose(file->file);
 
-    return file->content;
+	return file->content;
 }
 
 /**
@@ -74,8 +72,8 @@ char* file_read(file_t* file)
  */
 void file_free(file_t* file)
 {
-    free(file->content);
-    free(file);
+	free(file->content);
+	free(file);
 }
 
 /**
@@ -87,9 +85,9 @@ void file_free(file_t* file)
  */
 void file_print(file_t* file)
 {
-    if (file->exists == false || file->content == NULL) return;
+	if (file->exists == false || file->content == NULL) return;
 
-    printf("%s", file->content);
+	printf("%s", file->content);
 }
 
 /**
@@ -101,7 +99,7 @@ void file_print(file_t* file)
  */
 bool file_exists(file_t* file)
 {
-    return file->exists;
+	return file->exists;
 }
 
 /**
@@ -113,9 +111,9 @@ bool file_exists(file_t* file)
  */
 size_t file_size(file_t* file)
 {
-    if (file->exists == false) return -1;
+	if (file->exists == false) return -1;
 
-    return file->size;
+	return file->size;
 }
 
 /**
@@ -127,7 +125,7 @@ size_t file_size(file_t* file)
  */
 char* file_path(file_t* file)
 {
-    return file->path;
+	return file->path;
 }
 
 /**
@@ -139,7 +137,7 @@ char* file_path(file_t* file)
  */
 char* file_name(file_t* file)
 {
-    return file->name;
+	return file->name;
 }
 
 /**
@@ -151,7 +149,7 @@ char* file_name(file_t* file)
  */
 char* file_extension(file_t* file)
 {
-    return file->extension;
+	return file->extension;
 }
 
 /**
@@ -163,5 +161,5 @@ char* file_extension(file_t* file)
  */
 char* file_directory(file_t* file)
 {
-    return file->directory;
+	return file->directory;
 }
