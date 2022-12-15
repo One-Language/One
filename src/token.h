@@ -9,6 +9,9 @@
 #ifndef _ONE_TOKEN_H
 #define _ONE_TOKEN_H
 
+#include <stdio.h> // printf
+#include <stdlib.h> // malloc, free
+
 typedef enum {
     TOKEN_ERROR,
     TOKEN_IF,
@@ -44,5 +47,42 @@ typedef struct {
  * @return char* 
  */
 char* token_name(token_type_t type);
+
+/**
+ * @brief Initialize the token list object
+ * 
+ * @param void
+ * 
+ * @return token_list_t* 
+ */
+token_list_t* token_list_init();
+
+/**
+ * @brief Add a token to the list
+ * 
+ * @param token_list_t* list
+ * @param token_t* token
+ * 
+ * @return void
+ */
+void token_list_add(token_list_t* list, token_t* token);
+
+/**
+ * @brief Free the token list object
+ * 
+ * @param token_list_t* list
+ * 
+ * @return void
+ */
+void token_list_free(token_list_t* list);
+
+/**
+ * @brief Print the token list object
+ * 
+ * @param token_list_t* list
+ * 
+ * @return void
+ */
+void token_list_print(token_list_t* list);
 
 #endif

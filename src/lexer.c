@@ -17,11 +17,14 @@
  */
 lexer_t* lexer_init(file_t* file)
 {
-    lexer_t* lexer = (lexer_t*)malloc(sizeof(lexer_t));
-    lexer->file = file;
-    lexer->start = file->content;
-    lexer->current = file->content;
-    return lexer;
+    lexer_t* lex = (lexer_t*)malloc(sizeof(lexer_t));
+    lex->file = file;
+    lex->start = file->content;
+    lex->current = file->content;
+
+    lex->tokens = token_list_init();
+
+    return lex;
 }
 
 /**
@@ -46,10 +49,7 @@ void lexer_lex(lexer_t* lex)
  */
 token_list_t* lexer_tokens(lexer_t* lex)
 {
-    token_list_t* tokens = (token_list_t*)malloc(sizeof(token_list_t));
-    tokens->data = (token_t**)malloc(sizeof(token_t*));
-    tokens->size = 0;
-    return tokens;
+    return lex->tokens;
 }
 
 /**
