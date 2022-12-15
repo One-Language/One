@@ -15,13 +15,14 @@
 #include <string.h> // memcpy
 
 #include "file.h" // file_t
-#include "token.h" // token_t, token_list_t
+#include "token.h" // token_t, token_list_t, location_t
 
 typedef struct {
     file_t* file;
     char* start;
     char* current;
-    int line;
+    location_t start_location;
+    location_t current_location;
     token_list_t* tokens;
 } lexer_t;
 
