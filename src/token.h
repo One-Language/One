@@ -31,6 +31,12 @@ typedef struct {
     location_t* location;
 } token_t;
 
+typedef struct {
+    token_t** tokens;
+    int size;
+    int capacity;
+} token_list_t;
+
 /**
  * @brief Get the token name
  * 

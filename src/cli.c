@@ -157,14 +157,17 @@ int cli_run(cli_t* cli)
             break;
         case CLI_LEX:
             printf("Lexing the source code...\n");
+
             lexer_t* lex = lexer_init(cli->options->file);
             lexer_lex(lex);
-            token_list_t* tokens = lexer_tokens();
+            token_list_t* tokens = lexer_tokens(lex);
+
             printf("%d Tokens\n", tokens->count);
             for (int i = 0; i < tokens->count; i++) {
                 token_t* token = tokens->data[i];
                 printf("\t%s(%s)\n", token_name(token->type), token->value == NULL ? "None", token->value);
             }
+
             lexer_free(lex);
             break;
         case CLI_PARSE:
