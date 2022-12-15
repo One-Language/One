@@ -28,7 +28,42 @@ lexer_t* lexer_init(file_t* file)
 }
 
 /**
- * @brief Lex the content of the file
+ * @brief Lex the next token in the content
+ * 
+ * @param lex 
+ */
+void lexer_lex_next(lexer_t* lex)
+{
+    switch (lex->start[0])
+    {
+        case ' ':
+        case '\t':
+        case '\n':
+        case '\r':
+            lex->current++;
+            lex->start = lex->current;
+            lexer_lex_next(lex);
+            break;
+
+        case '\0':
+            lexer_add_token(lex, TOKEN_EOF);
+            break;
+
+        case 'a'...'z':
+        case 'A'...'Z':
+        case '_':
+            lexer_read_identifier(lex);
+            break;
+
+        default:
+            lex->current++;
+            lexer_add_token(lex, TOKEN_ERROR);
+            break;
+    }
+}
+
+/**
+ * @brief Lex all tokens from the content
  * 
  * @param lexer_t* lexer
  * 
@@ -36,19 +71,7 @@ lexer_t* lexer_init(file_t* file)
  */
 void lexer_lex(lexer_t* lex)
 {
-    // printf("%s\n-------------------\n", lex->start);
-    // printf("%c\n", lex->start[0]);
-    switch (lex->start[0])
-    {
-        case 'a'...'z':
-        case 'A'...'Z':
-        case '_':
-            lexer_read_identifier(lex);
-            break;
-        default:
-            lexer_add_token(lex, TOKEN_EOF);
-            break;
-    }
+    while(lex->current[0] != '\0') lexer_lex_next(lex);
 }
 
 /**

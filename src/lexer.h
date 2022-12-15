@@ -34,7 +34,14 @@ typedef struct {
 lexer_t* lexer_init(file_t* file);
 
 /**
- * @brief Lex the content of the file
+ * @brief Lex the next token in the content
+ * 
+ * @param lex 
+ */
+void lexer_lex_next(lexer_t* lex);
+
+/**
+ * @brief Lex all tokens from the content
  * 
  * @param lexer_t* lexer
  * 
