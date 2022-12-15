@@ -108,4 +108,14 @@ void lexer_read_identifier(lexer_t* lex);
  */
 void lexer_read_string(lexer_t* lex);
 
+/**
+ * @brief Increment the lexer position
+ * 
+ * @param lexer_t* lexer
+ * @param int count
+ * 
+ * @return void
+ */
+void lexer_read_offset(lexer_t* lex, int offset);
+
 #endif

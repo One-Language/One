@@ -9,6 +9,21 @@
 #include "lexer.h"
 
 /**
+ * @brief Increment the lexer position
+ * 
+ * @param lexer_t* lexer
+ * @param int count
+ * 
+ * @return void
+ */
+void lexer_read_offset(lexer_t* lex, int offset)
+{
+    lex->current += offset;
+    lex->current_location.column += offset;
+    lex->current_location.offset += offset;
+}
+
+/**
  * @brief Initialize the lexer object
  * 
  * @param file_t* file
@@ -39,10 +54,24 @@ void lexer_lex_next(lexer_t* lex)
     {
         case ' ':
         case '\t':
+            lex->current++;
+            lex->current_location.column++;
+            lex->current_location.offset++;
+
+            lex->start = lex->current;
+            lex->start_location = lex->current_location;
+            lexer_lex_next(lex);
+            break;
+
         case '\n':
         case '\r':
             lex->current++;
+            lex->current_location.column = 0;
+            lex->current_location.offset++;
+            lex->current_location.line++;
+
             lex->start = lex->current;
+            lex->start_location = lex->current_location;
             lexer_lex_next(lex);
             break;
 
@@ -58,11 +87,15 @@ void lexer_lex_next(lexer_t* lex)
 
         case '(':
             lex->current++;
+            lex->current_location.column++;
+            lex->current_location.offset++;
             lexer_add_token(lex, TOKEN_LEFT_PAREN);
             break;
         
         case ')':
             lex->current++;
+            lex->current_location.column++;
+            lex->current_location.offset++;
             lexer_add_token(lex, TOKEN_RIGHT_PAREN);
             break;
 
@@ -280,6 +313,7 @@ void lexer_add_token(lexer_t* lex, token_type_t type)
     token_list_add(lex->tokens, token);
 
     lex->start = lex->current;
+    lex->start_location = lex->current_location;
 }
 
 /**
@@ -297,6 +331,7 @@ void lexer_add_token_value(lexer_t* lex, token_type_t type, char* value)
     token_list_add(lex->tokens, token);
 
     lex->start = lex->current;
+    lex->start_location = lex->current_location;
 }
 
 /**
