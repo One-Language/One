@@ -6,8 +6,8 @@
  \_/ | \| |_    Copyright 2023; One Language Contributors
  **/
 
-#ifndef _CLI_H_
-#define _CLI_H_
+#ifndef _ONE_CLI_H_
+#define _ONE_CLI_H_
 
 #include <stdio.h> // printf
 #include <stdlib.h> // malloc, free
