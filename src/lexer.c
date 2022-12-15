@@ -57,95 +57,109 @@ void lexer_lex_next(lexer_t* lex)
             break;
 
         case '(':
+            lex->current++;
             lexer_add_token(lex, TOKEN_LEFT_PAREN);
             break;
         
         case ')':
+            lex->current++;
             lexer_add_token(lex, TOKEN_RIGHT_PAREN);
             break;
 
         case '{':
+            lex->current++;
             lexer_add_token(lex, TOKEN_LEFT_BRACE);
             break;
         
         case '}':
+            lex->current++;
             lexer_add_token(lex, TOKEN_RIGHT_BRACE);
             break;
 
         case '[':
+            lex->current++;
             lexer_add_token(lex, TOKEN_LEFT_BRACKET);
             break;
         
         case ']':
+            lex->current++;
             lexer_add_token(lex, TOKEN_RIGHT_BRACKET);
             break;
 
         case ',':
+            lex->current++;
             lexer_add_token(lex, TOKEN_COMMA);
             break;
         
         case '.':
+            lex->current++;
             lexer_add_token(lex, TOKEN_DOT);
             break;
         
         case '-':
-            if (lex->start[1] == '-') {
+            if (lex->current[1] == '-') {
+                lex->current+=2;
                 lexer_add_token(lex, TOKEN_DECREMENT);
             } else {
+                lex->current++;
                 lexer_add_token(lex, TOKEN_MINUS);
             }
             break;
         
         case '+':
-            if (lex->start[1] == '+') {
+            if (lex->current[1] == '+') {
+                lex->current+=2;
                 lexer_add_token(lex, TOKEN_INCREMENT);
-                lex->current++;
-                lex->start = lex->current;
             }
             else {
+                lex->current++;
                 lexer_add_token(lex, TOKEN_PLUS);
             }
             break;
         
         case ';':
+            lex->current++;
             lexer_add_token(lex, TOKEN_SEMICOLON);
             break;
         
         case '*':
-            if (lex->start[1] == '*') {
+            if (lex->current[1] == '*') {
+                lex->current+=2;
                 lexer_add_token(lex, TOKEN_EXPONENT);
-                lex->current++;
-                lex->start = lex->current;
             }
             else {
+                lex->current++;
                 lexer_add_token(lex, TOKEN_STAR);
             }
             break;
         
         case '!':
-            if (lex->start[1] == '=') {
+            if (lex->current[1] == '=') {
+                lex->current+=2;
                 lexer_add_token(lex, TOKEN_BANG_EQUAL);
                 lex->current++;
                 lex->start = lex->current;
             }
             else {
+                lex->current++;
                 lexer_add_token(lex, TOKEN_BANG);
             }
             break;
         
         case '=':
-            lex->current++;
-            if (lex->current[0] == '=') {
+            if (lex->current[1] == '=') {
+                lex->current+=2;
                 lexer_add_token(lex, TOKEN_EQUAL_EQUAL);
             }
             else {
+                lex->current++;
                 lexer_add_token(lex, TOKEN_EQUAL);
             }
             break;
         
         case '<':
-            lex->current++;
-            if (lex->current[0] == '=') {
+            if (lex->current[1] == '=') {
+                lex->current+=2;
                 lexer_add_token(lex, TOKEN_LESS_EQUAL);
             }
             else {
@@ -154,23 +168,27 @@ void lexer_lex_next(lexer_t* lex)
             break;
         
         case '>':
-            lex->current++;
-            if (lex->current[0] == '=') {
+            if (lex->current[1] == '=') {
+                lex->current+=2;
                 lexer_add_token(lex, TOKEN_GREATER_EQUAL);
             }
             else {
+                lex->current++;
                 lexer_add_token(lex, TOKEN_GREATER);
             }
             break;
         
         case '/':
-            lex->current++;
-            if (lex->current[0] == '/') {
+            if (lex->current[1] == '/') {
+                lex->current+=2;
                 while (lex->current[0] != '\n' && lex->current[0] != '\0') {
                     lex->current++;
                 }
+                lex->start = lex->current;
+                lexer_lex_next(lex);
             }
             else {
+                lex->current++;
                 lexer_add_token(lex, TOKEN_SLASH);
             }
             break;
