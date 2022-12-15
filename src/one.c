@@ -10,7 +10,7 @@
 #include "cli.h"
 
 /**
- * @brief Main function
+ * @brief Main entry point of the program
  * 
  * @param argc 
  * @param argv 
