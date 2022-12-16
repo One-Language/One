@@ -12,7 +12,18 @@
 #include "token.h"
 
 typedef struct {
-    int test;
+    token_t* name;
+    token_t* type;
+} ast_function_t;
+
+typedef struct {
+    ast_function_t** data;
+    int size;
+    int capacity;
+} ast_list_function_t;
+
+typedef struct {
+    ast_list_function_t* functions;
 } ast_t;
 
 /**

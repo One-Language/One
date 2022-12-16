@@ -54,4 +54,13 @@ ast_t* parser_ast(parser_t* parser);
  */
 void parser_free(parser_t* parser);
 
+/**
+ * @brief Parse function
+ * 
+ * @param parser_t* parser
+ * 
+ * @return void
+ */
+void parser_parse_function(parser_t* parser);
+
 #endif
