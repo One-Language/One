@@ -92,7 +92,7 @@ void parser_parse_function(parser_t* parser)
         return;
     }
 
-    ast_list_function_append(parser->ast->functions, function);
+    array_append(parser->ast->functions, function);
 }
 
 /**

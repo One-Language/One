@@ -47,7 +47,7 @@ array_t* array_append(array_t* array, void* element)
  * 
  * @param array_t* array
  * 
- * @return void* 
+ * @return void*
  */
 void* array_pop(array_t* array)
 {
@@ -64,7 +64,7 @@ void* array_pop(array_t* array)
  * 
  * @param array_t* array
  * 
- * @return void* 
+ * @return void*
  */
 void* array_peak(array_t* array)
 {
@@ -80,7 +80,7 @@ void* array_peak(array_t* array)
  * @param array_t* array
  * @param int index
  * 
- * @return void* 
+ * @return void*
  */
 void* array_get(array_t* array, int index)
 {
@@ -97,7 +97,7 @@ void* array_get(array_t* array, int index)
  * @param int index
  * @param void* element
  * 
- * @return void* 
+ * @return void*
  */
 void* array_set(array_t* array, int index, void* element)
 {
@@ -114,7 +114,7 @@ void* array_set(array_t* array, int index, void* element)
  * @param array_t* array
  * @param int index
  * 
- * @return void* 
+ * @return void*
  */
 void* array_remove(array_t* array, int index)
 {

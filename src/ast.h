@@ -10,19 +10,14 @@
 #define _ONE_AST_H_
 
 #include "token.h"
+#include "array.h"
 
 typedef struct {
     char* name;
 } ast_function_t;
 
 typedef struct {
-    ast_function_t** data;
-    int size;
-    int capacity;
-} ast_list_function_t;
-
-typedef struct {
-    ast_list_function_t* functions;
+    array_t* functions;
     // ast_list_error_t* errors;
 } ast_t;
 
@@ -34,25 +29,6 @@ typedef struct {
  * @return ast_t* 
  */
 ast_t* ast_init();
-
-/**
- * @brief Initialize list of functions
- * 
- * @param void
- * 
- * @return ast_list_function_t* 
- */
-ast_list_function_t* ast_list_function_init();
-
-/**
- * @brief Add function to list of functions
- * 
- * @param ast_list_function_t* list
- * @param ast_function_t* function
- * 
- * @return ast_list_function_t* 
- */
-ast_list_function_t* ast_list_function_append(ast_list_function_t* list, ast_function_t* function);
 
 /**
  * @brief Initialize a function

@@ -200,6 +200,7 @@ int cli_run(cli_t* cli)
 
             // if (cli->options->is_json) fprintf(cli->options->output, ast_print_json(ast));
             // else fprintf(cli->options->output, ast_print(ast));
+            fprintf(cli->options->output, ast_print(ast));
 
             break;
 
