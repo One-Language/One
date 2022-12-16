@@ -73,6 +73,125 @@ ast_block_t* ast_block_init()
     return block;
 }
 
+char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident)
+{
+    string_t* str = string_init();
+    if (expression == NULL) {
+        return str->value; // TODO
+    }
+
+    char* tab = string_repeat("\t", ident);
+
+    switch (expression->type) {
+        case AST_EXPRESSION_BINARY: {
+            ast_expr_binary_t* binaryExpression = expression->expr.binary;
+            char *left = ast_print_expression(block, binaryExpression->left, 0);
+            char *right = ast_print_expression(block, binaryExpression->right, 0);
+            string_append_format(str, "%s%s %s %s", tab, left, token_name(binaryExpression->operator), right);
+            // free(left);
+            // free(right);
+        } break;
+        case AST_EXPRESSION_UNARY: {
+            ast_expr_unary_t* unaryExpression = expression->expr.unary;
+            char *value = ast_print_expression(block, unaryExpression->argument, 0);
+            string_append_format(str, "%s%s %s", tab, token_name(unaryExpression->operator), value);
+            // free(value);
+        } break;
+        case AST_EXPRESSION_SUB_EXPRESSION: {
+            string_append_format(str, "%s(", tab);
+            string_append(str, ast_print_expression(block, expression->expr.sub_expression, 0));
+        } break;
+        case AST_EXPRESSION_LITERAL: {
+            ast_expr_literal_t * literalExpression = expression->expr.literal;
+            string_append_format(str, "%s%s", tab, literalExpression->value);
+        } break;
+//        case AST_EXPRESSION_TYPE_VARIABLE: {
+//            AstVariableExpression *variableExpression = expression->variableExpression;
+//            str = sdscatprintf(code, "%s%s", tab, variableExpression->name);
+//            break;
+//        }
+
+//        case AST_EXPRESSION_TYPE_CALL: {
+//            AstCallExpression *callExpression = expression->callExpression;
+//            str = sdscatprintf(code, "%s%s(", tab, callExpression->name);
+//            for (int i = 0; i < callExpression->arguments->size; i++) {
+//                ast_expr_t *argument = callExpression->arguments->data[i];
+//                char *argumentstr = ast_print_expression(block, argument, ident);
+//                str = sdscatprintf(code, "%s", argumentCode);
+//                free(argumentCode);
+//                if (i != callExpression->arguments->size - 1) {
+//                    str = sdscatprintf(code, ", ");
+//                }
+//            }
+//            str = sdscatprintf(code, ")");
+//            break;
+//        }
+
+//        case AST_EXPRESSION_TYPE_INDEX: {
+//            AstIndexExpression* indexExpression = expression->indexExpression;
+//            char* value = ast_print_expression(block, indexExpression->value, ident);
+//            char* index = ast_print_expression(block, indexExpression->index, ident);
+//            str = sdscatprintf(code, "%s%s[%
+        default: {
+            return "Unknown expression type";
+        }
+    }
+
+    return str->value;
+}
+
+char* ast_print_expressions(array_t* expressions, int ident)
+{
+    string_t* str = string_init();
+
+    string_append(str, string_repeat("\t", ident));
+
+    for (int i = 0; i < expressions->size; i++) {
+        ast_expr_t* expression = expressions->data[i];
+        string_append(str, ast_print_expression(expression, 0));
+        if (i != expressions->size - 1) string_append(str, ", ");
+    }
+
+    return str->value;
+}
+
+char* ast_print_statement(ast_statement_t* statement)
+{
+    string_t* str = string_init();
+
+    switch (statement->type) {
+    case AST_STATEMENT_IF:
+        string_append(str, "\t\t\t\tIf statement\n");
+        break;
+    case AST_STATEMENT_RET:
+        string_append(str, "\t\t\t\tReturn statement\n");
+        string_append(str, ast_print_expression(statement->stmt_ret->expr));
+        break;
+    // case AST_STATEMENT_EXPR:
+    //     string_append(str, "\t\t\t\tExpression statement\n");
+    //     break;
+    default:
+        string_append(str, "\t\t\t\tUnknown statement\n");
+        break;
+    }
+
+    return str->value;
+}
+
+char* ast_print_block(ast_block_t* block)
+{
+    string_t* str = string_init();
+
+    string_append_format(str, "\t\tBlock (%d statements)\n", block->statements->size);
+
+    for (int i = 0; i < block->statements->size; i++) {
+        ast_statement_t* statement = array_get(block->statements, i);
+        string_append(str, ast_print_statement(statement));
+    }
+
+    return str->value;
+}
+
 /**
  * @brief Print AST of a function
  * 
@@ -85,6 +204,8 @@ char* ast_print_function(ast_function_t* function)
     string_t* str = string_init();
 
     string_append_format(str, "\tFunction %s (%d statements)\n", function->name, function->block->statements->size);
+
+    string_append(str, ast_print_block(function->block));
 
     return str->value;
 }

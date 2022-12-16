@@ -262,4 +262,11 @@ ast_if_t* ast_statement_if_init();
  */
 ast_ret_t* ast_statement_ret_init();
 
+
+// TODO: Expression
+
+char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident);
+
+char* ast_print_expressions(array_t* expressions, int ident);
+
 #endif
