@@ -175,11 +175,21 @@ ast_if_t* parser_parse_if(parser_t* parser)
 
     stmt_if->then = parser_parse_block(parser);
 
+    // Check for else statement
     if (parser_skip(parser, TOKEN_ELSE)) {
+        // Check for else if
         if (parser_has(parser, TOKEN_IF)) {
-            stmt_if->else_ = parser_parse_if(parser);
+            ast_statement_t* stmt = parser_parse_statement(parser);
+            if (stmt == NULL) return NULL;
+            stmt_if->else_ = ast_block_init();
+            array_push(stmt_if->else_->statements, stmt);
         }
-        else if (parser_has(parser, TOKEN_LEFT_BRACE)) stmt_if->else_ = parser_parse_block(parser);
+        // Check for else block
+        else if (parser_has(parser, TOKEN_LEFT_BRACE)) {
+            stmt_if->else_ = parser_parse_block(parser);
+            if (stmt_if->else_ == NULL) return NULL;
+        }
+        // Unexpected token
         else {
             printf("Unexpected token %s after else\n", token_name(parser_peek(parser)->type));
             return NULL;

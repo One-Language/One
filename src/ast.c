@@ -69,6 +69,7 @@ ast_expr_t* ast_expression_init()
 ast_block_t* ast_block_init()
 {
     ast_block_t* block = (ast_block_t*)malloc(sizeof(ast_block_t));
+    block->statements = array_init();
     return block;
 }
 
