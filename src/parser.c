@@ -136,6 +136,13 @@ token_t* parser_expect(parser_t* parser, token_type_t type)
     return token;
 }
 
+/**
+ * @brief Right Associative binding power
+ * 
+ * @param int priority
+ * 
+ * @return struct binding_power
+ */
 struct binding_power RightAssociative(int priority)
 {
     struct binding_power bp;
@@ -144,6 +151,13 @@ struct binding_power RightAssociative(int priority)
     return bp;
 }
 
+/**
+ * @brief Left Associative binding power
+ * 
+ * @param int priority
+ * 
+ * @return struct binding_power
+ */
 struct binding_power LeftAssociative(int priority)
 {
     struct binding_power bp;
