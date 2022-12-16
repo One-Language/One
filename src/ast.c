@@ -157,7 +157,7 @@ char* ast_print_expressions(array_t* expressions, int ident)
 
 char* ast_print_statement(ast_statement_t* statement)
 {
-    string_t* str = string_init_value("");
+    string_t* str = string_init();
 
     switch (statement->type) {
     case AST_STATEMENT_IF:

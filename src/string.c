@@ -36,7 +36,7 @@ string_t* string_init_value(char* value)
     string_t* string = (string_t*)malloc(sizeof(string_t));
     string->value = value;
     string->length = strlen(value);
-    string->capacity = string->length;
+    string->capacity = string->length <= 0 ? 8 : string->length;
     return string;
 }
 
