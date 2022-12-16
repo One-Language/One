@@ -9,21 +9,6 @@
 #include "lexer.h"
 
 /**
- * @brief Increment the lexer position
- * 
- * @param lexer_t* lexer
- * @param int count
- * 
- * @return void
- */
-void lexer_read_offset(lexer_t* lex, int offset)
-{
-    lex->current += offset;
-    lex->current_location.column += offset;
-    lex->current_location.offset += offset;
-}
-
-/**
  * @brief Initialize the lexer object
  * 
  * @param file_t* file
@@ -48,6 +33,21 @@ lexer_t* lexer_init(file_t* file)
     lex->tokens = token_list_init();
 
     return lex;
+}
+
+/**
+ * @brief Increment the lexer position
+ * 
+ * @param lexer_t* lexer
+ * @param int count
+ * 
+ * @return void
+ */
+void lexer_read_offset(lexer_t* lex, int offset)
+{
+    lex->current += offset;
+    lex->current_location.column += offset;
+    lex->current_location.offset += offset;
 }
 
 /**

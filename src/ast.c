@@ -8,3 +8,15 @@
 
 #include "ast.h"
 
+/**
+ * @brief Initialize AST
+ * 
+ * @param void
+ * 
+ * @return ast_t* 
+ */
+ast_t* ast_init()
+{
+    ast_t* ast = (ast_t*)malloc(sizeof(ast_t));
+    return ast;
+}

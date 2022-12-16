@@ -162,6 +162,11 @@ cli_t* cli_parse(cli_t* cli)
  */
 int cli_run(cli_t* cli)
 {
+    lexer_t* lex;
+    parser_t* parse;
+    ast_t* ast;
+    token_list_t* tokens;
+
     switch (cli->options->command) {
         case CLI_HELP:
             cli_print_help(cli);
@@ -172,10 +177,9 @@ int cli_run(cli_t* cli)
             break;
 
         case CLI_LEX:
-            lexer_t* lex = lexer_init(cli->options->file);
+            lex = lexer_init(cli->options->file);
             lexer_lex(lex);
-
-            token_list_t* tokens = lexer_tokens(lex);
+            tokens = lexer_tokens(lex);
 
             if (cli->options->is_json) fprintf(cli->options->output, token_list_print_json(tokens));
             else fprintf(cli->options->output, token_list_print(tokens));
@@ -185,6 +189,18 @@ int cli_run(cli_t* cli)
 
         case CLI_PARSE:
             printf("Parsing the source code...\n");
+
+            lex = lexer_init(cli->options->file);
+            lexer_lex(lex);
+            tokens = lexer_tokens(lex);
+
+            parse = parser_init(tokens);
+            parser_parse(parse);
+            ast = parser_ast(parse);
+
+            // if (cli->options->is_json) fprintf(cli->options->output, ast_print_json(ast));
+            // else fprintf(cli->options->output, ast_print(ast));
+
             break;
 
         case CLI_UNKNOWN:

@@ -16,6 +16,8 @@
 #include "file.h" // file_t, file_print
 #include "token.h" // token_list_t
 #include "lexer.h" // lexer_t, lexer_init, lexer_lex, lexer_free
+#include "parser.h" // parser_t, parser_init, parser_parse, parser_ast
+#include "ast.h" // ast_t, ast_print, ast_print_json
 
 typedef enum {
     CLI_HELP,

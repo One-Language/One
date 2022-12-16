@@ -11,4 +11,17 @@
 
 #include "token.h"
 
+typedef struct {
+    int test;
+} ast_t;
+
+/**
+ * @brief Initialize AST
+ * 
+ * @param void
+ * 
+ * @return ast_t* 
+ */
+ast_t* ast_init();
+
 #endif
