@@ -81,7 +81,7 @@ token_t* parser_expect(parser_t* parser, token_type_t type)
 {
     token_t* token = parser->tokens->data[parser->current_token];
     if (token->type != type) {
-        printf("Unexpected token: %s\n", token_name(token->type));
+        printf("Unexpected token  %s while expecting %s\n", token_name(token->type), token_name(type));
         return NULL;
     }
     parser->current_token++;
@@ -100,7 +100,8 @@ void parser_parse(parser_t* parser)
     while (parser->current_token < parser->tokens->size) {
         token_t* token = parser->tokens->data[parser->current_token];
 
-        if (token->type == TOKEN_FUNC) {
+        if (token->type == TOKEN_EOF) break;
+        else if (token->type == TOKEN_FUNC) {
             ast_function_t* function = parser_parse_function(parser);
             if (function != NULL) array_push(parser->ast->functions, function);
         }
