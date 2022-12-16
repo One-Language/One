@@ -18,7 +18,7 @@
 string_t* string_init()
 {
     string_t* string = (string_t*)malloc(sizeof(string_t));
-    string->value = "";
+    string->value = malloc(sizeof(char) * (string->capacity = 10));
     string->length = 0;
     return string;
 }

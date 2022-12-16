@@ -185,6 +185,8 @@ int cli_run(cli_t* cli)
             // write hello world to the file
             fprintf(cli->options->output, "Hello World!\n");
 
+            fprintf(cli->options->output, token_list_print(tokens));
+
             lexer_free(lex);
             break;
 
