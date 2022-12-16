@@ -35,7 +35,25 @@ string_t* string_init_value(char* value)
     string_t* string = (string_t*)malloc(sizeof(string_t));
     string->value = value;
     string->length = strlen(value);
+    string->capacity = string->length;
     return string;
+}
+
+/**
+ * @brief Resize a string object
+ * 
+ * @param string_t* input
+ * @param size_t new_size
+ * 
+ * @return string_t*
+ */
+string_t* string_resize(string_t* input, size_t new_size)
+{
+    if (input->capacity < new_size) {
+        input->capacity = new_size;
+        input->value = realloc(input->value, input->capacity);
+    }
+    return input;
 }
 
 /**
@@ -349,4 +367,87 @@ char string_get(string_t* string, int index)
         return '\0';
 
     return string->value[index];
+}
+
+/**
+ * @brief Repeat the string
+ * 
+ * @param string_t* string
+ * @param int count
+ * 
+ * @return string_t* 
+ */
+string_t* string_repeat(string_t* string, int count)
+{
+    if (count <= 0) return string_new("");
+
+    int length = string->length * count;
+    char* buffer = (char*)malloc(length + 1);
+    for (int i = 0; i < count; i++) {
+        memcpy(buffer + i * string->length, string->value, string->length);
+    }
+    buffer[length] = '\0';
+    return string_new(buffer);
+}
+
+/**
+ * @brief Repeat the string and return the char*
+ * 
+ * @param string_t* string
+ * @param int count
+ * 
+ * @return char*
+ */
+char* string_repeat_chars(string_t* string, int count)
+{
+    if (count <= 0) return "";
+
+    int length = string->length * count;
+    char* buffer = (char*)malloc(length + 1);
+    for (int i = 0; i < count; i++) {
+        memcpy(buffer + i * string->length, string->value, string->length);
+    }
+    buffer[length] = '\0';
+    return buffer;
+}
+
+/**
+ * @brief Repeat the char* and return the char*
+ * 
+ * @param char* string
+ * @param int count
+ * 
+ * @return char*
+ */
+char* chars_repeat(char* str, int count)
+{
+    if (count <= 0) return "";
+
+    int length = strlen(str) * count;
+    char* buffer = (char*)malloc(length + 1);
+    for (int i = 0; i < count; i++) {
+        memcpy(buffer + i * strlen(str), str, strlen(str));
+    }
+    buffer[length] = '\0';
+    return buffer;
+}
+
+/**
+ * @brief Repeat the char and return the char*
+ * 
+ * @param char ch
+ * @param int count
+ * 
+ * @return char*
+ */
+char* char_repeat(char ch, int count)
+{
+    if (count <= 0) return "";
+
+    char* buffer = (char*)malloc(count + 1);
+    for (int i = 0; i < count; i++) {
+        buffer[i] = ch;
+    }
+    buffer[count] = '\0';
+    return buffer;
 }

@@ -222,4 +222,55 @@ char* string_to_upper(string_t* string);
  */
 char string_get(string_t* string, int index);
 
+/**
+ * @brief Resize a string object
+ * 
+ * @param string_t* input
+ * @param size_t new_size
+ * 
+ * @return string_t*
+ */
+string_t* string_resize(string_t* input, size_t new_size);
+
+
+/**
+ * @brief Repeat the string
+ * 
+ * @param string_t* string
+ * @param int count
+ * 
+ * @return string_t* 
+ */
+string_t* string_repeat(string_t* string, int count);
+
+/**
+ * @brief Repeat the string and return the char*
+ * 
+ * @param string_t* string
+ * @param int count
+ * 
+ * @return char*
+ */
+char* string_repeat_chars(string_t* string, int count);
+
+/**
+ * @brief Repeat the char* and return the char*
+ * 
+ * @param char* string
+ * @param int count
+ * 
+ * @return char*
+ */
+char* chars_repeat(char* str, int count);
+
+/**
+ * @brief Repeat the char and return the char*
+ * 
+ * @param char ch
+ * @param int count
+ * 
+ * @return char*
+ */
+char* char_repeat(char ch, int count);
+
 #endif

@@ -80,7 +80,7 @@ char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident
         return str->value; // TODO
     }
 
-    char* tab = string_repeat("\t", ident);
+    char* tab = char_repeat('\t', ident);
 
     switch (expression->type) {
         case AST_EXPRESSION_BINARY: {
@@ -144,11 +144,11 @@ char* ast_print_expressions(array_t* expressions, int ident)
 {
     string_t* str = string_init();
 
-    string_append(str, string_repeat("\t", ident));
+    string_append(str, char_repeat('\t', ident));
 
     for (int i = 0; i < expressions->size; i++) {
         ast_expr_t* expression = expressions->data[i];
-        string_append(str, ast_print_expression(expression, 0));
+        string_append(str, ast_print_expression(NULL, expression, 0));
         if (i != expressions->size - 1) string_append(str, ", ");
     }
 
@@ -165,7 +165,7 @@ char* ast_print_statement(ast_statement_t* statement)
         break;
     case AST_STATEMENT_RET:
         string_append(str, "\t\t\t\tReturn statement\n");
-        string_append(str, ast_print_expression(statement->stmt_ret->expr));
+        string_append(str, ast_print_expression(NULL, statement->stmt_ret->expression));
         break;
     // case AST_STATEMENT_EXPR:
     //     string_append(str, "\t\t\t\tExpression statement\n");
