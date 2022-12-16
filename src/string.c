@@ -122,7 +122,7 @@ char* string_append_format(string_t* string, char* format, ...)
     va_end(args);
 
     if (string->length + length >= string->capacity) {
-        string->capacity = string->length + length + 1;
+        string->capacity = string->length + length + 1 + 20; // 20 is for extra space
         string->value = (char*)realloc(string->value, string->capacity);
     }
 
