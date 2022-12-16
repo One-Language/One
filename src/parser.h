@@ -39,6 +39,15 @@ parser_t* parser_init(token_list_t* tokens);
 token_t* parser_eat(parser_t* parser);
 
 /**
+ * @brief Parser peek a token
+ * 
+ * @param parser_t* parser
+ * 
+ * @return token_t*
+ */
+token_t* parser_peek(parser_t* parser);
+
+/**
  * @brief Parser check if has a token type
  * 
  * @param parser_t* parser
@@ -100,9 +109,9 @@ array_t* parser_parse_statements(parser_t* parser);
  * 
  * @param parser_t* parser
  * 
- * @return array_t* (array of ast_statement_t*)
+ * @return ast_block_t*
  */
-array_t* parser_parse_block(parser_t* parser);
+ast_block_t* parser_parse_block(parser_t* parser);
 
 /**
  * @brief Parse function
@@ -128,5 +137,23 @@ ast_t* parser_ast(parser_t* parser);
  * @param parser_t* parser
  */
 void parser_free(parser_t* parser);
+
+/**
+ * @brief Parser parse an if statement
+ * 
+ * @param parser_t* parser
+ * 
+ * @return ast_if_t*
+ */
+ast_if_t* parser_parse_if(parser_t* parser);
+
+/**
+ * @brief Parser parse a ret statement
+ * 
+ * @param parser_t* parser
+ * 
+ * @return ast_ret_t*
+ */
+ast_ret_t* parser_parse_ret(parser_t* parser);
 
 #endif

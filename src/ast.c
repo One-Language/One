@@ -46,6 +46,39 @@ ast_statement_t* ast_statement_init()
     return statement;
 }
 
+/**
+ * @brief Initialize an expression
+ * 
+ * @param void
+ * 
+ * @return ast_expr_t* 
+ */
+ast_expr_t* ast_expression_init()
+{
+    ast_expr_t* expr = (ast_expr_t*)malloc(sizeof(ast_expr_t));
+    return expr;
+}
+
+/**
+ * @brief Initialize a block
+ * 
+ * @param void
+ * 
+ * @return ast_block_t* 
+ */
+ast_block_t* ast_block_init()
+{
+    ast_block_t* block = (ast_block_t*)malloc(sizeof(ast_block_t));
+    return block;
+}
+
+/**
+ * @brief Print AST of a function
+ * 
+ * @param ast_function_t* function
+ * 
+ * @return char*
+ */
 char* ast_print_function(ast_function_t* function)
 {
     string_t* str = string_init();
@@ -76,6 +109,32 @@ char* ast_print(ast_t* ast)
     }
 
     return str->value;
+}
+
+/**
+ * @brief Initialize an if statement
+ * 
+ * @param void
+ * 
+ * @return ast_if_t* 
+ */
+ast_if_t* ast_statement_if_init()
+{
+    ast_if_t* st = (ast_if_t*)malloc(sizeof(ast_if_t));
+    return st;
+}
+
+/**
+ * @brief Initialize a ret statement
+ * 
+ * @param void
+ * 
+ * @return ast_ret_t* 
+ */
+ast_ret_t* ast_statement_ret_init()
+{
+    ast_ret_t* st = (ast_ret_t*)malloc(sizeof(ast_ret_t));
+    return st;
 }
 
 /**
