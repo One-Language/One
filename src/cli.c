@@ -106,7 +106,7 @@ cli_t* cli_parse(cli_t* cli)
     for (int i = 1; i < cli->argc; i++) {
         if (strcmp(cli->argv[i], "-o") == 0 || strcmp(cli->argv[i], "--output") == 0) {
             if (i + 1 < cli->argc) {
-                cli->options->output = file_init(cli->argv[i + 1]);
+                cli->options->output = fopen(cli->argv[i + 1], "a");
                 i++;
             } else {
                 cli->options->command = CLI_UNKNOWN;
@@ -171,10 +171,13 @@ int cli_run(cli_t* cli)
             token_list_t* tokens = lexer_tokens(lex);
 
             if (cli->options->is_json) {
-                fprintf(cli->options->output->file, "%s", token_list_print_json(tokens));
+                fprintf(cli->options->output, "%s", token_list_print_json(tokens));
             } else {
-                fprintf(cli->options->output->file, "%s", token_list_print(tokens));
+                fprintf(cli->options->output, "%s", token_list_print(tokens));
             }
+
+            // write hello world to the file
+            fprintf(cli->options->output, "Hello World!\n");
 
             lexer_free(lex);
             break;
@@ -188,6 +191,8 @@ int cli_run(cli_t* cli)
             printf(cli->options->error == NULL ? "Unknown command\n" : cli->options->error);
             break;
     }
+
+    if (cli->options->output != NULL && cli->options->output != stdout) fclose(cli->options->output);
 
     // Default return value
     return 0;

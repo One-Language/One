@@ -9,7 +9,9 @@
 #ifndef _ONE_STRING_H_
 #define _ONE_STRING_H_
 
+#include <stdio.h> // printf, sprintf, fprintf
 #include <stdlib.h> // malloc, free, realloc
+#include <stdarg.h> // va_list, va_start, va_end
 #include <string.h> // strlen
 
 typedef struct {
