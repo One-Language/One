@@ -37,7 +37,7 @@ typedef enum {
 typedef struct {
     cli_command_t command;
     file_t* file;
-    char* output;
+    file_t* output;
     char* error;
     bool is_json;
     // char* target;

@@ -35,9 +35,8 @@ cli_t* cli_init(int argc, char** argv)
 cli_options_t* cli_options_init()
 {
     cli_options_t* options = (cli_options_t*)malloc(sizeof(cli_options_t));
-    options->output = NULL;
     options->file = NULL;
-    options->output = NULL;
+    options->output = stdout;
     options->is_json = false;
     return options;
 }
@@ -107,7 +106,7 @@ cli_t* cli_parse(cli_t* cli)
     for (int i = 1; i < cli->argc; i++) {
         if (strcmp(cli->argv[i], "-o") == 0 || strcmp(cli->argv[i], "--output") == 0) {
             if (i + 1 < cli->argc) {
-                cli->options->output = cli->argv[i + 1];
+                cli->options->output = file_init(cli->argv[i + 1]);
                 i++;
             } else {
                 cli->options->command = CLI_UNKNOWN;
@@ -172,14 +171,9 @@ int cli_run(cli_t* cli)
             token_list_t* tokens = lexer_tokens(lex);
 
             if (cli->options->is_json) {
-                token_list_print_json(tokens);
+                fprintf(cli->options->output->file, "%s", token_list_print_json(tokens));
             } else {
-                printf("Lexing the source code...\n\n");
-
-                printf("Source code:\n");
-                file_print(cli->options->file);
-                printf("-----------------\n");
-                token_list_print(tokens);
+                fprintf(cli->options->output->file, "%s", token_list_print(tokens));
             }
 
             lexer_free(lex);

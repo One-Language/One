@@ -15,7 +15,22 @@
  * 
  * @return string_t*
  */
-string_t* string_init(char* value)
+string_t* string_init()
+{
+    string_t* string = (string_t*)malloc(sizeof(string_t));
+    string->value = "";
+    string->length = 0;
+    return string;
+}
+
+/**
+ * @brief Initialize a string object with a value
+ * 
+ * @param char* value
+ * 
+ * @return string_t*
+ */
+string_t* string_init_value(char* value)
 {
     string_t* string = (string_t*)malloc(sizeof(string_t));
     string->value = value;
@@ -76,24 +91,6 @@ string_t* string_init_capacity(int capacity)
 }
 
 /**
- * @brief Initialize a string object with length and capacity
- * 
- * @param char* value
- * @param int length
- * @param int capacity
- * 
- * @return string_t*
- */
-string_t* string_init_length_capacity(int length, int capacity)
-{
-    string_t* string = (string_t*)malloc(sizeof(string_t));
-    string->value = (char*)malloc(capacity);
-    string->length = length;
-    string->capacity = capacity;
-    return string;
-}
-
-/**
  * @brief Append a string to the string object
  * 
  * @param string_t* string
@@ -105,6 +102,36 @@ char* string_append(string_t* string, char* value)
 {
     int length = strlen(value);
     return string_append_size(string, value, length);
+}
+
+/**
+ * @brief Append a string to the string object with format
+ * 
+ * @param string_t* string
+ * @param char* format
+ * @param ...
+ * 
+ * @return char*
+ */
+char* string_append_format(string_t* string, char* format, ...)
+{
+    va_list args;
+    va_start(args, format);
+    int length = vsnprintf(NULL, 0, format, args);
+    va_end(args);
+
+    if (string->length + length >= string->capacity) {
+        string->capacity = string->length + length + 1;
+        string->value = (char*)realloc(string->value, string->capacity);
+    }
+
+    va_start(args, format);
+    vsnprintf(string->value + string->length, length + 1, format, args);
+    va_end(args);
+
+    string->length += length;
+    string->value[string->length] = '\0';
+    return string->value;
 }
 
 /**

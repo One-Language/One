@@ -12,6 +12,8 @@
 #include <stdio.h> // printf
 #include <stdlib.h> // malloc, free
 
+#include "string.h" // string_t, string_init, string_append
+
 typedef enum {
     TOKEN_ERROR,
     TOKEN_IF,
@@ -112,9 +114,18 @@ void token_list_free(token_list_t* list);
  * 
  * @param token_list_t* list
  * 
- * @return void
+ * @return char*
  */
-void token_list_print(token_list_t* list);
+char* token_list_print(token_list_t* list);
+
+/**
+ * @brief Print the token list object in JSON format
+ * 
+ * @param token_list_t* list
+ * 
+ * @return char*
+ */
+char* token_list_print_json(token_list_t* list);
 
 /**
  * @brief Initialize a token object
@@ -142,14 +153,5 @@ token_t* token_init(token_type_t type, char* start, char* end, location_t start_
  * @return token_t*
  */
 token_t* token_init_value(token_type_t type, char* start, char* end, location_t start_location, location_t end_location, char* value);
-
-/**
- * @brief Print the token list object in JSON format
- * 
- * @param token_list_t* list
- * 
- * @return void
- */
-void token_list_print_json(token_list_t* list);
 
 #endif

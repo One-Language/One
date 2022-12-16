@@ -150,28 +150,21 @@ void token_list_free(token_list_t* list)
  * 
  * @param token_list_t* list
  * 
- * @return void
+ * @return char*
  */
-void token_list_print(token_list_t* list)
+char* token_list_print(token_list_t* list)
 {
     printf("%d Tokens\n", list->size);
+    string_t* str = string_init("");
+    string_append_format(str, "%d Tokens\n", list->size);
+
     for (int i = 0; i < list->size; i++) {
         token_t* token = list->data[i];
-
-        printf("\t" "%s" "\t" "%.*s" "\t" "%d:%d" "\t" "%d:%d" "\t",
-            token_name(token->type),
-            (int)(token->end - token->start),
-            token->start,
-            token->start_location.line,
-            token->start_location.column,
-            token->end_location.line,
-            token->end_location.column
-        );
-
-        if (token->value != NULL) printf("%s", token->value);
-
-        printf("\n");
+        printf("%s: %.*s\n", token_name(token->type), (int)(token->end - token->start), token->start);
+        string_append_format(str, "%s: %.*s\n", token_name(token->type), (int)(token->end - token->start), token->start);
     }
+
+    return str->value;
 }
 
 /**
@@ -179,24 +172,20 @@ void token_list_print(token_list_t* list)
  * 
  * @param token_list_t* list
  * 
- * @return void
+ * @return char*
  */
-void token_list_print_json(token_list_t* list)
+char* token_list_print_json(token_list_t* list)
 {
-    printf("[");
+    string_t* str = string_init();
+    string_append(str, "[");
+
     for (int i = 0; i < list->size; i++) {
         token_t* token = list->data[i];
-
-        printf("{");
-        printf("\"type\": \"%s\", ", token_name(token->type));
-        printf("\"start\": \"%.*s\", ", (int)(token->end - token->start), token->start);
-        printf("\"end\": \"%.*s\", ", (int)(token->end - token->start), token->end);
-        printf("\"start_location\": {\"line\": %d, \"column\": %d}, ", token->start_location.line, token->start_location.column);
-        printf("\"end_location\": {\"line\": %d, \"column\": %d}", token->end_location.line, token->end_location.column);
-        if (token->value != NULL) printf(", \"value\": \"%s\"", token->value);
-        printf("}");
-
-        if (i < list->size - 1) printf(", ");
+        string_append_format(str, "{\"type\": \"%s\", \"value\": \"%.*s\", \"start\": {\"line\": %d, \"column\": %d}, \"end\": {\"line\": %d, \"column\": %d}}", token_name(token->type), (int)(token->end - token->start), token->start, token->start_location.line, token->start_location.column, token->end_location.line, token->end_location.column);
+        if (i < list->size - 1) string_append(str, ",");
     }
-    printf("]");
+
+    string_append(str, "]");
+    
+    return str->value;
 }

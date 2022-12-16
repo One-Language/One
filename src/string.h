@@ -1,3 +1,11 @@
+/**
+ The One Programming Language
+ File: string.h
+  _        _
+ / \ |\ | |_    Max Base <maxbasecode@gmail.com>
+ \_/ | \| |_    Copyright 2023; One Language Contributors
+ **/
+
 #ifndef _ONE_STRING_H_
 #define _ONE_STRING_H_
 
@@ -17,7 +25,16 @@ typedef struct {
  * 
  * @return string_t*
  */
-string_t* string_init(char* value);
+string_t* string_init();
+
+/**
+ * @brief Initialize a string object with a value
+ * 
+ * @param char* value
+ * 
+ * @return string_t*
+ */
+string_t* string_init_value(char* value);
 
 /**
  * @brief Initialize a string object with length
@@ -52,17 +69,6 @@ string_t* string_init_length_capacity(char* value, int length, int capacity);
 string_t* string_init_capacity(int capacity);
 
 /**
- * @brief Initialize a string object with length and capacity
- * 
- * @param char* value
- * @param int length
- * @param int capacity
- * 
- * @return string_t*
- */
-string_t* string_init_length_capacity(int length, int capacity);
-
-/**
  * @brief Append a string to the string object
  * 
  * @param string_t* string
@@ -71,6 +77,17 @@ string_t* string_init_length_capacity(int length, int capacity);
  * @return char*
  */
 char* string_append(string_t* string, char* value);
+
+/**
+ * @brief Append a string to the string object with format
+ * 
+ * @param string_t* string
+ * @param char* format
+ * @param ...
+ * 
+ * @return char*
+ */
+char* string_append_format(string_t* string, char* format, ...);
 
 /**
  * @brief Append a string with size to the string object
