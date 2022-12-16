@@ -299,7 +299,8 @@ void lexer_read_comment_multi_line(lexer_t* lex)
     }
 
     while (lex->current[0] != '*' || lex->current[1] != '/') {
-        if (lex->current[0] == '\0') {
+        // return and insert an error token if the comment is not closed
+        if (lex->current[0] == '\0' || lex->current[1] == '\0') {
             lexer_add_token(lex, TOKEN_ERROR);
             return;
         }
