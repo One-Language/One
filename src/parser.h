@@ -88,13 +88,31 @@ token_t* parser_expect(parser_t* parser, token_type_t type);
 void parser_parse(parser_t* parser);
 
 /**
- * @brief Parse statements
+ * @brief Parser parse a statement
+ * 
+ * @param parser_t* parser
+ * 
+ * @return ast_statement_t* 
+ */
+ast_statement_t* parser_parse_statement(parser_t* parser);
+
+/**
+ * @brief Parser parse statements
  * 
  * @param parser_t* parser
  * 
  * @return array_t* (array of ast_statement_t*)
  */
 array_t* parser_parse_statements(parser_t* parser);
+
+/**
+ * @brief Parse statements
+ * 
+ * @param parser_t* parser
+ * 
+ * @return array_t* (array of ast_statement_t*)
+ */
+array_t* parser_parse_block(parser_t* parser);
 
 /**
  * @brief Parse function

@@ -19,6 +19,11 @@ typedef struct {
 } ast_function_t;
 
 typedef struct {
+    token_t* token;
+    // ast_list_error_t* errors;
+} ast_statement_t;
+
+typedef struct {
     array_t* functions;
     // ast_list_error_t* errors;
 } ast_t;
@@ -40,6 +45,13 @@ ast_t* ast_init();
  * @return ast_function_t* 
  */
 ast_function_t* ast_function_init();
+
+/**
+ * @brief Initialize a statement
+ * 
+ * @return ast_statement_t* 
+ */
+ast_statement_t* ast_statement_init();
 
 /**
  * @brief Print AST

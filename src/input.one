@@ -11,3 +11,9 @@
 func main () {
     ret 1
 }
+func main () {
+    ret 1
+}
+func main () {
+    ret 1
+}

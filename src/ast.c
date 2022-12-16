@@ -36,6 +36,17 @@ ast_function_t* ast_function_init()
 }
 
 /**
+ * @brief Initialize a statement
+ * 
+ * @return ast_statement_t* 
+ */
+ast_statement_t* ast_statement_init()
+{
+    ast_statement_t* statement = (ast_statement_t*)malloc(sizeof(ast_statement_t));
+    return statement;
+}
+
+/**
  * @brief Print AST
  * 
  * @param ast_t* ast

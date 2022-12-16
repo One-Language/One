@@ -112,7 +112,24 @@ void parser_parse(parser_t* parser)
 }
 
 /**
- * @brief Parse statements
+ * @brief Parser parse a statement
+ * 
+ * @param parser_t* parser
+ * 
+ * @return ast_statement_t* 
+ */
+ast_statement_t* parser_parse_statement(parser_t* parser)
+{
+    ast_statement_t* statement = ast_statement_init();
+
+    token_t* token = parser_eat(parser);
+    statement->token = token;
+
+    return statement;
+}
+
+/**
+ * @brief Parser parse statements
  * 
  * @param parser_t* parser
  * 
@@ -122,10 +139,26 @@ array_t* parser_parse_statements(parser_t* parser)
 {
     array_t* statements = array_init();
 
-    while (!parser_skip(parser, TOKEN_RIGHT_BRACE)) {
-        token_t* token = parser_eat(parser);
-        array_push(statements, token);
+    while (!parser_has(parser, TOKEN_RIGHT_BRACE) && !parser_has(parser, TOKEN_EOF)) {
+        ast_statement_t* statement = parser_parse_statement(parser);
+        if (statement != NULL) array_push(statements, statement);
     }
+
+    return statements;
+}
+
+/**
+ * @brief Parse statements
+ * 
+ * @param parser_t* parser
+ * 
+ * @return array_t* (array of ast_statement_t*)
+ */
+array_t* parser_parse_block(parser_t* parser)
+{
+    if(!parser_expect(parser, TOKEN_LEFT_BRACE)) return NULL;
+
+    array_t* statements = parser_parse_statements(parser);
 
     return statements;
 }
@@ -141,13 +174,15 @@ ast_function_t* parser_parse_function(parser_t* parser)
 {
     ast_function_t* function = ast_function_init();
 
-    parser_expect(parser, TOKEN_FUNC);
+    if (!parser_expect(parser, TOKEN_FUNC)) return NULL;
     token_t* name = parser_expect(parser, TOKEN_IDENTIFIER);
-    parser_expect(parser, TOKEN_LEFT_PAREN);
-    parser_expect(parser, TOKEN_RIGHT_PAREN);
+
+    if (!parser_expect(parser, TOKEN_LEFT_PAREN)) return NULL;
+    if (!parser_expect(parser, TOKEN_RIGHT_PAREN)) return NULL;
 
     function->name = name->value;
-    function->statements = parser_parse_statements(parser);
+    function->statements = parser_parse_block(parser);
+    if (!function->statements) return NULL;
 
     return function;
 }
