@@ -63,7 +63,7 @@ typedef struct {
 } ast_expr_binary_t;
 
 typedef struct {
-    ast_value_type_t* type;
+    ast_value_type_t type;
     union {
         bool boolean;
         int integer;
@@ -120,9 +120,9 @@ typedef struct {
     struct ast_expr_t* expression;
 } ast_expr_stmt_t;
 
-typedef struct {
-    struct ast_expr_t* expression;
-} ast_expr_sub_t;
+// typedef struct {
+//     struct ast_expr_t* expression;
+// } ast_expr_sub_t;
 
 typedef struct ast_expr_t {
     ast_expr_type_t type;
@@ -138,7 +138,7 @@ typedef struct ast_expr_t {
         ast_expr_stmt_t* expression;
         ast_expr_conditional_t* conditional;
         ast_expr_ternary_t* ternary;
-        ast_expr_sub_t* sub_expression;
+        struct ast_expr_t* sub_expression;
     } expr;
 } ast_expr_t;
 
