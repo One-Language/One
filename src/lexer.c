@@ -88,6 +88,10 @@ void lexer_lex_next(lexer_t* lex)
         case '_':
             lexer_read_identifier(lex);
             break;
+        
+        case '0'...'9':
+            lexer_read_number(lex);
+            break;
 
         case '(':
             lexer_read_offset(lex, 1);
@@ -376,6 +380,86 @@ void lexer_read_string(lexer_t* lex)
     value[lex->current - lex->start - 1] = '\0';
 
     lexer_add_token_value(lex, TOKEN_STRING, value);
+}
+
+/**
+ * @brief Lex a number
+ * 
+ * @param lexer_t* lexer
+ * 
+ * @return void
+ */
+void lexer_read_number(lexer_t* lex)
+{
+    // Handle hex numbers
+    if (lex->current[0] == '0' && lex->current[1] == 'x') {
+        lexer_read_offset(lex, 2);
+
+        while (isxdigit(lex->current[0])) {
+            lexer_read_offset(lex, 1);
+        }
+
+        int length = lex->current - lex->start;
+        char* value = (char*)malloc(sizeof(char) * (length + 1));
+        memcpy(value, lex->start, lex->current - lex->start);
+        value[lex->current - lex->start] = '\0';
+
+        lexer_add_token_value(lex, TOKEN_NUMBER, value);
+        return;
+    // Handle binary numbers
+    } else if (lex->current[0] == '0' && lex->current[1] == 'b') {
+        lexer_read_offset(lex, 2);
+
+        while (lex->current[0] == '0' || lex->current[0] == '1') {
+            lexer_read_offset(lex, 1);
+        }
+
+        int length = lex->current - lex->start;
+        char* value = (char*)malloc(sizeof(char) * (length + 1));
+        memcpy(value, lex->start, lex->current - lex->start);
+        value[lex->current - lex->start] = '\0';
+
+        lexer_add_token_value(lex, TOKEN_NUMBER, value);
+        return;
+    // Handle octal numbers
+    } else if (lex->current[0] == '0' && lex->current[1] == 'o') {
+        lexer_read_offset(lex, 2);
+
+        while (lex->current[0] >= '0' && lex->current[0] <= '7') {
+            lexer_read_offset(lex, 1);
+        }
+
+        int length = lex->current - lex->start;
+        char* value = (char*)malloc(sizeof(char) * (length + 1));
+        memcpy(value, lex->start, lex->current - lex->start);
+        value[lex->current - lex->start] = '\0';
+
+        lexer_add_token_value(lex, TOKEN_NUMBER, value);
+        return;
+    } else {
+    // Handle decimal numbers
+        while (isdigit(lex->current[0])) {
+            lexer_read_offset(lex, 1);
+        }
+
+        if (lex->current[0] == '.') {
+            lexer_read_offset(lex, 1);
+
+            while (isdigit(lex->current[0])) {
+                lexer_read_offset(lex, 1);
+            }
+        }
+    }
+
+
+    // Store the number as a string
+    int length = lex->current - lex->start;
+    char* value = (char*)malloc(sizeof(char) * (length + 1));
+    memcpy(value, lex->start, lex->current - lex->start);
+    value[lex->current - lex->start] = '\0';
+
+    // Add the number token
+    lexer_add_token_value(lex, TOKEN_NUMBER, value);
 }
 
 /**

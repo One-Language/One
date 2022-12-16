@@ -136,4 +136,13 @@ void lexer_read_comment_multi_line(lexer_t* lex);
  */
 void lexer_read_comment_single_line(lexer_t* lex);
 
+/**
+ * @brief Lex a number
+ * 
+ * @param lexer_t* lexer
+ * 
+ * @return void
+ */
+void lexer_read_number(lexer_t* lex);
+
 #endif
