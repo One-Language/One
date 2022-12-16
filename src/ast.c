@@ -85,7 +85,7 @@ char* ast_print(ast_t* ast)
  * 
  * @return char*
  */
-char* ast_print_json(ast_function_t* function)
+char* ast_print_json(ast_t* ast)
 {
     string_t* str = string_init();
 

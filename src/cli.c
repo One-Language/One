@@ -80,7 +80,7 @@ void cli_print_help(cli_t* cli)
     // printf("  -i, --ir\t\tPrint the IR of the source code\n");
     // printf("  -b, --bytecode\t\tPrint the Bytecode of the source code\n");
     // printf("  -e, --execute\t\tExecute the source code\n");
-    // printf("  -g, --generate\t\tGenerate the source code\n");
+    printf("  -g, --generate\t\tGenerate the source code\n");
     // printf("  -w, --watch\t\tWatch the source code\n");
     // printf("  -x, --execute\t\tExecute the source code\n");
     // printf("  -y, --yaml\t\tPrint the YAML of the source code\n");
@@ -132,6 +132,10 @@ cli_t* cli_parse(cli_t* cli)
             if (cli->options->command == CLI_UNKNOWN) continue;
 
             cli->options->command = CLI_PARSE;
+        } else if (strcmp(cli->argv[i], "-g") == 0 || strcmp(cli->argv[i], "--generate") == 0) {
+            if (cli->options->command == CLI_UNKNOWN) continue;
+
+            cli->options->command = CLI_GEN;
         } else if (strcmp(cli->argv[i], "-l") == 0 || strcmp(cli->argv[i], "--lex") == 0) {
             if (cli->options->command == CLI_UNKNOWN) continue;
 
@@ -165,6 +169,7 @@ int cli_run(cli_t* cli)
     lexer_t* lex;
     parser_t* parse;
     ast_t* ast;
+    generator_t* gen;
     token_list_t* tokens;
 
     switch (cli->options->command) {
@@ -188,8 +193,6 @@ int cli_run(cli_t* cli)
             break;
 
         case CLI_PARSE:
-            printf("Parsing the source code...\n");
-
             lex = lexer_init(cli->options->file);
             lexer_lex(lex);
             tokens = lexer_tokens(lex);
@@ -198,10 +201,31 @@ int cli_run(cli_t* cli)
             parser_parse(parse);
             ast = parser_ast(parse);
 
-            // if (cli->options->is_json) fprintf(cli->options->output, ast_print_json(ast));
-            // else fprintf(cli->options->output, ast_print(ast));
-            fprintf(cli->options->output, ast_print(ast));
+            if (cli->options->is_json) fprintf(cli->options->output, ast_print_json(ast));
+            else fprintf(cli->options->output, ast_print(ast));
 
+            parser_free(parse);
+            lexer_free(lex);
+            break;
+        
+        case CLI_GEN:
+            lex = lexer_init(cli->options->file);
+            lexer_lex(lex);
+            tokens = lexer_tokens(lex);
+
+            parse = parser_init(tokens);
+            parser_parse(parse);
+            ast = parser_ast(parse);
+
+            gen = generator_init(ast);
+            generator_generate(gen);
+            char* c_code = generator_code(gen);
+
+            fprintf(cli->options->output, c_code);
+
+            generator_free(gen);
+            parser_free(parse);
+            lexer_free(lex);
             break;
 
         case CLI_UNKNOWN:

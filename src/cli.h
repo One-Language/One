@@ -18,6 +18,7 @@
 #include "lexer.h" // lexer_t, lexer_init, lexer_lex, lexer_free
 #include "parser.h" // parser_t, parser_init, parser_parse, parser_ast
 #include "ast.h" // ast_t, ast_print, ast_print_json
+#include "generator.h" // generator_t, generator_init, generator_generate, generator_code, generator_free
 
 typedef enum {
     CLI_HELP,
@@ -25,6 +26,7 @@ typedef enum {
     CLI_COMPILE,
     CLI_LEX,
     CLI_PARSE,
+    CLI_GEN,
     // CLI_RUN,
     // CLI_TEST,
     // CLI_FORMAT,
