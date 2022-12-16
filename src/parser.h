@@ -156,4 +156,22 @@ ast_if_t* parser_parse_if(parser_t* parser);
  */
 ast_ret_t* parser_parse_ret(parser_t* parser);
 
+/**
+ * @brief Parser go to next token
+ * 
+ * @param parser_t* parser
+ * 
+ * @return void
+ */
+void parser_next(parser_t* parser);
+
+/**
+ * @brief Parser go to previous token
+ * 
+ * @param parser_t* parser
+ * 
+ * @return void
+ */
+void parser_previouse(parser_t* parser);
+
 #endif

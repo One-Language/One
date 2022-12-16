@@ -39,6 +39,30 @@ token_t* parser_eat(parser_t* parser)
 }
 
 /**
+ * @brief Parser go to next token
+ * 
+ * @param parser_t* parser
+ * 
+ * @return void
+ */
+void parser_next(parser_t* parser)
+{
+    if (parser->current_token < parser->tokens->size) parser->current_token++;
+}
+
+/**
+ * @brief Parser go to previous token
+ * 
+ * @param parser_t* parser
+ * 
+ * @return void
+ */
+void parser_previouse(parser_t* parser)
+{
+    if (parser->current_token > 0) parser->current_token--;
+}
+
+/**
  * @brief Parser peek a token
  * 
  * @param parser_t* parser
@@ -118,7 +142,7 @@ void parser_parse(parser_t* parser)
             if (function != NULL) array_push(parser->ast->functions, function);
         }
         else {
-            printf("Unexpected token: %s\n", token_name(token->type));
+            printf("Unexpected token in parser: %s\n", token_name(token->type));
             parser->current_token++;
         }
     }
@@ -206,6 +230,12 @@ ast_statement_t* parser_parse_statement(parser_t* parser)
             statement->stmt_ret = parser_parse_ret(parser);
             if (statement->stmt_ret == NULL) return NULL;
             break;
+        }
+
+        default: {
+            printf("Unexpected token in statement: %s\n", token_name(token->type));
+            parser_next(parser);
+            return NULL;
         }
     }
 
