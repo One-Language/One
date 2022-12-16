@@ -376,7 +376,7 @@ char string_get(string_t* string, int index)
 string_t* string_repeat(string_t* string, int count)
 {
     int str_len = string->length;
-    if (count <= 0 || str_len == 0) return "";
+    if (count <= 0 || str_len == 0) return string_init_value("");
 
     int length = str_len * count;
     string_resize(string, length);
