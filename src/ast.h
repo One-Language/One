@@ -35,10 +35,10 @@ typedef struct {
     token_t* value;
 } ast_expr_t;
 
-typedef struct {
+typedef struct ast_if_t {
     ast_expr_t* condition;
     ast_block_t* then;
-    ast_block_t* else_;
+    struct ast_if_t* else_;
 } ast_if_t;
 
 typedef struct {

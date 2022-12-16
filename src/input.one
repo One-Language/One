@@ -12,7 +12,7 @@ func f1 () {
     ret 1
 }
 func f2 () {
-    1
+    if 4 {} else {}
 }
 func f3 () {
 }
