@@ -262,6 +262,14 @@ ast_if_t* ast_statement_if_init();
  */
 ast_ret_t* ast_statement_ret_init();
 
+/**
+ * @brief Print AST in XML format
+ * 
+ * @param ast_t* ast
+ * 
+ * @return char*
+ */
+char* ast_print_xml(ast_t* ast);
 
 // TODO: Expression
 

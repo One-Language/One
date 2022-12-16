@@ -274,3 +274,19 @@ char* ast_print_json(ast_t* ast)
 
     return str->value;
 }
+
+/**
+ * @brief Print AST in XML format
+ * 
+ * @param ast_t* ast
+ * 
+ * @return char*
+ */
+char* ast_print_xml(ast_t* ast)
+{
+    string_t* str = string_init();
+
+    string_append(str, "<soon>");
+
+    return str->value;
+}

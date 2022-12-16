@@ -38,6 +38,7 @@ cli_options_t* cli_options_init()
     options->file = NULL;
     options->output = stdout;
     options->is_json = false;
+    options->is_xml = false;
     return options;
 }
 
@@ -142,6 +143,8 @@ cli_t* cli_parse(cli_t* cli)
             cli->options->command = CLI_LEX;
         } else if (strcmp(cli->argv[i], "-j") == 0 || strcmp(cli->argv[i], "--json") == 0) {
             cli->options->is_json = true;
+        } else if (strcmp(cli->argv[i], "-x") == 0 || strcmp(cli->argv[i], "--xml") == 0) {
+            cli->options->is_xml = true;
         } else {
             cli->options->file = file_init(cli->argv[i]);
             file_read(cli->options->file);
@@ -204,6 +207,7 @@ int cli_run(cli_t* cli)
 
         case CLI_LEX:
             if (cli->options->is_json) fprintf(cli->options->output, token_list_print_json(tokens));
+            else if (cli->options->is_xml) fprintf(cli->options->output, token_list_print_xml(tokens));
             else fprintf(cli->options->output, token_list_print(tokens));
 
             lexer_free(lex);
@@ -211,6 +215,7 @@ int cli_run(cli_t* cli)
 
         case CLI_PARSE:
             if (cli->options->is_json) fprintf(cli->options->output, ast_print_json(ast));
+            else if (cli->options->is_xml) fprintf(cli->options->output, ast_print_xml(ast));
             else fprintf(cli->options->output, ast_print(ast));
 
             parser_free(parse);

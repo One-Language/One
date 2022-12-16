@@ -44,6 +44,7 @@ typedef struct {
     FILE* output;
     char* error;
     bool is_json;
+    bool is_xml;
     // char* target;
     // char* arch;
     // char* os;

@@ -158,4 +158,13 @@ token_t* token_init(token_type_t type, char* start, char* end, location_t start_
  */
 token_t* token_init_value(token_type_t type, char* start, char* end, location_t start_location, location_t end_location, char* value);
 
+/**
+ * @brief Print the token list object in XML format
+ * 
+ * @param token_list_t* list
+ * 
+ * @return char*
+ */
+char* token_list_print_xml(token_list_t* list);
+
 #endif
