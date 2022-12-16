@@ -7,5 +7,5 @@ gcc parser.c -c -o parser.o -g
 gcc ast.c -c -o ast.o -g
 gcc string.c -c -o string.o -g
 gcc one.o cli.o file.o lexer.o token.o parser.o ast.o string.o -o one.exe -g
-one -l input.one -j
+one -l input.one
 one -p input.one -j
