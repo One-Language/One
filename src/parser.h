@@ -172,6 +172,6 @@ void parser_next(parser_t* parser);
  * 
  * @return void
  */
-void parser_previouse(parser_t* parser);
+void parser_previous(parser_t* parser);
 
 #endif

@@ -57,7 +57,7 @@ void parser_next(parser_t* parser)
  * 
  * @return void
  */
-void parser_previouse(parser_t* parser)
+void parser_previous(parser_t* parser)
 {
     if (parser->current_token > 0) parser->current_token--;
 }
