@@ -75,6 +75,18 @@ token_t* parser_peek(parser_t* parser)
 }
 
 /**
+ * @brief Parser peek a token type
+ * 
+ * @param parser_t* parser
+ * 
+ * @return token_type_t
+ */
+token_type_t parser_peek_type(parser_t* parser)
+{
+    return parser->tokens->data[parser->current_token]->type;
+}
+
+/**
  * @brief Parser check if has a token type
  * 
  * @param parser_t* parser
@@ -219,9 +231,9 @@ ast_expr_t* parser_parse_expression_binary(parser_t* parser, ast_block_t* block,
         !parser_has(parser, TOKEN_GREATER) &&
         !parser_has(parser, TOKEN_GREATER_EQUAL)
             ) {
-        printf("Unexpected token %s while expecting binary operator\n", token_name(parser_peek(parser)->type));
+        printf("Unexpected token %s while expecting binary operator\n", token_name(parser_peek_type(parser)));
         // sds message = sdsnew("Unexpected token ");
-        // message = sdscat(message, token_name(parser_peek(parser)->type));
+        // message = sdscat(message, token_name(parser_peek_type(parser)));
         // Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, parser_peek(parser)->start, parser_peek(parser)->end);
         // array_push(parser->errors, error);
 
@@ -246,9 +258,9 @@ ast_expr_t* parser_parse_expression_prefix(parser_t* parser, ast_block_t* block,
 {
     token_t* operator;
     if (!parser_has(parser, TOKEN_PLUS) && !parser_has(parser, TOKEN_MINUS)) {
-        printf("Unexpected token %s while expecting prefix operator\n", token_name(parser_peek(parser)->type));
+        printf("Unexpected token %s while expecting prefix operator\n", token_name(parser_peek_type(parser)));
         // sds message = sdsnew("Unexpected token ");
-        // message = sdscat(message, token_name(parser_peek(parser)->type));
+        // message = sdscat(message, token_name(parser_peek_type(parser)));
         // Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, parser_peek(parser)->start, parser_peek(parser)->end);
         // array_push(parser->errors, error);
 
@@ -282,7 +294,7 @@ array_t* parser_parse_expressions(parser_t* parser, ast_block_t* block)
     ast_expr_t* lhs = parser_parse_expression(parser, block, 0);
     array_push(expressions, lhs);
 
-//    while (parser_peek(parser)->type != TOKEN_EOF) {
+//    while (parser_peek_type(parser) != TOKEN_EOF) {
 //        ast_expr_t* expr = parser_parse_expression(parser, block, 0);
 //        if (expr == NULL) return NULL;
 //        array_push(expressions, expr);
@@ -360,9 +372,9 @@ ast_expr_t* parser_parse_expression_postfix(parser_t* parser, ast_block_t* block
     if (parser_has(parser, TOKEN_PLUS) || parser_has(parser, TOKEN_MINUS)) {
         operator = parser_eat(parser);
     } else {
-        printf("Unexpected token %s in postfix expression\n", token_name(parser_peek(parser)->type));
+        printf("Unexpected token %s in postfix expression\n", token_name(parser_peek_type(parser)));
         // sds message = sdsnew("Unexpected token ");
-        // message = sdscat(message, token_name(parser_peek(parser)->type));
+        // message = sdscat(message, token_name(parser_peek_type(parser)));
         // Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, parser_peek(parser)->start, parser_peek(parser)->end);
         // array_push(parser->errors, error);
 
@@ -398,13 +410,13 @@ ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int bi
     } else if (parser_has(parser, TOKEN_PLUS) || parser_has(parser, TOKEN_MINUS)) {
         result = parser_parse_expression_prefix(parser, block,
                                           parser_prefix_bp_lookup(
-                                                  parser_peek(parser)->type
+                                                  parser_peek_type(parser)
                                           )
         );
     } else {
-        printf("Unexpected token in expression: %s\n", token_name(parser_peek(parser)->type));
+        printf("Unexpected token in expression: %s\n", token_name(parser_peek_type(parser)));
         // sds message = sdsnew("Unexpected token ");
-        // message = sdscat(message, token_name(parser_peek(parser)->type));
+        // message = sdscat(message, token_name(parser_peek_type(parser)));
         // Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, parser_peek(parser)->start, parser_peek(parser)->end);
         // array_push(parser->errors, error);
 
@@ -420,7 +432,7 @@ ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int bi
         return NULL;
     }
 
-    while (binding_power_to_my_right < parser_bp_lookup(parser_peek(parser)->type).left_power) {
+    while (binding_power_to_my_right < parser_bp_lookup(parser_peek_type(parser)).left_power) {
         // Is it a postfix expression?
         if (parser_has(parser, TOKEN_BANG)) {
             result = parser_parse_expression_postfix(parser, block, result);
@@ -434,7 +446,7 @@ ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int bi
 //            result = AstCallExpression(result, args);
         } else {
             // It must be a binary expression
-            result = parser_parse_expression_binary(parser, block, result, parser_bp_lookup(parser_peek(parser)->type).right_power);
+            result = parser_parse_expression_binary(parser, block, result, parser_bp_lookup(parser_peek_type(parser)).right_power);
         }
     }
 
@@ -483,7 +495,7 @@ ast_if_t* parser_parse_if(parser_t* parser)
         }
         // Unexpected token
         else {
-            printf("Unexpected token %s after else\n", token_name(parser_peek(parser)->type));
+            printf("Unexpected token %s after else\n", token_name(parser_peek_type(parser)));
             return NULL;
         }
     }

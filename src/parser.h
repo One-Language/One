@@ -53,6 +53,15 @@ token_t* parser_eat(parser_t* parser);
 token_t* parser_peek(parser_t* parser);
 
 /**
+ * @brief Parser peek a token type
+ * 
+ * @param parser_t* parser
+ * 
+ * @return token_type_t
+ */
+token_type_t parser_peek_type(parser_t* parser);
+
+/**
  * @brief Parser check if has a token type
  * 
  * @param parser_t* parser

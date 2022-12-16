@@ -12,9 +12,9 @@ func f1 () {
     ret 1
 }
 func f2 () {
-//    if 4 {} else {}
+    if 4 {} else {}
 }
 func f3 () {
 //    if 4 {} else if 2 {} else if 5 {} else if 8{}
-//     if 4 {} else if 2 {} else if 5 {} else if 8{} else {}
+     if 4 {} else if 2 {} else if 5 {} else if 8{} else {}
 }
