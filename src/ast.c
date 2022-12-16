@@ -157,19 +157,22 @@ char* ast_print_expressions(array_t* expressions, int ident)
 
 char* ast_print_statement(ast_statement_t* statement)
 {
-    string_t* str = string_init();
+    string_t* str = string_init_value("");
 
     switch (statement->type) {
     case AST_STATEMENT_IF:
         string_append(str, "\t\t\t\tIf statement\n");
         break;
+
     case AST_STATEMENT_RET:
         string_append(str, "\t\t\t\tReturn statement\n");
-        string_append(str, ast_print_expression(NULL, statement->stmt_ret->expression, 0));
+        // string_append(str, ast_print_expression(NULL, statement->stmt_ret->expression, 0));
         break;
+
     // case AST_STATEMENT_EXPR:
     //     string_append(str, "\t\t\t\tExpression statement\n");
     //     break;
+
     default:
         string_append(str, "\t\t\t\tUnknown statement\n");
         break;
@@ -184,9 +187,11 @@ char* ast_print_block(ast_block_t* block)
 
     string_append_format(str, "\t\tBlock (%d statements)\n", block->statements->size);
 
+    printf("Block (%d statements)\n", block->statements->size);
     for (int i = 0; i < block->statements->size; i++) {
         ast_statement_t* statement = array_get(block->statements, i);
-        if (statement != NULL) string_append(str, ast_print_statement(statement));
+        // string_append(str, ast_print_statement(statement));
+        printf("%s\n", ast_print_statement(statement));
     }
 
     return str->value;
