@@ -19,6 +19,7 @@ string_t* string_init()
 {
     string_t* string = (string_t*)malloc(sizeof(string_t));
     string->value = malloc(sizeof(char) * (string->capacity = 10));
+    string->value[0] = '\0';
     string->length = 0;
     return string;
 }
@@ -169,7 +170,8 @@ char* string_append_size(string_t* string, char* value, int length)
         string->value = (char*)realloc(string->value, string->capacity);
     }
 
-    memcpy(string->value + string->length, value, length);
+    if (string->length == 0) memcpy(string->value, value, length);
+    else memcpy(string->value + string->length, value, length);
 
     string->length += length;
     string->value[string->length] = '\0';

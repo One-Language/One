@@ -186,7 +186,7 @@ char* ast_print_block(ast_block_t* block)
 
     for (int i = 0; i < block->statements->size; i++) {
         ast_statement_t* statement = array_get(block->statements, i);
-        string_append(str, ast_print_statement(statement));
+        if (statement != NULL) string_append(str, ast_print_statement(statement));
     }
 
     return str->value;
