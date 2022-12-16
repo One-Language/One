@@ -1,3 +1,13 @@
+/**
+* @file   hello_world.one
+* @author  <your name>
+* @date   <date>
+* @version 0.1
+* @brief  Hello World in ONE
+*
+* @section LICENSE
+*/
+// ONE Programming Language
 func main () {
     ret 1
 }

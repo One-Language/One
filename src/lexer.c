@@ -71,9 +71,9 @@ void lexer_lex_next(lexer_t* lex)
         case '\n':
         case '\r':
             lex->current++;
+            lex->current_location.line++;
             lex->current_location.column = 0;
             lex->current_location.offset++;
-            lex->current_location.line++;
 
             lex->start = lex->current;
             lex->start_location = lex->current_location;
@@ -292,18 +292,24 @@ void lexer_read_comment_multi_line(lexer_t* lex)
 {
     lexer_read_offset(lex, 2);
 
-    while (lex->current[0] != '*' && lex->current[1] != '/' && lex->current[0] != '\0') {
+    // return and insert an error token if the comment is not closed
+    if (lex->current[0] == '\0') {
+        lexer_add_token(lex, TOKEN_ERROR);
+        return;
+    }
+
+    while (lex->current[0] != '*' || lex->current[1] != '/') {
+        if (lex->current[0] == '\0') {
+            lexer_add_token(lex, TOKEN_ERROR);
+            return;
+        }
+
         lexer_read_offset(lex, 1);
 
         if (lex->current[0] == '\n') {
             lex->current_location.line++;
             lex->current_location.column = 0;
         }
-    }
-
-    if (lex->current[0] == '\0') {
-        lexer_add_token(lex, TOKEN_ERROR);
-        return;
     }
 
     lexer_read_offset(lex, 2);
