@@ -20,6 +20,11 @@ typedef struct {
     ast_t* ast;
 } parser_t;
 
+struct binding_power {
+    int left_power;
+    int right_power;
+};
+
 /**
  * @brief Initialize parser with tokens
  * 
@@ -173,5 +178,31 @@ void parser_next(parser_t* parser);
  * @return void
  */
 void parser_previous(parser_t* parser);
+
+// TODO: expression parser
+
+ast_expr_t* parse_expression_literal(parser_t* parser, ast_block_t* block);
+
+ast_expr_t* parser_sub_expression(parser_t* parser, ast_block_t* block);
+
+ast_expr_t* parser_parse_expression_binary(parser_t* parser, ast_block_t* block, ast_expr_t* lhs, int min_bp);
+
+ast_expr_t* parser_parse_expression_prefix(parser_t* parser, ast_block_t* block, int min_bp);
+
+int parser_prefix_bp_lookup(token_type_t whichOperator);
+
+array_t* parser_parse_expressions(parser_t* parser, ast_block_t* block);
+
+ast_expr_t* parser_ternary_expression(parser_t* parser, ast_block_t* block, ast_expr_t* clause);
+
+struct binding_power RightAssociative(int priority);
+
+struct binding_power LeftAssociative(int priority);
+
+struct binding_power parser_bp_lookup(token_type_t whichOperator);
+
+ast_expr_t* parser_parse_expression_postfix(parser_t* parser, ast_block_t* block, ast_expr_t* lhs);
+
+ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int binding_power_to_my_right);
 
 #endif

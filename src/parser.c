@@ -124,6 +124,20 @@ token_t* parser_expect(parser_t* parser, token_type_t type)
     return token;
 }
 
+struct binding_power RightAssociative(int priority) {
+    struct binding_power bp;
+    bp.left_power = priority + 1;
+    bp.right_power = priority;
+    return bp;
+}
+
+struct binding_power LeftAssociative(int priority) {
+    struct binding_power bp;
+    bp.left_power = priority - 1;
+    bp.right_power = priority;
+    return bp;
+}
+
 /**
  * @brief Parse tokens
  * 
@@ -147,9 +161,6 @@ void parser_parse(parser_t* parser)
         }
     }
 }
-
-
-
 
 ast_expr_t* parse_expression_literal(parser_t* parser, ast_block_t* block)
 {
@@ -304,25 +315,6 @@ ast_expr_t* parser_ternary_expression(parser_t* parser, ast_block_t* block, ast_
     expr->expr.ternary->false_value = alternate;
 
     return expr;
-}
-
-struct binding_power {
-    int left_power;
-    int right_power;
-};
-
-struct binding_power RightAssociative(int priority) {
-    struct binding_power bp;
-    bp.left_power = priority + 1;
-    bp.right_power = priority;
-    return bp;
-}
-
-struct binding_power LeftAssociative(int priority) {
-    struct binding_power bp;
-    bp.left_power = priority - 1;
-    bp.right_power = priority;
-    return bp;
 }
 
 struct binding_power parser_bp_lookup(token_type_t whichOperator)
