@@ -148,14 +148,81 @@ void parser_parse(parser_t* parser)
     }
 }
 
+
+
 ast_expr_t* parser_parse_expression(parser_t* parser)
 {
-    ast_expr_t* expr = ast_expression_init();
+    ast_expr_t* result = ast_expression_init();
 
-    token_t* token = parser_eat(parser);
-    expr->value = token;
+    if (parser_has())
 
-    return expr;
+    if (parser_has(parser, TOKEN_IDENTIFIER) ||
+        parser_has(parser, TOKEN_NUMBER) ||
+        // parser_has(parser, TOKEN_NUMBER_FLOAT ||
+        parser_has(parser, TOKEN_STRING) //||
+        // parser_has(parser, TOKEN_STRING_SINGLE_QUOTE) ||
+        // parser_has(parser, TOKEN_BOOL_TRUE) ||
+        // parser_has(parser, TOKEN_BOOL_FALSE) ||
+        // parser_has(parser, TOKEN_NULL) ||
+        // parser_has(parser, TOKEN_UNDEFINED)
+    {
+        result = parser_parse_expression_literal(parser, block);
+    } else if (parser_has(parser, TOKEN_LPAREN) {
+        result = parser_parse_expression_sub(parser, block);
+    } else if (parser_has(parser, TOKEN_ADD || parser_has(parser, TOKEN_SUB) {
+        result = parser_parse_expression_prefix(parser, block,
+                                          parser_prefix_bp_lookup(
+                                                  (*parser->tokens)->type
+                                          )
+        );
+    } else {
+        printf("Unexpected token in expression: %s\n", token_name((*parser->tokens)->type));
+        // sds message = sdsnew("Unexpected token ");
+        // message = sdscat(message, token_type_name((*parser->tokens)->type));
+        // Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        // array_push(parser->errors, error);
+
+        return NULL;
+    }
+
+    if (result == NULL) {
+        printf("We should always have either a LHS or Prefix Operator at this point.\n");
+        // sds message = sdsnew("We should always have either a LHS or Prefix Operator at this point.");
+        // Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        // array_push(parser->errors, error);
+
+        return NULL;
+    }
+
+    while (binding_power_to_my_right < parser_bp_lookup((*parser->tokens)->type).left_power) {
+        // Is it a postfix expression?
+        if (parser_has(parser, TOKEN_NOT) {
+            result = parser_postfix_expression(parser, block, result);
+        } else if (parser_has(parser, TOKEN_QUESTION) {
+            result = parser_ternary_expression(parser, block, result);
+        } else if (parser_has(parser, TOKEN_LPAREN) {
+            advance(parser);
+            Array* args = parser_expressions(parser, block);
+
+            parser_expect(parser, TOKEN_RIGHT_PAREN);
+
+//            result = AstCallExpression(result, args);
+        } else {
+            // It must be a binary expression
+            result = parser_parse_expression_binary(parser, block, result, parser_bp_lookup((*parser->tokens)->type).right_power);
+        }
+    }
+
+    if (result == NULL) {
+        printf("We should always have either a LHS or Prefix Operator at this point.\n");
+        // sds message = sdsnew("We should always have either a LHS or Prefix Operator at this point.");
+        // Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, (*parser->tokens)->start, (*parser->tokens)->end);
+        // array_push(parser->errors, error);
+
+        return NULL;
+    }
+
+    return result;
 }
 
 /**

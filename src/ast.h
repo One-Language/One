@@ -9,6 +9,8 @@
 #ifndef _ONE_AST_H_
 #define _ONE_AST_H_
 
+#include <stdbool.h> // bool, true, false
+
 #include "token.h"
 #include "array.h"
 
