@@ -365,13 +365,14 @@ struct binding_power parser_bp_lookup(token_type_t whichOperator)
 ast_expr_t* parser_parse_expression_postfix(parser_t* parser, ast_block_t* block, ast_expr_t* lhs)
 {
     token_t* operator;
-    if (parser_has(parser, TOKEN_PLUS || parser_has(parser, TOKEN_MINUS)) {
+    if (parser_has(parser, TOKEN_PLUS) || parser_has(parser, TOKEN_MINUS)) {
         operator = parser_eat(parser);
     } else {
-        sds message = sdsnew("Unexpected token ");
-        message = sdscat(message, token_name(parser_peek(parser)->type));
-        Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, parser_peek(parser)->start, parser_peek(parser)->end);
-        array_push(parser->errors, error);
+        printf("Unexpected token %s in postfix expression\n", token_name(parser_peek(parser)->type));
+        // sds message = sdsnew("Unexpected token ");
+        // message = sdscat(message, token_name(parser_peek(parser)->type));
+        // Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, parser_peek(parser)->start, parser_peek(parser)->end);
+        // array_push(parser->errors, error);
 
         return NULL;
     }
@@ -385,11 +386,9 @@ ast_expr_t* parser_parse_expression_postfix(parser_t* parser, ast_block_t* block
     return expr;
 }
 
-ast_expr_t* parser_parse_expression(parser_t* parser)
+ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int binding_power_to_my_right)
 {
     ast_expr_t* result = ast_expression_init();
-
-    if (parser_has())
 
     if (parser_has(parser, TOKEN_IDENTIFIER) ||
         parser_has(parser, TOKEN_NUMBER) ||
@@ -400,11 +399,11 @@ ast_expr_t* parser_parse_expression(parser_t* parser)
         // parser_has(parser, TOKEN_BOOL_FALSE) ||
         // parser_has(parser, TOKEN_NULL) ||
         // parser_has(parser, TOKEN_UNDEFINED)
-    {
+    ) {
         result = parser_parse_expression_literal(parser, block);
-    } else if (parser_has(parser, TOKEN_LEFT_PAREN) {
+    } else if (parser_has(parser, TOKEN_LEFT_PAREN)) {
         result = parser_parse_expression_sub(parser, block);
-    } else if (parser_has(parser, TOKEN_PLUS || parser_has(parser, TOKEN_MINUS) {
+    } else if (parser_has(parser, TOKEN_PLUS) || parser_has(parser, TOKEN_MINUS)) {
         result = parser_parse_expression_prefix(parser, block,
                                           parser_prefix_bp_lookup(
                                                   parser_peek(parser)->type
@@ -431,11 +430,11 @@ ast_expr_t* parser_parse_expression(parser_t* parser)
 
     while (binding_power_to_my_right < parser_bp_lookup(parser_peek(parser)->type).left_power) {
         // Is it a postfix expression?
-        if (parser_has(parser, TOKEN_BANG) {
+        if (parser_has(parser, TOKEN_BANG)) {
             result = parser_parse_expression_postfix(parser, block, result);
-        } else if (parser_has(parser, TOKEN_QUESTION) {
+        } else if (parser_has(parser, TOKEN_QUESTION)) {
             result = parser_ternary_expression(parser, block, result);
-        } else if (parser_skip(parser, TOKEN_LEFT_PAREN) {
+        } else if (parser_skip(parser, TOKEN_LEFT_PAREN)) {
             array_t* args = parser_parse_expressions(parser, block);
 
             parser_expect(parser, TOKEN_RIGHT_PAREN);
@@ -472,7 +471,7 @@ ast_if_t* parser_parse_if(parser_t* parser)
 
     if(!parser_expect(parser, TOKEN_IF)) return NULL;
 
-    stmt_if->condition = parser_parse_expression(parser);
+    stmt_if->condition = parser_parse_expression(parser, NULL, 0);
 
     stmt_if->then = parser_parse_block(parser);
 
@@ -513,7 +512,7 @@ ast_ret_t* parser_parse_ret(parser_t* parser)
 
     if(!parser_expect(parser, TOKEN_RET)) return NULL;
 
-    stmt_ret->expression = parser_parse_expression(parser);
+    stmt_ret->expression = parser_parse_expression(parser, NULL, 0);
 
     return stmt_ret;
 }
