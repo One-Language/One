@@ -46,6 +46,15 @@ ast_statement_t* ast_statement_init()
     return statement;
 }
 
+char* ast_print_function(ast_function_t* function)
+{
+    string_t* str = string_init();
+
+    string_append_format(str, "\tFunction %s (%d statements)\n", function->name, function->statements->size);
+
+    return str->value;
+}
+
 /**
  * @brief Print AST
  * 
@@ -57,9 +66,14 @@ char* ast_print(ast_t* ast)
 {
     string_t* str = string_init();
 
-    string_append(str, "AST!\n");
-
-    string_append_format(str, "Functions: %d\n", ast->functions->size);
+    if (ast->functions->size == 0) string_append(str, "There are no functions!\n");
+    else {
+        string_append_format(str, "Functions(%zu):\n", ast->functions->size);
+        for (int i = 0; i < ast->functions->size; i++) {
+            ast_function_t* function = ast->functions->data[i];
+            string_append(str, ast_print_function(function));
+        }
+    }
 
     return str->value;
 }

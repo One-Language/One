@@ -160,6 +160,8 @@ array_t* parser_parse_block(parser_t* parser)
 
     array_t* statements = parser_parse_statements(parser);
 
+    if(!parser_expect(parser, TOKEN_RIGHT_BRACE)) return NULL;
+
     return statements;
 }
 
