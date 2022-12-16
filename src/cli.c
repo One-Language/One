@@ -171,7 +171,28 @@ int cli_run(cli_t* cli)
     ast_t* ast;
     generator_t* gen;
     token_list_t* tokens;
+    char* c_code;
 
+    // Lexer pre-commands
+    if (cli->options->command == CLI_LEX || cli->options->command == CLI_PARSE || cli->options->command == CLI_GEN) {
+        lex = lexer_init(cli->options->file);
+        lexer_lex(lex);
+        tokens = lexer_tokens(lex);
+    }
+    // Parser pre-commands
+    if (cli->options->command == CLI_PARSE || cli->options->command == CLI_GEN) {
+        parse = parser_init(tokens);
+        parser_parse(parse);
+        ast = parser_ast(parse);
+    }
+    // Generator pre-commands
+    if (cli->options->command == CLI_PARSE || cli->options->command == CLI_GEN) {
+        gen = generator_init(ast);
+        generator_generate(gen);
+        c_code = generator_code(gen);
+    }
+
+    // Check command and show output
     switch (cli->options->command) {
         case CLI_HELP:
             cli_print_help(cli);
@@ -182,10 +203,6 @@ int cli_run(cli_t* cli)
             break;
 
         case CLI_LEX:
-            lex = lexer_init(cli->options->file);
-            lexer_lex(lex);
-            tokens = lexer_tokens(lex);
-
             if (cli->options->is_json) fprintf(cli->options->output, token_list_print_json(tokens));
             else fprintf(cli->options->output, token_list_print(tokens));
 
@@ -193,14 +210,6 @@ int cli_run(cli_t* cli)
             break;
 
         case CLI_PARSE:
-            lex = lexer_init(cli->options->file);
-            lexer_lex(lex);
-            tokens = lexer_tokens(lex);
-
-            parse = parser_init(tokens);
-            parser_parse(parse);
-            ast = parser_ast(parse);
-
             if (cli->options->is_json) fprintf(cli->options->output, ast_print_json(ast));
             else fprintf(cli->options->output, ast_print(ast));
 
@@ -209,18 +218,6 @@ int cli_run(cli_t* cli)
             break;
         
         case CLI_GEN:
-            lex = lexer_init(cli->options->file);
-            lexer_lex(lex);
-            tokens = lexer_tokens(lex);
-
-            parse = parser_init(tokens);
-            parser_parse(parse);
-            ast = parser_ast(parse);
-
-            gen = generator_init(ast);
-            generator_generate(gen);
-            char* c_code = generator_code(gen);
-
             fprintf(cli->options->output, c_code);
 
             generator_free(gen);
