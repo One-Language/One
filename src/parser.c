@@ -136,14 +136,16 @@ token_t* parser_expect(parser_t* parser, token_type_t type)
     return token;
 }
 
-struct binding_power RightAssociative(int priority) {
+struct binding_power RightAssociative(int priority)
+{
     struct binding_power bp;
     bp.left_power = priority + 1;
     bp.right_power = priority;
     return bp;
 }
 
-struct binding_power LeftAssociative(int priority) {
+struct binding_power LeftAssociative(int priority)
+{
     struct binding_power bp;
     bp.left_power = priority - 1;
     bp.right_power = priority;
@@ -230,7 +232,7 @@ ast_expr_t* parser_parse_expression_binary(parser_t* parser, ast_block_t* block,
         !parser_has(parser, TOKEN_LESS_EQUAL) &&
         !parser_has(parser, TOKEN_GREATER) &&
         !parser_has(parser, TOKEN_GREATER_EQUAL)
-            ) {
+    ) {
         printf("Unexpected token %s while expecting binary operator\n", token_name(parser_peek_type(parser)));
         // sds message = sdsnew("Unexpected token ");
         // message = sdscat(message, token_name(parser_peek_type(parser)));
