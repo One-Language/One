@@ -101,6 +101,18 @@ void lexer_lex_next(lexer_t* lex)
             lexer_add_token(lex, TOKEN_RIGHT_PAREN);
             break;
 
+        case '?':
+            lexer_read_offset(lex, 1);
+
+            lexer_add_token(lex, TOKEN_QUESTION);
+            break;
+
+        case ':':
+            lexer_read_offset(lex, 1);
+
+            lexer_add_token(lex, TOKEN_COLON);
+            break;
+
         case '{':
             lexer_read_offset(lex, 1);
 

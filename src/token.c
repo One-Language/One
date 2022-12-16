@@ -95,6 +95,9 @@ char* token_name(token_type_t type)
         case TOKEN_LEFT_BRACKET: return "left_bracket";
         case TOKEN_RIGHT_BRACKET: return "right_bracket";
 
+        case TOKEN_COLON: return "colon";
+        case TOKEN_QUESTION: return "question";
+
         case TOKEN_EOF: return "eof";
         default: return "unknown";
     }

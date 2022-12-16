@@ -50,6 +50,8 @@ typedef enum {
     TOKEN_RIGHT_BRACE, // }
     TOKEN_LEFT_BRACKET, // [
     TOKEN_RIGHT_BRACKET, // ]
+    TOKEN_COLON, // :
+    TOKEN_QUESTION, // ?
 
     TOKEN_EOF
 } token_type_t;
