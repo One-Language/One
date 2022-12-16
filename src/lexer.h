@@ -118,4 +118,22 @@ void lexer_read_string(lexer_t* lex);
  */
 void lexer_read_offset(lexer_t* lex, int offset);
 
+/**
+ * @brief Lex a multi line comment
+ * 
+ * @param lexer_t* lexer
+ * 
+ * @return void
+ */
+void lexer_read_comment_multi_line(lexer_t* lex);
+
+/**
+ * @brief Lex a single line comment
+ * 
+ * @param lexer_t* lexer
+ * 
+ * @return void
+ */
+void lexer_read_comment_single_line(lexer_t* lex);
+
 #endif

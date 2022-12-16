@@ -235,11 +235,14 @@ void lexer_lex_next(lexer_t* lex)
         
         case '/':
             if (lex->current[1] == '/') {
-                lexer_read_offset(lex, 2);
+                lexer_read_comment_single_line(lex);
 
-                while (lex->current[0] != '\n' && lex->current[0] != '\0') {
-                    lexer_read_offset(lex, 1);
-                }
+                lex->start = lex->current;
+                lex->start_location = lex->current_location;
+                lexer_lex_next(lex);
+            }
+            else if (lex->current[1] == '*') {
+                lexer_read_comment_multi_line(lex);
 
                 lex->start = lex->current;
                 lex->start_location = lex->current_location;
@@ -276,6 +279,50 @@ void lexer_lex(lexer_t* lex)
     while(lex->current[0] != '\0') lexer_lex_next(lex);
 
     lexer_add_token(lex, TOKEN_EOF);
+}
+
+/**
+ * @brief Lex a multi line comment
+ * 
+ * @param lexer_t* lexer
+ * 
+ * @return void
+ */
+void lexer_read_comment_multi_line(lexer_t* lex)
+{
+    lexer_read_offset(lex, 2);
+
+    while (lex->current[0] != '*' && lex->current[1] != '/' && lex->current[0] != '\0') {
+        lexer_read_offset(lex, 1);
+
+        if (lex->current[0] == '\n') {
+            lex->current_location.line++;
+            lex->current_location.column = 0;
+        }
+    }
+
+    if (lex->current[0] == '\0') {
+        lexer_add_token(lex, TOKEN_ERROR);
+        return;
+    }
+
+    lexer_read_offset(lex, 2);
+}
+
+/**
+ * @brief Lex a single line comment
+ * 
+ * @param lexer_t* lexer
+ * 
+ * @return void
+ */
+void lexer_read_comment_single_line(lexer_t* lex)
+{
+    lexer_read_offset(lex, 2);
+
+    while (lex->current[0] != '\n' && lex->current[0] != '\0') {
+        lexer_read_offset(lex, 1);
+    }
 }
 
 /**
