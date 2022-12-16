@@ -93,7 +93,7 @@ token_t* parser_expect(parser_t* parser, token_type_t type)
 {
     token_t* token = parser->tokens->data[parser->current_token];
     if (token->type != type) {
-        printf("Unexpected token  %s while expecting %s\n", token_name(token->type), token_name(type));
+        printf("Unexpected token %s while expecting %s\n", token_name(token->type), token_name(type));
         return NULL;
     }
     parser->current_token++;
@@ -177,8 +177,6 @@ ast_ret_t* parser_parse_ret(parser_t* parser)
     if(!parser_expect(parser, TOKEN_RET)) return NULL;
 
     stmt_ret->expression = parser_parse_expression(parser);
-
-    if(!parser_expect(parser, TOKEN_SEMICOLON)) return NULL;
 
     return stmt_ret;
 }

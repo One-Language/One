@@ -83,7 +83,7 @@ char* ast_print_function(ast_function_t* function)
 {
     string_t* str = string_init();
 
-    string_append_format(str, "\tFunction %s (%d statements)\n", function->name, function->statements->size);
+    string_append_format(str, "\tFunction %s (%d statements)\n", function->name, function->block->statements->size);
 
     return str->value;
 }
