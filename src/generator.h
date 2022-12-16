@@ -32,6 +32,16 @@ typedef struct {
 generator_t* generator_init(ast_t* ast);
 
 /**
+ * @brief Generate the code of a function from AST
+ * 
+ * @param generator_t* generator
+ * @param ast_function_t* function
+ * 
+ * @return char* 
+ */
+char* generator_generate_function(generator_t* generator, ast_function_t* function);
+
+/**
  * @brief Generate the code from AST
  * 
  * @param generator_t* generator

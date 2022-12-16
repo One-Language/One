@@ -8,11 +8,11 @@
 * @section LICENSE
 */
 // ONE Programming Language
-func main () {
+func f1 () {
     ret 1
 }
-func main () {
+func f2 () {
     1
 }
-func main () {
+func f3 () {
 }
