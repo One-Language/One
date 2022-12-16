@@ -332,9 +332,8 @@ char* size_to_chars(size_t value)
  */
 char* string_to_lower(string_t* string)
 {
-    for (int i = 0; i < string->length; i++) {
-        string->value[i] = tolower(string->value[i]);
-    }
+    for (int i = 0; i < string->length; i++) string->value[i] = tolower(string->value[i]);
+
     return string->value;
 }
 
@@ -347,9 +346,8 @@ char* string_to_lower(string_t* string)
  */
 char* string_to_upper(string_t* string)
 {
-    for (int i = 0; i < string->length; i++) {
-        string->value[i] = toupper(string->value[i]);
-    }
+    for (int i = 0; i < string->length; i++) string->value[i] = toupper(string->value[i]);
+
     return string->value;
 }
 
@@ -363,9 +361,7 @@ char* string_to_upper(string_t* string)
  */
 char string_get(string_t* string, int index)
 {
-    if (index >= string->length)
-        return '\0';
-
+    if (index >= string->length) return '\0';
     return string->value[index];
 }
 
@@ -379,15 +375,17 @@ char string_get(string_t* string, int index)
  */
 string_t* string_repeat(string_t* string, int count)
 {
-    if (count <= 0) return string_new("");
+    int str_len = string->length;
+    if (count <= 0 || str_len == 0) return "";
 
-    int length = string->length * count;
-    char* buffer = (char*)malloc(length + 1);
-    for (int i = 0; i < count; i++) {
-        memcpy(buffer + i * string->length, string->value, string->length);
+    int length = str_len * count;
+    string_resize(string, length);
+
+    for (int i = 1; i < count; i++) {
+        string_append(string, string->value);
     }
-    buffer[length] = '\0';
-    return string_new(buffer);
+
+    return string;
 }
 
 /**
@@ -400,13 +398,14 @@ string_t* string_repeat(string_t* string, int count)
  */
 char* string_repeat_chars(string_t* string, int count)
 {
-    if (count <= 0) return "";
+    int str_len = string->length;
+    if (count <= 0 || str_len == 0) return "";
 
-    int length = string->length * count;
+    int length = str_len * count;
     char* buffer = (char*)malloc(length + 1);
-    for (int i = 0; i < count; i++) {
-        memcpy(buffer + i * string->length, string->value, string->length);
-    }
+
+    for (int i = 0; i < count; i++) memcpy(buffer + i * string->length, string->value, string->length);
+
     buffer[length] = '\0';
     return buffer;
 }
@@ -421,13 +420,14 @@ char* string_repeat_chars(string_t* string, int count)
  */
 char* chars_repeat(char* str, int count)
 {
-    if (count <= 0) return "";
+    int str_len = strlen(str);
+    if (count <= 0 || str_len == 0) return "";
 
-    int length = strlen(str) * count;
+    int length = str_len * count;
     char* buffer = (char*)malloc(length + 1);
-    for (int i = 0; i < count; i++) {
-        memcpy(buffer + i * strlen(str), str, strlen(str));
-    }
+
+    for (int i = 0; i < count; i++) memcpy(buffer + i * strlen(str), str, strlen(str));
+
     buffer[length] = '\0';
     return buffer;
 }

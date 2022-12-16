@@ -165,7 +165,7 @@ char* ast_print_statement(ast_statement_t* statement)
         break;
     case AST_STATEMENT_RET:
         string_append(str, "\t\t\t\tReturn statement\n");
-        string_append(str, ast_print_expression(NULL, statement->stmt_ret->expression));
+        string_append(str, ast_print_expression(NULL, statement->stmt_ret->expression, 0));
         break;
     // case AST_STATEMENT_EXPR:
     //     string_append(str, "\t\t\t\tExpression statement\n");
