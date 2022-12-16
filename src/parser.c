@@ -25,6 +25,70 @@ parser_t* parser_init(token_list_t* tokens)
 }
 
 /**
+ * @brief Parser eat a token
+ * 
+ * @param parser_t* parser
+ * 
+ * @return token_t*
+ */
+token_t* parser_eat(parser_t* parser)
+{
+    token_t* token = parser->tokens->data[parser->current_token];
+    parser->current_token++;
+    return token;
+}
+
+/**
+ * @brief Parser check if has a token type
+ * 
+ * @param parser_t* parser
+ * @param token_type_t type
+ * 
+ * @return bool
+ */
+bool parser_has(parser_t* parser, token_type_t type)
+{
+    token_t* token = parser->tokens->data[parser->current_token];
+    return token->type == type;
+}
+
+/**
+ * @brief Parser skip a token type
+ * 
+ * @param parser_t* parser
+ * @param token_type_t type
+ * 
+ * @return bool
+ */
+bool parser_skip(parser_t* parser, token_type_t type)
+{
+    if (parser_has(parser, type)) {
+        parser->current_token++;
+        return true;
+    }
+    return false;
+}
+
+/**
+ * @brief Parser expect a token type
+ * 
+ * @param parser_t* parser
+ * @param token_type_t type
+ * 
+ * @return token_t*
+ */
+token_t* parser_expect(parser_t* parser, token_type_t type)
+{
+    token_t* token = parser->tokens->data[parser->current_token];
+    if (token->type != type) {
+        printf("Unexpected token: %s\n", token_name(token->type));
+        return NULL;
+    }
+    parser->current_token++;
+    return token;
+}
+
+/**
  * @brief Parse tokens
  * 
  * @param parser_t* parser
@@ -36,14 +100,34 @@ void parser_parse(parser_t* parser)
     while (parser->current_token < parser->tokens->size) {
         token_t* token = parser->tokens->data[parser->current_token];
 
-        if (token->type == TOKEN_FUNC) parser_parse_function(parser);
+        if (token->type == TOKEN_FUNC) {
+            ast_function_t* function = parser_parse_function(parser);
+            if (function != NULL) array_push(parser->ast->functions, function);
+        }
         else {
             printf("Unexpected token: %s\n", token_name(token->type));
+            parser->current_token++;
         }
-
-
-        parser->current_token++;
     }
+}
+
+/**
+ * @brief Parse statements
+ * 
+ * @param parser_t* parser
+ * 
+ * @return array_t* (array of ast_statement_t*)
+ */
+array_t* parser_parse_statements(parser_t* parser)
+{
+    array_t* statements = array_init();
+
+    while (!parser_skip(parser, TOKEN_RIGHT_BRACE)) {
+        token_t* token = parser_eat(parser);
+        array_push(statements, token);
+    }
+
+    return statements;
 }
 
 /**
@@ -51,49 +135,23 @@ void parser_parse(parser_t* parser)
  * 
  * @param parser_t* parser
  * 
- * @return void
+ * @return ast_function_t*
  */
-void parser_parse_function(parser_t* parser)
+ast_function_t* parser_parse_function(parser_t* parser)
 {
-    token_t* token = parser->tokens->data[parser->current_token];
-    if (token->type != TOKEN_FUNC) {
-        printf("Unexpected token: %s\n", token_name(token->type));
-        return;
-    }
-
     ast_function_t* function = ast_function_init();
-    function->name = token->value;
 
-    parser->current_token++;
-    token = parser->tokens->data[parser->current_token];
-    if (token->type != TOKEN_LEFT_PAREN) {
-        printf("Unexpected token: %s\n", token_name(token->type));
-        return;
-    }
+    parser_expect(parser, TOKEN_FUNC);
+    token_t* name = parser_expect(parser, TOKEN_IDENTIFIER);
+    parser_expect(parser, TOKEN_LEFT_PAREN);
+    parser_expect(parser, TOKEN_RIGHT_PAREN);
 
-    parser->current_token++;
-    token = parser->tokens->data[parser->current_token];
-    if (token->type != TOKEN_RIGHT_PAREN) {
-        printf("Unexpected token: %s\n", token_name(token->type));
-        return;
-    }
+    function->name = name->value;
+    function->statements = parser_parse_statements(parser);
 
-    parser->current_token++;
-    token = parser->tokens->data[parser->current_token];
-    if (token->type != TOKEN_LEFT_BRACE) {
-        printf("Unexpected token: %s\n", token_name(token->type));
-        return;
-    }
-
-    parser->current_token++;
-    token = parser->tokens->data[parser->current_token];
-    if (token->type != TOKEN_RIGHT_BRACE) {
-        printf("Unexpected token: %s\n", token_name(token->type));
-        return;
-    }
-
-    array_append(parser->ast->functions, function);
+    return function;
 }
+
 
 /**
  * @brief Get AST from parser

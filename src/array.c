@@ -32,7 +32,7 @@ array_t* array_init()
  * 
  * @return array_t* 
  */
-array_t* array_append(array_t* array, void* element)
+array_t* array_push(array_t* array, void* element)
 {
     if (array->size == array->capacity) {
         array->capacity += 8;

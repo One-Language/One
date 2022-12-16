@@ -14,6 +14,8 @@
 
 typedef struct {
     char* name;
+    array_t* arguments;
+    array_t* statements;
 } ast_function_t;
 
 typedef struct {
