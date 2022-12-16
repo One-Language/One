@@ -60,9 +60,12 @@ char* token_name(token_type_t type)
 {
     switch (type) {
         case TOKEN_ERROR: return "error";
+
         case TOKEN_IF: return "if";
         case TOKEN_ELSE: return "else";
+        case TOKEN_FUNC: return "func";
         case TOKEN_RET: return "ret";
+
         case TOKEN_NUMBER: return "number";
         case TOKEN_IDENTIFIER: return "identifier";
         case TOKEN_STRING: return "string";

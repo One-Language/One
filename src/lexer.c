@@ -325,10 +325,40 @@ void lexer_read_identifier(lexer_t* lex)
         lexer_read_offset(lex, 1);
     }
 
-    char* value = (char*)malloc(sizeof(char) * (lex->current - lex->start + 1));
+    int length = lex->current - lex->start;
+    char* value = (char*)malloc(sizeof(char) * (length + 1));
     memcpy(value, lex->start, lex->current - lex->start);
     value[lex->current - lex->start] = '\0';
 
+    // Check if the identifier is a reserved keyword
+    switch (length) {
+        case 2:
+            if (value[0] == 'i' && value[1] == 'f') {
+                lexer_add_token(lex, TOKEN_IF);
+                return;
+            }
+            break;
+
+        case 3:
+            if (value[0] == 'r' && value[1] == 'e' && value[2] == 't') {
+                lexer_add_token(lex, TOKEN_RET);
+                return;
+            }
+            break;
+        
+        case 4:
+            if (value[0] == 'e' && value[1] == 'l' && value[2] == 's' && value[3] == 'e') {
+                lexer_add_token(lex, TOKEN_ELSE);
+                return;
+            }
+            else if (value[0] == 'f' && value[1] == 'u' && value[2] == 'n' && value[3] == 'c') {
+                lexer_add_token(lex, TOKEN_FUNC);
+                return;
+            }
+            break;
+    }
+
+    // Otherwise it's an identifier
     lexer_add_token_value(lex, TOKEN_IDENTIFIER, value);
 }
 

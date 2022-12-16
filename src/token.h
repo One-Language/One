@@ -16,10 +16,12 @@
 
 typedef enum {
     TOKEN_ERROR,
+
     TOKEN_IF,
     TOKEN_ELSE,
     TOKEN_FUNC,
     TOKEN_RET,
+
     TOKEN_NUMBER,
     TOKEN_IDENTIFIER,
     TOKEN_STRING,
