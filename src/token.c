@@ -159,7 +159,7 @@ char* token_list_print(token_list_t* list)
 
     for (int i = 0; i < list->size; i++) {
         token_t* token = list->data[i];
-        string_append_format(str, "\t%s\t%.*s\n", token_name(token->type), (int)(token->end - token->start), token->start);
+        string_append_format(str, "\t%s\t%.*s\t%d:%d\t%d:%d\n", token_name(token->type), (int)(token->end - token->start), token->start, token->start_location.line, token->start_location.column, token->end_location.line, token->end_location.column);
     }
 
     return str->value;

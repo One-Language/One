@@ -1,8 +1,0 @@
-7 tokens
-	identifier	func
-	identifier	main
-	left_paren	(
-	right_paren	)
-	left_brace	{
-	right_brace	}
-	eof	
