@@ -186,7 +186,7 @@ int cli_run(cli_t* cli)
         ast = parser_ast(parse);
     }
     // Generator pre-commands
-    if (cli->options->command == CLI_PARSE || cli->options->command == CLI_GEN) {
+    if (cli->options->command == CLI_GEN) {
         gen = generator_init(ast);
         generator_generate(gen);
         c_code = generator_code(gen);
@@ -231,7 +231,7 @@ int cli_run(cli_t* cli)
             break;
     }
 
-    // if (cli->options->output != NULL && cli->options->output != stdout) fclose(cli->options->output);
+    if (cli->options->output != NULL && cli->options->output != stdout) fclose(cli->options->output);
 
     // Default return value
     return 0;
