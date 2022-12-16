@@ -181,9 +181,9 @@ void parser_previous(parser_t* parser);
 
 // TODO: expression parser
 
-ast_expr_t* parse_expression_literal(parser_t* parser, ast_block_t* block);
+ast_expr_t* parser_parse_expression_literal(parser_t* parser, ast_block_t* block);
 
-ast_expr_t* parser_sub_expression(parser_t* parser, ast_block_t* block);
+ast_expr_t* parser_parse_expression_sub(parser_t* parser, ast_block_t* block);
 
 ast_expr_t* parser_parse_expression_binary(parser_t* parser, ast_block_t* block, ast_expr_t* lhs, int min_bp);
 

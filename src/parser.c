@@ -162,7 +162,7 @@ void parser_parse(parser_t* parser)
     }
 }
 
-ast_expr_t* parse_expression_literal(parser_t* parser, ast_block_t* block)
+ast_expr_t* parser_parse_expression_literal(parser_t* parser, ast_block_t* block)
 {
     ast_expr_t* expr = malloc(sizeof(ast_expr_t));
 
@@ -176,7 +176,7 @@ ast_expr_t* parse_expression_literal(parser_t* parser, ast_block_t* block)
     return expr;
 }
 
-ast_expr_t* parser_sub_expression(parser_t* parser, ast_block_t* block)
+ast_expr_t* parser_parse_expression_sub(parser_t* parser, ast_block_t* block)
 {
     parser_expect(parser, TOKEN_LEFT_PAREN);
     ast_expr_t* expression = parser_parse_expression(parser, block, 0);
