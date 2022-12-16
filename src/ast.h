@@ -23,6 +23,7 @@ typedef struct {
 
 typedef struct {
     ast_list_function_t* functions;
+    // ast_list_error_t* errors;
 } ast_t;
 
 /**
