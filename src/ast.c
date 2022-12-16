@@ -79,9 +79,9 @@ char* ast_print(ast_t* ast)
 }
 
 /**
- * @brief Print function in JSON format
+ * @brief Print AST in JSON format
  * 
- * @param ast_function_t* function
+ * @param ast_t* ast
  * 
  * @return char*
  */

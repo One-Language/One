@@ -63,12 +63,12 @@ ast_statement_t* ast_statement_init();
 char* ast_print(ast_t* ast);
 
 /**
- * @brief Print function in JSON format
+ * @brief Print AST in JSON format
  * 
- * @param ast_function_t* function
+ * @param ast_t* ast
  * 
  * @return char*
  */
-char* ast_print_json(ast_function_t* function);
+char* ast_print_json(ast_t* ast);
 
 #endif
