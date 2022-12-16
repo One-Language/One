@@ -155,12 +155,12 @@ void token_list_free(token_list_t* list)
 char* token_list_print(token_list_t* list)
 {
     string_t* str = string_init();
-    string_append_format(str, "%d Tokens\n", list->size);
+    string_append_format(str, "%zu tokens\n", list->size);
 
-    for (int i = 0; i < list->size; i++) {
-        token_t* token = list->data[i];
-        string_append_format(str, "\t%s\t%.*s", token_name(token->type), (int)(token->end - token->start), token->start);
-    }
+    // for (int i = 0; i < list->size; i++) {
+    //     token_t* token = list->data[i];
+    //     string_append_format(str, "\t%s\t%.*s", token_name(token->type), (int)(token->end - token->start), token->start);
+    // }
 
     return str->value;
 }

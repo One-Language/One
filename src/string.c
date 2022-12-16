@@ -101,6 +101,7 @@ string_t* string_init_capacity(int capacity)
 char* string_append(string_t* string, char* value)
 {
     int length = strlen(value);
+
     return string_append_size(string, value, length);
 }
 
@@ -130,7 +131,7 @@ char* string_append_format(string_t* string, char* format, ...)
     va_end(args);
 
     string->length += length;
-    string->value[string->length] = '\0';
+
     return string->value;
 }
 
@@ -149,9 +150,12 @@ char* string_append_size(string_t* string, char* value, int length)
         string->capacity = string->length + length + 1;
         string->value = (char*)realloc(string->value, string->capacity);
     }
+
     memcpy(string->value + string->length, value, length);
+
     string->length += length;
     string->value[string->length] = '\0';
+
     return string->value;
 }
 
@@ -186,4 +190,163 @@ void string_free(string_t* string)
 {
     free(string->value);
     free(string);
+}
+
+/**
+ * @brief Convert the int to char
+ * 
+ * @param int value
+ * 
+ * @return char*
+ */
+char* int_to_chars(int value)
+{
+    char* buffer = (char*)malloc(12);
+    sprintf(buffer, "%d", value);
+    return buffer;
+}
+
+/**
+ * @brief Convert the long to char
+ * 
+ * @param long value
+ * 
+ * @return char*
+ */
+char* long_to_chars(long value)
+{
+    char* buffer = (char*)malloc(12);
+    sprintf(buffer, "%ld", value);
+    return buffer;
+}
+
+/**
+ * @brief Convert the long long to char
+ * 
+ * @param long long value
+ * 
+ * @return char*
+ */
+char* long_long_to_chars(long long value)
+{
+    char* buffer = (char*)malloc(12);
+    sprintf(buffer, "%lld", value);
+    return buffer;
+}
+
+/**
+ * @brief Convert the float to char
+ * 
+ * @param float value
+ * 
+ * @return char*
+ */
+char* float_to_chars(float value)
+{
+    char* buffer = (char*)malloc(12);
+    sprintf(buffer, "%f", value);
+    return buffer;
+}
+
+/**
+ * @brief Convert the double to char
+ * 
+ * @param double value
+ * 
+ * @return char*
+ */
+char* double_to_chars(double value)
+{
+    char* buffer = (char*)malloc(12);
+    sprintf(buffer, "%lf", value);
+    return buffer;
+}
+
+/**
+ * @brief Convert the long double to char
+ * 
+ * @param long double value
+ * 
+ * @return char*
+ */
+char* long_double_to_chars(long double value)
+{
+    char* buffer = (char*)malloc(12);
+    sprintf(buffer, "%Lf", value);
+    return buffer;
+}
+
+/**
+ * @brief Convert the string to char*
+ * 
+ * @param string_t* string
+ * 
+ * @return char*
+ */
+char* string_to_chars(string_t* string)
+{
+    char* buffer = (char*)malloc(string->length + 1);
+    memcpy(buffer, string->value, string->length);
+    buffer[string->length] = '\0';
+    return buffer;
+}
+
+/**
+ * @brief Convert the size to char
+ * 
+ * @param size_t value
+ * 
+ * @return char*
+ */
+char* size_to_chars(size_t value)
+{
+    char* buffer = (char*)malloc(12);
+    sprintf(buffer, "%zu", value);
+    return buffer;
+}
+
+/**
+ * @brief Convert the string to lower case
+ * 
+ * @param string_t* string
+ * 
+ * @return char* 
+ */
+char* string_to_lower(string_t* string)
+{
+    for (int i = 0; i < string->length; i++) {
+        string->value[i] = tolower(string->value[i]);
+    }
+    return string->value;
+}
+
+/**
+ * @brief Convert the string to upper case
+ * 
+ * @param string_t* string
+ * 
+ * @return char*
+ */
+char* string_to_upper(string_t* string)
+{
+    for (int i = 0; i < string->length; i++) {
+        string->value[i] = toupper(string->value[i]);
+    }
+    return string->value;
+}
+
+/**
+ * @brief Get a char from the string object
+ * 
+ * @param string_t* string
+ * @param int index
+ * 
+ * @return char
+ */
+char string_get(string_t* string, int index)
+{
+    if (index >= string->length)
+        return '\0';
+
+    return string->value[index];
 }

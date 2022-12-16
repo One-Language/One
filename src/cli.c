@@ -106,7 +106,16 @@ cli_t* cli_parse(cli_t* cli)
     for (int i = 1; i < cli->argc; i++) {
         if (strcmp(cli->argv[i], "-o") == 0 || strcmp(cli->argv[i], "--output") == 0) {
             if (i + 1 < cli->argc) {
-                cli->options->output = fopen(cli->argv[i + 1], "a");
+                printf("Opening file '%s' for writing\n", cli->argv[i + 1]);
+                cli->options->output = fopen(cli->argv[i + 1], "w");
+                if (cli->options->output == NULL) {
+                    cli->options->command = CLI_UNKNOWN;
+                    cli->options->error = malloc(sizeof(char) * 100);
+                    sprintf_s(cli->options->error, 100, "Error: cannot open file '%s' for writing.\n", cli->argv[i + 1]);
+                }
+                fprintf(cli->options->output, "Hello, world1!\n");
+                fprintf(cli->options->output, "Hello, world2!\n");
+                fprintf(cli->options->output, "Hello, world3!\n");
                 i++;
             } else {
                 cli->options->command = CLI_UNKNOWN;
@@ -170,11 +179,8 @@ int cli_run(cli_t* cli)
 
             token_list_t* tokens = lexer_tokens(lex);
 
-            if (cli->options->is_json) {
-                fprintf(cli->options->output, "%s", token_list_print_json(tokens));
-            } else {
-                fprintf(cli->options->output, "%s", token_list_print(tokens));
-            }
+            if (cli->options->is_json) fprintf(cli->options->output, token_list_print_json(tokens));
+            else fprintf(cli->options->output, token_list_print(tokens));
 
             // write hello world to the file
             fprintf(cli->options->output, "Hello World!\n");
@@ -192,7 +198,7 @@ int cli_run(cli_t* cli)
             break;
     }
 
-    if (cli->options->output != NULL && cli->options->output != stdout) fclose(cli->options->output);
+    // if (cli->options->output != NULL && cli->options->output != stdout) fclose(cli->options->output);
 
     // Default return value
     return 0;

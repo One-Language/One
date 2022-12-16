@@ -13,6 +13,7 @@
 #include <stdlib.h> // malloc, free, realloc
 #include <stdarg.h> // va_list, va_start, va_end
 #include <string.h> // strlen
+#include <ctype.h> // toupper, tolower
 
 typedef struct {
     char* value;
@@ -120,5 +121,105 @@ char* string_append_char(string_t* string, char value);
  * @return void
  */
 void string_free(string_t* string);
+
+/**
+ * @brief Convert the int to char
+ * 
+ * @param int value
+ * 
+ * @return char*
+ */
+char* int_to_chars(int value);
+
+/**
+ * @brief Convert the long to char
+ * 
+ * @param long value
+ * 
+ * @return char*
+ */
+char* long_to_chars(long value);
+
+/**
+ * @brief Convert the long long to char
+ * 
+ * @param long long value
+ * 
+ * @return char*
+ */
+char* long_long_to_chars(long long value);
+
+/**
+ * @brief Convert the float to char
+ * 
+ * @param float value
+ * 
+ * @return char*
+ */
+char* float_to_chars(float value);
+
+/**
+ * @brief Convert the double to char
+ * 
+ * @param double value
+ * 
+ * @return char*
+ */
+char* double_to_chars(double value);
+
+/**
+ * @brief Convert the long double to char
+ * 
+ * @param long double value
+ * 
+ * @return char*
+ */
+char* long_double_to_chars(long double value);
+
+/**
+ * @brief Convert the string to char*
+ * 
+ * @param string_t* string
+ * 
+ * @return char*
+ */
+char* string_to_chars(string_t* string);
+
+/**
+ * @brief Convert the size to char
+ * 
+ * @param size_t value
+ * 
+ * @return char*
+ */
+char* size_to_chars(size_t value);
+
+/**
+ * @brief Convert the string to lower case
+ * 
+ * @param string_t* string
+ * 
+ * @return char* 
+ */
+char* string_to_lower(string_t* string);
+
+/**
+ * @brief Convert the string to upper case
+ * 
+ * @param string_t* string
+ * 
+ * @return char*
+ */
+char* string_to_upper(string_t* string);
+
+/**
+ * @brief Get a char from the string object
+ * 
+ * @param string_t* string
+ * @param int index
+ * 
+ * @return char
+ */
+char string_get(string_t* string, int index);
 
 #endif
