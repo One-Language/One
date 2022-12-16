@@ -81,7 +81,6 @@ void lexer_lex_next(lexer_t* lex)
             break;
 
         case '\0':
-            lexer_add_token(lex, TOKEN_EOF);
             break;
 
         case 'a'...'z':
@@ -275,6 +274,8 @@ void lexer_lex_next(lexer_t* lex)
 void lexer_lex(lexer_t* lex)
 {
     while(lex->current[0] != '\0') lexer_lex_next(lex);
+
+    lexer_add_token(lex, TOKEN_EOF);
 }
 
 /**
