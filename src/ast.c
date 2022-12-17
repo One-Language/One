@@ -108,13 +108,13 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             ast->ident++;
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "<left>\n");
-
             ast->ident++;
-            char *left = ast_print_xml_expression(ast, block, binaryExpression->left);
-            string_append(str, left);
-            // free(left);
-            ast->ident--;
 
+                char *left = ast_print_xml_expression(ast, block, binaryExpression->left);
+                string_append(str, left);
+                // free(left);
+
+            ast->ident--;
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</left>\n");
 
@@ -122,15 +122,15 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
 
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "<right>\n");
-
             ast->ident++;
-            char *right = ast_print_xml_expression(ast, block, binaryExpression->right);
-            string_append(str, right);
-            // free(right);
 
+                char *right = ast_print_xml_expression(ast, block, binaryExpression->right);
+                string_append(str, right);
+                // free(right);
+
+            ast->ident--;
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</right>\n");
-            ast->ident--;
 
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</expression_binary>\n");
@@ -428,8 +428,7 @@ char* ast_print_xml_function(ast_t* ast, ast_function_t* function)
 
             ast->ident--;
             string_append(str, char_repeat('\t', ast->ident));
-            string_append(str, "</arguments>\n");
-        }
+            string_append(str, "</arguments>\n");}
 
         string_append(str, ast_print_xml_block(ast, function->block));
 
