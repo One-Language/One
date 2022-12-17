@@ -9,7 +9,7 @@
 #ifndef _ONE_ARRAY_H_
 #define _ONE_ARRAY_H_
 
-// #include <stdio.h> // printf, scanf, puts, NULL
+#include <stdio.h> // printf, scanf, puts, NULL
 #include <stdlib.h> // malloc, free, realloc
 
 typedef struct {

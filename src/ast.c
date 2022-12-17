@@ -35,6 +35,7 @@ ast_function_t* ast_function_init()
 {
     ast_function_t* function = (ast_function_t*)malloc(sizeof(ast_function_t));
     function->arguments = array_init();
+//    function->block = ast_block_init();
     return function;
 }
 
