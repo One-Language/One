@@ -427,10 +427,10 @@ char* ast_print_xml_function(ast_t* ast, ast_function_t* function)
         }
 
         ast->ident--;
+        string_append(str, char_repeat('\t', ast->ident));
+        string_append(str, "</arguments>\n");
     }
 
-    string_append(str, char_repeat('\t', ast->ident));
-    string_append(str, "</arguments>\n");
 
     string_append(str, ast_print_xml_block(ast, function->block));
 
