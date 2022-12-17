@@ -76,9 +76,7 @@ ast_block_t* ast_block_init()
 char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident)
 {
     string_t* str = string_init();
-    if (expression == NULL) {
-        return str->value; // TODO
-    }
+    if (expression == NULL) return NULL; // TODO
 
     char* tab = char_repeat('\t', ident);
 
@@ -100,6 +98,7 @@ char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident
         case AST_EXPRESSION_SUB_EXPRESSION: {
             string_append_format(str, "%s(", tab);
             string_append(str, ast_print_expression(block, expression->expr.sub_expression, 0));
+            string_append(str, ")");
         } break;
         case AST_EXPRESSION_LITERAL: {
             ast_expr_literal_t * literalExpression = expression->expr.literal;
@@ -165,8 +164,9 @@ char* ast_print_statement(ast_statement_t* statement)
         break;
 
     case AST_STATEMENT_RET:
-        string_append(str, "\t\t\t\tReturn statement\n");
-        // string_append(str, ast_print_expression(NULL, statement->stmt_ret->expression, 0));
+        string_append(str, "\t\t\t\tReturn statement: ");
+        string_append(str, ast_print_expression(NULL, statement->stmt_ret->expression, 0));
+        string_append(str, "\n");
         break;
 
     // case AST_STATEMENT_EXPR:
@@ -187,11 +187,9 @@ char* ast_print_block(ast_block_t* block)
 
     string_append_format(str, "\t\tBlock (%d statements)\n", block->statements->size);
 
-    printf("Block (%d statements)\n", block->statements->size);
     for (int i = 0; i < block->statements->size; i++) {
         ast_statement_t* statement = array_get(block->statements, i);
-        // string_append(str, ast_print_statement(statement));
-        printf("%s\n", ast_print_statement(statement));
+        string_append(str, ast_print_statement(statement));
     }
 
     return str->value;
