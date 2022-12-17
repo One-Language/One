@@ -414,28 +414,27 @@ char* ast_print_xml_function(ast_t* ast, ast_function_t* function)
     string_append_format(str, "<function name=\"%s\">\n", function->name);
     ast->ident++;
 
-    string_append(str, char_repeat('\t', ast->ident));
-    if (function->arguments->size == 0) string_append(str, "<arguments/>\n");
-    else {
-        string_append_format(str, "<arguments count=\"%d\">\n", function->arguments->size);
-        ast->ident++;
-
-            for (int i = 0; i < function->arguments->size; i++) {
-                ast_argument_t* argument = array_get(function->arguments, i);
-                string_append(str, char_repeat('\t', ast->ident));
-                string_append_format(str, "<argument name=\"%s\" type=\"%s\"/>\n", argument->name, argument->type);
-            }
-
-        ast->ident--;
         string_append(str, char_repeat('\t', ast->ident));
-        string_append(str, "</arguments>\n");
-    }
+        if (function->arguments->size == 0) string_append(str, "<arguments/>\n");
+        else {
+            string_append_format(str, "<arguments count=\"%d\">\n", function->arguments->size);
+            ast->ident++;
 
+                for (int i = 0; i < function->arguments->size; i++) {
+                    ast_argument_t* argument = array_get(function->arguments, i);
+                    string_append(str, char_repeat('\t', ast->ident));
+                    string_append_format(str, "<argument name=\"%s\" type=\"%s\"/>\n", argument->name, argument->type);
+                }
 
-    string_append(str, ast_print_xml_block(ast, function->block));
+            ast->ident--;
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "</arguments>\n");
+        }
 
-    string_append(str, char_repeat('\t', ast->ident));
-    string_append_format(str, "<return type=\"%s\" />\n", "soon");
+        string_append(str, ast_print_xml_block(ast, function->block));
+
+        string_append(str, char_repeat('\t', ast->ident));
+        string_append_format(str, "<return type=\"%s\" />\n", "soon");
 
     ast->ident--;
     string_append(str, char_repeat('\t', ast->ident));
