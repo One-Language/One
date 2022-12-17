@@ -88,33 +88,33 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "<expression_binary>\n");
 
-                ast->ident++;
-                string_append(str, char_repeat('\t', ast->ident));
-                string_append(str, "<left>\n");
+            ast->ident++;
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "<left>\n");
 
-                    ast->ident++;
-                    char *left = ast_print_xml_expression(ast, block, binaryExpression->left);
-                    string_append(str, left);
-                    // free(left);
-                    ast->ident--;
+            ast->ident++;
+            char *left = ast_print_xml_expression(ast, block, binaryExpression->left);
+            string_append(str, left);
+            // free(left);
+            ast->ident--;
 
-                string_append(str, char_repeat('\t', ast->ident));
-                string_append(str, "</left>\n");
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "</left>\n");
 
-                ////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////
 
-                string_append(str, char_repeat('\t', ast->ident));
-                string_append(str, "<right>\n");
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "<right>\n");
 
-                    ast->ident++;
-                    char *right = ast_print_xml_expression(ast, block, binaryExpression->right);
-                    string_append(str, right);
-                    // free(right);
-                    ast->ident--;
+            ast->ident++;
+            char *right = ast_print_xml_expression(ast, block, binaryExpression->right);
+            string_append(str, right);
+            // free(right);
+            ast->ident--;
 
-                string_append(str, char_repeat('\t', ast->ident));
-                string_append(str, "</right>\n");
-                ast->ident--;
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "</right>\n");
+            ast->ident--;
 
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</expression_binary>\n");
@@ -125,12 +125,12 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "<expression_unary>\n");
 
-                ast->ident++;
-                char *value = ast_print_expression(block, unaryExpression->argument, 0);
-                string_append(str, value);
-                // free(value);
-                ast->ident--;
-            
+            ast->ident++;
+            char *value = ast_print_expression(block, unaryExpression->argument, 0);
+            string_append(str, value);
+            // free(value);
+            ast->ident--;
+
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</expression_unary>\n");
 
@@ -149,11 +149,11 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "<expression_literal>\n");
 
-                ast->ident++;
-                string_append(str, char_repeat('\t', ast->ident));
-                string_append_format(str, "%s", literalExpression->value);
-                string_append(str, "\n");
-                ast->ident--;
+            ast->ident++;
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append_format(str, "%s", literalExpression->value);
+            string_append(str, "\n");
+            ast->ident--;
 
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</expression_literal>\n");
@@ -280,38 +280,38 @@ char* ast_print_xml_statement(ast_t* ast, ast_statement_t* statement)
     string_t* str = string_init();
 
     switch (statement->type) {
-    case AST_STATEMENT_IF:
-        string_append(str, char_repeat('\t', ast->ident));
-        string_append(str, "<if>\n");
+        case AST_STATEMENT_IF:
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "<if>\n");
 
-        ast->ident++;
-        // TODO
-        ast->ident--;
+            ast->ident++;
+            // TODO
+            ast->ident--;
 
-        string_append(str, char_repeat('\t', ast->ident));
-        string_append(str, "</if>\n");
-        break;
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "</if>\n");
+            break;
 
-    case AST_STATEMENT_RET:
-        string_append(str, char_repeat('\t', ast->ident));
-        string_append(str, "<return>\n");
+        case AST_STATEMENT_RET:
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "<return>\n");
 
-        ast->ident++;
-        string_append(str, ast_print_xml_expression(ast, NULL, statement->stmt_ret->expression));
-        ast->ident--;
+            ast->ident++;
+            string_append(str, ast_print_xml_expression(ast, NULL, statement->stmt_ret->expression));
+            ast->ident--;
 
-        string_append(str, char_repeat('\t', ast->ident));
-        string_append(str, "</return>\n");
-        break;
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "</return>\n");
+            break;
 
-    // case AST_STATEMENT_EXPR:
-    //     string_append(str, "\t\t\t\tExpression statement\n");
-    //     break;
+            // case AST_STATEMENT_EXPR:
+            //     string_append(str, "\t\t\t\tExpression statement\n");
+            //     break;
 
-    default:
-        string_append(str, char_repeat('\t', ast->ident));
-        string_append(str, "<unknown/>\n");
-        break;
+        default:
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "<unknown/>\n");
+            break;
     }
 
     return str->value;
@@ -322,23 +322,23 @@ char* ast_print_statement(ast_statement_t* statement)
     string_t* str = string_init();
 
     switch (statement->type) {
-    case AST_STATEMENT_IF:
-        string_append(str, "\t\t\t\tIf statement\n");
-        break;
+        case AST_STATEMENT_IF:
+            string_append(str, "\t\t\t\tIf statement\n");
+            break;
 
-    case AST_STATEMENT_RET:
-        string_append(str, "\t\t\t\tReturn statement: ");
-        string_append(str, ast_print_expression(NULL, statement->stmt_ret->expression, 0));
-        string_append(str, "\n");
-        break;
+        case AST_STATEMENT_RET:
+            string_append(str, "\t\t\t\tReturn statement: ");
+            string_append(str, ast_print_expression(NULL, statement->stmt_ret->expression, 0));
+            string_append(str, "\n");
+            break;
 
-    // case AST_STATEMENT_EXPR:
-    //     string_append(str, "\t\t\t\tExpression statement\n");
-    //     break;
+            // case AST_STATEMENT_EXPR:
+            //     string_append(str, "\t\t\t\tExpression statement\n");
+            //     break;
 
-    default:
-        string_append(str, "\t\t\t\tUnknown statement\n");
-        break;
+        default:
+            string_append(str, "\t\t\t\tUnknown statement\n");
+            break;
     }
 
     return str->value;
@@ -350,26 +350,25 @@ char* ast_print_xml_block(ast_t* ast, ast_block_t* block)
 
     string_append(str, char_repeat('\t', ast->ident));
     string_append(str, "<block>\n");
+    ast->ident++;
+
+    string_append(str, char_repeat('\t', ast->ident));
+    if (block->statements->size == 0) string_append(str, "<statements/>\n");
+    else {
+        string_append_format(str, "<statements count=\"%zu\">\n", block->statements->size);
+
         ast->ident++;
+        for (int i = 0; i < block->statements->size; i++) {
+            ast_statement_t* statement = array_get(block->statements, i);
+            string_append(str, ast_print_xml_statement(ast, statement));
+        }
+        ast->ident--;
 
         string_append(str, char_repeat('\t', ast->ident));
-        if (block->statements->size == 0) string_append(str, "<statements/>\n");
-        else {
-            string_append_format(str, "<statements count=\"%zu\">\n", block->statements->size);
+        string_append_format(str, "</statements>\n");
+    }
 
-                ast->ident++;
-                for (int i = 0; i < block->statements->size; i++) {
-                    ast_statement_t* statement = array_get(block->statements, i);
-                    string_append(str, ast_print_xml_statement(ast, statement));
-                }
-                ast->ident--;
-
-            string_append(str, char_repeat('\t', ast->ident));
-            string_append_format(str, "</statements>\n");
-        }
-
-
-        ast->ident--;
+    ast->ident--;
 
     string_append(str, char_repeat('\t', ast->ident));
     string_append(str, "</block>\n");
@@ -397,14 +396,16 @@ char* ast_print_xml_function(ast_t* ast, ast_function_t* function)
 
     string_append(str, char_repeat('\t', ast->ident));
     string_append_format(str, "<function name=\"%s\">\n", function->name);
-        ast->ident++;
-        string_append(str, ast_print_xml_block(ast, function->block));
-        string_append(str, char_repeat('\t', ++ast->ident));
-        string_append_format(str, "<return type=\"%s\" />\n", "soon");
-        ast->ident--;
-    string_append(str, char_repeat('\t', --ast->ident));
-    string_append_format(str, "</function>\n");
+    ast->ident++;
 
+    string_append(str, ast_print_xml_block(ast, function->block));
+
+    string_append(str, char_repeat('\t', ast->ident));
+    string_append_format(str, "<return type=\"%s\" />\n", "soon");
+
+    ast->ident--;
+    string_append(str, char_repeat('\t', ast->ident));
+    string_append_format(str, "</function>\n");
 
     return str->value;
 }
@@ -506,11 +507,12 @@ char* ast_print_xml(ast_t* ast)
     if (ast->functions->size == 0) string_append(str, "<functions/>\n");
     else {
         string_append_format(str, "<functions count=\"%zu\">\n", ast->functions->size);
+        ast->ident++;
         for (int i = 0; i < ast->functions->size; i++) {
             ast_function_t* function = ast->functions->data[i];
-            ast->ident++;
             string_append(str, ast_print_xml_function(ast, function));
         }
+        ast->ident--;
         string_append_format(str, "</functions>\n");
     }
 
