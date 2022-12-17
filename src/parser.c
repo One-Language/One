@@ -629,6 +629,38 @@ ast_function_t* parser_parse_function(parser_t* parser)
     token_t* name = parser_expect(parser, TOKEN_IDENTIFIER);
 
     if (!parser_expect(parser, TOKEN_LEFT_PAREN)) return NULL;
+
+    printf("Current token before while: %s\n", token_name(parser_peek_type(parser)));
+
+    while (!parser_has(parser, TOKEN_RIGHT_PAREN)) {
+        printf("Current token: %s\n", token_name(parser_peek_type(parser)));
+
+        token_t* type = parser_expect(parser, TOKEN_IDENTIFIER);
+        if (type == NULL) return NULL;
+
+        printf("Current token: %s\n", token_name(parser_peek_type(parser)));
+
+        token_t* name = parser_expect(parser, TOKEN_IDENTIFIER);
+        if (name == NULL) return NULL;
+
+        printf("Current token: %s\n", token_name(parser_peek_type(parser)));
+
+        ast_argument_t* arg = ast_argument_init();
+        arg->type = type->value;
+        arg->name = name->value;
+        array_push(function->arguments, arg);
+
+        if (parser_has(parser, TOKEN_COMMA)) parser_next(parser);
+        else if (!parser_has(parser, TOKEN_RIGHT_PAREN)) {
+            printf("Unexpected token %s in function arguments\n", token_name(parser_peek_type(parser)));
+            return NULL;
+        }
+
+        printf("Current token will be in next iter: %s\n", token_name(parser_peek_type(parser)));
+    }
+
+    printf("Current token after while: %s\n", token_name(parser_peek_type(parser)));
+
     if (!parser_expect(parser, TOKEN_RIGHT_PAREN)) return NULL;
 
     function->name = name->value;

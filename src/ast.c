@@ -29,12 +29,28 @@ ast_t* ast_init()
  * 
  * @param void
  * 
- * @return ast_function_t* 
+ * @return ast_functaion_t*
  */
 ast_function_t* ast_function_init()
 {
     ast_function_t* function = (ast_function_t*)malloc(sizeof(ast_function_t));
+    function->arguments = array_init();
     return function;
+}
+
+/**
+ * @brief Initialize a statement
+ *
+ * @param void
+ *
+ * @return ast_statement_t*
+ */
+ast_argument_t* ast_argument_init()
+{
+    ast_argument_t* argument = (ast_argument_t*)malloc(sizeof(ast_argument_t));
+    argument->name = malloc(sizeof(char) * 100);
+    argument->type = malloc(sizeof(char) * 100);
+    return argument;
 }
 
 /**
@@ -110,7 +126,6 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             char *right = ast_print_xml_expression(ast, block, binaryExpression->right);
             string_append(str, right);
             // free(right);
-            ast->ident--;
 
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</right>\n");
@@ -397,6 +412,21 @@ char* ast_print_xml_function(ast_t* ast, ast_function_t* function)
     string_append(str, char_repeat('\t', ast->ident));
     string_append_format(str, "<function name=\"%s\">\n", function->name);
     ast->ident++;
+
+    string_append(str, char_repeat('\t', ast->ident));
+    if (function->arguments->size == 0) string_append(str, "<arguments/>\n");
+    else string_append_format(str, "<arguments count=\"%d\">\n", function->arguments->size);
+    ast->ident++;
+
+    for (int i = 0; i < function->arguments->size; i++) {
+        ast_argument_t* argument = array_get(function->arguments, i);
+        string_append(str, char_repeat('\t', ast->ident));
+        string_append_format(str, "<argument name=\"%s\" type=\"%s\"/>\n", argument->name, argument->type);
+    }
+
+    ast->ident--;
+    string_append(str, char_repeat('\t', ast->ident));
+    string_append(str, "</arguments>\n");
 
     string_append(str, ast_print_xml_block(ast, function->block));
 

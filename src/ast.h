@@ -30,6 +30,11 @@ typedef struct {
 
 typedef struct {
     char* name;
+    char* type;
+} ast_argument_t;
+
+typedef struct {
+    char* name;
     array_t* arguments;
     ast_block_t* block;
 } ast_function_t;
@@ -185,6 +190,15 @@ typedef struct {
  * @return ast_t* 
  */
 ast_t* ast_init();
+
+/**
+ * @brief Initialize a statement
+ *
+ * @param void
+ *
+ * @return ast_statement_t*
+ */
+ast_argument_t* ast_argument_init();
 
 /**
  * @brief Initialize a function
