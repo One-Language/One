@@ -651,6 +651,12 @@ ast_function_t* parser_parse_function(parser_t* parser)
 
     if (!parser_expect(parser, TOKEN_RIGHT_PAREN)) return NULL;
 
+    if (parser_has(parser, TOKEN_IDENTIFIER)) {
+        function->return_type = parser_expect(parser, TOKEN_IDENTIFIER)->value;
+    } else {
+        function->return_type = NULL;
+    }
+
     function->name = name->value;
     function->block = parser_parse_block(parser);
     if (!function->block) return NULL;

@@ -35,6 +35,7 @@ ast_function_t* ast_function_init()
 {
     ast_function_t* function = (ast_function_t*)malloc(sizeof(ast_function_t));
     function->arguments = array_init();
+    function->return_type = malloc(sizeof(char)*50);
 //    function->block = ast_block_init();
     return function;
 }
@@ -132,6 +133,7 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
                 string_append(str, char_repeat('\t', ast->ident));
                 string_append(str, "</right>\n");
 
+            ast->ident--;
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</expression_binary>\n");
         } break;
@@ -433,7 +435,11 @@ char* ast_print_xml_function(ast_t* ast, ast_function_t* function)
         string_append(str, ast_print_xml_block(ast, function->block));
 
         string_append(str, char_repeat('\t', ast->ident));
-        string_append_format(str, "<return type=\"%s\" />\n", "soon");
+
+        if (function->return_type == NULL) string_append(str, "<return type=\"void\"/>\n");
+        else {
+            string_append_format(str, "<return type=\"%s\"/>\n", function->return_type);
+        }
 
     ast->ident--;
     string_append(str, char_repeat('\t', ast->ident));

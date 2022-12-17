@@ -35,6 +35,7 @@ typedef struct {
 
 typedef struct {
     char* name;
+    char* return_type;
     array_t* arguments;
     ast_block_t* block;
 } ast_function_t;
