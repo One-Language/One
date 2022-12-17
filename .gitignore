@@ -30,3 +30,6 @@ test/lexer
 test/parser
 test/argument
 test/ast
+
+.VSCodeCounter
+.VSCodeCounter/*
