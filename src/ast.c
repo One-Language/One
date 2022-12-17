@@ -416,16 +416,19 @@ char* ast_print_xml_function(ast_t* ast, ast_function_t* function)
 
     string_append(str, char_repeat('\t', ast->ident));
     if (function->arguments->size == 0) string_append(str, "<arguments/>\n");
-    else string_append_format(str, "<arguments count=\"%d\">\n", function->arguments->size);
-    ast->ident++;
+    else {
+        string_append_format(str, "<arguments count=\"%d\">\n", function->arguments->size);
+        ast->ident++;
 
-    for (int i = 0; i < function->arguments->size; i++) {
-        ast_argument_t* argument = array_get(function->arguments, i);
-        string_append(str, char_repeat('\t', ast->ident));
-        string_append_format(str, "<argument name=\"%s\" type=\"%s\"/>\n", argument->name, argument->type);
+        for (int i = 0; i < function->arguments->size; i++) {
+            ast_argument_t* argument = array_get(function->arguments, i);
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append_format(str, "<argument name=\"%s\" type=\"%s\"/>\n", argument->name, argument->type);
+        }
+
+        ast->ident--;
     }
 
-    ast->ident--;
     string_append(str, char_repeat('\t', ast->ident));
     string_append(str, "</arguments>\n");
 
