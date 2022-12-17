@@ -86,7 +86,7 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             ast_expr_binary_t* binaryExpression = expression->expr.binary;
 
             string_append(str, char_repeat('\t', ast->ident));
-            string_append(str, "<expression_binary>\n");
+            string_append_format(str, "<expression_binary type=\"%s\">\n", token_name(binaryExpression->operator));
 
             ast->ident++;
             string_append(str, char_repeat('\t', ast->ident));
