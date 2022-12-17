@@ -75,6 +75,125 @@ ast_block_t* ast_block_init()
     return block;
 }
 
+char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expression)
+{
+    string_t* str = string_init();
+    if (expression == NULL) return NULL; // TODO
+
+
+    switch (expression->type) {
+        case AST_EXPRESSION_BINARY: {
+            ast_expr_binary_t* binaryExpression = expression->expr.binary;
+
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "<expression_binary>\n");
+
+                ast->ident++;
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append(str, "<left>\n");
+
+                    ast->ident++;
+                    char *left = ast_print_xml_expression(ast, block, binaryExpression->left);
+                    string_append(str, left);
+                    // free(left);
+                    ast->ident--;
+
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append(str, "</left>\n");
+
+                ////////////////////////////////////////////////////
+
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append(str, "<right>\n");
+
+                    ast->ident++;
+                    char *right = ast_print_xml_expression(ast, block, binaryExpression->right);
+                    string_append(str, right);
+                    // free(right);
+                    ast->ident--;
+
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append(str, "</right>\n");
+                ast->ident--;
+
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "</expression_binary>\n");
+        } break;
+        case AST_EXPRESSION_UNARY: {
+            ast_expr_unary_t* unaryExpression = expression->expr.unary;
+
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "<expression_unary>\n");
+
+                ast->ident++;
+                char *value = ast_print_expression(block, unaryExpression->argument, 0);
+                string_append(str, value);
+                // free(value);
+                ast->ident--;
+            
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "</expression_unary>\n");
+
+            // free(value);
+        } break;
+        case AST_EXPRESSION_SUB_EXPRESSION: {
+            // string_append_format(str, "%s(", tab);
+            char* value = ast_print_expression(block, expression->expr.sub_expression, 0);
+            string_append(str, value);
+            free(value);
+            // string_append(str, ")");
+        } break;
+        case AST_EXPRESSION_LITERAL: {
+            ast_expr_literal_t * literalExpression = expression->expr.literal;
+
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "<expression_literal>\n");
+
+                ast->ident++;
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append_format(str, "%s", literalExpression->value);
+                string_append(str, "\n");
+                ast->ident--;
+
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "</expression_literal>\n");
+        } break;
+//        case AST_EXPRESSION_TYPE_VARIABLE: {
+//            AstVariableExpression *variableExpression = expression->variableExpression;
+//            str = sdscatprintf(code, "%s%s", tab, variableExpression->name);
+//            break;
+//        }
+
+//        case AST_EXPRESSION_TYPE_CALL: {
+//            AstCallExpression *callExpression = expression->callExpression;
+//            str = sdscatprintf(code, "%s%s(", tab, callExpression->name);
+//            for (int i = 0; i < callExpression->arguments->size; i++) {
+//                ast_expr_t *argument = callExpression->arguments->data[i];
+//                char *argumentstr = ast_print_expression(block, argument, ident);
+//                str = sdscatprintf(code, "%s", argumentCode);
+//                free(argumentCode);
+//                if (i != callExpression->arguments->size - 1) {
+//                    str = sdscatprintf(code, ", ");
+//                }
+//            }
+//            str = sdscatprintf(code, ")");
+//            break;
+//        }
+
+//        case AST_EXPRESSION_TYPE_INDEX: {
+//            AstIndexExpression* indexExpression = expression->indexExpression;
+//            char* value = ast_print_expression(block, indexExpression->value, ident);
+//            char* index = ast_print_expression(block, indexExpression->index, ident);
+//            str = sdscatprintf(code, "%s%s[%
+        default: {
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "<expression_unknown/>\n");
+        }
+    }
+
+    return str->value;
+}
+
 char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident)
 {
     string_t* str = string_init();
@@ -178,7 +297,7 @@ char* ast_print_xml_statement(ast_t* ast, ast_statement_t* statement)
         string_append(str, "<return>\n");
 
         ast->ident++;
-        // string_append(str, ast_print_xml_expression(NULL, statement->stmt_ret->expression, 0));
+        string_append(str, ast_print_xml_expression(ast, NULL, statement->stmt_ret->expression));
         ast->ident--;
 
         string_append(str, char_repeat('\t', ast->ident));
