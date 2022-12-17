@@ -12,10 +12,10 @@ func f1 (int a, int b) {
     ret 1 + 4
     ret 1
 }
-func f2 () {
+func f2 () int {
 //    if 4 {} else {}
 }
-func f3 () {
-//    if 4 {} else if 2 {} else if 5 {} else if 8{}
-//     if 4 {} else if 2 {} else if 5 {} else if 8{} else {}
+func f3 () float {
+    // if 4 {} else if 2 {} else if 5 {} else if 8{}
+    // if 4 {} else if 2 {} else if 5 {} else if 8{} else {}
 }
