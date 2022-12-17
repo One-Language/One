@@ -10,5 +10,6 @@ gcc array.c -c -o array.o -g
 gcc generator.c -c -o generator.o -g
 gcc one.o cli.o file.o lexer.o token.o parser.o ast.o string.o array.o generator.o -o one.exe -g
 one -l input.one -x
-one -p input.one
+@REM one -p input.one
+one -p input.one -x
 one -g input.one

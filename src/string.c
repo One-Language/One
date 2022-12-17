@@ -119,7 +119,7 @@ string_t* string_init_capacity(int capacity)
  */
 char* string_append(string_t* string, char* value)
 {
-    if (value == NULL) return string->value;
+    if (value == NULL || value == "") return string->value;
     int length = strlen(value);
 
     return string_append_size(string, value, length);

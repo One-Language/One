@@ -11,8 +11,9 @@
 
 #include <stdbool.h> // bool, true, false
 
-#include "token.h"
-#include "array.h"
+#include "token.h" // token_type_t
+#include "array.h" // array_t
+#include "string.h" // string_t
 
 typedef enum {
     AST_STATEMENT_IF,
@@ -172,6 +173,8 @@ typedef struct {
 typedef struct {
     array_t* functions;
     // ast_list_error_t* errors;
+    string_t* output;
+    int ident;
 } ast_t;
 
 /**
