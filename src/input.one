@@ -10,13 +10,13 @@
 // ONE Programming Language
 /*
 func f1 (int a, int b) {
-    /*
+    / *
     if 4 > 8 {
         ret 110
     }
     ret 1 + 4
     ret 1
-    */
+    * /
 }
 
 func f2 () int {

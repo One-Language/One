@@ -587,7 +587,6 @@ array_t* parser_parse_statements(parser_t* parser)
 
     while (!parser_has(parser, TOKEN_EOF)) {
         if (parser_has(parser, TOKEN_RIGHT_BRACE)) break;
-        printf("Current token in loop of stmts: %s\n", token_name(parser_peek_type(parser)));
 
         ast_statement_t* statement = parser_parse_statement(parser);
         if (statement == NULL) return NULL;
