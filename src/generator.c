@@ -161,7 +161,22 @@ char* generator_generate_block(generator_t* generator, void* parent, ast_block_t
 char* generator_generate_function(generator_t* generator, ast_function_t* function)
 {
     string_t* code = string_init();
-    string_append_format(code, "int %s()", function->name);
+
+    // Return type
+    string_append(code, function->return_type == NULL ? "void" : function->return_type);
+
+    // Function name
+    string_append_format(code, " %s(", function->name);
+
+    // Arguments
+    for (int i = 0; i < function->arguments->size; i++) {
+        ast_argument_t* arg = function->arguments->data[i];
+        string_append_format(code, "%s %s", arg->type, arg->name);
+
+        if (i != function->arguments->size - 1) string_append(code, ", ");
+    }
+
+    string_append(code, ")");
 
     if (function->block->statements->size == 0) string_append(code, " ");
     else string_append(code, "\n");
