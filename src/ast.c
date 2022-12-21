@@ -299,6 +299,9 @@ char* ast_print_xml_statement(ast_t* ast, ast_statement_t* statement)
 
     switch (statement->type) {
         case AST_STATEMENT_IF:
+            ast_block_t* if_block = statement->stmt_if->then;
+            ast_block_t* else_block = statement->stmt_if->else_;
+
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "<if>\n");
             ast->ident++;
@@ -307,7 +310,7 @@ char* ast_print_xml_statement(ast_t* ast, ast_statement_t* statement)
                 string_append(str, "<condition>\n");
                 ast->ident++;
 
-                    string_append(str, ast_print_xml_expression(ast, NULL, statement->stmt_ret->expression));
+                    string_append(str, ast_print_xml_expression(ast, NULL, statement->stmt_if->condition));
 
                 ast->ident--;
                 string_append(str, char_repeat('\t', ast->ident));
@@ -319,18 +322,18 @@ char* ast_print_xml_statement(ast_t* ast, ast_statement_t* statement)
                 string_append(str, "<then>\n");
                 ast->ident++;
 
-                    string_append(str, ast_print_xml_expression(ast, NULL, statement->stmt_ret->expression));
+                    string_append(str, ast_print_xml_block(ast, if_block));
 
                 ast->ident--;
                 string_append(str, char_repeat('\t', ast->ident));
                 string_append(str, "</then>\n");
 
-                if (statement->stmt_if->else_ != NULL && statement->stmt_if->else_->statements->size     > 0) {
+                if (else_block != NULL && else_block->statements->size     > 0) {
                     string_append(str, char_repeat('\t', ast->ident));
                     string_append(str, "<else>\n");
                     ast->ident++;
 
-                        string_append(str, ast_print_xml_expression(ast, NULL, statement->stmt_ret->expression));
+                        string_append(str, ast_print_xml_block(ast, else_block));
 
                     ast->ident--;
                     string_append(str, char_repeat('\t', ast->ident));

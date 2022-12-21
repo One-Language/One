@@ -295,4 +295,8 @@ char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident
 
 char* ast_print_expressions(array_t* expressions, int ident);
 
+char* ast_print_xml_block(ast_t* ast, ast_block_t* block);
+
+char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expression);
+
 #endif

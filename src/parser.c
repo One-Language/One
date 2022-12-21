@@ -496,11 +496,11 @@ ast_if_t* parser_parse_if(parser_t* parser)
 
     stmt_if->condition = parser_parse_expression(parser, NULL, 0);
 
-    printf("Current token in if/2: %s\n", token_name(parser_peek_type(parser)));
+    printf("Current token in if/2 - body started: %s\n", token_name(parser_peek_type(parser)));
 
     stmt_if->then = parser_parse_block(parser);
 
-    printf("Current token in if/3: %s\n", token_name(parser_peek_type(parser)));
+    printf("Current token in if/3 - body finished: %s\n", token_name(parser_peek_type(parser)));
 
     // Check for else statement
 //    if (parser_skip(parser, TOKEN_ELSE)) {
@@ -629,6 +629,10 @@ ast_block_t* parser_parse_block(parser_t* parser)
 
     if(!parser_expect(parser, TOKEN_RIGHT_BRACE)) return NULL;
 
+    printf("block complated: %d\n", block->statements->size);
+
+    printf("Current token at end of block: %s\n", token_name(parser_peek_type(parser)));
+
     return block;
 }
 
@@ -676,7 +680,13 @@ ast_function_t* parser_parse_function(parser_t* parser)
     }
 
     function->name = name->value;
+
+    printf("function body started: %s\n", token_name(parser_peek_type(parser)));
+
     function->block = parser_parse_block(parser);
+
+    printf("function body finished: %s\n", token_name(parser_peek_type(parser)));
+
     if (!function->block) return NULL;
 
     return function;
