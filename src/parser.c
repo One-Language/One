@@ -495,33 +495,46 @@ ast_if_t* parser_parse_if(parser_t* parser)
 
     stmt_if->then = parser_parse_block(parser);
 
+    printf("Current token/1: %s\n", token_name(parser_peek_type(parser)));
+
     // Check for else statement
     if (parser_skip(parser, TOKEN_ELSE)) {
         stmt_if->else_ = ast_block_init();
 
+        printf("Current token/2: %s\n", token_name(parser_peek_type(parser)));
+
         // Check for else if
         bool is_else = true;
         while (parser_skip(parser, TOKEN_IF)) {
-            is_else = false;
+            printf("Current token/3: %s\n", token_name(parser_peek_type(parser)));
 
-            ast_if_t* else_if = ast_statement_if_init();
+            ast_statement_t* else_ = ast_statement_init();
+            else_->type = AST_STATEMENT_IF;
+            else_->stmt_if = ast_statement_if_init();
 
-            else_if->condition = parser_parse_expression(parser, NULL, 0);
-            if (else_if->condition == NULL) return NULL;
+            else_->stmt_if->condition = parser_parse_expression(parser, NULL, 0);
+            if (else_->stmt_if->condition == NULL) return NULL;
 
-            else_if->then = parser_parse_block(parser);
-            if (else_if->then == NULL) return NULL;
+            else_->stmt_if->then = parser_parse_block(parser);
+            if (else_->stmt_if->then == NULL) return NULL;
 
-            array_push(stmt_if->else_->statements, else_if);
+            array_push(stmt_if->else_->statements, else_);
+
+            printf("Current token/4: %s\n", token_name(parser_peek_type(parser)));
 
             if (!parser_skip(parser, TOKEN_ELSE)) {
-                is_else = true;
+                is_else = false;
                 break;
             }
         }
 
+        printf("is_else: %s\n", is_else ? "true" : "false");
+        printf("Current token/5: %s\n", token_name(parser_peek_type(parser)));
+
         // Check for else block
         if (is_else == true) {
+            printf("Current token/6: %s\n", token_name(parser_peek_type(parser)));
+
             if (parser_has(parser, TOKEN_LEFT_BRACE)) {
                 ast_statement_t* else_ = ast_statement_init();
                 else_->type = AST_STATEMENT_IF;
