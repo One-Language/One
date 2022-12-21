@@ -69,7 +69,7 @@ char* generator_code(generator_t* generator);
 void generator_free(generator_t* generator);
 
 // TODO
-char* generator_generate_block(generator_t* generator, void* parent, ast_block_t* block);
+char* generator_generate_block(generator_t* generator, void* parent, ast_block_t* block, bool need_ident);
 
 char* generator_generate_statement(generator_t* generator, ast_block_t* block, ast_statement_t* statement);
 

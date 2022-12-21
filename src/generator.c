@@ -42,7 +42,7 @@ char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t
 
     string_append(code, ") ");
 
-    string_append(code, generator_generate_block(generator, NULL, if_stmt->then));
+    string_append(code, generator_generate_block(generator, NULL, if_stmt->then, false));
 
     if (if_stmt->else_) {
         for (int i = 0; i < if_stmt->else_->statements->size; i++) {
@@ -54,7 +54,7 @@ char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t
                 string_append(code, "else ");
 
                 if (if_stmt->condition == NULL) {
-                    string_append(code, generator_generate_block(generator, NULL, if_stmt->then));
+                    string_append(code, generator_generate_block(generator, NULL, if_stmt->then, false));
                 } else {
                     string_append(code, generator_generate_if(generator, block, if_stmt, true));
                 }
@@ -95,23 +95,31 @@ char* generator_generate_statement(generator_t* generator, ast_block_t* block, a
     }
 }
 
-char* generator_generate_block(generator_t* generator, void* parent, ast_block_t* block)
+char* generator_generate_block(generator_t* generator, void* parent, ast_block_t* block, bool need_ident)
 {
-    string_t* str = string_init();
+    string_t* code = string_init();
 
-    string_append(str, "{\n");
+    if (need_ident) string_append(code, char_repeat('\t', generator->ident));
+
+    if (block->statements->size == 0) {
+        string_append(code, "{}\n");
+        return code->value;
+    } else {
+        string_append(code, "{\n");
+    }
+
     generator->ident++;
 
         for (int i = 0; i < block->statements->size; i++) {
             ast_statement_t* statement = block->statements->data[i];
-            string_append(str, generator_generate_statement(generator, block, statement));
+            string_append(code, generator_generate_statement(generator, block, statement));
         }
 
     generator->ident--;
-        string_append(str, char_repeat('\t', generator->ident));
-    string_append(str, "}\n");
+    string_append(code, char_repeat('\t', generator->ident));
+    string_append(code, "}\n");
 
-    return str->value;
+    return code->value;
 }
 
 /**
@@ -125,10 +133,9 @@ char* generator_generate_block(generator_t* generator, void* parent, ast_block_t
 char* generator_generate_function(generator_t* generator, ast_function_t* function)
 {
     string_t* str = string_init();
-    string_append_format(str, "int %s() {\n", function->name);
-    generator->ident++;
+    string_append_format(str, "int %s()\n", function->name);
 
-        string_append(str, generator_generate_block(generator, function, function->block));
+    string_append(str, generator_generate_block(generator, function, function->block, true));
 
     return str->value;
 }
