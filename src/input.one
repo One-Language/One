@@ -27,10 +27,11 @@ func f3 () float {
     // if 4 {} else if 2 {} else if 5 {} else if 8{}
     // if 4 {} else if 2 {} else if 5 {} else if 8{} else {}
     if 1 {
-        ret 10
+        ret 10*4-2
     } else if 2 {
-        ret 20
+         ret 34/2*3
     } else  {
-        ret 30
+         ret 34/(10-4)
+         ret 34/10
     }
 }
