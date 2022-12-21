@@ -325,7 +325,7 @@ char* ast_print_xml_statement(ast_t* ast, ast_statement_t* statement)
                 string_append(str, char_repeat('\t', ast->ident));
                 string_append(str, "</then>\n");
 
-                if (statement->stmt_if->else_->statements != NULL) {
+                if (statement->stmt_if->else_ != NULL && statement->stmt_if->else_->statements->size     > 0) {
                     string_append(str, char_repeat('\t', ast->ident));
                     string_append(str, "<else>\n");
                     ast->ident++;
