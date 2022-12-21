@@ -408,7 +408,7 @@ ast_expr_t* parser_parse_expression_postfix(parser_t* parser, ast_block_t* block
 
 ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int binding_power_to_my_right)
 {
-    ast_expr_t* result = ast_expression_init();
+    ast_expr_t* result = NULL;
 
     if (parser_has(parser, TOKEN_IDENTIFIER) ||
         parser_has(parser, TOKEN_NUMBER) ||
