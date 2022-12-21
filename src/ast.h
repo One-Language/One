@@ -149,10 +149,11 @@ typedef struct ast_expr_t {
     } expr;
 } ast_expr_t;
 
-typedef struct {
+struct ast_if_t;
+typedef struct ast_if_t {
     ast_expr_t* condition;
     ast_block_t* then;
-    ast_block_t* else_;
+    struct ast_if_t* else_;
 } ast_if_t;
 
 typedef struct {
@@ -298,5 +299,7 @@ char* ast_print_expressions(array_t* expressions, int ident);
 char* ast_print_xml_block(ast_t* ast, ast_block_t* block);
 
 char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expression);
+
+char* ast_print_xml_statement_if(ast_t* ast, ast_block_t* block, ast_if_t* statement);
 
 #endif
