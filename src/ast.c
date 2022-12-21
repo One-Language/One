@@ -301,11 +301,43 @@ char* ast_print_xml_statement(ast_t* ast, ast_statement_t* statement)
         case AST_STATEMENT_IF:
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "<if>\n");
-
             ast->ident++;
-            // TODO
-            ast->ident--;
 
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append(str, "<condition>\n");
+                ast->ident++;
+
+                    string_append(str, ast_print_xml_expression(ast, NULL, statement->stmt_ret->expression));
+
+                ast->ident--;
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append(str, "</condition>\n");
+
+                //////////////////////
+
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append(str, "<then>\n");
+                ast->ident++;
+
+                    string_append(str, ast_print_xml_expression(ast, NULL, statement->stmt_ret->expression));
+
+                ast->ident--;
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append(str, "</then>\n");
+
+                if (statement->stmt_if->else_->statements != NULL) {
+                    string_append(str, char_repeat('\t', ast->ident));
+                    string_append(str, "<else>\n");
+                    ast->ident++;
+
+                        string_append(str, ast_print_xml_expression(ast, NULL, statement->stmt_ret->expression));
+
+                    ast->ident--;
+                    string_append(str, char_repeat('\t', ast->ident));
+                    string_append(str, "</else>\n");
+                }
+
+            ast->ident--;
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</if>\n");
             break;
