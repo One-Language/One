@@ -143,6 +143,7 @@ char* generator_generate_block(generator_t* generator, void* parent, ast_block_t
         }
 
     generator->ident--;
+
     string_append(code, char_repeat('\t', generator->ident));
     string_append(code, "}\n");
 
@@ -183,7 +184,7 @@ void generator_generate(generator_t* generator)
         ast_function_t* function = (ast_function_t*)array_get(generator->ast->functions, i);
         string_append(generator->code, generator_generate_function(generator, function));
     }
-    string_append(generator->code, "int _start() { return 0; }\n");
+    string_append(generator->code, "int _start()\n{\n\treturn 0;\n}\n");
 }
 
 /**
