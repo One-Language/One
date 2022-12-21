@@ -132,12 +132,15 @@ char* generator_generate_block(generator_t* generator, void* parent, ast_block_t
  */
 char* generator_generate_function(generator_t* generator, ast_function_t* function)
 {
-    string_t* str = string_init();
-    string_append_format(str, "int %s()\n", function->name);
+    string_t* code = string_init();
+    string_append_format(code, "int %s()", function->name);
 
-    string_append(str, generator_generate_block(generator, function, function->block, true));
+    if (function->block->statements->size == 0) string_append(code, " ");
+    else string_append(code, "\n");
 
-    return str->value;
+    string_append(code, generator_generate_block(generator, function, function->block, true));
+
+    return code->value;
 }
 
 /**
