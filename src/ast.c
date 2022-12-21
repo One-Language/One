@@ -301,15 +301,19 @@ char* ast_print_xml_statement_if(ast_t* ast, ast_block_t* block, ast_if_t* state
     string_append(str, "<if>\n");
     ast->ident++;
 
-    string_append(str, char_repeat('\t', ast->ident));
-    string_append(str, "<condition>\n");
-    ast->ident++;
+    if (statement->condition != NULL) {
+        string_append(str, char_repeat('\t', ast->ident));
+        string_append(str, "<condition>\n");
+        ast->ident++;
 
-    string_append(str, ast_print_xml_expression(ast, NULL, statement->condition));
+        string_append(str, ast_print_xml_expression(ast, NULL, statement->condition));
 
-    ast->ident--;
-    string_append(str, char_repeat('\t', ast->ident));
-    string_append(str, "</condition>\n");
+        ast->ident--;
+        string_append(str, char_repeat('\t', ast->ident));
+        string_append(str, "</condition>\n");
+    } else {
+        string_append(str, "<condition/>\n");
+    }
 
     //////////////////////
 
@@ -540,6 +544,8 @@ char* ast_print(ast_t* ast)
 ast_if_t* ast_statement_if_init()
 {
     ast_if_t* st = (ast_if_t*)malloc(sizeof(ast_if_t));
+    st->then= NULL;
+    st->else_ = NULL;
     return st;
 }
 
