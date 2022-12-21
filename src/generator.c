@@ -34,17 +34,48 @@ char* generator_generate_expression(generator_t* generator, ast_expr_t* expr) {
 
 char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t* if_stmt) {
     string_t *code = string_init();
+
+    string_append(code, char_repeat('\t', generator->ident));
     string_append(code, "if (");
 
-        generator_generate_expression(generator, if_stmt->condition);
+        string_append(code, generator_generate_expression(generator, if_stmt->condition));
 
     string_append(code, ") ");
 
-    generator_generate_block(generator, NULL, if_stmt->then);
+    string_append(code, generator_generate_block(generator, NULL, if_stmt->then));
 
     if (if_stmt->else_) {
-        string_append(code, " else // soon\n");
+        for (int i = 0; i < if_stmt->else_->statements->size; i++) {
+            ast_statement_t* stmt = if_stmt->else_->statements->data[i];
+            if (stmt->type == AST_STATEMENT_IF) {
+                ast_if_t* if_stmt = (ast_if_t*)stmt->stmt_if;
+
+                string_append(code, char_repeat('\t', generator->ident));
+                string_append(code, "else ");
+
+                if (if_stmt->condition == NULL) {
+                    string_append(code, generator_generate_block(generator, NULL, if_stmt->then));
+                } else {
+                    string_append(code, generator_generate_if(generator, block, if_stmt));
+                }
+
+            }
+        }
     }
+
+    return code->value;
+}
+
+char* generator_generate_ret(generator_t* generator, ast_block_t* block, ast_ret_t * ret_statement)
+{
+    string_t* code = string_init();
+
+    string_append(code, char_repeat('\t', generator->ident));
+    string_append(code, "return(");
+
+        string_append(code, generator_generate_expression(generator, ret_statement->expression));
+
+    string_append(code, ");\n");
 
     return code->value;
 }
@@ -54,6 +85,9 @@ char* generator_generate_statement(generator_t* generator, ast_block_t* block, a
     switch (statement->type) {
         case AST_STATEMENT_IF:
             return generator_generate_if(generator, block, statement->stmt_if);
+            break;
+        case AST_STATEMENT_RET:
+            return generator_generate_ret(generator, block, statement->stmt_ret);
             break;
         default:
             return "// Unknown statement type\n";
