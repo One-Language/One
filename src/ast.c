@@ -312,6 +312,7 @@ char* ast_print_xml_statement_if(ast_t* ast, ast_block_t* block, ast_if_t* state
         string_append(str, char_repeat('\t', ast->ident));
         string_append(str, "</condition>\n");
     } else {
+        string_append(str, char_repeat('\t', ast->ident));
         string_append(str, "<condition/>\n");
     }
 

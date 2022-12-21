@@ -495,13 +495,9 @@ ast_if_t* parser_parse_if(parser_t* parser)
 
     stmt_if->then = parser_parse_block(parser);
 
-    printf("Current token/1: %s\n", token_name(parser_peek_type(parser)));
-
     // Check for else statement
     if (parser_skip(parser, TOKEN_ELSE)) {
         stmt_if->else_ = ast_block_init();
-
-        printf("Current token/2: %s\n", token_name(parser_peek_type(parser)));
 
         // Check for else if
         bool is_else = true;
@@ -526,14 +522,10 @@ ast_if_t* parser_parse_if(parser_t* parser)
 
         // Check for else block
         if (is_else == true) {
-            printf("Current token/3: %s\n", token_name(parser_peek_type(parser)));
-
             if (parser_has(parser, TOKEN_LEFT_BRACE)) {
                 ast_statement_t* else_ = ast_statement_init();
                 else_->type = AST_STATEMENT_IF;
                 else_->stmt_if = ast_statement_if_init();
-
-                printf("Current token/4: %s\n", token_name(parser_peek_type(parser)));
 
                 else_->stmt_if->then = parser_parse_block(parser);
                 if (else_->stmt_if->then == NULL) return NULL;
