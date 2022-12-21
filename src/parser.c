@@ -501,32 +501,34 @@ ast_if_t* parser_parse_if(parser_t* parser)
 
         // Check for else if
         while (parser_has(parser, TOKEN_IF)) {
-            ast_if_t* else_if = parser_parse_if(parser);
-            if (else_if == NULL) return NULL;
+            ast_if_t* else_if = ast_statement_if_init();
 
-            array_push(stmt_if->else_->, else_if);
+            else_if->condition = parser_parse_expression(parser, NULL, 0);
+            if (else_if->condition == NULL) return NULL;
+
+            else_if->then = parser_parse_block(parser);
+            if (else_if->then == NULL) return NULL;
+
+            array_push(stmt_if->else_->statements, else_if);
+
+            if (!parser_skip(parser, TOKEN_ELSE)) break;
         }
 
         // Check for else block
-        if (parser_has(parser, TOKEN_LEFT_BRACE)) {
+        if (parser_skip(parser, TOKEN_LEFT_BRACE)) {
             ast_if_t* else_ = ast_statement_if_init();
             else_->condition = NULL;
 
-            else_->then = ast_block_init();
+            else_->then = parser_parse_block(parser);
             if (else_->then == NULL) return NULL;
 
-            ast_if_t* stmt_if = parser_parse_if(parser);
-            if (stmt_if == NULL) return NULL;
-
-            array_push(else_->then->statements, stmt_if);
-
-            stmt_if->else_ = else_;
+            array_push(stmt_if->else_->statements, else_);
         }
-        // Unexpected token
-        else {
-            printf("Unexpected token %s after else\n", token_name(parser_peek_type(parser)));
-            return NULL;
-        }
+//        // Unexpected token
+//        else {
+//            printf("Unexpected token %s after else\n", token_name(parser_peek_type(parser)));
+//            return NULL;
+//        }
     } else {
         stmt_if->else_ = NULL;
     }

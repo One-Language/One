@@ -328,7 +328,7 @@ char* ast_print_xml_statement_if(ast_t* ast, ast_block_t* block, ast_if_t* state
         string_append(str, "<else>\n");
         ast->ident++;
 
-        string_append(str, ast_print_xml_statement_if(ast, NULL, statement->else_));
+            string_append(str, ast_print_xml_block(ast, statement->else_));
 
         ast->ident--;
         string_append(str, char_repeat('\t', ast->ident));

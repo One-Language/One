@@ -149,11 +149,10 @@ typedef struct ast_expr_t {
     } expr;
 } ast_expr_t;
 
-struct ast_if_t;
-typedef struct ast_if_t {
+typedef struct {
     ast_expr_t* condition;
     ast_block_t* then;
-    struct ast_if_t* else_;
+    ast_block_t* else_;
 } ast_if_t;
 
 typedef struct {
