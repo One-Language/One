@@ -531,7 +531,7 @@ ast_if_t* parser_parse_if(parser_t* parser)
             if (parser_has(parser, TOKEN_LEFT_BRACE)) {
                 ast_statement_t* else_ = ast_statement_init();
                 else_->type = AST_STATEMENT_IF;
-                else_->stmt_if->condition = NULL;
+                else_->stmt_if = ast_statement_if_init();
 
                 printf("Current token/4: %s\n", token_name(parser_peek_type(parser)));
 
