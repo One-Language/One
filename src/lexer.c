@@ -315,10 +315,10 @@ void lexer_read_comment_multi_line(lexer_t* lex)
         return;
     }
 
-//    handling nested comments
+    // handling nested comments
     while (open > 0) {
         if (lex->current[0] == '\0') {
-            lexer_add_token(lex, TOKEN_ERROR);
+            lexer_add_token_value(lex, TOKEN_ERROR, "No closing multi-comment found");
             return;
         }
         else if (lex->current[0] == '*' && lex->current[1] == '/') {
