@@ -24,10 +24,37 @@ generator_t* generator_init(ast_t* ast)
     return generator;
 }
 
-char* generator_generate_expression(generator_t* generator, ast_expr_t* expr) {
+char* generator_generate_expression(generator_t* generator, ast_block_t* block, ast_expr_t* expression) {
     string_t *code = string_init();
 
-    string_append(code, "1");
+    switch (expression->type) {
+        case AST_EXPRESSION_BINARY: {
+            ast_expr_binary_t* binaryExpression = expression->expr.binary;
+            char *left = generator_generate_expression(generator, block, binaryExpression->left);
+            char *right = generator_generate_expression(generator, block, binaryExpression->right);
+            string_append_format(code, "%s %s %s", left, token_name(binaryExpression->operator), right);
+            free(left);
+            free(right);
+        } break;
+        case AST_EXPRESSION_UNARY: {
+            ast_expr_unary_t* unaryExpression = expression->expr.unary;
+            char *value = generator_generate_expression(generator, block, unaryExpression->argument);
+            string_append_format(code, "%s %s", token_name(unaryExpression->operator), value);
+            free(value);
+        } break;
+        case AST_EXPRESSION_SUB_EXPRESSION: {
+            string_append_format(code, "(");
+            string_append(code, generator_generate_expression(generator, block, expression->expr.sub_expression));
+            string_append(code, ")");
+        } break;
+        case AST_EXPRESSION_LITERAL: {
+            ast_expr_literal_t * literalExpression = expression->expr.literal;
+            string_append_format(code, "%s", literalExpression->value);
+        } break;
+        default: {
+            return "Unknown expression type";
+        }
+    }
 
     return code->value;
 }
@@ -38,7 +65,7 @@ char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t
     if (is_else == false) string_append(code, char_repeat('\t', generator->ident));
     string_append(code, "if (");
 
-        string_append(code, generator_generate_expression(generator, if_stmt->condition));
+        string_append(code, generator_generate_expression(generator, block, if_stmt->condition));
 
     string_append(code, ") ");
 
@@ -73,7 +100,7 @@ char* generator_generate_ret(generator_t* generator, ast_block_t* block, ast_ret
     string_append(code, char_repeat('\t', generator->ident));
     string_append(code, "return(");
 
-        string_append(code, generator_generate_expression(generator, ret_statement->expression));
+        string_append(code, generator_generate_expression(generator, block, ret_statement->expression));
 
     string_append(code, ");\n");
 

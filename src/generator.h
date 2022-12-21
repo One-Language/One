@@ -75,6 +75,6 @@ char* generator_generate_statement(generator_t* generator, ast_block_t* block, a
 
 char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t* if_stmt, bool is_else);
 
-char* generator_generate_expression(generator_t* generator, ast_expr_t* expr);
+char* generator_generate_expression(generator_t* generator, ast_block_t* block, ast_expr_t* expression);
 
 #endif
