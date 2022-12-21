@@ -440,7 +440,7 @@ ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int bi
     }
 
     if (result == NULL) {
-            printf("We should always have either a LHS or Prefix Operator at this point.\n");
+        printf("We should always have either a LHS or Prefix Operator at this point.\n");
         // sds message = sdsnew("We should always have either a LHS or Prefix Operator at this point.");
         // Error* error = error_init(ERROR_PARSER, ERROR_PARSER_BAD_RULE, message, parser->lexer->main_source, parser_peek(parser)->start, parser_peek(parser)->end);
         // array_push(parser->errors, error);
