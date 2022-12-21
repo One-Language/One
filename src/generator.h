@@ -73,7 +73,7 @@ char* generator_generate_block(generator_t* generator, void* parent, ast_block_t
 
 char* generator_generate_statement(generator_t* generator, ast_block_t* block, ast_statement_t* statement);
 
-char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t* if_stmt);
+char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t* if_stmt, bool is_else);
 
 char* generator_generate_expression(generator_t* generator, ast_expr_t* expr);
 

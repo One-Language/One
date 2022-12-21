@@ -32,10 +32,10 @@ char* generator_generate_expression(generator_t* generator, ast_expr_t* expr) {
     return code->value;
 }
 
-char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t* if_stmt) {
+char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t* if_stmt, bool is_else) {
     string_t *code = string_init();
 
-    string_append(code, char_repeat('\t', generator->ident));
+    if (is_else == false) string_append(code, char_repeat('\t', generator->ident));
     string_append(code, "if (");
 
         string_append(code, generator_generate_expression(generator, if_stmt->condition));
@@ -56,7 +56,7 @@ char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t
                 if (if_stmt->condition == NULL) {
                     string_append(code, generator_generate_block(generator, NULL, if_stmt->then));
                 } else {
-                    string_append(code, generator_generate_if(generator, block, if_stmt));
+                    string_append(code, generator_generate_if(generator, block, if_stmt, true));
                 }
 
             }
@@ -84,7 +84,7 @@ char* generator_generate_statement(generator_t* generator, ast_block_t* block, a
 {
     switch (statement->type) {
         case AST_STATEMENT_IF:
-            return generator_generate_if(generator, block, statement->stmt_if);
+            return generator_generate_if(generator, block, statement->stmt_if, false);
             break;
         case AST_STATEMENT_RET:
             return generator_generate_ret(generator, block, statement->stmt_ret);
