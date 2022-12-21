@@ -180,11 +180,18 @@ char* generator_generate_function(generator_t* generator, ast_function_t* functi
  */
 void generator_generate(generator_t* generator)
 {
+    string_append(generator->code, "#include <stdio.h>\n");
+    string_append(generator->code, "#include <stdlib.h>\n");
+    string_append(generator->code, "#include <stdbool.h>\n");
+    string_append(generator->code, "#include <inttypes.h>\n");
+    string_append(generator->code, "\n");
+
     for (int i = 0; i < generator->ast->functions->size; i++) {
         ast_function_t* function = (ast_function_t*)array_get(generator->ast->functions, i);
         string_append(generator->code, generator_generate_function(generator, function));
     }
-    string_append(generator->code, "int _start()\n{\n\treturn 0;\n}\n");
+
+    string_append(generator->code, "int _start()\n{\n\treturn(0);\n}\n");
 }
 
 /**
