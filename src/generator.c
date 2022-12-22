@@ -24,7 +24,17 @@ generator_t* generator_init(ast_t* ast)
     return generator;
 }
 
-char* generator_generate_expression(generator_t* generator, ast_block_t* block, ast_expr_t* expression) {
+/**
+ * @brief Generate the code of a expression from AST
+ *
+ * @param ast_generator_t* generator
+ * @param ast_block_t* block
+ * @param ast_expr_t* expression
+ *
+ * @return
+ */
+char* generator_generate_expression(generator_t* generator, ast_block_t* block, ast_expr_t* expression)
+{
     string_t *code = string_init();
 
     switch (expression->type) {
@@ -59,7 +69,18 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
     return code->value;
 }
 
-char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t* if_stmt, bool is_else) {
+/**
+ * @brief Generate the code of a IF statement from AST
+ *
+ * @param generator_t* generator
+ * @param block_t* block
+ * @param ast_if_t* if_stmt
+ * @param bool is_else
+ *
+ * @return char*
+ */
+char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t* if_stmt, bool is_else)
+{
     string_t *code = string_init();
 
     if (is_else == false) string_append(code, char_repeat('\t', generator->ident));
@@ -93,6 +114,15 @@ char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t
     return code->value;
 }
 
+/**
+ * @brief Generate the code of a RET statement from AST
+ *
+ * @param generator_t* generator
+ * @param block_t* block
+ * @param ast_ret_t* ret_statement
+ *
+ * @return char*
+ */
 char* generator_generate_ret(generator_t* generator, ast_block_t* block, ast_ret_t * ret_statement)
 {
     string_t* code = string_init();
@@ -107,6 +137,15 @@ char* generator_generate_ret(generator_t* generator, ast_block_t* block, ast_ret
     return code->value;
 }
 
+/**
+ * @brief Generate the code of a statement from AST
+ *
+ * @param generator_t* generator
+ * @param block_t* block
+ * @param ast_statement_t* statement
+ *
+ * @return char*
+ */
 char* generator_generate_statement(generator_t* generator, ast_block_t* block, ast_statement_t* statement)
 {
     switch (statement->type) {
@@ -122,6 +161,15 @@ char* generator_generate_statement(generator_t* generator, ast_block_t* block, a
     }
 }
 
+/**
+ * @brief Generate the code of a block from AST
+ *
+ * @param generator_t* generator
+ * @param block_t* block
+ * @param bool need_ident
+ *
+ * @return char*
+ */
 char* generator_generate_block(generator_t* generator, void* parent, ast_block_t* block, bool need_ident)
 {
     string_t* code = string_init();
