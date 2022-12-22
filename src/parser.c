@@ -209,8 +209,6 @@ ast_expr_t* parser_parse_expression_literal(parser_t* parser, ast_block_t* block
         return NULL;
     }
 
-    printf("==>%s\n", value_name(expr->expr.literal->value->type));
-
     return expr;
 }
 
