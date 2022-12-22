@@ -193,6 +193,15 @@ typedef struct {
 ast_t* ast_init();
 
 /**
+ * @brief Initialize a function
+ *
+ * @param void
+ *
+ * @return ast_functaion_t*
+ */
+ast_function_t* ast_function_init();
+
+/**
  * @brief Initialize a statement
  *
  * @param void
@@ -202,103 +211,174 @@ ast_t* ast_init();
 ast_argument_t* ast_argument_init();
 
 /**
- * @brief Initialize a function
- * 
- * @param void
- * 
- * @return ast_function_t* 
- */
-ast_function_t* ast_function_init();
-
-/**
  * @brief Initialize a statement
- * 
- * @return ast_statement_t* 
+ *
+ * @return ast_statement_t*
  */
 ast_statement_t* ast_statement_init();
 
 /**
  * @brief Initialize an expression
- * 
+ *
  * @param void
- * 
- * @return ast_expr_t* 
+ *
+ * @return ast_expr_t*
  */
 ast_expr_t* ast_expression_init();
 
 /**
  * @brief Initialize a block
- * 
+ *
  * @param void
- * 
- * @return ast_block_t* 
+ *
+ * @return ast_block_t*
  */
 ast_block_t* ast_block_init();
 
 /**
- * @brief Print AST of a function
- * 
+ * @brief Print XML of a expressions
+ *
+ * @param ast_t* ast
+ * @param ast_block_t* block
+ * @param ast_expr_t* expression
+ *
+ * @return char*
+ */
+char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expression);
+
+/**
+ * @brief Print of a expressions
+ *
+ * @param ast_block_t* block
+ * @param ast_expr_t* expression
+ * @param int ident
+ *
+ * @return char*
+ */
+char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident);
+
+/**
+ * @brief Print of a expressions
+ *
+ * @param array_t* expressions
+ * @param int ident
+ *
+ * @return char*
+ */
+char* ast_print_expressions(array_t* expressions, int ident);
+
+/**
+ * @brief Print XML of a IF statement
+ *
+ * @param ast_t* ast
+ * @param ast_block_t* block
+ * @param ast_if_t* statement
+ *
+ * @return char*
+ */
+char* ast_print_xml_statement_if(ast_t* ast, ast_block_t* block, ast_if_t* statement);
+
+/**
+ * @brief Print XML of a statement
+ *
+ * @param ast_t* ast
+ * @param ast_statement_t* statement
+ *
+ * @return char*
+ */
+char* ast_print_xml_statement(ast_t* ast, ast_statement_t* statement);
+
+/**
+ * @brief Print of a statement
+ *
+ * @param ast_statement_t* statement
+ *
+ * @return char*
+ */
+char* ast_print_statement(ast_statement_t* statement);
+
+/**
+ * @brief Print XML of a block
+ *
+ * @param ast_t* ast
+ * @param ast_block_t* block
+ *
+ * @return char*
+ */
+char* ast_print_xml_block(ast_t* ast, ast_block_t* block);
+
+/**
+ * @brief Print of a block
+ *
+ * @param ast_t* ast
+ * @param ast_block_t* block
+ *
+ * @return char*
+ */
+char* ast_print_block(ast_block_t* block);
+
+/**
+ * @brief Print XML of a function
+ *
+ * @param ast_t* ast
  * @param ast_function_t* function
- * 
+ *
+ * @return char*
+ */
+char* ast_print_xml_function(ast_t* ast, ast_function_t* function);
+
+/**
+ * @brief Print AST of a function
+ *
+ * @param ast_function_t* function
+ *
  * @return char*
  */
 char* ast_print_function(ast_function_t* function);
 
 /**
  * @brief Print AST
- * 
+ *
  * @param ast_t* ast
- * 
+ *
  * @return char*
  */
 char* ast_print(ast_t* ast);
 
 /**
- * @brief Print AST in JSON format
- * 
- * @param ast_t* ast
- * 
- * @return char*
- */
-char* ast_print_json(ast_t* ast);
-
-/**
  * @brief Initialize an if statement
- * 
+ *
  * @param void
- * 
- * @return ast_if_t* 
+ *
+ * @return ast_if_t*
  */
 ast_if_t* ast_statement_if_init();
 
 /**
  * @brief Initialize a ret statement
- * 
+ *
  * @param void
- * 
- * @return ast_ret_t* 
+ *
+ * @return ast_ret_t*
  */
 ast_ret_t* ast_statement_ret_init();
 
 /**
- * @brief Print AST in XML format
- * 
+ * @brief Print AST in JSON format
+ *
  * @param ast_t* ast
- * 
+ *
+ * @return char*
+ */
+char* ast_print_json(ast_t* ast);
+
+/**
+ * @brief Print AST in XML format
+ *
+ * @param ast_t* ast
+ *
  * @return char*
  */
 char* ast_print_xml(ast_t* ast);
-
-// TODO: Expression
-
-char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident);
-
-char* ast_print_expressions(array_t* expressions, int ident);
-
-char* ast_print_xml_block(ast_t* ast, ast_block_t* block);
-
-char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expression);
-
-char* ast_print_xml_statement_if(ast_t* ast, ast_block_t* block, ast_if_t* statement);
 
 #endif
