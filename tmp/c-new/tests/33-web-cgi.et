@@ -6,7 +6,7 @@ void main()
         //cgi.type("text/html");
         //cgi.format("html");//auto detect html is alias of `text/html`
         //cgi.charset("utf-8");
-        _ "Content-Type: text/html; charset=utf-8\r\n\r\n";
+        _ "content-type: text/html; charset=utf-8\r\n\r\n";
         _ "Hello World!";
     }
 }
