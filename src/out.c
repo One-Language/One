@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <inttypes.h>
 #include <stdbool.h>
+#include <inttypes.h>
 
-int f1() {}
+void f1(int a, int b) {}
 int f2() {}
-int f3()
+float f3()
 {
 	if (1) {
 		return(10 star 4 minus 2);
