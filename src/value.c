@@ -9,6 +9,28 @@
 #include "value.h"
 
 /**
+ * @brief Get type name of a value type
+ *
+ * @param value_type_t type
+ *
+ * @return char*
+ */
+char* value_name(value_type_t type)
+{
+    switch (type) {
+        case VALUE_TYPE_INT:
+            return "int";
+        case VALUE_TYPE_FLOAT:
+            return "float";
+        case VALUE_TYPE_STR:
+            return "string";
+        case VALUE_TYPE_BOOL:
+            return "bool";
+        default:
+            return "unknown";
+    }
+}
+/**
  * @brief Initialize the value object
  *
  * @param value_type_t type

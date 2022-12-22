@@ -134,7 +134,6 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
     string_t* str = string_init();
     if (expression == NULL) return NULL; // TODO
 
-
     switch (expression->type) {
         case AST_EXPRESSION_BINARY: {
             ast_expr_binary_t* binaryExpression = expression->expr.binary;
@@ -158,7 +157,8 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
                 ////////////////////////////////////////////////////
 
                 string_append(str, char_repeat('\t', ast->ident));
-                string_append(str, "<right>\n");
+                string_append(str,
+                              "<right>\n");
                 ast->ident++;
 
                     char *right = ast_print_xml_expression(ast, block, binaryExpression->right);
