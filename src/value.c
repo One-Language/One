@@ -60,7 +60,7 @@ value_t* value_init_integer(int value)
 value_t* value_init_float(float value)
 {
     value_t* valueObject = value_init(VALUE_TYPE_FLOAT);
-    valueObject->value.float = value;
+    valueObject->value.float_value = value;
     return valueObject;
 }
 
