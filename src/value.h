@@ -21,7 +21,7 @@ typedef enum {
 } value_type_t;
 
 typedef struct {
-    value_type_t* type;
+    value_type_t type;
     union {
         int int_value;
         float float_value;
@@ -35,7 +35,7 @@ typedef struct {
  * @param value_type_t type
  * @return value_t*
  */
-value_t* value_init(value_type_t* type);
+value_t* value_init(value_type_t type);
 
 /**
  * @brief Initialize the value object with a string
@@ -68,9 +68,9 @@ value_t* value_init_boolean(bool value);
 /**
  * @brief Get the type of the value
  * @param value_t* value
- * @return value_type_t*
+ * @return value_type_t
  */
-value_type_t* value_type(value_t* value);
+value_type_t value_type(value_t* value);
 
 /**
  * @brief Get the string value of the value

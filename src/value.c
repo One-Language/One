@@ -13,7 +13,7 @@
  * @param value_type_t type
  * @return value_t*
  */
-value_t* value_init(value_type_t* type)
+value_t* value_init(value_type_t type)
 {
     value_t* value = malloc(sizeof(value_t));
     value->type = type;
@@ -70,17 +70,21 @@ value_t* value_init_boolean(bool value)
 
 /**
  * @brief Get the type of the value
+ *
  * @param value_t* value
- * @return value_type_t*
+ *
+ * @return value_type_t
  */
-value_type_t* value_type(value_t* value)
+value_type_t value_type(value_t* value)
 {
     return value->type;
 }
 
 /**
  * @brief Get the string value of the value
+ *
  * @param value_t* value
+ * 
  * @return char*
  */
 char* value_string(value_t* value)

@@ -93,6 +93,33 @@ ast_block_t* ast_block_init()
     return block;
 }
 
+char* ast_print_xml_expression_literal(ast_t* ast, ast_block_t* block, value_t* value)
+{
+    string_t* str = string_init();
+
+    string_append(str, char_repeat('\t', ast->ident));
+
+    switch (value->type) {
+        case VALUE_TYPE_INT: {
+            string_append_format(str, "<integer>%d</integer>\n", value->value.int_value);
+        } break;
+        case VALUE_TYPE_FLOAT: {
+            string_append_format(str, "<float>%f</float>\n", value->value.float_value);
+        } break;
+        case VALUE_TYPE_STR: {
+            string_append_format(str, "<string>%s</string>\n", value->value.str_value);
+        } break;
+        case VALUE_TYPE_BOOL: {
+            string_append_format(str, "<boolean>%s</boolean>\n", value->value.bool_value ? "true" : "false");
+        } break;
+        default: {
+            string_append(str, "<unknown></unknown>\n");
+        } break;
+    }
+
+    return str->value;
+}
+
 /**
  * @brief Print XML of a expressions
  *
@@ -177,9 +204,7 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             string_append(str, "<expression_literal>\n");
 
             ast->ident++;
-            string_append(str, char_repeat('\t', ast->ident));
-            string_append_format(str, "%s", literalExpression->value);
-            string_append(str, "\n");
+            string_append_format(str, "%s", ast_print_xml_expression_literal(ast, block, expression->expr.literal->value));
             ast->ident--;
 
             string_append(str, char_repeat('\t', ast->ident));

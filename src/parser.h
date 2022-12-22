@@ -13,6 +13,7 @@
 
 #include "ast.h"
 #include "lexer.h"
+#include "value.h"
 
 typedef struct {
     token_list_t* tokens;
