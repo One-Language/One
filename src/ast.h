@@ -14,14 +14,15 @@
 #include "token.h" // token_type_t
 #include "array.h" // array_t
 #include "string.h" // string_t
+#include "value.h" // value_t, value_type_t
 
 typedef enum {
     AST_STATEMENT_IF,
-    AST_STATEMENT_WHILE,
-    AST_STATEMENT_FOR,
-    AST_STATEMENT_REPEAT,
+//    AST_STATEMENT_WHILE,
+//    AST_STATEMENT_FOR,
+//    AST_STATEMENT_REPEAT,
     AST_STATEMENT_RET,
-    AST_STATEMENT_EXPRESSION,
+//    AST_STATEMENT_EXPRESSION,
 } ast_statement_type_t;
 
 typedef struct {
@@ -43,19 +44,12 @@ typedef struct {
 struct ast_expr_t;
 
 typedef enum {
-    AST_VALUE_BOOL,
-    AST_VALUE_INT,
-    AST_VALUE_FLOAT,
-    AST_VALUE_STRING
-} ast_value_type_t;
-
-typedef enum {
-    AST_EXPRESSION_MEMBER,
-    AST_EXPRESSION_CONDITIONAL,
+//    AST_EXPRESSION_MEMBER,
+//    AST_EXPRESSION_CONDITIONAL,
     AST_EXPRESSION_UNARY,
     AST_EXPRESSION_BINARY,
-    AST_EXPRESSION_CALL,
-    AST_EXPRESSION_LOGICAL,
+//    AST_EXPRESSION_CALL,
+//    AST_EXPRESSION_LOGICAL,
     AST_EXPRESSION_LITERAL,
     AST_EXPRESSION_POSTFIX,
     AST_EXPRESSION_TERNARY,
@@ -70,13 +64,7 @@ typedef struct {
 } ast_expr_binary_t;
 
 typedef struct {
-    ast_value_type_t type;
-    union {
-        bool boolean;
-        int integer;
-        float floating;
-        char* string;
-    } value;
+    value_t* value;
 } ast_expr_literal_t;
 
 typedef struct {

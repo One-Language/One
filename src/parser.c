@@ -194,12 +194,24 @@ ast_expr_t* parser_parse_expression_literal(parser_t* parser, ast_block_t* block
 {
     ast_expr_t* expr = malloc(sizeof(ast_expr_t));
 
-    token_t* value = parser_eat(parser);
+    token_t* tok = parser_eat(parser);
 
     expr->type = AST_EXPRESSION_LITERAL;
     expr->expr.literal = malloc(sizeof(ast_expr_literal_t));
-    expr->expr.literal->type = AST_VALUE_STRING;
-    expr->expr.literal->value.string = value->value;
+
+    token_type_t ttype = tok->type;
+    value_t* value;
+    if (ttype == TOKEN_NUMBER) {
+        value = value_init_integer(atoi(tok->value));
+    } else if (ttype == TOKEN_STRING) {
+        value = value_init_string(tok->value);
+    } else {
+        printf("Error: Unexpected token as a literal expression: %s\n", token_name(ttype));
+        // TODO: Error handling
+        return NULL;
+    }
+
+    expr->expr.literal->value = value;
 
     return expr;
 }
