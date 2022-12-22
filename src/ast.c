@@ -93,6 +93,15 @@ ast_block_t* ast_block_init()
     return block;
 }
 
+/**
+ * @brief Print XML of a expressions
+ *
+ * @param ast_t* ast
+ * @param ast_block_t* block
+ * @param ast_expr_t* expression
+ *
+ * @return char*
+ */
 char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expression)
 {
     string_t* str = string_init();
@@ -212,6 +221,15 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
     return str->value;
 }
 
+/**
+ * @brief Print of a expressions
+ *
+ * @param ast_block_t* block
+ * @param ast_expr_t* expression
+ * @param int ident
+ *
+ * @return char*
+ */
 char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident)
 {
     string_t* str = string_init();
@@ -278,6 +296,14 @@ char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident
     return str->value;
 }
 
+/**
+ * @brief Print of a expressions
+ *
+ * @param array_t* expressions
+ * @param int ident
+ *
+ * @return char*
+ */
 char* ast_print_expressions(array_t* expressions, int ident)
 {
     string_t* str = string_init();
@@ -293,6 +319,15 @@ char* ast_print_expressions(array_t* expressions, int ident)
     return str->value;
 }
 
+/**
+ * @brief Print XML of a IF statement
+ *
+ * @param ast_t* ast
+ * @param ast_block_t* block
+ * @param ast_if_t* statement
+ *
+ * @return char*
+ */
 char* ast_print_xml_statement_if(ast_t* ast, ast_block_t* block, ast_if_t* statement)
 {
     string_t* str = string_init();
@@ -347,6 +382,14 @@ char* ast_print_xml_statement_if(ast_t* ast, ast_block_t* block, ast_if_t* state
     return str->value;
 }
 
+/**
+ * @brief Print XML of a statement
+ *
+ * @param ast_t* ast
+ * @param ast_statement_t* statement
+ *
+ * @return char*
+ */
 char* ast_print_xml_statement(ast_t* ast, ast_statement_t* statement)
 {
     string_t* str = string_init();
@@ -381,6 +424,13 @@ char* ast_print_xml_statement(ast_t* ast, ast_statement_t* statement)
     return str->value;
 }
 
+/**
+ * @brief Print of a statement
+ *
+ * @param ast_statement_t* statement
+ *
+ * @return char*
+ */
 char* ast_print_statement(ast_statement_t* statement)
 {
     string_t* str = string_init();
@@ -408,6 +458,14 @@ char* ast_print_statement(ast_statement_t* statement)
     return str->value;
 }
 
+/**
+ * @brief Print XML of a block
+ *
+ * @param ast_t* ast
+ * @param ast_block_t* block
+ *
+ * @return char*
+ */
 char* ast_print_xml_block(ast_t* ast, ast_block_t* block)
 {
     string_t* str = string_init();
@@ -440,6 +498,14 @@ char* ast_print_xml_block(ast_t* ast, ast_block_t* block)
     return str->value;
 }
 
+/**
+ * @brief Print of a block
+ *
+ * @param ast_t* ast
+ * @param ast_block_t* block
+ *
+ * @return char*
+ */
 char* ast_print_block(ast_block_t* block)
 {
     string_t* str = string_init();
@@ -454,6 +520,14 @@ char* ast_print_block(ast_block_t* block)
     return str->value;
 }
 
+/**
+ * @brief Print XML of a function
+ *
+ * @param ast_t* ast
+ * @param ast_function_t* function
+ *
+ * @return char*
+ */
 char* ast_print_xml_function(ast_t* ast, ast_function_t* function)
 {
     string_t* str = string_init();
