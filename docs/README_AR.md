@@ -210,8 +210,8 @@ home {
     _ "Hi, Welcome"
 }
 error {
-    headers.add('HTTP-Type: 404')
-    headers.add('Content-Type: text/html;charset=utf-8')
+    headers.add('HTTP/1.0 404 Not Found')
+    headers.add('content-type: text/html;charset=utf-8')
     _ "<h1>404></h1>"
 }
 main {
@@ -237,16 +237,16 @@ main {
 
 ```c
 error {
-    headers.add('HTTP-Type: 404')
-    headers.add('Content-Type: text/html;charset=utf-8')
+    headers.add('HTTP/1.0 404 Not Found')
+    headers.add('content-type: text/html;charset=utf-8')
     _ `<!doctype html><html><head><title>Error 404</title><meta charset="utf-8"></head><body><h1>404></h1></body></html>`
 }
 
 vs
 
 error {
-    headers.add('HTTP-Type: 404')
-    headers.add('Content-Type: text/html;charset=utf-8')
+    headers.add('HTTP/1.0 404 Not Found')
+    headers.add('content-type: text/html;charset=utf-8')
     page {
         title: 'Error 404'
         label {
