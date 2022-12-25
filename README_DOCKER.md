@@ -11,9 +11,6 @@
 [Onelang.org](https://onelang.org) |
 [Help wanted](https://github.com/One-Language/One/issues/new)
 
-</div>
-<div align="center">
-
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
 -->
@@ -24,9 +21,6 @@
 [![Instagram][instagrambadge]][instagramurl]
 [![Twitter][twitterurl]][twitterbadge]
 [![License][licensebadge]][licenseurl]
-
-<!-- prettier-ignore-start -->
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
 </div>
 

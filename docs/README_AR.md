@@ -13,9 +13,6 @@
 [Onelang.org](https://onelang.org) |
 [مركز المساعدة](https://github.com/One-Language/One/issues/new)
 
-</div>
-<div align="center">
-
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
 -->

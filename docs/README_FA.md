@@ -12,9 +12,6 @@
 [Onelang.ir](https://onelang.ir) |
 [کمک خواست](https://github.com/One-Language/One/issues/new)
 
-</div>
-<div align="center">
-
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
 -->
