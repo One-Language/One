@@ -11,9 +11,6 @@
 [Onelang.org](https://onelang.org) |
 [ヘルプ募集](https://github.com/One-Language/One/issues/new)
 
-</div>
-<div align="center">
-
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
 -->
