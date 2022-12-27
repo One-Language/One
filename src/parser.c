@@ -239,7 +239,13 @@ ast_expr_t* parser_parse_expression_sub(parser_t* parser, ast_block_t* block)
 
 ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, ast_expr_t* result)
 {
-    return NULL;
+    if (result->type != AST_EXPRESSION_LITERAL) {
+        printf("Unexpected token in expression call: %s\n", token_name(parser_peek_type(parser)));
+        return NULL;
+    }
+
+    char* callee = result->expr.literal->value->value.str_value;
+    // printf("Name: %s\n", callee);
 
     ast_expr_t* expr = malloc(sizeof(ast_expr_t));
 
@@ -257,10 +263,13 @@ ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, a
 
     expr->expr.call->callee = malloc(sizeof(ast_expr_t));
     expr->expr.call->callee->type = AST_EXPRESSION_LITERAL;
-    expr->expr.call->callee->expr.literal->value = value_init_string(result->expr.literal->value->value.str_value);
-
+    expr->expr.call->callee->expr.literal = malloc(sizeof(ast_expr_literal_t));
+    expr->expr.call->callee->expr.literal->value = value_init_string(callee);
 
     expr->expr.call->arguments = args;
+
+    ast_t* ast = ast_init();
+    printf("Parsing call expression: %s\n", ast_print_xml_expression(ast, NULL, result));
 
     // ast_expr_t* callee = malloc(sizeof(ast_expr_t));
     // callee->type = AST_EXPRESSION_LITERAL;
@@ -523,10 +532,6 @@ ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int bi
                 return NULL;
             }
         } else if (parser_skip(parser, TOKEN_LEFT_PAREN)) {
-            if (result->type != AST_EXPRESSION_LITERAL) {
-                printf("Unexpected token in expression call: %s\n", token_name(parser_peek_type(parser)));
-                return NULL;
-            }
             result = parser_parse_expression_call(parser, block, result);
             if (result == NULL) {
                 printf("Failed to parse call expression!\n");

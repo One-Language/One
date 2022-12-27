@@ -9,3 +9,17 @@ int sum()
 {
 	return(10);
 }
+int main()
+{
+	return(sum());
+	if (1) {
+		return(10 * 4 - 2);
+	}
+	else if (2) {
+		return(34 / 2 * 3);
+	}
+	else {
+		return(34 / (10 - 4));
+		return(34 / 10);
+	}
+}
