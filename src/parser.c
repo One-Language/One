@@ -190,6 +190,14 @@ void parser_parse(parser_t* parser)
     }
 }
 
+/**
+ * @brief Parse expression literal
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_parse_expression_literal(parser_t* parser, ast_block_t* block)
 {
     ast_expr_t* expr = malloc(sizeof(ast_expr_t));
@@ -214,6 +222,14 @@ ast_expr_t* parser_parse_expression_literal(parser_t* parser, ast_block_t* block
     return expr;
 }
 
+/**
+ * @brief Parse sub expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * 
+ * @return ast_expr_t*
+ */
 ast_expr_t* parser_parse_expression_sub(parser_t* parser, ast_block_t* block)
 {
     parser_expect(parser, TOKEN_LEFT_PAREN);
@@ -276,6 +292,16 @@ ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, a
     return expr;
 }
 
+/**
+ * @brief Parse binary expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * @param ast_expr_t* lhs
+ * @param int min_bp
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_parse_expression_binary(parser_t* parser, ast_block_t* block, ast_expr_t* lhs, int min_bp)
 {
     token_t* operator = NULL;
@@ -319,6 +345,14 @@ ast_expr_t* parser_parse_expression_binary(parser_t* parser, ast_block_t* block,
     return expr;
 }
 
+/**
+ * @brief Parse prefix expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_parse_expression_prefix(parser_t* parser, ast_block_t* block, int min_bp)
 {
     token_t* operator;
@@ -343,6 +377,13 @@ ast_expr_t* parser_parse_expression_prefix(parser_t* parser, ast_block_t* block,
     return expr;
 }
 
+/**
+ * @brief Get prefix operator binding power
+ * 
+ * @param token_type_t whichOperator
+ * 
+ * @return int 
+ */
 int parser_prefix_bp_lookup(token_type_t whichOperator)
 {
     switch (whichOperator) {
@@ -352,6 +393,14 @@ int parser_prefix_bp_lookup(token_type_t whichOperator)
     }
 }
 
+/**
+ * @brief Parsing a set of expressions
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * 
+ * @return array_t* 
+ */
 array_t* parser_parse_expressions(parser_t* parser, ast_block_t* block)
 {
     array_t* expressions = array_init();
@@ -374,6 +423,15 @@ array_t* parser_parse_expressions(parser_t* parser, ast_block_t* block)
     return expressions;
 }
 
+/**
+ * @brief Parse a ternary expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * @param ast_expr_t* clause
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_ternary_expression(parser_t* parser, ast_block_t* block, ast_expr_t* clause)
 {
     if (!parser_expect(parser, TOKEN_QUESTION)) return NULL;
@@ -394,6 +452,13 @@ ast_expr_t* parser_ternary_expression(parser_t* parser, ast_block_t* block, ast_
     return expr;
 }
 
+/**
+ * @brief Get power of operators
+ * 
+ * @param token_type_t whichOperator
+ * 
+ * @return int 
+ */
 struct binding_power parser_bp_lookup(token_type_t whichOperator)
 {
     struct binding_power no_binding_power = {0, 0};
@@ -431,6 +496,15 @@ struct binding_power parser_bp_lookup(token_type_t whichOperator)
     }
 }
 
+/**
+ * @brief Parse a postfix expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * @param ast_expr_t* lhs
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_parse_expression_postfix(parser_t* parser, ast_block_t* block, ast_expr_t* lhs)
 {
     token_t* operator;
@@ -455,6 +529,15 @@ ast_expr_t* parser_parse_expression_postfix(parser_t* parser, ast_block_t* block
     return expr;
 }
 
+/**
+ * @brief Parse an expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * @param int binding_power_to_my_right
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int binding_power_to_my_right)
 {
     ast_expr_t* result = NULL;

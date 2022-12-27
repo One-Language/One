@@ -200,30 +200,125 @@ void parser_next(parser_t* parser);
  */
 void parser_previous(parser_t* parser);
 
-// TODO: expression parser
-
+/**
+ * @brief Parse expression literal
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_parse_expression_literal(parser_t* parser, ast_block_t* block);
 
+/**
+ * @brief Parse sub expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * 
+ * @return ast_expr_t*
+ */
 ast_expr_t* parser_parse_expression_sub(parser_t* parser, ast_block_t* block);
 
+/**
+ * @brief Parse binary expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * @param ast_expr_t* lhs
+ * @param int min_bp
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_parse_expression_binary(parser_t* parser, ast_block_t* block, ast_expr_t* lhs, int min_bp);
 
+/**
+ * @brief Parse prefix expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_parse_expression_prefix(parser_t* parser, ast_block_t* block, int min_bp);
 
+/**
+ * @brief Get prefix operator binding power
+ * 
+ * @param token_type_t whichOperator
+ * 
+ * @return int 
+ */
 int parser_prefix_bp_lookup(token_type_t whichOperator);
 
+/**
+ * @brief Parsing a set of expressions
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * 
+ * @return array_t* 
+ */
 array_t* parser_parse_expressions(parser_t* parser, ast_block_t* block);
 
+/**
+ * @brief Parse a ternary expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * @param ast_expr_t* clause
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_ternary_expression(parser_t* parser, ast_block_t* block, ast_expr_t* clause);
 
+/**
+ * @brief Right Associative binding power
+ * 
+ * @param int priority
+ * 
+ * @return struct binding_power
+ */
 struct binding_power RightAssociative(int priority);
 
+/**
+ * @brief Left Associative binding power
+ * 
+ * @param int priority
+ * 
+ * @return struct binding_power
+ */
 struct binding_power LeftAssociative(int priority);
 
+/**
+ * @brief Get power of operators
+ * 
+ * @param token_type_t whichOperator
+ * 
+ * @return int 
+ */
 struct binding_power parser_bp_lookup(token_type_t whichOperator);
 
+/**
+ * @brief Parse a postfix expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * @param ast_expr_t* lhs
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_parse_expression_postfix(parser_t* parser, ast_block_t* block, ast_expr_t* lhs);
 
+/**
+ * @brief Parse an expression
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * @param int binding_power_to_my_right
+ * 
+ * @return ast_expr_t* 
+ */
 ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int binding_power_to_my_right);
 
 #endif
