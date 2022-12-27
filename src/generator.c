@@ -50,7 +50,6 @@ char* operator_symbol(char* left, token_type_t op, char* right)
             case TOKEN_DECREMENT: string_append_format(code, "%s--", left); break;
             default: string_append_format(code, "unknown operator"); break;
         }
-    }
     // binary operators
     } else {
         switch (op) {

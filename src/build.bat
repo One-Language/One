@@ -13,4 +13,8 @@ gcc one.o cli.o file.o lexer.o token.o parser.o ast.o string.o array.o generator
 @REM one -l input.one -x
 @REM one -p input.one
 @REM one -p input.one -x
-one -g input.one
+
+one -g input.one -o t.c
+gcc t.c -o t
+start /wait t
+echo %errorlevel%

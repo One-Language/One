@@ -23,15 +23,15 @@ func f2 () int {
     //    if 4 {} else {}
 }
 
-func main () float {
+func main () int {
     // if 4 {} else if 2 {} else if 5 {} else if 8{}
     // if 4 {} else if 2 {} else if 5 {} else if 8{} else {}
     if 1 {
         ret 10*4-2
     } else if 2 {
-         ret 34/2*3
-    } else  {
-         ret 34/(10-4)
-         ret 34/10
+        ret 34/2*3
+    } else {
+        ret 34/(10-4)
+        ret 34/10
     }
 }
