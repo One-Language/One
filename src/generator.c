@@ -25,6 +25,67 @@ generator_t* generator_init(ast_t* ast)
 }
 
 /**
+ * @brief Get symbol alias of a operator token
+ * 
+ * @param char* left 
+ * @param token_type_t op
+ * @param char* right
+ * @return char*
+ */
+char* operator_symbol(char* left, token_type_t op, char* right)
+{
+    string_t* code = string_init();
+
+    // unary operators
+    if (left == NULL) {
+        switch (op) {
+            case TOKEN_INCREMENT: string_append_format(code, "++%s", right); break;
+            case TOKEN_DECREMENT: string_append_format(code, "--%s", right); break;
+            case TOKEN_BANG: string_append_format(code, "! %s", right); break;
+            default: string_append_format(code, "unknown operator"); break;
+        }
+    } else if (right == NULL) {
+        switch (op) {
+            case TOKEN_INCREMENT: string_append_format(code, "%s++", left); break;
+            case TOKEN_DECREMENT: string_append_format(code, "%s--", left); break;
+            default: string_append_format(code, "unknown operator"); break;
+        }
+    }
+    // binary operators
+    } else {
+        switch (op) {
+            case TOKEN_EQUAL_EQUAL: string_append_format(code, "%s == %s", left, right); break;
+            case TOKEN_LESS_EQUAL: string_append_format(code, "%s < %s", left, right); break;
+            case TOKEN_LESS: string_append_format(code, "%s <= %s", left, right); break;
+            case TOKEN_GREATER_EQUAL: string_append_format(code, "%s > %s", left, right); break;
+            case TOKEN_GREATER: string_append_format(code, "%s >= %s", left, right); break;
+            case TOKEN_PLUS: string_append_format(code, "%s + %s", left, right); break;
+            case TOKEN_MINUS: string_append_format(code, "%s - %s", left, right); break;
+            case TOKEN_STAR: string_append_format(code, "%s * %s", left, right); break;
+            case TOKEN_EXPONENT: string_append_format(code, "pow(%s, %s)", left, right); break;
+            case TOKEN_SLASH: string_append_format(code, "%s / %s", left, right); break;
+            case TOKEN_DOT: string_append_format(code, "concat(%s, %s)", left, right); break;
+            case TOKEN_BANG_EQUAL: string_append_format(code, "%s != %s", left, right); break;
+
+            // case TOKEN_LEFT_PAREN: return "left_paren";
+            // case TOKEN_RIGHT_PAREN: return "right_paren";
+
+            // case TOKEN_LEFT_BRACE: return "left_brace";
+            // case TOKEN_RIGHT_BRACE: return "right_brace";
+
+            // case TOKEN_LEFT_BRACKET: return "left_bracket";
+            // case TOKEN_RIGHT_BRACKET: return "right_bracket";
+
+            default: string_append_format(code, "unknown operator"); break;
+        }
+
+        // case TOKEN_QUESTION: return "question";
+    }
+
+    return code->value;
+}
+
+/**
  * @brief Generate the code of a expression from AST
  *
  * @param ast_generator_t* generator
@@ -42,14 +103,20 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
             ast_expr_binary_t* binaryExpression = expression->expr.binary;
             char *left = generator_generate_expression(generator, block, binaryExpression->left);
             char *right = generator_generate_expression(generator, block, binaryExpression->right);
-            string_append_format(code, "%s %s %s", left, token_name(binaryExpression->operator), right);
+
+            // string_append_format(code, "%s %s %s", left, token_name(binaryExpression->operator), right);
+            string_append_format(code, "%s", operator_symbol(left, binaryExpression->operator, right));
+
             free(left);
             free(right);
         } break;
         case AST_EXPRESSION_UNARY: {
             ast_expr_unary_t* unaryExpression = expression->expr.unary;
             char *value = generator_generate_expression(generator, block, unaryExpression->argument);
-            string_append_format(code, "%s %s", token_name(unaryExpression->operator), value);
+
+            // string_append_format(code, "%s %s", token_name(unaryExpression->operator), value);
+            string_append_format(code, "%s", operator_symbol(NULL, unaryExpression->operator, value));
+
             free(value);
         } break;
         case AST_EXPRESSION_SUB_EXPRESSION: {
@@ -272,7 +339,7 @@ void generator_generate(generator_t* generator)
         string_append(generator->code, generator_generate_function(generator, function));
     }
 
-    string_append(generator->code, "int _start()\n{\n\treturn(0);\n}\n");
+    // string_append(generator->code, "int _start()\n{\n\treturn(0);\n}\n");
 }
 
 /**
