@@ -495,6 +495,24 @@ char* ast_print_xml_block(ast_t* ast, ast_block_t* block)
 {
     string_t* str = string_init();
 
+    int data_count = 0;
+
+    if (data_count == 0) {
+        string_append(str, char_repeat('\t', ast->ident));
+        string_append(str, "<data/>\n");
+    } else {
+        string_append(str, char_repeat('\t', ast->ident));
+        string_append(str, "<data>\n");
+        ast->ident++;
+
+            // TODO
+
+        ast->ident--;
+        string_append(str, char_repeat('\t', ast->ident));
+        string_append(str, "</data>\n");
+    }
+
+
     string_append(str, char_repeat('\t', ast->ident));
     string_append(str, "<block>\n");
     ast->ident++;
