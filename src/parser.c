@@ -203,6 +203,8 @@ ast_expr_t* parser_parse_expression_literal(parser_t* parser, ast_block_t* block
         expr->expr.literal->value = value_init_integer(atoi(tok->value));
     } else if (tok->type == TOKEN_STRING) {
         expr->expr.literal->value = value_init_string(tok->value);
+    } else if (tok->type == TOKEN_IDENTIFIER) {
+        expr->expr.literal->value = value_init_string(tok->value);
     } else {
         printf("Error: Unexpected token as a literal expression: %s\n", token_name(tok->type));
         // TODO: Error handling
@@ -231,6 +233,38 @@ ast_expr_t* parser_parse_expression_sub(parser_t* parser, ast_block_t* block)
     ast_expr_t* expr = malloc(sizeof(ast_expr_t));
     expr->type = AST_EXPRESSION_SUB_EXPRESSION;
     expr->expr.sub_expression = expression;
+
+    return expr;
+}
+
+ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, ast_expr_t* result)
+{
+    ast_expr_t* expr = malloc(sizeof(ast_expr_t));
+
+    array_t* args = array_init();
+    if (!parser_skip(parser, TOKEN_RIGHT_PAREN)) {
+        args = parser_parse_expressions(parser, block);
+        parser_expect(parser, TOKEN_RIGHT_PAREN);
+    }
+
+    ast_expr_type_t back_type = result->type;
+    // ast_expr_literal_t* back_literal = result->expr.literal;
+
+    expr->type = AST_EXPRESSION_CALL;
+    expr->expr.call = malloc(sizeof(ast_expr_call_t));
+    expr->expr.call->callee->type = AST_EXPRESSION_LITERAL;
+    expr->expr.call->callee->expr.literal->value = value_init_string("test");
+    expr->expr.call->arguments = args;
+
+    // ast_expr_t* callee = malloc(sizeof(ast_expr_t));
+    // callee->type = AST_EXPRESSION_LITERAL;
+    // callee->expr.literal = malloc(sizeof(ast_expr_literal_t));
+    // callee->expr.literal->value = malloc(sizeof(value_t));
+    // callee->expr.literal->value = malloc(sizeof(value_t));
+    // callee->expr.literal->value->type = VALUE_TYPE_STR;
+    // callee->expr.literal->value->value.str_value = malloc(sizeof(char)*100);
+    // strcpy(callee->expr.literal->value->value.str_value, "test");
+    // result->expr.call->callee = callee;
 
     return expr;
 }
@@ -456,18 +490,18 @@ ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int bi
         return NULL;
     }
 
-    while (binding_power_to_my_right < parser_bp_lookup(parser_peek_type(parser)).left_power) {
+    while (result != NULL && binding_power_to_my_right < parser_bp_lookup(parser_peek_type(parser)).left_power) {
         // Is it a postfix expression?
         if (parser_has(parser, TOKEN_BANG)) {
             result = parser_parse_expression_postfix(parser, block, result);
         } else if (parser_has(parser, TOKEN_QUESTION)) {
             result = parser_ternary_expression(parser, block, result);
         } else if (parser_skip(parser, TOKEN_LEFT_PAREN)) {
-            array_t* args = parser_parse_expressions(parser, block);
-
-            parser_expect(parser, TOKEN_RIGHT_PAREN);
-
-//            result = AstCallExpression(result, args);
+            if (result->type != AST_EXPRESSION_LITERAL) {
+                printf("Unexpected token in expression call: %s\n", token_name(parser_peek_type(parser)));
+                return NULL;
+            }
+            result = parser_parse_expression_call(parser, block, result);
         } else {
             // It must be a binary expression
             result = parser_parse_expression_binary(parser, block, result, parser_bp_lookup(parser_peek_type(parser)).right_power);

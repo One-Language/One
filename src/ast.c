@@ -179,6 +179,38 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             string_append(str, "</expression_binary>\n");
         } break;
 
+        case AST_EXPRESSION_CALL: {
+            ast_expr_call_t* call = expression->expr.call;
+            ast_expr_t* callee = call->callee;
+            array_t* arguments = call->arguments;
+
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "<expression_call>\n");
+
+            ast->ident++;
+
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append(str, "<callee>\n");
+
+                ast->ident++;
+
+                    char *callee_str = ast_print_xml_expression(ast, block, callee);
+                    string_append(str, callee_str);
+                    // free(callee_str);
+
+                ast->ident--;
+
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append(str, "</callee>\n");
+
+
+            ast->ident--;
+
+            string_append(str, char_repeat('\t', ast->ident));
+            string_append(str, "</expression_call>\n");
+
+        } break;
+
         case AST_EXPRESSION_UNARY: {
             ast_expr_unary_t* unaryExpression = expression->expr.unary;
 

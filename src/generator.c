@@ -98,6 +98,33 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
     string_t *code = string_init();
 
     switch (expression->type) {
+        case AST_EXPRESSION_CALL: {
+            ast_expr_call_t* callExpression = expression->expr.call;
+            ast_expr_t* callee = callExpression->callee;
+            array_t* args = callExpression->arguments;
+
+            if (callee->type == AST_EXPRESSION_LITERAL) {
+                value_t* calleeValue = callee->expr.literal->value;
+                char* calleeName = calleeValue->value.str_value;
+                string_append_format(code, "%s(", calleeName);
+
+                // string_append_format(code, "%s(", callee->expr.literal->value->value.str_value);
+                // for (int i = 0; i < args->size; i++) {
+                //     ast_expr_t* argument = (ast_expr_t*)args->data[i];
+
+                //     char *argumentCode = generator_generate_expression(generator, block, argument);
+                //     string_append_format(code, "%s", argumentCode);
+                //     free(argumentCode);
+
+                //     if (i < args->size - 1) string_append_format(code, ", ");
+                // }
+
+                string_append_format(code, ")");
+            } else {
+                string_append(code, "Unknown expression in call expression callee");
+            }
+        } break;
+
         case AST_EXPRESSION_BINARY: {
             ast_expr_binary_t* binaryExpression = expression->expr.binary;
             char *left = generator_generate_expression(generator, block, binaryExpression->left);
@@ -109,6 +136,7 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
             free(left);
             free(right);
         } break;
+
         case AST_EXPRESSION_UNARY: {
             ast_expr_unary_t* unaryExpression = expression->expr.unary;
             char *value = generator_generate_expression(generator, block, unaryExpression->argument);
@@ -118,11 +146,13 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
 
             free(value);
         } break;
+
         case AST_EXPRESSION_SUB_EXPRESSION: {
             string_append_format(code, "(");
             string_append(code, generator_generate_expression(generator, block, expression->expr.sub_expression));
             string_append(code, ")");
         } break;
+
         case AST_EXPRESSION_LITERAL: {
             ast_expr_literal_t* literalExpression = expression->expr.literal;
             value_t* value = literalExpression->value;
@@ -146,7 +176,7 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
             }
         } break;
         default: {
-            return "Unknown expression type";
+            string_append_format(code, "Unknown expression type '%d'", expression->type);
         }
     }
 
