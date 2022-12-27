@@ -23,12 +23,12 @@ fn f2 () int {
     //    if 4 {} else {}
 }
 
-fn sum() int {
+fn sum(int a) int {
     ret 10
 }
 
 fn main () int {
-    ret sum() * sum()
+    ret sum(1) * sum(2)
 
     // if 4 {} else if 2 {} else if 5 {} else if 8{}
     // if 4 {} else if 2 {} else if 5 {} else if 8{} else {}

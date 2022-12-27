@@ -108,16 +108,15 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
                 char* calleeName = calleeValue->data.str_value;
                 string_append_format(code, "%s(", calleeName);
 
-                // string_append_format(code, "%s(", callee->expr.literal->obj->obj.str_value);
-                // for (int i = 0; i < args->size; i++) {
-                //     ast_expr_t* argument = (ast_expr_t*)args->data[i];
+                for (int i = 0; i < args->size; i++) {
+                    ast_expr_t* argument = (ast_expr_t*)args->data[i];
 
-                //     char *argumentCode = generator_generate_expression(generator, block, argument);
-                //     string_append_format(code, "%s", argumentCode);
-                //     free(argumentCode);
+                    char *argumentCode = generator_generate_expression(generator, block, argument);
+                    string_append_format(code, "%s", argumentCode);
+                    free(argumentCode);
 
-                //     if (i < args->size - 1) string_append_format(code, ", ");
-                // }
+                    if (i < args->size - 1) string_append_format(code, ", ");
+                }
 
                 string_append_format(code, ")");
             } else {

@@ -5,13 +5,13 @@
 
 void f1(int a, int b) {}
 int f2() {}
-int sum()
+int sum(int a)
 {
 	return(10);
 }
 int main()
 {
-	return(sum() * sum());
+	return(sum(1) * sum(2));
 	if (1) {
 		return(10 * 4 - 2);
 	}
