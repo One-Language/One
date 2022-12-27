@@ -352,22 +352,21 @@ char* ast_print_xml_block(ast_t* ast, ast_block_t* block)
     string_append(str, "<block>\n");
         ast->ident++;
 
-        string_append(str, char_repeat('\t', ast->ident));
-        if (block->statements->size == 0) string_append(str, "<statements/>\n");
-        else {
-            string_append_format(str, "<statements count=\"%zu\">\n", block->statements->size);
-
-                ast->ident++;
-                for (int i = 0; i < block->statements->size; i++) {
-                    ast_statement_t* statement = array_get(block->statements, i);
-                    string_append(str, ast_print_xml_statement(ast, statement));
-                }
-                ast->ident--;
-
             string_append(str, char_repeat('\t', ast->ident));
-            string_append_format(str, "</statements>\n");
-        }
+            if (block->statements->size == 0) string_append(str, "<statements/>\n");
+            else {
+                string_append_format(str, "<statements count=\"%zu\">\n", block->statements->size);
 
+                    ast->ident++;
+                    for (int i = 0; i < block->statements->size; i++) {
+                        ast_statement_t* statement = array_get(block->statements, i);
+                        string_append(str, ast_print_xml_statement(ast, statement));
+                    }
+                    ast->ident--;
+
+                string_append(str, char_repeat('\t', ast->ident));
+                string_append_format(str, "</statements>\n");
+            }
 
         ast->ident--;
 
@@ -397,14 +396,16 @@ char* ast_print_xml_function(ast_t* ast, ast_function_t* function)
 
     string_append(str, char_repeat('\t', ast->ident));
     string_append_format(str, "<function name=\"%s\">\n", function->name);
-        ast->ident++;
-        string_append(str, ast_print_xml_block(ast, function->block));
-        string_append(str, char_repeat('\t', ++ast->ident));
-        string_append_format(str, "<return type=\"%s\" />\n", "soon");
-        ast->ident--;
-    string_append(str, char_repeat('\t', --ast->ident));
-    string_append_format(str, "</function>\n");
+    ast->ident++;
 
+        string_append(str, ast_print_xml_block(ast, function->block));
+
+        string_append(str, char_repeat('\t', ast->ident));
+        string_append_format(str, "<return type=\"%s\" />\n", "soon");
+
+    ast->ident--;
+    string_append(str, char_repeat('\t', ast->ident));
+    string_append_format(str, "</function>\n");
 
     return str->value;
 }
@@ -510,6 +511,7 @@ char* ast_print_xml(ast_t* ast)
             ast_function_t* function = ast->functions->data[i];
             ast->ident++;
             string_append(str, ast_print_xml_function(ast, function));
+            ast->ident--;
         }
         string_append_format(str, "</functions>\n");
     }
