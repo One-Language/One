@@ -58,8 +58,26 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
             string_append(code, ")");
         } break;
         case AST_EXPRESSION_LITERAL: {
-            ast_expr_literal_t * literalExpression = expression->expr.literal;
-            string_append_format(code, "%s", literalExpression->value);
+            ast_expr_literal_t* literalExpression = expression->expr.literal;
+            value_t* value = literalExpression->value;
+
+            switch (value->type) {
+                case VALUE_TYPE_INT: {
+                    string_append_format(code, "%d", value->value.int_value);
+                } break;
+                case VALUE_TYPE_FLOAT: {
+                    string_append_format(code, "%f", value->value.float_value);
+                } break;
+                case VALUE_TYPE_STR: {
+                    string_append_format(code, "%s", value->value.str_value);
+                } break;
+                case VALUE_TYPE_BOOL: {
+                    string_append_format(code, "%s", value->value.bool_value ? "true" : "false");
+                } break;
+                default: {
+                    string_append(code, "unknown");
+                } break;
+            }
         } break;
         default: {
             return "Unknown expression type";
