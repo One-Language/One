@@ -9,7 +9,7 @@
 */
 // ONE Programming Language
 
-func f1 (int a, int b) {
+fn f1 (int a, int b) {
     /*
     if 4 > 8 {
         ret 110
@@ -19,15 +19,15 @@ func f1 (int a, int b) {
     */
 }
 
-func f2 () int {
+fn f2 () int {
     //    if 4 {} else {}
 }
 
-func sum() int {
+fn sum() int {
     ret 10
 }
 
-func main () int {
+fn main () int {
     ret sum()
 
     // if 4 {} else if 2 {} else if 5 {} else if 8{}

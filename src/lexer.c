@@ -490,6 +490,10 @@ void lexer_read_identifier(lexer_t* lex)
                 lexer_add_token(lex, TOKEN_IF);
                 return;
             }
+            else if (value[0] == 'f' && value[1] == 'n') {
+                lexer_add_token(lex, TOKEN_FUNC);
+                return;
+            }
             break;
 
         case 3:
