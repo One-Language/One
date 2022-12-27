@@ -178,6 +178,7 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</expression_binary>\n");
         } break;
+
         case AST_EXPRESSION_UNARY: {
             ast_expr_unary_t* unaryExpression = expression->expr.unary;
 
@@ -197,6 +198,7 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
 
             // free(value);
         } break;
+
         case AST_EXPRESSION_SUB_EXPRESSION: {
             // string_append_format(str, "%s(", tab);
             char* value = ast_print_expression(block, expression->expr.sub_expression, 0);
@@ -204,6 +206,7 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             free(value);
             // string_append(str, ")");
         } break;
+
         case AST_EXPRESSION_LITERAL: {
             ast_expr_literal_t * literalExpression = expression->expr.literal;
 
@@ -219,11 +222,11 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</expression_literal>\n");
         } break;
+
 //        case AST_EXPRESSION_TYPE_VARIABLE: {
 //            AstVariableExpression *variableExpression = expression->variableExpression;
 //            str = sdscatprintf(code, "%s%s", tab, variableExpression->name);
-//            break;
-//        }
+//        } break;
 
 //        case AST_EXPRESSION_TYPE_CALL: {
 //            AstCallExpression *callExpression = expression->callExpression;
@@ -238,14 +241,15 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
 //                }
 //            }
 //            str = sdscatprintf(code, ")");
-//            break;
-//        }
+//        } break;
 
 //        case AST_EXPRESSION_TYPE_INDEX: {
 //            AstIndexExpression* indexExpression = expression->indexExpression;
 //            char* value = ast_print_expression(block, indexExpression->value, ident);
 //            char* index = ast_print_expression(block, indexExpression->index, ident);
 //            str = sdscatprintf(code, "%s%s[%
+//        } break;
+
         default: {
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "<expression_unknown/>\n");
