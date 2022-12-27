@@ -73,6 +73,17 @@ token_type_t parser_peek_type(parser_t* parser);
 bool parser_has(parser_t* parser, token_type_t type);
 
 /**
+ * @brief Parse expression call
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * @param ast_expr_t* result
+ * 
+ * @return ast_expr_t*
+ */
+ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, ast_expr_t* result);
+
+/**
  * @brief Parser skip a token type
  * 
  * @param parser_t* parser

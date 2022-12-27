@@ -237,6 +237,15 @@ ast_expr_t* parser_parse_expression_sub(parser_t* parser, ast_block_t* block)
     return expr;
 }
 
+/**
+ * @brief Parse expression call
+ * 
+ * @param parser_t* parser
+ * @param ast_block_t* block
+ * @param ast_expr_t* result
+ * 
+ * @return ast_expr_t*
+ */
 ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, ast_expr_t* result)
 {
     if (result->type != AST_EXPRESSION_LITERAL) {
@@ -244,19 +253,15 @@ ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, a
         return NULL;
     }
 
-    char* callee = result->expr.literal->value->value.str_value;
-    // printf("Name: %s\n", callee);
-
     ast_expr_t* expr = malloc(sizeof(ast_expr_t));
 
+    char* callee = result->expr.literal->value->value.str_value;
     array_t* args = array_init();
+
     if (!parser_skip(parser, TOKEN_RIGHT_PAREN)) {
         args = parser_parse_expressions(parser, block);
         parser_expect(parser, TOKEN_RIGHT_PAREN);
     }
-
-    ast_expr_type_t back_type = result->type;
-    // ast_expr_literal_t* back_literal = result->expr.literal;
 
     expr->type = AST_EXPRESSION_CALL;
     expr->expr.call = malloc(sizeof(ast_expr_call_t));
@@ -267,19 +272,6 @@ ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, a
     expr->expr.call->callee->expr.literal->value = value_init_string(callee);
 
     expr->expr.call->arguments = args;
-
-    ast_t* ast = ast_init();
-    printf("Parsing call expression: %s\n", ast_print_xml_expression(ast, NULL, result));
-
-    // ast_expr_t* callee = malloc(sizeof(ast_expr_t));
-    // callee->type = AST_EXPRESSION_LITERAL;
-    // callee->expr.literal = malloc(sizeof(ast_expr_literal_t));
-    // callee->expr.literal->value = malloc(sizeof(value_t));
-    // callee->expr.literal->value = malloc(sizeof(value_t));
-    // callee->expr.literal->value->type = VALUE_TYPE_STR;
-    // callee->expr.literal->value->value.str_value = malloc(sizeof(char)*100);
-    // strcpy(callee->expr.literal->value->value.str_value, "test");
-    // result->expr.call->callee = callee;
 
     return expr;
 }
