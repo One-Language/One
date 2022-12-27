@@ -31,6 +31,15 @@ typedef struct {
 } value_t;
 
 /**
+ * @brief Print the value object
+ *
+ * @param value_t* value
+ *
+ * @return void
+ */
+void print_value(value_t* value);
+
+/**
  * @brief Get type name of a value type
  *
  * @param value_type_t type

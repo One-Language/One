@@ -239,6 +239,8 @@ ast_expr_t* parser_parse_expression_sub(parser_t* parser, ast_block_t* block)
 
 ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, ast_expr_t* result)
 {
+    return NULL;
+
     ast_expr_t* expr = malloc(sizeof(ast_expr_t));
 
     array_t* args = array_init();
@@ -252,8 +254,12 @@ ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, a
 
     expr->type = AST_EXPRESSION_CALL;
     expr->expr.call = malloc(sizeof(ast_expr_call_t));
+
+    expr->expr.call->callee = malloc(sizeof(ast_expr_t));
     expr->expr.call->callee->type = AST_EXPRESSION_LITERAL;
-    expr->expr.call->callee->expr.literal->value = value_init_string("test");
+    expr->expr.call->callee->expr.literal->value = value_init_string(result->expr.literal->value->value.str_value);
+
+
     expr->expr.call->arguments = args;
 
     // ast_expr_t* callee = malloc(sizeof(ast_expr_t));
@@ -463,14 +469,26 @@ ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int bi
         // parser_has(parser, TOKEN_UNDEFINED)
     ) {
         result = parser_parse_expression_literal(parser, block);
+        if (result == NULL) {
+            printf("Failed to parse literal expression\n");
+            return NULL;
+        }
     } else if (parser_has(parser, TOKEN_LEFT_PAREN)) {
         result = parser_parse_expression_sub(parser, block);
+        if (result == NULL) {
+            printf("Failed to parse sub expression\n");
+            return NULL;
+        }
     } else if (parser_has(parser, TOKEN_PLUS) || parser_has(parser, TOKEN_MINUS)) {
         result = parser_parse_expression_prefix(parser, block,
                                           parser_prefix_bp_lookup(
                                                   parser_peek_type(parser)
                                           )
         );
+        if (result == NULL) {
+            printf("Failed to parse prefix expression\n");
+            return NULL;
+        }
     } else {
         printf("Unexpected token in expression: %s\n", token_name(parser_peek_type(parser)));
         // sds message = sdsnew("Unexpected token ");
@@ -494,17 +512,33 @@ ast_expr_t* parser_parse_expression(parser_t* parser, ast_block_t* block, int bi
         // Is it a postfix expression?
         if (parser_has(parser, TOKEN_BANG)) {
             result = parser_parse_expression_postfix(parser, block, result);
+            if (result == NULL) {
+                printf("Failed to parse postfix expression!\n");
+                return NULL;
+            }
         } else if (parser_has(parser, TOKEN_QUESTION)) {
             result = parser_ternary_expression(parser, block, result);
+            if (result == NULL) {
+                printf("Failed to parse ternary expression!\n");
+                return NULL;
+            }
         } else if (parser_skip(parser, TOKEN_LEFT_PAREN)) {
             if (result->type != AST_EXPRESSION_LITERAL) {
                 printf("Unexpected token in expression call: %s\n", token_name(parser_peek_type(parser)));
                 return NULL;
             }
             result = parser_parse_expression_call(parser, block, result);
+            if (result == NULL) {
+                printf("Failed to parse call expression!\n");
+                return NULL;
+            }
         } else {
             // It must be a binary expression
             result = parser_parse_expression_binary(parser, block, result, parser_bp_lookup(parser_peek_type(parser)).right_power);
+            if (result == NULL) {
+                printf("Failed to parse binary expression!\n");
+                return NULL;
+            }
         }
     }
 

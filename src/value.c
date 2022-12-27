@@ -9,6 +9,35 @@
 #include "value.h"
 
 /**
+ * @brief Print the value object
+ *
+ * @param value_t* value
+ *
+ * @return void
+ */
+void print_value(value_t* value)
+{
+    switch (value->type)
+    {
+    case VALUE_TYPE_INT:
+        printf("%d", value->value.int_value);
+        break;
+    case VALUE_TYPE_FLOAT:
+        printf("%f", value->value.float_value);
+        break;
+    case VALUE_TYPE_STR:
+        printf("%s", value->value.str_value);
+        break;
+    case VALUE_TYPE_BOOL:
+        printf("%s", value->value.bool_value ? "true" : "false");
+        break;
+    default:
+        printf("Unknown value type");
+        break;
+    }
+}
+
+/**
  * @brief Get type name of a value type
  *
  * @param value_type_t type
