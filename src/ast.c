@@ -140,10 +140,12 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
 
             string_append(str, char_repeat('\t', ast->ident));
             string_append_format(str, "<expression_binary type=\"%s\">\n", token_name(binaryExpression->operator));
+
             ast->ident++;
 
                 string_append(str, char_repeat('\t', ast->ident));
                 string_append(str, "<left>\n");
+
                 ast->ident++;
 
                     char *left = ast_print_xml_expression(ast, block, binaryExpression->left);
@@ -151,14 +153,15 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
                     // free(left);
 
                 ast->ident--;
+
                 string_append(str, char_repeat('\t', ast->ident));
                 string_append(str, "</left>\n");
 
                 ////////////////////////////////////////////////////
 
                 string_append(str, char_repeat('\t', ast->ident));
-                string_append(str,
-                              "<right>\n");
+                string_append(str, "<right>\n");
+
                 ast->ident++;
 
                     char *right = ast_print_xml_expression(ast, block, binaryExpression->right);
@@ -166,10 +169,12 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
                     // free(right);
 
                 ast->ident--;
+
                 string_append(str, char_repeat('\t', ast->ident));
                 string_append(str, "</right>\n");
 
             ast->ident--;
+
             string_append(str, char_repeat('\t', ast->ident));
             string_append(str, "</expression_binary>\n");
         } break;
@@ -180,9 +185,11 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             string_append(str, "<expression_unary>\n");
 
             ast->ident++;
-            char *value = ast_print_expression(block, unaryExpression->argument, 0);
-            string_append(str, value);
-            // free(value);
+
+                char *value = ast_print_expression(block, unaryExpression->argument, 0);
+                string_append(str, value);
+                // free(value);
+
             ast->ident--;
 
             string_append(str, char_repeat('\t', ast->ident));
@@ -204,7 +211,9 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
             string_append(str, "<expression_literal>\n");
 
             ast->ident++;
-            string_append_format(str, "%s", ast_print_xml_expression_literal(ast, block, expression->expr.literal->value));
+    
+                string_append_format(str, "%s", ast_print_xml_expression_literal(ast, block, expression->expr.literal->value));
+
             ast->ident--;
 
             string_append(str, char_repeat('\t', ast->ident));
