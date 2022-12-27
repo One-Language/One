@@ -22,7 +22,7 @@ typedef enum {
 //    AST_STATEMENT_FOR,
 //    AST_STATEMENT_REPEAT,
     AST_STATEMENT_RET,
-//    AST_STATEMENT_EXPRESSION,
+   AST_STATEMENT_EXPRESSION,
 } ast_statement_type_t;
 
 typedef struct {
@@ -152,14 +152,14 @@ typedef struct {
     // ast_list_error_t* errors;
     ast_statement_type_t type;
     union {
-        ast_function_t* stmt_function;
+        // ast_function_t* stmt_fn;
         ast_if_t* stmt_if;
         ast_ret_t* stmt_ret;
         // ast_while_t* while;
         // ast_for_t* for;
         // ast_repeat_t* repeat;
         // ast_ret_t* ret;
-        // ast_expression_t* expression;
+        ast_expr_t* stmt_expr;
     };
     
 } ast_statement_t;

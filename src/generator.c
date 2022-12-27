@@ -90,12 +90,15 @@ char* operator_symbol(char* left, token_type_t op, char* right)
  * @param ast_generator_t* generator
  * @param ast_block_t* block
  * @param ast_expr_t* expression
+ * @param bool is_stmt
  *
  * @return
  */
-char* generator_generate_expression(generator_t* generator, ast_block_t* block, ast_expr_t* expression)
+char* generator_generate_expression(generator_t* generator, ast_block_t* block, ast_expr_t* expression, bool is_stmt)
 {
     string_t *code = string_init();
+
+    if (is_stmt) string_append(code, char_repeat('\t', generator->ident));
 
     switch (expression->type) {
         case AST_EXPRESSION_CALL: {
@@ -111,7 +114,7 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
                 for (int i = 0; i < args->size; i++) {
                     ast_expr_t* argument = (ast_expr_t*)args->data[i];
 
-                    char *argumentCode = generator_generate_expression(generator, block, argument);
+                    char *argumentCode = generator_generate_expression(generator, block, argument, false);
                     string_append_format(code, "%s", argumentCode);
                     free(argumentCode);
 
@@ -126,8 +129,8 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
 
         case AST_EXPRESSION_BINARY: {
             ast_expr_binary_t* binaryExpression = expression->expr.binary;
-            char *left = generator_generate_expression(generator, block, binaryExpression->left);
-            char *right = generator_generate_expression(generator, block, binaryExpression->right);
+            char *left = generator_generate_expression(generator, block, binaryExpression->left, false);
+            char *right = generator_generate_expression(generator, block, binaryExpression->right, false);
 
             // string_append_format(code, "%s %s %s", left, token_name(binaryExpression->operator), right);
             string_append_format(code, "%s", operator_symbol(left, binaryExpression->operator, right));
@@ -138,7 +141,7 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
 
         case AST_EXPRESSION_UNARY: {
             ast_expr_unary_t* unaryExpression = expression->expr.unary;
-            char *value = generator_generate_expression(generator, block, unaryExpression->argument);
+            char *value = generator_generate_expression(generator, block, unaryExpression->argument, false);
 
             // string_append_format(code, "%s %s", token_name(unaryExpression->operator), value);
             string_append_format(code, "%s", operator_symbol(NULL, unaryExpression->operator, value));
@@ -148,7 +151,7 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
 
         case AST_EXPRESSION_SUB_EXPRESSION: {
             string_append_format(code, "(");
-            string_append(code, generator_generate_expression(generator, block, expression->expr.sub_expression));
+            string_append(code, generator_generate_expression(generator, block, expression->expr.sub_expression, false));
             string_append(code, ")");
         } break;
 
@@ -179,6 +182,8 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
         }
     }
 
+    if (is_stmt) string_append(code, ";\n");
+
     return code->value;
 }
 
@@ -199,7 +204,7 @@ char* generator_generate_if(generator_t* generator, ast_block_t* block, ast_if_t
     if (is_else == false) string_append(code, char_repeat('\t', generator->ident));
     string_append(code, "if (");
 
-        string_append(code, generator_generate_expression(generator, block, if_stmt->condition));
+        string_append(code, generator_generate_expression(generator, block, if_stmt->condition, false));
 
     string_append(code, ") ");
 
@@ -243,7 +248,7 @@ char* generator_generate_ret(generator_t* generator, ast_block_t* block, ast_ret
     string_append(code, char_repeat('\t', generator->ident));
     string_append(code, "return(");
 
-        string_append(code, generator_generate_expression(generator, block, ret_statement->expression));
+        string_append(code, generator_generate_expression(generator, block, ret_statement->expression, false));
 
     string_append(code, ");\n");
 
@@ -262,15 +267,21 @@ char* generator_generate_ret(generator_t* generator, ast_block_t* block, ast_ret
 char* generator_generate_statement(generator_t* generator, ast_block_t* block, ast_statement_t* statement)
 {
     switch (statement->type) {
-        case AST_STATEMENT_IF:
+        case AST_STATEMENT_IF: {
             return generator_generate_if(generator, block, statement->stmt_if, false);
-            break;
-        case AST_STATEMENT_RET:
+        } break;
+
+        case AST_STATEMENT_RET: {
             return generator_generate_ret(generator, block, statement->stmt_ret);
-            break;
-        default:
+        } break;
+
+        case AST_STATEMENT_EXPRESSION: {
+            return generator_generate_expression(generator, block, statement->stmt_expr, true);
+        } break;
+
+        default: {
             return "// Unknown statement type\n";
-            break;
+        } break;
     }
 }
 

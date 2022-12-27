@@ -37,10 +37,11 @@ generator_t* generator_init(ast_t* ast);
  * @param ast_generator_t* generator
  * @param ast_block_t* block
  * @param ast_expr_t* expression
+ * @param bool is_stmt
  *
  * @return
  */
-char* generator_generate_expression(generator_t* generator, ast_block_t* block, ast_expr_t* expression);
+char* generator_generate_expression(generator_t* generator, ast_block_t* block, ast_expr_t* expression, bool is_stmt);
 
 /**
  * @brief Generate the code of a IF statement from AST

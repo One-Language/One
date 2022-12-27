@@ -11,6 +11,7 @@ int sum(int a)
 }
 int main()
 {
+	5 + 5;
 	return(sum(1) * sum(2));
 	if (1) {
 		return(10 * 4 - 2);

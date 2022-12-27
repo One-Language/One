@@ -9,7 +9,7 @@
 */
 // ONE Programming Language
 
-fn f1 (int a, int b) {
+fn f1 (a int, b int) {
     /*
     if 4 > 8 {
         ret 110
@@ -23,11 +23,13 @@ fn f2 () int {
     //    if 4 {} else {}
 }
 
-fn sum(int a) int {
+fn sum(a int) int {
     ret 10
 }
 
 fn main () int {
+    5+5
+    // age int = 10
     ret sum(1) * sum(2)
 
     // if 4 {} else if 2 {} else if 5 {} else if 8{}

@@ -741,6 +741,14 @@ ast_statement_t* parser_parse_statement(parser_t* parser)
             break;
         }
 
+        case TOKEN_STRING:
+        case TOKEN_NUMBER:
+        case TOKEN_IDENTIFIER: {
+            statement->type = AST_STATEMENT_EXPRESSION;
+            statement->stmt_expr = parser_parse_expression(parser, NULL, 0);
+            if (statement->stmt_expr == NULL) return NULL;
+        } break;
+
         default: {
             printf("Unexpected token in statement: %s\n", token_name(token->type));
             parser_next(parser);
@@ -812,11 +820,11 @@ ast_function_t* parser_parse_function(parser_t* parser)
     if (!parser_expect(parser, TOKEN_LEFT_PAREN)) return NULL;
 
     while (!parser_has(parser, TOKEN_RIGHT_PAREN)) {
-        token_t* type = parser_expect(parser, TOKEN_IDENTIFIER);
-        if (type == NULL) return NULL;
-
         token_t* name = parser_expect(parser, TOKEN_IDENTIFIER);
         if (name == NULL) return NULL;
+
+        token_t* type = parser_expect(parser, TOKEN_IDENTIFIER);
+        if (type == NULL) return NULL;
 
         ast_argument_t* arg = ast_argument_init();
         arg->type = type->value;
