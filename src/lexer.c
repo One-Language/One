@@ -306,6 +306,7 @@ void lexer_lex(lexer_t* lex)
  */
 void lexer_read_comment_multi_line(lexer_t* lex)
 {
+    int open = 1;
     lexer_read_offset(lex, 2);
 
     // return and insert an error token if the comment is not closed
@@ -314,22 +315,24 @@ void lexer_read_comment_multi_line(lexer_t* lex)
         return;
     }
 
-    while (lex->current[0] != '*' || lex->current[1] != '/') {
-        // return and insert an error token if the comment is not closed
-        if (lex->current[0] == '\0' || lex->current[1] == '\0') {
-            lexer_add_token(lex, TOKEN_ERROR);
+    // handling nested comments
+    while (open > 0) {
+        if (lex->current[0] == '\0') {
+            lexer_add_token_value(lex, TOKEN_ERROR, "No closing multi-comment found");
             return;
         }
-
-        lexer_read_offset(lex, 1);
-
-        if (lex->current[0] == '\n') {
-            lex->current_location.line++;
-            lex->current_location.column = 0;
+        else if (lex->current[0] == '*' && lex->current[1] == '/') {
+            open--;
+            lexer_read_offset(lex, 2);
+        }
+        else if (lex->current[0] == '/' && lex->current[1] == '*') {
+            open++;
+            lexer_read_offset(lex, 2);
+        }
+        else {
+            lexer_read_offset(lex, 1);
         }
     }
-
-    lexer_read_offset(lex, 2);
 }
 
 /**

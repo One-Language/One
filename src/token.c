@@ -217,15 +217,28 @@ char* token_list_print_xml(token_list_t* list)
         for (int i = 0; i < list->size; i++) {
             token_t* token = list->data[i];
 
-            string_append_format(str, "\t<token type=\"%s\" value=\"%.*s\" start_line=\"%d\" start_column=\"%d\" end_line=\"%d\" end_column=\"%d\"/>\n",
-                token_name(token->type),
-                (int)(token->end - token->start),
-                token->start,
-                token->start_location.line,
-                token->start_location.column,
-                token->end_location.line,
-                token->end_location.column
-            );
+            if (token->value == NULL) {
+                string_append_format(str, "\t<token type=\"%s\" input=\"%.*s\" start_line=\"%d\" start_column=\"%d\" end_line=\"%d\" end_column=\"%d\"/>\n",
+                                     token_name(token->type),
+                                     (int)(token->end - token->start),
+                                     token->start,
+                                     token->start_location.line,
+                                     token->start_location.column,
+                                     token->end_location.line,
+                                     token->end_location.column
+                );
+            } else {
+                string_append_format(str, "\t<token type=\"%s\" input=\"%.*s\" value=\"%s\" start_line=\"%d\" start_column=\"%d\" end_line=\"%d\" end_column=\"%d\"/>\n",
+                                     token_name(token->type),
+                                     (int)(token->end - token->start),
+                                     token->start,
+                                     token->value == NULL ? "NULL" : token->value,
+                                     token->start_location.line,
+                                     token->start_location.column,
+                                     token->end_location.line,
+                                     token->end_location.column
+                );
+            }
         }
 
         string_append(str, "</tokens>\n");

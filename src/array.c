@@ -18,9 +18,9 @@
 array_t* array_init()
 {
     array_t* array = (array_t*)malloc(sizeof(array_t));
-    array->data = (void**)malloc(sizeof(void*) * 0);
+    array->data = (void**)malloc(sizeof(void*) * 8);
     array->size = 0;
-    array->capacity = 5;
+    array->capacity = 8;
     return array;
 }
 
