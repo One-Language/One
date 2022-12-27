@@ -28,7 +28,14 @@ fn sum(a int) int {
 }
 
 fn main () int {
-    5+5
+    5+
+        2 +
+                            
+                            
+                            
+                            
+                            
+                            5
     // age int = 10
     ret sum(1) * sum(2)
 
