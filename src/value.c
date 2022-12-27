@@ -20,16 +20,16 @@ void print_value(value_t* value)
     switch (value->type)
     {
     case VALUE_TYPE_INT:
-        printf("%d", value->value.int_value);
+        printf("%d", value->data.int_value);
         break;
     case VALUE_TYPE_FLOAT:
-        printf("%f", value->value.float_value);
+        printf("%f", value->data.float_value);
         break;
     case VALUE_TYPE_STR:
-        printf("%s", value->value.str_value);
+        printf("%s", value->data.str_value);
         break;
     case VALUE_TYPE_BOOL:
-        printf("%s", value->value.bool_value ? "true" : "false");
+        printf("%s", value->data.bool_value ? "true" : "false");
         break;
     default:
         printf("Unknown value type");
@@ -83,7 +83,7 @@ value_t* value_init(value_type_t type)
 value_t* value_init_string(char* value)
 {
     value_t* valueObject = value_init(VALUE_TYPE_STR);
-    valueObject->value.str_value = value;
+    valueObject->data.str_value = value;
     return valueObject;
 }
 
@@ -97,7 +97,7 @@ value_t* value_init_string(char* value)
 value_t* value_init_integer(int value)
 {
     value_t* valueObject = value_init(VALUE_TYPE_INT);
-    valueObject->value.int_value = value;
+    valueObject->data.int_value = value;
     return valueObject;
 }
 
@@ -111,7 +111,7 @@ value_t* value_init_integer(int value)
 value_t* value_init_float(float value)
 {
     value_t* valueObject = value_init(VALUE_TYPE_FLOAT);
-    valueObject->value.float_value = value;
+    valueObject->data.float_value = value;
     return valueObject;
 }
 
@@ -125,7 +125,7 @@ value_t* value_init_float(float value)
 value_t* value_init_boolean(bool value)
 {
     value_t* valueObject = value_init(VALUE_TYPE_BOOL);
-    valueObject->value.bool_value = value;
+    valueObject->data.bool_value = value;
     return valueObject;
 }
 
@@ -150,7 +150,7 @@ value_type_t value_type(value_t* value)
  */
 char* value_string(value_t* value)
 {
-    return value->value.str_value;
+    return value->data.str_value;
 }
 
 /**
@@ -162,7 +162,7 @@ char* value_string(value_t* value)
  */
 int value_integer(value_t* value)
 {
-    return value->value.int_value;
+    return value->data.int_value;
 }
 
 /**
@@ -174,5 +174,5 @@ int value_integer(value_t* value)
  */
 float value_float(value_t* value)
 {
-    return value->value.float_value;
+    return value->data.float_value;
 }

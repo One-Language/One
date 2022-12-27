@@ -104,11 +104,11 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
             array_t* args = callExpression->arguments;
 
             if (callee->type == AST_EXPRESSION_LITERAL) {
-                value_t* calleeValue = callee->expr.literal->value;
-                char* calleeName = calleeValue->value.str_value;
+                value_t* calleeValue = callee->expr.literal->obj;
+                char* calleeName = calleeValue->data.str_value;
                 string_append_format(code, "%s(", calleeName);
 
-                // string_append_format(code, "%s(", callee->expr.literal->value->value.str_value);
+                // string_append_format(code, "%s(", callee->expr.literal->obj->obj.str_value);
                 // for (int i = 0; i < args->size; i++) {
                 //     ast_expr_t* argument = (ast_expr_t*)args->data[i];
 
@@ -155,20 +155,20 @@ char* generator_generate_expression(generator_t* generator, ast_block_t* block, 
 
         case AST_EXPRESSION_LITERAL: {
             ast_expr_literal_t* literalExpression = expression->expr.literal;
-            value_t* value = literalExpression->value;
+            value_t* value = literalExpression->obj;
 
             switch (value->type) {
                 case VALUE_TYPE_INT: {
-                    string_append_format(code, "%d", value->value.int_value);
+                    string_append_format(code, "%d", value->data.int_value);
                 } break;
                 case VALUE_TYPE_FLOAT: {
-                    string_append_format(code, "%f", value->value.float_value);
+                    string_append_format(code, "%f", value->data.float_value);
                 } break;
                 case VALUE_TYPE_STR: {
-                    string_append_format(code, "%s", value->value.str_value);
+                    string_append_format(code, "%s", value->data.str_value);
                 } break;
                 case VALUE_TYPE_BOOL: {
-                    string_append_format(code, "%s", value->value.bool_value ? "true" : "false");
+                    string_append_format(code, "%s", value->data.bool_value ? "true" : "false");
                 } break;
                 default: {
                     string_append(code, "unknown");

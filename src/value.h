@@ -27,7 +27,7 @@ typedef struct {
         float float_value;
         char* str_value;
         bool bool_value;
-    } value;
+    } data;
 } value_t;
 
 /**

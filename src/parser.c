@@ -200,11 +200,11 @@ ast_expr_t* parser_parse_expression_literal(parser_t* parser, ast_block_t* block
     expr->expr.literal = malloc(sizeof(ast_expr_literal_t));
 
     if (tok->type == TOKEN_NUMBER) {
-        expr->expr.literal->value = value_init_integer(atoi(tok->value));
+        expr->expr.literal->obj = value_init_integer(atoi(tok->value));
     } else if (tok->type == TOKEN_STRING) {
-        expr->expr.literal->value = value_init_string(tok->value);
+        expr->expr.literal->obj = value_init_string(tok->value);
     } else if (tok->type == TOKEN_IDENTIFIER) {
-        expr->expr.literal->value = value_init_string(tok->value);
+        expr->expr.literal->obj = value_init_string(tok->value);
     } else {
         printf("Error: Unexpected token as a literal expression: %s\n", token_name(tok->type));
         // TODO: Error handling
@@ -254,8 +254,8 @@ ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, a
     }
 
     ast_expr_t* expr = malloc(sizeof(ast_expr_t));
-
-    char* callee = result->expr.literal->value->value.str_value;
+    value_t* callee_value = result->expr.literal->obj;
+    char* callee = callee_value->data.str_value;
     array_t* args = array_init();
 
     if (!parser_skip(parser, TOKEN_RIGHT_PAREN)) {
@@ -269,7 +269,7 @@ ast_expr_t* parser_parse_expression_call(parser_t* parser, ast_block_t* block, a
     expr->expr.call->callee = malloc(sizeof(ast_expr_t));
     expr->expr.call->callee->type = AST_EXPRESSION_LITERAL;
     expr->expr.call->callee->expr.literal = malloc(sizeof(ast_expr_literal_t));
-    expr->expr.call->callee->expr.literal->value = value_init_string(callee);
+    expr->expr.call->callee->expr.literal->obj = value_init_string(callee);
 
     expr->expr.call->arguments = args;
 

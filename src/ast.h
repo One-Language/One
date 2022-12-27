@@ -64,7 +64,7 @@ typedef struct {
 } ast_expr_binary_t;
 
 typedef struct {
-    value_t* value;
+    value_t* obj;
 } ast_expr_literal_t;
 
 typedef struct {

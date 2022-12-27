@@ -28,7 +28,7 @@ fn sum() int {
 }
 
 fn main () int {
-    ret sum()
+    ret sum() * sum()
 
     // if 4 {} else if 2 {} else if 5 {} else if 8{}
     // if 4 {} else if 2 {} else if 5 {} else if 8{} else {}

@@ -101,16 +101,16 @@ char* ast_print_xml_expression_literal(ast_t* ast, ast_block_t* block, value_t* 
 
     switch (value->type) {
         case VALUE_TYPE_INT: {
-            string_append_format(str, "<integer>%d</integer>\n", value->value.int_value);
+            string_append_format(str, "<integer>%d</integer>\n", value->data.int_value);
         } break;
         case VALUE_TYPE_FLOAT: {
-            string_append_format(str, "<float>%f</float>\n", value->value.float_value);
+            string_append_format(str, "<float>%f</float>\n", value->data.float_value);
         } break;
         case VALUE_TYPE_STR: {
-            string_append_format(str, "<string>%s</string>\n", value->value.str_value);
+            string_append_format(str, "<string>%s</string>\n", value->data.str_value);
         } break;
         case VALUE_TYPE_BOOL: {
-            string_append_format(str, "<boolean>%s</boolean>\n", value->value.bool_value ? "true" : "false");
+            string_append_format(str, "<boolean>%s</boolean>\n", value->data.bool_value ? "true" : "false");
         } break;
         default: {
             string_append(str, "<unknown></unknown>\n");
@@ -247,7 +247,7 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
 
             ast->ident++;
     
-                string_append_format(str, "%s", ast_print_xml_expression_literal(ast, block, expression->expr.literal->value));
+                string_append_format(str, "%s", ast_print_xml_expression_literal(ast, block, expression->expr.literal->obj));
 
             ast->ident--;
 
@@ -277,7 +277,7 @@ char* ast_print_xml_expression(ast_t* ast, ast_block_t* block, ast_expr_t* expre
 
 //        case AST_EXPRESSION_TYPE_INDEX: {
 //            AstIndexExpression* indexExpression = expression->indexExpression;
-//            char* value = ast_print_expression(block, indexExpression->value, ident);
+//            char* value = ast_print_expression(block, indexExpression->obj, ident);
 //            char* index = ast_print_expression(block, indexExpression->index, ident);
 //            str = sdscatprintf(code, "%s%s[%
 //        } break;
@@ -329,7 +329,7 @@ char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident
         } break;
         case AST_EXPRESSION_LITERAL: {
             ast_expr_literal_t * literalExpression = expression->expr.literal;
-            string_append_format(str, "%s%s", tab, literalExpression->value);
+            string_append_format(str, "%s%s", tab, literalExpression->obj);
         } break;
 //        case AST_EXPRESSION_TYPE_VARIABLE: {
 //            AstVariableExpression *variableExpression = expression->variableExpression;
@@ -355,7 +355,7 @@ char* ast_print_expression(ast_block_t* block, ast_expr_t* expression, int ident
 
 //        case AST_EXPRESSION_TYPE_INDEX: {
 //            AstIndexExpression* indexExpression = expression->indexExpression;
-//            char* value = ast_print_expression(block, indexExpression->value, ident);
+//            char* value = ast_print_expression(block, indexExpression->obj, ident);
 //            char* index = ast_print_expression(block, indexExpression->index, ident);
 //            str = sdscatprintf(code, "%s%s[%
         default: {

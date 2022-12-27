@@ -11,7 +11,7 @@ int sum()
 }
 int main()
 {
-	return(sum());
+	return(sum() * sum());
 	if (1) {
 		return(10 * 4 - 2);
 	}
