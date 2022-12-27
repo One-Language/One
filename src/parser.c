@@ -405,20 +405,15 @@ array_t* parser_parse_expressions(parser_t* parser, ast_block_t* block)
 {
     array_t* expressions = array_init();
 
-    ast_expr_t* lhs = parser_parse_expression(parser, block, 0);
-    array_push(expressions, lhs);
+    while (parser_peek_type(parser) != TOKEN_EOF) {
+        ast_expr_t* expr = parser_parse_expression(parser, block, 0);
+        if (expr == NULL) return NULL;
+        array_push(expressions, expr);
 
-//    while (parser_peek_type(parser) != TOKEN_EOF) {
-//        ast_expr_t* expr = parser_parse_expression(parser, block, 0);
-//        if (expr == NULL) return NULL;
-//        array_push(expressions, expr);
-//
-//        if (parser_has(parser, TOKEN_COMMA)) {
-//            advance(parser);
-//        } else {
-//            break;
-//        }
-//    }
+        if (!parser_skip(parser, TOKEN_COMMA)) {
+            break;
+        }
+    }
 
     return expressions;
 }
