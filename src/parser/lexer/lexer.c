@@ -137,13 +137,11 @@ Token* lexer_identifier()
 		if (keywords[j].type == TOKEN_VALUE_IDENTIFIER) // it's end of the Keyword list/table
 		{
 			return token_make_value(TOKEN_VALUE_IDENTIFIER, tmp_str);
-			break;
 		}
 		else if (keywords[j].length == ident_length // fast search performance
 			 && strncmp(keywords[j].identifier, tmp_str, keywords[j].length) == 0)
 		{
 			return token_make(keywords[j].type);
-			break;
 		}
 	}
 	//	return token_make(TOKEN_VALUE_IDENTIFIER);
