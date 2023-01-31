@@ -47,3 +47,12 @@ jobs:
           key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Run pre-commit
         run: pre-commit run --all-files
+  test-git-clone-on-windows:
+    timeout-minutes: 5
+    name: Test git clone on Windows
+    runs-on: windows-latest
+    steps:
+      - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
