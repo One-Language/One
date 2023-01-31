@@ -21,7 +21,7 @@ RUN apk --no-cache add \
     git
 
 # Build and install LLVM
-RUN wget --progress=dot:giga "https://github.com/llvm/llvm-project/archive/llvmorg-${LLVM_VERSION}.tar.gz" || { echo "Error downloading LLVM version ${LLVM_VERSION}" ; exit 1; }
+RUN wget -q "https://github.com/llvm/llvm-project/archive/llvmorg-${LLVM_VERSION}.tar.gz" || { echo "Error downloading LLVM version ${LLVM_VERSION}" ; exit 1; }
 
 RUN tar zxf llvmorg-${LLVM_VERSION}.tar.gz && rm llvmorg-${LLVM_VERSION}.tar.gz
 
