@@ -14,9 +14,6 @@ github:
 license-templates:
   - license-templates/**/*
 
-repo:
-  - ./*
-
 scripts:
   - scripts/**/*
 
@@ -24,6 +21,19 @@ src:
   - src/**/*
 
 tests:
+  - .clang-format
+  - .editorconfig
+  - .mergify.yml
+  - .pre-commit-config.yaml
+  - .prettierignore
+  - .prettierrc
+  - CMakeLists.txt
+  - CODEOWNERS
+  - Dockerfile
+  - Makefile
+  - codespell.txt
+  - docker-compose.yml
+  - mlc_config.json
   - test/**/*
 
 tmp:
