@@ -57,7 +57,7 @@ bool test_lexer()
 	{
 		bool res = test_lexer_item(lexer_tests[i]);
 		printf(res == true ? GREEN : RED);
-		printf("Test case %d", i + 1);
+		printf("Test case %lld", i + 1);
 		if (res == false)
 		{
 			printf(": Failed!");
