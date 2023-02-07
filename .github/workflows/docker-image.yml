@@ -14,6 +14,7 @@ permissions:  # added using https://github.com/step-security/secure-workflows
 
 jobs:
   build-deploy:
+    if: github.repository == 'One-Language/One'
     name: Build and Publish Docker image
     runs-on: ubuntu-latest
     steps:
