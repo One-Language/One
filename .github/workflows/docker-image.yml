@@ -3,6 +3,11 @@ name: Dockerize One Programming language
 on:
   push:
     branches: [main]
+    paths:
+      - '.dockerignore'
+      - 'Dockerfile'
+      - 'docker-compose.yml'
+
 
 permissions:  # added using https://github.com/step-security/secure-workflows
   contents: read
