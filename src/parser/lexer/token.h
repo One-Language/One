@@ -189,7 +189,7 @@ typedef struct _keyword
 	const char* identifier;
 	size_t length;
 	TokenType type;
-	bool caseSensetice; // true = lowercase or uppervase not matter, flase means full equal `===`
+	bool caseSensitive; // true = lowercase or uppercase not matter, false means full equal `===`
 } Keyword;
 
 static Keyword keywords[] = {
