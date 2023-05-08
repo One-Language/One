@@ -7,7 +7,7 @@ assignees: BaseMax
 ---
 
 Hi, One Language Team;
-I'm here to tell you I'm interested in the project and want to be a part of this compiler to help and participate in this open-source project.
+I'm here to tell you I'm interested in this compiler project and want to help and participate in this open-source project.
 
 ## Introduction
 <!-- Please introduce yourself and your professional experience in a maximum of 5 sentences. -->
