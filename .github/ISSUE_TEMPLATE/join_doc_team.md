@@ -1,5 +1,5 @@
 ---
-name: Join Documentation Team
+name: Join the Documentation Team
 about: I want to join the Documentation Team.
 title: "[Join] Documentation team"
 labels: Join

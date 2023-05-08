@@ -1,13 +1,12 @@
 ---
 name: Join Core Team (C programmer or Embedded programmer)
-about: I want to join Core Team.
+about: I want to join the Core Team.
 title: "[Join] Core team"
 labels: Join
 assignees: BaseMax
-
 ---
 
-Hi, One language Team;
+Hi, One Language Team;
 I'm here to tell you I'm interested in the project and want to be a part of this compiler to help and participate in this open-source project.
 
 ## Introduction
@@ -36,8 +35,8 @@ List of languages with experience level:
 ## Operating Systems
 <!-- Why we ask about OS, Because maybe we need a test on a special OS target and we can easily mention you for that. Thank you for your following. -->
 
-List of Operating system with your experience level:
-<!-- Please remove and change the following OS name and description. -->
+List of Operating systems with your experience level:
+<!-- Please remove and change the following OS names and descriptions. -->
 
 - **Windows**: Windows 7 or 10 (I have a PC, or I have it in a virtual machine)
 - **Linux**: CentOS or Ubuntu or Arch, etc. (Primary OS on laptop or desktop)
@@ -48,25 +47,25 @@ Tell us about your experience at University or your fun projects about Compilers
 <!-- Please write here -->
 <!-- Please share all of your projects and repositories in this field if you have something. -->
 
-Do you know about Flex and Bison/Yacc:
+Do you know about Flex and Bison/Yacc?
 <!-- Please write here -->
 
-Do you know about JIT Compilers:
+Do you know about JIT Compilers?
 <!-- Please write here -->
 
-Do you know about LLVM:
+Do you know about LLVM?
 <!-- Please write here -->
 
-Tell us your opinion about "One language" and create a new language:
+Tell us your opinion about "One Language" and creating a new language:
 <!-- Please write here -->
 
-Has it happened when you are programming and you are dissatisfied with a feature and you think you can inject such ideas into the project so that we can make a better product? What do you think:
+Has it happened when you are programming and you are dissatisfied with a feature, and you think you can inject such ideas into the project so that we can make a better product? What do you think:
 <!-- Please write here -->
 
 -----------
 
 <!--
-We need your idea and experience to shape the feature and syntax of "One language". So we are ready to talk to each other and help to project step by step.
+We need your idea and experience to shape the feature and syntax of "One Language". So we are ready to talk to each other and help to project step by step.
 -->
 
 Best Regards;
