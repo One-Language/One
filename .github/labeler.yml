@@ -2,6 +2,8 @@ documentation:
   - docs/**/*
   - CONTRIBUTING.md
   - CONTRIBUTORS.md
+  - LICENSE
+  - MISSION_STATEMENT.md
   - README.md
   - README_DOCKER.md
 
@@ -22,7 +24,11 @@ src:
 
 tests:
   - .clang-format
+  - .dockerignore
   - .editorconfig
+  - .gitattributes
+  - .gitignore
+  - .hound.yml
   - .mergify.yml
   - .pre-commit-config.yaml
   - .prettierignore

@@ -75,7 +75,7 @@ A linter for `YAML` files.
 repetition and cosmetic problems such as line length, trailing spaces,
 indentation, etc. You can install `yamllint` using `pip` by the command:
 
-```
+```shell
 pip install --user yamllint
 ```
 
@@ -102,13 +102,13 @@ project.
 
 To install `markdownlint` run:
 
-```
+```shell
 npm install markdownlint --save-dev
 ```
 
 To run `markdownlint` run from within the `One` directory:
 
-```
+```shell
 markdownlint -c .github/linters/.markdown-lint.yml
 ```
 
@@ -163,22 +163,22 @@ how to use this image for tests, or even as a workspace with `VSCode`.
 
 You can pull the image by running:
 
-```
+```shell
 docker pull onelangorg/one
 ```
 
 Or build it on your machine, from within the `One` directory, using
 `Dockerfile`:
 
-```
+```shell
 docker build -f "Dockerfile" -t one:latest "."
 ```
 
 Or `docker-compose.yml`:
 
-```
+```shell
 docker-compose -f "docker-compose.yml" up -d --build
 ```
 
 This image was built using
-[`GitHub actions`](https://github.com/One-Language/One/blob/master/.github/workflows/docker-image.yml).
+[`GitHub Actions`](https://github.com/One-Language/One/blob/master/.github/workflows/docker-image.yml).

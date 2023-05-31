@@ -2,13 +2,19 @@ name: Dockerize One Programming language
 
 on:
   push:
-    branches: [master]
+    branches: [main]
+    paths:
+      - '.dockerignore'
+      - '.github/workflows/docker-image.yml'
+      - 'Dockerfile'
+      - 'docker-compose.yml'
 
 permissions:  # added using https://github.com/step-security/secure-workflows
   contents: read
 
 jobs:
   build-deploy:
+    if: github.repository == 'One-Language/One'
     name: Build and Publish Docker image
     runs-on: ubuntu-latest
     steps:

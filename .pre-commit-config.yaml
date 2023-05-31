@@ -11,7 +11,7 @@ repos:
       - id: identity
       - id: check-hooks-apply
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.4.2
+    rev: v1.5.1
     hooks:
       - id: insert-license
         name: Add license for all JavaScript files
@@ -75,7 +75,7 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.2
+    rev: v2.2.4
     hooks:
       - id: codespell
         name: Run codespell
@@ -88,13 +88,13 @@ repos:
   # - id: shellcheck
   # - id: shfmt
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.4
+    rev: v3.0.0-alpha.9-for-vscode
     hooks:
       - id: prettier
         name: Run prettier
         description: Format files with prettier
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.33.0
+    rev: v0.34.0
     hooks:
       - id: markdownlint
         name: Run markdownlint
@@ -104,7 +104,7 @@ repos:
         types: [markdown]
         files: \.(md|mdown|markdown)$
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.29.0
+    rev: v1.31.0
     hooks:
       - id: yamllint
         name: Run yamllint

@@ -18,16 +18,6 @@ jobs:
           check-modified-files-only: 'yes'
           use-quiet-mode: 'yes'
           use-verbose-mode: 'yes'
-  misspell:
-    name: Check Spelling Misspell All Files In Commit
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
-        uses: actions/checkout@v3
-      - name: Install
-        run: wget -O - -q https://git.io/misspell | sh -s -- -b .
-      - name: Misspell
-        run: git ls-files --empty-directory | grep -v docs/ | xargs ./misspell -error
   pre-commit:
     name: Run pre-commit  # https://pre-commit.com/
     runs-on: ubuntu-latest
@@ -50,10 +40,18 @@ jobs:
           key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Run pre-commit
         run: pre-commit run --all-files
-  test-git-clone-on-windows:
-    timeout-minutes: 5
-    name: Test git clone on Windows
-    runs-on: windows-latest
+  test-git-clone:
+    timeout-minutes: 10
+    name: "Test git clone on ${{ matrix.os }}"
+    runs-on: "${{ matrix.os }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-latest}
+          - {os: ubuntu-20.04}
+          - {os: macos-latest}
+          - {os: windows-latest}
     steps:
       - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
         uses: actions/checkout@v3

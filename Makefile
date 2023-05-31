@@ -2,6 +2,10 @@
 check:
 	pre-commit run --all-files
 
-.PHONY: update
-update:
+.PHONY: checkinstall
+checkinstall:
+	pre-commit install
+
+.PHONY: checkupdate
+checkupdate:
 	pre-commit autoupdate

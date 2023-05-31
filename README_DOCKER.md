@@ -80,19 +80,19 @@ The main goal of this image is to serve as a development environment where to ru
 
 - To run this image:
 
-```
+```shell
 docker run -it  onelangorg/one:latest
 ```
 
 - To get the container ID and the container NAME:
 
-```
+```shell
 docker ps
 ```
 
 - To run the code using `*.sh` files:
 
-```
+```shell
 # SRC
 docker exec -it <container ID> sh -c 'cd src/parser && chmod +x build.sh && ./build.sh'
 docker exec -it <container ID> sh -c 'cd src/lexer && chmod +x build.sh && ./build.sh'
@@ -103,7 +103,7 @@ docker exec -it <container ID> sh -c 'cd src/lexer && chmod +x build.sh && ./bui
 
 - To run the code using executable (pre-built with CMake) files:
 
-```
+```shell
 # SRC
 docker exec -it <container ID> sh -c 'cd build && ./lexer input.one'
 docker exec -it <container ID> sh -c 'cd build && ./parser input.one'
@@ -139,7 +139,7 @@ docker exec -it <container ID> sh -c 'cd build && ./ast_test'
 
 - To remove the container:
 
-```
+```shell
 docker rm <container name>
 ```
 
