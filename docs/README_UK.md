@@ -195,7 +195,7 @@ main {
     if system.args.length === 2 {
         port = system.args[1]
     } else  {
-        port=8080;
+        port = 8080;
     }
     web.route.add("/", home)
     web.route.add("*", error)
