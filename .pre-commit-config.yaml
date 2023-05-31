@@ -104,7 +104,7 @@ repos:
         types: [markdown]
         files: \.(md|mdown|markdown)$
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.31.0
+    rev: v1.32.0
     hooks:
       - id: yamllint
         name: Run yamllint
@@ -126,13 +126,13 @@ repos:
         description: Runs hadolint Docker image to lint Dockerfiles
         language: docker_image
         types: ['dockerfile']
-        entry: ghcr.io/hadolint/hadolint:v2.10.0 hadolint -c .github/linters/.hadolint.yaml
+        entry: ghcr.io/hadolint/hadolint:v2.12.0 hadolint -c .github/linters/.hadolint.yaml
         files: ^Dockerfile$
       - id: shellcheck
         name: Lint Shell scripts
         description: Check Shell scripts for correct syntax
         language: docker_image
-        entry: koalaman/shellcheck:v0.8.0 -a
+        entry: koalaman/shellcheck:v0.9.0 -a
         files: \.bash$|\.sh$
         require_serial: true
       - id: sort-and-uniquify-codespell-wordlist
