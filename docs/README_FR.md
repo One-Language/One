@@ -119,7 +119,7 @@ main {
 }
 ```
 
-### Équivalant en C :
+**Équivalant en C:**
 
 ```c
 #include <stdio.h>
@@ -139,7 +139,7 @@ i32 main {
 }
 ```
 
-### Équivalent en C :
+**Équivalent en C:**
 
 ```c
 #include <stdio.h>
@@ -161,7 +161,7 @@ main {
 }
 ```
 
-### Équivalent en C :
+**Équivalent en C:**
 
 ```c
 #include <stdio.h>
@@ -178,7 +178,7 @@ int main(int argc, char *argv[]) {
 
 ---
 
-### Brouillon
+**Brouillon:**
 
 ```c
 import web
@@ -205,7 +205,7 @@ main {
 
 ---
 
-### Brouillon
+**Brouillon:**
 
 ```c
 error {
