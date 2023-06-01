@@ -48,7 +48,7 @@
 
 </div>
 
-<a href="https://onelang.org">One</a>へようこそ!</br>
+<a href="https://onelang.org">One</a>へようこそ!<br>
 これは、オープン ソースの自己ホスト型ブートストラップ<b>システム プログラミング言語</b>であり、
 信頼性が高く効率的なソフトウェアを構築します。
 これは、<a href="https://github.com/BaseMax">Max</a>や<a href="https://github.com/jbampton">John</a>およびその他のオープンソースのコントリビュータによって開発されています。

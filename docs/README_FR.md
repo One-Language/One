@@ -48,7 +48,7 @@
 
 </div>
 
-Bienvenue à <a href="https://onelang.org">One</a>!</br>
+Bienvenue à <a href="https://onelang.org">One</a>!<br>
 Il s'agit d'un langage de <b>programmation système</b>, d'amorçage, à source libre, et auto-hébergé, qui facilite la création de logiciels fiables et efficaces. Il est développé par <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a>, et d'autres contributeurs en open-source.
 
 ### Le compilateur pour le langage One sera publié dans quelques mois

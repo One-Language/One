@@ -48,7 +48,7 @@
 
 </div>
 
-<a href="https://onelang.org">One</a>에 오신 것을 환영합니다!</br>
+<a href="https://onelang.org">One</a>에 오신 것을 환영합니다!<br>
 오픈 소스, 자체 호스팅, 부트스트랩 <b>시스템 프로그래밍 언어</b>로
 안정적이고 효율적인 소프트웨어를 구축합니다.
 <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> 및 기타 오픈 소스 기여자.

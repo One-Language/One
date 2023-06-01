@@ -48,7 +48,7 @@
 
 </div>
 
-Benvenuto!</br>
+Benvenuto!<br>
 <a href="https://onelang.org">One</a>
 è un <b>linguaggio di programmazione</b> open source, auto-hostato, che rende semplice creare software efficiente e affidabile.
 È sviluppato da <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> e altri collaboratori open-source.
