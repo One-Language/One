@@ -48,7 +48,7 @@
 
 </div>
 
-Maligayang pagdating sa <a href="https://onelang.org">One</a>!</br>
+Maligayang pagdating sa <a href="https://onelang.org">One</a>!<br>
 Ito ay isang open source, self-hosted, bootstrapping <b>programang lengguwahe</b> upang madaling makabuo ng maaasahan at mahusay na software.
 Ito ay dinebelop ng <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> at ng iba pang may akda
 

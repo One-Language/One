@@ -48,7 +48,7 @@
 
 </div>
 
-Welcome to <a href="https://onelang.org">One</a>!</br>
+Welcome to <a href="https://onelang.org">One</a>!<br>
 It is an open source, self-hosted, bootstrapping <b>system programming language</b> which makes it easy to
 build reliable and efficient software.
 It is being developed by <a href="https://github.com/BaseMax">Max</a>, <a href="https://github.com/jbampton">John</a> and other open-source contributors.

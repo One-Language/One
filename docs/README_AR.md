@@ -50,7 +50,7 @@
 
 </div>
 
-اهلا وسهلا بك في <a href="https://onelang.org">One</a>!</br>
+اهلا وسهلا بك في <a href="https://onelang.org">One</a>!<br>
 إنها لغة برمجة أنظمة مفتوحة المصدر ، مستضافة ذاتيًا ، مما يجعل من السهل إنشاء برامج موثوقة وفعالة.
 يتم تطويره من قبل <a href="https://github.com/BaseMax">ماكس</a>, <a href="https://github.com/jbampton">جون</a> ومساهمين آخرين من المصادر المفتوحة.
 
