@@ -1,8 +1,7 @@
-## ET CONTRIBUTORS
+## ONE CONTRIBUTORS
 
 ### Core, Compiler, Generator
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table>
    <tr>
@@ -22,11 +21,9 @@
       -->
    </tr>
 </table>
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ### Optimize
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table>
    <tr>
@@ -38,11 +35,9 @@
       </td>
    </tr>
 </table>
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ### Syntax
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table>
    <tr>
@@ -182,11 +177,9 @@
       </td>
    </tr>
 </table>
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ### Marketing and business
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table>
    <tr>
@@ -202,14 +195,11 @@
             <sub><b>Jas</b></sub>
          </a><br />
       </td>
-
    </tr>
 </table>
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ### Influential people
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table>
    <tr>
@@ -227,11 +217,9 @@
       </td>
    </tr>
 </table>
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ### Documentation & Translation
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table>
    <tr>
@@ -249,7 +237,6 @@
       </td>
    </tr>
 </table>
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 ---
 
 Your name can be here...
