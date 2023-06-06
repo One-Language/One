@@ -24,7 +24,6 @@
 
 ### Optimize
 
-<!-- prettier-ignore -->
 <table>
    <tr>
       <td align="center">
@@ -38,7 +37,6 @@
 
 ### Syntax
 
-<!-- prettier-ignore -->
 <table>
    <tr>
       <td align="center">
@@ -178,9 +176,8 @@
    </tr>
 </table>
 
-### Marketing and business
+### Marketing & Business
 
-<!-- prettier-ignore -->
 <table>
    <tr>
       <td align="center">
@@ -198,9 +195,8 @@
    </tr>
 </table>
 
-### Influential people
+### Influential People
 
-<!-- prettier-ignore -->
 <table>
    <tr>
       <td align="center">
@@ -220,7 +216,6 @@
 
 ### Documentation & Translation
 
-<!-- prettier-ignore -->
 <table>
    <tr>
       <td align="center">
@@ -237,7 +232,6 @@
       </td>
    </tr>
 </table>
----
 
 Your name can be here...
 
