@@ -405,7 +405,7 @@ If you would like to contribute in the development of this project, you can mail
 <h2 id="contributors">➤ Contributors</h2>
 
 <a href="https://github.com/One-Language/One/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=One-Language/One" alt="The One Contributors" />
+  <img src="https://contrib.rocks/image?repo=One-Language/One" alt="The One Contributors">
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
