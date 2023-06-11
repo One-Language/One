@@ -1,7 +1,7 @@
 /**
  The One Programming Language
 
- File: builtins/array.c
+ File: builtins/file.h
   _        _
  / \ |\ | |_    Max Base
  \_/ | \| |_    Copyright 2021; One Language Contributors

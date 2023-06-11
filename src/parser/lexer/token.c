@@ -1,7 +1,7 @@
 /**
  The One Programming Language
 
- File: tokenizer/token.c
+ File: parser/lexer/token.c
   _        _
  / \ |\ | |_    Max Base
  \_/ | \| |_    Copyright 2021; One Language Contributors
