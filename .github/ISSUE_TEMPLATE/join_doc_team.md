@@ -28,7 +28,7 @@ List of languages you know with their proficiency level (Beginner, Intermediate,
 <!-- All the following information is just an example, and it's not a MUST, you have to fill this with your information. -->
 - **Spanish**: Expert (Native)
 - **English**: Expert
-- **Tibetian**: Intermediate
+- **Tibetan**: Intermediate
 
 ## Programming/IT knowledge
 

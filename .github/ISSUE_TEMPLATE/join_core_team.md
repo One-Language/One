@@ -25,7 +25,7 @@ Brisbane, Australia; UTC/GMT +10 hours
 
 List of languages with experience level:
 <!-- Please remove and change the following languages name and description. -->
-<!-- All the following information is just an example and it's not a MUST, you have to fill this with your situation. -->
+<!-- All the following information is just an example, and it's not a MUST, you have to fill this with your situation. -->
 
 - **C**: 3 years experience (And tell us about libraries you have worked on. e.g: libcurl, OpenSSL and every library you worked in at C.)
 - **C++**: 1 year experience
