@@ -1,7 +1,7 @@
 /**
  The One Programming Language
 
- File: lexer/main.c
+ File: parser/lexer/main.c
   _        _
  / \ |\ | |_    Max Base
  \_/ | \| |_    Copyright 2021; One Language Contributors
