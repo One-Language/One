@@ -612,7 +612,7 @@ Token** tokenizer_string(char* data)
 		t = lexer_scan();
 		// printf("==>%s\n", token_name(t->type));
 		array_push(&tokens, t);
-		debug_lexer("parser_scan: print_token %s", token_name(t->type));
+		// debug_lexer("parser_scan: print_token %s", token_name(t->type));
 		if (t->type == TOKEN_ERROR)
 		{
 			printf("Error: %s\n", t->value);
