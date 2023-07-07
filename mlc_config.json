@@ -10,10 +10,7 @@
   "aliveStatusCodes": [200, 429],
   "ignorePatterns": [
     {
-      "pattern": "^https://twitter.com/*"
-    },
-    {
-      "pattern": "^https://www.twitter.com/*"
+      "pattern": "^https?://(?:www\\.)?twitter\\.com/.*"
     },
     {
       "pattern": "^#"
