@@ -142,3 +142,8 @@ repos:
         language: system
         files: ^codespell\.txt$
         require_serial: true
+  - repo: https://github.com/tcort/markdown-link-check
+    rev: v3.11.2
+    hooks:
+      - id: markdown-link-check
+        args: [--config, mlc_config.json, -q]
