@@ -146,4 +146,4 @@ repos:
     rev: v3.11.2
     hooks:
       - id: markdown-link-check
-        args: [--config, .markdown-link-check.json, -q]
+        args: [--config, mlc_config.json, -q]
