@@ -357,7 +357,7 @@ header {
 
 <h2 id="getting-started">➤ 시작하기</h2>
 
-언어 학습을 시작하려면 [이 링크](https://github.com/ET-Lang/ET/wiki)를 참조하세요.
+언어 학습을 시작하려면 [이 링크](https://github.com/One-Language/One/wiki)를 참조하세요.
 
 <!--Installation Steps-->
 

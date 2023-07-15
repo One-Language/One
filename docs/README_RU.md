@@ -356,7 +356,7 @@ header {
 
 <h2 id="getting-started">➤ Начало работы</h2>
 
-Перейдите по [этой ссылке](https://github.com/ET-Lang/ET/wiki), чтобы начать изучение языка.
+Перейдите по [этой ссылке](https://github.com/One-Language/One/wiki), чтобы начать изучение языка.
 
 <!--Шаги установки-->
 

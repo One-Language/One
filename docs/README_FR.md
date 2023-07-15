@@ -355,7 +355,7 @@ header {
 
 <h2 id="pour-commencer">➤ Pour commencer</h2>
 
-Référez-vous à [ce lien](https://github.com/ET-Lang/ET/wiki) pour commencer à apprendre la langue.
+Référez-vous à [ce lien](https://github.com/One-Language/One/wiki) pour commencer à apprendre la langue.
 
 <!--Installation Steps-->
 
