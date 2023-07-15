@@ -1,195 +1,38 @@
-## ONE CONTRIBUTORS
+# ONE CONTRIBUTORS
 
-### Core, Compiler, Generator
+## Core Team
 
 <!-- prettier-ignore -->
 <table>
    <tr>
-      <td align="center">
-         <a href="https://michielborkent.nl">
-            <img src="https://avatars1.githubusercontent.com/u/2658040?v=4" width="100px;" alt="Max Base"><br>
-            <sub><b>Max Base</b></sub>
-         </a><br>
-      </td>
-      <!--
-      <td align="center">
-         <a href="https://github.com/Mohammadiye">
-            <img src="https://avatars1.githubusercontent.com/u/51291744?v=4" width="100px;" alt="Seyyed Ali Mohammadiye"><br>
-            <sub><b>Ali Mohammadiye</b></sub>
-         </a><br>
-      </td>
-      -->
-   </tr>
-</table>
-
-### Optimize
-
-<table>
-   <tr>
-      <td align="center">
-         <a href="https://michielborkent.nl">
-            <img src="https://avatars1.githubusercontent.com/u/2658040?v=4" width="100px;" alt="Max Base"><br>
-            <sub><b>Max Base</b></sub>
-         </a><br>
-      </td>
-   </tr>
-</table>
-
-### Syntax
-
-<table>
-   <tr>
-      <td align="center">
-         <a href="https://github.com/CheckGitCode">
-            <img src="https://avatars1.githubusercontent.com/u/26344781?v=4" width="100px;" alt="CheckGitCode"><br>
-            <sub><b>CheckGitCode</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/CheckSource">
-            <img src="https://avatars1.githubusercontent.com/u/26503655?v=4" width="100px;" alt="CheckSource"><br>
-            <sub><b>CheckSource</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/GlennZ300">
-            <img src="https://avatars1.githubusercontent.com/u/48390056?v=4" width="100px;" alt="GlennZ300"><br>
-            <sub><b>GlennZ300</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/GoProfessional">
-            <img src="https://avatars1.githubusercontent.com/u/26503577?v=4" width="100px;" alt="GoProfessional"><br>
-            <sub><b>GoProfessional</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/hebrew878">
-            <img src="https://avatars1.githubusercontent.com/u/45189885?v=4" width="100px;" alt="hebrew878"><br>
-            <sub><b>hebrew878</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/jassab">
-            <img src="https://avatars1.githubusercontent.com/u/41446786?v=4" width="100px;" alt="Jas"><br>
-            <sub><b>Jas</b></sub>
-         </a><br>
-      </td>
-   </tr>
-   <tr>
-      <td align="center">
-         <a href="https://github.com/LoveMoreCode">
-            <img src="https://avatars1.githubusercontent.com/u/25818881?v=4" width="100px;" alt="LoveMoreCode"><br>
-            <sub><b>LoveMoreCode</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/MiraxWebMaster">
-            <img src="https://avatars1.githubusercontent.com/u/48389774?v=4" width="100px;" alt="MiraxWebMaster"><br>
-            <sub><b>MiraxWebMaster</b></sub>
-         </a><br>
-      </td>
-      <!--
-      <td align="center">
-         <a href="https://github.com/Mohammadiye">
-            <img src="https://avatars1.githubusercontent.com/u/51291744?v=4" width="100px;" alt="Ali Mohammadiye"><br>
-            <sub><b>Ali Mohammadiye</b></sub>
-         </a><br>
-      </td>
-      -->
-      <td align="center">
-         <a href="https://github.com/Nardans">
-            <img src="https://avatars1.githubusercontent.com/u/49128692?v=4" width="100px;" alt="Nardans"><br>
-            <sub><b>Nardans</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/OpenProjectInWorld">
-            <img src="https://avatars1.githubusercontent.com/u/26503628?v=4" width="100px;" alt="OpenProjectInWorld"><br>
-            <sub><b>OpenProjectInWorld</b></sub>
-         </a><br>
-      </td>
       <td align="center">
          <a href="https://github.com/BaseMax">
             <img src="https://avatars1.githubusercontent.com/u/2658040?v=4" width="100px;" alt="Max Base"><br>
             <sub><b>Max Base</b></sub>
          </a><br>
       </td>
-   </tr>
-    <tr>
-      <td align="center">
-         <a href="https://github.com/ProgramCodes">
-            <img src="https://avatars1.githubusercontent.com/u/40146766?v=4" width="100px;" alt="ProgramCodes"><br>
-            <sub><b>ProgramCodes</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/QuestionPython">
-            <img src="https://avatars1.githubusercontent.com/u/25328620?v=4" width="100px;" alt="QuestionPython"><br>
-            <sub><b>QuestionPython</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/raphaelcode9">
-            <img src="https://avatars1.githubusercontent.com/u/26503611?v=4" width="100px;" alt="raphaelcode9"><br>
-            <sub><b>raphaelcode9</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/RuddFo">
-            <img src="https://avatars1.githubusercontent.com/u/48390339?v=4" width="100px;" alt="RuddFo"><br>
-            <sub><b>RuddFo</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/Rumbas">
-            <img src="https://avatars1.githubusercontent.com/u/49128417?v=4" width="100px;" alt="Rumbas"><br>
-            <sub><b>Rumbas</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/Stephin">
-            <img src="https://avatars1.githubusercontent.com/u/20446133?v=4" width="100px;" alt="Stephin"><br>
-            <sub><b>Stephin</b></sub>
-         </a><br>
-      </td>
-   </tr>
-   <tr>
-      <td align="center">
-         <a href="https://github.com/SysCore4">
-            <img src="https://avatars1.githubusercontent.com/u/26503693?v=4" width="100px;" alt="SysCore4"><br>
-            <sub><b>SysCore4</b></sub>
-         </a><br>
-      </td>
-      <td align="center">
-         <a href="https://github.com/UnitCore">
-            <img src="https://avatars1.githubusercontent.com/u/26503670?v=4" width="100px;" alt="UnitCore"><br>
-            <sub><b>UnitCore</b></sub>
-         </a><br>
-      </td>
-   </tr>
-</table>
-
-### Marketing & Business
-
-<table>
-   <tr>
       <td align="center">
          <a href="https://github.com/jbampton">
             <img src="https://avatars.githubusercontent.com/u/418747?v=4" width="100px;" alt="John Bampton"><br>
             <sub><b>John Bampton</b></sub>
          </a><br>
       </td>
-      <td align="center">
-         <a href="https://github.com/jassab">
-            <img src="https://avatars1.githubusercontent.com/u/41446786?v=4" width="100px;" alt="Jas"><br>
-            <sub><b>Jas</b></sub>
-         </a><br>
-      </td>
    </tr>
 </table>
 
-### Influential People
+## Developers
+
+<table>
+   <tr>
+      <td align="center">
+         <a href="https://github.com/abdorah">
+            <img src="https://avatars.githubusercontent.com/u/37270435?v=4" width="100px;" alt="Kotbi Abderrahmane"><br>
+            <sub><b>Kotbi Abderrahmane</b></sub>
+         </a><br>
+      </td>
+</table>
+
+## Influential People
 
 <table>
    <tr>
@@ -208,7 +51,7 @@
    </tr>
 </table>
 
-### Documentation & Translation
+## Documentation & Translation
 
 <table>
    <tr>
@@ -224,13 +67,21 @@
             <sub><b>Majalian</b></sub>
          </a><br>
       </td>
+      <td align="center">
+         <a href="https://github.com/amir-shiati">
+            <img src="https://avatars.githubusercontent.com/u/47950086?v=4" width="100px;" alt="amir-shiati"><br>
+            <sub><b>Amir</b></sub>
+         </a><br>
+      </td>
    </tr>
 </table>
 
-Your name can be here...
+---
+
+Your name and/or your organization can be here...
 
 Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
 
 ---
 
-Created By Max Base, Developed by the `One` Language Team @ 2021
+Created By Max and John, Developed by the `One` Language Team @ 2023
