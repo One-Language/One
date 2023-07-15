@@ -78,10 +78,14 @@
 
 ---
 
+Thanks to all the <a href ="https://github.com/One-Language/One/graphs/contributors">contributors</a>!!
+
+---
+
 Your name and/or your organization can be here...
 
 Send your message for sponsorship and to support us. (MaxBaseCode {[@]} Gmail {[DOT]} Com)
 
 ---
 
-Created By Max and John, Developed by the `One` Language Team @ 2023
+Created By Max and John, developed by the `One` Language Team @ 2023
