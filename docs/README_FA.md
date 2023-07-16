@@ -402,7 +402,7 @@ header {
 
 <div dir="rtl">
 
-می توانید برای یادگیری بیشتر نحو این زبان به [این صفحه](https://github.com/ET-Lang/ET/wiki) راهنما مراجعه کنید.
+می توانید برای یادگیری بیشتر نحو این زبان به [این صفحه](https://github.com/One-Language/One/wiki) راهنما مراجعه کنید.
 
 <!--Installation Steps-->
 

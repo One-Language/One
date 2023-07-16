@@ -356,7 +356,7 @@ header {
 
 <h2 id="getting-started">➤ İlk Kullanım Kılavuzu</h2>
 
-Dili öğrenmeye başlamak için [bu linke](https://github.com/ET-Lang/ET/wiki) göz atabilirsiniz.
+Dili öğrenmeye başlamak için [bu linke](https://github.com/One-Language/One/wiki) göz atabilirsiniz.
 
 <!--Installation Steps-->
 

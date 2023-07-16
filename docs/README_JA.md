@@ -357,7 +357,7 @@ header {
 
 <h2 id="getting-started">➤ 入門</h2>
 
-[このリンク](https://github.com/ET-Lang/ET/wiki)を参照して、語学学習を始めてください。
+[このリンク](https://github.com/One-Language/One/wiki)を参照して、語学学習を始めてください。
 
 <!--Installation Steps-->
 

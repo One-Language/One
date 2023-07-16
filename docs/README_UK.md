@@ -356,7 +356,7 @@ header {
 
 <h2 id="getting-started">➤ Почнемо</h2>
 
-Перейдіть за [цим посиланням](https://github.com/ET-Lang/ET/wiki), щоб почати вивчення мови.
+Перейдіть за [цим посиланням](https://github.com/One-Language/One/wiki), щоб почати вивчення мови.
 
 <!--Кроки встановлення-->
 

@@ -356,7 +356,7 @@ header {
 
 <h2 id="getting-started">➤Mga Unang Hakbang</h2>
 
-Maaari mong suriin ang [link na ito](https://github.com/ET-Lang/ET/wiki) upang simulang matuto ng wika.
+Maaari mong suriin ang [link na ito](https://github.com/One-Language/One/wiki) upang simulang matuto ng wika.
 
 <!--Mga hakbang para sa pag-install-->
 

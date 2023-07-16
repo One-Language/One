@@ -394,7 +394,7 @@ header {
 
 <h2 id="getting-started">➤ البدء</h2>
 
-الرجوع الى [هذا الرابط](https://github.com/ET-Lang/ET/wiki) لبدء تعلم أساسيات اللغة.
+الرجوع الى [هذا الرابط](https://github.com/One-Language/One/wiki) لبدء تعلم أساسيات اللغة.
 
 <!--Installation Steps-->
 
