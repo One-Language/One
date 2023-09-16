@@ -9,7 +9,7 @@ jobs:
   build:
     permissions:
       contents: read  # for actions/checkout to fetch code
-      statuses: write  # for github/super-linter/slim to mark status of each linter run
+      statuses: write  # for super-linter/super-linter/slim to mark status of each linter run
     name: Super-Linter
     runs-on: ubuntu-latest
     steps:
