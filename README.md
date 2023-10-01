@@ -358,7 +358,7 @@ header {
 
 <h2 id="getting-started">➤ Getting Started</h2>
 
-Refer to [this link](https://github.com/One-Language/One/wiki) to start learning the language.
+Refer to [this link](https://one-language.github.io/Document/#/) to start learning the language.
 
 <!--Installation Steps-->
 
