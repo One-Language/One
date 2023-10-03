@@ -14,7 +14,8 @@ Create a new branch to work on your contribution for better code isolation.
 
 ### **Then, make a PR**
 
-Now that you finished the work, don't forget again to run `pre-commit`. `pre-commit` helps ensure code quality before creating a PR. Create the
+Now that you finished the work, don't forget again to run `pre-commit`.
+`pre-commit` helps ensure code quality before creating a PR. Create the
 pull request and use the description to provide context and motivation, as you
 did in the issue. Otherwise, you can mention your PR in the issue that you tried
 to solve. Once a pull request is created, we will verify the code and accept
