@@ -1,7 +1,6 @@
 <h1 align="center"><strong>Contributing to the ONE Programming Language</strong></h1>
 
 > Welcome new contributors! First of all thank you for contributing! :+1: :tada:
-<hr>
 
 ## How to Contribute
 
