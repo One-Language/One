@@ -9,7 +9,8 @@
 The `ONE Programming Language` is a very welcoming community. We appreciate your
 ideas and your help. You need to communicate in
 [our discord server](https://discord.com/invite/sFCE2HcMCa) or pick an issue and
-share your perception of the solution you have. Ensure you fork this repository. Create a new branch to work on your contribution for better code isolation.
+share your perception of the solution you have. Ensure you fork this repository.
+Create a new branch to work on your contribution for better code isolation.
 
 ### **Then, make a PR**
 
