@@ -1,0 +1,19 @@
+The requirements and dependencies for running pre-commit and the associated tools you mentioned:
+
+**Python**: `pre-commit` is written in Python, so you need Python installed on your system to use it. This is a prerequisite for installing and running `pre-commit`.
+
+**pip**: You'll need pip, the Python package manager, to install pre-commit. It typically comes bundled with Python, so if you have Python installed, you should have pip as well.
+
+**clang-format** :clang-format is a tool for formatting C, C++, and other source code files. You need to have `clang-format` installed on your system to use it with pre-commit.
+
+**hadolint-docker**: This appears to be a custom linter for Dockerfiles. You'll need to install and configure it according to your project's requirements. Typically, it should be available via a package manager or as a standalone binary.
+
+**shellcheck**: shellcheck is a static analysis tool for shell scripts. You need to have `shellcheck` installed on your system to use it with `pre-commit`. It is often available through package managers like apt, yum, or brew.
+
+**Docker**: If your project involves Docker, you will need to have Docker installed on your system. This is essential for running Docker containers and building images.
+
+**Make** : You mentioned creating a Make target for installing `pre-commit` using pip. This is optional, but it can be a convenient way to manage your project's setup and dependencies.
+
+**Other project-specific dependencies**: Depending on the specific needs of your project, you may have other requirements or dependencies. Make sure to document and manage these appropriately.
+The primary requirements for running pre-commit and contributing to the ONE Programming Language project.
+However, it's worth noting that the specific requirements can vary from one project to another, and some requirements might exist depending on the project's dependencies and tools. 
