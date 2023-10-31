@@ -73,6 +73,12 @@
             <sub><b>Amir</b></sub>
          </a><br>
       </td>
+        <td align="center">
+         <a href="https://github.com/ayushrana182">
+            <img src="https://avatars.githubusercontent.com/u/43984189?v=4" width="100px;" alt="amir-shiati"><br>
+            <sub><b>Amir</b></sub>
+         </a><br>
+      </td>
    </tr>
 </table>
 
