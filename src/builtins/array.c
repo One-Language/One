@@ -81,18 +81,98 @@ size_t array_count(array_t* array)
     return array->count;
 }
 
+/**
+ * Push an item to the array.
+ * @note This is useful when you want to push an item to the array.
+ * 
+ * @return void
+ * 
+ * @param array_t* array
+ * 
+ * @code
+ * array_t* array = array_init();
+ * array_push(array, "Hello");
+ * array_push(array, "World");
+ * @endcode
+*/
 void array_push(array_t *array, void *item)
 {
 	if (array->count == array->capacity) {
 		// Set size of new array to 4, and double size if it's next...
-		array->capacity = array->capacity == 0 ? 4 : 2 * array->size;
-		array->data = (void **)realloc(array->data, array->size * sizeof(void *));
+		array->capacity = array->capacity == 0 ? 4 : 2 * array->capacity;
+		array->data = (void **)realloc(array->data, array->capacity * sizeof(void *));
 	}
 
 	array->data[array->count] = item;
 	array->count++;
 }
 
+/**
+ * Get the first item of the array.
+ * @note This is useful when you want to get the first item of the array.
+ * 
+ * @return void*
+ * 
+ * @param array_t* list
+ * 
+ * @code
+ * array_t* array = array_init();
+ * array_push(array, "Hello");
+ * array_push(array, "World");
+ * void* first = array_first(array);
+ * printf("%s\n", first); // Hello
+ * @endcode
+*/
+void* array_first(array_t *array)
+{
+	if (array->count == 0) {
+		return NULL;
+	}
+
+	return array->data[0];
+}
+
+/**
+ * Get the first item of the array.
+ * @note This is useful when you want to get the last item of the array.
+ * 
+ * @return void*
+ * 
+ * @param array_t* list
+ * 
+ * @code
+ * array_t* array = array_init();
+ * array_push(array, "Hello");
+ * array_push(array, "World");
+ * void* last = array_last(array);
+ * printf("%s\n", last); // Hello
+ * @endcode
+*/
+void* array_last(array_t *array)
+{
+	if (array->count == 0) {
+		return NULL;
+	}
+
+	return array->data[array->count - 1];
+}
+
+/**
+ * Get the last item of the array.
+ * @note This is useful when you want to get the last item of the array.
+ * 
+ * @return void*
+ * 
+ * @param array_t* list
+ * 
+ * @code
+ * array_t* array = array_init();
+ * array_push(array, "Hello");
+ * array_push(array, "World");
+ * void* last = array_pop(array);
+ * printf("%s\n", last); // World
+ * @endcode
+*/
 void *array_pop(array_t* list)
 {
 	// debug("array_pop");
@@ -102,6 +182,19 @@ void *array_pop(array_t* list)
 	return ret;
 }
 
+/**
+ * Free the array.
+ * @note This is useful when you want to free the array.
+ * 
+ * @return void
+ * 
+ * @param array_t* list
+ * 
+ * @code
+ * array_t* array = array_init();
+ * array_free(array);
+ * @endcode
+*/
 void array_free(array_t* list)
 {
 	// debug("array_free");

@@ -20,6 +20,10 @@ size_t array_count(array_t* array);
 
 void array_push(array_t* array, void *item);
 
+void* array_first(array_t *array);
+
+void* array_last(array_t *array);
+
 void *array_pop(array_t* list);
 
 void array_free(array_t* list);
