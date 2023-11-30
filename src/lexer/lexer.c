@@ -15,6 +15,19 @@ lexer_t* lexer_init(char* source)
     return lexer;
 }
 
+/**
+ * @brief Checks if the lexer is at the end of the source code.
+ * @note This function checks if the lexer is at the end of the source code.
+ * 
+ * @param lexer The lexer to check.
+ * 
+ * @return True if the lexer is at the end of the source code, false otherwise.
+ * 
+ * @code
+ * if (lexer_is_at_end(lexer)) {}
+ * else {}
+ * @endcode
+ */
 bool lexer_is_at_end(lexer_t* lexer)
 {
     return *lexer->current == '\0' || *lexer->current == EOF;
