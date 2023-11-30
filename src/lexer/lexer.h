@@ -15,7 +15,11 @@ typedef struct {
     array_token_t* tokens;
 } lexer_t;
 
-lexer_t* lexer_init(char** source);
+lexer_t* lexer_init(char* source);
+
+bool lexer_is_at_end(lexer_t* lexer);
+
+void lexer_scan_token(lexer_t* lexer);
 
 lexer_t* lexer_scan_tokens(lexer_t* lexer);
 

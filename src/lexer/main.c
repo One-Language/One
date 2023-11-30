@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../builtins/file.h"
+#include "lexer.h"
 
 int main(int argc, char** argv)
 {
@@ -29,6 +30,6 @@ int main(int argc, char** argv)
     printf("DATA: %s\n", data);
 
     lexer_init(data);
-    
+
     return 0;
 }

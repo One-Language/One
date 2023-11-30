@@ -53,7 +53,7 @@ array_t* array_init_size(size_t size, size_t capacity)
 }
 
 /**
- * Get the size of the array.
+ * Get the capacity of the array.
  * @note This is the size of the allocated memory.
  * @note This is not the number of data inside the array.
  * 
@@ -63,7 +63,7 @@ array_t* array_init_size(size_t size, size_t capacity)
  */
 size_t array_size(array_t* array)
 {
-    return array->count;
+    return array->capacity;
 }
 
 /**
