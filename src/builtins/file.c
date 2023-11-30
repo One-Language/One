@@ -40,5 +40,35 @@ bool file_exists(char* filepath)
 */
 char* file_reads(char* filepath)
 {
+	// debug("file_reads");
+	// debug("file_reads: %s", filepath);
 
+	FILE* file = fopen(filepath, "rb");
+	if (file == NULL) {
+		printf("Error: Could not open file \"%s\".", filepath);
+		exit(74);
+	}
+
+	fseek(file, 0L, SEEK_END);
+	size_t fileSize = ftell(file);
+	// debug("file_reads: fileSize is %zu", fileSize);
+	rewind(file);
+
+	char* buffer = (char*)malloc(fileSize + 1);
+	if (buffer == NULL) {
+		printf("Error: Not enough memory to read \"%s\".", filepath);
+		exit(74);
+	}
+
+	size_t bytesRead = fread(buffer, sizeof(char), fileSize, file);
+	// debug("file_reads: bytesRead is %zu", bytesRead);
+	if (bytesRead < fileSize) {
+		printf("Error: Could not read the \"%s\".", filepath);
+		exit(74);
+	}
+
+	buffer[bytesRead] = '\0';
+
+	fclose(file);
+	return buffer;
 }

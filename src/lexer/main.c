@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../built-in/file.h"
+#include "../builtins/file.h"
 
 int main(int argc, char** argv)
 {
     if (argc == 1) {
         printf("Please run ./one_lexer input output\n");
         return 1;
-    }
-    else if (argc == 2) {
+    } else if (argc == 2) {
         printf("Please run ./one_lexer %s output", argv[1]);
         return 1;
     }
@@ -29,5 +28,7 @@ int main(int argc, char** argv)
 
     printf("DATA: %s\n", data);
 
+    lexer_init(data);
+    
     return 0;
 }
