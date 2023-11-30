@@ -203,3 +203,29 @@ void array_free(array_t* list)
 	list->count = list->capacity = 0;
 	list->data = NULL;
 }
+
+/**
+ * Get the item at the index.
+ * @note This is useful when you want to get the item at the index.
+ * 
+ * @return void*
+ * 
+ * @param array_t* array
+ * @param int index
+ * 
+ * @code
+ * array_t* array = array_init();
+ * array_push(array, "Hello");
+ * array_push(array, "World");
+ * void* item = array_getat(array, 0);
+ * printf("%s\n", item); // Hello
+ * @endcode
+*/
+void* array_getat(array_t* array, int index)
+{
+	if (index >= array->count) {
+		return NULL;
+	}
+
+	return array->data[index];
+}

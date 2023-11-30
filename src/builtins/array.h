@@ -27,3 +27,5 @@ void* array_last(array_t *array);
 void *array_pop(array_t* list);
 
 void array_free(array_t* list);
+
+void* array_getat(array_t* array, int index);
