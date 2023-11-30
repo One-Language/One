@@ -8,8 +8,9 @@ lexer_t* lexer_init(char* source)
         exit(74);
     }
 
-    lexer->source = source;
-    lexer->current = source;
+    lexer->original_source = source;
+    lexer->source = lexer->original_source;
+    lexer->current = lexer->original_source;
     lexer->tokens = array_init();
 
     return lexer;
@@ -30,20 +31,30 @@ lexer_t* lexer_init(char* source)
  */
 bool lexer_is_at_end(lexer_t* lexer)
 {
-    return *lexer->current == '\0' || *lexer->current == EOF;
+    return *lexer->current == '\0';
 }
 
 void lexer_scan_token(lexer_t* lexer)
 {
-
+    printf("%c\n", *lexer->current);
+    *lexer->source++;
+    // printf("%c\n", *lexer->current);
+    // *lexer->current++;
 }
 
 lexer_t* lexer_scan_tokens(lexer_t* lexer)
 {
-    while (!lexer_is_at_end(lexer)) {
-        lexer->line = 1;
-        lexer->column = 1;
+    if (lexer_is_at_end(lexer)) {
+        lexer->line = 0;
+        lexer->column = 0;
 
+        return lexer;
+    } else {
+        lexer->line = 1;
+        lexer->column = 0;
+    }
+    
+    while (!lexer_is_at_end(lexer)) {
         lexer->current = lexer->source;
 
         lexer_scan_token(lexer);

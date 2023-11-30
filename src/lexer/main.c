@@ -29,7 +29,8 @@ int main(int argc, char** argv)
 
     printf("DATA: %s\n", data);
 
-    lexer_init(data);
+    lexer_t* lexer = lexer_init(data);
+    lexer = lexer_scan_tokens(lexer);
 
     return 0;
 }

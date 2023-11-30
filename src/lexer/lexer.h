@@ -8,6 +8,7 @@ typedef array_t array_token_t;
 typedef struct {
     char* source;
     char* current;
+    char* original_source;
 
     int line;
     int column;
@@ -16,6 +17,7 @@ typedef struct {
 } lexer_t;
 
 lexer_t* lexer_init(char* source);
+
 
 bool lexer_is_at_end(lexer_t* lexer);
 
