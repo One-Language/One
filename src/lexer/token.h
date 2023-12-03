@@ -45,3 +45,5 @@ lexer_token_t* token_set_value(lexer_token_t* token, void* value);
 lexer_token_t* token_set_location(lexer_token_t* token, lexer_token_location_t* location);
 
 lexer_token_t* token_set_location_init(lexer_token_t* token, int length, int start_line, int start_column, int end_line, int end_column);
+
+bool is_digit(char c);

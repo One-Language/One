@@ -45,7 +45,12 @@ void lexer_scan_token(lexer_t* lexer)
 
     switch (*lexer->current) {
         case '0'...'9': {
+            while (!lexer_is_at_end(lexer) && is_digit(*lexer->current)) {
+                *lexer->current++;
+            }
 
+            lexer_token_t* token = token_init(TOKEN_TYPE_NUMBER);
+            lexer_add_token(lexer, token);
         } break;
 
         case '"': {
@@ -89,8 +94,9 @@ void lexer_scan_token(lexer_t* lexer)
 
         case '\n': {
             *lexer->current++;
-            lexer_token_t* token = token_init(TOKEN_TYPE_LINE);
-            lexer_add_token(lexer, token);
+            return lexer_scan_token(lexer);
+            // lexer_token_t* token = token_init(TOKEN_TYPE_LINE);
+            // lexer_add_token(lexer, token);
         } break;
 
         case 'a'...'z':
@@ -123,7 +129,7 @@ lexer_t* lexer_scan_tokens(lexer_t* lexer)
         lexer->column = 0;
     }
     
-    printf("%s\n", lexer->source);
+    // printf("%s\n", lexer->source);
     while (!lexer_is_at_end(lexer)) {
         // lexer->source = lexer->current;
 

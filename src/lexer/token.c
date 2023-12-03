@@ -48,3 +48,8 @@ lexer_token_t* token_set_location_init(lexer_token_t* token, int length, int sta
 
     return token;
 }
+
+bool is_digit(char c)
+{
+    return c >= '0' && c <= '9';
+}
