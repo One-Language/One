@@ -67,7 +67,7 @@ void lexer_scan_token(lexer_t* lexer)
 
     switch (*lexer->current) {
         case '0'...'9': {
-            while (!lexer_is_at_end(lexer) && is_digit(*lexer->current)) {
+            while (is_digit(*lexer->current)) {
                 *lexer->current++;
             }
 

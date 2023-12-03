@@ -3,7 +3,7 @@
 lexer_token_t* token_init(lexer_token_type_t type)
 {
     lexer_token_t* token = malloc(sizeof(lexer_token_t));
-    token->type = TOKEN_TYPE_STRING_DOUBLE;
+    token->type = type;
     token->value = NULL;
     token->location = malloc(sizeof(lexer_token_location_t));
     return token;
@@ -12,7 +12,7 @@ lexer_token_t* token_init(lexer_token_type_t type)
 lexer_token_t* token_init_value(lexer_token_type_t type, void* value)
 {
     lexer_token_t* token = malloc(sizeof(lexer_token_t));
-    token->type = TOKEN_TYPE_STRING_DOUBLE;
+    token->type = type;
     token->value = value;
     token->location = malloc(sizeof(lexer_token_location_t));
     return token;
