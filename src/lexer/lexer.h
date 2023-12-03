@@ -2,8 +2,16 @@
 #include <stdlib.h>
 #include "../builtins/file.h"
 #include "../builtins/array.h"
+#include "token.h"
 
 typedef array_t array_token_t;
+
+typedef struct {
+    lexer_token_type_t type;
+    void* value;
+
+    lexer_token_location_t* location;
+} lexer_token_t;
 
 typedef struct {
     char* source;
@@ -17,7 +25,6 @@ typedef struct {
 } lexer_t;
 
 lexer_t* lexer_init(char* source);
-
 
 bool lexer_is_at_end(lexer_t* lexer);
 

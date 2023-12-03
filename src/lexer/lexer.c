@@ -40,6 +40,8 @@ void lexer_scan_token(lexer_t* lexer)
     *lexer->source++;
     // printf("%c\n", *lexer->current);
     // *lexer->current++;
+    lexer_token_t* token = token_init(TOKEN_TYPE_STRING_DOUBLE);
+    array_push(lexer->tokens, token);
 }
 
 lexer_t* lexer_scan_tokens(lexer_t* lexer)
