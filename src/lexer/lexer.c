@@ -115,9 +115,10 @@ void lexer_scan_token(lexer_t* lexer)
             return lexer_scan_token(lexer);
         };
 
-        case '\n': {
+        case '\n':
+        case '\r': {
             // *lexer->current++;
-            while (*lexer->current == '\n' || *lexer->current == ' ' || *lexer->current == '\t') *lexer->current++;
+            while (*lexer->current == '\n' || *lexer->current == '\r' || *lexer->current == ' ' || *lexer->current == '\t') *lexer->current++;
             return lexer_scan_token(lexer);
 
             // lexer_token_t* token = token_init(TOKEN_TYPE_LINE);
@@ -129,6 +130,7 @@ void lexer_scan_token(lexer_t* lexer)
         // } break;
         
         default: {
+            printf("WHAT IS THIS CHAR '%c'\n", *lexer->current);
             *lexer->current++;
 
             lexer_token_t* token = token_init(TOKEN_TYPE_ERROR);
