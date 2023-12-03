@@ -4,15 +4,6 @@
 #include "../builtins/array.h"
 #include "token.h"
 
-typedef array_t array_token_t;
-
-typedef struct {
-    lexer_token_type_t type;
-    void* value;
-
-    lexer_token_location_t* location;
-} lexer_token_t;
-
 typedef struct {
     char* source;
     char* current;
@@ -33,3 +24,5 @@ void lexer_scan_token(lexer_t* lexer);
 lexer_t* lexer_scan_tokens(lexer_t* lexer);
 
 void lexer_free(lexer_t* lexer);
+
+void lexer_add_token(lexer_t* lexer, lexer_token_t* token);

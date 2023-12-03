@@ -34,6 +34,11 @@ bool lexer_is_at_end(lexer_t* lexer)
     return *lexer->current == '\0';
 }
 
+void lexer_add_token(lexer_t* lexer, lexer_token_t* token)
+{
+    array_push(lexer->tokens, token);
+}
+
 void lexer_scan_token(lexer_t* lexer)
 {
     printf("%c\n", *lexer->current);
@@ -41,7 +46,7 @@ void lexer_scan_token(lexer_t* lexer)
     // printf("%c\n", *lexer->current);
     // *lexer->current++;
     lexer_token_t* token = token_init(TOKEN_TYPE_STRING_DOUBLE);
-    array_push(lexer->tokens, token);
+    lexer_add_token(lexer, token);
 }
 
 lexer_t* lexer_scan_tokens(lexer_t* lexer)
@@ -61,6 +66,9 @@ lexer_t* lexer_scan_tokens(lexer_t* lexer)
 
         lexer_scan_token(lexer);
     }
+
+    lexer_token_t* token = token_init(TOKEN_TYPE_EOF);
+    lexer_add_token(lexer, token);
 
     return lexer;
 }

@@ -32,5 +32,7 @@ int main(int argc, char** argv)
     lexer_t* lexer = lexer_init(data);
     lexer = lexer_scan_tokens(lexer);
 
+    printf("NUMBER OF TOKENS: %d\n", array_count(lexer->tokens));
+      
     return 0;
 }
