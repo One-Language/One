@@ -54,19 +54,20 @@ void lexer_scan_token(lexer_t* lexer)
         } break;
 
         case '"': {
+            // eat "
             *lexer->current++;
             // printf("TOKEN: OPEN STRING\n");
+
             while (!lexer_is_at_end(lexer) && *lexer->current != '"') {
                 // printf("TOKEN: READ STRING CHAR %c\n", *lexer->current);
                 *lexer->current++;
             }
+            
             if (lexer_is_at_end(lexer)) {
                 printf("Error: facing EOF but need to close string first!\n");
 
                 lexer_token_t* token = token_init(TOKEN_TYPE_ERROR);
                 lexer_add_token(lexer, token);
-
-                *lexer->current++;
                 return;
             } else if (*lexer->current != '"') {
                 printf("Error: need to close string first\n");
@@ -88,13 +89,16 @@ void lexer_scan_token(lexer_t* lexer)
 
         case ' ':
         case '\t': {
-            *lexer->current++;
+            // *lexer->current++;
+            while (*lexer->current == '\n' || *lexer->current == ' ' || *lexer->current == '\t') *lexer->current++;
             return lexer_scan_token(lexer);
         };
 
         case '\n': {
-            *lexer->current++;
+            // *lexer->current++;
+            while (*lexer->current == '\n' || *lexer->current == ' ' || *lexer->current == '\t') *lexer->current++;
             return lexer_scan_token(lexer);
+
             // lexer_token_t* token = token_init(TOKEN_TYPE_LINE);
             // lexer_add_token(lexer, token);
         } break;
