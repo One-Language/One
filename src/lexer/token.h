@@ -4,6 +4,7 @@
 typedef array_t array_token_t;
 
 typedef enum {
+    TOKEN_TYPE_ERROR,
     TOKEN_TYPE_EOF,
     TOKEN_TYPE_LINE,
 
