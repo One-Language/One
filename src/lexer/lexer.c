@@ -111,13 +111,15 @@ void lexer_scan_token(lexer_t* lexer)
         case ' ':
         case '\t': {
             // *lexer->current++;
-            while (*lexer->current == '\n' || *lexer->current == ' ' || *lexer->current == '\t') *lexer->current++;
+            // while (*lexer->current == ' ' || *lexer->current == '\t') *lexer->current++;
+            while (*lexer->current == '\n' || *lexer->current == '\r' || *lexer->current == ' ' || *lexer->current == '\t') *lexer->current++;
             return lexer_scan_token(lexer);
         };
 
         case '\n':
         case '\r': {
             // *lexer->current++;
+            // while (*lexer->current == '\n' || *lexer->current == '\r') *lexer->current++;
             while (*lexer->current == '\n' || *lexer->current == '\r' || *lexer->current == ' ' || *lexer->current == '\t') *lexer->current++;
             return lexer_scan_token(lexer);
 
