@@ -18,17 +18,8 @@ typedef enum {
     TOKEN_TYPE_STRING_SINGLE,
 } lexer_token_type_t;
 
-struct lexer_token_location_t;
-
 typedef struct {
-    lexer_token_type_t type;
-    void* value;
-
-    struct lexer_token_location_t* location;
-} lexer_token_t;
-
-typedef struct {
-    int duration;
+    int length;
 
     int start_line;
     int start_column;
@@ -37,8 +28,19 @@ typedef struct {
     int end_column;
 } lexer_token_location_t;
 
+typedef struct {
+    lexer_token_type_t type;
+    void* value;
+
+    lexer_token_location_t* location;
+} lexer_token_t;
+
 lexer_token_t* token_init(lexer_token_type_t type);
 
 lexer_token_t* token_init_value(lexer_token_type_t type, void* value);
 
 lexer_token_t* token_set_value(lexer_token_t* token, void* value);
+
+lexer_token_t* token_set_location(lexer_token_t* token, lexer_token_location_t* location);
+
+lexer_token_t* token_set_location_init(lexer_token_t* token, int length, int start_line, int start_column, int end_line, int end_column);

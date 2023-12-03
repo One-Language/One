@@ -55,6 +55,10 @@ lexer_t* lexer_scan_tokens(lexer_t* lexer)
         lexer->line = 0;
         lexer->column = 0;
 
+        lexer_token_t* token = token_init(TOKEN_TYPE_EOF);
+        token_set_location_init(token, 0, 0, 0, 0, 0);
+        lexer_add_token(lexer, token);
+
         return lexer;
     } else {
         lexer->line = 1;
@@ -68,6 +72,7 @@ lexer_t* lexer_scan_tokens(lexer_t* lexer)
     }
 
     lexer_token_t* token = token_init(TOKEN_TYPE_EOF);
+    token_set_location_init(token, 1, lexer->line, lexer->column, lexer->line+1, lexer->column+1);
     lexer_add_token(lexer, token);
 
     return lexer;
