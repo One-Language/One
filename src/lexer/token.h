@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef array_t array_token_t;
 
@@ -47,3 +48,7 @@ lexer_token_t* token_set_location(lexer_token_t* token, lexer_token_location_t* 
 lexer_token_t* token_set_location_init(lexer_token_t* token, int length, int start_line, int start_column, int end_line, int end_column);
 
 bool is_digit(char c);
+
+char* token_type_name(lexer_token_type_t type);
+
+lexer_token_type_t token_name_type(char* type_name);
