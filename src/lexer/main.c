@@ -32,7 +32,12 @@ int main(int argc, char** argv)
     lexer_t* lexer = lexer_init(data);
     lexer = lexer_scan_tokens(lexer);
 
-    printf("-- NUMBER OF TOKENS: %d\n", array_count(lexer->tokens));
+    int tokens_count = array_count(lexer->tokens);
+    printf("NUMBER OF TOKENS: %d\n", tokens_count);
+    for (int i = 0; i < tokens_count; i++) {
+        lexer_token_t* current_token = array_getat(lexer->tokens, i);
+        printf("   TOKEN TYPE: %s\n", token_type_name(current_token->type));
+    }
 
     return 0;
 }
