@@ -145,10 +145,6 @@ void lexer_scan_token(lexer_t* lexer)
         // } break;
         
         case '\0': {
-            // return;
-            lexer_token_t* token = token_init(TOKEN_TYPE_EOF);
-            token_set_location_init(token, 1, lexer->line, lexer->column, lexer->line, lexer->column+1);
-            lexer_add_token(lexer, token);
             return;
         } break;
 
