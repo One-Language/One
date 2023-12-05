@@ -36,7 +36,8 @@ int main(int argc, char** argv)
     printf("NUMBER OF TOKENS: %d\n", tokens_count);
     for (int i = 0; i < tokens_count; i++) {
         lexer_token_t* current_token = array_getat(lexer->tokens, i);
-        printf("   TOKEN TYPE: %s\n", token_type_name(current_token->type));
+        if (current_token->value != NULL) printf("   [%d:%d]-[%d:%d] TOKEN: %s (%s)\n", current_token->location->start_line, current_token->location->start_column, current_token->location->end_line, current_token->location->end_column, token_type_name(current_token->type), current_token->value);
+        else printf("   [%d:%d]-[%d:%d] TOKEN: %s\n", current_token->location->start_line, current_token->location->start_column, current_token->location->end_line, current_token->location->end_column, token_type_name(current_token->type));
     }
 
     return 0;
