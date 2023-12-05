@@ -20,6 +20,28 @@ typedef enum {
     TOKEN_TYPE_STRING_SINGLE,
 } lexer_token_type_t;
 
+typedef enum {
+    TOKEN_OP_TYPE_NONE = -1, // default
+    TOKEN_OP_TYPE_ERROR, // error
+
+    TOKEN_OP_TYPE_MUL,
+    TOKEN_OP_TYPE_DIV,
+    TOKEN_OP_TYPE_PLUS,
+    TOKEN_OP_TYPE_PLUS_PLUS,
+    TOKEN_OP_TYPE_MINUS,
+    TOKEN_OP_TYPE_MINUS_MINUS,
+    TOKEN_OP_TYPE_EQUAL,
+    TOKEN_OP_TYPE_EQUAL_PLUS,
+    TOKEN_OP_TYPE_EQUAL_MINUS,
+    TOKEN_OP_TYPE_EQUAL_MUL,
+    TOKEN_OP_TYPE_EQUAL_DIV,
+    TOKEN_OP_TYPE_EQUAL_EQUAL,
+    TOKEN_OP_TYPE_GT,
+    TOKEN_OP_TYPE_LT,
+    TOKEN_OP_TYPE_GT_E,
+    TOKEN_OP_TYPE_LT_E,
+} lexer_token_op_type_t;
+
 typedef struct {
     int length;
 
@@ -34,6 +56,7 @@ typedef struct {
     lexer_token_type_t type;
     void* value;
     char ch;
+    lexer_token_op_type_t op;
 
     lexer_token_location_t* location;
 } lexer_token_t;
@@ -53,3 +76,7 @@ bool is_digit(char c);
 char* token_type_name(lexer_token_type_t type);
 
 lexer_token_type_t token_name_type(char* type_name);
+
+char* op_type_name(lexer_token_op_type_t type);
+
+lexer_token_op_type_t op_name_type(char* type_name);

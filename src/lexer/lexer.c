@@ -53,6 +53,7 @@ void lexer_error(lexer_t* lexer, char* error_format, ...)
 {
     lexer_token_t* token = token_init(TOKEN_TYPE_ERROR);
     token_set_location_init(token, 1, lexer->line, lexer->column, lexer->line, lexer->column+1);
+    // TODO: Adding n args into error_format...
     token->value = error_format;
     lexer_add_token(lexer, token);
 }

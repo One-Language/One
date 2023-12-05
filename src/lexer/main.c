@@ -41,6 +41,7 @@ int main(int argc, char** argv)
 
         if (current_token->value != NULL) printf("(%s)\n", current_token->value);
         else if (current_token->ch != '\0') printf("(%c)\n", current_token->ch);
+        else if (current_token->op ) printf("(%c)\n", op_type_name(current_token->op));
         else printf("\n");
     }
 

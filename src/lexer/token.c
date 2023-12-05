@@ -93,3 +93,51 @@ lexer_token_type_t token_name_type(char* type_name)
     else if (strcmp(type_name, "string_double") == 0) return TOKEN_TYPE_STRING_DOUBLE;
     else if (strcmp(type_name, "string_single") == 0) return TOKEN_TYPE_STRING_SINGLE;
 }
+
+char* op_type_name(lexer_token_op_type_t type)
+{
+    switch (type) {
+        case TOKEN_OP_TYPE_NONE: return "none";
+        case TOKEN_OP_TYPE_MUL: return "*";
+        case TOKEN_OP_TYPE_DIV: return "/";
+        case TOKEN_OP_TYPE_PLUS: return "+";
+        case TOKEN_OP_TYPE_PLUS_PLUS: return "++";
+        case TOKEN_OP_TYPE_MINUS: return "-";
+        case TOKEN_OP_TYPE_MINUS_MINUS: return "--";
+        case TOKEN_OP_TYPE_EQUAL: return "=";
+        case TOKEN_OP_TYPE_EQUAL_MINUS: return "-=";
+        case TOKEN_OP_TYPE_EQUAL_PLUS: return "+=";
+        case TOKEN_OP_TYPE_EQUAL_DIV: return "/=";
+        case TOKEN_OP_TYPE_EQUAL_MUL: return "*=";
+        case TOKEN_OP_TYPE_EQUAL_EQUAL: return "==";
+        case TOKEN_OP_TYPE_GT: return ">";
+        case TOKEN_OP_TYPE_LT: return "<";
+        case TOKEN_OP_TYPE_GT_E: return ">=";
+        case TOKEN_OP_TYPE_LT_E: return "<=";
+        case TOKEN_OP_TYPE_ERROR: return "error";
+        default: return "unknown";
+    }
+}
+
+lexer_token_op_type_t op_name_type(char* type_name)
+{
+    if (strcmp(type_name, "none")) return TOKEN_OP_TYPE_NONE;
+    else if (strcmp(type_name, "*")) return TOKEN_OP_TYPE_MUL;
+    else if (strcmp(type_name, "/")) return TOKEN_OP_TYPE_DIV;
+    else if (strcmp(type_name, "+")) return TOKEN_OP_TYPE_PLUS;
+    else if (strcmp(type_name, "++")) return TOKEN_OP_TYPE_PLUS_PLUS;
+    else if (strcmp(type_name, "-")) return TOKEN_OP_TYPE_MINUS;
+    else if (strcmp(type_name, "--")) return TOKEN_OP_TYPE_MINUS_MINUS;
+    else if (strcmp(type_name, "=")) return TOKEN_OP_TYPE_EQUAL;
+    else if (strcmp(type_name, "-=")) return TOKEN_OP_TYPE_EQUAL_MINUS;
+    else if (strcmp(type_name, "+=")) return TOKEN_OP_TYPE_EQUAL_PLUS;
+    else if (strcmp(type_name, "/=")) return TOKEN_OP_TYPE_EQUAL_DIV;
+    else if (strcmp(type_name, "*=")) return TOKEN_OP_TYPE_EQUAL_MUL;
+    else if (strcmp(type_name, "==")) return TOKEN_OP_TYPE_EQUAL_EQUAL;
+    else if (strcmp(type_name, ">")) return TOKEN_OP_TYPE_GT;
+    else if (strcmp(type_name, "<")) return TOKEN_OP_TYPE_LT;
+    else if (strcmp(type_name, ">=")) return TOKEN_OP_TYPE_GT_E;
+    else if (strcmp(type_name, "<=")) return TOKEN_OP_TYPE_LT_E;
+    else if (strcmp(type_name, "error")) return TOKEN_OP_TYPE_ERROR;
+    else return TOKEN_OP_TYPE_ERROR;
+}
