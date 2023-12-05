@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 
     printf("=======================\n");
 
-    parser_t* parser = parser_init(lexer);
+    parser_t* parser = parser_run(lexer);
 
     parser_free(parser);
 

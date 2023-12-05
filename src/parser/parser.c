@@ -9,7 +9,21 @@ parser_t* parser_init(lexer_t* lexer)
     }
 
     parser->lexer = lexer;
-    // parser->ast = ast_init();
+    parser->ast = ast_init();
+
+    return parser;
+}
+
+ast_t* parpser_scan(parser_t* parser)
+{
+    return parser->ast;    
+}
+
+parser_t* parser_run(lexer_t* lexer)
+{
+    parser_t* parser = parser_init(lexer);
+    parser->ast = parpser_scan(parser);
+
 
     return parser;
 }
