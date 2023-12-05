@@ -1,3 +1,6 @@
+#ifndef _ONE_LEXER_TOKEN_H_
+#define _ONE_LEXER_TOKEN_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -80,3 +83,5 @@ lexer_token_type_t token_name_type(char* type_name);
 char* op_type_name(lexer_token_op_type_t type);
 
 lexer_token_op_type_t op_name_type(char* type_name);
+
+#endif

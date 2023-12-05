@@ -1,3 +1,6 @@
+#ifndef _ONE_PARSER_PARSER_H_
+#define _ONE_PARSER_PARSER_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,3 +13,5 @@ typedef struct {
 parser_t* parser_init(lexer_t* lexer);
 
 void parser_free(parser_t* parser);
+
+#endif

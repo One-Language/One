@@ -4,7 +4,7 @@
 int main(int argc, char** argv)
 {
     char* data = "if else";
-    lexer_t* lexer = lexer_run(data)
+    lexer_t* lexer = lexer_run(data);
     printf("%s", lexer_log(lexer));
 
     printf("=======================\n");

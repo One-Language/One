@@ -1,3 +1,6 @@
+#ifndef _ONE_LEXER_LEXER_H_
+#define _ONE_LEXER_LEXER_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -32,3 +35,5 @@ lexer_t* lexer_scan_tokens(lexer_t* lexer);
 void lexer_free(lexer_t* lexer);
 
 void lexer_add_token(lexer_t* lexer, lexer_token_t* token);
+
+#endif
