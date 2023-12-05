@@ -76,7 +76,7 @@ lexer_token_t* token_set_location_init(lexer_token_t* token, int length, int sta
 
 bool is_digit(char c);
 
-char* token_type_name(lexer_token_type_t type);
+char* lexer_token_type_name(lexer_token_type_t type);
 
 lexer_token_type_t token_name_type(char* type_name);
 

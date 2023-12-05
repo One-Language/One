@@ -56,7 +56,7 @@ bool is_digit(char c)
     return c >= '0' && c <= '9';
 }
 
-char* token_type_name(lexer_token_type_t type)
+char* lexer_token_type_name(lexer_token_type_t type)
 {
     switch (type) {
         case TOKEN_TYPE_EOF: return "eof";

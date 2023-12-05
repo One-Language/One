@@ -34,7 +34,7 @@ char* lexer_log(lexer_t* lexer)
     for (int i = 0; i < tokens_count; i++) {
         lexer_token_t* current_token = array_getat(lexer->tokens, i);
 
-        printf("   [%d:%d]-[%d:%d] TOKEN: %s", current_token->location->start_line, current_token->location->start_column, current_token->location->end_line, current_token->location->end_column, token_type_name(current_token->type));
+        printf("   [%d:%d]-[%d:%d] TOKEN: %s", current_token->location->start_line, current_token->location->start_column, current_token->location->end_line, current_token->location->end_column, lexer_token_type_name(current_token->type));
 
         if (current_token->value != NULL) printf("(%s)\n", current_token->value);
         else if (current_token->ch != '\0') printf("(%c)\n", current_token->ch);
@@ -239,7 +239,7 @@ lexer_t* lexer_scan_tokens(lexer_t* lexer)
         lexer_scan_token(lexer);
 
         last_token = array_last(lexer->tokens);
-        // printf("TOKEN TYPE: %s\n", token_type_name(last_token->type));
+        // printf("TOKEN TYPE: %s\n", lexer_token_type_name(last_token->type));
     }
 
     if (last_token->type != TOKEN_TYPE_EOF) {
