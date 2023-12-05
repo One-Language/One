@@ -49,19 +49,26 @@ bool lexer_eat(lexer_t* lexer, char ch)
     }
 }
 
-void lexer_match(lexer_t* lexer, char ch)
+void lexer_error(lexer_t* lexer, char* error_format, ...)
 {
-    if (*lexer->current != ch) {
-        printf("Error: expecting %c but we are seeing %c\n", ch, *lexer->current);
+    lexer_token_t* token = token_init(TOKEN_TYPE_ERROR);
+    token_set_location_init(token, 1, lexer->line, lexer->column, lexer->line, lexer->column+1);
+    token->value = error_format;
+    lexer_add_token(lexer, token);
+}
 
-        lexer_token_t* token = token_init(TOKEN_TYPE_ERROR);
-        lexer_add_token(lexer, token);
+bool lexer_match(lexer_t* lexer, char target)
+{
+    char c = *lexer->current;
+    *lexer->current++;
 
-        *lexer->current++;
-        return;
+    if (c != target) {
+        // lexer_error(lexer, "Error: expecting %c but we are seeing %c\n", target, *lexer->current);
+        lexer_error(lexer, "expecting %c but we are seeing %c\n"); // TODO
+        return false;
     }
 
-    *lexer->current++;
+    return true;
 }
 
 void lexer_scan_token(lexer_t* lexer)
@@ -93,17 +100,10 @@ void lexer_scan_token(lexer_t* lexer)
             }
 
             if (lexer_is_at_end(lexer)) {
-                printf("Error: facing EOF but need to close string first!\n");
-
-                lexer_token_t* token = token_init(TOKEN_TYPE_ERROR);
-                lexer_add_token(lexer, token);
+                lexer_error(lexer, "facing EOF but need to close string first!\n");
                 return;
             } else if (*lexer->current != '"') {
-                printf("Error: need to close string first\n");
-
-                lexer_token_t* token = token_init(TOKEN_TYPE_ERROR);
-                lexer_add_token(lexer, token);
-
+                lexer_error(lexer, "need to close string first!\n");
                 *lexer->current++;
                 lexer->column++;
                 return;
@@ -127,6 +127,46 @@ void lexer_scan_token(lexer_t* lexer)
             return lexer_scan_token(lexer);
         };
 
+        case '+': {
+            lexer_token_t* token = token_init(TOKEN_TYPE_OPERATOR);
+            token_set_location_init(token, 1, lexer->line, lexer->column, lexer->line, lexer->column+1);
+            token->ch = *lexer->current;
+            lexer_add_token(lexer, token);
+
+            *lexer->current++;
+            lexer->column++;
+        } break;
+
+        case '-': {
+            lexer_token_t* token = token_init(TOKEN_TYPE_OPERATOR);
+            token_set_location_init(token, 1, lexer->line, lexer->column, lexer->line, lexer->column+1);
+            token->ch = *lexer->current;
+            lexer_add_token(lexer, token);
+
+            *lexer->current++;
+            lexer->column++;
+        } break;
+
+        case '*': {
+            lexer_token_t* token = token_init(TOKEN_TYPE_OPERATOR);
+            token_set_location_init(token, 1, lexer->line, lexer->column, lexer->line, lexer->column+1);
+            token->ch = *lexer->current;
+            lexer_add_token(lexer, token);
+
+            *lexer->current++;
+            lexer->column++;
+        } break;
+
+        case '/': {
+            lexer_token_t* token = token_init(TOKEN_TYPE_OPERATOR);
+            token_set_location_init(token, 1, lexer->line, lexer->column, lexer->line, lexer->column+1);
+            token->ch = *lexer->current;
+            lexer_add_token(lexer, token);
+
+            *lexer->current++;
+            lexer->column++;
+        } break;
+
         case '\n':
         case '\r': {
             *lexer->current++;
@@ -139,22 +179,15 @@ void lexer_scan_token(lexer_t* lexer)
             // lexer_token_t* token = token_init(TOKEN_TYPE_LINE);
             // lexer_add_token(lexer, token);
         } break;
-
-        // case 'a'...'z':
-        // case 'A'...'Z': {
-        // } break;
         
         case '\0': {
             return;
         } break;
 
         default: {
-            printf("WHAT IS THIS CHAR '%c'\n", *lexer->current);
+            lexer_error(lexer, "unknown character %c"); // TODO
             *lexer->current++;
             lexer->column++;
-
-            lexer_token_t* token = token_init(TOKEN_TYPE_ERROR);
-            lexer_add_token(lexer, token);
         } break;
     }
 }

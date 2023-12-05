@@ -5,6 +5,7 @@ lexer_token_t* token_init(lexer_token_type_t type)
     lexer_token_t* token = malloc(sizeof(lexer_token_t));
     token->type = type;
     token->value = NULL;
+    token->ch = '\0';
     token->location = malloc(sizeof(lexer_token_location_t));
     return token;
 }
@@ -14,6 +15,7 @@ lexer_token_t* token_init_value(lexer_token_type_t type, void* value)
     lexer_token_t* token = malloc(sizeof(lexer_token_t));
     token->type = type;
     token->value = value;
+    token->ch = '\0';
     token->location = malloc(sizeof(lexer_token_location_t));
     return token;
 }

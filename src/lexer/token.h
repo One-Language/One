@@ -33,6 +33,7 @@ typedef struct {
 typedef struct {
     lexer_token_type_t type;
     void* value;
+    char ch;
 
     lexer_token_location_t* location;
 } lexer_token_t;
