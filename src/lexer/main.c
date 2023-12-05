@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../builtins/file.h"
+
 #include "lexer.h"
+
+#include "../builtins/file.h"
 
 int main(int argc, char** argv)
 {
@@ -29,21 +31,9 @@ int main(int argc, char** argv)
 
     printf("DATA: %s\n", data);
 
-    lexer_t* lexer = lexer_init(data);
-    lexer = lexer_scan_tokens(lexer);
-
-    int tokens_count = array_count(lexer->tokens);
-    printf("NUMBER OF TOKENS: %d\n", tokens_count);
-    for (int i = 0; i < tokens_count; i++) {
-        lexer_token_t* current_token = array_getat(lexer->tokens, i);
-
-        printf("   [%d:%d]-[%d:%d] TOKEN: %s", current_token->location->start_line, current_token->location->start_column, current_token->location->end_line, current_token->location->end_column, token_type_name(current_token->type));
-
-        if (current_token->value != NULL) printf("(%s)\n", current_token->value);
-        else if (current_token->ch != '\0') printf("(%c)\n", current_token->ch);
-        else if (current_token->op ) printf("(%c)\n", op_type_name(current_token->op));
-        else printf("\n");
-    }
+    lexer_t* lexer = lexer_run(data);
+    printf("%s", lexer_log(lexer));
+    lexer_free(lexer);
 
     return 0;
 }

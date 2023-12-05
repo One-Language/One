@@ -19,6 +19,32 @@ lexer_t* lexer_init(char* source)
     return lexer;
 }
 
+lexer_t* lexer_run(char* source)
+{
+    lexer_t* lexer = lexer_init(source);
+    lexer = lexer_scan_tokens(lexer);
+
+    return lexer;
+}
+
+char* lexer_log(lexer_t* lexer)
+{
+    int tokens_count = array_count(lexer->tokens);
+    printf("NUMBER OF TOKENS: %d\n", tokens_count);
+    for (int i = 0; i < tokens_count; i++) {
+        lexer_token_t* current_token = array_getat(lexer->tokens, i);
+
+        printf("   [%d:%d]-[%d:%d] TOKEN: %s", current_token->location->start_line, current_token->location->start_column, current_token->location->end_line, current_token->location->end_column, token_type_name(current_token->type));
+
+        if (current_token->value != NULL) printf("(%s)\n", current_token->value);
+        else if (current_token->ch != '\0') printf("(%c)\n", current_token->ch);
+        else if (current_token->op ) printf("(%c)\n", op_type_name(current_token->op));
+        else printf("\n");
+    }
+    
+    return "";
+}
+
 /**
  * @brief Checks if the lexer is at the end of the source code.
  * @note This function checks if the lexer is at the end of the source code.

@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "../builtins/file.h"
 #include "../builtins/array.h"
+
 #include "token.h"
 
 typedef struct {
@@ -16,6 +18,10 @@ typedef struct {
 } lexer_t;
 
 lexer_t* lexer_init(char* source);
+
+lexer_t* lexer_run(char* source);
+
+char* lexer_log(lexer_t* lexer);
 
 bool lexer_is_at_end(lexer_t* lexer);
 
