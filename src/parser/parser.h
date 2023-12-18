@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 
-#include "../lexer/token.h"
+// #include "../lexer/token.h"
 #include "../lexer/lexer.h"
 #include "ast.h"
 

@@ -75,12 +75,19 @@ bool lexer_eat(lexer_t* lexer, char ch)
     }
 }
 
-void lexer_error(lexer_t* lexer, char* error_format, ...)
-{
+void lexer_error(lexer_t* lexer, char* error_format, ...) {
     lexer_token_t* token = token_init(TOKEN_TYPE_ERROR);
-    token_set_location_init(token, 1, lexer->line, lexer->column, lexer->line, lexer->column+1);
-    // TODO: Adding n args into error_format...
-    token->value = error_format;
+    token_set_location_init(token, 1, lexer->line, lexer->column, lexer->line, lexer->column + 1);
+    
+    va_list args;
+    va_start(args, error_format);
+
+    int size = vsnprintf(NULL, 0, error_format, args);
+    token->value = malloc(size + 1); // +1 for null terminator
+    vsnprintf(token->value, size + 1, error_format, args);
+
+    va_end(args);
+
     lexer_add_token(lexer, token);
 }
 
@@ -90,8 +97,7 @@ bool lexer_match(lexer_t* lexer, char target)
     *lexer->current++;
 
     if (c != target) {
-        // lexer_error(lexer, "Error: expecting %c but we are seeing %c\n", target, *lexer->current);
-        lexer_error(lexer, "expecting %c but we are seeing %c\n"); // TODO
+        lexer_error(lexer, "expecting %c but we are seeing %c\n", target, *lexer->current);
         return false;
     }
 

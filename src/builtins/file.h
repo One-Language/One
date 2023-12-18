@@ -1,3 +1,6 @@
+#ifndef _ONE_BUILTINS_FILE_H_
+#define _ONE_BUILTINS_FILE_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -28,3 +31,5 @@ bool file_exists(char* filepath);
  * @note If the file is a directory, it returns NULL.
 */
 char* file_reads(char* filepath);
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _ONE_BUILTINS_ARRAY_H_
+#define _ONE_BUILTINS_ARRAY_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
@@ -29,3 +32,5 @@ void *array_pop(array_t* list);
 void array_free(array_t* list);
 
 void* array_getat(array_t* array, int index);
+
+#endif

@@ -14,10 +14,15 @@ parser_t* parser_init(lexer_t* lexer)
     return parser;
 }
 
-void parser_error(parser_t* parser, char* error_format, ...)
-{
-    // TODO: Adding n args into error_format...
-    printf("Parser error: %s\n", error_format);
+void parser_error(parser_t* parser, char* error_format, ...) {
+    va_list args;
+    va_start(args, error_format);
+
+    printf("Parser error: ");
+    vprintf(error_format, args);
+    printf("\n");
+
+    va_end(args);
 }
 
 lexer_token_t* parser_prev(parser_t* parser)
@@ -43,7 +48,7 @@ lexer_token_t* parser_prev_prev(parser_t* parser)
 lexer_token_t* parser_next(parser_t* parser)
 {
     parser->lexer->tokens++;
-    lexer_token_t* next_token = (lexer_token_t*) *parser->lexer->tokens;
+    lexer_token_t* next_token = (lexer_token_t*) (*parser->lexer->tokens);
     parser->lexer->tokens--;
 
     return next_token;
@@ -53,7 +58,7 @@ lexer_token_t* parser_next_next(parser_t* parser)
 {
     parser->lexer->tokens++;
     parser->lexer->tokens++;
-    lexer_token_t* next_next_token = (lexer_token_t*) *parser->lexer->tokens;
+    lexer_token_t* next_next_token = (lexer_token_t*) (*parser->lexer->tokens);
     parser->lexer->tokens--;
     parser->lexer->tokens--;
 
@@ -62,7 +67,7 @@ lexer_token_t* parser_next_next(parser_t* parser)
 
 bool parser_has(parser_t* parser, lexer_token_type_t type)
 {
-    lexer_token_t* current_token = (lexer_token_t*) *parser->lexer->tokens;
+    lexer_token_t* current_token = (lexer_token_t*) (*parser->lexer->tokens);
 
     if (current_token->type != type) return false;
     else return true;
@@ -70,7 +75,7 @@ bool parser_has(parser_t* parser, lexer_token_type_t type)
 
 bool parser_expect(parser_t* parser, lexer_token_type_t type)
 {
-    lexer_token_t* current_token = (lexer_token_t*) *parser->lexer->tokens;
+    lexer_token_t* current_token = (lexer_token_t*) (*parser->lexer->tokens);
 
     if (current_token->type != type) {
         parser_error(parser, "expecting %s but fouding %s\n", lexer_token_type_name(type), lexer_token_type_name(current_token->type));
