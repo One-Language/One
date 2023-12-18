@@ -51,6 +51,11 @@ lexer_token_t* token_set_location_init(lexer_token_t* token, int length, int sta
     return token;
 }
 
+bool is_alpha(char c)
+{
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_';
+}
+
 bool is_digit(char c)
 {
     return c >= '0' && c <= '9';
@@ -68,6 +73,7 @@ char* lexer_token_type_name(lexer_token_type_t type)
 
         case TOKEN_TYPE_OPERATOR: return "operator";
 
+        case TOKEN_TYPE_IDENTIFIER: return "identifier";
         case TOKEN_TYPE_NUMBER: return "number";
 
         case TOKEN_TYPE_STRING_DOUBLE: return "string_double";
@@ -87,6 +93,8 @@ lexer_token_type_t token_name_type(char* type_name)
     else if (strcmp(type_name, "else") == 0) return TOKEN_TYPE_ELSE;
 
     else if (strcmp(type_name, "operator") == 0) return TOKEN_TYPE_OPERATOR;
+
+    else if (strcmp(type_name, "identifier") == 0) return TOKEN_TYPE_IDENTIFIER;
 
     else if (strcmp(type_name, "number") == 0) return TOKEN_TYPE_NUMBER;
 

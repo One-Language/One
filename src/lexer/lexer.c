@@ -34,7 +34,7 @@ char* lexer_log(lexer_t* lexer)
     for (int i = 0; i < tokens_count; i++) {
         lexer_token_t* current_token = array_getat(lexer->tokens, i);
 
-        printf("   [%d:%d]-[%d:%d] TOKEN: %s", current_token->location->start_line, current_token->location->start_column, current_token->location->end_line, current_token->location->end_column, lexer_token_type_name(current_token->type));
+        printf("   %d -> [%d:%d]-[%d:%d] TOKEN: %s", i+1, current_token->location->start_line, current_token->location->start_column, current_token->location->end_line, current_token->location->end_column, lexer_token_type_name(current_token->type));
 
         if (current_token->value != NULL) printf("(%s)\n", current_token->value);
         else if (current_token->ch != '\0') printf("(%c)\n", current_token->ch);
@@ -109,6 +109,26 @@ void lexer_scan_token(lexer_t* lexer)
     // printf("TOKEN SCAN %c\n", *lexer->current);
 
     switch (*lexer->current) {
+        case 'a'...'z':
+        case 'A'...'Z':
+        case '_': {
+            int identifier_length = 0;
+            char* identifier = malloc(sizeof(char) * 10);
+            int start_column = lexer->column;
+            // while (is_digit(*lexer->current)) {
+            while (is_digit(*lexer->current) || is_alpha(*lexer->current)) {
+                identifier[identifier_length++] = *lexer->current;
+                *lexer->current++;
+                lexer->column++;
+            }
+            identifier[identifier_length] = '\0';
+
+            lexer_token_t* token = token_init(TOKEN_TYPE_IDENTIFIER);
+            token_set_location_init(token, lexer->column - start_column, lexer->line, start_column, lexer->line, lexer->column);
+            token_set_value(token, identifier);
+            lexer_add_token(lexer, token);
+        } break;
+
         case '0'...'9': {
             int start_column = lexer->column;
             while (is_digit(*lexer->current)) {
@@ -212,13 +232,13 @@ void lexer_scan_token(lexer_t* lexer)
             // lexer_token_t* token = token_init(TOKEN_TYPE_LINE);
             // lexer_add_token(lexer, token);
         } break;
-        
+    
         case '\0': {
             return;
         } break;
 
         default: {
-            lexer_error(lexer, "unknown character %c"); // TODO
+            lexer_error(lexer, "unknown character %c", *lexer->current); // TODO
             *lexer->current++;
             lexer->column++;
         } break;
