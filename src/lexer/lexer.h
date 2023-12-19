@@ -7,6 +7,7 @@
 
 #include "../builtins/file.h"
 #include "../builtins/array.h"
+#include "../builtins/string.h"
 
 #include "token.h"
 

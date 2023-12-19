@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <string.h>
 
 typedef struct {
     char* data;
@@ -13,7 +14,7 @@ typedef struct {
 
 string_t* string_init();
 
-string_t* string_init_size(size_t size, size_t capacity);
+string_t* string_init_size(size_t capacity);
 
 size_t string_length(string_t* str);
 

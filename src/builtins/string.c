@@ -13,14 +13,14 @@ string_t* string_init() {
     return str;
 }
 
-string_t* string_init_size(size_t size, size_t capacity) {
+string_t* string_init_size(size_t capacity) {
     string_t* str = malloc(sizeof(string_t));
     if (str == NULL) {
         printf("Error: Not enough memory to create a string.");
         exit(74);
     }
 
-    str->length = size;
+    str->length = 0;
     str->capacity = capacity;
     str->data = calloc(capacity, sizeof(char));
     if (str->data == NULL) {
@@ -31,15 +31,18 @@ string_t* string_init_size(size_t size, size_t capacity) {
     return str;
 }
 
-size_t string_length(string_t* str) {
+size_t string_length(string_t* str)
+{
     return str->length;
 }
 
-size_t string_capacity(string_t* str) {
+size_t string_capacity(string_t* str)
+{
     return str->capacity;
 }
 
-void string_append(string_t* str, const char* item) {
+void string_append(string_t* str, const char* item)
+{
     size_t item_length = strlen(item);
 
     if (str->length + item_length >= str->capacity) {
@@ -55,7 +58,8 @@ void string_append(string_t* str, const char* item) {
     str->length += item_length;
 }
 
-void string_append_char(string_t* str, char ch) {
+void string_append_char(string_t* str, char ch)
+{
     if (str->length + 1 >= str->capacity) {
         str->capacity = str->length + 2;
         str->data = realloc(str->data, str->capacity * sizeof(char));
@@ -70,17 +74,20 @@ void string_append_char(string_t* str, char ch) {
     str->data[str->length] = '\0';
 }
 
-char* string_to_array(string_t* str) {
+char* string_to_array(string_t* str)
+{
     return str->data;
 }
 
-void string_free(string_t* str) {
+void string_free(string_t* str)
+{
     free(str->data);
     str->length = str->capacity = 0;
     str->data = NULL;
 }
 
-char string_char_at(string_t* str, int index) {
+char string_char_at(string_t* str, int index)
+{
     if (index < 0 || index >= str->length) {
         printf("Error: Index out of bounds.");
         exit(74);
@@ -89,7 +96,8 @@ char string_char_at(string_t* str, int index) {
     return str->data[index];
 }
 
-void string_set_char_at(string_t* str, int index, char ch) {
+void string_set_char_at(string_t* str, int index, char ch)
+{
     if (index < 0 || index >= str->length) {
         printf("Error: Index out of bounds.");
         exit(74);

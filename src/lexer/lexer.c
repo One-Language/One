@@ -112,21 +112,21 @@ void lexer_scan_token(lexer_t* lexer)
         case 'a'...'z':
         case 'A'...'Z':
         case '_': {
-            int identifier_length = 0;
-            char* identifier = malloc(sizeof(char) * 10);
+            string_t* identifier = string_init_size(10);
             int start_column = lexer->column;
-            // while (is_digit(*lexer->current)) {
+
             while (is_digit(*lexer->current) || is_alpha(*lexer->current)) {
-                identifier[identifier_length++] = *lexer->current;
+                string_append_char(identifier, *lexer->current);
                 *lexer->current++;
                 lexer->column++;
             }
-            identifier[identifier_length] = '\0';
 
             lexer_token_t* token = token_init(TOKEN_TYPE_IDENTIFIER);
             token_set_location_init(token, lexer->column - start_column, lexer->line, start_column, lexer->line, lexer->column);
-            token_set_value(token, identifier);
+            token_set_value(token, string_to_array(identifier));
             lexer_add_token(lexer, token);
+
+            // TODO: Free identifier
         } break;
 
         case '0'...'9': {
@@ -141,13 +141,47 @@ void lexer_scan_token(lexer_t* lexer)
             lexer_add_token(lexer, token);
         } break;
 
+        case '\'': {
+            // eat '
+            *lexer->current++;
+            lexer->column++;
+
+            string_t* string = string_init_size(10);
+            while (!lexer_is_at_end(lexer) && *lexer->current != '\'') {
+                // TODO: if (mb_strlen(string) > 1) {}
+                string_append_char(string, *lexer->current);
+                *lexer->current++;
+                lexer->column++;
+            }
+
+            if (lexer_is_at_end(lexer)) {
+                lexer_error(lexer, "facing EOF but need to close char first!\n");
+                return;
+            } else if (*lexer->current != '\'') {
+                lexer_error(lexer, "need to close char first!\n");
+                *lexer->current++;
+                lexer->column++;
+                return;
+            }
+
+            // Skip '
+            *lexer->current++;
+            lexer->column++;
+
+            // printf("TOKEN: CLOSE STRING\n");
+            lexer_token_t* token = token_init(TOKEN_TYPE_STRING_SINGLE);
+            token_set_value(token, string_to_array(string));
+            lexer_add_token(lexer, token);
+        } break;
+
         case '"': {
             // eat "
             *lexer->current++;
             lexer->column++;
 
+            string_t* string = string_init_size(10);
             while (!lexer_is_at_end(lexer) && *lexer->current != '"') {
-                printf("TOKEN: READ STRING CHAR %c\n", *lexer->current);
+                string_append_char(string, *lexer->current);
                 *lexer->current++;
                 lexer->column++;
             }
@@ -168,6 +202,7 @@ void lexer_scan_token(lexer_t* lexer)
 
             // printf("TOKEN: CLOSE STRING\n");
             lexer_token_t* token = token_init(TOKEN_TYPE_STRING_DOUBLE);
+            token_set_value(token, string_to_array(string));
             lexer_add_token(lexer, token);
         } break;
 
