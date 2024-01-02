@@ -67,57 +67,61 @@ export class Lexer {
         return this.generateToken(TokenType.STRING, value);
     }
 
+    // Integers (123)
+    // Floating-point numbers (3.14)
+    // Scientific notation (1.5E10)
+    // Negative numbers (-3.14)
+    // Edge cases (leading/trailing dots, invalid formats)
     private readNumber(): Token {
         let tmp: string = '';
-        let foundE: boolean = false;
-        let foundENoDigit: boolean = false;
-        
+        let isFloat: boolean = false;
+        let isScientific: boolean = false;
+    
         while (this.state.pos < this.input.length && isNumber(this.input[this.state.pos])) {
             tmp += this.input[this.state.pos];
             this.state.pos++;
             this.state.column++;
         }
     
-        if (tmp.length === 0) {
-            foundENoDigit = true;
-            tmp += '0';
-        }
-    
         if (this.state.pos < this.input.length && this.input[this.state.pos] === '.') {
+            isFloat = true;
             tmp += this.input[this.state.pos];
             this.state.pos++;
             this.state.column++;
-
-            if (foundENoDigit && this.state.pos < this.input.length && !isNumber(this.input[this.state.pos])) {
-                const errorMessage = "This token is not a number it should be a DOT operator!";
-                return this.generateToken(TokenType.ERROR, null, errorMessage);
+    
+            while (this.state.pos < this.input.length && isNumber(this.input[this.state.pos])) {
+                tmp += this.input[this.state.pos];
+                this.state.pos++;
+                this.state.column++;
             }
-
-            while (this.state.pos < this.input.length) {
-                if (isNumber(this.input[this.state.pos])) {
+        }
+    
+        if (this.state.pos < this.input.length) {
+            const char = this.input[this.state.pos];
+            if (char === 'e' || char === 'E') {
+                isScientific = true;
+                tmp += char;
+                this.state.pos++;
+                this.state.column++;
+    
+                if (this.state.pos < this.input.length && (this.input[this.state.pos] === '+' || this.input[this.state.pos] === '-')) {
                     tmp += this.input[this.state.pos];
                     this.state.pos++;
                     this.state.column++;
                 }
-                else if (this.input[this.state.pos] === 'e' || this.input[this.state.pos] === 'E') {
+    
+                while (this.state.pos < this.input.length && isNumber(this.input[this.state.pos])) {
+                    tmp += this.input[this.state.pos];
                     this.state.pos++;
                     this.state.column++;
-                    
-                    if (foundE) {
-                        const errorMessage = "Invalid number format: Multiple 'e' characters";
-                        return this.generateToken(TokenType.ERROR, null, errorMessage);
-                    }
-
-                    foundE = true;
                 }
             }
         }
     
-        const tokenType = tmp.includes('.') || foundE
-            ? TokenType.FLOAT
-            : TokenType.INT;
+        const tokenType = isScientific ? TokenType.FLOAT : isFloat ? TokenType.FLOAT : TokenType.INT;
         return this.generateToken(tokenType, tmp);
     }
+    
 
     private readIdentifier(): Token {
         let tmp: string = '';

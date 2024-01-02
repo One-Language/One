@@ -8,15 +8,16 @@ console.log("HEY");
 
 const source_code = `
 fn test {
-    return 555
+    return;
 }
 fn hh() {}
 fn main (a b) {
     return;
     return 110
-    return "sallam"
+    // return "sallam"
     return ;
-    // return 3.14
+    return 3.14
+    return 1
 }
 `;
 
