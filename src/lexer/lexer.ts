@@ -152,45 +152,35 @@ export class Lexer {
     }
     
     private readMultiComment(): Token {
-        console.log("read multi comment", this.state.pos + 2, this.input[this.state.pos]);
-        this.state.pos+=2;
-        this.state.column+=2;
-
-        if (this.state.pos === this.input.length) { // EOF
-            const errorMessage = "Unterminated multi line comment";
-            return this.generateToken(TokenType.ERROR, null, errorMessage);
-        }
-
-        console.log(this.input[this.state.pos - 1], " <=> ", this.input[this.state.pos]);
-
-        while (this.state.pos < this.input.length && (this.state.pos === this.state.start_pos + 2 || (this.input[this.state.pos - 1] !== "*" && this.input[this.state.pos] !== "/"))) {
-            console.log("eating", this.state.pos, this.input[this.state.pos]);
-            this.state.pos++;
-
-            if (this.input[this.state.pos] === "\n") {
+        this.state.pos += 2;
+        this.state.column += 2;
+    
+        while (this.state.pos < this.input.length - 1) {
+            if (this.input[this.state.pos] === '*' && this.input[this.state.pos + 1] === '/') {
+                this.state.pos += 2;
+                this.state.column += 2;
+                break;
+            }
+    
+            if (this.input[this.state.pos] === '\n') {
                 this.state.line++;
                 this.state.column = 0;
+            } else {
+                this.state.column++;
             }
-            else this.state.column++;
+    
+            this.state.pos++;
         }
-
-        console.log("out of loop", this.state.pos, this.input[this.state.pos]);
-
-        if (this.state.pos === this.input.length) { // EOF
-            const errorMessage = "Unterminated multi line comment";
+    
+        if (this.state.pos >= this.input.length - 1) {
+            const errorMessage = 'Unterminated multi-line comment';
             return this.generateToken(TokenType.ERROR, null, errorMessage);
         }
-
-        // Closing */
-        this.state.pos++;
-        this.state.column++;
-
-        console.log("end of reader", this.state.pos, this.input[this.state.pos]);
     
         const value = this.input.substring(this.state.start_pos + 2, this.state.pos - 2);
         return this.generateToken(TokenType.MULTILINE_COMMENT, value);
-    }
-
+    }    
+    
     constructor(input: string) {
         this.input = input;
         this.tokens = [];
@@ -242,6 +232,8 @@ export class Lexer {
                         this.tokens.push(token);
                     }
                     else {
+                        this.state.pos++;
+                        this.state.column++;
                         const token = this.generateToken(TokenType.SLASH, '/');
                         this.tokens.push(token);
                     }
