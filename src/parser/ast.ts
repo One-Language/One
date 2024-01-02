@@ -2,7 +2,7 @@ import { Token, TokenType } from '../lexer/token';
 
 export abstract class Ast {
     type: string = "ast";
-}
+};
 
 export class MainAst {
     ast: Ast[] = [];
@@ -21,17 +21,6 @@ export class AstBody implements Ast {
     }
 };
 
-export class AstExpression implements Ast {
-    type: string = "expression";
-    valuetype: string;
-    value: any;
-
-    constructor(valuetype: string, value: any) {
-        this.valuetype = valuetype;
-        this.value = value;
-    }
-}
-
 export class AstStatementReturn implements Ast {
     type: string = "return";
     value: AstExpression;
@@ -39,7 +28,7 @@ export class AstStatementReturn implements Ast {
     constructor(value: AstExpression) {
         this.value = value;
     }
-}
+};
 
 export class AstStatement implements Ast {
     type: string;
@@ -73,68 +62,86 @@ export class AstFunction implements Ast {
     }
 };
 
-export class AstExpressionSub implements AstExpression {
+export abstract class AstExpression implements Ast {
+    type: string = "expression";
+    // valuetype: string;
+    // value: any;
+
+    // constructor(valuetype: string, value: any) {
+    //     this.valuetype = valuetype;
+    //     this.value = value;
+    // }
+};
+
+export class AstExpressionSub extends AstExpression {
+    type: string = "expression_sub";
     expr: AstExpression;
 
     constructor(expr: AstExpression) {
+        super();
         this.expr = expr;
     }
-}
+};
 
-export class AstExpressionTernary implements AstExpression {
+export class AstExpressionTernary extends AstExpression {
     clause: AstExpression;
     true_path: AstExpression;
     false_path: AstExpression;
 
     constructor(clause: AstExpression, true_path: AstExpression, false_path: AstExpression) {
+        super();
         this.clause = clause;
         this.true_path = true_path;
         this.false_path = false_path;
     }
-}
+};
 
-export class AstExpressionPostfix implements AstExpression {
+export class AstExpressionPostfix extends AstExpression {
     lhs: AstExpression;
     operator: Token;
 
     constructor(lhs: AstExpression, operator: Token) {
+        super();
         this.lhs = lhs;
         this.operator = operator;
     }
-}
+};
 
-export class AstExpressionPrefix implements AstExpression {
+export class AstExpressionPrefix extends AstExpression {
     type: string = "expression_prefix";
     operator: Token;
     rhs: AstExpression;
 
     constructor(operator: Token, rhs: AstExpression) {
+        super();
         this.operator = operator;
         this.rhs = rhs;
     }
-}
+};
 
 // An expression is anything that can be evaluated, A number literal is an expression.
-export class AstExpressionLiteral implements AstExpression {
+export class AstExpressionLiteral extends AstExpression {
     type: string = "expression_literal";
     valuetype: string;
     value: any;
 
     constructor(valuetype: string, value: any) {
+        super();
         this.value = value;
         this.valuetype = valuetype;
     }
-}
+};
 
-export class AstExpressionBinary implements AstExpression {
+export class AstExpressionBinary extends AstExpression {
     type: string = "expression_binary";
     lhs: AstExpression;
     operator: Token;
-    rhs: AstExpression; 
+    rhs: AstExpression;
 
     constructor(lhs: AstExpression, operator: Token, rhs: AstExpression) {
+        super();
         this.lhs = lhs;
         this.operator = operator;
         this.rhs = rhs;
     }
-}
+};
