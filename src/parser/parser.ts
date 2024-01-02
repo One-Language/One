@@ -2,6 +2,8 @@ import { Lexer } from '../lexer/lexer';
 import { Token, TokenType } from '../lexer/token';
 import { Ast, MainAst, AstStatementReturn, AstExpression, AstBody, AstFunction, AstStatement, AstFunctionArgument } from './ast';
 
+interface binding_power { left_power: number; right_power: number; }
+
 export class Parser {
     ast: MainAst = new MainAst();
     lexer: Lexer;
@@ -59,38 +61,81 @@ export class Parser {
 
         return null;
     }
+    
+    prefix_bp_lookup(whichOperator: TokenType): number {
+        switch(whichOperator) {
+            case TokenType.PLUS: return 300;
+            case TokenType.MINUS: return 300;
+            default: return 0;
+        }
+    }
 
-    parseExpression() {
-        if (this.lexer.has(TokenType.INT)) {
-            const expr = this.lexer.match(TokenType.INT);
-            return new AstExpression(
-                "int",
-                expr.value,
-            );
+    // *** Helper Functions to manage binding powers ***
+    LeftAssociative(priority: number): binding_power {
+        return { left_power: (priority - 1), right_power: priority };
+    }
+
+    RightAssociative(priority: number): binding_power {
+        return { left_power: (priority + 1), right_power: priority };
+    }
+ 
+    // Look up the left and right binding power of a given infix or postfix operator.
+    bp_lookup(whichOperator: TokenType): binding_power {
+        const no_binding_power: binding_power = {left_power: 0, right_power: 0};
+
+        switch (whichOperator) {
+            case TokenType.PLUS: return this.LeftAssociative(100);
+            case TokenType.MINUS: return this.LeftAssociative(100);
+            case TokenType.ASTERISK: return this.LeftAssociative(200);
+            case TokenType.SLASH: return this.LeftAssociative(200);
+            case TokenType.POW: return this.RightAssociative(99);
+            case TokenType.QUESTION: return this.RightAssociative(1000);
+
+            case TokenType.GT: return this.LeftAssociative(50);
+            case TokenType.GTE: return this.LeftAssociative(50);
+            case TokenType.LT: return this.LeftAssociative(50);
+            case TokenType.LTE: return this.LeftAssociative(50);
+            case TokenType.EQ: return this.LeftAssociative(50);
+            case TokenType.NEQ: return this.LeftAssociative(50);
+
+            // --- Postfix --- (Always Right Associative)
+            case TokenType.BANG: return this.RightAssociative(400);
+            // Note: Postfix operators are always RightAssociative
+
+            default: return no_binding_power;
         }
-        else if (this.lexer.skip(TokenType.FLOAT)) {
-            const expr = this.lexer.match(TokenType.FLOAT);
-            return new AstExpression(
-                "float",
-                expr.value,
-            );
+    }
+
+    parseExpression(binding_power_to_my_right: number = 0): AstExpression | null {
+        let result: AstExpression | null = null;
+    
+        if (this.lexer.has(TokenType.INT) || this.lexer.has(TokenType.FLOAT)) {
+            result = this.Number_Literal();
         }
-        else if (this.lexer.has(TokenType.STRING)) {
-            const expr = this.lexer.match(TokenType.STRING);
-            return new AstExpression(
-                "string",
-                expr.value,
-            );
+        else if (this.lexer.has(TokenType.LPAREN)) {
+            result = this.Sub_Expression();
         }
-        else if (this.lexer.has(TokenType.IDENT)) {
-            const expr = this.lexer.match(TokenType.IDENT);
-            return new AstExpression(
-                "ident",
-                expr.value,
-            );
+        else if (this.lexer.has(TokenType.PLUS) || this.lexer.has(TokenType.MINUS)) {
+            result = new Prefix_Expression(this.prefix_bp_lookup(this.lexer.front()));
+        }   
+        
+        if (result === null) {
+            return null; // We should always have either a LHS or Prefix Operator at this point.
         }
 
-        return null;
+        while(binding_power_to_my_right < this.bp_lookup(this.lexer.front()).left_power ) {
+            if (this.lexer.has(TokenType.BANG)) {
+                result = this.Postfix_Expression(result as AstExpression);
+            }
+            else if (this.lexer.has(TokenType.QUESTION)) {
+                result = this.Ternary_Expression(result as AstExpression)
+            }
+            else {
+                result = this.Binary_Expression(result as AstExpression, this.bp_lookup(this.lexer.front()).right_power);
+            }
+        }
+    
+        return result;
     }
 
     parseStatement() {
@@ -108,7 +153,7 @@ export class Parser {
 
             const expr: AstExpression | null = this.parseExpression();
             if (expr === null) {
-                this.errors.push("Wrong token as expression.");
+                this.errors.push("Wrong token as AstExpression.");
                 return null;
             }
 

@@ -38,12 +38,16 @@ export enum TokenType {
     PLUS = 'PLUS', // +
     MINUS = 'MINUS', // -
     BANG = 'BANG', // !
+    QUESTION = 'QUESTION', // ?
     ASTERISK = 'ASTERISK', // *
     SLASH = 'SLASH', // /
+    POW = 'POW', // ^
     LT = 'LT', // <
+    LTE = 'LTE', // <=
     GT = 'GT', // >
+    GTE = 'GTE', // >=
     EQ = 'EQ', // ==
-    NOT_EQ = 'NOT_EQ', // !=
+    NEQ = 'NEQ', // !=
     // delimiters
     COMMA = 'COMMA', // ,
     SEMICOLON = 'SEMICOLON', // ;

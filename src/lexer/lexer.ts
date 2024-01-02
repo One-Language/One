@@ -224,6 +224,20 @@ export class Lexer {
                     this.tokens.push(token);
                 } break;
 
+                case '^': {
+                    this.state.pos++;
+                    this.state.column++;
+                    const token = this.generateToken(TokenType.POW, '^');
+                    this.tokens.push(token);
+                } break;
+
+                case '?': {
+                    this.state.pos++;
+                    this.state.column++;
+                    const token = this.generateToken(TokenType.QUESTION, '?');
+                    this.tokens.push(token);
+                } break;
+
                 case '/': {
                     // /
                     if (this.state.pos + 1 < this.input.length && this.input[this.state.pos + 1] === "/") {
@@ -296,6 +310,36 @@ export class Lexer {
                     this.state.column++;
                     const token = this.generateToken(TokenType.SEMICOLON, ';');
                     this.tokens.push(token);
+                } break;
+
+                case '=': {
+                        this.state.pos++;
+                    this.state.column++;
+                    if (this.state.pos < this.input.length && this.input[this.state.pos] === '=') {
+                        this.state.pos++;
+                        this.state.column++;
+                        const token = this.generateToken(TokenType.EQ, '==');
+                        this.tokens.push(token);
+                    }
+                    else {
+                        const token = this.generateToken(TokenType.ASSIGN, '=');
+                        this.tokens.push(token);
+                    }
+                } break;
+
+                case '!': {
+                    this.state.pos++;
+                    this.state.column++;
+                    if (this.state.pos < this.input.length && this.input[this.state.pos] === '=') {
+                        this.state.pos++;
+                        this.state.column++;
+                        const token = this.generateToken(TokenType.NEQ, '!=');
+                        this.tokens.push(token);
+                    }
+                    else {
+                        const token = this.generateToken(TokenType.BANG, '!');
+                        this.tokens.push(token);
+                    }
                 } break;
 
                 case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9': {
