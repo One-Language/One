@@ -21,19 +21,25 @@ export class Parser {
     // }
 
     parserFunctionArgument() {
+        console.log("parserFunctionArgument: need type");
         const type = this.lexer.match(TokenType.IDENT);
-        const name = this.lexer.match(TokenType.IDENT);
+        console.log("type:", type);
 
-        if (type.value === null) {
-            const errorMessage = "Wrong token as type of function argument.";
-            this.errors.push(errorMessage);
+        console.log("parserFunctionArgument: need name");
+        const name = this.lexer.match(TokenType.IDENT);
+        console.log("name:", name);
+
+        if (type.error_message !== null) {
+            this.errors.push(type.error_message);
             return null;
         }
-        else if (name.value === null) {
-            const errorMessage = "Wrong token as name of function argument.";
-            this.errors.push(errorMessage);
+        else if (name.error_message !== null) {
+            this.errors.push(name.error_message);
             return null;
         }
+
+        if (type.value === null) return null;
+        if (name.value === null) return null;
 
         return new AstFunctionArgument(
             type.value,
@@ -152,29 +158,46 @@ export class Parser {
     }
 
     parseFunction() {
+        console.log("current parseFunction:", this.lexer.tokens[this.lexer.index]);
         const name = this.lexer.match(TokenType.IDENT);
         if (name.error_message !== null) {
             this.errors.push(name.error_message);
             return null;
         }
         if (name.value === null) return null;
+    
+        console.log("current after name - parseFunction:", this.lexer.tokens[this.lexer.index]);
 
         const args: AstFunctionArgument[] = [];
-
-        if (this.lexer.skip(TokenType.LPAREN)) { // (
-            if (! this.lexer.has(TokenType.RPAREN)) {
-                console.log(this.parserFunctionArgument());
+    
+        console.log("current before skip if:", this.lexer.tokens[this.lexer.index]);
+        if (this.lexer.skip(TokenType.LPAREN) !== null) { // (
+            console.log("current inside skip if:", this.lexer.tokens[this.lexer.index]);
+            while (!this.lexer.has(TokenType.RPAREN)) {
+                console.log("current inside loop:", this.lexer.tokens[this.lexer.index]);
+                const arg = this.parserFunctionArgument();
+                if (arg === null) {
+                    const errorMessage = "Wrong token as function argument.";
+                    this.errors.push(errorMessage);
+                    return null;
+                }
+                args.push(arg);
+                if (!this.lexer.has(TokenType.RPAREN) && !this.lexer.skip(TokenType.COMMA)) {
+                    const errorMessage = "Expected comma or closing parenthesis in function arguments.";
+                    this.errors.push(errorMessage);
+                    return null;
+                }
             }
             this.lexer.match(TokenType.RPAREN); // )
         }
-
+    
         const body: AstBody | null = this.parseBody();
         if (body === null) {
             const errorMessage = "Wrong token as function body.";
             this.errors.push(errorMessage);
             return null;
         }
-
+    
         return new AstFunction(
             name.value,
             args,
