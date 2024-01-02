@@ -224,12 +224,12 @@ export class Lexer {
                     // /
                     if (this.state.pos + 1 < this.input.length && this.input[this.state.pos + 1] === "/") {
                         const token = this.readSingleComment();
-                        this.tokens.push(token);
+                        // this.tokens.push(token);
                     }
                     // *
                     else if (this.state.pos + 1 < this.input.length && this.input[this.state.pos + 1] === "*") {
                         const token = this.readMultiComment();
-                        this.tokens.push(token);
+                        // this.tokens.push(token);
                     }
                     else {
                         this.state.pos++;

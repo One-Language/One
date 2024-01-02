@@ -1,3 +1,5 @@
+import { Ast } from "./../parser/ast";
+
 export const isNumber = (str: string): boolean => {
     return str >= '0' && str <= '9';
 };
@@ -62,8 +64,6 @@ export const identifiers = new Map<string, TokenType>([
     ['true', TokenType.TRUE],
     ['false', TokenType.FALSE],
 ]);
-
-export interface Ast {};
 
 export class TokenLocation {
     line: number;
