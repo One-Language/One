@@ -60,22 +60,11 @@ export class Generator {
     }
 
     c_expression(ast: AstExpression): string {
-        switch (ast.valuetype) {
-            case "int": {
-                return ast.value;
-            } break;
-            case "string": {
-                return `"${ast.value}"`;
-            } break;
-            case "float": {
-                return ast.value;
-            } break;
-        }
-        return "";
+        return ast.type;
     }
 
     c_statement_return(stmt: AstStatementReturn): string {
-        if (stmt.value === null || stmt.value.valuetype === "void") return "return;\n";
+        if (stmt.value.type === "expression_literal" && (stmt.value as AstExpression).type === "void") return "return;\n";
         else return "return " + this.c_expression(stmt.value) + ";\n";
     }
 
