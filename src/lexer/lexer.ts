@@ -98,7 +98,7 @@ export class Lexer {
     }
 
     private generateToken(token_id: TokenType, value: string | null, errorMessage: string | null = null): Token {
-        const lexme = this.input.substr(this.state.start_pos, this.state.pos);
+        const lexme = this.input.substr(this.state.start_pos, this.state.pos - this.state.start_pos);
         return new Token(
             new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
             new TokenLocation(this.state.line, this.state.column, this.state.pos),
