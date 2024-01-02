@@ -34,29 +34,15 @@ export class Lexer {
             this.state.pos = i;
             this.state.line = this.state.start_line;
             this.state.column = this.state.start_column;
-            return new Token(
-                new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                TokenType.ERROR,
-                input.substring(this.state.start_pos, this.state.pos),
-                null,
-                "Unterminated string"
-            );
+            return this.generateToken(TokenType.ERROR, null, "Unterminated string");
         }
     
-        const lexeme = input.substring(this.state.pos, i + 1);
-        const value = lexeme.substring(1, lexeme.length - 1);
+        const value = input.substring(this.state.pos + 1, i + 1 -1);
 
         this.state.pos = i;
         this.state.line = this.state.start_line;
         this.state.column = this.state.start_column;
-        return new Token(
-            new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-            new TokenLocation(this.state.line, this.state.column, this.state.pos),
-            TokenType.STRING,
-            lexeme,
-            value
-        );
+        return this.generateToken(TokenType.STRING, value);
     }
 
     private readNumber(input: string): Token {
@@ -82,14 +68,7 @@ export class Lexer {
                 this.state.pos = i;
                 this.state.line = this.state.start_line;
                 this.state.column = this.state.start_column;
-                return new Token(
-                    new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                    new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                    TokenType.ERROR,
-                    input.substring(this.state.start_pos, this.state.pos),
-                    null,
-                    "Invalid number format: Multiple 'e' characters"
-                );
+                return this.generateToken(TokenType.ERROR, "", "Invalid number format: Multiple 'e' characters");
             }
 
             foundE = true;
@@ -102,36 +81,36 @@ export class Lexer {
         this.state.pos = i;
         this.state.line = this.state.start_line;
         this.state.column = this.state.start_column;
-        return new Token(
-            new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-            new TokenLocation(this.state.line, this.state.column, this.state.pos),
-            tokenType,
-            tmp
-        );
+        return this.generateToken(tokenType, tmp);
     }
 
     private readIdentifier(input: string): Token {
         let i: number = this.state.pos;
-        let lexeme: string = '';
+        let tmp: string = '';
     
         while (i < input.length && isIdentifier(input[i])) {
-            lexeme += input[i];
+            tmp += input[i];
             i++;
         }
     
-        const tokenType = identifiers.get(lexeme) || TokenType.IDENT;
+        const tokenType = identifiers.get(tmp) || TokenType.IDENT;
 
         this.state.pos = i;
         this.state.line = this.state.start_line;
         this.state.column = this.state.start_column;
+        return this.generateToken(tokenType, tmp);
+    }
+
+    private generateToken(token_id: TokenType, value: string | null, errorMessage: string | null = null): Token {
         return new Token(
             new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
             new TokenLocation(this.state.line, this.state.column, this.state.pos),
-            tokenType,
-            lexeme
+            token_id,
+            value,
+            errorMessage
         );
     }
-    
+
     constructor(input: string) {
         this.tokens = [];
         this.index = 0;
@@ -147,133 +126,73 @@ export class Lexer {
 
             switch (input[this.state.pos]) {
                 case '+': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.PLUS,
-                        '+'
-                    );
+                    const token = this.generateToken(TokenType.PLUS, '+');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case '-': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.MINUS,
-                        '-'
-                    );
+                    const token = this.generateToken(TokenType.MINUS, '-');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case '*': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.ASTERISK,
-                        '*'
-                    );
+                    const token = this.generateToken(TokenType.ASTERISK, '*');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case '/': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.SLASH,
-                        '/'
-                    );
+                    const token = this.generateToken(TokenType.SLASH, '/');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case '(': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.LPAREN,
-                        '('
-                    );
+                    const token = this.generateToken(TokenType.LPAREN, '(');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case ')': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.RPAREN,
-                        ')'
-                    );
+                    const token = this.generateToken(TokenType.RPAREN, ')');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case '{': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.LBRACE,
-                        '{'
-                    );
+                    const token = this.generateToken(TokenType.LBRACE, '{');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case '}': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.RBRACE,
-                        '}'
-                    );
+                    const token = this.generateToken(TokenType.RBRACE, '}');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case '[': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.LBRACKET,
-                        '['
-                    );
+                    const token = this.generateToken(TokenType.LBRACKET, '[');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case ']': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.RBRACKET,
-                        ']'
-                    );
+                    const token = this.generateToken(TokenType.RBRACKET, ']');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case ',': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.COMMA,
-                        ','
-                    );
+                    const token = this.generateToken(TokenType.COMMA, ',');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
 
                 case ';': {
-                    const token = new Token(
-                        new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                        new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                        TokenType.SEMICOLON,
-                        ';'
-                    );
+                    const token = this.generateToken(TokenType.SEMICOLON, ';');
                     this.tokens.push(token);
                     this.state.pos++;
                 } break;
@@ -305,13 +224,7 @@ export class Lexer {
                         this.tokens.push(token);
                     } else {
                         const errorMessage = `${input[this.state.pos]} is not a valid character`;
-                        const token = new Token(
-                            new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-                            new TokenLocation(this.state.line, this.state.column, this.state.pos),
-                            TokenType.ERROR,
-                            input[this.state.pos],
-                            errorMessage
-                        );
+                        const token = this.generateToken(TokenType.ERROR, null, errorMessage);
                         this.tokens.push(token);
                         this.state.pos++;
                     }
@@ -319,12 +232,7 @@ export class Lexer {
             }
         }
 
-        const token = new Token(
-            new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-            new TokenLocation(this.state.line, this.state.column, this.state.pos),
-            TokenType.EOF,
-            ''
-        );
+        const token = this.generateToken(TokenType.EOF, null);
         this.tokens.push(token);
     }
 

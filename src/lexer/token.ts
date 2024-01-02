@@ -80,16 +80,14 @@ export class TokenLocation {
 
 export class Token implements Ast {
     type_id: TokenType;
-    lexeme: string;
     error_message: string | null;
     value: string | null;
 
     start_location: TokenLocation;
     end_location: TokenLocation;
 
-    constructor(start_location: TokenLocation, end_location: TokenLocation, type_id: TokenType, lexeme: string, value: string | null = null, errorMessage: string | null = null) {
+    constructor(start_location: TokenLocation, end_location: TokenLocation, type_id: TokenType, value: string | null = null, errorMessage: string | null = null) {
         this.type_id = type_id;
-        this.lexeme = lexeme;
 
         this.value = value;
 
@@ -100,6 +98,6 @@ export class Token implements Ast {
     }
 
     toString(): string {
-        return `Token(type: ${this.type_id}, lexeme: ${this.lexeme}, value: ${this.value}, error: ${this.error_message}, start: ${this.start_location}, end: ${this.end_location})`;
+        return `Token(type: ${this.type_id}, value: ${this.value}, error: ${this.error_message}, start: ${this.start_location}, end: ${this.end_location})`;
     }
 };
