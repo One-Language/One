@@ -21,13 +21,8 @@ export class Parser {
     // }
 
     parserFunctionArgument() {
-        console.log("parserFunctionArgument: need type");
         const type = this.lexer.match(TokenType.IDENT);
-        console.log("type:", type);
-
-        console.log("parserFunctionArgument: need name");
         const name = this.lexer.match(TokenType.IDENT);
-        console.log("name:", name);
 
         if (type.error_message !== null) {
             this.errors.push(type.error_message);
@@ -158,7 +153,6 @@ export class Parser {
     }
 
     parseFunction() {
-        console.log("current parseFunction:", this.lexer.tokens[this.lexer.index]);
         const name = this.lexer.match(TokenType.IDENT);
         if (name.error_message !== null) {
             this.errors.push(name.error_message);
@@ -192,7 +186,7 @@ export class Parser {
             this.errors.push(errorMessage);
             return null;
         }
-    
+
         return new AstFunction(
             name.value,
             args,

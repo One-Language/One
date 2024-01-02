@@ -7,7 +7,7 @@ console.log("HEY");
 
 const source_code = `
 fn main (a b) {
-    (return
+    return
     return 110
     return "sallam"
     return ;
