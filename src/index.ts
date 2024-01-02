@@ -7,6 +7,10 @@ import { Generator } from "./generator/generator";
 console.log("HEY");
 
 const source_code = `
+fn test {
+    return 555
+}
+fn hh() {}
 fn main (a b) {
     return;
     return 110
