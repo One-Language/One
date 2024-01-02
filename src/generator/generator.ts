@@ -1,4 +1,4 @@
-import { Ast, AstBody, AstFunction, AstFunctionArgument, MainAst } from "../parser/ast";
+import { Ast, AstBody, AstExpression, AstFunction, AstFunctionArgument, AstStatement, AstStatementReturn, MainAst } from "../parser/ast";
 
 export class Generator {
     ast: MainAst;
@@ -59,7 +59,41 @@ export class Generator {
         return c;
     }
 
-    c_body(ast: AstBody): string {
+    c_expression(ast: AstExpression): string {
+        switch (ast.valuetype) {
+            case "int": {
+                return ast.value;
+            } break;
+            case "string": {
+                return `"${ast.value}"`;
+            } break;
+            case "float": {
+                return ast.value;
+            } break;
+        }
         return "";
+    }
+
+    c_statement_return(stmt: AstStatementReturn): string {
+        if (stmt.value === null || stmt.value.valuetype === "void") return "return;\n";
+        else return "return " + this.c_expression(stmt.value) + ";\n";
+    }
+
+    c_statement(stmt: AstStatement): string {
+        if (stmt.type === "return") {
+            return this.c_statement_return(stmt as AstStatementReturn);
+        }
+
+        return "";
+    }
+
+    c_body(ast: AstBody): string {
+        let c: string = "";
+
+        for (const stmt of ast.stmts) {
+            c += this.c_statement(stmt);
+        }
+
+        return c;
     }
 };
