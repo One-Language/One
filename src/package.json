@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/index.ts",
+    "lint": "gts"
+  },
+  "devDependencies": {
+    "gts": "^5.2.0",
+    "typescript": "^5.3.3",
+    "ts-node-dev": "^1.1.8"
+  }
+}

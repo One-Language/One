@@ -30,3 +30,9 @@ test/lexer
 test/parser
 test/argument
 test/ast
+
+src/node_modules
+src/node_modules/**
+src/*.js
+src/**/*.js
+src/*/*.js
