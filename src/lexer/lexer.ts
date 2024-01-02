@@ -127,7 +127,7 @@ export class Lexer {
             this.state.pos++;
             this.state.column++;
         }
-    
+        
         const tokenType = identifiers.get(tmp) || TokenType.IDENT;
         return this.generateToken(tokenType, tmp);
     }

@@ -62,6 +62,13 @@ export class Parser {
                 expr.value,
             );
         }
+        else if (this.lexer.skip(TokenType.FLOAT)) {
+            const expr = this.lexer.match(TokenType.FLOAT);
+            return new AstExpression(
+                "float",
+                expr.value,
+            );
+        }
         else if (this.lexer.has(TokenType.STRING)) {
             const expr = this.lexer.match(TokenType.STRING);
             return new AstExpression(

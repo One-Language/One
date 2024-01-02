@@ -9,6 +9,7 @@ const source_code = `
 fn main {
     return 110
     return "sallam"
+    return 3.14
 }
 `;
 
