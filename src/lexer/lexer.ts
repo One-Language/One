@@ -27,6 +27,18 @@ export class Lexer {
         column: 0,
     };
 
+    private generateToken(token_id: TokenType, value: string | null, errorMessage: string | null = null): Token {
+        const lexme = this.input.substr(this.state.start_pos, this.state.pos - this.state.start_pos); // TODO: deprecated
+        return new Token(
+            new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
+            new TokenLocation(this.state.line, this.state.column, this.state.pos),
+            token_id,
+            value,
+            errorMessage,
+            lexme
+        );
+    }
+
     private readString(): Token {
         // Opening "
         this.state.pos++;
@@ -119,17 +131,46 @@ export class Lexer {
         const tokenType = identifiers.get(tmp) || TokenType.IDENT;
         return this.generateToken(tokenType, tmp);
     }
+    
+    private readSingleComment(): Token {
+        this.state.pos+=2;
+        this.state.column+=2;
 
-    private generateToken(token_id: TokenType, value: string | null, errorMessage: string | null = null): Token {
-        const lexme = this.input.substr(this.state.start_pos, this.state.pos - this.state.start_pos);
-        return new Token(
-            new TokenLocation(this.state.start_line, this.state.start_column, this.state.start_pos),
-            new TokenLocation(this.state.line, this.state.column, this.state.pos),
-            token_id,
-            value,
-            errorMessage,
-            lexme
-        );
+        while (this.state.pos < this.input.length && this.input[this.state.pos] !== "\n") {
+            this.state.pos++;
+            this.state.column++;
+        }
+
+        // Closing \n
+        if (this.input[this.state.pos] === "\n") {
+            this.state.pos++;
+            this.state.column++;
+        }
+    
+        const value = this.input.substring(this.state.start_pos + 2, this.state.pos - 1);
+        return this.generateToken(TokenType.INLINE_COMMENT, value);
+    }
+    
+    private readMultiComment(): Token {
+        this.state.pos+=2;
+        this.state.column+=2;
+
+        while (this.state.pos < this.input.length && this.input[this.state.pos - 1] !== "*" && this.input[this.state.pos] !== "/") {
+            this.state.pos++;
+            this.state.column++;
+        }
+
+        if (this.state.pos === this.input.length) { // EOF
+            const errorMessage = "Unterminated multi line comment";
+            return this.generateToken(TokenType.ERROR, null, errorMessage);
+        }
+
+        // Closing */
+        this.state.pos++;
+        this.state.column++;
+    
+        const value = this.input.substring(this.state.start_pos + 2, this.state.pos - 2);
+        return this.generateToken(TokenType.MULTILINE_COMMENT, value);
     }
 
     constructor(input: string) {
@@ -173,10 +214,16 @@ export class Lexer {
                 } break;
 
                 case '/': {
-                    this.state.pos++;
-                    this.state.column++;
-                    const token = this.generateToken(TokenType.SLASH, '/');
-                    this.tokens.push(token);
+                    if (this.state.pos < this.input.length && this.input[this.state.pos + 1] === "/") {
+                        const token = this.readSingleComment();
+                        this.tokens.push(token);    
+                    } else if (this.state.pos < this.input.length && this.input[this.state.pos + 1] === "*") {
+                        const token = this.readMultiComment();
+                        this.tokens.push(token);
+                    } else {
+                        const token = this.generateToken(TokenType.SLASH, '/');
+                        this.tokens.push(token);
+                    }
                 } break;
 
                 case '(': {

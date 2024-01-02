@@ -14,6 +14,9 @@ export enum TokenType {
     // special
     EOF = 'EOF',
     ERROR = 'ERROR',
+    // debugs
+    INLINE_COMMENT = 'INLINE_COMMENT',
+    MULTILINE_COMMENT = 'MULTILINE_COMMENT',
     // keywords
     LET = 'LET',
     FN = 'FN',
