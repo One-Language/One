@@ -6,7 +6,6 @@ export class MainAst {
     ast: Ast[] = [];
     
     push(ast: Ast) {
-        console.log("push into ast:", ast);
         this.ast.push(ast);
     }
 };

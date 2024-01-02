@@ -93,18 +93,19 @@ export class Parser {
 
     parseFunction() {
         const name = this.lexer.match(TokenType.IDENT);
-        if (name.value === null) {
-            const errorMessage = "Wrong token as function name.";
-            this.errors.push(errorMessage);
+        if (name.error_message !== null) {
+            this.errors.push(name.error_message);
             return null;
         }
+        if (name.value === null) return null;
+
         const args: AstFunctionArgument[] = [];
 
-        if (this.lexer.skip(TokenType.LBRACE)) { // (
-            if (! this.lexer.has(TokenType.RBRACE)) {
+        if (this.lexer.skip(TokenType.LPAREN)) { // (
+            if (! this.lexer.has(TokenType.RPAREN)) {
                 console.log(this.parserFunctionArgument());
             }
-            this.lexer.match(TokenType.RBRACE); // )
+            this.lexer.match(TokenType.RPAREN); // )
         }
 
         const body: AstBody | null = this.parseBody();
@@ -124,7 +125,6 @@ export class Parser {
     parse() {
         while (true) {
             const ast: Ast | null | undefined = this.parseMainStatement();
-            console.log("parse ast: ", ast);
             if (ast === undefined) break; // EOF
             else if (ast !== null) this.ast.push(ast);
         }
