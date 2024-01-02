@@ -2,6 +2,7 @@ import { main as lexer_main } from "./lexer/index";
 import { Lexer } from "./lexer/lexer";
 import { Parser } from "./parser/parser";
 import { Ast, MainAst } from "./parser/ast";
+import { Generator } from "./generator/generator";
 
 console.log("HEY");
 
@@ -29,4 +30,9 @@ if (parser.errors.length === 0) {
     const ast : MainAst = parser.tree();
     console.log(JSON.stringify(ast.ast, null, 4));
     // console.log(ast.ast);
+
+    console.log(" =============================== GEN =============================== ");
+    const generator: Generator = new Generator(ast);
+    const c: string = generator.c();
+    console.log(c);
 }
