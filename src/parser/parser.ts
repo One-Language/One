@@ -1,6 +1,6 @@
 import { Lexer } from '../lexer/lexer';
 import { Token, TokenType } from '../lexer/token';
-import { Ast, MainAst, AstStatementReturn, AstExpression, AstBody, AstFunction, AstStatement, AstFunctionArgument } from './ast';
+import { Ast, MainAst, AstExpressionLiteral, AstExpressionPrefix, AstExpressionPostfix, AstExpressionBinary, AstExpressionTernary, AstStatementReturn, AstExpression, AstBody, AstFunction, AstStatement, AstFunctionArgument } from './ast';
 
 interface binding_power { left_power: number; right_power: number; }
 
@@ -106,17 +106,89 @@ export class Parser {
         }
     }
 
+    parseExpressionLiteral(): AstExpression | null {
+        if (this.lexer.has(TokenType.INT) || this.lexer.has(TokenType.FLOAT)) {
+            const token = this.lexer.pop();
+            return new AstExpressionLiteral(token.type, token.value);
+        }
+        return null;
+    }
+    
+    parseExpressionPrefix(minBP: number): AstExpression | null {
+        if (this.lexer.has(TokenType.PLUS) || this.lexer.has(TokenType.MINUS)) {
+            const operator = this.lexer.pop();
+            const rhs = this.parseExpression(minBP);
+            if (rhs === null) {
+                this.errors.push("Expected expression after prefix operator.");
+                return null;
+            }
+            return new AstExpressionPrefix(operator, rhs);
+        }
+        return null;
+    }
+    
+    parseExpressionPostfix(expr: AstExpression): AstExpression | null {
+        if (this.lexer.has(TokenType.BANG)) {
+            const operator = this.lexer.pop();
+            return new AstExpressionPostfix(expr, operator);
+        }
+        return null;
+    }
+    
+    parseExpressionBinary(lhs: AstExpression, minBP: number): AstExpression | null {
+        if (
+            this.lexer.has(TokenType.PLUS) ||
+            this.lexer.has(TokenType.MINUS)
+        ) {
+            const operator = this.lexer.pop();
+            const rhs = this.parseExpression(minBP);
+            if (rhs === null) {
+                this.errors.push("Expected expression after binary operator.");
+                return null;
+            }
+            return new AstExpressionBinary(lhs, operator, rhs);
+        }
+        return null;
+    }
+
+    parseExpressionTernary(clause: AstExpression): AstExpression | null {
+        if (this.lexer.has(TokenType.QUESTION)) {
+            this.lexer.pop(); // Consume the "?"
+            
+            const truePath = this.parseExpression();
+            if (truePath === null) {
+                this.errors.push("Expected true path expression in ternary operator.");
+                return null;
+            }
+    
+            if (!this.lexer.has(TokenType.COLON)) {
+                this.errors.push("Expected ':' in ternary operator.");
+                return null;
+            }
+            this.lexer.pop(); // Consume the ":"
+    
+            const falsePath = this.parseExpression();
+            if (falsePath === null) {
+                this.errors.push("Expected false path expression in ternary operator.");
+                return null;
+            }
+    
+            return new AstExpressionTernary(clause, truePath, falsePath);
+        }
+        return null;
+    }
+
     parseExpression(binding_power_to_my_right: number = 0): AstExpression | null {
         let result: AstExpression | null = null;
     
         if (this.lexer.has(TokenType.INT) || this.lexer.has(TokenType.FLOAT)) {
-            result = this.Number_Literal();
+            result = this.parseExpressionLiteral();
         }
         else if (this.lexer.has(TokenType.LPAREN)) {
-            result = this.Sub_Expression();
+            result = this.parseExpressionSub();
         }
         else if (this.lexer.has(TokenType.PLUS) || this.lexer.has(TokenType.MINUS)) {
-            result = new Prefix_Expression(this.prefix_bp_lookup(this.lexer.front()));
+            result = this.parseExpressionPrefix(this.prefix_bp_lookup(this.lexer.front()));
         }   
         
         if (result === null) {
@@ -125,13 +197,13 @@ export class Parser {
 
         while(binding_power_to_my_right < this.bp_lookup(this.lexer.front()).left_power ) {
             if (this.lexer.has(TokenType.BANG)) {
-                result = this.Postfix_Expression(result as AstExpression);
+                result = this.parseExpressionPostfix(result as AstExpression);
             }
             else if (this.lexer.has(TokenType.QUESTION)) {
-                result = this.Ternary_Expression(result as AstExpression)
+                result = this.parseExpressionTernary(result as AstExpression)
             }
             else {
-                result = this.Binary_Expression(result as AstExpression, this.bp_lookup(this.lexer.front()).right_power);
+                result = this.parseExpressionBinary(result as AstExpression, this.bp_lookup(this.lexer.front()).right_power);
             }
         }
     

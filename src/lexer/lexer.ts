@@ -312,6 +312,13 @@ export class Lexer {
                     this.tokens.push(token);
                 } break;
 
+                case ':': {
+                    this.state.pos++;
+                    this.state.column++;
+                    const token = this.generateToken(TokenType.COLON, ':');
+                    this.tokens.push(token);
+                } break;
+
                 case '=': {
                         this.state.pos++;
                     this.state.column++;

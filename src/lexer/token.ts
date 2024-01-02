@@ -43,6 +43,7 @@ export enum TokenType {
     SLASH = 'SLASH', // /
     POW = 'POW', // ^
     LT = 'LT', // <
+    COLON = 'COLON', // :
     LTE = 'LTE', // <=
     GT = 'GT', // >
     GTE = 'GTE', // >=

@@ -73,7 +73,7 @@ export class AstFunction implements Ast {
     }
 };
 
-class AstExpressionSub implements AstExpression {
+export class AstExpressionSub implements AstExpression {
     expr: AstExpression;
 
     constructor(expr: AstExpression) {
@@ -81,7 +81,7 @@ class AstExpressionSub implements AstExpression {
     }
 }
 
-class AstExpressionTernary implements AstExpression {
+export class AstExpressionTernary implements AstExpression {
     clause: AstExpression;
     true_path: AstExpression;
     false_path: AstExpression;
@@ -93,7 +93,7 @@ class AstExpressionTernary implements AstExpression {
     }
 }
 
-class AstExpressionPostfix implements AstExpression {
+export class AstExpressionPostfix implements AstExpression {
     lhs: AstExpression;
     operator: Token;
 
@@ -103,7 +103,7 @@ class AstExpressionPostfix implements AstExpression {
     }
 }
 
-class AstExpressionPrefix implements AstExpression {
+export class AstExpressionPrefix implements AstExpression {
     type: string = "expression_prefix";
     operator: Token;
     rhs: AstExpression;
@@ -115,7 +115,7 @@ class AstExpressionPrefix implements AstExpression {
 }
 
 // An expression is anything that can be evaluated, A number literal is an expression.
-class AstExpressionLiteral implements AstExpression {
+export class AstExpressionLiteral implements AstExpression {
     type: string = "expression_literal";
     valuetype: string;
     value: any;
@@ -126,7 +126,7 @@ class AstExpressionLiteral implements AstExpression {
     }
 }
 
-class AstExpressionBinary implements AstExpression {
+export class AstExpressionBinary implements AstExpression {
     type: string = "expression_binary";
     lhs: AstExpression;
     operator: Token;
