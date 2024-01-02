@@ -81,7 +81,7 @@ export class TokenLocation {
     }
 };
 
-export class Token implements Ast {
+export class Token {
     type_id: TokenType;
     error_message: string | null;
     value: string | null;

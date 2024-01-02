@@ -1,6 +1,8 @@
 import { Token, TokenType } from '../lexer/token';
 
-export abstract class Ast {}
+export abstract class Ast {
+    type: string = "ast";
+}
 
 export class MainAst {
     ast: Ast[] = [];
@@ -11,6 +13,7 @@ export class MainAst {
 };
 
 export class AstBody implements Ast {
+    type: string = "body";
     stmts: Ast[] = [];
 
     constructor(stmts: Ast[]) {
