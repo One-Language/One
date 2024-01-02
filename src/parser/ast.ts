@@ -19,7 +19,7 @@ export class AstBody implements Ast {
 };
 
 export class AstExpression implements Ast {
-    type: string = "function";
+    type: string = "expression";
     valuetype: string;
     value: any;
 
@@ -40,11 +40,9 @@ export class AstStatementReturn implements Ast {
 
 export class AstStatement implements Ast {
     type: string;
-    name: string;
 
-    constructor(type: string, name: string) {
+    constructor(type: string) {
         this.type = type;
-        this.name = name;
     }
 };
 

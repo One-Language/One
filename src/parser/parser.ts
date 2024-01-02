@@ -111,10 +111,7 @@ export class Parser {
             );
         }
 
-        return new AstStatement(
-            "1",
-            "2",
-        );
+        return null;
     }
 
     parseBody() {
