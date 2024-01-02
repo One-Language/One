@@ -11,7 +11,12 @@ export const main = () => {
         dfgdfg
         dfg
         dfg
-            dfgdfg?"`;
+            dfgdfg?"
+            
+/*
+    fgdfkgdfgkod fkogdf+ c "dfgdfgsgdf gdfg d fg
+    q           dfgdfgdfg"
+    fdgdfg.. . . ???,.dfgd.fg,.df,gdfg */+/`;
     const lexer: Lexer = new Lexer(source_code);
     
     console.log(lexer.tokens);

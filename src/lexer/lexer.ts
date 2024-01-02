@@ -152,13 +152,29 @@ export class Lexer {
     }
     
     private readMultiComment(): Token {
+        console.log("read multi comment", this.state.pos + 2, this.input[this.state.pos]);
         this.state.pos+=2;
         this.state.column+=2;
 
-        while (this.state.pos < this.input.length && this.input[this.state.pos - 1] !== "*" && this.input[this.state.pos] !== "/") {
-            this.state.pos++;
-            this.state.column++;
+        if (this.state.pos === this.input.length) { // EOF
+            const errorMessage = "Unterminated multi line comment";
+            return this.generateToken(TokenType.ERROR, null, errorMessage);
         }
+
+        console.log(this.input[this.state.pos - 1], " <=> ", this.input[this.state.pos]);
+
+        while (this.state.pos < this.input.length && (this.state.pos === this.state.start_pos + 2 || (this.input[this.state.pos - 1] !== "*" && this.input[this.state.pos] !== "/"))) {
+            console.log("eating", this.state.pos, this.input[this.state.pos]);
+            this.state.pos++;
+
+            if (this.input[this.state.pos] === "\n") {
+                this.state.line++;
+                this.state.column = 0;
+            }
+            else this.state.column++;
+        }
+
+        console.log("out of loop", this.state.pos, this.input[this.state.pos]);
 
         if (this.state.pos === this.input.length) { // EOF
             const errorMessage = "Unterminated multi line comment";
@@ -168,6 +184,8 @@ export class Lexer {
         // Closing */
         this.state.pos++;
         this.state.column++;
+
+        console.log("end of reader", this.state.pos, this.input[this.state.pos]);
     
         const value = this.input.substring(this.state.start_pos + 2, this.state.pos - 2);
         return this.generateToken(TokenType.MULTILINE_COMMENT, value);
@@ -186,7 +204,6 @@ export class Lexer {
         };
 
         while (this.state.pos < this.input.length) {
-            // Remove whitespace
             while ((this.state.pos < this.input.length) && ((this.input[this.state.pos] === " ") || (this.input[this.state.pos] === "\t"))) this.state.pos++;
 
             update_state();
@@ -214,13 +231,17 @@ export class Lexer {
                 } break;
 
                 case '/': {
-                    if (this.state.pos < this.input.length && this.input[this.state.pos + 1] === "/") {
+                    // /
+                    if (this.state.pos + 1 < this.input.length && this.input[this.state.pos + 1] === "/") {
                         const token = this.readSingleComment();
-                        this.tokens.push(token);    
-                    } else if (this.state.pos < this.input.length && this.input[this.state.pos + 1] === "*") {
+                        this.tokens.push(token);
+                    }
+                    // *
+                    else if (this.state.pos + 1 < this.input.length && this.input[this.state.pos + 1] === "*") {
                         const token = this.readMultiComment();
                         this.tokens.push(token);
-                    } else {
+                    }
+                    else {
                         const token = this.generateToken(TokenType.SLASH, '/');
                         this.tokens.push(token);
                     }
@@ -304,13 +325,14 @@ export class Lexer {
                 } break;
 
                 default: {
+                    // a-zA-Z
                     if (isIdentifierBegin(this.input[this.state.pos])) {
                         const token = this.readIdentifier();
                         this.tokens.push(token);
-                    } else {
+                    }
+                    else {
                         this.state.pos++;
                         this.state.column++;
-
                         const errorMessage = `${this.input[this.state.pos]} is not a valid character`;
                         const token = this.generateToken(TokenType.ERROR, null, errorMessage);
                         this.tokens.push(token);
