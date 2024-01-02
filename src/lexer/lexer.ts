@@ -35,7 +35,10 @@ export class Lexer {
         while (this.state.pos < this.input.length && this.input[this.state.pos] !== '"') {
             this.state.pos++;
 
-            if (this.input[this.state.pos] === "\n") this.state.column = 0;
+            if (this.input[this.state.pos] === "\n") {
+                this.state.line++;
+                this.state.column = 0;
+            }
             else this.state.column++;
         }
         
@@ -270,7 +273,7 @@ export class Lexer {
         }
 
         update_state();
-        
+
         const token = this.generateToken(TokenType.EOF, null);
         this.tokens.push(token);
     }
