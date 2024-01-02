@@ -62,16 +62,44 @@ export const identifiers = new Map<string, TokenType>([
 
 export interface Ast {};
 
+export class TokenLocation {
+    line: number;
+    column: number;
+    pos: number;
+
+    constructor(line: number, column: number, pos: number = -1) {
+        this.line = line;
+        this.column = column;
+        this.pos = pos;
+    }
+
+    toString(): string {
+        return `line ${this.line}, column ${this.column}`;
+    }
+};
+
 export class Token implements Ast {
     type_id: TokenType;
     lexeme: string;
     error_message: string | null;
     value: string | null;
 
-    constructor(type_id: TokenType, lexeme: string, value: string | null = null, errorMessage: string | null = null) {
+    start_location: TokenLocation;
+    end_location: TokenLocation;
+
+    constructor(start_location: TokenLocation, end_location: TokenLocation, type_id: TokenType, lexeme: string, value: string | null = null, errorMessage: string | null = null) {
         this.type_id = type_id;
         this.lexeme = lexeme;
+
         this.value = value;
+
         this.error_message = errorMessage;
+
+        this.start_location = start_location;
+        this.end_location = end_location;
+    }
+
+    toString(): string {
+        return `Token(type: ${this.type_id}, lexeme: ${this.lexeme}, value: ${this.value}, error: ${this.error_message}, start: ${this.start_location}, end: ${this.end_location})`;
     }
 };
