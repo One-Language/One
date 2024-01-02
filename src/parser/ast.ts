@@ -19,11 +19,12 @@ export class AstBody implements Ast {
 };
 
 export class AstExpression implements Ast {
-    type: string;
+    type: string = "function";
+    valuetype: string;
     value: any;
 
-    constructor(type: string, value: any) {
-        this.type = type;
+    constructor(valuetype: string, value: any) {
+        this.valuetype = valuetype;
         this.value = value;
     }
 }
@@ -38,7 +39,7 @@ export class AstStatementReturn implements Ast {
 }
 
 export class AstStatement implements Ast {
-    type: string; // TODO
+    type: string;
     name: string;
 
     constructor(type: string, name: string) {
@@ -48,16 +49,18 @@ export class AstStatement implements Ast {
 };
 
 export class AstFunctionArgument implements Ast {
-    type: string; // TODO
+    type: string = "function";
+    datatype: string; // TODO
     name: string;
 
-    constructor(type: string, name: string) {
-        this.type = type;
+    constructor(datatype: string, name: string) {
+        this.datatype = datatype;
         this.name = name;
     }
 };
 
 export class AstFunction implements Ast {
+    type: string = "function";
     name: string;
     args: AstFunctionArgument[];
     body: AstBody;
