@@ -72,3 +72,69 @@ export class AstFunction implements Ast {
         this.body = body;
     }
 };
+
+class AstExpressionSub implements AstExpression {
+    expr: AstExpression;
+
+    constructor(expr: AstExpression) {
+        this.expr = expr;
+    }
+}
+
+class AstExpressionTernary implements AstExpression {
+    clause: AstExpression;
+    true_path: AstExpression;
+    false_path: AstExpression;
+
+    constructor(clause: AstExpression, true_path: AstExpression, false_path: AstExpression) {
+        this.clause = clause;
+        this.true_path = true_path;
+        this.false_path = false_path;
+    }
+}
+
+class AstExpressionPostfix implements AstExpression {
+    lhs: AstExpression;
+    operator: Token;
+
+    constructor(lhs: AstExpression, operator: Token) {
+        this.lhs = lhs;
+        this.operator = operator;
+    }
+}
+
+class AstExpressionPrefix implements AstExpression {
+    type: string = "expression_prefix";
+    operator: Token;
+    rhs: AstExpression;
+
+    constructor(operator: Token, rhs: AstExpression) {
+        this.operator = operator;
+        this.rhs = rhs;
+    }
+}
+
+// An expression is anything that can be evaluated, A number literal is an expression.
+class AstExpressionLiteral implements AstExpression {
+    type: string = "expression_literal";
+    valuetype: string;
+    value: any;
+
+    constructor(valuetype: string, value: any) {
+        this.value = value;
+        this.valuetype = valuetype;
+    }
+}
+
+class AstExpressionBinary implements AstExpression {
+    type: string = "expression_binary";
+    lhs: AstExpression;
+    operator: Token;
+    rhs: AstExpression; 
+
+    constructor(lhs: AstExpression, operator: Token, rhs: AstExpression) {
+        this.lhs = lhs;
+        this.operator = operator;
+        this.rhs = rhs;
+    }
+}
