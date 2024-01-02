@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/index.ts",
-    "lint": "gts"
+    "lint": "gts fix"
   },
   "devDependencies": {
     "gts": "^5.2.0",
