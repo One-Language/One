@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/index.ts",
+    "dev": "ts-node-dev --ignore-watch node_modules src/index.ts",
+    "watch": "nodemon",
     "lint": "gts fix"
   },
   "devDependencies": {
