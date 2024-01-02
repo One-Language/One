@@ -127,6 +127,8 @@ export class Lexer {
             this.state.pos++;
             this.state.column++;
         }
+
+        console.log("identifier is:", tmp);
         
         const tokenType = identifiers.get(tmp) || TokenType.IDENT;
         return this.generateToken(tokenType, tmp);
@@ -197,6 +199,8 @@ export class Lexer {
             while ((this.state.pos < this.input.length) && ((this.input[this.state.pos] === " ") || (this.input[this.state.pos] === "\t"))) this.state.pos++;
 
             update_state();
+
+            console.log("inside lexer - current:", this.input[this.state.pos]);
 
             switch (this.input[this.state.pos]) {
                 case '+': {
@@ -311,14 +315,18 @@ export class Lexer {
                     this.state.pos++;
                 } break;
 
-                case '\r': case '\a': case '\b': case '\f': case '\v': {
+                case '\r': case '\b': case '\f': case '\v': {
                     this.state.pos++;
                     this.state.column++;
                 } break;
 
                 default: {
                     // a-zA-Z
+                    console.log("current default:", this.input[this.state.pos]);
+                    // console.log("prev default:", this.input[this.state.pos - 1]);
+                    // console.log("next default:", this.input[this.state.pos + 1]);
                     if (isIdentifierBegin(this.input[this.state.pos])) {
+                        // this.state.pos--;
                         const token = this.readIdentifier();
                         this.tokens.push(token);
                     }

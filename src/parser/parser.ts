@@ -166,15 +166,10 @@ export class Parser {
         }
         if (name.value === null) return null;
     
-        console.log("current after name - parseFunction:", this.lexer.tokens[this.lexer.index]);
-
         const args: AstFunctionArgument[] = [];
     
-        console.log("current before skip if:", this.lexer.tokens[this.lexer.index]);
         if (this.lexer.skip(TokenType.LPAREN) !== null) { // (
-            console.log("current inside skip if:", this.lexer.tokens[this.lexer.index]);
             while (!this.lexer.has(TokenType.RPAREN)) {
-                console.log("current inside loop:", this.lexer.tokens[this.lexer.index]);
                 const arg = this.parserFunctionArgument();
                 if (arg === null) {
                     const errorMessage = "Wrong token as function argument.";
