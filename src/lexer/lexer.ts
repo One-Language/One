@@ -341,7 +341,7 @@ export class Lexer {
 
     pop(): Token {
         const result = this.tokens[this.index];
-        if (this.index < this.tokens.length) this.index += 1;
+        if (result.type_id !== TokenType.EOF) this.index += 1;
         return result;
     }
 
@@ -372,7 +372,7 @@ export class Lexer {
         }
         return true;
     }
-    
+
     hasAny(lookingFor: TokenType[]): boolean {
         for (const token of lookingFor) {
             if (this.has(token)) return true;

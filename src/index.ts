@@ -17,9 +17,8 @@ console.log(lexer.tokens);
 console.log(" =============================== PARSER =============================== ");
 const parser: Parser = new Parser(lexer);
 // console.log(parser);
+console.log(parser.errors);
 
 console.log(" =============================== AST =============================== ");
 const ast : MainAst = parser.tree();
-if (ast !== null) {
-    console.log(ast.ast);
-}
+console.log(ast.ast);

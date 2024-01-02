@@ -6,7 +6,16 @@ export class MainAst {
     ast: Ast[] = [];
     
     push(ast: Ast) {
+        console.log("push into ast:", ast);
         this.ast.push(ast);
+    }
+};
+
+export class AstBody implements Ast {
+    stmts: Ast[] = [];
+
+    constructor(stmts: Ast[]) {
+        this.stmts = stmts;
     }
 };
 
@@ -18,7 +27,7 @@ export class AstStatement implements Ast {
         this.type = type;
         this.name = name;
     }
-}
+};
 
 export class AstFunctionArgument implements Ast {
     type: string; // TODO
@@ -32,12 +41,12 @@ export class AstFunctionArgument implements Ast {
 
 export class AstFunction implements Ast {
     name: string;
-    args: AstFunctionArgument[] = [];
-    stmts: Ast[] = [];
+    args: AstFunctionArgument[];
+    body: AstBody;
 
-    constructor(name: string, args: AstFunctionArgument[], stmts: Ast[]) {
+    constructor(name: string, args: AstFunctionArgument[], body: AstBody) {
         this.name = name;
         this.args = args;
-        this.stmts = stmts;
+        this.body = body;
     }
 };
