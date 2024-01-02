@@ -47,7 +47,7 @@ export class AstStatement implements Ast {
 };
 
 export class AstFunctionArgument implements Ast {
-    type: string = "function";
+    type: string = "function_argument";
     datatype: string; // TODO
     name: string;
 

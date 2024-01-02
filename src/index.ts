@@ -7,7 +7,7 @@ console.log("HEY");
 
 const source_code = `
 fn main (a b) {
-    return
+    return;
     return 110
     return "sallam"
     return ;
@@ -25,6 +25,8 @@ console.log("Errors");
 console.log(parser.errors);
 
 console.log(" =============================== AST =============================== ");
-const ast : MainAst = parser.tree();
-console.log(JSON.stringify(ast.ast, null, 4));
-// console.log(ast.ast);
+if (parser.errors.length === 0) {
+    const ast : MainAst = parser.tree();
+    console.log(JSON.stringify(ast.ast, null, 4));
+    // console.log(ast.ast);
+}

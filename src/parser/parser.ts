@@ -159,7 +159,7 @@ export class Parser {
             return null;
         }
         if (name.value === null) return null;
-    
+
         const args: AstFunctionArgument[] = [];
     
         if (this.lexer.skip(TokenType.LPAREN) !== null) { // (
