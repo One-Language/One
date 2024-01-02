@@ -28,72 +28,92 @@ export class Lexer {
     };
 
     private readString(): Token {
-        let i = this.state.pos + 1;
-        while (i < this.input.length && this.input[i] !== '"') i++;
-        
-        if (i === this.input.length) {
-            this.state.pos = i;
-            this.state.column += i;
-            return this.generateToken(TokenType.ERROR, null, "Unterminated string");
-        }
-    
-        const value = this.input.substring(this.state.pos + 1, i + 1 -1);
+        // Opening "
+        this.state.pos++;
+        this.state.column++;
 
-        this.state.pos = i;
-        this.state.column += i;
+        while (this.state.pos < this.input.length && this.input[this.state.pos] !== '"') {
+            this.state.pos++;
+
+            if (this.input[this.state.pos] === "\n") this.state.column = 0;
+            else this.state.column++;
+        }
+        
+        if (this.state.pos === this.input.length) { // EOF
+            const errorMessage = "Unterminated string";
+            return this.generateToken(TokenType.ERROR, null, errorMessage);
+        }
+
+        // Closing "
+        this.state.pos++;
+        this.state.column++;
+    
+        const value = this.input.substring(this.state.start_pos + 1, this.state.pos - 1);
         return this.generateToken(TokenType.STRING, value);
     }
 
     private readNumber(): Token {
-        let i: number = this.state.pos;
         let tmp: string = '';
         let foundE: boolean = false;
+        let foundENoDigit: boolean = false;
         
-        while (i < this.input.length && isNumber(this.input[i])) {
-            tmp += this.input[i];
-            i++;
+        while (this.state.pos < this.input.length && isNumber(this.input[this.state.pos])) {
+            tmp += this.input[this.state.pos];
+            this.state.pos++;
+            this.state.column++;
         }
     
         if (tmp.length === 0) {
+            foundENoDigit = true;
             tmp += '0';
         }
     
-        if (i < this.input.length && this.input[i] === '.') {
-            tmp += this.input[i];
-        }
-    
-        if (i < this.input.length && (this.input[i] === 'e' || this.input[i] === 'E')) {
-            if (foundE) {
-                this.state.pos = i;
-                this.state.column += i;
-                return this.generateToken(TokenType.ERROR, "", "Invalid number format: Multiple 'e' characters");
+        if (this.state.pos < this.input.length && this.input[this.state.pos] === '.') {
+            tmp += this.input[this.state.pos];
+            this.state.pos++;
+            this.state.column++;
+
+            if (foundENoDigit && this.state.pos < this.input.length && !isNumber(this.input[this.state.pos])) {
+                const errorMessage = "This token is not a number it should be a DOT operator!";
+                return this.generateToken(TokenType.ERROR, null, errorMessage);
             }
 
-            foundE = true;
+            while (this.state.pos < this.input.length) {
+                if (isNumber(this.input[this.state.pos])) {
+                    tmp += this.input[this.state.pos];
+                    this.state.pos++;
+                    this.state.column++;
+                }
+                else if (this.input[this.state.pos] === 'e' || this.input[this.state.pos] === 'E') {
+                    this.state.pos++;
+                    this.state.column++;
+                    
+                    if (foundE) {
+                        const errorMessage = "Invalid number format: Multiple 'e' characters";
+                        return this.generateToken(TokenType.ERROR, null, errorMessage);
+                    }
+
+                    foundE = true;
+                }
+            }
         }
     
         const tokenType = tmp.includes('.') || foundE
             ? TokenType.FLOAT
             : TokenType.INT;
-        
-        this.state.pos = i;
-        this.state.column += i;
         return this.generateToken(tokenType, tmp);
     }
 
     private readIdentifier(): Token {
-        let i: number = this.state.pos;
         let tmp: string = '';
     
-        while (i < this.input.length && isIdentifier(this.input[i])) {
-            tmp += this.input[i];
-            i++;
+        while (this.state.pos < this.input.length && isIdentifier(this.input[this.state.pos])) {
+            tmp += this.input[this.state.pos];
+            this.state.pos++;
+            this.state.column++;
         }
     
         const tokenType = identifiers.get(tmp) || TokenType.IDENT;
-
-        this.state.pos = i;
-        this.state.column += i;
         return this.generateToken(tokenType, tmp);
     }
 
