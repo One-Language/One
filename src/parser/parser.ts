@@ -91,6 +91,15 @@ export class Parser {
         if (this.lexer.has(TokenType.RETURN)) {
             this.lexer.skip(TokenType.RETURN);
 
+            if (this.lexer.skip(TokenType.SEMICOLON)) {
+                return new AstStatementReturn(
+                    new AstExpression(
+                        "void",
+                        null,
+                    ),
+                );
+            }
+
             const expr: AstExpression | null = this.parseExpression();
             if (expr === null) {
                 this.errors.push("Wrong token as expression.");
