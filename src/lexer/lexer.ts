@@ -322,11 +322,7 @@ export class Lexer {
 
                 default: {
                     // a-zA-Z
-                    console.log("current default:", this.input[this.state.pos]);
-                    // console.log("prev default:", this.input[this.state.pos - 1]);
-                    // console.log("next default:", this.input[this.state.pos + 1]);
                     if (isIdentifierBegin(this.input[this.state.pos])) {
-                        // this.state.pos--;
                         const token = this.readIdentifier();
                         this.tokens.push(token);
                     }
