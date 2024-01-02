@@ -18,6 +18,25 @@ export class AstBody implements Ast {
     }
 };
 
+export class AstExpression implements Ast {
+    type: string;
+    value: any;
+
+    constructor(type: string, value: any) {
+        this.type = type;
+        this.value = value;
+    }
+}
+
+export class AstStatementReturn implements Ast {
+    type: string = "return";
+    value: AstExpression;
+
+    constructor(value: AstExpression) {
+        this.value = value;
+    }
+}
+
 export class AstStatement implements Ast {
     type: string; // TODO
     name: string;

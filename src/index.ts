@@ -7,7 +7,8 @@ console.log("HEY");
 
 const source_code = `
 fn main {
-    // return 110
+    return 110
+    return "sallam"
 }
 `;
 
@@ -17,8 +18,10 @@ console.log(lexer.tokens);
 console.log(" =============================== PARSER =============================== ");
 const parser: Parser = new Parser(lexer);
 // console.log(parser);
+console.log("Errors");
 console.log(parser.errors);
 
 console.log(" =============================== AST =============================== ");
 const ast : MainAst = parser.tree();
-console.log(ast.ast);
+console.log(JSON.stringify(ast.ast, null, 4));
+// console.log(ast.ast);

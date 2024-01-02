@@ -1,6 +1,6 @@
 import { Lexer } from '../lexer/lexer';
 import { Token, TokenType } from '../lexer/token';
-import { Ast, MainAst, AstBody, AstFunction, AstStatement, AstFunctionArgument } from './ast';
+import { Ast, MainAst, AstStatementReturn, AstExpression, AstBody, AstFunction, AstStatement, AstFunctionArgument } from './ast';
 
 export class Parser {
     ast: MainAst = new MainAst();
@@ -54,7 +54,47 @@ export class Parser {
         return null;
     }
 
+    parseExpression() {
+        if (this.lexer.has(TokenType.INT)) {
+            const expr = this.lexer.match(TokenType.INT);
+            return new AstExpression(
+                "int",
+                expr.value,
+            );
+        }
+        else if (this.lexer.has(TokenType.STRING)) {
+            const expr = this.lexer.match(TokenType.STRING);
+            return new AstExpression(
+                "string",
+                expr.value,
+            );
+        }
+        else if (this.lexer.has(TokenType.IDENT)) {
+            const expr = this.lexer.match(TokenType.IDENT);
+            return new AstExpression(
+                "ident",
+                expr.value,
+            );
+        }
+
+        return null;
+    }
+
     parseStatement() {
+        if (this.lexer.has(TokenType.RETURN)) {
+            this.lexer.skip(TokenType.RETURN);
+
+            const expr: AstExpression | null = this.parseExpression();
+            if (expr === null) {
+                this.errors.push("Wrong token as expression.");
+                return null;
+            }
+
+            return new AstStatementReturn(
+                expr,
+            );
+        }
+
         return new AstStatement(
             "1",
             "2",
@@ -63,22 +103,24 @@ export class Parser {
 
     parseBody() {
         const open = this.lexer.match(TokenType.LBRACE);
-        console.log("open: ", open);
         if (open.type_id === TokenType.ERROR && open.error_message !== null) {
             this.errors.push(open.error_message);
             return null;
         }
 
         const stmts : Ast[] = [];
-        // while (! this.lexer.hasAny([TokenType.RBRACE, TokenType.EOF])) {
-        //     const stmt: AstStatement | null = this.parseStatement();
-        //     if (stmt === null) {
-        //         const errorMessage = "Wrong token as statement.";
-        //         this.errors.push(errorMessage);
-        //         return null;
-        //     }
-        //     stmts.push(stmt);
-        // }
+        while (true) {
+            if (this.lexer.has(TokenType.RBRACE)) break;
+            if (this.lexer.has(TokenType.EOF)) break;
+
+            const stmt: Ast | null = this.parseStatement();
+            if (stmt === null) {
+                const errorMessage = "Wrong token as statement.";
+                this.errors.push(errorMessage);
+                return null;
+            }
+            stmts.push(stmt);
+        }
 
         const close = this.lexer.match(TokenType.RBRACE);
         if (close.type_id === TokenType.ERROR && close.error_message !== null) {
