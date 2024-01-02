@@ -86,7 +86,9 @@ export class Token implements Ast {
     start_location: TokenLocation;
     end_location: TokenLocation;
 
-    constructor(start_location: TokenLocation, end_location: TokenLocation, type_id: TokenType, value: string | null = null, errorMessage: string | null = null) {
+    lexme: string | null;
+
+    constructor(start_location: TokenLocation, end_location: TokenLocation, type_id: TokenType, value: string | null = null, errorMessage: string | null = null, lexme: string | null = null) {
         this.type_id = type_id;
 
         this.value = value;
@@ -95,6 +97,8 @@ export class Token implements Ast {
 
         this.start_location = start_location;
         this.end_location = end_location;
+
+        this.lexme = lexme;
     }
 
     toString(): string {
