@@ -341,15 +341,70 @@ export class Lexer {
 
     pop(): Token {
         const result = this.tokens[this.index];
-        this.index += 1;
+        if (this.index < this.tokens.length) this.index += 1;
         return result;
     }
 
-    peek(lookingFor: TokenType): boolean {
+    skip(lookingFor: TokenType): Token | null {
+        if (this.has(lookingFor)) {
+            return this.pop();
+        }
+        return null;
+    }
+
+    match(lookingFor: TokenType): Token {
+        if (this.has(lookingFor)) {
+            return this.pop();
+        }
+        else {
+            const errorMessage = `Expected ${lookingFor} token but found ${this.tokens[this.index].type_id}`;
+            return this.generateToken(
+                TokenType.ERROR,
+                null,
+                errorMessage,
+            );
+        }
+    }
+
+    hasAll(lookingFor: TokenType[]): boolean {
+        for (const token of lookingFor) {
+            if (! this.has(token)) return false;
+        }
+        return true;
+    }
+    
+    hasAny(lookingFor: TokenType[]): boolean {
+        for (const token of lookingFor) {
+            if (this.has(token)) return true;
+        }
+        return false;
+    }
+
+    has(lookingFor: TokenType): boolean {
         return (this.tokens[this.index].type_id == lookingFor);
     }
 
     front(): TokenType {
         return this.tokens[this.index].type_id;
+    }
+
+    frontNext(): TokenType {
+        if (this.index + 1 >= this.tokens.length) return TokenType.EOF;
+        return this.tokens[this.index + 1].type_id;
+    }
+
+    frontNextNext(): TokenType {
+        if (this.index + 2 >= this.tokens.length) return TokenType.EOF;
+        return this.tokens[this.index + 2].type_id;
+    }
+
+    frontPrev(): TokenType {
+        if (this.index - 1 >= this.tokens.length) return TokenType.EOF;
+        return this.tokens[this.index - 1].type_id;
+    }
+
+    frontPrevPrev(): TokenType {
+        if (this.index - 2 >= this.tokens.length) return TokenType.EOF;
+        return this.tokens[this.index - 2].type_id;
     }
 }
