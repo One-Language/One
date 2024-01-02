@@ -134,14 +134,18 @@ export class Lexer {
         this.tokens = [];
         this.index = 0;
 
-        while (this.state.pos < this.input.length) {
-            // Remove whitespace
-            while ((this.state.pos < this.input.length) && ((this.input[this.state.pos] === " ") || (this.input[this.state.pos] === "\t"))) this.state.pos++;
-            
+        const update_state = () => {
             this.state.column = this.state.pos - this.state.prev_column;
             this.state.start_pos = this.state.pos;
             this.state.start_line = this.state.line;
             this.state.start_column = this.state.column;
+        };
+
+        while (this.state.pos < this.input.length) {
+            // Remove whitespace
+            while ((this.state.pos < this.input.length) && ((this.input[this.state.pos] === " ") || (this.input[this.state.pos] === "\t"))) this.state.pos++;
+
+            update_state();
 
             switch (this.input[this.state.pos]) {
                 case '+': {
@@ -265,6 +269,8 @@ export class Lexer {
             }
         }
 
+        update_state();
+        
         const token = this.generateToken(TokenType.EOF, null);
         this.tokens.push(token);
     }
