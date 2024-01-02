@@ -66,10 +66,12 @@ export class Token implements Ast {
     type_id: TokenType;
     lexeme: string;
     error_message: string | null;
+    value: string | null;
 
-    constructor(type_id: TokenType, lexeme: string, errorMessage: string | null = null) {
+    constructor(type_id: TokenType, lexeme: string, value: string | null = null, errorMessage: string | null = null) {
         this.type_id = type_id;
         this.lexeme = lexeme;
+        this.value = value;
         this.error_message = errorMessage;
     }
 };

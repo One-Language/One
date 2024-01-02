@@ -5,14 +5,15 @@ export class Lexer {
     index: number;
 
     private readString(input: string, start_pos: number): Token {
-        // match we need to have end string and not eof
         let i = start_pos + 1;
         while((i < input.length) && (input[i] !== '"')) i++;
         if (i === input.length) {
-            throw new Error('Unterminated string');
+            return new Token(TokenType.ERROR, input.substring(start_pos, i), null, "Unterminated string");
         }
         i++;
-        return new Token(TokenType.STRING, input.substring(start_pos, i) );
+        const lexeme = input.substring(start_pos, i);
+        const value = lexeme.substring(1, lexeme.length - 1);
+        return new Token(TokenType.STRING, lexeme, value);
     }
 
     private readNumber(input: string, start_pos: number): Token {
@@ -40,7 +41,7 @@ export class Lexer {
     
         if (i < input.length && (input[i] === 'e' || input[i] === 'E')) {
             if (foundE) {
-                throw new Error("Invalid number format: Multiple 'e' characters");
+                return new Token(TokenType.ERROR, input.substring(start_pos, i), null, "Invalid number format: Multiple 'e' characters");
             } else {
                 foundE = true;
                 tmp += 'e';
@@ -137,34 +138,25 @@ export class Lexer {
                 } break;
 
                 case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9': {
-                    try {
-                        this.tokens.push(this.readNumber(input, i));
-                        i += this.tokens[this.tokens.length - 1].lexeme.length;
-                    } catch (e: any) {
-                        this.tokens.push(new Token(TokenType.ERROR, input[i], e.message));
-                    }
+                    const token = this.readNumber(input, i);
+                    this.tokens.push(token);
+                    i += token.lexeme.length;
                 } break;
 
                 case '"': {
-                    try {
-                        this.tokens.push(this.readString(input, i));
-                        i += this.tokens[this.tokens.length - 1].lexeme.length;
-                    } catch (e: any) {
-                        this.tokens.push(new Token(TokenType.ERROR, input[i], e.message));
-                    }
+                    const token = this.readString(input, i);
+                    this.tokens.push(token);
+                    i += token.lexeme.length;
                 } break;
 
                 // identifier & keywords
                 default: {
                     if (isIdentifierBegin(input[i])) {
-                        try {
-                            this.tokens.push(this.readIdentifier(input, i));
-                            i += this.tokens[this.tokens.length - 1].lexeme.length;
-                        } catch (e: any) {
-                            this.tokens.push(new Token(TokenType.ERROR, input[i], e.message));
-                        }
+                        const token = this.readIdentifier(input, i);
+                        this.tokens.push(token);
+                        i += token.lexeme.length;
                     } else {
-                        this.tokens.push(new Token(TokenType.ERROR, input[i]));
+                        this.tokens.push(new Token(TokenType.ERROR, input[i], input[i] + " is not a valid character"));
                         i++;
                     }
                 } break;
