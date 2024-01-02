@@ -6,7 +6,7 @@ import { Ast, MainAst } from "./parser/ast";
 console.log("HEY");
 
 const source_code = `
-fn main {
+fn main (a b) {
     return 110
     return "sallam"
     return ;

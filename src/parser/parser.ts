@@ -24,8 +24,13 @@ export class Parser {
         const type = this.lexer.match(TokenType.IDENT);
         const name = this.lexer.match(TokenType.IDENT);
 
-        if (type.value === null || name.value === null) {
-            const errorMessage = "Wrong token as type/name of function argument.";
+        if (type.value === null) {
+            const errorMessage = "Wrong token as type of function argument.";
+            this.errors.push(errorMessage);
+            return null;
+        }
+        else if (name.value === null) {
+            const errorMessage = "Wrong token as name of function argument.";
             this.errors.push(errorMessage);
             return null;
         }
