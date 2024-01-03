@@ -202,7 +202,7 @@ export class Parser {
     parseExpression(binding_power_to_my_right: number = 0): AstExpression | AstExpressionPrefix | AstExpressionPostfix | AstExpressionBinary | AstExpressionTernary | AstExpressionSub | null {
         let result: AstExpression | AstExpressionPrefix | AstExpressionPostfix | AstExpressionBinary | AstExpressionTernary | AstExpressionSub | null = null;
     
-        if (this.lexer.has(TokenType.INT) || this.lexer.has(TokenType.FLOAT)) {
+        if (this.lexer.has(TokenType.INT) || this.lexer.has(TokenType.FLOAT) || this.lexer.has(TokenType.STRING) || this.lexer.has(TokenType.IDENT)) {
             result = this.parseExpressionLiteral();
         }
         else if (this.lexer.has(TokenType.LPAREN)) {
