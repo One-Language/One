@@ -103,7 +103,7 @@ export class Lexer {
                 tmp += char;
                 this.state.pos++;
                 this.state.column++;
-    
+
                 if (this.state.pos < this.input.length && (this.input[this.state.pos] === '+' || this.input[this.state.pos] === '-')) {
                     tmp += this.input[this.state.pos];
                     this.state.pos++;

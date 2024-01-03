@@ -1,6 +1,6 @@
 import { Lexer } from '../lexer/lexer';
 import { Token, TokenType } from '../lexer/token';
-import { Ast, MainAst, AstExpressionLiteral, AstExpressionPrefix, AstExpressionPostfix, AstExpressionSub, AstExpressionBinary, AstExpressionTernary, AstStatementReturn, AstExpression, AstBody, AstFunction, AstStatement, AstFunctionArgument } from './ast';
+import { Ast, MainAst, AstExpressionUnary, AstExpressionLiteral, AstExpressionPrefix, AstExpressionPostfix, AstExpressionSub, AstExpressionBinary, AstExpressionTernary, AstStatementReturn, AstExpression, AstBody, AstFunction, AstStatement, AstFunctionArgument } from './ast';
 
 interface binding_power { left_power: number; right_power: number; }
 
@@ -110,6 +110,19 @@ export class Parser {
         if (this.lexer.has(TokenType.INT) || this.lexer.has(TokenType.FLOAT) || this.lexer.has(TokenType.STRING)) {
             const token = this.lexer.pop();
             return new AstExpressionLiteral(token.type_id, token.value);
+        }
+        return null;
+    }
+    
+    parseExpressionUnary(minBP: number): AstExpressionUnary | null {
+        if (this.lexer.has(TokenType.PLUS) || this.lexer.has(TokenType.MINUS) || this.lexer.has(TokenType.BANG)) {
+            const operator = this.lexer.pop();
+            const rhs = this.parseExpression(minBP);
+            if (rhs === null) {
+                this.errors.push("Expected expression after unary operator.");
+                return null;
+            }
+            return new AstExpressionUnary(operator, rhs as AstExpression);
         }
         return null;
     }

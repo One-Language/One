@@ -145,3 +145,37 @@ export class AstExpressionBinary extends AstExpression {
         this.rhs = rhs;
     }
 };
+
+export class AstExpressionUnary extends AstExpression {
+    type: string = "expression_unary";
+    operator: Token;
+    operand: AstExpression;
+
+    constructor(operator: Token, operand: AstExpression) {
+        super();
+        this.operator = operator;
+        this.operand = operand;
+    }
+};
+
+export class AstExpressionFunctionCall extends AstExpression {
+    type: string = "expression_function_call";
+    functionName: string;
+    args: AstExpression[];
+
+    constructor(functionName: string, args: AstExpression[]) {
+        super();
+        this.functionName = functionName;
+        this.args = args;
+    }
+};
+
+export class AstExpressionVariable extends AstExpression {
+    type: string = "expression_variable";
+    name: string;
+
+    constructor(name: string) {
+        super();
+        this.name = name;
+    }
+};

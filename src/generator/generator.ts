@@ -1,4 +1,20 @@
-import { Ast, AstBody, AstExpression, AstFunction, AstFunctionArgument, AstStatement, AstStatementReturn, MainAst } from "../parser/ast";
+import { TokenLocation, TokenType } from "../lexer/token";
+import {
+    AstExpression,
+    AstExpressionLiteral,
+    AstExpressionBinary,
+    AstExpressionUnary,
+    AstExpressionTernary,
+    AstExpressionFunctionCall,
+    AstExpressionVariable,
+    AstFunctionArgument,
+    AstFunction,
+    AstBody,
+    Ast,
+    AstStatementReturn,
+    AstStatement,
+    MainAst,
+} from "../parser/ast";
 
 export class Generator {
     ast: MainAst;
@@ -60,7 +76,73 @@ export class Generator {
     }
 
     c_expression(ast: AstExpression): string {
-        return ast.type;
+        switch (ast.type) {
+            case "literal":
+                return this.c_expression_literal(ast as AstExpressionLiteral);
+            case "binary":
+                return this.c_expression_binary(ast as AstExpressionBinary);
+            case "unary":
+                return this.c_expression_unary(ast as AstExpressionUnary);
+            case "ternary":
+                return this.c_expression_ternary(ast as AstExpressionTernary);
+            case "functionCall":
+                return this.c_expression_functionCall(ast as AstExpressionFunctionCall);
+            case "variable":
+                return this.c_expression_variable(ast as AstExpressionVariable);
+            default:
+                throw new Error(`Unsupported expression type: ${ast.type}`);
+        }
+    }
+
+    c_expression_literal(ast: AstExpressionLiteral): string {
+        return ast.value.toString();
+    }
+
+    c_expression_binary(ast: AstExpressionBinary): string {
+        const left = this.c_expression(ast.lhs);
+        const right = this.c_expression(ast.rhs);
+
+        switch (ast.operator.type_id) {
+            case TokenType.PLUS:
+                return `(${left} + ${right})`;
+            case TokenType.MINUS:
+                return `(${left} - ${right})`;
+            case TokenType.ASTERISK:
+                return `(${left} * ${right})`;
+            case TokenType.SLASH:
+                return `(${left} / ${right})`;
+            default:
+                throw new Error(`Unsupported binary operator: ${ast.operator}`);
+        }
+    }
+
+    c_expression_unary(ast: AstExpressionUnary): string {
+        const operand = this.c_expression(ast.operand);
+
+        switch (ast.operator) {
+            case "-":
+                return `(-${operand})`;
+            default:
+                throw new Error(`Unsupported unary operator: ${ast.operator}`);
+        }
+    }
+
+    c_expression_ternary(ast: AstExpressionTernary): string {
+        const clause = this.c_expression(ast.clause);
+        const truePath = this.c_expression(ast.true_path);
+        const falsePath = this.c_expression(ast.false_path);
+
+        return `(${clause} ? ${truePath} : ${falsePath})`;
+    }
+
+    c_expression_functionCall(ast: AstExpressionFunctionCall): string {
+        const args = ast.args.map((arg: AstExpression) => this.c_expression(arg)).join(", ");
+
+        return `${ast.functionName}(${args})`;
+    }
+
+    c_expression_variable(ast: AstExpressionVariable): string {
+        return ast.name;
     }
 
     c_statement_return(stmt: AstStatementReturn): string {
