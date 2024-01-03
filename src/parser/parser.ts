@@ -107,7 +107,7 @@ export class Parser {
     }
 
     parseExpressionLiteral(): AstExpression | null {
-        if (this.lexer.has(TokenType.INT) || this.lexer.has(TokenType.FLOAT) || this.lexer.has(TokenType.STRING)) {
+        if (this.lexer.has(TokenType.INT) || this.lexer.has(TokenType.FLOAT) || this.lexer.has(TokenType.STRING) || this.lexer.has(TokenType.IDENT)) {
             const token = this.lexer.pop();
             return new AstExpressionLiteral(token.type_id, token.value);
         }

@@ -18,7 +18,7 @@ fn main (a b) {
     ret ;
     ret 3.14
     ret 1
-    ret 100 + 10
+    ret 100 + 10 * pi
 }
 `;
 
