@@ -233,8 +233,8 @@ export class Parser {
     }
 
     parseStatement() {
-        if (this.lexer.has(TokenType.RETURN)) {
-            this.lexer.skip(TokenType.RETURN);
+        if (this.lexer.has(TokenType.RET)) {
+            this.lexer.skip(TokenType.RET);
 
             if (this.lexer.skip(TokenType.SEMICOLON)) {
                 return new AstStatementReturn(

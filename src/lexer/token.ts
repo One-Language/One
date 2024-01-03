@@ -24,7 +24,7 @@ export enum TokenType {
     FN = 'FN',
     IF = 'IF',
     ELSE = 'ELSE',
-    RETURN = 'RETURN',
+    RET = 'RET',
     // literals
     INT = 'INT',
     FLOAT = 'FLOAT',
@@ -65,7 +65,7 @@ export const identifiers = new Map<string, TokenType>([
     ['fn', TokenType.FN],
     ['if', TokenType.IF],
     ['else', TokenType.ELSE],
-    ['ret', TokenType.RETURN],
+    ['ret', TokenType.RET],
     ['true', TokenType.TRUE],
     ['false', TokenType.FALSE],
 ]);
