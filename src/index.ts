@@ -8,16 +8,17 @@ console.log("HEY");
 
 const source_code = `
 fn test {
-    return;
+    ret;
 }
 fn hh() {}
 fn main (a b) {
-    return;
-    return 110
-    // return "sallam"
-    return ;
-    return 3.14
-    return 1
+    ret;
+    ret 110
+    // ret "sallam"
+    ret ;
+    ret 3.14
+    ret 1
+    ret 100 + 10
 }
 `;
 

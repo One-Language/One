@@ -65,7 +65,7 @@ export const identifiers = new Map<string, TokenType>([
     ['fn', TokenType.FN],
     ['if', TokenType.IF],
     ['else', TokenType.ELSE],
-    ['return', TokenType.RETURN],
+    ['ret', TokenType.RETURN],
     ['true', TokenType.TRUE],
     ['false', TokenType.FALSE],
 ]);
