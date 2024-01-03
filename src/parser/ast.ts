@@ -21,20 +21,20 @@ export class AstBody implements Ast {
     }
 };
 
-export class AstStatementReturn implements Ast {
-    type: string = "return";
-    value: AstExpression;
-
-    constructor(value: AstExpression) {
-        this.value = value;
-    }
-};
-
 export class AstStatement implements Ast {
     type: string;
 
     constructor(type: string) {
         this.type = type;
+    }
+};
+
+export class AstStatementReturn implements Ast {
+    type: string = "statement_return";
+    value: AstExpression;
+
+    constructor(value: AstExpression) {
+        this.value = value;
     }
 };
 
@@ -84,6 +84,7 @@ export class AstExpressionSub extends AstExpression {
 };
 
 export class AstExpressionTernary extends AstExpression {
+    type: string = "expression_ternary";
     clause: AstExpression;
     true_path: AstExpression;
     false_path: AstExpression;
@@ -97,6 +98,7 @@ export class AstExpressionTernary extends AstExpression {
 };
 
 export class AstExpressionPostfix extends AstExpression {
+    type: string = "expression_postfix";
     lhs: AstExpression;
     operator: Token;
 
@@ -143,18 +145,6 @@ export class AstExpressionBinary extends AstExpression {
         this.lhs = lhs;
         this.operator = operator;
         this.rhs = rhs;
-    }
-};
-
-export class AstExpressionUnary extends AstExpression {
-    type: string = "expression_unary";
-    operator: Token;
-    operand: AstExpression;
-
-    constructor(operator: Token, operand: AstExpression) {
-        super();
-        this.operator = operator;
-        this.operand = operand;
     }
 };
 

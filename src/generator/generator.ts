@@ -3,7 +3,8 @@ import {
     AstExpression,
     AstExpressionLiteral,
     AstExpressionBinary,
-    AstExpressionUnary,
+    AstExpressionPostfix,
+    AstExpressionPrefix,
     AstExpressionTernary,
     AstExpressionFunctionCall,
     AstExpressionVariable,
@@ -75,29 +76,56 @@ export class Generator {
         return c;
     }
 
+    c_expression_prefix(ast: AstExpressionPrefix): string {
+        const operator = ast.operator.type_id === TokenType.PLUS ? "+" : "-";
+        const rhs = this.c_expression(ast.rhs);
+    
+        return `(${operator}${rhs})`;
+    }
+    
+    c_expression_postfix(ast: AstExpressionPostfix): string {
+        const lhs = this.c_expression(ast.lhs);
+        const operator = ast.operator.type_id === TokenType.BANG ? "!" : "";
+    
+        return `(${lhs}${operator})`;
+    }
+
     c_expression(ast: AstExpression): string {
         switch (ast.type) {
-            case "literal":
+            case "expression_literal":
                 return this.c_expression_literal(ast as AstExpressionLiteral);
-            case "binary":
+            case "expression_binary":
                 return this.c_expression_binary(ast as AstExpressionBinary);
-            case "unary":
-                return this.c_expression_unary(ast as AstExpressionUnary);
-            case "ternary":
+            case "expression_prefix":
+                return this.c_expression_prefix(ast as AstExpressionPrefix);
+            case "expression_postfix":
+                return this.c_expression_postfix(ast as AstExpressionPostfix);
+            case "expression_ternary":
                 return this.c_expression_ternary(ast as AstExpressionTernary);
-            case "functionCall":
+            case "expression_function_call":
                 return this.c_expression_functionCall(ast as AstExpressionFunctionCall);
-            case "variable":
+            case "expression_variable":
                 return this.c_expression_variable(ast as AstExpressionVariable);
             default:
                 throw new Error(`Unsupported expression type: ${ast.type}`);
         }
     }
-
+    
     c_expression_literal(ast: AstExpressionLiteral): string {
-        return ast.value.toString();
+        switch (ast.valuetype) {
+            case 'VOID':
+                return "";
+            case 'INT':
+                return ast.value.toString();
+            case 'FLOAT':
+                return ast.value.toString();
+            case 'STRING':
+                return `"${ast.value}"`;
+            default:
+                throw new Error(`Unsupported literal type: ${typeof ast.value}`);
+        }
     }
-
+    
     c_expression_binary(ast: AstExpressionBinary): string {
         const left = this.c_expression(ast.lhs);
         const right = this.c_expression(ast.rhs);
@@ -113,17 +141,6 @@ export class Generator {
                 return `(${left} / ${right})`;
             default:
                 throw new Error(`Unsupported binary operator: ${ast.operator}`);
-        }
-    }
-
-    c_expression_unary(ast: AstExpressionUnary): string {
-        const operand = this.c_expression(ast.operand);
-
-        switch (ast.operator) {
-            case "-":
-                return `(-${operand})`;
-            default:
-                throw new Error(`Unsupported unary operator: ${ast.operator}`);
         }
     }
 
@@ -146,12 +163,14 @@ export class Generator {
     }
 
     c_statement_return(stmt: AstStatementReturn): string {
-        if (stmt.value.type === "expression_literal" && (stmt.value as AstExpression).type === "void") return "return;\n";
+        const expr: AstExpression = stmt.value;
+
+        if (expr.type === "expression_literal" && (expr as AstExpressionLiteral).valuetype === "VOID") return "return;\n";
         else return "return " + this.c_expression(stmt.value) + ";\n";
     }
 
     c_statement(stmt: AstStatement): string {
-        if (stmt.type === "return") {
+        if (stmt.type === "statement_return") {
             return this.c_statement_return(stmt as AstStatementReturn);
         }
 
