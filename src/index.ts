@@ -11,14 +11,15 @@ fn test {
     ret;
 }
 fn hh() {}
-fn main (a b) {
+fn main () {
+    ret 110
     ret;
     ret 110
     // ret "sallam"
     ret ;
     ret 3.14
     ret 1
-    ret 100 + 10 * pi
+    ret 1 + 2 * 3
 }
 `;
 
@@ -26,8 +27,11 @@ const lexer: Lexer = new Lexer(source_code);
 console.log(lexer.tokens);
 
 console.log(" =============================== PARSER =============================== ");
+console.log("1:");
 const parser: Parser = new Parser(lexer);
+console.log("2:");
 // console.log(parser);
+console.log("3:");
 console.log("Errors");
 console.log(parser.errors);
 

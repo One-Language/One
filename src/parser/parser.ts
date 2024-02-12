@@ -109,8 +109,10 @@ export class Parser {
     parseExpressionLiteral(): AstExpression | null {
         if (this.lexer.has(TokenType.INT) || this.lexer.has(TokenType.FLOAT) || this.lexer.has(TokenType.STRING) || this.lexer.has(TokenType.IDENT)) {
             const token = this.lexer.pop();
+            console.log("maybe is:", token);
             return new AstExpressionLiteral(token.type_id, token.value);
         }
+
         return null;
     }
     
@@ -120,34 +122,43 @@ export class Parser {
             const rhs = this.parseExpression(minBP);
             if (rhs === null) {
                 this.errors.push("Expected expression after prefix operator.");
+
                 return null;
             }
             return new AstExpressionPrefix(operator, rhs as AstExpression);
         }
+
         return null;
     }
     
     parseExpressionPostfix(expr: AstExpression): AstExpressionPostfix | null {
         if (this.lexer.has(TokenType.BANG)) {
             const operator = this.lexer.pop();
+
             return new AstExpressionPostfix(expr, operator);
         }
+
         return null;
     }
     
     parseExpressionBinary(lhs: AstExpression, minBP: number): AstExpressionBinary | null {
+        // console.log("parseExpressionBinary", this.lexer.tokens);
         if (
             this.lexer.has(TokenType.PLUS) ||
-            this.lexer.has(TokenType.MINUS)
+            this.lexer.has(TokenType.MINUS) ||
+            this.lexer.has(TokenType.ASTERISK)
         ) {
             const operator = this.lexer.pop();
             const rhs = this.parseExpression(minBP);
             if (rhs === null) {
                 this.errors.push("Expected expression after binary operator.");
+
                 return null;
             }
+
             return new AstExpressionBinary(lhs, operator, rhs as AstExpression);
         }
+
         return null;
     }
 
@@ -158,11 +169,13 @@ export class Parser {
             const truePath = this.parseExpression();
             if (truePath === null) {
                 this.errors.push("Expected true path expression in ternary operator.");
+
                 return null;
             }
     
             if (!this.lexer.has(TokenType.COLON)) {
                 this.errors.push("Expected ':' in ternary operator.");
+
                 return null;
             }
             this.lexer.pop(); // Consume the ":"
@@ -170,11 +183,13 @@ export class Parser {
             const falsePath = this.parseExpression();
             if (falsePath === null) {
                 this.errors.push("Expected false path expression in ternary operator.");
+
                 return null;
             }
     
             return new AstExpressionTernary(clause, truePath as AstExpression, falsePath as AstExpression);
         }
+
         return null;
     }
 
@@ -185,30 +200,36 @@ export class Parser {
             const expr = this.parseExpression();
             if (expr === null) {
                 this.errors.push("Expected expression within parentheses.");
+
                 return null;
             }
     
             if (!this.lexer.has(TokenType.RPAREN)) {
                 this.errors.push("Expected closing ')' after expression within parentheses.");
+
                 return null;
             }
             this.lexer.pop(); // Consume the ")"
             
             return new AstExpressionSub(expr as AstExpression);
         }
+
         return null;
     }
     
     parseExpression(binding_power_to_my_right: number = 0): AstExpression | AstExpressionPrefix | AstExpressionPostfix | AstExpressionBinary | AstExpressionTernary | AstExpressionSub | null {
+        console.log("parse expr");
         let result: AstExpression | AstExpressionPrefix | AstExpressionPostfix | AstExpressionBinary | AstExpressionTernary | AstExpressionSub | null = null;
     
         if (this.lexer.has(TokenType.INT) || this.lexer.has(TokenType.FLOAT) || this.lexer.has(TokenType.STRING) || this.lexer.has(TokenType.IDENT)) {
+            console.log("maybe is ident");
             result = this.parseExpressionLiteral();
         }
         else if (this.lexer.has(TokenType.LPAREN)) {
             result = this.parseExpressionSub();
         }
         else if (this.lexer.has(TokenType.PLUS) || this.lexer.has(TokenType.MINUS)) {
+            console.log("has + or -");
             result = this.parseExpressionPrefix(this.prefix_bp_lookup(this.lexer.front()));
         }
         
@@ -218,6 +239,7 @@ export class Parser {
         }
 
         while(binding_power_to_my_right < this.bp_lookup(this.lexer.front()).left_power ) {
+            // console.log("inside op loop");
             if (this.lexer.has(TokenType.BANG)) {
                 result = this.parseExpressionPostfix(result as AstExpression);
             }
@@ -232,28 +254,32 @@ export class Parser {
         return result;
     }
 
-    parseStatement() {
-        if (this.lexer.has(TokenType.RET)) {
-            this.lexer.skip(TokenType.RET);
-
-            if (this.lexer.skip(TokenType.SEMICOLON)) {
-                return new AstStatementReturn(
-                    new AstExpressionLiteral(
-                        "VOID",
-                        null,
-                    ),
-                );
-            }
-
-            const expr: AstExpression | null = this.parseExpression() as AstExpression;
-            if (expr === null) {
-                this.errors.push("Wrong token as AstExpression.");
-                return null;
-            }
-
+    parseStatementRet() {
+        if (this.lexer.skip(TokenType.SEMICOLON)) {
             return new AstStatementReturn(
-                expr,
+                new AstExpressionLiteral(
+                    "VOID",
+                    null,
+                ),
             );
+        }
+
+        const expr: AstExpression | null = this.parseExpression() as AstExpression;
+        if (expr === null) {
+            this.errors.push("Wrong token as AstExpression.");
+
+            return null;
+        }
+
+        return new AstStatementReturn(
+            expr,
+        );
+    }
+
+    parseStatement() {
+        console.log("parseStatement");
+        if (this.lexer.skip(TokenType.RET)) {
+            return this.parseStatementRet();
         }
 
         return null;
@@ -263,6 +289,7 @@ export class Parser {
         const open = this.lexer.match(TokenType.LBRACE);
         if (open.type_id === TokenType.ERROR && open.error_message !== null) {
             this.errors.push(open.error_message);
+
             return null;
         }
 
@@ -272,9 +299,11 @@ export class Parser {
             if (this.lexer.has(TokenType.EOF)) break;
 
             const stmt: Ast | null = this.parseStatement();
+            console.log("stmt", stmt);
             if (stmt === null) {
                 const errorMessage = "Wrong token as statement.";
                 this.errors.push(errorMessage);
+
                 return null;
             }
             stmts.push(stmt);
@@ -283,8 +312,11 @@ export class Parser {
         const close = this.lexer.match(TokenType.RBRACE);
         if (close.type_id === TokenType.ERROR && close.error_message !== null) {
             this.errors.push(close.error_message);
+
             return null;
         }
+
+        console.log("function body");
 
         return new AstBody(
             stmts,
@@ -295,11 +327,13 @@ export class Parser {
         const name = this.lexer.match(TokenType.IDENT);
         if (name.error_message !== null) {
             this.errors.push(name.error_message);
+
             return null;
         }
         if (name.value === null) return null;
 
         const args: AstFunctionArgument[] = [];
+        console.log("parse function");
     
         if (this.lexer.skip(TokenType.LPAREN) !== null) { // (
             while (!this.lexer.has(TokenType.RPAREN)) {
@@ -307,22 +341,27 @@ export class Parser {
                 if (arg === null) {
                     const errorMessage = "Wrong token as function argument.";
                     this.errors.push(errorMessage);
+
                     return null;
                 }
                 args.push(arg);
                 if (!this.lexer.has(TokenType.RPAREN) && !this.lexer.skip(TokenType.COMMA)) {
                     const errorMessage = "Expected comma or closing parenthesis in function arguments.";
                     this.errors.push(errorMessage);
+
                     return null;
                 }
             }
             this.lexer.match(TokenType.RPAREN); // )
         }
+
+        console.log("body");
     
         const body: AstBody | null = this.parseBody();
         if (body === null) {
             const errorMessage = "Wrong token as function body.";
             this.errors.push(errorMessage);
+
             return null;
         }
 
@@ -334,8 +373,11 @@ export class Parser {
     }
 
     parse() {
+        console.log("parser - parse");
         while (true) {
             const ast: Ast | null | undefined = this.parseMainStatement();
+
+            console.log("parser - parse - loop", ast);
             if (ast === undefined) break; // EOF
             else if (ast !== null) this.ast.push(ast);
         }
