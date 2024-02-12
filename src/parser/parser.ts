@@ -210,7 +210,7 @@ export class Parser {
         }
         else if (this.lexer.has(TokenType.PLUS) || this.lexer.has(TokenType.MINUS)) {
             result = this.parseExpressionPrefix(this.prefix_bp_lookup(this.lexer.front()));
-        }   
+        }
         
         // We should always have either a LHS or Prefix Operator at this point.
         if (result === null) {
