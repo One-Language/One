@@ -1,62 +1,70 @@
 documentation:
-  - changed-files:
-      - any-glob-to-any-file:
-          - docs/**/*
-          - CONTRIBUTING.md
-          - CONTRIBUTORS.md
-          - LICENSE
-          - MISSION_STATEMENT.md
-          - README.md
-          - README_DOCKER.md
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - docs/**/*
+              - CONTRIBUTING.md
+              - CONTRIBUTORS.md
+              - LICENSE
+              - MISSION_STATEMENT.md
+              - README.md
+              - README_DOCKER.md
 
 examples:
-  - changed-files:
-      - any-glob-to-any-file:
-          - example/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - example/**/*
 
 github:
-  - changed-files:
-      - any-glob-to-any-file:
-          - .github/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - .github/**/*
 
 license-templates:
-  - changed-files:
-      - any-glob-to-any-file:
-          - license-templates/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - license-templates/**/*
 
 scripts:
-  - changed-files:
-      - any-glob-to-any-file:
-          - scripts/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - scripts/**/*
 
 src:
-  - changed-files:
-      - any-glob-to-any-file:
-          - src/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - src/**/*
 
 tests:
-  - changed-files:
-      - any-glob-to-any-file:
-          - .clang-format
-          - .dockerignore
-          - .editorconfig
-          - .gitattributes
-          - .gitignore
-          - .hound.yml
-          - .mergify.yml
-          - .pre-commit-config.yaml
-          - .prettierignore
-          - .prettierrc
-          - CMakeLists.txt
-          - CODEOWNERS
-          - Dockerfile
-          - Makefile
-          - codespell.txt
-          - docker-compose.yml
-          - mlc_config.json
-          - test/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - .clang-format
+              - .dockerignore
+              - .editorconfig
+              - .gitattributes
+              - .gitignore
+              - .hound.yml
+              - .mergify.yml
+              - .pre-commit-config.yaml
+              - .prettierignore
+              - .prettierrc
+              - CMakeLists.txt
+              - CODEOWNERS
+              - Dockerfile
+              - Makefile
+              - codespell.txt
+              - docker-compose.yml
+              - mlc_config.json
+              - test/**/*
 
 tmp:
-  - changed-files:
-      - any-glob-to-any-file:
-          - tmp/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - tmp/**/*
