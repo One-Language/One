@@ -1,46 +1,62 @@
 documentation:
-  - docs/**/*
-  - CONTRIBUTING.md
-  - CONTRIBUTORS.md
-  - LICENSE
-  - MISSION_STATEMENT.md
-  - README.md
-  - README_DOCKER.md
+  - changed-files:
+      - any-glob-to-any-file:
+          - docs/**/*
+          - CONTRIBUTING.md
+          - CONTRIBUTORS.md
+          - LICENSE
+          - MISSION_STATEMENT.md
+          - README.md
+          - README_DOCKER.md
 
 examples:
-  - example/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - example/**/*
 
 github:
-  - .github/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/**/*
 
 license-templates:
-  - license-templates/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - license-templates/**/*
 
 scripts:
-  - scripts/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - scripts/**/*
 
 src:
-  - src/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/**/*
 
 tests:
-  - .clang-format
-  - .dockerignore
-  - .editorconfig
-  - .gitattributes
-  - .gitignore
-  - .hound.yml
-  - .mergify.yml
-  - .pre-commit-config.yaml
-  - .prettierignore
-  - .prettierrc
-  - CMakeLists.txt
-  - CODEOWNERS
-  - Dockerfile
-  - Makefile
-  - codespell.txt
-  - docker-compose.yml
-  - mlc_config.json
-  - test/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - .clang-format
+          - .dockerignore
+          - .editorconfig
+          - .gitattributes
+          - .gitignore
+          - .hound.yml
+          - .mergify.yml
+          - .pre-commit-config.yaml
+          - .prettierignore
+          - .prettierrc
+          - CMakeLists.txt
+          - CODEOWNERS
+          - Dockerfile
+          - Makefile
+          - codespell.txt
+          - docker-compose.yml
+          - mlc_config.json
+          - test/**/*
 
 tmp:
-  - tmp/**/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - tmp/**/*
