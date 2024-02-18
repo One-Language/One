@@ -100,7 +100,7 @@ repos:
     rev: v3.11.2
     hooks:
       - id: markdown-link-check
-        args: [--config, mlc_config.json, -q]
+        args: [--config=.github/linters/mlc_config.json, -q]
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.37.0
     hooks:
