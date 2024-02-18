@@ -408,7 +408,7 @@ If you would like to contribute in the development of this project, you can mail
   <img src="https://contrib.rocks/image?repo=One-Language/One" alt="The One Contributors">
 </a>
 
-Made with [contrib.rocks](https://contrib.rocks).
+Made with [contrib.rocks](https://contrib.rocks/preview?repo=One-Language%2FOne).
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->
