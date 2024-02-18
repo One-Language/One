@@ -9,7 +9,7 @@
 # Ang Isang Programang Lengguwahe 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Tulong](https://github.com/One-Language/One/issues/new)
+[Tulong](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]

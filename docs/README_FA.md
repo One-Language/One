@@ -10,7 +10,7 @@
 # زبان برنامه نویسی وان💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.ir](https://onelang.ir) |
-[کمک خواست](https://github.com/One-Language/One/issues/new)
+[کمک خواست](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]

@@ -9,7 +9,7 @@
 # One Programlama Dili 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Yardımınıza ihtiyacımız var](https://github.com/One-Language/One/issues/new)
+[Yardımınıza ihtiyacımız var](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
