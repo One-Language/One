@@ -9,7 +9,7 @@
 # Язык программирования One 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Нужна помощь](https://github.com/One-Language/One/issues/new)
+[Нужна помощь](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]

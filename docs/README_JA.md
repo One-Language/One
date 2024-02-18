@@ -9,7 +9,7 @@
 # One 言語 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[ヘルプ募集](https://github.com/One-Language/One/issues/new)
+[ヘルプ募集](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
