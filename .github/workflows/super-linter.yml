@@ -21,6 +21,7 @@ jobs:
       - uses: super-linter/super-linter/slim@v6.1.1
         env:
           DEFAULT_BRANCH: main
-          VALIDATE_EDITORCONFIG: true
-          VALIDATE_ALL_CODEBASE: false
+          # VALIDATE_EDITORCONFIG: true
+          VALIDATE_CLANG_FORMAT: true
+          VALIDATE_ALL_CODEBASE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
