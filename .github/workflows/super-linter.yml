@@ -24,5 +24,6 @@ jobs:
           # VALIDATE_EDITORCONFIG: true
           VALIDATE_CLANG_FORMAT: true
           VALIDATE_MARKDOWN: true
+          VALIDATE_YAML: true
           VALIDATE_ALL_CODEBASE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
