@@ -23,6 +23,7 @@ jobs:
           DEFAULT_BRANCH: main
           # VALIDATE_EDITORCONFIG: true
           VALIDATE_CLANG_FORMAT: true
+          VALIDATE_GITHUB_ACTIONS: true
           VALIDATE_MARKDOWN: true
           VALIDATE_YAML: true
           VALIDATE_ALL_CODEBASE: true
