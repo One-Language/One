@@ -11,7 +11,7 @@
 # The One لغة برمجة 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[مركز المساعدة](https://github.com/One-Language/One/issues/new)
+[مركز المساعدة](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
@@ -394,7 +394,7 @@ header {
 
 <h2 id="getting-started">➤ البدء</h2>
 
-الرجوع الى [هذا الرابط](https://github.com/ET-Lang/ET/wiki) لبدء تعلم أساسيات اللغة.
+الرجوع الى [هذا الرابط](https://github.com/One-Language/One/wiki) لبدء تعلم أساسيات اللغة.
 
 <!--Installation Steps-->
 

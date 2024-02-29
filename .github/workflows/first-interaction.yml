@@ -1,0 +1,30 @@
+name: First Interaction
+
+on:
+  issues:
+    types:
+      - opened
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Interaction
+        uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: |
+            Welcome to our open-source community, and thank you for opening your first issue! 🎉
+
+            We're thrilled to have you here. If you have any questions or need assistance, feel free to ask. Your contributions are valued and appreciated.
+
+            Happy coding! 🚀
+          pr-message: |
+            Hey there! 👋 Thanks for submitting your first pull request. We're excited to see your contribution to our project.
+
+            If you have any questions, need help, or want feedback, please don't hesitate to reach out. Your efforts make our community stronger.
+
+            Keep up the great work! 💪

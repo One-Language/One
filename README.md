@@ -9,7 +9,7 @@
 # The One Programming Language 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Help wanted](https://github.com/One-Language/One/issues/new)
+[Help wanted](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
@@ -358,7 +358,7 @@ header {
 
 <h2 id="getting-started">➤ Getting Started</h2>
 
-Refer to [this link](https://github.com/ET-Lang/ET/wiki) to start learning the language.
+Refer to [this link](https://one-language.github.io/Document/#/) to start learning the language.
 
 <!--Installation Steps-->
 
@@ -408,7 +408,7 @@ If you would like to contribute in the development of this project, you can mail
   <img src="https://contrib.rocks/image?repo=One-Language/One" alt="The One Contributors">
 </a>
 
-Made with [contrib.rocks](https://contrib.rocks).
+Made with [contrib.rocks](https://contrib.rocks/preview?repo=One-Language%2FOne).
 
 <!--[![Gitter](https://badges.gitter.im/ET_lang/community.svg)](https://gitter.im/ET_lang/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!--[Official Community for a chat and discuss.](https://spectrum.chat/et?tab=chat)-->

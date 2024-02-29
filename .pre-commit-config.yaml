@@ -11,7 +11,7 @@ repos:
       - id: identity
       - id: check-hooks-apply
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.5.1
+    rev: v1.5.4
     hooks:
       - id: insert-license
         name: Add license for all JavaScript files
@@ -69,13 +69,16 @@ repos:
       - id: check-shebang-scripts-are-executable
       - id: check-vcs-permalinks
       - id: check-yaml
+      - id: detect-aws-credentials
+        args: [--allow-missing-credentials]
       - id: detect-private-key
       - id: end-of-file-fixer
       - id: fix-byte-order-marker
+      - id: forbid-submodules
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.4
+    rev: v2.2.6
     hooks:
       - id: codespell
         name: Run codespell
@@ -88,7 +91,7 @@ repos:
   # - id: shellcheck
   # - id: shfmt
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.9-for-vscode
+    rev: v3.0.3
     hooks:
       - id: prettier
         name: Run prettier
@@ -97,9 +100,9 @@ repos:
     rev: v3.11.2
     hooks:
       - id: markdown-link-check
-        args: [--config, mlc_config.json, -q]
+        args: [--config=.github/linters/mlc_config.json, -q]
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.34.0
+    rev: v0.37.0
     hooks:
       - id: markdownlint
         name: Run markdownlint

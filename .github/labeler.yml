@@ -1,46 +1,70 @@
 documentation:
-  - docs/**/*
-  - CONTRIBUTING.md
-  - CONTRIBUTORS.md
-  - LICENSE
-  - MISSION_STATEMENT.md
-  - README.md
-  - README_DOCKER.md
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - docs/**/*
+              - CONTRIBUTING.md
+              - CONTRIBUTORS.md
+              - LICENSE
+              - MISSION_STATEMENT.md
+              - README.md
+              - README_DOCKER.md
 
 examples:
-  - example/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - example/**/*
 
 github:
-  - .github/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - .github/**/*
 
 license-templates:
-  - license-templates/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - license-templates/**/*
 
 scripts:
-  - scripts/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - scripts/**/*
 
 src:
-  - src/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - src/**/*
 
 tests:
-  - .clang-format
-  - .dockerignore
-  - .editorconfig
-  - .gitattributes
-  - .gitignore
-  - .hound.yml
-  - .mergify.yml
-  - .pre-commit-config.yaml
-  - .prettierignore
-  - .prettierrc
-  - CMakeLists.txt
-  - CODEOWNERS
-  - Dockerfile
-  - Makefile
-  - codespell.txt
-  - docker-compose.yml
-  - mlc_config.json
-  - test/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - .clang-format
+              - .dockerignore
+              - .editorconfig
+              - .gitattributes
+              - .gitignore
+              - .hound.yml
+              - .mergify.yml
+              - .pre-commit-config.yaml
+              - .prettierignore
+              - .prettierrc
+              - CMakeLists.txt
+              - CODEOWNERS
+              - Dockerfile
+              - Makefile
+              - codespell.txt
+              - docker-compose.yml
+              - mlc_config.json
+              - test/**/*
 
 tmp:
-  - tmp/**/*
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - tmp/**/*

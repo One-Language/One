@@ -10,7 +10,7 @@
 # زبان برنامه نویسی وان💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.ir](https://onelang.ir) |
-[کمک خواست](https://github.com/One-Language/One/issues/new)
+[کمک خواست](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
@@ -402,7 +402,7 @@ header {
 
 <div dir="rtl">
 
-می توانید برای یادگیری بیشتر نحو این زبان به [این صفحه](https://github.com/ET-Lang/ET/wiki) راهنما مراجعه کنید.
+می توانید برای یادگیری بیشتر نحو این زبان به [این صفحه](https://github.com/One-Language/One/wiki) راهنما مراجعه کنید.
 
 <!--Installation Steps-->
 

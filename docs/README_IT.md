@@ -9,7 +9,7 @@
 # Il linguaggio di programmazione One 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Chiedi aiuto](https://github.com/One-Language/One/issues/new)
+[Chiedi aiuto](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
@@ -357,7 +357,7 @@ header {
 
 <h2 id="getting-started">➤ Per iniziare</h2>
 
-Fai riferimento a [questo link](https://github.com/ET-Lang/ET/wiki) per iniziare ad imparare il linguaggio.
+Fai riferimento a [questo link](https://github.com/One-Language/One/wiki) per iniziare ad imparare il linguaggio.
 
 <!--Installation Steps-->
 

@@ -9,19 +9,28 @@ jobs:
   build:
     permissions:
       contents: read  # for actions/checkout to fetch code
-      statuses: write  # for github/super-linter/slim to mark status of each linter run
+      statuses: write  # for super-linter/super-linter/slim to mark status of each linter run
     name: Super-Linter
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
-      - uses: github/super-linter/slim@v5.0.0
+      - uses: super-linter/super-linter/slim@v6.3.0
         env:
           DEFAULT_BRANCH: main
           ERROR_ON_MISSING_EXEC_BIT: true
           VALIDATE_EDITORCONFIG: true
+          # VALIDATE_EDITORCONFIG: true
+          VALIDATE_CLANG_FORMAT: true
+          VALIDATE_DOCKERFILE_HADOLINT: true
+          VALIDATE_GITHUB_ACTIONS: true
+          VALIDATE_GITLEAKS: true
+          VALIDATE_HTML: true
+          VALIDATE_JSON: true
+          VALIDATE_MARKDOWN: true
+          VALIDATE_YAML: true
           VALIDATE_ALL_CODEBASE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
