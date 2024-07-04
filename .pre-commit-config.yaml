@@ -90,12 +90,6 @@ repos:
   #  hooks:
   # - id: shellcheck
   # - id: shfmt
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.3
-    hooks:
-      - id: prettier
-        name: Run prettier
-        description: Format files with prettier
   - repo: https://github.com/tcort/markdown-link-check
     rev: v3.11.2
     hooks:
