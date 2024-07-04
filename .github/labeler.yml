@@ -52,8 +52,6 @@ tests:
               - .hound.yml
               - .mergify.yml
               - .pre-commit-config.yaml
-              - .prettierignore
-              - .prettierrc
               - CMakeLists.txt
               - CODEOWNERS
               - Dockerfile
