@@ -11,10 +11,10 @@ repos:
       - id: identity
       - id: check-hooks-apply
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.5.4
+    rev: v1.5.5
     hooks:
       - id: insert-license
-        name: Add license for all JavaScript files
+        name: add license for all JavaScript files
         files: \.js$
         args:
           - --comment-style
@@ -24,7 +24,7 @@ repos:
           - --fuzzy-match-generates-todo
           - --remove-header
       - id: insert-license
-        name: Add license for all Markdown files
+        name: add license for all Markdown files
         files: \.(md|mdown|markdown)$
         types: [markdown]
         args:
@@ -35,7 +35,7 @@ repos:
           - --fuzzy-match-generates-todo
           - --remove-header
       - id: insert-license
-        name: Add license for all Shell files
+        name: add license for all Shell files
         files: \.bash$|\.sh$
         args:
           - --comment-style
@@ -45,7 +45,7 @@ repos:
           - --fuzzy-match-generates-todo
           - --remove-header
       - id: insert-license
-        name: Add license for all YAML files
+        name: add license for all YAML files
         files: \.(yml|yaml)$
         args:
           - --comment-style
@@ -59,7 +59,7 @@ repos:
       - id: remove-tabs
         exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.6.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -78,12 +78,12 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.3.0
     hooks:
       - id: codespell
-        name: Run codespell
+        name: run codespell
         description: Check spelling with codespell
-        entry: codespell --ignore-words=codespell.txt
+        args: [--ignore-words=.github/linters/codespell.txt]
         exclude: ^docs/.*$
   # - repo: https://github.com/jumanjihouse/pre-commit-hooks
   #  rev: 2.1.5
@@ -91,56 +91,56 @@ repos:
   # - id: shellcheck
   # - id: shfmt
   - repo: https://github.com/tcort/markdown-link-check
-    rev: v3.11.2
+    rev: v3.12.2
     hooks:
       - id: markdown-link-check
         args: [--config=.github/linters/mlc_config.json, -q]
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.37.0
+    rev: v0.41.0
     hooks:
       - id: markdownlint
-        name: Run markdownlint
+        name: run markdownlint
         description: Check Markdown files with markdownlint
-        entry: markdownlint -c .github/linters/.markdown-lint.yml .
+        args: [--config=.github/linters/.markdown-lint.yml]
         exclude: ^\.github/.*$
         types: [markdown]
         files: \.(md|mdown|markdown)$
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.32.0
+    rev: v1.35.1
     hooks:
       - id: yamllint
-        name: Run yamllint
+        name: run yamllint
         description: Check YAML files with yamllint
-        entry: yamllint --strict -c .github/linters/.yaml-lint.yml .
+        args: [--strict, -c=.github/linters/.yaml-lint.yml]
         types: [yaml]
         files: \.(yml|yaml)$
   - repo: https://github.com/pocc/pre-commit-hooks
     rev: v1.3.5
     hooks:
       - id: clang-format
-        name: Run Clang Format
+        name: run Clang Format
         description: Format files with Clang Format
         args: [-i, --style=file]
   - repo: local
     hooks:
       - id: hadolint-docker
-        name: Lint Dockerfiles
+        name: lint Dockerfiles
         description: Runs hadolint Docker image to lint Dockerfiles
         language: docker_image
         types: ['dockerfile']
         entry: ghcr.io/hadolint/hadolint:v2.12.0 hadolint -c .github/linters/.hadolint.yaml
         files: ^Dockerfile$
       - id: shellcheck
-        name: Lint Shell scripts
+        name: lint Shell scripts
         description: Check Shell scripts for correct syntax
         language: docker_image
         entry: koalaman/shellcheck:v0.9.0 -a
         files: \.bash$|\.sh$
         require_serial: true
       - id: sort-and-uniquify-codespell-wordlist
-        name: Sort unique codespell.txt
+        name: sort unique codespell.txt
         description: Sort alphabetically and uniquify codespell.txt
         entry: ./scripts/ci/pre-commit/sort-and-uniquify-codespell-wordlist.sh
         language: system
-        files: ^codespell\.txt$
+        files: ^\.github/linters/codespell\.txt$
         require_serial: true
