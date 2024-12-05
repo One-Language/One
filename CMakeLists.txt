@@ -61,19 +61,15 @@ set(BUILTINS_HEADERS
 
 # Set lexer source and headers
 set(LEXER_SOURCE
-        src/lexer/tokenizer/token.c
+        src/parser/lexer/token.c
 
-        src/lexer/tokenizer/tokenizer.c
-
-        src/lexer/lexer.c
+        src/parser/lexer/lexer.c
 )
 
 set(LEXER_HEADERS
-        src/lexer/tokenizer/token.h
+        src/parser/lexer/token.h
 
-        src/lexer/tokenizer/tokenizer.h
-
-        src/lexer/lexer.h
+        src/parser/lexer/lexer.h
 )
 
 # Set AST source and headers
@@ -100,7 +96,7 @@ set(PARSER_HEADERS
 
 # Set Main executables for lexer, ast, and parser
 set(LEXER_MAIN
-        src/lexer/main.c
+        src/parser/lexer/main.c
 )
 
 set(AST_MAIN
