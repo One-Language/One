@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <builtins/file.h>
+#include "../../builtins/file.h"
 
 #include "lexer.h"
 extern Token* current;
