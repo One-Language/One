@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  pull_request:
+    paths:
+      - 'Dockerfile'
+      - 'docker-compose.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  docker:
+    name: Test docker compose up
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
+        uses: actions/checkout@v3
+      - name: Start containers
+        run: docker-compose -f "docker-compose.yml" up -d --build
+      - name: Stop containers
+        if: always()
+        run: docker-compose -f "docker-compose.yml" down
