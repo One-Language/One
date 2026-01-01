@@ -2,7 +2,7 @@ FROM alpine:latest
 LABEL name="The One Programming Language"
 
 # LLVM version
-ARG LLVM_VERSION=12.0.1
+ARG LLVM_VERSION=16.0.3
 
 # LLVM dependencies
 RUN apk --no-cache add \
@@ -58,8 +58,7 @@ RUN cmake --build ./build --config Debug --target all -j 6 --
 WORKDIR /One/build
 
 # Running example input.one
-RUN ./lexer ../src/input.one log
-RUN cat log
+RUN ./lexer ../src/input.one log && cat log
 
 # Running tests
 RUN ./lexer_test
