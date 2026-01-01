@@ -7,8 +7,14 @@ permissions:  # added using https://github.com/step-security/secure-workflows
 
 jobs:
   pre-commit:
-    name: Run pre-commit  # https://pre-commit.com/
-    runs-on: ubuntu-latest
+    name: "Run pre-commit on ${{ matrix.os }}"  # https://pre-commit.com/
+    runs-on: "${{ matrix.os }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-latest}
+          - {os: windows-latest}
     steps:
       - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
         uses: actions/checkout@v6
