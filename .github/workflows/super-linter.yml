@@ -21,6 +21,8 @@ jobs:
       - uses: super-linter/super-linter/slim@v8.4.0
         env:
           DEFAULT_BRANCH: main
+          ERROR_ON_MISSING_EXEC_BIT: true
+          VALIDATE_EDITORCONFIG: true
           # VALIDATE_EDITORCONFIG: true
           VALIDATE_CLANG_FORMAT: true
           VALIDATE_DOCKERFILE_HADOLINT: true
