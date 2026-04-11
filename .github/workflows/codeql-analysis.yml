@@ -11,7 +11,13 @@
 #
 name: CodeQL
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
 
 permissions:  # added using https://github.com/step-security/secure-workflows
   contents: read
