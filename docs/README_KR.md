@@ -9,7 +9,7 @@
 # One 프로그래밍 언어 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Help wanted](https://github.com/One-Language/One/issues/new)
+[Help wanted](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
@@ -357,7 +357,7 @@ header {
 
 <h2 id="getting-started">➤ 시작하기</h2>
 
-언어 학습을 시작하려면 [이 링크](https://github.com/ET-Lang/ET/wiki)를 참조하세요.
+언어 학습을 시작하려면 [이 링크](https://github.com/One-Language/One/wiki)를 참조하세요.
 
 <!--Installation Steps-->
 

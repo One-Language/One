@@ -9,12 +9,13 @@
 The `ONE Programming Language` is a very welcoming community. We appreciate your
 ideas and your help. You need to communicate in
 [our discord server](https://discord.com/invite/sFCE2HcMCa) or pick an issue and
-share your perception of the solution you have. Don't forget to fork this
-repository and create a feature or new branch to work on your contribution.
+share your perception of the solution you have. Ensure you fork this repository.
+Create a new branch to work on your contribution for better code isolation.
 
 ### **Then, make a PR**
 
-Now that you finished the work, don't forget again to run `pre-commit`. Create the
+Now that you finished the work, don't forget again to run `pre-commit`.
+`pre-commit` helps ensure code quality before creating a PR. Create the
 pull request and use the description to provide context and motivation, as you
 did in the issue. Otherwise, you can mention your PR in the issue that you tried
 to solve. Once a pull request is created, we will verify the code and accept
@@ -123,7 +124,7 @@ requests, which will save you and the reviewers' time.
 
 - [Clang 13 documentation ClangFormat](https://clang.llvm.org/docs/ClangFormat.html)
 
-### Git hooks
+### Git Hooks
 
 Like many other `Version Control Systems`, `Git` has a way to fire off custom
 scripts when certain important actions occur. There are two groups of these

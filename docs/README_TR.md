@@ -9,7 +9,7 @@
 # One Programlama Dili 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Yardımınıza ihtiyacımız var](https://github.com/One-Language/One/issues/new)
+[Yardımınıza ihtiyacımız var](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
@@ -356,7 +356,7 @@ header {
 
 <h2 id="getting-started">➤ İlk Kullanım Kılavuzu</h2>
 
-Dili öğrenmeye başlamak için [bu linke](https://github.com/ET-Lang/ET/wiki) göz atabilirsiniz.
+Dili öğrenmeye başlamak için [bu linke](https://github.com/One-Language/One/wiki) göz atabilirsiniz.
 
 <!--Installation Steps-->
 

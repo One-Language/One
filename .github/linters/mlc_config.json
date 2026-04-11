@@ -1,0 +1,22 @@
+{
+  "httpHeaders": [
+    {
+      "urls": ["https://docs.github.com/"],
+      "headers": {
+        "Accept-Encoding": "zstd, br, gzip, deflate"
+      }
+    }
+  ],
+  "aliveStatusCodes": [200, 429],
+  "ignorePatterns": [
+    {
+      "pattern": "^https?://(?:www\\.)?twitter\\.com/.*"
+    },
+    {
+      "pattern": "^https?://(?:www\\.)?patreon\\.com/onelanguage"
+    },
+    {
+      "pattern": "^#"
+    }
+  ]
+}

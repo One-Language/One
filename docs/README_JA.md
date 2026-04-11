@@ -9,7 +9,7 @@
 # One 言語 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[ヘルプ募集](https://github.com/One-Language/One/issues/new)
+[ヘルプ募集](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
@@ -357,7 +357,7 @@ header {
 
 <h2 id="getting-started">➤ 入門</h2>
 
-[このリンク](https://github.com/ET-Lang/ET/wiki)を参照して、語学学習を始めてください。
+[このリンク](https://github.com/One-Language/One/wiki)を参照して、語学学習を始めてください。
 
 <!--Installation Steps-->
 

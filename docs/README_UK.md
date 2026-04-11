@@ -9,7 +9,7 @@
 # Мова програмування The One 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Потрібна допомога](https://github.com/One-Language/One/issues/new)
+[Потрібна допомога](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
@@ -356,7 +356,7 @@ header {
 
 <h2 id="getting-started">➤ Почнемо</h2>
 
-Перейдіть за [цим посиланням](https://github.com/ET-Lang/ET/wiki), щоб почати вивчення мови.
+Перейдіть за [цим посиланням](https://github.com/One-Language/One/wiki), щоб почати вивчення мови.
 
 <!--Кроки встановлення-->
 

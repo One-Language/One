@@ -9,7 +9,7 @@
 # Ang Isang Programang Lengguwahe 💚 💙 🧡 🤍 💖 🖤
 
 [Onelang.org](https://onelang.org) |
-[Tulong](https://github.com/One-Language/One/issues/new)
+[Tulong](https://github.com/One-Language/One/issues?q=is%3Aissue+is%3Aopen+label%3A%22Help+Wanted%22)
 
 <!--
 [![Build Status][WorkflowBadge]][WorkflowUrl]
@@ -356,7 +356,7 @@ header {
 
 <h2 id="getting-started">➤Mga Unang Hakbang</h2>
 
-Maaari mong suriin ang [link na ito](https://github.com/ET-Lang/ET/wiki) upang simulang matuto ng wika.
+Maaari mong suriin ang [link na ito](https://github.com/One-Language/One/wiki) upang simulang matuto ng wika.
 
 <!--Mga hakbang para sa pag-install-->
 
