@@ -1,3 +1,4 @@
+---
 name: First Interaction
 
 on:
@@ -8,21 +9,25 @@ on:
     types:
       - opened
 
+permissions:
+  issues: write
+  pull-requests: write
+
 jobs:
   welcome:
     runs-on: ubuntu-latest
     steps:
       - name: First Interaction
-        uses: actions/first-interaction@v3
+        uses: actions/first-interaction@1c4688942c71f71d4f5502a26ea67c331730fa4d  # v3.1.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          issue-message: |
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_message: |
             Welcome to our open-source community, and thank you for opening your first issue! 🎉
 
             We're thrilled to have you here. If you have any questions or need assistance, feel free to ask. Your contributions are valued and appreciated.
 
             Happy coding! 🚀
-          pr-message: |
+          pr_message: |
             Hey there! 👋 Thanks for submitting your first pull request. We're excited to see your contribution to our project.
 
             If you have any questions, need help, or want feedback, please don't hesitate to reach out. Your efforts make our community stronger.

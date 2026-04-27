@@ -1,6 +1,6 @@
 # These are supported funding model platforms
 
-github: ['One-Language']
+github: ['One-Language', 'BaseMax', 'jbampton']
 patreon: onelanguage
 open_collective: onelang
 ko_fi: onelang
@@ -8,5 +8,5 @@ ko_fi: onelang
 # community_bridge: # Replace with a single Community Bridge project-name e.g., cloud-foundry
 liberapay: one
 issuehunt: One-Language
-otechie: one
+# otechie: one
 custom: ['https://www.buymeacoffee.com/onelang']
