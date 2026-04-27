@@ -31,7 +31,7 @@ The One Language development team is on its way to achieving the following:
 - Cross-platform compatibility
 - Support for different architectures and OSs
 - An internal web-development framework
-- Easier debugging: Programmers mostly spend their time on reading and debugging their code, which is a time wasted at the expense of writing the actual codes ([you can see a discussion about this subject here](https://www.quora.com/It-is-true-that-developers-spend-most-of-their-time-reading-code-than-writing-code))
+- Easier debugging: Programmers mostly spend their time on reading and debugging their code, which is a time wasted at the expense of writing the actual code.
 - Easier maintenance
 - Static-type language (but it can auto-detect the type of your variables and values)
 - Faster performance

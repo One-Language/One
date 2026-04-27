@@ -1,5 +1,5 @@
 ---
-default_stages: [commit, push]
+default_stages: [pre-commit, pre-push]
 default_language_version:
   python: python3
 repos:
@@ -8,18 +8,19 @@ repos:
       - id: identity
       - id: check-hooks-apply
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.5.5
+    rev: v1.5.6
     hooks:
       - id: forbid-tabs
         exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
       - id: remove-tabs
         exclude: \.c$|\.h$|\.one$|Makefile$|^src/ast/ast-structure\.txt$
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v6.0.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
       - id: check-executables-have-shebangs
+      - id: check-illegal-windows-names
       - id: check-json
       - id: check-merge-conflict
       - id: check-shebang-scripts-are-executable
@@ -29,12 +30,17 @@ repos:
         args: [--allow-missing-credentials]
       - id: detect-private-key
       - id: end-of-file-fixer
+      - id: file-contents-sorter
+        name: run file-contents-sorter
+        description: sort the lines in specified files (defaults to alphabetical)
+        args: [--unique]
+        files: ^\.github/linters/codespell\.txt$
       - id: fix-byte-order-marker
       - id: forbid-submodules
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.3.0
+    rev: v2.4.2
     hooks:
       - id: codespell
         name: run codespell
@@ -47,12 +53,12 @@ repos:
   # - id: shellcheck
   # - id: shfmt
   - repo: https://github.com/tcort/markdown-link-check
-    rev: v3.12.2
+    rev: v3.14.2
     hooks:
       - id: markdown-link-check
         args: [--config=.github/linters/mlc_config.json, -q]
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.41.0
+    rev: v0.48.0
     hooks:
       - id: markdownlint
         name: run markdownlint
@@ -60,16 +66,16 @@ repos:
         args: [--config=.github/linters/.markdown-lint.yml]
         exclude: ^\.github/.*$
         types: [markdown]
-        files: \.(md|mdown|markdown)$
+        files: \.md$
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.35.1
+    rev: v1.38.0
     hooks:
       - id: yamllint
         name: run yamllint
         description: Check YAML files with yamllint
         args: [--strict, -c=.github/linters/.yaml-lint.yml]
         types: [yaml]
-        files: \.(yml|yaml)$
+        files: \.ya?ml$
   - repo: https://github.com/pocc/pre-commit-hooks
     rev: v1.3.5
     hooks:
@@ -91,12 +97,5 @@ repos:
         description: Check Shell scripts for correct syntax
         language: docker_image
         entry: koalaman/shellcheck:v0.9.0 -a
-        files: \.bash$|\.sh$
-        require_serial: true
-      - id: sort-and-uniquify-codespell-wordlist
-        name: sort unique codespell.txt
-        description: Sort alphabetically and uniquify codespell.txt
-        entry: ./scripts/ci/pre-commit/sort-and-uniquify-codespell-wordlist.sh
-        language: system
-        files: ^\.github/linters/codespell\.txt$
+        files: \.(bash|sh)$
         require_serial: true
