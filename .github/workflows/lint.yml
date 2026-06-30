@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
         uses: actions/checkout@v7.0.0
-      - uses: actions/setup-python@v6.2.0  # https://www.python.org/
+      - uses: actions/setup-python@v6.3.0  # https://www.python.org/
         with:
           python-version: '3.x'  # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64'  # optional x64 or x86. Defaults to x64 if not specified
@@ -22,7 +22,7 @@ jobs:
           pip install pre-commit
       - name: Set PY
         run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> "$GITHUB_ENV"
-      - uses: actions/cache@v5.0.5
+      - uses: actions/cache@v6.1.0
         with:
           path: ~/.cache/pre-commit
           key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
