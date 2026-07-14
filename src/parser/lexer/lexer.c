@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <builtins/error.h>
+#include "../../builtins/error.h"
 
 #ifdef _ONE_TEST_
 #define debug_lexer(format, args...)   \
@@ -616,4 +616,50 @@ void lexer_free()
 
 	// free(lexer.start);
 	// free(lexer.current);
+}
+
+/*
+ * @function: lexer_trace
+ * @description: Log and trace items of tokens
+ * @arguments: FILE* file_out, char* data, Token** tokens
+ * @return: nothing, void
+ */
+void lexer_trace(FILE* file_out, const char* data, Token** tokens)
+{
+	debug_lexer("lexer_trace");
+
+	while (tokens != NULL && *tokens != NULL)
+		if (tokens == NULL) return;
+
+	while (*tokens != NULL)
+	{
+		Token* t = *tokens;
+		printf("sizeof(t) = %zu\n", sizeof t);
+		printf("-->1\n");
+		printf("-->%s\n", t == NULL ? "y" : "n");
+		// printf("sizeof(t) = %zu\n", sizeof t);
+		// printf("-->1\n");
+		// printf("-->%s\n", t == NULL ? "y" : "n");
+		char* t_name = token_name(t->type);
+		printf("-->2\n");
+		// printf("-->2\n");
+		bool has1 = file_convert_index_to_rc(data, t->pos.index, &t->pos.line, &t->pos.column);
+		printf("-->3\n");
+		// printf("-->3\n");
+		bool has2 = file_convert_index_to_rc(data, t->pos_end.index, &t->pos_end.line, &t->pos_end.column);
+		printf("-->4\n");
+		// printf("-->4\n");
+
+		fprintf(file_out, "[%zu:%zu] [%zu:%zu - %zu:%zu] %s", t->pos.tokens, t->length, t->pos.line, t->pos.column, t->pos_end.line, t->pos_end.column, t_name);
+		printf("-->5\n");
+		// printf("-->5\n");
+
+		if (t->value != NULL)
+		{
+			fprintf(file_out, ": \"%s\"", t->value);
+		}
+		fprintf(file_out, "\n");
+		if (t->type == TOKEN_EOF) break;
+		tokens++;
+	}
 }

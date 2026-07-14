@@ -10,7 +10,8 @@
 
 #include "token.h"
 #include "lexer.h"
-#include <builtins/error.h>
+#include "../../builtins/array.h"
+#include "../../builtins/error.h"
 
 #ifdef _ONE_TEST_
 #define debug_token(format, args...)     \
@@ -586,4 +587,50 @@ bool token_is_skip(TokenType type)
 		 type == TOKEN_SKIP_WHITESPACE_LINE ||
 		 type == TOKEN_SKIP_COMMENT_SINGLE ||
 		 type == TOKEN_SKIP_COMMENT_MULTI);
+}
+
+/*
+ * @function: tokenizer_string
+ * @description: Create a array of tokens from a one program source-code char*
+ * @inputs: char* of a One program source-code
+ * @return: Array of Token
+ */
+Token** tokenizer_string(char* data)
+{
+	debug_token("tokenizer_string");
+	debug_token("tokenizer_string: %s", data);
+
+	lexer_init(data);
+
+	Array tokens;
+	array_init(&tokens);
+
+	size_t i;
+	Token* t;
+	for (;;)
+	{
+		t = lexer_scan();
+		// printf("==>%s\n", token_name(t->type));
+		array_push(&tokens, t);
+		// debug_lexer("parser_scan: print_token %s", token_name(t->type));
+		if (t->type == TOKEN_ERROR)
+		{
+			printf("Error: %s\n", t->value);
+			break;
+		}
+		else if (t->type == TOKEN_EOF)
+			break;
+	}
+
+	debug_token("tokenizer_string: count of tokens is %d", tokens.count);
+	debug_token("tokenizer_string: size of tokens is %d", tokens.size);
+
+	// while (*data != '\0')
+	// {
+	// 	Token* t = token_make_value(TOKEN_VALUE_IDENTIFIER, (char*){data});
+	// 	array_push(&tokens, t);
+	// 	data++;
+	// }
+
+	return (Token**)tokens.data;
 }

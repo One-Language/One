@@ -8,7 +8,7 @@
 
  **/
 
-#include <parser/lexer/lexer.h>
+#include "../parser/lexer/lexer.h"
 
 #include "error.h"
 

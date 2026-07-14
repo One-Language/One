@@ -407,4 +407,12 @@ size_t token_utf8_string_length(char* s);
  */
 bool token_is_skip(TokenType type);
 
+/*
+ * @function: tokenizer_string
+ * @description: Create a array of tokens from a one program source-code char*
+ * @inputs: char* of a One program source-code
+ * @return: Array of Token
+ */
+Token** tokenizer_string(char* data);
+
 #endif // _ONE_TOKENIZER_TOKEN_H_
