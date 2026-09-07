@@ -17,7 +17,7 @@
 
 #include "parser_token.h"
 
-#include <builtins/array.h>
+#include "../builtins/array.h"
 
 typedef struct
 {
