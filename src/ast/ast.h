@@ -14,7 +14,7 @@
 #include <inttypes.h>
 
 #include "../builtins/array.h"
-#include "../lexer/tokenizer/token.h"
+#include "../parser/lexer/token.h"
 
 typedef enum _token_type TokenType;
 typedef struct _location Location;
